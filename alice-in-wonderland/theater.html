@@ -87,6 +87,22 @@ body{
 }
 .ctrl-theme:hover{color:var(--accent);border-color:var(--accent)}
 
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .stage { padding: 24px 20px; }
+  .passage-text { font-size: 22px; }
+  .chapter-card .title { font-size: 32px; }
+  .ctrl { padding: 12px 20px; min-height: 44px; }
+  .ctrl-theme { width: 44px; height: 44px; font-size: 18px; }
+}
+@media (max-width: 600px) {
+  .stage { padding: 20px 16px; }
+  .passage-text { font-size: 20px; line-height: 1.6; }
+  .chapter-card .title { font-size: 26px; }
+  .controls { gap: 12px; }
+  .chapter-indicator { font-size: 9px; }
+}
+
 /* ── Progress line ── */
 .progress{
   position:fixed;bottom:0;left:0;right:0;height:2px;background:var(--border);

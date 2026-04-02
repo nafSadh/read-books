@@ -370,6 +370,28 @@ body {
 .theme-dot[data-theme="dark-violet"] { background: #1a1a1a; border-color: #9b7aed; }
 .theme-dot[data-theme="dark-blue"] { background: #0b0e18; border-color: #1c2440; }
 
+/* Mobile theme button + dropdown */
+#theme-btn { display: none; }
+#theme-dropdown {
+  display: none;
+  position: fixed;
+  top: 52px;
+  right: 16px;
+  z-index: 999;
+  background: var(--bar-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+#theme-dropdown.open { display: flex; }
+#theme-dropdown .theme-dot { width: 28px; height: 28px; }
+
 /* ===== SETTINGS PANEL ===== */
 #settings-panel {
   position: fixed;
@@ -384,6 +406,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   width: 240px;
+  max-width: calc(100vw - 32px);
   display: none;
   font-family: var(--font-sans);
   font-size: 13px;
@@ -659,14 +682,21 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #top-bar .book-title { display: none; }
   .theme-dots { display: none; }
+  #theme-btn { display: flex; }
+  #sidebar-toggle { width: 44px; height: 44px; }
+  .bar-btn { width: 44px; height: 44px; }
+}
+@media (max-width: 600px) {
   .nav-dot { width: 24px; height: 24px; font-size: 9px; }
   #content { padding: 64px 16px 80px; }
   .chapter-divider .ch-title { font-size: 28px; }
   .book-header h1 { font-size: 1.8em; }
   .book-header { padding: 40px 0 32px; }
+  #theme-dropdown { right: 8px; }
+  #settings-panel { right: 8px; }
 }
 </style>
 </head>
@@ -691,6 +721,11 @@ body {
   <span class="chapter-indicator" id="chapter-indicator"></span>
   <span style="flex:1"></span>
   <div class="bar-controls">
+    <button class="bar-btn" id="theme-btn" title="Theme" aria-label="Change theme">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="8" cy="8" r="6"/><path d="M8 2v12M2 8h12" stroke-opacity="0.3"/><circle cx="5" cy="6" r="1.5" fill="#7c3aed" stroke="none"/><circle cx="11" cy="6" r="1.5" fill="#2e6ab4" stroke="none"/><circle cx="5" cy="10" r="1.5" fill="#9b7aed" stroke="none"/><circle cx="11" cy="10" r="1.5" fill="#1c2440" stroke="none"/>
+      </svg>
+    </button>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
         <line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="14" y2="12"/>
@@ -733,6 +768,14 @@ body {
       <button class="opt" data-width="wide">Wide</button>
     </div>
   </div>
+</div>
+
+<!-- Theme dropdown (mobile) -->
+<div id="theme-dropdown">
+  <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
+  <span class="theme-dot" data-theme="light-purple" title="Light Purple"></span>
+  <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
+  <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
 </div>
 
 <!-- Main content -->
@@ -1661,6 +1704,19 @@ body {
 </button>
 
 <script>
+// ===== THEME BUTTON (mobile) =====
+const themeBtnEl = document.getElementById('theme-btn');
+const themeDropdown = document.getElementById('theme-dropdown');
+
+themeBtnEl.addEventListener('click', (e) => {
+  e.stopPropagation();
+  themeDropdown.classList.toggle('open');
+  themeBtnEl.classList.toggle('active');
+  // close settings if open
+  settingsPanel.classList.remove('open');
+  settingsBtn.classList.remove('active');
+});
+
 // ===== SETTINGS =====
 const settingsBtn = document.getElementById('settings-btn');
 const settingsPanel = document.getElementById('settings-panel');
@@ -1669,12 +1725,19 @@ settingsBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   settingsPanel.classList.toggle('open');
   settingsBtn.classList.toggle('active');
+  // close theme dropdown if open
+  themeDropdown.classList.remove('open');
+  themeBtnEl.classList.remove('active');
 });
 
 document.addEventListener('click', (e) => {
   if (!settingsPanel.contains(e.target) && e.target !== settingsBtn) {
     settingsPanel.classList.remove('open');
     settingsBtn.classList.remove('active');
+  }
+  if (!themeDropdown.contains(e.target) && e.target !== themeBtnEl && !themeBtnEl.contains(e.target)) {
+    themeDropdown.classList.remove('open');
+    themeBtnEl.classList.remove('active');
   }
 });
 
@@ -1739,6 +1802,21 @@ sidebarBtn.addEventListener('click', () => {
   sidebarEl.classList.contains('open') ? closeSidebar() : openSidebar();
 });
 overlayEl.addEventListener('click', closeSidebar);
+
+// Swipe to open/close sidebar
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 2) {
+    if (dx > 0 && touchStartX < 40) openSidebar();
+    else if (dx < 0 && sidebarEl.classList.contains('open')) closeSidebar();
+  }
+});
 
 // Build sidebar chapter list from DOM
 (function buildSidebar() {
@@ -1897,6 +1975,8 @@ document.addEventListener('keydown', (e) => {
     case 'Escape':
       settingsPanel.classList.remove('open');
       settingsBtn.classList.remove('active');
+      themeDropdown.classList.remove('open');
+      themeBtnEl.classList.remove('active');
       closeSidebar();
       break;
   }

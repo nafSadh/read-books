@@ -386,6 +386,37 @@ html, body {
   background: rgba(255,255,255,0.12);
   border-color: var(--toolbar-border);
 }
+
+/* Sidebar overlay (mobile) */
+#sidebar-overlay {
+  position: fixed; inset: 0; z-index: 85;
+  background: rgba(0,0,0,0.4);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+#sidebar-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #toolbar button { min-width: 44px; min-height: 44px; }
+  #zoomOut, #zoomIn, #zoomLabel,
+  #zoomOut + .toolbar-sep,
+  #twoPageToggle,
+  #twoPageToggle + .toolbar-sep { display: none; }
+  #sidebar { width: 220px; max-width: 80vw; }
+  #viewport.sidebar-open { left: 0; }
+  .nav-zone { width: 60px; }
+  #pageInner { padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  #toolbar { padding: 0 6px; gap: 2px; }
+  #toolbar button { min-width: 40px; padding: 4px 6px; }
+  #chapterSelect { max-width: 120px; font-size: 11px; }
+  #pageInner { padding: 24px 16px; font-size: 15px; }
+  #pageInner h1 { font-size: 22px; }
+  .cover-page h1 { font-size: 28px !important; }
+  #fontToggle { display: none; }
+}
 </style>
 </head>
 <body>
@@ -432,6 +463,9 @@ html, body {
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 2a5 5 0 010 10V2z"/></svg>
   </button>
 </div>
+
+<!-- Sidebar overlay (mobile) -->
+<div id="sidebar-overlay"></div>
 
 <!-- Sidebar -->
 <div id="sidebar"></div>
@@ -774,8 +808,14 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open', sidebarOpen);
   document.getElementById('viewport').classList.toggle('sidebar-open', sidebarOpen);
   document.getElementById('sidebarToggle').classList.toggle('active', sidebarOpen);
+  document.getElementById('sidebar-overlay').classList.toggle('open', sidebarOpen);
   setTimeout(resizePageCard, 220);
 }
+function closeSidebar() {
+  if (!sidebarOpen) return;
+  toggleSidebar();
+}
+document.getElementById('sidebar-overlay').addEventListener('click', closeSidebar);
 
 // ===== EVENTS =====
 function init() {
@@ -844,6 +884,21 @@ function init() {
   // Resize
   window.addEventListener('resize', () => {
     resizePageCard();
+  });
+
+  // Touch swipe for page navigation
+  let touchX = 0, touchY = 0;
+  document.getElementById('viewport').addEventListener('touchstart', (e) => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.getElementById('viewport').addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 2) {
+      if (dx < 0) nextPage();
+      else prevPage();
+    }
   });
 }
 

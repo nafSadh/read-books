@@ -350,6 +350,35 @@ body.dark #cover-spread {
 }
 .measure-content p { margin-bottom: 0.6em; text-indent: 1.5em; }
 .measure-content p:first-child { text-indent: 0; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Single-page mode: hide left half, full-width right */
+  #left-half { display: none; }
+  #right-half { width: 100%; }
+  #book::after { display: none; } /* hide spine */
+  #right-half::before { display: none; } /* hide spine shadow */
+  .page-content { padding: 32px 24px 52px; }
+  .page-inner { max-width: 100%; }
+  /* Controls always visible on mobile */
+  #controls { opacity: 1; }
+  #controls button { min-height: 44px; min-width: 44px; font-size: 16px; padding: 8px 14px; }
+  #chapter-select { font-size: 13px; padding: 6px 10px; min-height: 44px; }
+  #theme-toggle { min-height: 44px; min-width: 44px; }
+  #page-indicator { font-size: 13px; }
+  /* Cover adjustments */
+  #cover-spread .cover-title { font-size: 32px; }
+  #cover-spread .cover-author { font-size: 14px; }
+  .click-zone { width: 50%; }
+}
+@media (max-width: 600px) {
+  .page-content { padding: 24px 16px 48px; }
+  .chapter-header { padding-top: 32px; }
+  .chapter-header .chapter-title { font-size: 22px; }
+  #controls { padding: 6px 12px; gap: 8px; }
+  #chapter-select { max-width: 120px; }
+  #cover-spread .cover-title { font-size: 26px; }
+}
 </style>
 </head>
 <body>
@@ -599,6 +628,25 @@ function renderSpread(s) {
     rightHalf.style.display = 'none';
     leftPageNum.textContent = '';
     rightPageNum.textContent = '';
+  } else if (isMobile()) {
+    // Single-page mode on mobile
+    coverSpread.style.display = 'none';
+    leftHalf.style.display = 'none';
+    rightHalf.style.display = '';
+
+    if (s === 1) {
+      rightInner.innerHTML = buildTitlePage();
+      rightPageNum.textContent = '';
+    } else if (s === 2) {
+      rightInner.innerHTML = buildTOC();
+      rightPageNum.textContent = '';
+      attachTOCHandlers();
+    } else {
+      // Single-page: spread 3+ maps to content page s-3
+      const ci = s - 3;
+      rightInner.innerHTML = getPageHTML(ci);
+      rightPageNum.textContent = getPageNumber(ci);
+    }
   } else {
     coverSpread.style.display = 'none';
     leftHalf.style.display = '';
@@ -630,9 +678,26 @@ function renderSpread(s) {
   updateIndicator();
 }
 
+function computeTotalSpreads() {
+  if (isMobile()) {
+    // Single-page: cover(0), title(1), TOC(2), then one content page per spread
+    totalSpreads = 3 + contentPages.length;
+  } else {
+    totalSpreads = 3 + Math.ceil((contentPages.length - 1) / 2);
+  }
+}
+
 function updateIndicator() {
   if (currentSpread === 0) {
     pageIndicator.textContent = 'Cover';
+  } else if (isMobile()) {
+    const ci = currentSpread - 3;
+    const maxPage = contentPages.length;
+    if (ci >= 0 && ci < maxPage) {
+      pageIndicator.textContent = (ci + 1) + ' / ' + maxPage;
+    } else {
+      pageIndicator.textContent = '';
+    }
   } else {
     const ri = contentIndexForSpreadRight(currentSpread);
     const maxPage = contentPages.length;
@@ -653,9 +718,14 @@ function updateIndicator() {
 }
 
 function getCurrentChapter() {
-  const ri = contentIndexForSpreadRight(currentSpread);
-  const li = contentIndexForSpreadLeft(currentSpread);
-  let idx = ri >= 0 ? ri : li;
+  let idx;
+  if (isMobile()) {
+    idx = currentSpread - 3;
+  } else {
+    const ri = contentIndexForSpreadRight(currentSpread);
+    const li = contentIndexForSpreadLeft(currentSpread);
+    idx = ri >= 0 ? ri : li;
+  }
   if (idx >= 0 && idx < contentPages.length) {
     return contentPages[idx].chapterNum;
   }
@@ -709,6 +779,13 @@ function flipForward() {
   // No flip animation from cover — just jump
   if (currentSpread === 0) {
     currentSpread = 1;
+    renderSpread(currentSpread);
+    return;
+  }
+
+  // Mobile: simple transition, no 3D flip
+  if (isMobile()) {
+    currentSpread++;
     renderSpread(currentSpread);
     return;
   }
@@ -817,6 +894,13 @@ function flipBackward() {
     return;
   }
 
+  // Mobile: simple transition, no 3D flip
+  if (isMobile()) {
+    currentSpread--;
+    renderSpread(currentSpread);
+    return;
+  }
+
   busy = true;
   const prevSpread = currentSpread - 1;
 
@@ -908,10 +992,21 @@ function flipBackward() {
 
 function goToChapter(chNum) {
   if (busy) return;
-  const spread = chapterStartSpreads[chNum];
-  if (spread !== undefined) {
-    currentSpread = spread;
-    renderSpread(currentSpread);
+  if (isMobile()) {
+    // In mobile single-page mode, find the first content page for this chapter
+    for (let i = 0; i < contentPages.length; i++) {
+      if (contentPages[i].chapterNum === chNum && contentPages[i].isChapterStart) {
+        currentSpread = i + 3; // content page i maps to spread i+3
+        renderSpread(currentSpread);
+        return;
+      }
+    }
+  } else {
+    const spread = chapterStartSpreads[chNum];
+    if (spread !== undefined) {
+      currentSpread = spread;
+      renderSpread(currentSpread);
+    }
   }
 }
 
@@ -919,8 +1014,13 @@ function goToChapter(chNum) {
 // THEME
 // ===================================================================
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
 function toggleTheme() {
   document.body.classList.toggle('dark');
+  try { localStorage.setItem('fullbleed-dark', document.body.classList.contains('dark')); } catch(e) {}
 }
 
 // ===================================================================
@@ -931,15 +1031,8 @@ function init() {
   // 1. Paginate
   contentPages = paginateAll();
 
-  // 2. Compute total spreads
-  // Spread 0: cover
-  // Spread 1: title (right only)
-  // Spread 2: TOC (left) + content[0] (right)
-  // Spread 3+: pairs of content pages
-  // Content pages 1,2 on spread 3; 3,4 on spread 4; etc.
-  // Total content pages beyond [0]: contentPages.length - 1
-  // Spreads needed for those: ceil((contentPages.length - 1) / 2)
-  totalSpreads = 3 + Math.ceil((contentPages.length - 1) / 2);
+  // 2. Compute total spreads (adapts to mobile single-page mode)
+  computeTotalSpreads();
 
   // 3. Build chapter -> spread mapping
   for (let i = 0; i < contentPages.length; i++) {
@@ -1009,6 +1102,40 @@ function init() {
       e.preventDefault();
       flipBackward();
     }
+  });
+
+  // Touch swipe
+  let touchX = 0, touchY = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 2) {
+      if (dx < 0) flipForward();
+      else flipBackward();
+    }
+  });
+
+  // Load saved theme
+  try {
+    const savedDark = localStorage.getItem('fullbleed-dark');
+    if (savedDark === 'true') document.body.classList.add('dark');
+    else if (savedDark === 'false') document.body.classList.remove('dark');
+  } catch(e) {}
+
+  // Resize: repaginate and recompute
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      contentPages = paginateAll();
+      computeTotalSpreads();
+      if (currentSpread >= totalSpreads) currentSpread = totalSpreads - 1;
+      renderSpread(currentSpread);
+    }, 250);
   });
 }
 

@@ -11,7 +11,7 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100vw; height: 100vh; overflow: hidden; }
-body { font-family: 'EB Garamond', 'Georgia', serif; font-size: 17px; line-height: 1.65; }
+body { font-family: 'EB Garamond', 'Georgia', serif; font-size: 17px; line-height: 1.65; background: var(--bg-right); }
 
 /* ===== THEME VARIABLES ===== */
 :root {
@@ -50,10 +50,12 @@ body.dark {
   width: 100vw; height: 100vh;
   display: flex; position: relative;
   perspective: 1800px;
+  user-select: none; -webkit-user-select: none;
 }
 .page-half {
   width: 50%; height: 100%;
   position: relative; overflow: hidden;
+  user-select: none; -webkit-user-select: none;
 }
 #left-half { background: var(--bg-left); }
 #right-half { background: var(--bg-right); }
@@ -351,6 +353,20 @@ body.dark #cover-spread {
 .measure-content p { margin-bottom: 0.6em; text-indent: 1.5em; }
 .measure-content p:first-child { text-indent: 0; }
 
+/* ===== SHORT PAGE (end-of-chapter) ===== */
+.page-inner.short-page {
+  display: flex; flex-direction: column;
+  justify-content: flex-start;
+}
+.end-of-chapter-ornament {
+  text-align: center;
+  margin-top: auto;
+  padding: 24px 0 12px;
+  color: var(--text-muted);
+  font-size: 16px;
+  letter-spacing: 6px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   /* Single-page mode: hide left half, full-width right */
@@ -445,8 +461,31 @@ const CHAPTERS = [{"num": 1, "title": "Down the Rabbit-Hole", "html": "<p>Alice 
  */
 function paginateAll() {
   const measureBox = document.getElementById('measure-content');
-  // Available height for content: viewport height minus padding (48px top + 60px bottom)
-  const availableHeight = window.innerHeight - 108;
+
+  // Dynamically compute available height and measure width based on viewport
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  let padTop, padBottom, padLR;
+  if (vw <= 600) {
+    padTop = 24; padBottom = 48; padLR = 16;
+  } else if (vw <= 768) {
+    padTop = 32; padBottom = 52; padLR = 24;
+  } else {
+    padTop = 48; padBottom = 60; padLR = 40;
+  }
+  // Reserve space for page-number element (~36px including its absolute position)
+  const pageNumReserve = 36;
+  // On mobile, the controls bar is always visible: ~44px height + 20px bottom offset
+  const controlsReserve = (vw <= 768) ? 64 : 0;
+  // Safety margin to prevent edge-case clipping
+  const safetyMargin = 12;
+  const availableHeight = vh - padTop - padBottom - pageNumReserve - controlsReserve - safetyMargin;
+
+  // Set measure box width to match actual content width
+  const contentWidth = (vw <= 768)
+    ? (vw - padLR * 2)           // mobile: full width minus padding
+    : Math.min(560, vw / 2 - padLR * 2); // desktop: max-width 560px or half-viewport minus padding
+  measureBox.style.width = contentWidth + 'px';
   const pages = [];
 
   for (const chapter of CHAPTERS) {
@@ -517,10 +556,12 @@ function paginateAll() {
         blockIdx++;
       }
 
+      const isChapterEnd = (blockIdx >= blocks.length);
       pages.push({
         html: testHTML,
         chapterNum: chapter.num,
-        isChapterStart: isFirst
+        isChapterStart: isFirst,
+        isChapterEnd: isChapterEnd
       });
       isFirst = false;
     }
@@ -528,6 +569,7 @@ function paginateAll() {
 
   // Clean up
   measureBox.innerHTML = '';
+  measureBox.style.width = '';
   return pages;
 }
 
@@ -585,7 +627,19 @@ const chapterSelect = document.getElementById('chapter-select');
 
 function getPageHTML(contentIdx) {
   if (contentIdx < 0 || contentIdx >= contentPages.length) return '';
-  return contentPages[contentIdx].html;
+  let html = contentPages[contentIdx].html;
+  if (contentPages[contentIdx].isChapterEnd) {
+    html += '<div class="end-of-chapter-ornament">&mdash; &#x2766; &mdash;</div>';
+  }
+  return html;
+}
+
+function applyShortPage(el, contentIdx) {
+  if (contentIdx >= 0 && contentIdx < contentPages.length && contentPages[contentIdx].isChapterEnd) {
+    el.classList.add('short-page');
+  } else {
+    el.classList.remove('short-page');
+  }
 }
 
 function getPageNumber(contentIdx) {
@@ -646,6 +700,7 @@ function renderSpread(s) {
       const ci = s - 3;
       rightInner.innerHTML = getPageHTML(ci);
       rightPageNum.textContent = getPageNumber(ci);
+      applyShortPage(rightInner, ci);
     }
   } else {
     coverSpread.style.display = 'none';
@@ -664,6 +719,7 @@ function renderSpread(s) {
       rightInner.innerHTML = getPageHTML(0);
       leftPageNum.textContent = '';
       rightPageNum.textContent = getPageNumber(0);
+      applyShortPage(rightInner, 0);
       // Attach TOC click handlers
       attachTOCHandlers();
     } else {
@@ -673,6 +729,8 @@ function renderSpread(s) {
       rightInner.innerHTML = getPageHTML(ri);
       leftPageNum.textContent = getPageNumber(li);
       rightPageNum.textContent = getPageNumber(ri);
+      applyShortPage(leftInner, li);
+      applyShortPage(rightInner, ri);
     }
   }
   updateIndicator();
@@ -1109,11 +1167,12 @@ function init() {
   document.addEventListener('touchstart', (e) => {
     touchX = e.touches[0].clientX;
     touchY = e.touches[0].clientY;
-  }, { passive: true });
+  }, { passive: false });
   document.addEventListener('touchend', (e) => {
     const dx = e.changedTouches[0].clientX - touchX;
     const dy = e.changedTouches[0].clientY - touchY;
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 2) {
+      e.preventDefault();
       if (dx < 0) flipForward();
       else flipBackward();
     }

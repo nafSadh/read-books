@@ -9,7 +9,7 @@ Public domain books, beautifully rendered in multiple reading formats.
 ### Alice's Adventures in Wonderland
 *Lewis Carroll, 1865*
 
-Text from [Project Gutenberg](https://www.gutenberg.org/ebooks/11). 8 reader variants:
+Text from [Project Gutenberg](https://www.gutenberg.org/ebooks/11). 9 reader variants:
 
 | Reader | Style | Navigation |
 |--------|-------|------------|
@@ -21,6 +21,7 @@ Text from [Project Gutenberg](https://www.gutenberg.org/ebooks/11). 8 reader var
 | [scroll](alice-in-wonderland/scroll.html) | Clean article scroll | Chapter nav dots |
 | [single](alice-in-wonderland/single.html) | Chapter cards | Slide transitions |
 | [theater](alice-in-wonderland/theater.html) | Cinematic dark stage | One passage at a time |
+| [mobile](alice-in-wonderland/mobile.html) | Mobile-first, full-width single page | 3D swipe flip, tap nav, chapter scrubber |
 
 ## Design
 

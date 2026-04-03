@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lib",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8111", "--directory", "/Users/nafsadh/src/read-books"],
+      "port": 8111
+    }
+  ]
+}

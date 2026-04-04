@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meditations — Marcus Aurelius — read-rd</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* ── Theme tokens ── */
+[data-theme="light-purple"] {
+  --page-bg: #faf8f3; --page-bg2: #f4f1ea; --page-text: #363b48;
+  --page-dim: #65707a; --page-accent: #7c3aed; --page-border: #d6d0c4;
+  --spine-bg: #ddd8cc; --spine-shadow: #c5bfb0;
+  --cover-bg: #2c1e4a; --cover-bg2: #1a1030; --cover-text: #e8e0f0;
+  --cover-accent: #c8a8f0;
+  --scene-bg: #f0ede6; --ctrl-bg: #faf8f3cc; --ctrl-border: #d6d0c4; --ctrl-text: #65707a;
+  --chapter-title-color: #4a3060;
+  --dot-color: #c9b8e8;
+}
+[data-theme="light-azure"] {
+  --page-bg: #ffffff; --page-bg2: #f8f9fb; --page-text: #363b48;
+  --page-dim: #65707a; --page-accent: #2e6ab4; --page-border: #d6d0c4;
+  --spine-bg: #dde2ea; --spine-shadow: #c0c8d4;
+  --cover-bg: #1a2a44; --cover-bg2: #0e1a30; --cover-text: #d4e8f7;
+  --cover-accent: #7ab8e8;
+  --scene-bg: #eef1f5; --ctrl-bg: #ffffffcc; --ctrl-border: #d6d0c4; --ctrl-text: #65707a;
+  --chapter-title-color: #1e3a5a;
+  --dot-color: #d4e8f7;
+}
+[data-theme="sepia"] {
+  --page-bg: #f5efe0; --page-bg2: #ede6d4; --page-text: #3e3225;
+  --page-dim: #7a6b58; --page-accent: #8b6914; --page-border: #d4c9b5;
+  --spine-bg: #d8cfbb; --spine-shadow: #c0b49c;
+  --cover-bg: #3e2e14; --cover-bg2: #28200e; --cover-text: #ece4d3;
+  --cover-accent: #d4aa40;
+  --scene-bg: #eae3d2; --ctrl-bg: #f5efe0cc; --ctrl-border: #d4c9b5; --ctrl-text: #7a6b58;
+  --chapter-title-color: #5a4420;
+  --dot-color: #d4c9b5;
+}
+[data-theme="dark-violet"] {
+  --page-bg: #1a1a1a; --page-bg2: #151515; --page-text: #dce0ec;
+  --page-dim: #8490aa; --page-accent: #9b7aed; --page-border: #333;
+  --spine-bg: #1e1e1e; --spine-shadow: #0a0a0a;
+  --cover-bg: #1a1030; --cover-bg2: #0e0820; --cover-text: #c8bef0;
+  --cover-accent: #9b7aed;
+  --scene-bg: #111; --ctrl-bg: #1a1a1acc; --ctrl-border: #333; --ctrl-text: #8490aa;
+  --chapter-title-color: #b8a8d8;
+  --dot-color: #4a3a6a;
+}
+[data-theme="dark-blue"] {
+  --page-bg: #000000; --page-bg2: #060a14; --page-text: #8490aa;
+  --page-dim: #546080; --page-accent: #2e6ab4; --page-border: #1c2440;
+  --spine-bg: #0c1020; --spine-shadow: #000;
+  --cover-bg: #0a1020; --cover-bg2: #040810; --cover-text: #7090c0;
+  --cover-accent: #3a7acc;
+  --scene-bg: #000; --ctrl-bg: #000000cc; --ctrl-border: #1c2440; --ctrl-text: #546080;
+  --chapter-title-color: #6888b8;
+  --dot-color: #1e2a4a;
+}
+
+/* ── Reset ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--scene-bg);font-family:'EB Garamond',Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+  transition:background .5s;
+}
+
+/* ── Scene ── */
+.scene{
+  perspective:2000px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  width:100%;height:calc(100vh - 52px);
+}
+
+/* ── Book ── */
+.book{
+  width:min(94vw, 1200px);height:calc(100vh - 64px);
+  display:flex;position:relative;
+  transform-style:preserve-3d;
+  transition:width .5s ease;
+}
+.book.cover-mode{
+  width:min(47vw, 600px);
+}
+.book-shadow{
+  position:absolute;bottom:-30px;left:20px;right:20px;height:40px;
+  background:radial-gradient(ellipse at center,#00000030 0%,transparent 70%);
+  filter:blur(10px);z-index:-1;
+}
+
+/* ── Spine ── */
+.spine{
+  position:absolute;left:50%;top:0;bottom:0;width:4px;
+  transform:translateX(-50%);
+  background:linear-gradient(to right,var(--spine-shadow),var(--spine-bg),var(--spine-shadow));
+  z-index:50;box-shadow:0 0 8px #00000020;
+}
+
+/* ── Page spread ── */
+.spread{display:flex;width:100%;height:100%}
+.page-left,.page-right{
+  width:50%;height:100%;position:relative;overflow:hidden;
+}
+.page-left{
+  background:var(--page-bg2);
+  border-radius:4px 0 0 4px;
+  box-shadow:inset -8px 0 20px -10px #00000015, -3px 3px 15px #00000015;
+}
+.page-right{
+  background:var(--page-bg);
+  border-radius:0 4px 4px 0;
+  box-shadow:inset 8px 0 20px -10px #00000010, 3px 3px 15px #00000015;
+}
+.page-left::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:30px;
+  background:linear-gradient(to left,#00000008,transparent);pointer-events:none;
+}
+.page-right::before{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:30px;
+  background:linear-gradient(to right,#00000008,transparent);pointer-events:none;z-index:1;
+}
+
+.page-inner{
+  padding:24px 26px 34px 26px;height:100%;display:flex;flex-direction:column;
+  overflow:hidden;position:relative;
+}
+.page-left .page-inner{padding-left:30px;padding-right:22px}
+.page-right .page-inner{padding-left:22px;padding-right:30px}
+
+/* ── Page content ── */
+.page-content{
+  flex:1;overflow:hidden;
+  font-size:15.5px;line-height:1.75;color:var(--page-text);
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+}
+.page-content p{margin:0 0 .6em 0}
+.page-content p:last-child{margin-bottom:0}
+
+/* ── Info page styles ── */
+.info-content{
+  display:flex;flex-direction:column;height:100%;
+  padding:20px 8px;overflow:hidden;
+}
+.info-content h3{
+  font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--page-dim);font-weight:600;
+  margin-bottom:16px;
+}
+.info-content h4{
+  font-family:'EB Garamond',Georgia,serif;font-size:18px;font-weight:500;
+  color:var(--chapter-title-color);margin:14px 0 6px;line-height:1.3;
+}
+.info-content h4:first-of-type{margin-top:4px}
+.info-content p{
+  font-size:14.5px;line-height:1.7;color:var(--page-text);
+  margin:0 0 .5em 0;
+}
+.info-content p.dim{color:var(--page-dim);font-size:13px}
+.info-content .meta-line{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--page-dim);
+  letter-spacing:.5px;margin:2px 0;line-height:1.8;
+}
+.info-content .ornament-line{
+  width:60px;height:1px;margin:12px 0;
+  background:linear-gradient(90deg,transparent,var(--page-accent),transparent);
+  opacity:.5;
+}
+.info-content a{
+  color:var(--page-accent);text-decoration:none;
+  border-bottom:1px solid var(--page-accent)40;
+  transition:border-color .2s;
+}
+.info-content a:hover{border-bottom-color:var(--page-accent)}
+
+/* reader links */
+.reader-link{
+  display:flex;align-items:baseline;gap:10px;
+  padding:10px 0;border-bottom:1px dotted var(--page-border);
+  text-decoration:none;color:var(--page-text);
+  transition:color .2s;
+}
+.reader-link:hover{color:var(--page-accent)}
+.reader-link:last-child{border-bottom:none}
+.reader-link .rl-name{
+  font-family:'EB Garamond',Georgia,serif;font-size:16px;font-weight:500;
+  min-width:120px;
+}
+.reader-link .rl-desc{
+  font-size:13px;color:var(--page-dim);line-height:1.5;
+}
+
+/* annotation feature list */
+.feature-item{
+  display:flex;align-items:flex-start;gap:8px;
+  margin:4px 0;font-size:13.5px;line-height:1.6;color:var(--page-text);
+}
+.feature-item .fi-icon{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--page-accent);
+  margin-top:3px;flex-shrink:0;
+}
+.feature-item .fi-text{flex:1}
+
+/* data source table */
+.source-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:4px 0;border-bottom:1px dotted var(--page-border);
+  font-size:13px;
+}
+.source-row:last-child{border-bottom:none}
+.source-row .sr-label{color:var(--page-text);font-weight:500}
+.source-row .sr-value{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--page-dim);
+  text-align:right;
+}
+
+/* Greek quotation block */
+.greek-quote{
+  font-style:italic;font-size:15px;line-height:1.6;
+  color:var(--page-accent);opacity:.7;
+  text-align:center;margin:12px 0;
+  letter-spacing:.5px;
+}
+
+/* ── Page number ── */
+.page-num{
+  position:absolute;bottom:18px;
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--page-dim);
+  letter-spacing:1px;
+}
+.page-left .page-num{left:30px}
+.page-right .page-num{right:30px}
+
+/* ── Flip zones ── */
+.flip-zone{
+  position:absolute;top:0;bottom:0;width:50%;cursor:pointer;z-index:40;
+}
+.flip-zone-left{left:0}
+.flip-zone-right{right:0}
+.flip-zone:hover{background:radial-gradient(ellipse at center,#00000004,transparent)}
+
+/* ── Flip animation layers ── */
+.flip-layer{
+  position:absolute;top:0;width:50%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .6s cubic-bezier(.645,.045,.355,1);
+  z-index:60;pointer-events:none;
+}
+.flip-layer-right{
+  right:0;transform-origin:left center;
+}
+.flip-layer-left{
+  left:0;transform-origin:right center;
+}
+.flip-layer .flip-front,
+.flip-layer .flip-back{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.flip-layer-right .flip-front{
+  background:var(--page-bg);border-radius:0 4px 4px 0;
+  box-shadow:inset 8px 0 20px -10px #00000010;
+}
+.flip-layer-right .flip-back{
+  background:var(--page-bg2);border-radius:4px 0 0 4px;
+  transform:rotateY(180deg);
+  box-shadow:inset -8px 0 20px -10px #00000015;
+}
+.flip-layer-left .flip-front{
+  background:var(--page-bg2);border-radius:4px 0 0 4px;
+  box-shadow:inset -8px 0 20px -10px #00000015;
+}
+.flip-layer-left .flip-back{
+  background:var(--page-bg);border-radius:0 4px 4px 0;
+  transform:rotateY(-180deg);
+  box-shadow:inset 8px 0 20px -10px #00000010;
+}
+.flip-layer.flipping-forward{transform:rotateY(-180deg)}
+.flip-layer.flipping-backward{transform:rotateY(180deg)}
+
+/* flip shadow overlay */
+.flip-shadow{
+  position:absolute;top:0;width:50%;height:100%;
+  opacity:0;transition:opacity .6s;pointer-events:none;z-index:55;
+}
+.flip-shadow-left{left:0;background:linear-gradient(to left,#00000020,transparent 60%)}
+.flip-shadow-right{right:0;background:linear-gradient(to right,#00000020,transparent 60%)}
+.flipping .flip-shadow{opacity:1}
+
+/* ── Controls bar ── */
+.controls{
+  position:fixed;bottom:12px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:2px;
+  background:var(--ctrl-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--ctrl-border);padding:4px;z-index:100;
+  box-shadow:0 4px 20px #00000010;
+}
+.ctrl-btn{
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  border:none;background:none;color:var(--ctrl-text);cursor:pointer;
+  font-size:15px;font-family:'Jost',sans-serif;transition:color .2s,background .2s;
+}
+.ctrl-btn:hover{color:var(--page-accent);background:var(--page-accent)10;border-radius:2px}
+.ctrl-divider{width:1px;height:20px;background:var(--ctrl-border);margin:0 4px}
+.page-indicator{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ctrl-text);
+  letter-spacing:1px;padding:0 10px;min-width:80px;text-align:center;
+  user-select:none;
+}
+
+/* ── Theme picker in controls ── */
+.theme-dots{display:flex;gap:5px;align-items:center;padding:0 4px}
+.theme-dot{
+  width:14px;height:14px;border-radius:50%;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+  border:1px solid var(--ctrl-border);
+}
+.theme-dot:hover{transform:scale(1.15)}
+.theme-dot.active{box-shadow:0 0 0 2px var(--page-accent)}
+.theme-dot[data-t="light-purple"]{background:#c9b8e8}
+.theme-dot[data-t="light-azure"]{background:#d4e8f7}
+.theme-dot[data-t="sepia"]{background:#d4c9b5}
+.theme-dot[data-t="dark-violet"]{background:#4a3a6a}
+.theme-dot[data-t="dark-blue"]{background:#1e2a4a}
+
+/* ── Cover mode ── */
+.cover-mode{
+  width:auto !important;
+  aspect-ratio:2/3;
+  max-height:calc(100vh - 64px);
+}
+.cover-mode .spread{justify-content:center}
+.cover-mode .page-left{display:none}
+.cover-mode .page-right{
+  width:100%;border-radius:4px;
+  background:linear-gradient(135deg,var(--cover-bg),var(--cover-bg2));
+  box-shadow:3px 3px 20px #00000030, inset 0 0 60px #00000015;
+}
+.cover-mode .spine{display:none}
+.cover-mode .flip-zone-left{display:none}
+.cover-mode .flip-zone-right{width:100%}
+
+/* ── Cover content ── */
+.cover-content{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;text-align:center;padding:40px 30px;
+}
+.cover-content .cover-rule{
+  width:100px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cover-accent),transparent);
+  opacity:.5;
+}
+.cover-content .book-title{
+  font-family:'EB Garamond',Georgia,serif;font-size:36px;font-weight:500;
+  color:var(--cover-text);line-height:1.2;font-style:italic;
+  margin:16px 0 4px;letter-spacing:1px;
+}
+.cover-content .book-subtitle{
+  font-family:'EB Garamond',Georgia,serif;font-size:15px;font-weight:400;
+  color:var(--cover-accent);opacity:.7;font-style:italic;
+  letter-spacing:1px;margin-bottom:6px;
+}
+.cover-content .book-author{
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--cover-accent);font-weight:600;
+  margin-top:10px;
+}
+.cover-content .book-years{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--cover-accent);
+  letter-spacing:2px;margin-top:6px;opacity:.6;
+}
+.cover-content .book-source{
+  font-family:'Jost',sans-serif;font-size:9px;color:var(--cover-accent);
+  letter-spacing:2px;margin-top:20px;text-transform:uppercase;opacity:.4;
+}
+.cover-content .open-hint{
+  font-family:'Jost',sans-serif;font-size:11px;color:var(--cover-accent);
+  letter-spacing:2px;text-transform:uppercase;margin-top:28px;opacity:.4;
+  animation:pulse-hint 2s infinite;
+}
+@keyframes pulse-hint{0%,100%{opacity:.25}50%{opacity:.55}}
+
+/* ── Title page ── */
+.title-content{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;text-align:center;padding:40px 24px;
+}
+.title-content .title-rule{
+  width:80px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--page-accent),transparent);
+  opacity:.5;
+}
+.title-content .book-title{
+  font-family:'EB Garamond',Georgia,serif;font-size:30px;font-weight:500;
+  color:var(--chapter-title-color);line-height:1.25;font-style:italic;
+  margin:14px 0 4px;
+}
+.title-content .book-subtitle{
+  font-family:'EB Garamond',Georgia,serif;font-size:14px;font-weight:400;
+  color:var(--page-dim);font-style:italic;margin-bottom:4px;
+}
+.title-content .book-author{
+  font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--page-dim);font-weight:600;
+  margin-top:10px;
+}
+.title-content .book-years{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--page-dim);
+  letter-spacing:2px;margin-top:4px;
+}
+
+/* ── Responsive ── */
+@media(max-width:960px){
+  .book{width:98vw}
+  .book.cover-mode{width:60vw}
+  .page-inner{padding:14px 12px 28px}
+  .page-content{font-size:13.5px}
+  .info-content h4{font-size:16px}
+  .info-content p{font-size:13px}
+  .cover-content .book-title{font-size:28px}
+  .reader-link .rl-name{min-width:90px;font-size:14px}
+  .reader-link .rl-desc{font-size:12px}
+}
+@media(max-width:600px){
+  .book{width:100vw;height:calc(100vh - 56px)}
+  .book.cover-mode{width:70vw}
+  .spine{display:none}
+  .page-left{display:none}
+  .page-right{width:100%;border-radius:4px}
+  .flip-zone-left{width:30%}
+  .flip-zone-right{width:70%}
+  .page-inner{padding:16px 16px 32px}
+  .cover-content{padding:24px 20px}
+  .cover-content .book-title{font-size:24px}
+  .controls{width:calc(100vw - 16px);justify-content:center}
+  .info-content{padding:12px 4px}
+  .reader-link{flex-direction:column;gap:2px}
+  .reader-link .rl-name{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="book" id="book">
+    <div class="book-shadow"></div>
+    <div class="spine"></div>
+
+    <!-- Static spread display -->
+    <div class="spread" id="spread">
+      <div class="page-left" id="page-left">
+        <div class="page-inner" id="page-left-inner"></div>
+        <span class="page-num" id="page-num-left"></span>
+      </div>
+      <div class="page-right" id="page-right">
+        <div class="page-inner" id="page-right-inner"></div>
+        <span class="page-num" id="page-num-right"></span>
+      </div>
+    </div>
+
+    <!-- Flip animation layer -->
+    <div class="flip-layer flip-layer-right" id="flip-layer">
+      <div class="flip-front" id="flip-front"><div class="page-inner" id="flip-front-inner"></div></div>
+      <div class="flip-back" id="flip-back"><div class="page-inner" id="flip-back-inner"></div></div>
+    </div>
+    <div class="flip-shadow flip-shadow-left" id="shadow-left"></div>
+    <div class="flip-shadow flip-shadow-right" id="shadow-right"></div>
+
+    <!-- Click zones -->
+    <div class="flip-zone flip-zone-left" id="zone-left"></div>
+    <div class="flip-zone flip-zone-right" id="zone-right"></div>
+  </div>
+</div>
+
+<div class="controls" id="controls">
+  <button class="ctrl-btn" id="btn-prev" title="Previous page">&#8249;</button>
+  <span class="page-indicator" id="page-indicator">Cover</span>
+  <button class="ctrl-btn" id="btn-next" title="Next page">&#8250;</button>
+  <div class="ctrl-divider"></div>
+  <div class="theme-dots">
+    <span class="theme-dot active" data-t="light-purple" title="Light Purple"></span>
+    <span class="theme-dot" data-t="light-azure" title="Light Azure"></span>
+    <span class="theme-dot" data-t="sepia" title="Sepia"></span>
+    <span class="theme-dot" data-t="dark-violet" title="Dark Violet"></span>
+    <span class="theme-dot" data-t="dark-blue" title="Dark Blue"></span>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   Meditations — Landing Page
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ──────────────────── Page content ──────────────────── */
+/*
+  Spread layout:
+    Spread 0: COVER (standalone single page, cover-mode)
+    Spread 1: left = blank         | right = title page
+    Spread 2: left = about (pt.1)  | right = about (pt.2)
+    Spread 3: left = annotations   | right = readers / sources
+    Spread 4: left = the 12 Books  | right = colophon
+*/
+
+const TOTAL_SPREADS = 5;
+
+let currentSpread = 0;
+let isAnimating = false;
+
+function getCoverHtml() {
+  return `<div class="cover-content">
+    <div class="cover-rule"></div>
+    <div class="book-title">Meditations</div>
+    <div class="book-subtitle">\u03A4\u1F70 \u03B5\u1F30\u03C2 \u1F11\u03B1\u03C5\u03C4\u03CC\u03BD</div>
+    <div class="cover-rule"></div>
+    <div class="book-author">Marcus Aurelius</div>
+    <div class="book-years">c. 170\u2013180 CE</div>
+    <div class="cover-rule" style="margin-top:24px"></div>
+    <div class="book-source">Project Gutenberg</div>
+    <div class="open-hint">Click to open</div>
+  </div>`;
+}
+
+function getTitlePageHtml() {
+  return `<div class="title-content">
+    <div class="title-rule"></div>
+    <div class="book-title">Meditations</div>
+    <div class="book-subtitle">\u03A4\u1F70 \u03B5\u1F30\u03C2 \u1F11\u03B1\u03C5\u03C4\u03CC\u03BD &mdash; &ldquo;To Himself&rdquo;</div>
+    <div class="title-rule"></div>
+    <div class="book-author">Marcus Aurelius</div>
+    <div class="book-years">121\u2013180 CE</div>
+  </div>`;
+}
+
+function getAboutLeftHtml() {
+  return `<div class="info-content">
+    <h3>About this work</h3>
+    <p>The <em>Meditations</em> is considered one of the greatest works of philosophy ever written. It is the private journal of Marcus Aurelius\u200a\u2014\u200aRoman Emperor from 161 to 180 CE, the most powerful man in the world\u200a\u2014\u200awritten not for publication but as personal spiritual exercises during military campaigns on the Danube frontier.</p>
+    <div class="ornament-line"></div>
+    <p>Composed in Koine Greek between roughly 170 and 180 CE, the twelve books record Marcus&rsquo;s ongoing conversation with himself: reminders of Stoic principles, reflections on impermanence and duty, exhortations to align his actions with rational nature and the common good.</p>
+    <div class="ornament-line"></div>
+    <p class="dim">Unlike formal philosophical treatises, these entries are fragmentary and intimate\u200a\u2014\u200anotes dashed off in a tent between battles, meditations on mortality composed by a man who knew he was dying. Their power lies in this rawness: a mind disciplining itself in real time.</p>
+  </div>`;
+}
+
+function getAboutRightHtml() {
+  return `<div class="info-content">
+    <h3>Key themes</h3>
+    <div class="feature-item"><span class="fi-icon">\u2736</span><span class="fi-text"><strong>Impermanence</strong> &mdash; All things pass. Fame, empire, the body itself. Accepting this is the beginning of wisdom.</span></div>
+    <div class="feature-item"><span class="fi-icon">\u2736</span><span class="fi-text"><strong>Duty &amp; virtue</strong> &mdash; Act justly, not because the world rewards it, but because it is your nature as a rational being.</span></div>
+    <div class="feature-item"><span class="fi-icon">\u2736</span><span class="fi-text"><strong>Cosmic perspective</strong> &mdash; See each event within the vast scale of time and space. Your troubles are vanishingly small.</span></div>
+    <div class="feature-item"><span class="fi-icon">\u2736</span><span class="fi-text"><strong>Rational nature</strong> &mdash; The mind is sovereign. External things cannot disturb you\u200a\u2014\u200aonly your judgments about them can.</span></div>
+    <div class="feature-item"><span class="fi-icon">\u2736</span><span class="fi-text"><strong>Community</strong> &mdash; We are made for cooperation, like hands, like feet. To act against one another is contrary to nature.</span></div>
+    <div class="ornament-line"></div>
+    <div class="greek-quote">\u201C\u03A4\u1F70 \u03C4\u1FF6\u03BD \u1F45\u03BB\u03C9\u03BD \u03BC\u03B5\u03C4\u03B1\u03B2\u03BF\u03BB\u03AE, \u03BF\u1F50\u03B4\u1F72\u03BD \u03BA\u03B1\u03BA\u03CC\u03BD.\u201D</div>
+    <p class="dim" style="text-align:center;font-size:12px">&ldquo;The change of all things &mdash; nothing evil in it.&rdquo;</p>
+    <div class="ornament-line" style="margin:12px auto"></div>
+    <p class="dim" style="text-align:center;font-size:12px">Structure: 12 Books &middot; ~400+ meditations &middot; Koine Greek</p>
+  </div>`;
+}
+
+function getAnnotationsHtml() {
+  return `<div class="info-content">
+    <h3>Annotation system</h3>
+    <p>Every passage across all 12 Books has been annotated with supplementary material accessible through the scrolling reader.</p>
+    <div class="ornament-line"></div>
+    <h4>Modern English rewrites</h4>
+    <p>Each meditation includes a plain-language restatement alongside George Long&rsquo;s 1862 translation, making the Stoic ideas accessible without losing the original&rsquo;s texture.</p>
+    <h4>Historical context notes</h4>
+    <p>Contextual notes illuminate references to events, customs, and philosophical schools that a modern reader might not recognize.</p>
+    <h4>Proper noun tooltips</h4>
+    <p>Hover any historical figure for a biographical summary and Wikipedia link. Figures include Epictetus, Chrysippus, Antoninus Pius, Fronto, Rusticus, Apollonius, and dozens more.</p>
+    <div class="ornament-line"></div>
+    <p class="dim">Toggle annotations per-passage with the document icon, or open all at once with the global toggle in the top bar.</p>
+  </div>`;
+}
+
+function getReadersHtml() {
+  return `<div class="info-content">
+    <h3>Available readers</h3>
+    <a class="reader-link" href="reader.html">
+      <span class="rl-name">Scrolling Reader</span>
+      <span class="rl-desc">Annotated passages with Modern English rewrites, historical notes, and proper noun tooltips with Wikipedia links</span>
+    </a>
+    <a class="reader-link" href="fullbleed.html">
+      <span class="rl-name">Book Spread</span>
+      <span class="rl-desc">Two-page layout with 3D page flip animation, cover, and chapter navigation</span>
+    </a>
+    <div class="ornament-line" style="margin:16px 0"></div>
+    <h3>Data sources</h3>
+    <div class="source-row">
+      <span class="sr-label">English translation</span>
+      <span class="sr-value">George Long, 1862</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">License (English)</span>
+      <span class="sr-value">Public Domain</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">Source</span>
+      <span class="sr-value">Gutenberg #2680</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">Greek text</span>
+      <span class="sr-value">Perseus Digital Library</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">Greek edition</span>
+      <span class="sr-value">Leopold</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">License (Greek)</span>
+      <span class="sr-value">CC BY-SA 4.0</span>
+    </div>
+  </div>`;
+}
+
+function getBooksListHtml() {
+  const books = [
+    ['I', 'Debts and Lessons', 'What Marcus learned from family, teachers, and the gods.'],
+    ['II', 'On the Carnuntum Frontier', 'Mortality, brevity of life, harmony with nature.'],
+    ['III', 'In Carnuntum', 'The urgency of philosophy. Do not waste time.'],
+    ['IV', 'First Principles', 'Retreat into yourself. The inner citadel.'],
+    ['V', 'At Dawn', 'Rise to do the work of a human being.'],
+    ['VI', 'On Equanimity', 'The universe is change. Life is opinion.'],
+    ['VII', 'On the Nature of Things', 'Pain is endurable. Reputation is nothing.'],
+    ['VIII', 'On Social Nature', 'We exist for one another. Cooperation is natural.'],
+    ['IX', 'On Injustice and Impiety', 'To do injustice is to do violence to oneself.'],
+    ['X', 'At Vindobona', 'Acceptance. Fate and providence.'],
+    ['XI', 'On Rational Nature', 'The mind adapts and converts obstacles to fuel.'],
+    ['XII', 'Final Meditations', 'Time is a river. All is ephemeral. Act now.']
+  ];
+  let h = '<div class="info-content"><h3>The Twelve Books</h3>';
+  books.forEach(([num, title, desc]) => {
+    h += `<div style="margin:3px 0;display:flex;gap:8px;align-items:baseline;font-size:13.5px;line-height:1.5">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--page-accent);flex-shrink:0;min-width:28px">${num}.</span>
+      <span><strong style="color:var(--chapter-title-color)">${title}</strong><br><span style="color:var(--page-dim);font-size:12.5px">${desc}</span></span>
+    </div>`;
+  });
+  h += '</div>';
+  return h;
+}
+
+function getColophonHtml() {
+  return `<div class="info-content" style="justify-content:center;align-items:center;text-align:center">
+    <div class="greek-quote" style="font-size:14px;margin-bottom:16px">\u201C\u0394\u1F78\u03C2 \u1F10\u03BD\u03B5\u03C1\u03B3\u03B5\u1FD6\u03BD \u03B5\u1F30\u03C2 \u03C4\u1F78 \u03BA\u03BF\u03B9\u03BD\u03CC\u03BD.\u201D</div>
+    <p class="dim" style="font-size:12px;margin-bottom:16px">&ldquo;Give yourself to the work of the common good.&rdquo;</p>
+    <div class="ornament-line" style="margin:10px auto"></div>
+    <p class="dim" style="font-size:12px;line-height:1.7;max-width:280px">
+      Part of <strong>read-rd</strong>, a collection of open-source book readers for classic literature.<br><br>
+      English text from Project Gutenberg.<br>
+      Greek text from Perseus Digital Library.<br><br>
+      Built with care. No tracking. No ads.<br>Just the text.
+    </p>
+    <div class="ornament-line" style="margin:14px auto"></div>
+    <p class="dim" style="font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:1px">MMXXVI</p>
+  </div>`;
+}
+
+/* ──────────────────── Spread rendering ──────────────────── */
+function getSpreadContent(spreadIdx) {
+  if (spreadIdx === 0) {
+    return { leftHtml: '', rightHtml: getCoverHtml(), leftNum: '', rightNum: '' };
+  }
+  if (spreadIdx === 1) {
+    return { leftHtml: '', rightHtml: getTitlePageHtml(), leftNum: '', rightNum: '' };
+  }
+  if (spreadIdx === 2) {
+    return { leftHtml: getAboutLeftHtml(), rightHtml: getAboutRightHtml(), leftNum: 'i', rightNum: 'ii' };
+  }
+  if (spreadIdx === 3) {
+    return { leftHtml: getAnnotationsHtml(), rightHtml: getReadersHtml(), leftNum: 'iii', rightNum: 'iv' };
+  }
+  if (spreadIdx === 4) {
+    return { leftHtml: getBooksListHtml(), rightHtml: getColophonHtml(), leftNum: 'v', rightNum: 'vi' };
+  }
+  return { leftHtml: '', rightHtml: '', leftNum: '', rightNum: '' };
+}
+
+function renderSpread(spreadIdx) {
+  const book = document.getElementById('book');
+  const leftInner = document.getElementById('page-left-inner');
+  const rightInner = document.getElementById('page-right-inner');
+  const numLeft = document.getElementById('page-num-left');
+  const numRight = document.getElementById('page-num-right');
+
+  if (spreadIdx === 0) {
+    book.classList.add('cover-mode');
+  } else {
+    book.classList.remove('cover-mode');
+  }
+
+  const content = getSpreadContent(spreadIdx);
+  leftInner.innerHTML = content.leftHtml;
+  rightInner.innerHTML = content.rightHtml;
+  numLeft.textContent = content.leftNum;
+  numRight.textContent = content.rightNum;
+
+  const indicator = document.getElementById('page-indicator');
+  if (spreadIdx === 0) indicator.textContent = 'Cover';
+  else if (spreadIdx === 1) indicator.textContent = 'Title';
+  else {
+    const nums = [content.leftNum, content.rightNum].filter(Boolean);
+    indicator.textContent = nums.join('\u2013');
+  }
+}
+
+/* ──────────────────── Flip animation ──────────────────── */
+function flipForward() {
+  if (isAnimating || currentSpread >= TOTAL_SPREADS - 1) return;
+  isAnimating = true;
+
+  const nextSpread = currentSpread + 1;
+  const flipLayer = document.getElementById('flip-layer');
+  const book = document.getElementById('book');
+
+  // Cover -> open: just transition
+  if (currentSpread === 0) {
+    currentSpread = nextSpread;
+    renderSpread(currentSpread);
+    isAnimating = false;
+    return;
+  }
+
+  const curContent = getSpreadContent(currentSpread);
+  const nextContent = getSpreadContent(nextSpread);
+
+  flipLayer.className = 'flip-layer flip-layer-right';
+  flipLayer.style.display = 'block';
+  flipLayer.style.zIndex = 60;
+
+  document.getElementById('flip-front-inner').innerHTML = curContent.rightHtml;
+  document.getElementById('flip-back-inner').innerHTML = nextContent.leftHtml;
+
+  book.classList.add('flipping');
+  requestAnimationFrame(() => { flipLayer.classList.add('flipping-forward'); });
+
+  setTimeout(() => {
+    currentSpread = nextSpread;
+    renderSpread(currentSpread);
+    flipLayer.classList.remove('flipping-forward');
+    flipLayer.style.display = 'none';
+    book.classList.remove('flipping');
+    isAnimating = false;
+  }, 620);
+}
+
+function flipBackward() {
+  if (isAnimating || currentSpread <= 0) return;
+  isAnimating = true;
+
+  const prevSpread = currentSpread - 1;
+  const flipLayer = document.getElementById('flip-layer');
+  const book = document.getElementById('book');
+
+  if (prevSpread === 0) {
+    currentSpread = prevSpread;
+    renderSpread(currentSpread);
+    isAnimating = false;
+    return;
+  }
+
+  const curContent = getSpreadContent(currentSpread);
+  const prevContent = getSpreadContent(prevSpread);
+
+  flipLayer.className = 'flip-layer flip-layer-left';
+  flipLayer.style.display = 'block';
+  flipLayer.style.zIndex = 60;
+
+  document.getElementById('flip-front-inner').innerHTML = curContent.leftHtml;
+  document.getElementById('flip-back-inner').innerHTML = prevContent.rightHtml;
+
+  book.classList.add('flipping');
+  requestAnimationFrame(() => { flipLayer.classList.add('flipping-backward'); });
+
+  setTimeout(() => {
+    currentSpread = prevSpread;
+    renderSpread(currentSpread);
+    flipLayer.classList.remove('flipping-backward');
+    flipLayer.style.display = 'none';
+    book.classList.remove('flipping');
+    isAnimating = false;
+  }, 620);
+}
+
+/* ──────────────────── Theme ──────────────────── */
+const THEMES = ['light-purple','light-azure','sepia','dark-violet','dark-blue'];
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.classList.toggle('active', d.dataset.t === theme);
+  });
+  try { localStorage.setItem('meditations-index-theme', theme); } catch(e) {}
+}
+
+function loadTheme() {
+  try {
+    const saved = localStorage.getItem('meditations-index-theme');
+    if (saved && THEMES.includes(saved)) {
+      setTheme(saved);
+    }
+  } catch(e) {}
+}
+
+/* ──────────────────── Init ──────────────────── */
+function init() {
+  loadTheme();
+  renderSpread(0);
+
+  // Flip layer hidden initially
+  document.getElementById('flip-layer').style.display = 'none';
+
+  // Navigation
+  document.getElementById('zone-right').addEventListener('click', flipForward);
+  document.getElementById('zone-left').addEventListener('click', flipBackward);
+  document.getElementById('btn-next').addEventListener('click', flipForward);
+  document.getElementById('btn-prev').addEventListener('click', flipBackward);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipForward(); }
+    if (e.key === 'ArrowLeft') flipBackward();
+  });
+
+  // Theme dots
+  document.querySelectorAll('.theme-dot').forEach(dot => {
+    dot.addEventListener('click', () => setTheme(dot.dataset.t));
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) flipForward();
+      else flipBackward();
+    }
+  }, { passive: true });
+}
+
+init();
+</script>
+</body>
+</html>

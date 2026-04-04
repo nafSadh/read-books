@@ -17,8 +17,10 @@
 - [x] Detail panel layout: moved to left, 55:45 ratio, per-passage sizing
 - [x] Fix proper noun tooltip hover (links now clickable)
 - [x] Detail icon aligned on separator line
-- [ ] Extend annotations to Book I passages VI-XVII
-- [ ] Extend annotations to all 12 Books
+- [x] Extend annotations to Book I passages VI-XVII
+- [x] Extend annotations to all 12 Books (412/412 passages annotated)
+- [x] JSON annotation pipeline: `seeds/annotations/book-NN.json` + assembler script
+- [x] `index.html` — book-spread landing page with cover, about, features, colophon
 
 ## Greek text integration
 

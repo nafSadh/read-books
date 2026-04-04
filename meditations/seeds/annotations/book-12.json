@@ -1,0 +1,243 @@
+[
+  {
+    "num": "I",
+    "modern_english": "Everything you hope to achieve someday, you can have right now — if you stop envying yourself your own happiness. How? By letting go of the past entirely, entrusting the future to Providence, and directing your present thoughts and intentions toward two things: holiness and justice. Holiness means willingly accepting whatever Providence sends, since universal nature assigned it to you, and you to it. Justice means speaking the truth plainly and acting fairly in all things. Do not let other people's wickedness, opinions, or words hinder you — nor the complaints of your own body; let whatever suffers look to itself. If, when the hour of death comes, you can let go of everything else and honor only your mind and the divine part within you — fearing not that you will one day cease to live, but that you have never truly begun to live according to nature — then you will be worthy of the world that gave you life. You will stop being a stranger in your own country, stop being astonished at everyday events, and stop depending anxiously on things beyond your control.",
+    "notes": "Book XII opens with a comprehensive summary of the Stoic program: release the past, trust the future to Providence, and concentrate on present virtue. The twin commitments — holiness (accepting fate) and justice (honest speech and right action) — map onto the two main axes of Stoic ethics: alignment with nature and social duty. The fear Marcus identifies is not death itself but the fear of never having lived authentically (kata phusin). The phrase 'stranger in thy country' echoes Epictetus's image of the person who does not understand the cosmos they inhabit.",
+    "proper_nouns": [
+      {
+        "name": "Epictetus",
+        "context": "in_notes",
+        "tip": "Epictetus (c. 50–135 CE), freed slave who became the most influential Stoic teacher of the Imperial period. His Discourses, recorded by his student Arrian, were Marcus Aurelius's primary philosophical text.",
+        "url": "https://en.wikipedia.org/wiki/Epictetus"
+      }
+    ]
+  },
+  {
+    "num": "II",
+    "modern_english": "God sees our minds stripped bare of their material shells, coverings, and earthly residue. Through His pure understanding, He penetrates to our innermost parts — which originally flowed from His own being, as through a channel. If you too practice this — looking past the body to the mind — you will free yourself from a great deal of encumbrance. Three things make up what you are: body, life, and mind. Of these, only the mind is truly yours. If you can separate from your mind everything others say or do, everything you yourself have said or done in the past, all anxious thoughts about the future, everything belonging to body or fortune that lies outside your will, and everything that befalls you by chance — so that your mind lives freely by itself, doing justice, accepting what happens, and speaking truth — if you can cut away from your mind everything that clings to it by sympathy, and all time past and future, making yourself like Empedocles's sphere, 'perfectly round and self-contained,' thinking only of your present life, then you can pass the rest of your days without distraction, nobly and generously, at peace with the spirit within you.",
+    "notes": "This passage presents two central Stoic exercises: God's-eye perception (seeing past material appearances to the rational soul within) and radical present-focus. The tripartite division — body, life (bios), and mind (nous) — echoes earlier passages but here only mind is declared truly one's own. The allusion to Empedocles's sphere is philosophically precise: Empedocles described the primordial cosmic state (the Sphairos) as a perfect sphere under the rule of Love, before Strife introduced multiplicity. Marcus uses it as a model for the self-contained, undivided soul.",
+    "proper_nouns": [
+      {
+        "name": "Empedocles",
+        "context": "in_original",
+        "tip": "Empedocles of Acragas (c. 494–434 BCE), pre-Socratic philosopher who taught that four elements (earth, air, fire, water) are governed by the cosmic forces of Love and Strife. His Sphairos — the universe in its unified state under Love — is the sphere Marcus references.",
+        "url": "https://en.wikipedia.org/wiki/Empedocles"
+      }
+    ]
+  },
+  {
+    "num": "III",
+    "modern_english": "I have often wondered why every person, who presumably loves himself above all others, still cares more about other people's opinions of him than his own. If a god or a stern teacher stood beside you and commanded you to think nothing you would not immediately say aloud, you could not endure it for a single day. Yet that is exactly how we live: we fear the judgment of our neighbors more than we trust our own.",
+    "notes": "A pointed observation about the incoherence of self-love combined with dependence on external opinion. The thought experiment — a god commanding you to externalize every thought — exposes the gap between what we privately know and what we perform socially. The Stoic conclusion is that we should align internal self-assessment with external behavior, rather than subordinating our own judgment to the crowd's. This passage closely parallels a similar argument in Seneca's Letters.",
+    "proper_nouns": [
+      {
+        "name": "Seneca",
+        "context": "in_notes",
+        "tip": "Lucius Annaeus Seneca (c. 4 BCE – 65 CE), Roman Stoic philosopher, statesman, and tutor to Emperor Nero. His Letters to Lucilius and moral essays are among the most important Stoic texts.",
+        "url": "https://en.wikipedia.org/wiki/Seneca_the_Younger"
+      }
+    ]
+  },
+  {
+    "num": "IV",
+    "modern_english": "How can the gods, having arranged everything else so well and so lovingly, have overlooked one thing: that certain truly good people — who made covenants with the divine through holy actions and devotion, who developed a kind of familiarity with God — should, once dead, never live again but be extinct forever? If that is indeed the case, rest assured the gods would have arranged it differently had it been fitting. If it were just and natural, the nature of the universe would easily have allowed it. The fact that it is not so (if indeed it is not) should give you confidence that it was not fit that it should be so. Can you not see how freely you are arguing and contesting with God in raising this question? But you would not dare to argue this way unless the gods were perfectly just and good. And if they are, then they cannot have unjustly or unreasonably overlooked anything in the creation of the world.",
+    "notes": "Marcus addresses the problem of the soul's extinction after death — a question that troubled even committed Stoics. His argument is not that the soul survives, but that if it does not, that too must be the right arrangement. The reasoning is characteristically Stoic: if the universe is governed by perfect reason and justice, nothing in it can be genuinely unjust — including death's finality. The 'arguing with God' conceit shows Marcus's awareness that the question itself presupposes divine goodness, making the complaint self-defeating.",
+    "proper_nouns": []
+  },
+  {
+    "num": "V",
+    "modern_english": "Train yourself in the things you initially despair of mastering. Consider the left hand: it usually lies idle and is weaker through disuse, yet it grips the bridle more firmly than the right, because it has been trained to that particular task.",
+    "notes": "A brief, practical observation about the power of habituation (ethismos). The left hand/bridle example is drawn from horsemanship — the left hand holds the reins while the right wields a weapon. Marcus's point is that capacity follows practice, not natural endowment. This is a direct application of Epictetus's teaching that moral progress is like athletic training: difficult at first, then second nature.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VI",
+    "modern_english": "Make these the regular subjects of your meditation: What kind of person should I be, in both soul and body, when death comes? How short life is. How vast the eternity before and after us. How fragile every material thing is. See all these things clearly, stripped of their outward disguise. Consider the true causes of all things, the real purposes of all actions. Understand what pain actually is, what pleasure is, what death is, what fame is. Recognize that every person is the true author of his own peace or disturbance, and that no one can truly be hindered by another. Everything depends on judgment and opinion. As for your philosophical principles, carry yourself in their practice more like a pancratist — who fights with both hands and feet and can never be disarmed — than like a gladiator, who is finished if he drops his sword. The pancratist always has his own body as a weapon.",
+    "notes": "A dense catalogue of Stoic meditative exercises: memento mori, cosmic perspective, analysis of causes, deflation of externals (pain, pleasure, fame, death), and the sovereignty of judgment. The pancratist (pankration fighter — combining wrestling and boxing) versus gladiator analogy is vivid: the philosopher who relies on internalized principles can never be 'disarmed,' while someone who depends on external tools or circumstances is always vulnerable. The pankration was considered the most demanding event in the ancient Greek games.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VII",
+    "modern_english": "Examine all worldly things by dividing them into three aspects: their matter, their form, and their proper purpose or end.",
+    "notes": "A compressed instruction for philosophical analysis. The three-part scheme — matter (hyle), form (eidos), and purpose (telos) — derives from Aristotelian-Stoic metaphysics. By decomposing any object or event into what it is made of, what shape or structure it has, and what it is for, Marcus strips away emotional reactions and sees things as they actually are. This is the practice of 'physical definition' that recurs throughout the Meditations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VIII",
+    "modern_english": "How fortunate we are in the power granted to us: we need do nothing that God would not approve, and we may contentedly embrace whatever God sends.",
+    "notes": "One of the shortest and most serene passages in Book XII. The 'power granted' is prohairesis — the Stoic faculty of moral choice, which is always free. Marcus frames human freedom not as autonomy from God but as alignment with God: since the only things within our power are our own judgments and choices, and since using them rightly means acting in accord with divine reason, the capacity for virtue is itself a gift. The tone is gratitude rather than resignation.",
+    "proper_nouns": []
+  },
+  {
+    "num": "IX",
+    "modern_english": "Whatever happens in the natural course of events, neither the gods nor human beings should be blamed. The gods cannot do wrong, whether knowingly or unknowingly. Human beings do wrong only through ignorance, and therefore against their own true will. No one, then, deserves accusation.",
+    "notes": "A compact argument for universal moral exoneration. The gods are exempt from blame because they are perfectly rational and good (a Stoic axiom). Human beings are exempt because, in Stoic ethics, all wrongdoing is a form of ignorance — no one errs willingly (the Socratic principle that Marcus inherited through Epictetus). If no one can justly be accused, anger and resentment are always misplaced. This is one of the most radical implications of Stoic determinism.",
+    "proper_nouns": [
+      {
+        "name": "Socrates",
+        "context": "in_notes",
+        "tip": "Socrates (c. 470–399 BCE), Athenian philosopher whose teaching that no one does wrong willingly (the 'Socratic paradox') became foundational to Stoic ethics.",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      }
+    ]
+  },
+  {
+    "num": "X",
+    "modern_english": "How absurd and foolish is the person who is surprised at anything that happens in the ordinary course of life!",
+    "notes": "The shortest passage in Book XII — almost a Stoic proverb. To be astonished at what is natural and predictable betrays a failure of philosophical understanding. The Stoics held that all events follow from the causal chain of fate (heimarmene); once this is grasped, nothing should seem strange. Marcus is rebuking himself as much as anyone: the philosopher's task is to understand nature so thoroughly that surprise gives way to comprehension.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XI",
+    "modern_english": "There are only three possibilities. Either fate rules with absolute, unavoidable necessity — in which case, why resist? Or Providence governs, but is flexible and open to appeal — in which case, make yourself worthy of divine help. Or the universe is random chaos with no governor at all — in which case, congratulate yourself: amid such confusion, you have a rational faculty that can govern your own life. And even if the flood of chaos sweeps you along, it can only carry away your body or your life — not your mind and understanding. Should the light of a candle shine bright until it is extinguished — and yet truth, justice, and self-control cease to shine in you while you are still alive?",
+    "notes": "Marcus presents his characteristic three-way disjunction: deterministic fate, responsive Providence, or atomic chaos. In all three cases, the rational mind retains its sovereignty. The candle metaphor — a favorite Stoic image — suggests that virtue should burn steadily for as long as the person exists, undimmed by external circumstances. The passage echoes similar arguments in Books V and VI, refined here into their most compressed form near the end of the Meditations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XII",
+    "modern_english": "When you think someone has sinned, ask yourself: How do I know this is actually a sin? And even if it is, perhaps he has already condemned himself for it — which is like a man scratching and tearing his own face, an object of pity rather than anger. Furthermore, wanting a vicious person not to sin is like wanting the fig tree to have no sap, babies not to cry, horses not to neigh. These things follow necessarily from their nature. What else can such a person do, given his character? If you have the power and eloquence, cure the fault — otherwise, what is the point of your indignation?",
+    "notes": "Marcus applies two Stoic principles to the problem of anger at others' wrongdoing. First, epistemic humility: you may be wrong about whether the act is actually wrong. Second, deterministic compassion: vice follows from ignorance as necessarily as sap follows from the nature of a fig tree. The proper response is either remedial action (if you can help) or acceptance (if you cannot). Anger is never the right response, because it presupposes that the person could have acted otherwise — which, in the Stoic framework, is doubtful.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIII",
+    "modern_english": "If it is not right, do not do it. If it is not true, do not say it. Always keep your purpose and resolution free from all compulsion.",
+    "notes": "One of the most famous aphorisms in the Meditations — a two-line ethical program. The first clause addresses action (justice), the second addresses speech (honesty), and the third addresses intention (freedom of will). Together they cover the three domains of Stoic practice: impulse, assent, and desire. The emphasis on freedom from compulsion (anangke) points to the Stoic ideal of the self-determined rational agent who acts from principle, not pressure.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIV",
+    "modern_english": "With everything that presents itself to you, practice uncovering its true nature by dividing it into its formal element, its material element, its true use or purpose, and the time allotted for its duration.",
+    "notes": "An expansion of the tripartite analysis from passage VII, now adding a fourth dimension: time. By considering not only what something is made of, what form it takes, and what it is for, but also how long it will last, Marcus completes the Stoic exercise of 'physical definition.' This temporal awareness is crucial: recognizing the brevity of all things deflates their emotional hold. The method is analytical and therapeutic simultaneously.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XV",
+    "modern_english": "It is high time to recognize that there is something in you better and more divine than your passions, your appetites, and your bodily sensations. Ask yourself: what is my mind occupied with right now — fear, suspicion, desire? First, do nothing rashly or without a definite purpose. Second, let that purpose be nothing other than the common good. Remember: in a little while, you will be gone, and so will everything and everyone you now see. All things are by nature appointed to change, transform, and dissolve, so that new things may take their place.",
+    "notes": "Marcus returns to the hierarchy of soul over body — the divine rational faculty (hegemonikon) is superior to the passions and senses. The self-interrogation ('what is my mind occupied with?') is a Stoic mindfulness exercise: catching impressions before they generate harmful assent. The dual prescription — purposefulness and orientation toward the common good — condenses the practical ethic of the Meditations. The closing reminder of universal transience (metabole) reinforces urgency.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVI",
+    "modern_english": "Remember that everything is opinion, and opinion depends entirely on the mind. Remove the opinion, and you are like a ship that has passed through the harbor mouth into calm water — safe, steady, sheltered from every storm, as the poet says.",
+    "notes": "The Stoic doctrine that disturbance arises not from events but from our judgments about them, stated here with a nautical metaphor. 'The poet' whom Marcus quotes has not been identified with certainty — the image may be from a lost work. The harbor represents ataraxia (freedom from disturbance): once you withdraw false judgments, inner peace follows immediately. This is not denial of reality but a disciplined refusal to add suffering to fact through interpretation.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVII",
+    "modern_english": "No action that ceases in its proper time can be said to suffer any evil simply because it has ended. Nor can the person who performed it be said to have been harmed merely because the action is over. In the same way, life itself — the whole series of our actions — cannot be called an evil just because it comes to an end. And the person whose life ends naturally has not been ill-treated. The timing of that end is set by nature: sometimes by the particular nature of the individual (who dies of old age), but always by universal nature, whose parts constantly change so that the whole world remains fresh and new. Whatever serves the good of the whole is always best and most timely. Therefore death is not harmful to anyone in particular — it is nothing shameful, nothing contrary to the will, nothing against the common good. It is in fact beneficial, since it is timely for the whole and in harmony with it. A person whose will runs in the same direction as the divine order — who is carried along, as it were, by God Himself — may truly be called 'god-inspired.'",
+    "notes": "The longest passage in Book XII and one of the most sustained arguments on death in the Meditations. Marcus builds his case step by step: if no individual action is harmed by ending, then the sum of all actions (a life) is not harmed by ending either. The Greek term theophoretos ('god-borne' or 'divinely inspired') closes the passage: the person who accepts death willingly is not merely resigned but actively aligned with divine will. The emphasis on constant renewal of the cosmos through change reflects Stoic physics — the universe maintains its vitality through the cycling of its parts.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVIII",
+    "modern_english": "Keep three things always at the ready. First, concerning your own actions: you must do nothing idle or unjust. Concerning external events: they happen either by chance or by Providence, and it is equally unreasonable to blame either. Second, consider what our bodies are — from their crude, unformed state through animation to death — what they are composed of and what they dissolve into. Third, imagine looking down from a great height on all earthly affairs and seeing the extraordinary mutability of everything, alongside the infinite greatness and variety of things in sky and heaven. Every time you look, you will see the same: the same activities, the same brevity. And these are the things we are so proud of.",
+    "notes": "A three-part meditation exercise: (1) moral audit of one's own actions and acceptance of events, (2) physical analysis of the body's composition and decomposition, and (3) the cosmic 'view from above' (a Stoic exercise later called the 'overview effect'). The view from above was a standard Stoic technique for gaining perspective — seeing human affairs from a cosmic vantage point reveals their smallness and repetitiveness. Marcus uses it to deflate pride and ambition.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIX",
+    "modern_english": "Cast away opinion and you are saved. What stops you from casting it away? When you are troubled, remember: all things happen according to the nature of the universe. Only the person at fault is truly affected. Moreover, what is happening now has always happened and always will happen — it is happening everywhere at this very moment. Remember how closely all human beings are related — not by blood or seed, but by sharing the same mind. Remember too that every person's mind partakes of the divine and flows from it. Nothing is truly our own — not our children, not our bodies, not even our lives — all come from the One who gives all things. Everything depends on judgment. No one lives more than the present instant. And therefore no one, in dying, loses more than a single moment.",
+    "notes": "A rapid-fire catalogue of Stoic consolations — almost a checklist of the philosophy's core commitments. The kinship of all rational beings through shared nous (mind), the divine origin of reason, the sovereignty of judgment, the reduction of life to the present instant — each is a compressed reminder. The closing argument is among the most radical in Stoic thought: since only the present moment is real, death only ever deprives you of an instant. This echoes Epicurus's argument that death is 'nothing to us,' reformulated in Stoic terms.",
+    "proper_nouns": [
+      {
+        "name": "Epicurus",
+        "context": "in_notes",
+        "tip": "Epicurus (341–270 BCE), Greek philosopher and founder of Epicureanism. His argument that death is 'nothing to us' (since we do not exist to experience it) influenced Stoic approaches to mortality, though the Stoics grounded their consolation in different metaphysics.",
+        "url": "https://en.wikipedia.org/wiki/Epicurus"
+      }
+    ]
+  },
+  {
+    "num": "XX",
+    "modern_english": "Think of people who were once seized by extraordinary passion — for honor, calamity, enmity, or any other condition. Then ask: what has become of all that? Smoke and ash, a tale barely told. Think also of specific examples: Fabius Catulinus in the field, Lucius Lupus and Stertinius at Baiae, Tiberius at Capri, Velius Rufus — and all such cases of intense worldly pursuit. How cheap and worthless the objects of such earnest striving really are. How much more worthy of a philosopher it is to conduct yourself in every situation justly and moderately, as one who follows the gods with simplicity. But beware: the person who is proud of not being proud commits the most intolerable kind of pride.",
+    "notes": "Marcus meditates on historical figures consumed by ambition, pleasure, or power — all now reduced to ashes. Fabius Catulinus is obscure, likely a military figure known to Marcus. Lucius Lupus and Stertinius were apparently notorious for luxurious living at Baiae, the fashionable Roman resort town on the Bay of Naples. Tiberius at Capri refers to the emperor Tiberius's notorious retirement to the island of Capri (Capreae) in 26 CE, where he spent the last decade of his reign in seclusion. Velius Rufus is otherwise unidentified. The closing warning against second-order pride (being proud of humility) is psychologically acute and characteristic of Marcus's self-awareness.",
+    "proper_nouns": [
+      {
+        "name": "Fabius Catulinus",
+        "context": "in_original",
+        "tip": "An obscure Roman figure, possibly a military commander or senator. The details of his career have not survived, which is precisely Marcus's point about the vanity of worldly ambition.",
+        "url": ""
+      },
+      {
+        "name": "Lucius Lupus",
+        "context": "in_original",
+        "tip": "Likely Rutilius Lupus or a similar Roman figure known for self-indulgent living. The specific identification is uncertain.",
+        "url": ""
+      },
+      {
+        "name": "Stertinius",
+        "context": "in_original",
+        "tip": "Possibly the wealthy Stertinius mentioned by Pliny the Elder as a physician who earned enormous fees, or another member of the Stertinii family. Associated here with the luxury resort of Baiae.",
+        "url": ""
+      },
+      {
+        "name": "Tiberius",
+        "context": "in_original",
+        "tip": "Tiberius Julius Caesar Augustus (42 BCE – 37 CE), the second Roman Emperor (r. 14–37 CE). He withdrew to the island of Capri in 26 CE and governed remotely for the last decade of his reign, becoming a byword for reclusive and suspicious power.",
+        "url": "https://en.wikipedia.org/wiki/Tiberius"
+      },
+      {
+        "name": "Velius Rufus",
+        "context": "in_original",
+        "tip": "An unidentified Roman, possibly a senator or military figure. His obscurity in the historical record reinforces Marcus's theme of the impermanence of fame.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "num": "XXI",
+    "modern_english": "To those who ask, 'Where have you seen the gods? How can you be certain they exist, that you worship them so devoutly?' I answer: first, in a way they are visible even to the eye. Second, I have never seen my own soul either, yet I honor and respect it. So it is with the gods: from the daily evidence of their power and providence toward me and others, I know they exist, and therefore I worship them.",
+    "notes": "Marcus offers a defense of theism — rare in the Meditations, which usually assume divine existence rather than arguing for it. His two arguments are: (1) the gods are quasi-visible in nature's order (the Stoic view that cosmic regularity is itself evidence of divine reason), and (2) the analogy with the soul — we do not see it, yet we know it through its effects. The argument from personal experience of providence is not philosophical proof but personal testimony, and Marcus seems aware of the difference.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXII",
+    "modern_english": "Happiness consists in knowing the true nature of everything — what its matter is and what its form is — and in devoting your whole heart and soul to doing what is just and speaking what is true. What remains then but to enjoy life as a continuous chain of good actions, one following immediately after another without interruption?",
+    "notes": "A summary formula for the good life: accurate understanding of reality (Stoic physics) combined with virtuous action (Stoic ethics) yields happiness (eudaimonia). The image of good actions following one upon another 'without interruption' recalls passage VI.vi — the vine bearing grapes without self-consciousness. Marcus is defining happiness not as a feeling but as a mode of continuous activity: the life of virtue is itself the reward.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIII",
+    "modern_english": "There is only one light of the sun, even though it is broken up by walls, mountains, and countless other objects. There is only one common substance in the world, even though it is distributed among infinite different bodies. There is only one soul, even though it is divided into innumerable individual natures and essences. And there is only one rational mind, even though it appears divided. The other parts of things — their material bodies and non-rational souls — have no natural connection to one another. Yet even they are held together by mind and by the attraction of a common gravity. But rational mind has a unique quality: it naturally seeks out its own kind and desires to be united with it. This social impulse cannot be blocked or divided or confined to separate individuals the way material things can be.",
+    "notes": "One of the most philosophically important passages in Book XII. Marcus asserts four levels of cosmic unity: one light, one substance, one soul, one mind. Each appears divided but is fundamentally one. The crucial distinction is between non-rational things (which are connected only externally, by gravity or physical mixture) and rational minds (which are connected internally, by natural affinity). This is the Stoic doctrine of oikeiosis extended to its cosmic dimension: rational beings are naturally drawn to community. The impulse toward unity cannot be suppressed.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIV",
+    "modern_english": "What do you really desire? To go on living? But that means continuing the operations of a sensitive soul — perception, appetite, growth, and decline. Is that what you want: to talk, to think, to reason? Which of these seems truly worthy of desire? If none, then proceed to the one thing that is: in all things, to follow God and reason. But to grieve that death will deprive you of any of these lesser things is contrary to both God and reason.",
+    "notes": "Marcus applies the Stoic method of elimination: test each object of desire against the standard of reason. Sensation, appetite, growth — these are shared with animals and plants, and are not what makes human life distinctively valuable. Even thinking and reasoning are valuable only insofar as they serve virtue and alignment with the divine. Death's removal of sub-rational capacities is therefore no loss worth mourning. The passage recapitulates the Stoic hierarchy of soul-faculties.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXV",
+    "modern_english": "What a tiny fraction of infinite eternity has been allotted to each of us — and how quickly it vanishes into the whole! What a tiny portion of universal substance and of the universal soul is yours! And on what a small clod of the entire earth you crawl! Keep all this in mind, and consider nothing of great weight or importance except this: to act as your own nature requires, and to accept what the common nature of the universe brings.",
+    "notes": "A meditation on cosmic proportion — the individual human life measured against infinite time, infinite substance, and the vastness of the earth. The conclusion is characteristic: smallness is not cause for despair but for clarity. If nothing external is large enough to warrant anxiety, only virtue remains as worthy of serious effort. The language ('what a small clod') deliberately diminishes human pretension to redirect attention toward what is genuinely within our power.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVI",
+    "modern_english": "What is the present state of my understanding? That is all that truly matters. Everything else lies outside my will, and what lies outside my will is as dead to me — nothing but smoke.",
+    "notes": "A sharp restatement of the Stoic dichotomy of control: only the hegemonikon (the ruling rational faculty) is truly mine; everything else is external and therefore indifferent. The metaphor of 'smoke' — insubstantial, dissipating, impossible to grasp — captures the Stoic view of externals as ephemeral and powerless over the wise person. This is one of the final self-reminders before the closing passage.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVII",
+    "modern_english": "Here is an effective way to overcome the fear of death: consider that even the Epicureans — who regarded pleasure as the highest good and pain as the worst evil — nevertheless despised death. How much less should death trouble someone who considers only what is seasonable and natural to be good, who is indifferent to whether his actions are many or few so long as they are right, and who sees no difference between observing the world for many years and for few? Think of it this way: you have lived and participated in this great city, the world. Whether for many years or fewer, what does it matter? You have lived as long as the laws of the city required. Why should it grieve you to be dismissed — not by a tyrant or unjust judge, but by the same nature that brought you in? It is like a praetor who fairly dismisses an actor from the stage. 'But I have only performed three acts, not all five!' True — but in life, three acts may be the whole play. The one who first composed you now directs your exit. Neither composition nor dissolution was your doing. Depart then, content and at peace — for He who releases you is also at peace.",
+    "notes": "The final passage of Book XII — and of the entire Meditations — is a sustained argument for accepting death with equanimity. Marcus invokes the Epicureans as a fortiori evidence: if even those who prized pleasure could face death calmly, surely a Stoic can. The theatrical metaphor (life as a stage performance, nature as the praetor who both casts and dismisses) is drawn from Epictetus (Discourses I.2 and Enchiridion 17) and ultimately from Stoic commonplace. The 'three acts' rather than five acknowledges that life may be cut short but insists that the length is not ours to determine — only the quality of our performance. The closing words are among the most serene in all of ancient philosophy: go in peace, for the one who dismisses you is also at peace. This is Marcus's final testament.",
+    "proper_nouns": [
+      {
+        "name": "Epicureans",
+        "context": "in_original",
+        "tip": "Followers of Epicurus (341–270 BCE), whose philosophy held that pleasure (especially absence of pain) was the highest good. Despite this, Epicurus and his school taught that death should not be feared, since it is mere non-existence.",
+        "url": "https://en.wikipedia.org/wiki/Epicureanism"
+      },
+      {
+        "name": "Epictetus",
+        "context": "in_notes",
+        "tip": "Epictetus (c. 50–135 CE), freed slave and Stoic philosopher. His theatrical metaphor for life — where we are actors in a play directed by God — directly informs Marcus's closing image here.",
+        "url": "https://en.wikipedia.org/wiki/Epictetus"
+      }
+    ]
+  }
+]

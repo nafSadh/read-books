@@ -45,6 +45,29 @@
 - **Proper noun tooltip fix** — added invisible bridge (`::after` on `.pn-tip`) so cursor can travel from word to tooltip; links now clickable
 - **Mobile breakpoint** — details stack below with left border on narrow screens
 
+## 2026-04-04
+
+### Session 3 — Full annotation of all 412 passages + index page
+
+- **All 412 passages annotated** across all 12 Books
+  - Books I-IV: annotated directly in HTML by Wave 1 agents
+  - Books 5-12: JSON-first batch processing via `seeds/annotations/book-NN.json`
+  - Assembler script (`seeds/assemble-annotations.py`) converts plain passages to annotated `med-passage` blocks
+  - Each passage has: Modern English rewrite, historical notes, proper noun tooltips with Wikipedia links
+- **JSON annotation pipeline** — smarter approach to avoid agent file conflicts
+  - Annotation data stored as JSON in `seeds/annotations/` (10 files)
+  - Python assembler script reads JSON + injects into reader.html in one atomic write
+  - Strategy documented in `.project/annotation-strategy.md`
+- **meditations/index.html** — new book-spread landing page
+  - Cover page with title, Greek subtitle, Marcus Aurelius
+  - About page with key Stoic themes, Greek quotation
+  - Annotation system description + available readers with links
+  - Data sources table, 12 Books listing with one-line descriptions
+  - Colophon with branding
+  - 5 themes, 3D page flip, keyboard/touch navigation, mobile responsive
+- **Main index.html** updated — "Classic Book" link added for Meditations
+- **Book 12 JSON regenerated** — original was wrong (started at X instead of I)
+
 ### Data sources
 
 - English: George Long translation (1862), Project Gutenberg #2680, public domain

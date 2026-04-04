@@ -1,0 +1,315 @@
+[
+  {
+    "num": "I",
+    "modern_english": "My soul, I trust that one day you will be good, simple, and undivided — more transparent than the body that houses you. You will come to feel the happiness of those whose only drive is love, whose desires for worldly things have gone quiet. You will be full, needing nothing outside yourself — no pleasure from any living or lifeless thing, no extra time, place, or favorable circumstance. You will be content with the present moment, finding every current thing a source of contentment, persuading yourself that you have everything and that it all comes by divine providence. And of things to come you will be equally confident — trusting that all will serve the flourishing of that Being who is the perfection of life, goodness, and beauty, who generates all things, contains all things, and draws all dissolved things back into himself to generate new ones. Such will be your state: able to relate to both gods and people without ever complaining of what they do, or doing anything yourself worthy of condemnation.",
+    "notes": "This is one of Marcus's most lyrical passages — a direct address to his own soul, cast in the future tense as a prayer or aspiration. It opens Book X with a vision of the soul's eventual perfection: complete, self-sufficient, content. The description of the divine Being who generates and re-absorbs all things is the Stoic conception of the universal logos or the creative fire (pneuma) that periodically draws the cosmos back into itself in a great conflagration (ekpyrosis) before regenerating it.",
+    "proper_nouns": []
+  },
+  {
+    "num": "II",
+    "modern_english": "As someone governed wholly by nature, first identify what your nature as a whole requires. If satisfying that does not harm you as a sentient creature, proceed. Next determine what your nature as a sentient creature requires, and act on it — provided that doing so does not harm your nature as a rational creature. Whatever is rational is also social. Keep these rules and don't trouble yourself about anything else.",
+    "notes": "This is the Stoic hierarchy of natures in compact form: vegetative, animal (sentient), and rational-social. Marcus presents them as a nested test: each lower level may be satisfied, but only so long as it does not compromise the higher. The top level — rational and social — is the distinctively human one, and it encompasses both.",
+    "proper_nouns": []
+  },
+  {
+    "num": "III",
+    "modern_english": "Whatever happens to you, you are by nature either capable of bearing it or you are not. If you can bear it, bear it without complaint — nature has equipped you for it. If you genuinely cannot bear it, don't complain either, because it will soon finish you off and cease with you. Remember also: whatever you have convinced yourself is bearable — because you see it as genuinely within your duty and profit — you are in fact capable of bearing.",
+    "notes": "A tight argument from Stoic resilience. Marcus distinguishes objective capacity from perceived capacity, noting that the mind's judgments about what is tolerable actually shape what we can tolerate. The Stoic principle here is that pain and hardship are 'indifferent' — neither truly good nor evil — and that rational assent is what converts them into suffering or endurance.",
+    "proper_nouns": []
+  },
+  {
+    "num": "IV",
+    "modern_english": "If someone wrongs you, teach them gently and with love, and show them their mistake. If you cannot manage that, blame yourself — or rather, not even yourself, as long as your intention and effort were genuine.",
+    "notes": "One of the briefest meditations, but a cornerstone of Marcus's ethics of the other. The Stoic view is that wrongdoing is always the product of ignorance: no rational person would choose evil if they truly understood it. The duty is therefore corrective and compassionate rather than punitive.",
+    "proper_nouns": []
+  },
+  {
+    "num": "V",
+    "modern_english": "Whatever happens to you was appointed for you from eternity. For by the same chain of causes that fixed your very existence from the beginning, everything that would happen to you was likewise destined and arranged.",
+    "notes": "A statement of Stoic determinism (the doctrine of fate, heimarmene). Every event in the universe follows necessarily from the universal logos working through an unbroken causal chain stretching back to the beginning of the current cosmic cycle. This is not fatalism in a passive sense — the Stoics held that our rational responses are themselves part of that chain — but it dissolves resentment at what happens.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VI",
+    "modern_english": "Either, with Epicurus, you must believe that atoms are the cause of everything — nothing more absurd — or you must acknowledge a nature that governs the universe. Grant the latter, and you are part of it. Being part of the whole, you have kinship with all other parts of the same kind as yourself. Keeping these two facts in mind — that you are part of the whole, and kindred to all rational beings — you will never be truly harmed by your share of the world's common chances, and you will live happily by directing all your actions toward the common good.",
+    "notes": "Marcus engages the main competing cosmology of his era — Epicurean atomism — only to set it aside. The Stoic alternative is a providentially governed cosmos of which each rational being is an integral part. The 'kinship with parts of the same kind' refers to the universal brotherhood of all rational beings, human and divine, which grounds Stoic ethics.",
+    "proper_nouns": [
+      {
+        "name": "Epicurus",
+        "context": "in_original",
+        "tip": "Epicurus (341–270 BCE), Greek philosopher and founder of Epicureanism, who argued that the universe consists of atoms moving in void and that the gods play no role in human affairs.",
+        "url": "https://en.wikipedia.org/wiki/Epicurus"
+      }
+    ]
+  },
+  {
+    "num": "VII",
+    "modern_english": "All parts of the world must eventually undergo change — I say 'change' rather than 'corruption' to be precise. Now, if change is both harmful to individual parts and yet unavoidable, would it not put the whole universe in a sorry state if it were continually afflicted this way? Nature surely did not purposely design her parts for misery — that would be absurd. Equally absurd is the separate complaint: if all individual things are by their nature subject to change, why grieve when any particular one does change, whether a person falls sick and dies? Moreover, whatever is dissolved is dissolved back into what it was made of. The solid goes to earth; the subtle and spiritual returns to air. Nothing is lost; all is resumed into the rational generative seeds of the universe. The body you have now is not the same one you were born with — two or three days ago it was still being renewed from food and air, like a river maintained by flowing water.",
+    "notes": "One of the great cosmological passages, laying out the Stoic doctrine of continuous transformation. The universe is not subject to 'corruption' in a negative sense — change is its very mechanism. The dissolution of any part back into the elements is not loss but recycling within the eternal logos. The river metaphor for bodily continuity is one Marcus uses elsewhere, echoing Heraclitean flux.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VIII",
+    "modern_english": "You have taken on the names 'good,' 'modest,' and 'true' — and the Greek names emphron (thoughtfully intelligent), symphron (harmoniously accepting), and hyperphron (elevated above bodily concerns). Guard these. If you slip, return at once. Emphron means attending to every object that appears, without distraction. Symphron means willingly accepting whatever the common nature sends. Hyperphron means rising above bodily pleasures and pains, honor, death — treating all as matters of indifference beneath a wise person's concern. Hold to these names, and you begin a new life. To continue as before, with all the distractions and disorders of your former habits, is the part of someone foolish and too attached to life — like an arena fighter, covered in wounds, who begs to be saved for more of the same punishment the next day. Ship yourself away from all that to these few names. If you can abide in them, remain there as joyful as if you had been carried to the Islands of the Blessed. But if you relapse and cannot master your situation, even then — not in passion, but quietly and of your own will — let go of life rather than surrender them.",
+    "notes": "An unusually intense meditation in which Marcus addresses himself by the Greek names for the three Stoic excellences of mind. The Islands of the Blessed (Isles of the Blessed) are the afterlife paradise described by Hesiod and Plato — used here metaphorically for the inward paradise of philosophical peace. The gladiator image is vivid: the person who keeps relapsing into bad habits is as pitiable as the half-eaten fighter begging for another day in the arena.",
+    "proper_nouns": [
+      {
+        "name": "Hesiod",
+        "context": "in_original",
+        "tip": "Hesiod (c. 700 BCE), archaic Greek poet, author of Works and Days and Theogony. He describes the Islands of the Blessed as the final resting place of heroes in Works and Days.",
+        "url": "https://en.wikipedia.org/wiki/Hesiod"
+      },
+      {
+        "name": "Plato",
+        "context": "in_original",
+        "tip": "Plato (c. 428–348 BCE), Athenian philosopher, student of Socrates, founder of the Academy. He describes the Islands of the Blessed in the Gorgias and Republic.",
+        "url": "https://en.wikipedia.org/wiki/Plato"
+      }
+    ]
+  },
+  {
+    "num": "IX",
+    "modern_english": "Trivialities at home, wars abroad — sometimes terror, sometimes torpor. This is your daily slavery. If you are not more careful, the sacred philosophical principles you live by will gradually be erased from your mind. How many things do you study as a naturalist and then just let pass, without putting them to use? You must join action and contemplation at all times: attending to every present duty carefully and thoroughly, while also sustaining the contemplative delight of understanding each thing by its true nature — a delight available even when action is blocked. When will you attain the happiness of true simplicity and unaffected gravity? When you can rejoice in the clear knowledge of every particular thing: what it is made of, what it is for in the world, how long it can last, what composes it, who can give it and who can take it away.",
+    "notes": "Marcus rebukes himself for the gap between knowing Stoic philosophy and living it. The 'sacred dogmata' are the core philosophical principles; their gradual erasure through distraction and neglect is a recurring anxiety in the Meditations. The passage closes with a description of the Stoic practice of 'physical definition' — reducing every object to its material composition, purpose, and duration.",
+    "proper_nouns": []
+  },
+  {
+    "num": "X",
+    "modern_english": "The spider is not a little proud of catching the fly it hunted. Nor the hunter of catching his hare, the fisherman his fish with a net, the boar-hunter his boar, the bear-hunter his bear. So too might they be proud of their valiant acts against the Sarmatians recently defeated. But these soldiers and men of war, if you look into their minds — what are most of them doing but hunting after prey?",
+    "notes": "A deflating analogy between military glory and animal predation. Marcus was writing during the Marcomannic Wars on the Danube, and the Sarmatians — a group of nomadic Iranian-speaking peoples — were among Rome's opponents on the northern frontier. The meditation strips away the glory of conquest by placing it on the same level as a spider catching a fly.",
+    "proper_nouns": [
+      {
+        "name": "Sarmatai",
+        "context": "in_original",
+        "tip": "The Sarmatians, a confederation of nomadic Iranian-speaking peoples who occupied the Pontic steppe and were among Rome's opponents during the Marcomannic Wars of Marcus's reign.",
+        "url": "https://en.wikipedia.org/wiki/Sarmatians"
+      }
+    ]
+  },
+  {
+    "num": "XI",
+    "modern_english": "Find and set for yourself a clear method of contemplation by which you can see and represent to yourself the mutual transformation of all things into one another. Keep this method constantly in mind and exercise it thoroughly. For nothing is more effective at producing true greatness of mind.",
+    "notes": "Marcus is recommending the practice of seeing all things as continuously transforming — earth into air into fire and back again, bodies decomposing into elements, empires rising and falling. This contemplative exercise underpins Stoic equanimity: if nothing is fixed, nothing lost deserves grief. 'Magnanimity' (megalopsychia) is one of the Stoic virtues.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XII",
+    "modern_english": "He had freed himself from the bonds of his body, and perceiving that very soon he must say farewell to the world and leave all things behind, he devoted himself entirely to justice in his actions and to accepting with contentment whatever the common nature of the universe brought him. What others might say, think, or do against him — he did not even trouble himself with those thoughts. To go straight forward wherever right and reason led — following God in this way — was the only thing he kept in mind. That was his entire business and occupation.",
+    "notes": "This passage describes an exemplary unnamed figure — a person who has fully accepted mortality and concentrated his life on virtue and Providence. Whether Marcus is describing himself, a friend, or an ideal type is uncertain, but the portrait is of the fully realized Stoic sage. 'Following God' (hepesthai theo) is a classic Stoic formula for the life of reason in alignment with the universal logos.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIII",
+    "modern_english": "Why be suspicious at all? Why let thoughts of mistrust about the future trouble your mind? Do what needs to be done now — if you can determine it, what more do you need? If you can see the right course yourself, let no one divert you from it. If not, suspend action and take advice from the best available counsel. If anything else still hinders you, proceed with prudence according to the occasion, always keeping before you what seems most just and right. To hit that mark is happiness, because it is the only thing we can truly be said to fail at or succeed in.",
+    "notes": "Marcus reduces decision-making to a simple practical algorithm: determine the right course, act on it with prudence, take advice when uncertain, and set aside everything else. The claim that right action is the only true success or failure reflects the Stoic view that virtue is the only genuine good.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIV",
+    "modern_english": "What is at once slow and quick? Merry and grave? The person who follows reason as their guide in all things.",
+    "notes": "An aphoristic riddle. Reason is 'slow' in the sense of deliberate and unhurried, yet 'quick' in its clear perception; 'merry' in its equanimity, yet 'grave' in its seriousness. This kind of paradox was a recognized rhetorical form in antiquity — the Stoics used such formulations to capture the way that virtue unifies seemingly opposed qualities.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XV",
+    "modern_english": "Each morning when you wake up — before your emotions or external objects have had any effect on you, when your judgment is still freest — ask yourself: does it matter whether a right and just action is performed by me or by someone else when I am not able? It clearly does not. And as for those who live for the praise or blame of other men — have you forgotten what kind of people they really are? What their beds and their tables look like? What they habitually do, what they chase and what they flee? What thefts and grabs they commit — not with hands or feet, but with that more precious part, the mind, which could, if it chose, be full of faith, modesty, truth, justice, and a good spirit.",
+    "notes": "Marcus recommends a morning self-examination — a practice common in ancient philosophical traditions. The key Stoic point is that the outcome of a just action is 'indifferent': what matters is your intention, not who gets the credit. The closing picture of the minds of reputation-chasers — capable of nobility but given over to theft — is a characteristic Stoic undressing of worldly ambition.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVI",
+    "modern_english": "Give whatever you will; take away whatever you will — so says the person who has been well taught and is truly modest, speaking to the one who gives and takes away. And he says it not out of stubborn resolve, but out of pure love and humble submission.",
+    "notes": "The unnamed 'he' is the Stoic sage at prayer — the attitude is one of unconditional acceptance of Providence. The tone of 'pure love' distinguishes this from mere passive resignation: the Stoic ideal is amor fati, active love of whatever fate brings. The image anticipates Epictetus's formula that nothing belongs to us; all is borrowed from the universe.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVII",
+    "modern_english": "Live indifferent to the world and worldly things, as if you were alone on a desert hillside. For whether here or there, if the whole world is but one city, it makes little difference where you are. Let people see a true man living according to human nature. If they cannot bear it, let them kill him. For it is better to die than to live the way they would have you live.",
+    "notes": "Marcus draws on the Cynic and Stoic tradition of the cosmopolitan — the citizen of the universe who is equally at home anywhere and indifferent to local conditions. The stark closing phrase ('let them kill me') echoes Socrates' refusal at his trial to abandon philosophy to save his life — a touchstone example for Marcus throughout the Meditations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVIII",
+    "modern_english": "Stop arguing about what the marks of a good person are. Just actually be one.",
+    "notes": "One of the sharpest aphorisms in the Meditations. Marcus punctures the tendency — common in philosophical circles — to endlessly theorize about virtue rather than practice it. This is consistent with his impatience throughout Book X with intellectual delay and procrastination.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIX",
+    "modern_english": "Always represent to yourself both the general age and extent of the whole world; and in that context see how any particular thing is — in substance — no bigger than the tiniest seed, and in duration — no longer than one turn of a pestle in a mortar. Then fix your mind on each particular object and see it as already in a state of dissolution and change, tending toward putrefaction or dispersion — whatever constitutes the death of each kind of thing.",
+    "notes": "A characteristic Stoic scale exercise: zooming out to the cosmic scale to diminish the apparent importance of any individual thing, then zooming back in to see each thing already in the process of dissolution. Both moves serve equanimity. The pestle-and-mortar image is unusually domestic for Marcus, suggesting he drew this metaphor from everyday observation.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XX",
+    "modern_english": "Observe people across all their activities and occupations: when they eat, when they sleep, when they perform natural bodily functions, when they are in the act of desire. Again: when they are at their greatest exultation, in the full pomp of their glory — or when angry and displeased, rebuking others from some position of authority as if from a great height. Consider how base and servile they had to make themselves just a little while ago in order to reach that position — and what their condition will be within a very short time, once death has seized them.",
+    "notes": "Marcus uses the rhetorical technique of 'decomposition' — stripping away the trappings of power and prestige by placing them alongside the body's most basic and undignified acts, then projecting forward to death. This dissolves the awe we feel before the powerful by revealing the common clay beneath.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXI",
+    "modern_english": "Whatever the common nature of all things sends to each person is best for that person — and it is best precisely when she sends it.",
+    "notes": "A compact statement of Stoic providential trust. The 'common nature' is the universal logos that governs all events. This is not mere resignation but a theological claim: the timing and content of each person's circumstances is optimally arranged by the rational order of the cosmos.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXII",
+    "modern_english": "The earth, a poet says, often longs for the rain; and the sky in its glory often desires to fall upon the earth — a mutual love between them. And so, I say, does the world bear a loving affection for whatever is about to come to pass. 'My longing will accord with yours, O world. The object of my desire shall be the same as yours.' This is also what is meant by the common Greek and Latin idiom of saying that certain recurring things 'love' to happen.",
+    "notes": "Marcus quotes a lost poet (possibly Euripides) and then personalizes the image: he pledges to bring his own desires into accord with the world's. This is the Stoic practice of 'wishing what the logos wishes' — the psychological exercise of replacing personal desire with cosmic alignment. The Greek idiom he cites at the close refers to the verb philein used for habitual or customary events.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIII",
+    "modern_english": "Either you go on in this kind of life — which you have long been used to, and which is therefore tolerable. Or you retire and leave the world of your own accord, and you get your wish. Or your life is cut short, and you can rejoice that you have completed your duty. One of these three must come. Take comfort.",
+    "notes": "A trilemma of resignation: continuation, chosen departure, or death. All three are presented as acceptable outcomes, because in each case the Stoic has either lived virtuously or is released from the obligation to do so. The calm logic mirrors Epictetus's argument that the philosopher always has an exit available and is therefore never a prisoner.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIV",
+    "modern_english": "Remember always that the solitary places and deserts that so many philosophers have extolled are in themselves simply what they are — and that the same nature is everywhere to be seen, whether on a mountaintop or in a city. Plato says of his philosopher something like: 'as private and retired as if enclosed in a shepherd's lodge on a hilltop.' Wherever you are, ask yourself: what is the governing part of me? What is its present condition, and what am I using it for? Is it reasonable? Is it free and independent — or has it grown so attached to the flesh that it is swayed by the body's impulses?",
+    "notes": "Marcus cites Plato to make a characteristic Stoic counter-argument against those who sought philosophical retreat in literal wilderness. The true retreat is interior — into the governing faculty of the mind (the hegemonikon). The questions at the end are a standard self-examination in Stoic practice.",
+    "proper_nouns": [
+      {
+        "name": "Plato",
+        "context": "in_original",
+        "tip": "Plato (c. 428–348 BCE), Athenian philosopher and founder of the Academy. Marcus quotes or paraphrases him frequently; the specific reference here may be to the Theaetetus (174d).",
+        "url": "https://en.wikipedia.org/wiki/Plato"
+      }
+    ]
+  },
+  {
+    "num": "XXV",
+    "modern_english": "A person who runs away from his master is a fugitive. But the law is every person's master. Therefore whoever abandons the law is a fugitive. And so is anyone who is sorry, angry, or afraid about anything that has been, is, or will be appointed by the one who is Lord and Governor of the universe. For that Governor truly and properly is the Law — the one who distributes all things — and whatever feels sorry, angry, or afraid is in flight from that law.",
+    "notes": "A syllogistic argument from the Stoic identification of natural law (nomos) with logos and divine Providence. The Greek wordplay here — Nomos (law) as Nemon (distributor) — reinforces the idea that the rational order of the universe is the only legitimate authority. Emotional resistance to fate is cast as desertion.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVI",
+    "modern_english": "From a man comes the seed — once it enters the womb, he has no more to do with it. Another cause takes over and in time brings a child — that extraordinary result from such a small beginning — to perfection. Again, a man swallows food, and once down, he is done with it. Another cause takes over: distributing nourishment to the senses, the emotions, life, strength — doing all the marvellous work that belongs to a human being. These hidden, invisible workings are what you must contemplate — not just the things themselves but the power that operates them: so that you behold it, if not with the eyes of the body, then as plainly and visibly as you observe the external cause of any movement in the world.",
+    "notes": "Marcus meditates on the invisible agency that governs biological processes — growth, digestion, gestation — as a way of perceiving the logos at work in nature. The Stoics held that the logos (pneuma, or divine breath) permeates and organizes all matter; attending to its work in the body is a form of natural theology.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVII",
+    "modern_english": "Always call to mind how things that are today have been much the same in all ages before — and will be the same hereafter. Picture entire dramas — scenes from the lives of men of one calling and profession. Consider those you have known yourself, or read of in ancient history: the whole court of Hadrian, the whole court of Antoninus Pius, the whole court of Philip, that of Alexander, that of Croesus. You will find they are all cut from the same cloth. Only the actors were different.",
+    "notes": "History as a Stoic exercise in pattern-recognition and detachment. The courts of Hadrian and Antoninus Pius were Marcus's own immediate predecessors as emperors; Philip II and Alexander the Great were the Macedonian king and his world-conquering son; Croesus was the fabulously wealthy king of Lydia (c. 560–546 BCE), a byword for worldly glory. All have vanished; all ran the same drama.",
+    "proper_nouns": [
+      {
+        "name": "Adrianus",
+        "context": "in_original",
+        "tip": "Hadrian (76–138 CE), Roman Emperor 117–138 CE, Marcus Aurelius's adoptive great-uncle and predecessor, known for his travels, building projects (including Hadrian's Wall), and philhellenism.",
+        "url": "https://en.wikipedia.org/wiki/Hadrian"
+      },
+      {
+        "name": "Antoninus Pius",
+        "context": "in_original",
+        "tip": "Antoninus Pius (86–161 CE), Roman Emperor 138–161 CE, Marcus's adoptive father and direct predecessor, whose long and peaceful reign Marcus admired deeply.",
+        "url": "https://en.wikipedia.org/wiki/Antoninus_Pius"
+      },
+      {
+        "name": "Philippus",
+        "context": "in_original",
+        "tip": "Philip II of Macedon (382–336 BCE), king of Macedon and father of Alexander the Great; his court was the setting for the rise of Macedonian power.",
+        "url": "https://en.wikipedia.org/wiki/Philip_II_of_Macedon"
+      },
+      {
+        "name": "Alexander",
+        "context": "in_original",
+        "tip": "Alexander the Great (356–323 BCE), king of Macedon and conqueror of an empire stretching from Greece to India. Marcus frequently uses him as an example of worldly glory reduced to dust.",
+        "url": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+      },
+      {
+        "name": "Crœsus",
+        "context": "in_original",
+        "tip": "Croesus (c. 595–547 BCE), last king of Lydia, proverbially wealthy, whose kingdom was conquered by Cyrus the Great of Persia. A classical symbol of the fragility of worldly fortune.",
+        "url": "https://en.wikipedia.org/wiki/Croesus"
+      }
+    ]
+  },
+  {
+    "num": "XXVIII",
+    "modern_english": "Imagine a pig squealing and struggling when its throat is cut — that is exactly like everyone who grieves over any worldly loss and makes a scene. And it is the same with the person who, alone in bed, mourns the miseries of mortal life. Remember this: only rational creatures are granted the possibility of willingly and freely submitting to Providence. All creatures alike, however, must submit — willingly or not.",
+    "notes": "A deliberately brutal comparison. Marcus uses the image of a slaughtered pig — stripped of all dignity — to characterize emotional resistance to fate. The Stoic distinction is precise: animals and unphilosophical people submit to the inevitable by compulsion; the philosopher submits freely, by rational consent. That voluntary alignment with Providence is the specifically human dignity.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIX",
+    "modern_english": "Whatever you are about to do, ask yourself this: because I will no longer be able to do this when I am dead, should death therefore seem terrible to me?",
+    "notes": "A pocket meditation on death that deflates its terror by questioning the logic of attachment. The Stoics argued that death removes nothing that was truly valuable — virtue and reason belong to no future moment anyway, and the present moment is always sufficient for living well.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXX",
+    "modern_english": "When you are offended by someone's wrongdoing, immediately reflect on yourself and consider what you are guilty of in the same kind. Perhaps you too regard wealth, pleasure, or praise as happiness, or something similarly misguided. If you keep this in mind, your anger will quickly dissolve — especially when you add the thought that the offender was driven by error and ignorance, and could not have done otherwise while holding his mistaken beliefs. If you can, take away his false belief — that is the only real help you can offer.",
+    "notes": "Marcus applies the Stoic doctrine of universal human fallibility as a remedy for anger. This is a personal application of the principle from Book IX: all wrongdoing flows from ignorance (a Socratic premise adopted by the Stoics). The prescription — cure ignorance, not punish the ignorant — is the logical conclusion.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXI",
+    "modern_english": "When you see Satyro, think of Socraticus and Eutyches, or Hymen. When you see Euphrates, think of Eutychion and Sylvanus. When you see Alciphron, think of Tropaeophorus. When you see Xenophon, think of Crito or Severus. And when you look at yourself, think of one of the Caesars past. Then ask: where are all these people now? Nowhere. Or anywhere. By this you will always see how all worldly things are but smoke — or rather nothing at all. Especially when you remember that what has once changed will never be again as long as the world endures. And you yourself: how much longer will you last? Why is it not enough for you to pass your small allotted portion of time virtuously and as befits you?",
+    "notes": "A roll-call of obscure contemporaries matched against slightly less obscure predecessors — the point being that both groups have entirely vanished. Satyro, Euphrates, Alciphron, Xenophon, Socraticus, Eutyches, Eutychion, Sylvanus, Tropaeophorus, Crito, and Severus are mostly minor or unknown figures from Marcus's circle; Euphrates of Epiphania was a well-known Stoic philosopher of the first century CE. The Caesars paired with Marcus himself are presumably the long line of emperors from Augustus onward.",
+    "proper_nouns": [
+      {
+        "name": "Euphrates",
+        "context": "in_original",
+        "tip": "Euphrates of Epiphania (c. 35–118 CE), a celebrated Stoic philosopher and orator from Syria, praised by Pliny the Younger and Epictetus.",
+        "url": "https://en.wikipedia.org/wiki/Euphrates_of_Epiphania"
+      },
+      {
+        "name": "Cæsars",
+        "context": "in_original",
+        "tip": "The line of Roman emperors from Julius Caesar onward; Marcus uses them collectively as examples of worldly power that has utterly passed away.",
+        "url": "https://en.wikipedia.org/wiki/Roman_emperor"
+      }
+    ]
+  },
+  {
+    "num": "XXXII",
+    "modern_english": "What kind of situation and life is it that you are so keen to be free of? For all these things, what are they but fit objects for an understanding that perceives each thing truly? Have patience, then, until — like a strong stomach that converts all food into its own nature, or a great fire that turns whatever is thrown into it into flame and light — you have made even these things familiar, and as it were natural to yourself.",
+    "notes": "Marcus reframes the very conditions that exhaust him — court life, warfare, duty — as the material on which a philosopher's understanding feeds and grows strong. The fire and stomach metaphors suggest that the mind assimilates adversity rather than being consumed by it. The image of fire recurs because the Stoics identified the logos with a divine, organizing fire.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXIII",
+    "modern_english": "Let no one be able to say truly that you are not simple, sincere, and good. Let anyone who holds that opinion be mistaken. For all of this depends entirely on you — who is there to stop you from being simple and good? If you cannot be such a person, then resolve to die rather than to live otherwise. For reason itself does not support the life of someone who cannot be such. Whatever right reason suggests to be said or done in any present situation — it is in your power to do it or say it; so offer no excuses that you are prevented. You will never stop groaning until the thing that pleasure is to the self-indulgent becomes to you: acting in every situation in the way that is fully consistent with human nature. Call that — and only that — your pleasure. And it is available everywhere.",
+    "notes": "An urgent self-address — Marcus demanding that he put up or shut up about his philosophical commitments. The phrase 'resolve to die rather than' echoes Socrates, and the closing definition of 'pleasure' as acting fully in accordance with human nature is a deliberate inversion of Epicurean hedonism: the Stoic's pleasure is virtue, not sensation.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXIV",
+    "modern_english": "As someone bitten by a rabid dog becomes afraid of nearly everything they see, so someone bitten by the dogmata — in whom true knowledge has made its impression — finds that nearly everything they see or read, however brief or ordinary, offers a useful reminder to keep them free from grief and fear. For example, the poet says: 'The winds blow upon the trees, and the leaves fall to the ground; then the trees bud again, and by spring-time put forth new branches. So is the generation of men: some come into the world, and others go out.' These leaves, then — your children are leaves. Those who applaud you solemnly, or who commend your speeches as 'wisely spoken!' — leaves. Those who curse you, or privately deride you — also leaves. And those who will come after, in whose memory the names of famous men are preserved — leaves too. For all these worldly things: their spring comes and they put forth; then the wind blows and they are gone; and others grow up in their place from the same common material. But to endure for only a while is common to all things. Why then do you so earnestly chase or flee them as if they were permanent? A little while, and your eyes will be closed — and for whoever carries you to your grave, another will mourn within a short time after.",
+    "notes": "The leaf simile comes from Homer's Iliad (Book VI, Glaucus to Diomedes) — one of antiquity's most famous images for human transience. Marcus reapplies it systematically: children, admirers, critics, posterity — all leaves on the same tree, briefly green and then gone. The image of someone 'bitten' by philosophy is characteristically Stoic: true knowledge takes hold like an infection and transforms the way you see everything.",
+    "proper_nouns": [
+      {
+        "name": "Homer",
+        "context": "in_notes",
+        "tip": "Homer, the ancient Greek poet traditionally credited with the Iliad and Odyssey. The leaf simile Marcus paraphrases here appears in Iliad Book VI (lines 146–149), spoken by Glaucus.",
+        "url": "https://en.wikipedia.org/wiki/Homer"
+      }
+    ]
+  },
+  {
+    "num": "XXXV",
+    "modern_english": "A healthy eye must be able to see whatever is there to be seen — not green things only, for that is the mark of a diseased eye. A healthy ear and nose must be ready for whatever is to be heard or smelled. A healthy stomach must be indifferent to all kinds of food, as a millstone is indifferent to whatever grain it was made to grind. In the same way, a sound understanding must be ready for whatever comes. But someone who says 'Oh, if only my children could live!' or 'Oh, if only everyone would praise whatever I do!' is like an eye that seeks only green things, or teeth that want only soft food.",
+    "notes": "An extended analogy from bodily health to philosophical soundness. The healthy eye, ear, stomach, and understanding all share one property: readiness for whatever comes, without preference or exclusion. The particular complaints Marcus cites — longing for children's survival, craving universal praise — are not abstract but personal anxieties he had reason to feel.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXVI",
+    "modern_english": "There is not a person so fortunate in dying that some bystander will not be ready to rejoice at their supposed calamity. Take a genuinely wise and virtuous person: will there not be someone thinking, 'Well, at last I am rid of that schoolmaster — though he did not trouble us much, I knew in his heart he condemned us'? That is how they speak of the virtuous. But as for us — how many reasons are there for others to be glad to be rid of us? Think of this when you are dying, and you will die more willingly, saying to yourself: I am leaving a world in which even those I have loved most, suffered for, prayed for, and labored over — even they hoped to live happier after my death. What reason then to cling to life any longer? Yet even so, when you die, carry no less kindness toward them for it. Continue to be their friend, wish them well, be gentle with them — but let none of that make you less ready to go. For just as those who die quickly and easily are swiftly separated from their bodies, so must your separation from them be. To these people nature joined me; now she parts us. I leave as from friends and kinsmen — willingly, without reluctance or compulsion. This too is according to nature.",
+    "notes": "An unusually tender and melancholy passage. Marcus imagines not only the indifference of bystanders at a philosopher's death, but the quiet relief of those one has loved. Rather than using this to cultivate bitterness, he uses it as a reason for willing release — a form of amor fati applied to the social bonds of life. The closing lines echo the Stoic model of death as a natural separation, not a rupture.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXVII",
+    "modern_english": "Make it a habit, whenever you see someone doing something, to ask yourself immediately (if possible): what is this person's purpose in this action? But begin with yourself first, and examine yourself rigorously about everything you do.",
+    "notes": "A brief rule for Stoic social observation. Understanding another's purpose requires first understanding your own — the self-examination precedes and grounds the social one. This practice prevents both projection and misinterpretation, and is one of the tools Marcus uses to sustain charitable interpretation of others' behavior.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXVIII",
+    "modern_english": "Remember that what sets a person in motion — what has power over the emotions and drives them one way or another — is not any external thing, but what is hidden within their own opinions and judgments. That is their rhetoric. That is their life. That, properly speaking, is the person themselves. As for the body — a case enclosing you, with all its many instruments attached — do not let it trouble you. It is like a carpenter's axe, except that it was born with you and naturally grows on you. Without the inner cause that moves and governs it, none of those bodily parts is any more use to you than a weaver's shuttle is useful without the weaver, a pen without the writer, or a whip without the driver.",
+    "notes": "Book X closes with a return to the Stoic doctrine of the hegemonikon — the governing, rational faculty — as the true self. The body and its organs are instruments: useful only insofar as the rational will directs them. The series of tool metaphors (shuttle, pen, whip) illustrates that instruments are inert without their operator, and the operator — the rational self — is what truly constitutes the person.",
+    "proper_nouns": []
+  }
+]

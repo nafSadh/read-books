@@ -1,0 +1,481 @@
+[
+  {
+    "num": "I",
+    "modern_english": "Don't fool yourself into thinking you can still claim the reputation of a lifelong philosopher — you know you've strayed from that path too often. Stop chasing fame or credit and focus instead on what remains: live out whatever time is left in accordance with your nature. You've tried syllogisms, wealth, honor, and pleasure — none of it worked. Happiness lies in practicing what human nature actually requires, guided by right beliefs about what is truly good (justice, temperance, courage, generosity) and truly evil (their opposites).",
+    "notes": "Marcus opens Book VIII with a frank self-reproach, unusual even in this most personal of texts. The 'dogmata' (moral tenets) driving this passage are core Stoic doctrine: virtue is the only true good; all else is 'indifferent.' The list of failed satisfactions — syllogisms, wealth, honor, pleasure — rehearses common ancient philosophical categories. Book VIII is thought to have been composed around 175 CE during the Marcomannic Wars.",
+    "proper_nouns": []
+  },
+  {
+    "num": "II",
+    "modern_english": "Before each action ask yourself: when this is done, will I be at peace with it? I am going to die soon anyway — everything will be over. So the only thing that matters is whether what I'm doing right now is the proper act of a reasonable being aimed at the common good, governed by the same rational law that governs God.",
+    "notes": "This brief meditation encapsulates Stoic practical ethics: the 'reserve clause' (act with the caveat that outcomes are not in your control) and the idea that the standard for action is reason — the same logos that structures the cosmos. Marcus frequently reminds himself of mortality as a spur to present virtue, not future regret.",
+    "proper_nouns": []
+  },
+  {
+    "num": "III",
+    "modern_english": "What are Alexander, Caesar, and Pompey compared to Diogenes, Heraclitus, and Socrates? The conquerors extended their dominion over lands and armies — but their slavery to error extended just as far. The philosophers penetrated the true nature of things and exercised their power over causes and subjects.",
+    "notes": "Marcus sets philosophical mastery above military or political power — a striking admission for a ruling emperor. The contrast between conquerors and sages is a recurring Stoic theme. Diogenes the Cynic, the radically self-sufficient sage, is juxtaposed with world-conquerors to make the point that inner freedom is the only real dominion.",
+    "proper_nouns": [
+      {
+        "name": "Alexander",
+        "context": "in_original",
+        "tip": "Alexander the Great (356–323 BCE), king of Macedon who conquered the Persian Empire and much of the known world.",
+        "url": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+      },
+      {
+        "name": "Caius",
+        "context": "in_original",
+        "tip": "Julius Caesar (100–44 BCE), Roman general, statesman, and dictator. 'Caius' (Gaius) was his praenomen.",
+        "url": "https://en.wikipedia.org/wiki/Julius_Caesar"
+      },
+      {
+        "name": "Pompeius",
+        "context": "in_original",
+        "tip": "Pompey the Great (106–48 BCE), Roman general and statesman, rival of Julius Caesar.",
+        "url": "https://en.wikipedia.org/wiki/Pompey"
+      },
+      {
+        "name": "Diogenes",
+        "context": "in_original",
+        "tip": "Diogenes of Sinope (c. 412–323 BCE), founder of Cynicism, famous for living in radical poverty and self-sufficiency.",
+        "url": "https://en.wikipedia.org/wiki/Diogenes"
+      },
+      {
+        "name": "Heraclitus",
+        "context": "in_original",
+        "tip": "Heraclitus of Ephesus (c. 535–475 BCE), pre-Socratic philosopher who held that the cosmos is governed by a rational logos and that all things are in flux.",
+        "url": "https://en.wikipedia.org/wiki/Heraclitus"
+      },
+      {
+        "name": "Socrates",
+        "context": "in_original",
+        "tip": "Socrates (470–399 BCE), Athenian philosopher and foundational figure of Western ethics, executed by Athens for impiety and corrupting the youth.",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      }
+    ]
+  },
+  {
+    "num": "IV",
+    "modern_english": "People will keep on doing what they do whether you despair or not. First: don't let it disturb you — good and bad alike happen according to the nature of the universe, and soon everything will be forgotten, as it already is for Africanus and Augustus. Second: keep your mind fixed on the task — remember you must still be a good person, say what seems most just, and say it kindly, modestly, without hypocrisy.",
+    "notes": "Africanus refers to Scipio Africanus, the great Roman general, already a distant memory by Marcus's time. The meditation rehearses the Stoic 'double move': accept what you cannot change, then act rightly in whatever space remains. The reminder to speak justly 'without hypocrisy' is characteristic of Marcus's demands on himself as emperor.",
+    "proper_nouns": [
+      {
+        "name": "Africanus",
+        "context": "in_original",
+        "tip": "Scipio Africanus (236–183 BCE), Roman general who defeated Hannibal at the Battle of Zama. Used here as an example of great men now forgotten.",
+        "url": "https://en.wikipedia.org/wiki/Scipio_Africanus"
+      },
+      {
+        "name": "Augustus",
+        "context": "in_original",
+        "tip": "Augustus (63 BCE–14 CE), first Roman emperor and founder of the Principate — by Marcus's time, already a figure of the distant past.",
+        "url": "https://en.wikipedia.org/wiki/Augustus"
+      }
+    ]
+  },
+  {
+    "num": "V",
+    "modern_english": "The work of universal nature is this: to take what is here, move it there, change it, then take it from there and carry it somewhere else again. So nothing truly new ever happens. All things are familiar and equally distributed.",
+    "notes": "This brief meditation expresses the Stoic doctrine of eternal recurrence and the perpetual recycling of matter within the cosmos. Nothing is truly created or destroyed; everything is transformed. The equanimity this should produce — 'nothing to fear' — is a central goal of Stoic meditation on nature.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VI",
+    "modern_english": "Every particular nature finds fulfillment when moving along its own proper course. A rational nature succeeds when: it forms no false or uncertain impressions; all its intentions aim only at the common good; and it willingly embraces whatever universal nature assigns it. The rational nature is part of a common nature that cannot be obstructed — unlike the leaf, which is part of a blind, servile nature that can be thwarted.",
+    "notes": "The distinction between the rational soul (which participates in the universal logos and cannot ultimately be hindered) and the vegetative/animal soul (which is subject to external forces) is fundamental Stoic psychology. 'Universal nature' here is both physical cosmos and providential divine reason — the Stoics identified the two.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VII",
+    "modern_english": "You have no time to read? Fine. But you always have the opportunity to stop wronging yourself, to resist carnal pleasures and pains, to refuse vainglory, and — even toward those who are ungrateful and cold to you — to remain patient and keep caring for them.",
+    "notes": "A characteristically practical Stoic rebuke to the excuse of busyness. Marcus was a voracious reader (especially of Epictetus) but spent years on military campaign with little opportunity for study. The meditation draws the classic Stoic line: external conditions may prevent reading, but they cannot prevent virtue.",
+    "proper_nouns": []
+  },
+  {
+    "num": "VIII",
+    "modern_english": "Stop complaining about the burdens of court life — whether in public or privately to yourself.",
+    "notes": "One of the shortest meditations in the entire work — a bare, stern command. Marcus served as emperor for nearly two decades and found the ceremonial, political, and social demands of court life exhausting. This is a reminder to himself not to indulge even in private complaint.",
+    "proper_nouns": []
+  },
+  {
+    "num": "IX",
+    "modern_english": "Repentance is an inward reproach for neglecting something profitable. Since what is truly good is also profitable, and an honest person values such things, a genuinely virtuous person never repents missing a bodily pleasure. Therefore, no bodily pleasure is truly good or profitable.",
+    "notes": "This passage presents a tight Stoic syllogism on the nature of repentance. The argument: repentance is only appropriate for missing something good; virtuous people never regret missing pleasures; therefore pleasures are not genuinely good. The Stoics classified pleasure (hedone) as a 'preferred indifferent' at best, not a true good.",
+    "proper_nouns": []
+  },
+  {
+    "num": "X",
+    "modern_english": "For everything that presents itself to you, ask: What is it in itself? What is its substance? What is it made of? What is its function? What is its form or cause? What is its place in the world, and how long will it last? Apply this method to everything.",
+    "notes": "This is a Stoic analytical exercise: strip each thing down to its elements — matter, form, cause, function, duration — to see it clearly and prevent false valuation. The exercise of 'definition' (horos) appears throughout the Meditations and is influenced by Aristotelian categories adapted for Stoic purposes.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XI",
+    "modern_english": "When you struggle to wake up and get going, remind yourself: acting for the common good is what your nature as a human being requires. Sleep is common to unreasonable animals too. And what is more fitting and pleasant than what is according to nature?",
+    "notes": "Marcus apparently struggled with getting out of bed — he mentions it elsewhere too. The Stoic response is characteristically functional: one's nature as a rational, social being demands active engagement with the world, not the passive rest that any animal can achieve. The appeal to 'what is according to nature' is the Stoic standard for action.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XII",
+    "modern_english": "Whenever a thought or impression arises, examine its true nature and qualities as best you can, and reason through it.",
+    "notes": "This is the Stoic practice of 'assent' (synkatathesis): before accepting any impression as real or important, subject it to rational examination. Epictetus placed this habit at the center of Stoic practice. The goal is to catch and question automatic reactions before they solidify into passions.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIII",
+    "modern_english": "When you first encounter someone, immediately consider what opinions they hold about good and evil, pain and pleasure, honor and death. Then you won't be surprised or upset by what they do — you'll understand they can't act otherwise given those beliefs. Just as it would be absurd to be shocked that a fig tree produces figs, it's absurd to be shocked when people act from their own nature. A doctor isn't surprised by a fever, nor a sailor by a headwind.",
+    "notes": "This exercise in mental 'pre-meditation' (praemeditatio) draws on the Stoic doctrine that all wrongdoing is error — people act badly because they hold false beliefs about what is good. The fig-tree analogy appears to derive from Epictetus. The physician and sailor examples are Socratic: the expert is never surprised by what their domain naturally produces.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIV",
+    "modern_english": "Remember: changing your mind when someone shows you a better path is just as honorable as getting it right the first time. All that is required of you is what lies within your own deliberation and judgment.",
+    "notes": "A Stoic defense of intellectual humility and the willingness to be corrected. Marcus, as emperor, was surrounded by flattery and rarely contradicted; this reminder was therefore personally important. The Stoics held that the wise man always follows the best argument, not pride or habit.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XV",
+    "modern_english": "If something was in your power, would you do it differently? Then do it. If it wasn't in your power, who are you blaming — the atoms or the gods? Both options are madness. Either fix what can be fixed, or stop complaining about what can't — nothing should be done without a purpose.",
+    "notes": "A compressed statement of the Stoic dichotomy of control. 'The atoms' refers to Epicurean materialism, which Marcus occasionally invokes as a foil: if the world is purely mechanical, complaint is equally meaningless. The practical conclusion — fix what you can, accept what you cannot — is the most actionable Stoic principle.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVI",
+    "modern_english": "Whatever dies and falls, however and wherever it dies, it cannot fall out of the world. It stays here and changes, dissolves back into its elements — the same elements that make up the world, and that make up you. And when they change, they don't complain. Why should you?",
+    "notes": "The Stoics held that at death the soul disperses back into the pneuma (the cosmic breath or fiery rational substance) that pervades the universe. Nothing is truly destroyed; matter is only rearranged. The meditation uses this physics to argue against grief at death — the elements themselves don't resist their transformations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVII",
+    "modern_english": "Everything was made for something: a horse, a vine. Even the sun would say, 'I was made for something.' Every god has a function. What then were you made for? To amuse yourself and take it easy? Surely even common sense won't accept that.",
+    "notes": "Teleological reasoning was central to Stoic cosmology: every natural thing has a function (telos) fitted to it by providential reason. Marcus uses this framework to argue that human beings, as uniquely rational and social creatures, were made for active virtue and service — not leisure or self-gratification.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVIII",
+    "modern_english": "Nature's purpose is as fully expressed in the ending and dissolution of a thing as in its beginning and continuation.",
+    "notes": "A one-sentence Stoic meditation on death as natural completion. The word 'nature' here carries its full Stoic weight: universal reason working through all things. Death is not a defeat of nature's purpose but its expression. This underpins Marcus's repeated effort to accept death without grief.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XIX",
+    "modern_english": "Think of fame like tossing a ball — it's neither better for going up nor worse for coming down or hitting the ground. Same with a soap bubble, or a candle flame. As for the body, if you want to see its true worth, imagine it old and withered, sick with pain, or in the grip of lust. As for fame: both the praiser and the praised will soon be dust. You're only praised in one small corner of this already tiny part of the world — and not even consistently there. And what is the whole earth itself but a speck in relation to the whole universe?",
+    "notes": "The ball and bubble images are ancient philosophical commonplaces for the transience of worldly things. The exercise of imagining the body 'turned worst-side-up' is a Stoic meditation technique for removing false attachment to physical pleasures. The cosmic zoom-out — earth as a speck in the universe — recurs throughout the Meditations and may have been inspired by Plato's Phaedo and Cicero's 'Dream of Scipio.'",
+    "proper_nouns": []
+  },
+  {
+    "num": "XX",
+    "modern_english": "Whatever you are considering, ask: is this a matter of substance, or a guiding principle, or an action, or a true meaning?",
+    "notes": "A crisp analytical schema for examining any question. The four categories — matter, dogma (principle), operation (action), and meaning — reflect the Stoic habit of categorizing everything to prevent confused thinking. It resembles the quadripartite analysis in meditation X but more abstractly framed.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXI",
+    "modern_english": "These things happened to you, and justly so. Why don't you change? But of course — you'd rather become good tomorrow than today.",
+    "notes": "A sharp, ironic self-rebuke. Procrastination in self-improvement was a target of Stoic criticism from Seneca onward. The meditation is almost sarcastic in tone — unusual for the Meditations — suggesting Marcus is being hard on himself for repeatedly deferring the work of becoming better.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXII",
+    "modern_english": "Shall I do this? Yes — as long as my purpose is to do good for others. Does something difficult happen to me? I accept it, referring it to the gods and their providence, the fountain of all things.",
+    "notes": "A two-part test for every action and every event: my actions must aim at the common good; everything that happens to me comes from divine providence and is therefore acceptable. This two-move structure — active virtue outward, passive acceptance inward — is the operational Stoic program in miniature.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIII",
+    "modern_english": "Use one example to judge all others. Take bathing — all that time and fuss, and what is it really? Oil, sweat, grime, a greasy residue. Almost every part of life and every worldly thing is like that when you look closely.",
+    "notes": "The deflationary analysis of physical pleasures and routines was a formal Stoic exercise. By stripping away the social prestige or sensory appeal of an activity and describing it in plain physical terms, Marcus trains himself against attachment to worldly comfort. Roman bathing culture was elaborate and socially central — a pointed target.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIV",
+    "modern_english": "Lucilla buried Verus — then Lucilla was buried. Secunda buried Maximus — then Secunda. Epitynchanus buried Diotimus — then Epitynchanus. Antoninus Pius buried his wife Faustina — then Antoninus himself. Celer buried Hadrian — then Celer. Those proud, austere ones — Charax, the Platonist Demetrius, Eudaemon and the rest — all gone. Some forgotten immediately, some turned into legends, and now even the legends have faded. Remember: what you are made of will soon scatter, and your breath and soul will either cease or be reassigned.",
+    "notes": "A cascade of names from the imperial circle. Lucilla was the mother of Lucius Verus, Marcus's co-emperor; Faustina was Marcus's own wife; Hadrian was the emperor before Antoninus Pius. Charax and Demetrius the Platonist were obscure philosophers of that era. The meditation drives home a key Stoic point: even those who themselves meditated on death are now dead and forgotten.",
+    "proper_nouns": [
+      {
+        "name": "Lucilla",
+        "context": "in_original",
+        "tip": "Domitia Lucilla (died c. 155 CE), mother of Marcus Aurelius, not to be confused with Marcus's daughter of the same name.",
+        "url": "https://en.wikipedia.org/wiki/Domitia_Lucilla"
+      },
+      {
+        "name": "Verus",
+        "context": "in_original",
+        "tip": "Likely refers to Marcus's co-emperor Lucius Verus (130–169 CE), who died of plague. In this passage, Lucilla buries Verus — suggesting the elder Lucilla's husband, or a son.",
+        "url": "https://en.wikipedia.org/wiki/Lucius_Verus"
+      },
+      {
+        "name": "Antoninus Pius",
+        "context": "in_original",
+        "tip": "Antoninus Pius (86–161 CE), Roman emperor and adoptive father of Marcus Aurelius, renowned for his peaceful and just reign.",
+        "url": "https://en.wikipedia.org/wiki/Antoninus_Pius"
+      },
+      {
+        "name": "Faustina",
+        "context": "in_original",
+        "tip": "Faustina the Elder (c. 100–141 CE), wife of Antoninus Pius and adoptive grandmother of Marcus Aurelius.",
+        "url": "https://en.wikipedia.org/wiki/Faustina_the_Elder"
+      },
+      {
+        "name": "Adrianus",
+        "context": "in_original",
+        "tip": "Hadrian (76–138 CE), Roman emperor who adopted Antoninus Pius and set in motion the succession that led to Marcus Aurelius.",
+        "url": "https://en.wikipedia.org/wiki/Hadrian"
+      },
+      {
+        "name": "Demetrius the Platonic",
+        "context": "in_original",
+        "tip": "A Platonist philosopher of the 2nd century CE, known at the court of Hadrian and Antoninus Pius. Little is known of him beyond passing references.",
+        "url": "https://en.wikipedia.org/wiki/Demetrius_of_Alexandria_(philosopher)"
+      }
+    ]
+  },
+  {
+    "num": "XXV",
+    "modern_english": "A man's true joy is to do what belongs properly to a man: to be kind toward his own kind, to reject sensual impulses, to judge impressions rightly, and to contemplate universal nature. Three perspectives are needed for this last: the secondary cause (the event itself), the first cause (God, from whom everything originates), and the social use (what good can be made of it for those around you).",
+    "notes": "This meditation maps out a tripartite framework for philosophical contemplation. The three 'relations' — proximate cause, divine first cause, and social application — reflect the Stoic integration of physics, theology, and ethics. True joy (not pleasure) is found in this reasoned engagement with reality.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVI",
+    "modern_english": "If pain is an evil, it must be an evil either to the body or to the soul. The body feels nothing by itself. The soul, however, has the power to preserve its own peace and refuse to label pain as evil. All judgment comes from within; and the sense of evil cannot get in there unless you let it through opinion.",
+    "notes": "A core Stoic argument against the 'evil' of pain. The body is insensible (it has no opinions); the soul judges. The soul's job is precisely to refuse the judgment that pain is evil — only that judgment makes pain harmful to the person as a whole. This logic is central to Epictetus, who suffered physically as a slave.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVII",
+    "modern_english": "Wipe away idle fancies and keep telling yourself: right now, if I choose, I can keep all wickedness, lust, trouble, and confusion out of my soul. Instead I can see things for what they are and respond to each thing according to its real worth. Remember this power that nature has given you.",
+    "notes": "A reminder of the Stoic doctrine of the 'ruling faculty' (hegemonikon): the rational mind has absolute sovereignty over its own assents and intentions, whatever external conditions prevail. The repeated imperative 'remember this power' suggests Marcus used this as a genuine mental exercise — a kind of affirmation.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXVIII",
+    "modern_english": "Whether you're speaking in the Senate or with a private individual, let your speech always be serious and measured. But you don't need to bang the drum publicly about what is truly good and truly civic, or about the vanity of the world — even if truth and reason would prescribe that.",
+    "notes": "Marcus navigates a tension familiar to public philosophers: the gap between philosophic truth and social propriety. The Stoics generally held that the wise man speaks only what is useful and appropriate to context. Marcus seems to warn himself against moralizing speeches in public — restraint is itself a form of wisdom.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXIX",
+    "modern_english": "Think of Augustus's court: his wife, his daughter, his nephews, his sons-in-law, his sister, Agrippa, all his relatives and friends and domestics — Areus, Maecenas, the sacrificial priests — the whole court dead at once. Then move on to all the courts since Augustus. Has death treated any of them differently, for all their grandeur? Consider the Pompeys, and those epitaphs that read: 'He was the last of his kindred.' For all their efforts to secure a successor, in the end one must always be the last.",
+    "notes": "Augustus's circle was legendary in Roman history. Agrippa was his greatest general and son-in-law; Maecenas his famous patron of the arts; Areus a Stoic philosopher attached to Augustus's court. The Pompeys — the family of Pompey the Great — were virtually extinguished by the civil wars. The epitaph 'last of his kindred' was a real Roman funerary inscription formula.",
+    "proper_nouns": [
+      {
+        "name": "Augustus",
+        "context": "in_original",
+        "tip": "Augustus (63 BCE–14 CE), first Roman emperor. By Marcus's time, his court was a distant but well-documented piece of history, a symbol of imperial grandeur and ultimate mortality.",
+        "url": "https://en.wikipedia.org/wiki/Augustus"
+      },
+      {
+        "name": "Agrippa",
+        "context": "in_original",
+        "tip": "Marcus Vipsanius Agrippa (63–12 BCE), Augustus's greatest general and son-in-law, instrumental in building the Roman Empire.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Vipsanius_Agrippa"
+      },
+      {
+        "name": "Areus",
+        "context": "in_original",
+        "tip": "Areus Didymus (1st century BCE), Stoic philosopher from Alexandria who served as personal philosopher to Augustus.",
+        "url": "https://en.wikipedia.org/wiki/Arius_Didymus"
+      },
+      {
+        "name": "Mæcenas",
+        "context": "in_original",
+        "tip": "Gaius Maecenas (c. 70–8 BCE), Roman statesman and patron of the arts under Augustus, sponsor of Virgil and Horace.",
+        "url": "https://en.wikipedia.org/wiki/Gaius_Maecenas"
+      },
+      {
+        "name": "Pompeys",
+        "context": "in_original",
+        "tip": "The family of Pompey the Great (106–48 BCE). His sons continued to fight Caesar's party and were eventually defeated; the family died out.",
+        "url": "https://en.wikipedia.org/wiki/Pompey"
+      }
+    ]
+  },
+  {
+    "num": "XXX",
+    "modern_english": "Compress your entire life into the scale of a single action. In each action, do your utmost and let that suffice. Who can stop you from doing what is fitting? There may be external obstacles, but nothing can prevent you from doing whatever you do with justice, temperance, and gratitude to God. And if an obstacle blocks your intended action, accept the obstacle cheerfully — redirect toward what is now possible. That redirected action fits just as well within the contracted whole of your life.",
+    "notes": "This is the Stoic doctrine of the 'reserve clause' (hupexairesis) made operational: plan fully, but attach your will only to the effort, not the outcome. When blocked, simply redirect — the new action is equally valid. Marcus describes life as a 'contraction' to a single point of present action, dissolving anxiety about the future.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXI",
+    "modern_english": "Receive good fortune without showing off when it comes, and be ready to let it go without fuss when it is taken away.",
+    "notes": "The Stoic ideal of equanimity in prosperity and adversity alike: neither elated nor depressed by external fortune. The Roman emperor's life involved extreme reversals of fortune, public scrutiny, and the temptation to cling to power and wealth. Marcus's reminder to himself to hold these things lightly was a daily discipline.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXII",
+    "modern_english": "If you've ever seen a severed hand or foot or head lying apart from the body, that's the image for someone who nurses grievance or estranges himself from the community. You were born as a part of the whole — yet you have cut yourself off. But here is the remarkable thing: unlike a physical limb, you can be reattached. God has granted to rational beings alone this power of reunion: if you will it, you can return, grow together with the whole again, and be restored to your proper place.",
+    "notes": "The metaphor of the severed limb for social disconnection is striking. The Stoics insisted on human beings as inherently social animals (zoon politikon); to act anti-socially is to mutilate your own nature. The theology here is warm and redemptive: the 'immense Goodness' (capitalized in Long's translation) offers continual return to those who choose it.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXIII",
+    "modern_english": "Just as universal nature takes whatever opposes her and, despite that opposition, uses it to serve her own ends — making it part of herself whether it wants to be or not — so too can every rational creature use whatever obstacles and setbacks it meets as material for its own purpose and natural happiness.",
+    "notes": "This is the Stoic idea of the 'obstacle as fuel' — one of the most celebrated passages in the Meditations, later popularized as 'the obstacle is the way.' Universal nature is invoked as the model: she converts resistance into cooperation. The rational soul, participating in this same logos, can do the same with personal adversity.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXIV",
+    "modern_english": "Don't torment yourself with sweeping thoughts about how wretched human life is. Don't let your mind pile up all the troubles you're exposed to. Instead, when something specific happens, ask yourself: what exactly is so unbearable about this? You'll be ashamed to say. Then remind yourself: only the present can hurt you — and even that shrinks to almost nothing when you examine it closely. Surely your mind can endure this much, for this brief instant.",
+    "notes": "The technique of isolating suffering to the present moment is a classic Stoic exercise. Abstract, generalized anxiety about the whole of one's troubles is much harder to bear than any specific present difficulty. By forcing the question 'what exactly is intolerable right now?' Marcus deflates the power of vague dread.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXV",
+    "modern_english": "Are Panthea or Pergamus still keeping vigil at their masters' tombs? Is Chabrias or Diotimus still watching over Hadrian's? Ridiculous. Even if they were — would their masters know? And if they knew, would they care? And if they cared, would those mourners themselves be immortal? Everything ends: mourner and mourned alike. What does any of it amount to? A bag of blood and corruption.",
+    "notes": "Panthea, Pergamus, Chabrias, and Diotimus were apparently favorite slaves or freedmen of Roman emperors, known for elaborate mourning at their masters' tombs — a custom Marcus finds both futile and absurd. The meditation uses this tableau to question the entire culture of posthumous honor and memorial.",
+    "proper_nouns": [
+      {
+        "name": "Panthea",
+        "context": "in_original",
+        "tip": "A favorite of Lucius Verus (Marcus's co-emperor), mentioned by Lucian. She mourned at his tomb after his death in 169 CE.",
+        "url": "https://en.wikipedia.org/wiki/Panthea_(Lucius_Verus)"
+      },
+      {
+        "name": "Adrianus",
+        "context": "in_original",
+        "tip": "Hadrian (76–138 CE), Roman emperor preceding Antoninus Pius. His tomb (the Castel Sant'Angelo in Rome) was a major imperial monument.",
+        "url": "https://en.wikipedia.org/wiki/Hadrian"
+      }
+    ]
+  },
+  {
+    "num": "XXXVI",
+    "modern_english": "If you are sharp-eyed, then be sharp-eyed in judgment and discernment, says he.",
+    "notes": "The phrase 'says he' indicates Marcus is quoting someone else — possibly Epictetus, though the exact source is unidentified. The meditation redirects the value of keen perception inward: what matters is not visual acuity but the clarity of moral judgment.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXVII",
+    "modern_english": "In the whole makeup of a human being, I can find no virtue that stands against justice as its counterpart. But I can find one that stands against pleasure and indulgence: self-restraint.",
+    "notes": "A brief philosophical observation on the asymmetry of virtue. Justice has no opposing virtue — nothing properly counterbalances it. But continence (enkrateia) specifically opposes the pull of pleasure and desire. This reflects the Stoic enumeration of the four cardinal virtues: wisdom, justice, courage, and temperance/self-restraint.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXVIII",
+    "modern_english": "If you can simply withdraw your opinion about something that seems harmful, you yourself are safe. You yourself — meaning your reason. 'But I am not reason.' Fine. Then at least don't let your reason grieve — and if there is some part of you that grieves, let it grieve on its own, if it can.",
+    "notes": "A wry, almost dialogic meditation on the relationship between the rational self and its emotions. Marcus reasons with himself in two voices — one claiming to be more than just reason, the other refusing to yield on that point. The Stoic resolution: even if you cannot fully identify with your rational faculty, you can refuse to let it be dragged into grief.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XXXIX",
+    "modern_english": "Whatever blocks the senses is an evil to the sensory nature. Whatever blocks appetite is an evil to that nature. And whatever blocks the vegetative constitution harms that. And whatever blocks the understanding is the proper evil of the rational nature. Apply this to yourself. Pain or pleasure? That's for the senses. An obstacle to your purpose? Only a blow to the rational part if you committed to that purpose unconditionally. But if you proposed it with the proper Stoic reservation — 'if nothing prevents' — then you have not been hurt. Nothing external — not fire, iron, a tyrant, or slander — can penetrate the mind.",
+    "notes": "This passage introduces the key Stoic distinction between conditional and unconditional commitment. If you pursue a goal 'with reservation' (the hupexairesis or reserve clause), then obstacles cannot hurt the rational self — only your own unconditional attachment makes failure painful. The list of ineffective weapons (fire, iron, tyrant) echoes Epictetus's similar passages in the Discourses.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XL",
+    "modern_english": "Once something is truly round and solid, there is no danger it will ever change.",
+    "notes": "An enigmatic one-liner that appears to use geometry as a metaphor for a soul that has achieved perfect virtue and stability. The sphere was the Stoics' ideal shape — complete, perfect, self-contained. A truly virtuous soul, like a perfect sphere, cannot be dented by external impacts.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLI",
+    "modern_english": "Why should I grieve myself, when I have never willingly grieved another? Different things make different people happy. My joy is this: a sound and rational understanding, neither hostile to any person nor refusing anything that comes to me as a human being; looking at everything in the world with kindness and acceptance, and responding to each thing according to its real worth.",
+    "notes": "A personal credo on the source of Marcus's joy. He defines his happiness in terms of the quality of his rational faculty — neither defensive nor grasping, neither hostile nor naively compliant, but responding to each thing according to its true nature. This is close to the Stoic ideal of the 'smooth flow of life' (euroia biou).",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLII",
+    "modern_english": "Give your present time to yourself. Those who hunt for fame after death fail to see that the people who will come later will be just as tedious as those they can barely stand now — and they'll be mortal too. But even setting that aside: if many people shouted many things or held such-and-such an opinion of you — what would that be to you?",
+    "notes": "Another meditation in the long sequence on the futility of posthumous fame. Marcus uses two arguments: first, future admirers will be flawed mortals just like present critics; second, even if we grant the scenario of universal praise, the question 'what is it to you?' deflates it entirely. The Stoic focus is always on the present and the internal.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLIII",
+    "modern_english": "Take me and throw me where you will — I am indifferent. For wherever I am, there too I will have the spirit within me calm and content, both in its steady disposition and in whatever specific actions suit its own constitution.",
+    "notes": "This passage personifies the Stoic ideal of the 'citizen of the world' (kosmopolites): geographic and circumstantial displacement cannot affect inner virtue. The 'spirit within' is the daimon — the rational divine element in each person. Marcus wrote versions of this sentiment repeatedly, likely as a preparation for the possibility of exile or displacement during the wars.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLIV",
+    "modern_english": "Is this thing really worth my soul suffering for it, and becoming worse than it was — dejected, disordered, confused, terrified? What could possibly be worth that?",
+    "notes": "A Stoic rhetorical challenge to any source of distress. The question shifts the focus from external events to what harm one does to oneself by reacting badly. For the Stoics, the only true harm is moral deterioration — nothing external merits making the soul worse.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLV",
+    "modern_english": "Nothing can happen to you that isn't incidental to being human — just as nothing happens to an ox, vine, or stone that isn't incidental to its nature. If nothing happens to anything except what is usual and natural, why be distressed? Universal nature wouldn't impose anything intolerable. If an external thing troubles you, it's your opinion of it that's the real cause — and you can shed that opinion when you choose. But if it's a flaw in your own character, why not fix it rather than grieve? And if some obstacle is stronger than you, don't grieve that it isn't your fault. But if life isn't worth living without performing some right act — then if you die having maintained goodwill toward everyone, you are fully in the act of performing it.",
+    "notes": "One of the most sustained arguments for equanimity in the book. The Stoic argument runs: only what is natural can happen; natural events are never truly intolerable; the only genuine evil is your own moral judgment; and even in extremity, dying with goodwill intact is itself a complete moral act. The final turn — dying in charity with one's obstacles counts as fulfillment — is characteristically Stoic.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLVI",
+    "modern_english": "Remember that the mind, when it is gathered into itself, becomes truly unconquerable — it seeks nothing except to be beyond compulsion, and not even an unreasonable attack can shake it. How much less when reason itself can guide its judgments? Make your chief fortress a mind free from passions. No stronghold is stronger or more impregnable than this. The person who doesn't see this is ignorant. The person who sees it and refuses to take refuge there is simply unhappy.",
+    "notes": "The fortress metaphor for the mind appears here in its fullest form in the Meditations. The 'passions' (pathe) — fear, desire, grief, pleasure in the wrong things — are, for the Stoics, false judgments that render the mind vulnerable. The 'impregnable' rational mind is not cold or unfeeling but simply not governed by these false valuations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLVII",
+    "modern_english": "Stick to the bare first impression of things as they present themselves — don't add anything on top of them. You're told someone speaks badly of you. That he spoke is reported. That you are harmed is not reported — that's an addition of your own opinion; exclude it. My child is sick — I see that. That his life is in danger — I don't see that. Stay with first appearances; don't add internal interpretation. Or rather, add understanding — but only the understanding of someone who truly knows the nature of what happens in the world.",
+    "notes": "This meditation is a practical guide to the Stoic discipline of 'impression management' (phantasia). The key distinction is between the bare report of an event and the judgment attached to it. Epictetus's core teaching — 'it is not things that disturb us but our opinions of things' — is here applied with great care and concreteness.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLVIII",
+    "modern_english": "Is the cucumber bitter? Set it aside. Are there brambles in the path? Go around them. That's enough — don't then say to yourself: what are these things doing in the world? Someone who understands nature's workings would laugh at you for that, as a carpenter or shoemaker would laugh at you for blaming the workshop shavings. Nature has no rubbish pile outside herself — whatever is old, corrupted, or useless she transforms back into herself and makes new things from it. She is self-sufficient in matter, place, and craft.",
+    "notes": "The cucumber and bramble examples illustrate the Stoic attitude toward unpleasant things: deal with them practically, but don't philosophize impotently about why they exist. Nature (like a craftsman whose workshop shavings serve a purpose) recycles everything. The waste of the universe is not wasted — it becomes raw material for new creation. This is Stoic cosmological recycling (ekpyrosis and palingenesis) applied to everyday irritations.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XLIX",
+    "modern_english": "Don't be slack or negligent; don't be loose and wanton; don't be quarrelsome and difficult; don't let your imagination wander. Don't constrict your soul, don't let it burst out aggressively, and never be at a loss for something to do.",
+    "notes": "A checklist of vices to avoid: on one side slackness, indulgence, and distraction; on the other aggression and bellicosity. The Stoic mean is engaged, purposeful, self-contained — neither withdrawn nor combative. The final clause, 'never want employment,' is an implicit critique of idleness as a failure of one's rational, social nature.",
+    "proper_nouns": []
+  },
+  {
+    "num": "L",
+    "modern_english": "'They kill me, they cut me, they curse me.' So what? Can't your mind stay pure, prudent, temperate, just through all of this? A spring of sweet clear water stays clean even when someone curses it or throws mud in; the mud disperses and the water runs clear as before. To have not just a well but an overflowing fountain within you, cultivate daily: true freedom, charity, and genuine simplicity and modesty.",
+    "notes": "The spring metaphor is one of the most beautiful in the Meditations. A well can be fouled; a spring — fed from within — cannot. The image suggests that virtue must be generative, not merely defensive: an active source, not a stored reserve. The three 'daily cultivation' practices — true freedom, charity, simplicity — are the Stoic virtues applied personally.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LI",
+    "modern_english": "The person who doesn't know what the world is doesn't know where he is. The person who doesn't know what the world is for doesn't know what he is. The person ignorant of either doesn't know what he himself was made for. So what do you make of someone who cares deeply about the applause of people who don't even know where or what they are? Do you want the praise of someone who curses himself three times an hour? Can you hope to please someone who isn't at peace with himself?",
+    "notes": "The argument moves from cosmology (not knowing the world) to anthropology (not knowing human purpose) to practical absurdity (seeking approval from people in this state of ignorance). The Stoic framework insists that only those who understand the cosmos and their place in it can be reliable judges of anything — most people's opinions are therefore worthless as a guide.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LII",
+    "modern_english": "It's not enough to just breathe the same air as everyone around you. Aim also to share mind with the rational substance that encompasses all things. It too is everywhere diffused — just as air is — and passes through everything. Those who know how can draw it in just as they draw in breath.",
+    "notes": "The Stoics identified the pneuma (breath/spirit) with the logos (rational principle) that pervades the cosmos. This meditation extends the physical act of breathing into a metaphysical practice: just as you breathe in the shared atmosphere, you can also 'breathe in' universal reason. It is an early contemplative exercise resembling later ideas of meditation on the logos.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LIII",
+    "modern_english": "Wickedness in general doesn't harm the world. A particular person's wickedness doesn't harm anyone else — only the person committing it, and even then only until he chooses to be freed from it. My neighbor's free will is as indifferent to me as his body or his life. We are made for one another, but each mind has its own proper jurisdiction. Otherwise another's wickedness could be my evil — which God would not permit. Nothing can make me unhappy except my own wickedness.",
+    "notes": "A careful statement of the Stoic doctrine that only virtue and vice in oneself can constitute true good or evil. The claim that another's wrongdoing cannot harm you was controversial even in antiquity. The 'limited jurisdiction' of each mind grounds individual moral responsibility and prevents the Stoic from being held hostage to others' choices.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LIV",
+    "modern_english": "The sun seems to pour itself out but it actually extends outward — its rays (called aktin\u0113s, from the word for 'to stretch') spread without being spent. You can see this when a shaft of sunlight enters a dark room through a small opening: it travels straight and, when it hits a solid object, is interrupted without falling or sliding off — it simply stays there. The mind's diffusion must be like this: not poured out but extended, meeting obstacles without violent impact, neither collapsing nor retreating, but standing and giving light to whatever is open to it. Whatever refuses the light — that is its own loss.",
+    "notes": "Marcus uses Stoic optics — which held that light is a genuine physical extension (tasis) of the sun, not an effusion — as a metaphor for the mind's proper engagement with resistance. The Greek terms (tasis, aktin\u0113s, ekteinesthai) are preserved in Long's translation, suggesting Marcus was thinking in Greek technical vocabulary. The metaphor integrates Stoic physics and ethics.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LV",
+    "modern_english": "The person who fears death fears either that he will have no consciousness at all, or that his consciousness will be different. But both fears are groundless: if no consciousness, then no experience of evil; if any consciousness at all, then another kind of life — not death in the proper sense.",
+    "notes": "This is Marcus's standard two-pronged refutation of the fear of death, found across Stoic and Epicurean literature. Epicurus argued there is nothing to fear if there is no sensation after death; the Stoics added that if there is sensation, the soul continues in some form. Either way, there is nothing to dread.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LVI",
+    "modern_english": "All human beings are made for one another. So either teach people to do better, or bear with them.",
+    "notes": "One of the most compressed and quoted lines in the Meditations. The Stoic obligation of social concern has exactly two possible expressions: correct error where you can, and endure it patiently where you cannot. There is no third option of indifference or contempt.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LVII",
+    "modern_english": "The movement of the mind is not like the flight of a dart. The mind, when it proceeds carefully and by way of diligent circumspection — turning itself many ways — may still be said to move directly toward its object, just as much as when it takes a straight and undeflected path.",
+    "notes": "An interesting defense of deliberate, cautious reasoning against the criticism that it lacks decisiveness. Marcus compares the careful, circumspect mind with a straight-flying dart: both reach the target; the path need not be geometrically direct. This may reflect Marcus's own experience of slow, methodical decision-making as emperor.",
+    "proper_nouns": []
+  },
+  {
+    "num": "LVIII",
+    "modern_english": "Work to penetrate the inner state of everyone you deal with — and equally, make your own inner state open and penetrable to others.",
+    "notes": "A closing meditation on mutual transparency as an ethical ideal. The Stoic requirement of honesty and openness applies both ways: the wise person understands others' inner states (to respond appropriately) and keeps their own mind genuinely legible (not performing virtue but actually living it). This two-way transparency is the basis of authentic human community.",
+    "proper_nouns": []
+  }
+]

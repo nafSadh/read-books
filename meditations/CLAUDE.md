@@ -99,6 +99,12 @@ meditations/
   .project/
     changelog.md         <- session log
     todo.md              <- task tracking
-  reader.html            <- scrolling reader (full text + annotation prototype)
+    agents-log.md        <- annotation agent history
+  index.html             <- book-spread landing page
+  reader.html            <- scrolling reader (full text, all 412 passages annotated)
   fullbleed.html         <- book-spread reader (full text)
+  seeds/
+    annotations/         <- JSON annotation data (book-01-remaining.json through book-12.json)
+    assemble-annotations.js  <- Node.js assembler (original)
+    assemble-annotations.py  <- Python assembler (used for injection)
 ```

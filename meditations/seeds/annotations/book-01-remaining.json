@@ -1,0 +1,76 @@
+[
+  {
+    "num": "XIV",
+    "modern_english": "Marcus gives thanks to the gods for his life's blessings: good grandparents, parents, a sister, teachers, servants, and kinsmen; for never rashly wronging any of them, though he might have; for not being raised by his father's concubine; for preserving his chastity; for a mentor-father who taught him to live simply even as emperor. He is grateful for his brother's example, for healthy children, for not being drawn too deeply into rhetoric or poetry, for advancing those who served him without delay, for knowing Apollonius, Rusticus, and Maximus, for the chance to reflect on living according to nature, for a body that held up, for being healed after youthful infatuations, for never regretting any anger toward Rusticus, for his mother outliving her expected years, for always having the means to help the poor, for a devoted wife, for capable tutors for his children, for divine help through dreams, and for coming to philosophy through genuine teachers rather than sophists.",
+    "notes": "Book I of the Meditations is a unique catalogue of gratitude — Marcus lists, person by person and blessing by blessing, what each gave him. Passage XIV is the capstone: thanks to the gods themselves for the whole shape of his life. Apollonius, Rusticus, and Maximus were his most admired Stoic teachers. 'The concubine of my father' refers to the companion of Hadrian, who was Marcus's guardian before Antoninus Pius adopted him. The mention of dreams as divine help reflects ancient Roman religious practice. Cajeta (modern Gaeta, on the Italian coast) appears as a location where divine assistance came. The closing prayer against falling into the hands of sophists is a Stoic commonplace: authentic philosophy versus verbal performance.",
+    "proper_nouns": [
+      {
+        "name": "Apollonius",
+        "context": "in_original",
+        "tip": "Apollonius of Chalcedon, Stoic philosopher and one of Marcus Aurelius's principal teachers in philosophy.",
+        "url": "https://en.wikipedia.org/wiki/Apollonius_of_Chalcedon"
+      },
+      {
+        "name": "Rusticus",
+        "context": "in_original",
+        "tip": "Quintus Junius Rusticus (c. 100–170 CE), Roman consul and Stoic philosopher, one of Marcus's most influential teachers. He lent Marcus the Discourses of Epictetus.",
+        "url": "https://en.wikipedia.org/wiki/Quintus_Junius_Rusticus"
+      },
+      {
+        "name": "Maximus",
+        "context": "in_original",
+        "tip": "Claudius Maximus, Roman consul and practicing Stoic, praised at length in Book I passage XI for his exemplary character.",
+        "url": "https://en.wikipedia.org/wiki/Claudius_Maximus"
+      },
+      {
+        "name": "Benedicta",
+        "context": "in_original",
+        "tip": "A woman (possibly a slave or freed person in the imperial household) with whom Marcus apparently had a youthful infatuation; no further historical record survives.",
+        "url": ""
+      },
+      {
+        "name": "Theodotus",
+        "context": "in_original",
+        "tip": "Another person mentioned alongside Benedicta in connection with youthful temptation; identity uncertain, possibly a male, reflecting ancient Roman norms.",
+        "url": ""
+      },
+      {
+        "name": "Chryses",
+        "context": "in_original",
+        "tip": "In Homer's Iliad, a priest of Apollo who prayed by the seashore and received divine aid. Marcus compares his own answered prayers to Chryses's.",
+        "url": "https://en.wikipedia.org/wiki/Chryses"
+      }
+    ]
+  },
+  {
+    "num": "XV",
+    "modern_english": "Written at the Granua River in the land of the Quadi: Tell yourself each morning that you will meet difficult people today — idle busybodies, ingrates, troublemakers, deceivers, the jealous, the antisocial. They are this way because they do not understand what is truly good and truly bad. But I understand that only virtue is worth seeking and only vice is truly shameful. I also know that these people are my kin — not by blood, but by sharing in reason and a common divine nature. How, then, can they harm me? They cannot make me do anything truly shameful. And how can I be angry at them? We are made to work together, like hands, feet, and eyelids — or like the upper and lower rows of teeth. To be at odds with one another is contrary to nature.",
+    "notes": "This is one of the most famous passages in all the Meditations — the morning preparation meditation. The setting ('in the country of the Quadi at Granua') places it on the Danube frontier during the Marcomannic Wars (c. 172–175 CE). The Quadi were a Germanic tribe; the Granua is the modern Hron River in Slovakia. The meditation enacts a core Stoic practice: premeditation of adversity (premeditatio malorum), preparing the mind for difficulty before it arrives. The argument against anger uses the Stoic concept of oikeiosis (natural kinship): all rational beings share in the divine logos and are therefore kin.",
+    "proper_nouns": [
+      {
+        "name": "Quadi",
+        "context": "in_original",
+        "tip": "A Germanic tribe living north of the Danube (in modern Slovakia/Czech Republic), against whom Marcus Aurelius fought during the Marcomannic Wars.",
+        "url": "https://en.wikipedia.org/wiki/Quadi"
+      },
+      {
+        "name": "Granua",
+        "context": "in_original",
+        "tip": "The Granua (modern Hron River in Slovakia) was on the Danube frontier where Marcus campaigned. The note 'in the country of the Quadi at Granua' dates this passage to his military campaigns.",
+        "url": "https://en.wikipedia.org/wiki/Hron"
+      }
+    ]
+  },
+  {
+    "num": "XVI",
+    "modern_english": "You are made of three things: body, life (breath), and reason — the ruling part. Put your books away and stop letting your mind be dragged about; it won't work. You are nearly at the point of death anyway, so think little of your body: flesh, blood, bone, sinew, skin — a tangle of woven tissue. Your life? A breath of wind — not even a steady wind, but one exhaled and inhaled moment by moment. The third thing is your ruling reason. You are an old man now: do not let that finest part of you be enslaved. Do not let it be jerked about by selfish and antisocial impulses like a puppet on strings. Stop letting it resent what is present or dread what fate has appointed for the future.",
+    "notes": "This passage is a direct self-address from Marcus to himself — probably late in his life, given 'thou art an old man.' The three-part anthropology (body, breath/life, ruling reason) is standard Stoic psychology. The 'ruling part' is the hegemonikon — the faculty of rational judgment and choice, the only thing fully in our power. The image of being pulled by 'wires and nerves' like a puppet is vivid: Marcus warns himself against becoming an automaton of appetite and fear. The instruction to put away books is significant: philosophy must be lived, not merely read.",
+    "proper_nouns": []
+  },
+  {
+    "num": "XVII",
+    "modern_english": "Everything that comes directly from the gods is obviously governed by divine providence. Even what we call fortune or chance must be seen as part of nature — part of the same great chain of cause and effect that divine providence orchestrates. Everything flows from that source. Whatever exists is both necessary and contributes to the whole — of which you are a part. What is necessary for the preservation of the whole is also good and fitting for each individual nature within it. The whole is preserved through the constant transformation of simple elements into one another, and through the change and dissolution of compound things. Let these principles be enough for you. Stop chasing after more books, so that you may die not murmuring and complaining but truly gentle, genuinely grateful to the gods.",
+    "notes": "This passage closes Book I and functions as a farewell — Marcus urges himself to stop seeking more philosophical reading and simply live by what he already knows. The theology is Stoic pantheism: the divine is identical with universal Nature and the logos (rational principle) that governs all change. Elemental transformation (earth to water to air to fire and back) echoes Heraclitus and the Stoic doctrine of ekpyrosis (cosmic conflagration and renewal). The final line — 'die not murmuring but grateful' — is both a Stoic aspiration and a personal prayer.",
+    "proper_nouns": []
+  }
+]

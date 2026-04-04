@@ -129,7 +129,7 @@ def build_passage_html(passage, annotation=None):
         lines.append(f'    <div class="med-detail">')
         lines.append(f'      {detail_html}')
         lines.append(f'    </div>')
-    lines.append('    </div></div>')
+    lines.append('    </div>')
     lines.append('    </div>')
     return '\n'.join(lines)
 

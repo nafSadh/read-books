@@ -1,0 +1,637 @@
+[
+  {
+    "id": "1.1",
+    "modern_english": "From my grandfather Verus I learned good character and the ability to keep my temper under control.",
+    "notes": "Book 1 of the Meditations is a unique catalogue of gratitude. Marcus lists, person by person, what each mentor or family member contributed to his character. The Greek word kaloethes (καλόηθες) means 'good-natured' or 'of good character,' while aorgeton (ἀόργητον) means 'free from anger' — a key Stoic virtue, since anger was considered a passion (pathos) that disrupts rational judgment.",
+    "proper_nouns": [
+      {
+        "name": "Verus",
+        "context": "in_original",
+        "tip": "Marcus Annius Verus (c. 60s–130s CE), Marcus Aurelius's paternal grandfather, a three-time consul and one of the most prominent senators of his era.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Annius_Verus_(II)"
+      }
+    ]
+  },
+  {
+    "id": "1.2",
+    "modern_english": "From the reputation and memory of my father, I learned modesty and strength of character.",
+    "notes": "Marcus's biological father, Marcus Annius Verus III, died when Marcus was about three years old. Marcus knew him primarily through reputation and family memory rather than direct experience. The Greek aidemon (αἰδῆμον) conveys a sense of reserve and respect for others, while arrenikon (ἀρρενικόν) denotes a masculine firmness of character — not aggression, but moral steadiness.",
+    "proper_nouns": [
+      {
+        "name": "Marcus Annius Verus III",
+        "context": "in_notes",
+        "tip": "Marcus Aurelius's biological father (d. c. 124 CE), a Roman praetor who died young. Marcus was raised thereafter by his grandfather.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Annius_Verus_(III)"
+      }
+    ]
+  },
+  {
+    "id": "1.3",
+    "modern_english": "From my mother, I learned reverence for the divine, generosity, and the habit of refraining not only from doing wrong but even from thinking about it. I also learned to live simply, far removed from the extravagance of the wealthy.",
+    "notes": "Marcus's mother Domitia Lucilla was a wealthy and educated Roman noblewoman. The emphasis on abstaining even from evil thoughts (not just evil deeds) reflects the Stoic idea that vice begins in the mind with false judgments. The insistence on simple living despite wealth is a recurring Stoic theme — external goods are 'preferred indifferents,' not to be pursued for their own sake.",
+    "proper_nouns": [
+      {
+        "name": "Domitia Lucilla",
+        "context": "in_notes",
+        "tip": "Domitia Lucilla Minor (c. 100–155/161 CE), Marcus Aurelius's mother, a wealthy and cultivated Roman noblewoman who owned tile factories and corresponded with Fronto.",
+        "url": "https://en.wikipedia.org/wiki/Domitia_Lucilla"
+      }
+    ]
+  },
+  {
+    "id": "1.4",
+    "modern_english": "From my great-grandfather, I learned not to attend public schools but to have good private tutors at home, and to understand that one should spend generously on such things.",
+    "notes": "Marcus's great-grandfather is Marcus Annius Verus I, a senator from Ucubi in Roman Spain who established the family's senatorial rank. Elite Roman education was often conducted privately with hired tutors (often Greek freedmen), which allowed more control over curriculum and moral influence. The willingness to 'spend liberally' on education reflects a Roman aristocratic value: investing in character formation, not just academic training.",
+    "proper_nouns": [
+      {
+        "name": "Marcus Annius Verus I",
+        "context": "in_notes",
+        "tip": "Marcus Aurelius's paternal great-grandfather, originally from Ucubi in Roman Spain (Baetica), the first of the family to enter the Roman Senate.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Annius_Verus_(I)"
+      }
+    ]
+  },
+  {
+    "id": "1.5",
+    "modern_english": "From my tutor, I learned not to take sides with the Greens or Blues at the chariot races, nor to be a fan of any particular gladiator style. I also learned endurance of hard work, to need little, to do things with my own hands, to mind my own business, and not to be receptive to gossip.",
+    "notes": "The 'governor' (tropheus, τροφεύς) refers to the slave or freedman who served as Marcus's childhood attendant and early moral guide. The Greens and Blues were the chariot-racing factions (factiones) in the Circus Maximus, which aroused fierce partisan loyalties. The Parmularii and Scutarii were gladiator classes distinguished by their shield types (small buckler vs. large shield). The Stoic lesson is clear: avoid irrational attachments to entertainments, cultivate self-sufficiency and hard work.",
+    "proper_nouns": [
+      {
+        "name": "Circus Maximus",
+        "context": "in_notes",
+        "tip": "The largest chariot-racing stadium in ancient Rome, seating an estimated 150,000–250,000 spectators, where the rival racing factions (Greens, Blues, Reds, Whites) competed.",
+        "url": "https://en.wikipedia.org/wiki/Circus_Maximus"
+      }
+    ]
+  },
+  {
+    "id": "1.6",
+    "modern_english": "From Diognetus, I learned not to waste time on trivial pursuits, and not to believe the claims of miracle-workers and charlatans about incantations, exorcisms, and the like. I learned not to breed fighting quails or get caught up in such hobbies. I learned to tolerate honest criticism, to develop an interest in philosophy, and to study first under Bacchius, then under Tandasis and Marcianus. I learned to write dialogues as a boy, and to prefer a simple plank bed and animal skin and whatever else belongs to the Greek philosophical way of life.",
+    "notes": "Diognetus was Marcus's painting teacher who also introduced him to philosophy. The reference to quail-fighting reflects a popular Roman pastime that Stoics considered a frivolous distraction. The 'Grecian discipline' (Hellenike agoge) refers to the ascetic habits of Greek philosophers — sleeping on hard surfaces, wearing rough clothing — which Marcus adopted as a teenager. Bacchius, Tandasis, and Marcianus are otherwise obscure philosophical teachers. Writing dialogues as a youth suggests early exposure to Plato's literary form.",
+    "proper_nouns": [
+      {
+        "name": "Diognetus",
+        "context": "in_original",
+        "tip": "Marcus Aurelius's painting teacher and early philosophical mentor, who introduced him to the philosophical life. Little else is known about him beyond this passage.",
+        "url": ""
+      },
+      {
+        "name": "Bacchius",
+        "context": "in_original",
+        "tip": "An early philosophy teacher of Marcus Aurelius, possibly a Platonist. No other historical records survive about him.",
+        "url": ""
+      },
+      {
+        "name": "Tandasis",
+        "context": "in_original",
+        "tip": "One of Marcus Aurelius's early philosophical teachers. No further historical information is available.",
+        "url": ""
+      },
+      {
+        "name": "Marcianus",
+        "context": "in_original",
+        "tip": "One of Marcus Aurelius's early philosophical teachers. No further historical information is available.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "id": "1.7",
+    "modern_english": "From Rusticus I came to realize that my character needed correction and discipline. He taught me not to be drawn into the competitive display of the sophists, nor to write speculative treatises, nor to deliver moralizing little speeches, nor to show off as someone who practices great self-discipline or performs conspicuous acts of generosity. He taught me to give up rhetoric, poetry, and elegant prose; not to walk around the house in formal robes or do anything of that kind; to write letters in a plain style, like the one Rusticus himself wrote from Sinuessa to my mother. He taught me to be readily forgiving and quick to reconcile with those who have offended me, as soon as they show willingness to make amends. He taught me to read carefully and not be content with a superficial understanding of a text, nor to hastily agree with smooth talkers. And I owe it to him that I became acquainted with the discourses of Epictetus, which he shared with me from his own collection.",
+    "notes": "Quintus Junius Rusticus was arguably Marcus's most important Stoic teacher and later served as urban prefect of Rome. The lessons here center on authenticity versus performance: real philosophy is about inner transformation, not rhetorical display. Sinuessa was a town in Campania (southern Italy). The culminating gift — Epictetus's Discourses — was transformative for Marcus. Epictetus (c. 50–135 CE), a former slave turned Stoic philosopher, became the single greatest philosophical influence on the Meditations.",
+    "proper_nouns": [
+      {
+        "name": "Rusticus",
+        "context": "in_original",
+        "tip": "Quintus Junius Rusticus (c. 100–170 CE), Roman consul (162 CE), Stoic philosopher, and urban prefect of Rome. One of Marcus Aurelius's most important teachers, who introduced him to Epictetus.",
+        "url": "https://en.wikipedia.org/wiki/Quintus_Junius_Rusticus"
+      },
+      {
+        "name": "Sinuessa",
+        "context": "in_original",
+        "tip": "An ancient Roman town in Campania (modern Mondragone area, southern Italy), known for its hot springs. Rusticus wrote a letter from there to Marcus's mother.",
+        "url": "https://en.wikipedia.org/wiki/Sinuessa"
+      },
+      {
+        "name": "Epictetus",
+        "context": "in_original",
+        "tip": "Epictetus (c. 50–135 CE), Stoic philosopher born into slavery in Hierapolis (modern Turkey). His teachings, recorded by Arrian in the Discourses and Enchiridion, profoundly shaped Marcus Aurelius's philosophy.",
+        "url": "https://en.wikipedia.org/wiki/Epictetus"
+      }
+    ]
+  },
+  {
+    "id": "1.8",
+    "modern_english": "From Apollonius I learned independence of will and unwavering commitment to reason. He taught me to look to nothing else, not even for a moment, except what reason demands. He showed me how to remain the same person through sharp pain, the loss of a child, and prolonged illness. In him I saw a living example that a person can be both intensely determined and relaxed at the same time, and never irritable when teaching. I observed a man who clearly considered his expertise and teaching skill to be the least of his qualities. And from him I learned how to accept favors from friends graciously — neither demeaned by them nor pretending not to notice them.",
+    "notes": "Apollonius of Chalcedon was a Stoic philosopher whom Antoninus Pius summoned to Rome to tutor the young Marcus. The passage emphasizes the Stoic ideal of apatheia — not emotional numbness, but equanimity through rational mastery. The detail about losing a child and enduring illness suggests Apollonius modeled Stoic resilience through real suffering, not just theory. The ability to be both 'most resolute and yielding' captures the Stoic paradox of strength through flexibility.",
+    "proper_nouns": [
+      {
+        "name": "Apollonius",
+        "context": "in_original",
+        "tip": "Apollonius of Chalcedon (2nd century CE), Stoic philosopher summoned to Rome by Emperor Antoninus Pius to serve as tutor to Marcus Aurelius.",
+        "url": "https://en.wikipedia.org/wiki/Apollonius_of_Chalcedon"
+      }
+    ]
+  },
+  {
+    "id": "1.9",
+    "modern_english": "From Sextus I learned kindness, the example of a household governed with a father's care, the idea of living in accordance with nature, dignity without pretense, attentive concern for friends, and patience with ordinary people and those who hold thoughtless opinions. He had the ability to adapt himself to everyone, so that his company was more pleasant than any flattery — yet at the same time he commanded the highest respect from those around him. He had a talent for discovering and systematically organizing the principles essential for life. He never showed anger or any other strong emotion, but was completely free from passion while also being deeply affectionate. He could express praise without making a show of it, and he possessed great learning without parading it.",
+    "notes": "Sextus of Chaeronea was a nephew of Plutarch and a Stoic philosopher who taught Marcus. The phrase 'living conformably to nature' (kata phusin zen, κατὰ φύσιν ζῆν) is the foundational Stoic ethical principle: virtue consists in aligning oneself with the rational order of the universe. The portrait of Sextus as someone simultaneously free from passion (apathes) yet deeply affectionate illustrates the Stoic view that genuine love is a rational commitment, not an emotional disturbance.",
+    "proper_nouns": [
+      {
+        "name": "Sextus",
+        "context": "in_original",
+        "tip": "Sextus of Chaeronea (2nd century CE), Stoic and Platonist philosopher, nephew of the biographer Plutarch. He was one of Marcus Aurelius's philosophy teachers.",
+        "url": "https://en.wikipedia.org/wiki/Sextus_of_Chaeronea"
+      },
+      {
+        "name": "Plutarch",
+        "context": "in_notes",
+        "tip": "Plutarch (c. 46–119 CE), Greek biographer and philosopher, author of the Parallel Lives and Moralia, and uncle of Marcus's teacher Sextus of Chaeronea.",
+        "url": "https://en.wikipedia.org/wiki/Plutarch"
+      }
+    ]
+  },
+  {
+    "id": "1.10",
+    "modern_english": "From Alexander the grammarian, I learned not to find fault with people's speech. When someone used a barbarism, solecism, or awkward expression, I learned not to criticize them but instead to smoothly introduce the correct word myself — by way of reply, confirmation, or shared inquiry about the subject itself rather than the word, or through some other tactful suggestion.",
+    "notes": "Alexander the grammarian (grammatikos) was a language and literature teacher. In Roman education, the grammaticus taught correct Greek and Latin usage, literature, and composition. 'Barbarism' meant using a non-standard word; 'solecism' meant a grammatical error. The Stoic lesson here transcends grammar: correct others without humiliating them, focusing on substance rather than surface errors. This models the broader Stoic principle of benevolent correction.",
+    "proper_nouns": [
+      {
+        "name": "Alexander the grammarian",
+        "context": "in_original",
+        "tip": "Alexander of Cotiaeum (2nd century CE), a distinguished Greek grammarian (language and literature teacher) who tutored Marcus Aurelius. He came from Cotiaeum in Phrygia (modern Turkey).",
+        "url": "https://en.wikipedia.org/wiki/Alexander_of_Cotiaeum"
+      }
+    ]
+  },
+  {
+    "id": "1.11",
+    "modern_english": "From Fronto I learned to recognize envy, deceit, and hypocrisy as the hallmarks of tyranny, and that those among us who are called Patricians tend to be somewhat lacking in genuine affection.",
+    "notes": "Marcus Cornelius Fronto was Marcus's beloved rhetoric teacher and a leading orator of the age. Their extensive correspondence survives in fragmentary form. The observation about patricians lacking 'paternal affection' (astorgoteros) is striking — Marcus, himself the pinnacle of Roman aristocracy, is warned that high birth can breed emotional coldness. The lesson about recognizing tyrannical behavior may have served Marcus well as emperor, helping him remain vigilant against his own potential for despotism.",
+    "proper_nouns": [
+      {
+        "name": "Fronto",
+        "context": "in_original",
+        "tip": "Marcus Cornelius Fronto (c. 100–166 CE), leading Roman orator and rhetoric teacher of Marcus Aurelius. Their surviving correspondence reveals a warm personal relationship.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Cornelius_Fronto"
+      }
+    ]
+  },
+  {
+    "id": "1.12",
+    "modern_english": "From Alexander the Platonist, I learned not to frequently or unnecessarily tell someone — in person or by letter — that I am too busy, and not to use the excuse of pressing obligations to continually avoid the duties I owe to those I live with.",
+    "notes": "This Alexander was a Platonist philosopher (distinct from Alexander the grammarian in 1.10). The lesson is about social responsibility: busyness should not become a habitual excuse for neglecting relationships. For a Roman emperor with enormous administrative demands, this was particularly important advice. The Stoics held that duties to other human beings are central to 'living according to nature,' since humans are fundamentally social and rational creatures.",
+    "proper_nouns": [
+      {
+        "name": "Alexander the Platonic",
+        "context": "in_original",
+        "tip": "A Platonist philosopher who taught Marcus Aurelius. Distinct from Alexander the grammarian (1.10). Little is known about him beyond this reference.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "id": "1.13",
+    "modern_english": "From Catulus, I learned not to brush off a friend's complaint, even if it seems unreasonable, but to try to restore the relationship to its normal footing. I learned to speak enthusiastically well of my teachers, as is reported of Domitius and Athenodotus, and to love my children genuinely.",
+    "notes": "Catulus (Cinna Catulus) was likely a Stoic teacher. The advice about taking friends' complaints seriously, even unreasonable ones, reflects the Stoic emphasis on social bonds and fellowship. Domitius and Athenodotus are cited as exemplars of honoring one's teachers — a value deeply embedded in Greco-Roman educational culture. The final note about loving children 'truly' (alethes) implies a distinction between genuine love and mere possessiveness or display.",
+    "proper_nouns": [
+      {
+        "name": "Catulus",
+        "context": "in_original",
+        "tip": "Cinna Catulus, a Stoic teacher of Marcus Aurelius. Little historical information survives about him beyond this passage.",
+        "url": ""
+      },
+      {
+        "name": "Domitius",
+        "context": "in_original",
+        "tip": "Likely a Roman teacher or scholar known for speaking highly of his own instructors. Cited here as a model of gratitude toward teachers.",
+        "url": ""
+      },
+      {
+        "name": "Athenodotus",
+        "context": "in_original",
+        "tip": "A Stoic philosopher, teacher of Fronto. Referenced here as someone who was praised with genuine enthusiasm by his students.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "id": "1.14",
+    "modern_english": "From my brother Severus, I learned to love my family, to love truth, and to love justice. Through him I came to know Thrasea, Helvidius, Cato, Dio, and Brutus. From him I formed the idea of a state with equal laws for all, governed with respect for equal rights and free speech, and the idea of a monarchy that prizes above all else the liberty of its subjects. I also learned from him consistency and unwavering devotion to philosophy, a disposition to do good and give generously, to maintain hopeful expectations, and to trust that my friends love me. I noticed that he never concealed his opinions about those he disapproved of, and that his friends never had to guess what he wanted or did not want — it was always clear.",
+    "notes": "Claudius Severus Arabianus was a Peripatetic (Aristotelian) philosopher and Marcus's brother by adoption (both were adopted by Antoninus Pius). The republican heroes Severus introduced Marcus to are significant: Thrasea Paetus and Helvidius Priscus were Stoic senators who opposed tyrannical emperors; Cato the Younger died resisting Caesar's dictatorship; Dio of Prusa was a philosopher-statesman; Brutus assassinated Julius Caesar in defense of the republic. That Marcus as emperor admired these anti-tyrannical figures reveals his deep commitment to constitutional governance.",
+    "proper_nouns": [
+      {
+        "name": "Severus",
+        "context": "in_original",
+        "tip": "Claudius Severus Arabianus (d. c. 175 CE), Peripatetic philosopher and Roman consul, Marcus Aurelius's adoptive brother and close companion.",
+        "url": "https://en.wikipedia.org/wiki/Gnaeus_Claudius_Severus_(consul_167)"
+      },
+      {
+        "name": "Thrasea",
+        "context": "in_original",
+        "tip": "Publius Clodius Thrasea Paetus (d. 66 CE), Roman senator and Stoic philosopher who opposed Emperor Nero and was forced to commit suicide.",
+        "url": "https://en.wikipedia.org/wiki/Thrasea_Paetus"
+      },
+      {
+        "name": "Helvidius",
+        "context": "in_original",
+        "tip": "Helvidius Priscus (d. c. 75 CE), Roman senator and Stoic who defied Emperor Vespasian, son-in-law of Thrasea Paetus. Executed for his principled resistance.",
+        "url": "https://en.wikipedia.org/wiki/Helvidius_Priscus"
+      },
+      {
+        "name": "Cato",
+        "context": "in_original",
+        "tip": "Cato the Younger (95–46 BCE), Roman senator and Stoic who became a symbol of republican virtue by choosing suicide over submission to Julius Caesar's dictatorship.",
+        "url": "https://en.wikipedia.org/wiki/Cato_the_Younger"
+      },
+      {
+        "name": "Dion",
+        "context": "in_original",
+        "tip": "Dio of Prusa (Dio Chrysostom, c. 40–115 CE), Greek orator and philosopher who wrote extensively on kingship and governance.",
+        "url": "https://en.wikipedia.org/wiki/Dio_Chrysostom"
+      },
+      {
+        "name": "Brutus",
+        "context": "in_original",
+        "tip": "Marcus Junius Brutus (85–42 BCE), Roman senator and Stoic who led the assassination of Julius Caesar. Held up by Stoics as a model of principled action.",
+        "url": "https://en.wikipedia.org/wiki/Marcus_Junius_Brutus"
+      }
+    ]
+  },
+  {
+    "id": "1.15",
+    "modern_english": "From Maximus I learned self-mastery and resistance to being swayed by passing impulses. I learned cheerfulness in all circumstances, including illness, and a character that blended sweetness with dignity. I learned to tackle the tasks before me without complaint. Everyone could tell that he thought exactly what he said and that he never acted with bad intentions. Nothing surprised or startled him; he was never hurried, never procrastinated, never at a loss, never downcast. He never laughed to cover up his annoyance, yet he was never aggressive or suspicious either. He was generous, forgiving, and free from all dishonesty. He gave the impression of someone who could not be turned from what is right, rather than someone who had been improved or corrected into it. No one could ever feel looked down on by Maximus, nor dare to think himself a better person. He also had the ability to be witty in an agreeable way.",
+    "notes": "Claudius Maximus was a Roman consul and Stoic philosopher whom Marcus deeply admired. This is one of the longest and most detailed character portraits in Book 1. The description reads almost like a Stoic ideal made flesh: emotional consistency, transparency of motive, natural virtue (rather than effortful self-improvement), and the absence of all pretense. Marcus returns to Maximus at the end of 1.16, mentioning him during the illness that presumably killed him.",
+    "proper_nouns": [
+      {
+        "name": "Maximus",
+        "context": "in_original",
+        "tip": "Claudius Maximus (d. c. 170s CE), Roman consul and Stoic philosopher, proconsul of Africa, one of Marcus Aurelius's most admired philosophical mentors.",
+        "url": "https://en.wikipedia.org/wiki/Claudius_Maximus_(Stoic)"
+      }
+    ]
+  },
+  {
+    "id": "1.16",
+    "modern_english": "In my father I observed gentleness and firm resolve in decisions he had reached after careful consideration. He had no vanity about honors. He was hard-working and persistent. He was willing to listen to anyone who had something to offer for the public good, and he was uncompromising in giving each person what they deserved. He knew from experience when to press hard and when to relax. He had overcome all desire for boys. He regarded himself as no more than any other citizen. He freed his friends from the obligation to dine with him or travel with him, and those who missed an occasion always found him unchanged. He was thorough in deliberation and persistent — never stopping his inquiry because first impressions seemed sufficient. He maintained his friendships without growing tired of people, yet without excessive attachment. He was content in all situations and cheerful. He could foresee problems well in advance and manage the smallest details without fanfare. He immediately checked popular applause and all flattery. He was always watchful over the needs of the empire and a careful steward of public funds, patiently enduring the criticism such frugality brought. He was neither superstitious about the gods nor a crowd-pleaser who courted popularity through gifts or flattery. He was sober, steady, and never tasteless or obsessed with novelty. He used the comforts fortune provided without arrogance or apology — when he had them, he simply enjoyed them; when he lacked them, he felt no need. No one could call him a sophist, a flashy showman, or a pedant — everyone recognized him as mature, complete, beyond flattery, capable of managing both his own affairs and those of others. He honored true philosophers without scorning pretenders, yet was never taken in by them. He was agreeable in conversation without being irritating. He took reasonable care of his health — not clinging to life, not vain about appearance, not negligent either — so that he rarely needed a physician. He was especially ready to yield without jealousy to those with particular talents, whether in eloquence, law, ethics, or anything else, helping each person gain the recognition they deserved. He always acted in accordance with tradition without making a show of it. He was not restless or fond of change, but loved the same places and the same pursuits. After his bouts of headache he returned immediately, fresh and vigorous, to his work. His secrets were few, rare, and always about public matters. He was prudent and economical in staging public spectacles, construction projects, and distributions — a man who focused on what needed to be done, not on the reputation he might gain from doing it. He did not bathe at unusual hours, was not fond of building projects, cared nothing about fancy food, the texture and color of his clothing, or the beauty of his slaves. His clothes came from Lorium, his seaside villa, and from Lanuvium generally. We know how he treated the toll-collector at Tusculum who asked his pardon — and all his conduct was of this kind. Nothing about him was harsh, relentless, or violent — nothing, as one might say, carried to the sweating point. He examined everything methodically, as if he had plenty of time, calmly, in order, with full energy and consistency. What is recorded of Socrates could be applied to him: he was able both to abstain from and to enjoy those things which many people are too weak to abstain from and which they cannot enjoy without excess. To have the strength both to bear the one and to be moderate in the other is the mark of a perfect and unconquerable soul — as he showed during the illness of Maximus.",
+    "notes": "This is the longest passage in Book 1 and the most detailed portrait in the entire Meditations. The 'father' is Antoninus Pius (r. 138–161 CE), Marcus's adoptive father and predecessor as emperor. The passage functions as a mirror for princes — a catalogue of imperial virtues Marcus sought to emulate. Lorium was a town on the Via Aurelia about 19 km from Rome where Antoninus had a villa. Lanuvium (modern Lanuvio) was a town in the Alban Hills. Tusculum was an ancient Latin city southeast of Rome. The comparison to Socrates at the end invokes the paradigmatic philosopher-sage. The illness of Maximus (the Stoic teacher from 1.15) appears as the final test of Antoninus's equanimity.",
+    "proper_nouns": [
+      {
+        "name": "Antoninus Pius",
+        "context": "in_notes",
+        "tip": "Antoninus Pius (86–161 CE), Roman Emperor from 138–161 CE, adoptive father of Marcus Aurelius. Known for a peaceful and conscientious reign, regarded as one of the 'Five Good Emperors.'",
+        "url": "https://en.wikipedia.org/wiki/Antoninus_Pius"
+      },
+      {
+        "name": "Lorium",
+        "context": "in_original",
+        "tip": "A small town on the Via Aurelia about 19 km west of Rome, where Antoninus Pius had a villa and where he reportedly died in 161 CE.",
+        "url": "https://en.wikipedia.org/wiki/Lorium"
+      },
+      {
+        "name": "Lanuvium",
+        "context": "in_original",
+        "tip": "An ancient town in the Alban Hills southeast of Rome (modern Lanuvio), birthplace of Antoninus Pius and site of an important temple of Juno Sospita.",
+        "url": "https://en.wikipedia.org/wiki/Lanuvium"
+      },
+      {
+        "name": "Tusculum",
+        "context": "in_original",
+        "tip": "An ancient Latin city in the Alban Hills southeast of Rome, a favored retreat for Roman aristocrats. The toll-collector anecdote illustrates Antoninus's gracious manner.",
+        "url": "https://en.wikipedia.org/wiki/Tusculum"
+      },
+      {
+        "name": "Socrates",
+        "context": "in_original",
+        "tip": "Socrates (c. 470–399 BCE), Athenian philosopher regarded as the foundational figure of Western philosophy. The Stoics claimed him as a forerunner of their school.",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      },
+      {
+        "name": "Maximus",
+        "context": "in_original",
+        "tip": "Claudius Maximus, the Stoic philosopher also praised in 1.15, whose final illness provided a test of Antoninus Pius's steadiness.",
+        "url": "https://en.wikipedia.org/wiki/Claudius_Maximus_(Stoic)"
+      }
+    ]
+  },
+  {
+    "id": "1.17",
+    "modern_english": "To the gods I owe the fact that I had good grandparents, good parents, a good sister, good teachers, good companions, relatives, and friends — nearly everything good. I also owe it to them that I was never provoked into offending any of these people, even though I had a temperament that, given the occasion, might have led me to do so — but by the gods' favor, no such combination of circumstances ever arose. I am grateful that I was not brought up any longer than I was with my grandfather's concubine, and that I preserved my youth, and did not enter into manhood prematurely but even put it off. I am grateful that I was placed under a ruler and father who could strip away all my pride and bring me to understand that one can live in a palace without needing bodyguards, elaborate clothing, torches, statues, and such trappings — that it is possible for a ruler to live almost like a private citizen without becoming less thoughtful or less diligent about duties of state. I am grateful for a brother whose character could rouse me to self-improvement while also pleasing me through his respect and affection; that my children have not been stupid or physically deformed; that I did not advance too far in rhetoric, poetry, or other studies that might have absorbed me completely if I had seen myself making progress in them; that I quickly promoted those who raised me to the positions they seemed to want, without putting them off with promises for later; that I came to know Apollonius, Rusticus, and Maximus. I am grateful that I received clear and frequent impressions of what it means to live according to nature, so that — as far as the gods, their gifts, their help, and their inspiration were concerned — nothing prevented me from beginning to live that way at once, though I still fall short through my own fault and through not heeding the gods' reminders, almost their direct instructions. I am grateful that my body has held up as long as it has under such a life; that I never touched Benedicta or Theodotus, and that even after falling into amorous passions I was cured; that though I was often irritated with Rusticus, I never did anything I would regret; that my mother, though destined to die young, spent her last years with me; that whenever I wished to help someone in need or for any other purpose, I was never told I lacked the means; that I myself was never reduced to accepting help from others; that I have such a wife — so obedient, affectionate, and simple; that I found capable tutors for my children; that remedies were shown to me in dreams, including for blood-spitting and dizziness; and that when I became interested in philosophy, I did not fall into the hands of a sophist, nor sit down to analyze writers of histories, syllogisms, or celestial phenomena. For all these things require the help of the gods and fortune.",
+    "notes": "This capstone passage of Book 1 is Marcus's prayer of gratitude to the gods for the entire shape of his life. It recapitulates many of the figures and lessons from the preceding passages (Apollonius, Rusticus, Maximus) and adds personal details found nowhere else: his youthful infatuations with Benedicta and Theodotus, his mother's premature death, remedies received in dreams (a common Roman religious practice of incubation), and his genuine self-criticism for falling short of the philosophical ideals he admires. The phrase 'living according to nature' sums up the entire Stoic ethical project. The closing remark about needing 'the help of the gods and fortune' modestly acknowledges that even a Stoic emperor cannot claim full credit for his circumstances.",
+    "proper_nouns": [
+      {
+        "name": "Apollonius",
+        "context": "in_original",
+        "tip": "Apollonius of Chalcedon, Marcus's Stoic philosophy teacher (see 1.8).",
+        "url": "https://en.wikipedia.org/wiki/Apollonius_of_Chalcedon"
+      },
+      {
+        "name": "Rusticus",
+        "context": "in_original",
+        "tip": "Quintus Junius Rusticus, Marcus's primary Stoic teacher and later urban prefect of Rome (see 1.7).",
+        "url": "https://en.wikipedia.org/wiki/Quintus_Junius_Rusticus"
+      },
+      {
+        "name": "Maximus",
+        "context": "in_original",
+        "tip": "Claudius Maximus, Stoic philosopher and Roman consul admired by Marcus (see 1.15).",
+        "url": "https://en.wikipedia.org/wiki/Claudius_Maximus_(Stoic)"
+      },
+      {
+        "name": "Benedicta",
+        "context": "in_original",
+        "tip": "A woman (possibly of the imperial household) with whom Marcus had a youthful infatuation. No further historical information survives.",
+        "url": ""
+      },
+      {
+        "name": "Theodotus",
+        "context": "in_original",
+        "tip": "A person (possibly a male slave or freedman) with whom Marcus had a youthful infatuation. No further historical information survives.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "id": "2.1",
+    "modern_english": "Say to yourself first thing in the morning: today I will encounter people who are meddlesome, ungrateful, arrogant, deceitful, envious, and antisocial. All of this happens to them because they do not know the difference between good and evil. But I have seen that the nature of the good is beautiful, and the nature of the bad is ugly, and that the wrongdoer himself is my kin — not by blood or birth, but because we share the same intelligence and the same portion of the divine. Therefore no one can harm me, because no one can force what is truly ugly upon me. Nor can I be angry with my kinsman or hate him. We were made for cooperation, like feet, like hands, like eyelids, like the upper and lower rows of teeth. To work against each other is contrary to nature, and resentment and aversion are forms of working against each other.",
+    "notes": "This famous opening of Book 2 is one of the most quoted passages in Stoic literature. Marcus prepares himself for the day by anticipating difficult people — not to build resentment, but to inoculate himself through understanding. The core argument is Stoic: wrongdoing stems from ignorance (agnoia) of true good and evil, not from malice. Since all rational beings share in the universal Logos (divine reason), even those who wrong us are our kin. The body-parts metaphor (feet, hands, eyelids, teeth) comes from Stoic cosmopolitanism: humanity is one organism, and conflict between its parts is self-harm.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.2",
+    "modern_english": "Whatever this thing is that I am, it is a little flesh, a little breath, and the ruling mind. Throw away your books — stop being distracted, you do not have that luxury. Instead, as though you were on the point of death, look down on your flesh: it is just blood and bones, a web of nerves, veins, and arteries. Consider your breath too: just air, and not the same air from moment to moment, but constantly breathed out and drawn back in. The third thing, then, is the ruling mind. Think about it this way: you are an old man. Do not let this mind be enslaved any longer. Do not let it be jerked about like a puppet by selfish impulses. Stop being dissatisfied with your present lot and stop dreading the future.",
+    "notes": "Marcus divides the human being into the Stoic triad: body (sarx), breath/vital spirit (pneuma), and the ruling rational faculty (hegemonikon). The command to 'throw away your books' is a call to stop theorizing and start living philosophically. The puppet metaphor recurs in the Meditations — the image of being pulled by strings of desire rather than directed by reason. The self-address as 'old man' places Book 2 late in Marcus's life (he was likely in his fifties, campaigning on the Danube frontier).",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.3",
+    "modern_english": "Everything that comes from the gods is full of providence. What comes from fortune is not separate from nature, nor disconnected from the web of events governed by providence. Everything flows from that source. What happens is both necessary and beneficial to the whole universe, of which you are a part. Whatever the nature of the whole brings about is good for every part of nature, and what maintains the whole preserves each part. The universe is maintained by the changes of its elements and the changes of the things composed from them. Let these principles be enough for you — keep them as fixed beliefs. And give up your thirst for books, so that you may die not grumbling but at peace, truly and heartfelt thankful to the gods.",
+    "notes": "This passage outlines the Stoic physics of providence (pronoia). Nothing in the universe happens outside the rational order: even apparent 'fortune' or 'chance' is woven into the providential plan. The key ethical consequence is acceptance: since you are a part of the whole, what benefits the whole benefits you, even if it does not feel that way. The repeated injunction to abandon books reinforces the shift from theoretical study to lived philosophy. Marcus wrote the Meditations as private notes, not a treatise — the urgency is personal.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.4",
+    "modern_english": "Remember how long you have been putting this off and how many chances the gods have given you that you have not used. It is time to realize what kind of universe you are part of, and from what kind of governing intelligence your existence flows, and that a limit has been set for your time. If you do not use that time to clear away the clouds from your mind, the opportunity will pass and you will pass, and it will never come again.",
+    "notes": "A sharp self-rebuke about procrastination. The 'clouds' obscuring the mind are false judgments and passions. The phrase 'efflux of the administrator of the universe' (aporroia tou dioikountos ton kosmon) describes the Stoic idea that each individual rational soul is a fragment emanating from the universal Logos. The passage captures Marcus's characteristic sense of urgency: time is finite, and philosophical clarity cannot be deferred indefinitely.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.5",
+    "modern_english": "Every hour, focus with full determination — as a Roman and as a man — on doing whatever is in front of you with precise and genuine dignity, with empathy, with freedom, and with justice. Free yourself from all other distractions. You will achieve this freedom if you perform each act as if it were your last, setting aside all carelessness, all emotional resistance to the commands of reason, all hypocrisy, all self-centeredness, and all resentment toward what has been allotted to you. You see how few things a person needs to master in order to live a tranquil, godlike life — for the gods will ask nothing more of someone who keeps to these principles.",
+    "notes": "One of the Meditations' most concentrated ethical instructions. The phrase 'as a Roman and a man' invokes Marcus's dual identity as emperor and human being. The Stoic ideal here is that each moment should be approached with total presence, as if it were one's final act. The reference to a 'godlike' life does not mean divinity but living in alignment with divine reason — which is what the Stoics meant by the good life. The passage anticipates Marcus's later theme that the path to tranquility is surprisingly simple, requiring only a few key principles held firmly.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.6",
+    "modern_english": "Go ahead, degrade yourself, my soul — go on doing it. But you will not have the chance to honor yourself forever. Each person has only one life, and yours is nearly over, yet you still do not respect yourself. Instead, you place your happiness in the souls of others.",
+    "notes": "A fierce self-reproach addressed directly to his own soul (psyche). The Greek hubrizein (ὑβρίζειν) means both 'to insult' and 'to outrage' — Marcus is saying his soul commits violence against itself when it fails to live according to reason. The key Stoic point is that true happiness (eudaimonia) must be located in one's own rational faculty, not in others' opinions, since only our own judgments are 'up to us.' Placing your well-being in others' hands is a form of slavery.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.7",
+    "modern_english": "Are you distracted by things that happen to you from outside? Then give yourself time to learn something new and worthwhile, and stop being pulled in every direction. But also guard against the opposite trap: people who have exhausted themselves with constant activity, yet have no guiding purpose for all their movements — no coherent aim for their thoughts.",
+    "notes": "Marcus identifies two forms of mental dispersal: passive distraction (being pulled about by external events) and mindless busyness (ceaseless activity without direction). The Stoic prescription is a middle path: purposeful engagement directed by reason, not frantic action or passive drift. The Greek rhembomenos (ῥεμβόμενος, 'wandering') captures the image of a mind that cannot settle on what matters.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.8",
+    "modern_english": "Not paying attention to what goes on in another person's mind rarely makes anyone unhappy. But those who fail to observe the movements of their own minds are bound to be miserable.",
+    "notes": "A compact and powerful Stoic maxim. The contrast is between external curiosity (wondering what others think) and internal awareness (knowing your own mental states). Unhappiness comes not from ignorance of others but from ignorance of oneself. This connects to the Stoic practice of prosoche (attention) — constant, vigilant self-observation of one's own judgments, impulses, and desires.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.9",
+    "modern_english": "You must always keep in mind: What is the nature of the whole universe? What is my own nature? How does my nature relate to the universal nature? What kind of part am I of what kind of whole? And remember that no one can prevent you from always acting and speaking in accordance with the nature of which you are a part.",
+    "notes": "A systematic framework for Stoic self-examination. The key relation is between the individual part and the cosmic whole: understanding your place in the universe determines your ethical obligations. The reassurance that 'no one can prevent you' from acting rightly is a core Stoic doctrine — virtue is entirely within your power because it depends only on your own rational choices, not on external circumstances.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.10",
+    "modern_english": "The philosopher Theophrastus, in his comparison of different offenses — making the sort of comparison that accords with common sense — says that sins committed out of desire are worse than those committed out of anger. For the angry person seems to turn away from reason with a kind of pain and involuntary contraction, whereas the person who sins through desire, being overcome by pleasure, seems more self-indulgent and less restrained in their wrongdoing. Rightly, then, and in a manner worthy of philosophy, Theophrastus said that a sin committed with pleasure deserves more blame than one committed with pain. The angry person is more like someone who has been wronged first and is driven to react by the pain of it; the person who sins through desire is moved by their own inner impulse, carried toward wrongdoing by appetite.",
+    "notes": "Marcus approvingly quotes Theophrastus, Aristotle's successor as head of the Lyceum (Peripatetic school). The distinction is psychologically subtle: anger involves pain and thus a kind of involuntary reaction, while desire involves pleasure and thus a more deliberate choice of wrongdoing. This aligns with the Stoic view that desire (epithumia) is a more corrupting passion than anger (thymos) because it represents a deeper attachment to false goods. It is notable that Marcus, a Stoic, favorably cites a Peripatetic — he was ecumenical in his philosophical sources.",
+    "proper_nouns": [
+      {
+        "name": "Theophrastus",
+        "context": "in_original",
+        "tip": "Theophrastus (c. 371–287 BCE), Greek philosopher who succeeded Aristotle as head of the Peripatetic school (Lyceum). Author of the Characters and many works on natural philosophy.",
+        "url": "https://en.wikipedia.org/wiki/Theophrastus"
+      }
+    ]
+  },
+  {
+    "id": "2.11",
+    "modern_english": "Act, speak, and think in everything as though you might leave life at this very moment. If gods exist, departing from the company of humans is nothing to fear, for the gods would not subject you to any real harm. If the gods do not exist, or if they have no concern for human affairs, then what point is there in living in a universe empty of gods or divine care? But in fact the gods do exist, and they do care about human beings, and they have given us everything we need to avoid falling into genuine evil. If anything else were truly harmful, the gods would have ensured we had the power to avoid that too. How can something that does not make a person morally worse make their life worse? The nature of the universe could not have overlooked these things through ignorance, nor through knowing about them but lacking the power to prevent or correct them. It is impossible that nature made such a great blunder — whether from lack of power or lack of skill — as to allow good and evil to fall randomly on good and bad people alike. Now death, life, honor, dishonor, pain, and pleasure all happen equally to good people and bad, and none of these things makes us morally better or worse. Therefore they are neither truly good nor truly evil.",
+    "notes": "This is one of the Meditations' most philosophically rigorous passages. Marcus presents a trilemma about the gods (they exist and care; they exist but do not care; they do not exist) and argues that on any hypothesis, the wise person has nothing to fear. The argument then becomes a theodicy: if the gods are good and powerful, they must have ensured that nothing truly harmful is beyond our control. The conclusion draws on the Stoic doctrine of 'indifferents' (adiaphora): death, pain, honor, and pleasure are morally neutral because they do not affect the soul's virtue.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.12",
+    "modern_english": "How swiftly all things vanish — bodies themselves dissolve into the universe, and the memory of them dissolves into time. Consider the nature of all sensory things, especially those that entice us with pleasure, frighten us with pain, or are celebrated by popular opinion: how cheap, contemptible, sordid, perishable, and dead they really are. It is the work of the intellect to examine these things. It should also examine who these people are whose opinions and voices create reputations. It should consider what death really is — and recognize that if you strip away the mental images surrounding it and look at it on its own, you will see it as nothing more than a natural process. And anyone afraid of a natural process is a child. Death is not only a process of nature but something that serves nature's purposes. Consider too how human beings approach the divine, through what part of themselves, and under what conditions that part is best disposed.",
+    "notes": "Marcus combines several Stoic meditative exercises: the 'view from above' (seeing how quickly everything fades), the stripping away of value-judgments from sensory impressions, and the analysis of death as a natural dissolution. The word 'vapory fame' (typhos, literally 'smoke' or 'vanity') is a favorite Stoic term for empty reputation. The passage concludes with the Stoic idea that the divine element in humans is the rational mind (nous), and that approaching the divine means purifying this faculty.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.13",
+    "modern_english": "Nothing is more wretched than the person who runs around investigating everything, who — as the poet says — searches beneath the earth, and who tries to guess by inference what is happening inside other people's minds, without realizing that it is enough to attend to the divine spirit within and to honor it sincerely. Honoring this spirit means keeping it free from passion, thoughtlessness, and dissatisfaction with what comes from gods and from other people. What comes from the gods deserves reverence for its excellence. What comes from other people should be valued because of our shared kinship — and sometimes it even deserves our pity, because people cannot tell good from evil. This blindness is as real a disability as the inability to distinguish black from white.",
+    "notes": "The 'poet' whose words Marcus quotes ('searches beneath the earth') is likely Pindar, though the exact source is disputed. The 'daemon within' (daimon) is the Stoic term for the rational soul or ruling faculty — not a separate spirit but the divine element in each person. Marcus insists that tending to this inner guide is more important than all external investigation. The comparison of moral ignorance to color-blindness is striking: people who cannot distinguish good from evil are not wicked by choice but are genuinely disabled in their perception.",
+    "proper_nouns": [
+      {
+        "name": "Monimus",
+        "context": "in_original",
+        "tip": "Monimus the Cynic (4th century BCE), a pupil of Diogenes of Sinope, known for the maxim 'all is vanity' (or 'all is opinion') — that human conventions are mere assumptions.",
+        "url": "https://en.wikipedia.org/wiki/Monimus"
+      }
+    ]
+  },
+  {
+    "id": "2.14",
+    "modern_english": "Even if you were going to live three thousand years, or thirty thousand, remember this: no one loses any life other than the one they are living right now, and no one lives any life other than the one they are now losing. The longest life and the shortest thus amount to the same thing. The present moment is the same for everyone, though what has perished differs; and so what is lost turns out to be a mere instant. No one can lose the past or the future — for how can anyone take from you what you do not possess? Keep two things in mind: first, that everything from eternity repeats in the same patterns and cycles, and it makes no difference whether you see the same things for a hundred years, two hundred, or an infinite time; second, that the person who lives the longest and the person who dies soonest both lose exactly the same thing — the present moment. For the present is the only thing anyone possesses, and you cannot lose what you do not have.",
+    "notes": "One of the Meditations' most philosophically dense passages. Marcus argues that since only the present moment is real — the past is gone and the future does not yet exist — the length of a life is irrelevant. Everyone, regardless of age, possesses and loses only the same infinitesimal 'now.' The doctrine of eternal recurrence (that all things cycle endlessly) was a Stoic cosmological belief derived from the theory of periodic cosmic conflagration (ekpyrosis) and renewal (palingenesis). If everything repeats, seeing more of it adds nothing new.",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.15",
+    "modern_english": "Remember that everything is a matter of perception. The saying attributed to the Cynic Monimus makes this clear enough — and the useful part of what he said is clear too, if you accept the kernel of truth in it without taking it further than is warranted.",
+    "notes": "Monimus the Cynic was a 4th-century BCE philosopher known for the maxim that everything is vanity or mere supposition (tuphos). Marcus endorses this only to a point: the Stoics agreed that our experience is mediated by judgments (hupolepsis, 'opinion'), but they did not deny objective reality as some Cynics did. The qualification 'as far as it is true' shows Marcus's measured approach — he takes what is useful from other schools without wholesale adoption.",
+    "proper_nouns": [
+      {
+        "name": "Monimus",
+        "context": "in_original",
+        "tip": "Monimus the Cynic (4th century BCE), a pupil of Diogenes of Sinope, known for declaring that all human conventions are mere suppositions or vanity (tuphos).",
+        "url": "https://en.wikipedia.org/wiki/Monimus"
+      }
+    ]
+  },
+  {
+    "id": "2.16",
+    "modern_english": "The human soul does violence to itself, first, when it becomes — so far as it can — an abscess, a kind of tumor on the universe. To be resentful about anything that happens is to separate yourself from the nature that contains the natures of all individual things. Second, the soul does violence to itself when it turns away from any person, or moves against someone with intent to harm — as do the souls of angry people. Third, it does violence to itself when it is defeated by pleasure or pain. Fourth, when it puts on an act and does or says anything dishonestly or falsely. Fifth, when it fails to direct any action or impulse toward a purpose, doing things thoughtlessly and without consideration — for even the smallest act should be performed with an end in view. The end for rational beings is to follow the reason and law of the most ancient city and commonwealth.",
+    "notes": "Marcus catalogs five ways the soul injures itself: (1) resentment against fate, which severs you from the cosmic whole; (2) hostility toward other people; (3) being overwhelmed by pleasure or pain; (4) dishonesty and pretense; (5) purposeless action. The 'most ancient city' is the Stoic cosmopolis — the universal community of all rational beings governed by the Logos. This passage weaves together Stoic physics (we are parts of one cosmos), ethics (harm others and you harm yourself), and logic (every action must have a rational purpose).",
+    "proper_nouns": []
+  },
+  {
+    "id": "2.17",
+    "modern_english": "The time of human life is a point. Its substance is flowing away. Perception is dim. The body as a whole is quick to decay. The soul is a spinning top. Fortune is hard to predict. Fame is meaningless. In short: everything belonging to the body is a river, everything belonging to the soul is a dream and vapor, life is warfare and a stay in a foreign land, and posthumous fame is oblivion. What then can guide a person through this? One thing and one thing only: philosophy. And philosophy means keeping the divine spirit within you undamaged and unharmed, master over pleasure and pain, doing nothing without purpose, free from dishonesty and pretense, independent of what others do or fail to do. It means accepting everything that happens and everything that is allotted to you as coming from the same source from which you yourself came. And above all, it means waiting for death with a calm mind, understanding it as nothing more than the dissolution of the elements that compose every living being. If there is nothing fearful in each element continually changing into another, why should anyone dread the change and dissolution of all their elements together? It is natural, and nothing natural is evil.",
+    "notes": "This magnificent closing passage of Book 2 is often cited as a summary of Stoic philosophy. The staccato opening — 'a point... a flux... dull... putrefaction... a whirl' — creates an almost nihilistic inventory of human frailty, which Marcus then resolves with the single answer: philosophy. The Greek word rhombos (ῥόμβος, 'whirl' or 'spinning top') for the soul conveys restless, directionless motion. The 'warfare' and 'foreign sojourn' metaphors echo Epictetus and Plato. The final argument — that since individual elements are constantly transforming and this is not fearful, total dissolution should not be feared either — is the Stoic naturalistic argument against the fear of death.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.1",
+    "modern_english": "We must consider not only that each day our life is being used up and a smaller portion remains, but also this: even if a person lives longer, there is no certainty that their mind will still be strong enough to comprehend things and to sustain the contemplation needed to understand both the divine and the human. If mental decline sets in, the body's functions — breathing, eating, imagining, desiring — will continue; but the ability to make proper use of oneself, to fulfill one's duties, to analyze impressions clearly, to judge whether the time has come to depart from life, and everything else that requires a trained intellect — all of that fades first. Therefore we must hurry, not only because death draws nearer every day, but because our capacity for understanding and attention may give out before we do.",
+    "notes": "Book 3 opens with a meditation on cognitive decline — a remarkably modern concern. Marcus argues that the real urgency of life is not just mortality but the possible loss of rational capacity before death. The Stoics located human identity in the hegemonikon (ruling mind); if that faculty deteriorates, the person effectively ceases to exist as a moral agent even while the body persists. This double argument for urgency — death plus cognitive decay — intensifies the call to philosophical practice that runs throughout Books 2 and 3.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.2",
+    "modern_english": "We should also notice that even the incidental byproducts of natural processes have a kind of charm and appeal. When bread bakes, for example, parts of the crust crack open — and these cracks, which go against the baker's intention, are beautiful in their own way and stimulate the appetite. Figs split open when fully ripe. Olives on the verge of decay acquire a special beauty. Ears of grain bending down, a lion's furrowed brow, the foam at a wild boar's mouth, and many other such things — if examined in isolation, they are far from beautiful, yet because they are consequences of what nature produces, they add to nature's beauty and give pleasure to the contemplative mind. A person with true feeling and deep understanding of the workings of the universe will find hardly anything, even among these secondary effects, that does not seem arranged to give a kind of delight. Such a person will look at the actual gaping jaws of wild beasts with no less pleasure than the imitations offered by painters and sculptors. They will be able to see a certain ripeness and charm in old age, and to gaze on the beauty of youth with clear eyes. Many things like these will present themselves — not to everyone, but only to the person who has become genuinely familiar with nature and her works.",
+    "notes": "This is one of the most aesthetically rich passages in the Meditations. Marcus argues for a kind of Stoic beauty theory: nature's incidental effects (cracks in bread, overripe figs, aging faces) possess their own attractiveness when seen with philosophical eyes. The point is not merely aesthetic but ethical: if you truly understand the providential order of nature, everything in it — including decay and imperfection — appears as part of a beautiful whole. This passage counterbalances the harsh cosmic pessimism found elsewhere in the Meditations.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.3",
+    "modern_english": "Hippocrates cured many diseases and then fell sick and died himself. The Chaldean astrologers predicted many people's deaths, and then fate caught up with them too. Alexander, Pompey, and Gaius Caesar, who completely destroyed whole cities and cut to pieces tens of thousands of cavalry and infantry in battle, eventually departed from life themselves. Heraclitus, after so much theorizing about the universal conflagration, died bloated with water and covered in dung. Lice destroyed Democritus, and other lice killed Socrates. What does this all mean? You have boarded the ship, you have made the voyage, you have reached the shore — now disembark. If it is into another life, there will be no shortage of gods there either. If it is into unconsciousness, you will no longer be subject to pleasure and pain, no longer a slave to a bodily vessel that is far inferior to the spirit it serves — for the spirit is intelligence and divinity, while the body is merely earth and decay.",
+    "notes": "A catalogue of illustrious deaths designed to normalize mortality. The 'Chaldeans' were Babylonian astrologers famous throughout the ancient world. The stories about Heraclitus dying from dropsy and being covered in cow dung, and Democritus dying from lice, are ancient biographical traditions (possibly apocryphal) meant to show that even great minds cannot escape bodily indignity. The 'lice' that killed Socrates is a reference to his human accusers (Anytus, Meletus, Lycon). The voyage metaphor frames life as a journey with a natural endpoint — disembarking is not a catastrophe but a completion.",
+    "proper_nouns": [
+      {
+        "name": "Hippocrates",
+        "context": "in_original",
+        "tip": "Hippocrates of Kos (c. 460–370 BCE), Greek physician regarded as the 'Father of Medicine,' founder of the Hippocratic school of medical thought.",
+        "url": "https://en.wikipedia.org/wiki/Hippocrates"
+      },
+      {
+        "name": "Alexander",
+        "context": "in_original",
+        "tip": "Alexander the Great (356–323 BCE), king of Macedon who conquered the Persian Empire and much of the known world, dying at age 32 in Babylon.",
+        "url": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+      },
+      {
+        "name": "Pompeius",
+        "context": "in_original",
+        "tip": "Gnaeus Pompeius Magnus (Pompey the Great, 106–48 BCE), Roman general and statesman, member of the First Triumvirate, murdered in Egypt after his defeat by Caesar.",
+        "url": "https://en.wikipedia.org/wiki/Pompey"
+      },
+      {
+        "name": "Caius Caesar",
+        "context": "in_original",
+        "tip": "Gaius Julius Caesar (100–44 BCE), Roman dictator, military genius, and political reformer, assassinated on the Ides of March.",
+        "url": "https://en.wikipedia.org/wiki/Julius_Caesar"
+      },
+      {
+        "name": "Heraclitus",
+        "context": "in_original",
+        "tip": "Heraclitus of Ephesus (c. 535–475 BCE), pre-Socratic philosopher known for the doctrines of universal flux and cosmic fire (ekpyrosis). The Stoics regarded him as a philosophical ancestor.",
+        "url": "https://en.wikipedia.org/wiki/Heraclitus"
+      },
+      {
+        "name": "Democritus",
+        "context": "in_original",
+        "tip": "Democritus (c. 460–370 BCE), Greek philosopher who, with Leucippus, developed the atomic theory of the universe — the chief materialist alternative to Stoic providential physics.",
+        "url": "https://en.wikipedia.org/wiki/Democritus"
+      },
+      {
+        "name": "Socrates",
+        "context": "in_original",
+        "tip": "Socrates (c. 470–399 BCE), Athenian philosopher executed by hemlock after being convicted of impiety and corrupting the youth. The 'lice' metaphor refers to his prosecutors.",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      }
+    ]
+  },
+  {
+    "id": "3.4",
+    "modern_english": "Do not waste the remaining portion of your life in thoughts about other people — not unless those thoughts serve some common purpose. You lose the opportunity for other, more valuable work when you occupy yourself with questions like: What is so-and-so doing? Why? What is he saying, thinking, scheming? Thoughts like these pull you away from attending to your own ruling mind. You should therefore exclude from your train of thought everything aimless and useless, and above all, idle curiosity and malice. Train yourself so that if someone suddenly asked, 'What are you thinking about right now?' you could answer honestly and immediately: 'This' or 'That' — and it would be plain from your answer that everything in your mind was straightforward, kindly, and worthy of a social creature who has no room for thoughts about pleasure or self-indulgence, or for rivalry, envy, suspicion, or anything else you would be ashamed to admit. A person who lives like this, no longer postponing the effort to join the ranks of the best, is like a priest and servant of the gods, drawing on the divinity planted within, which keeps them uncontaminated by pleasure, unhurt by pain, untouched by insult, impervious to wrongdoing, a fighter in the noblest struggle — one who cannot be defeated by any passion, dyed deep with justice, welcoming with their whole soul everything that happens as their allotted portion. Such a person rarely, and only under great necessity and for the common good, wonders what someone else is saying, doing, or thinking. Only what belongs to them is the subject of their activity. They think constantly about their own thread in the tapestry of fate and strive to make their own acts noble. They are convinced that their own lot is good — for each person's allotment carries them along and they carry it. They remember too that every rational being is their kin, and that caring for all people is in accordance with human nature. They do not seek everyone's approval — only the approval of those who genuinely live according to nature. As for those who do not live this way, they keep in mind what kind of people they are, at home and abroad, by night and by day, and what company they keep. They therefore place no value on praise from such people — people who are not even satisfied with themselves.",
+    "notes": "The longest passage in Book 3, this is a comprehensive portrait of the Stoic sage in action. The test of transparent thought — 'What are you thinking right now?' — is a practical exercise in mental hygiene. The image of the philosopher as 'priest and servant of the gods' elevates everyday rationality to a sacred vocation. The 'thread of destiny' (klothesis) alludes to the Fates (Moirai) who spin, measure, and cut the thread of each life. The passage combines inner discipline (purifying thought), social ethics (universal kinship), and epistemology (whose judgment to trust).",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.5",
+    "modern_english": "Do not act unwillingly, selfishly, without careful thought, or while pulled in conflicting directions. Do not dress up your thinking with clever ornament. Do not be a person of too many words or too many projects. Let the god within you be the guardian of a living being who is mature, engaged in public affairs, a Roman, and a ruler — someone who has taken their post like a soldier waiting for the signal to depart from life, ready to go, needing no oath and no witness. Be cheerful, and do not look for external help or the peace that depends on others. A person must stand upright on their own, not be propped up.",
+    "notes": "A dense cluster of Stoic imperatives. The 'god within' (ho en soi theos) is the hegemonikon, the rational ruling faculty — the divine fragment that, when properly exercised, constitutes human excellence. The military metaphor (taking one's post, waiting for the signal) reflects Marcus's own life on campaign along the Danube. The final image — standing erect by oneself rather than being held up by others — is a metaphor for moral self-sufficiency (autarkeia), one of the cardinal Stoic virtues.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.6",
+    "modern_english": "If you can find anything in human life better than justice, truth, self-control, and courage — or, in a word, anything better than your own mind's satisfaction when it enables you to act according to right reason, and its acceptance of whatever fate assigns you without your choosing it — if, I say, you find anything better than this, then turn to it wholeheartedly and enjoy what you have discovered as the supreme good. But if nothing proves better than the divinity dwelling within you, which has mastered all your appetites, which scrutinizes every impression, which — as Socrates put it — has freed itself from the seductions of the senses and submitted itself to the gods while caring for humankind — if everything else is smaller and less valuable than this, then give way to nothing else. For if you once waver and lean toward some competing good, you will no longer be able to give undivided priority to your own highest good. It is not right for anything of a different kind — popular approval, power, wealth, or sensual pleasure — to compete with what is rationally and practically good. All such things, even if they seem to harmonize with the better for a moment, quickly overpower it and carry us off course. So simply and freely choose the better and hold to it. 'But the useful is the better,' you say. Well then, if it is useful to you as a rational being, hold to it. But if it is useful to you only as an animal, say so honestly, and maintain your judgment without arrogance — only make sure your inquiry is sound.",
+    "notes": "This passage presents the Stoic challenge: can you find anything better than virtue? The four virtues listed — justice, truth (or wisdom), temperance, and courage — are the four cardinal Stoic virtues (later adopted by Christianity). The Socrates reference is to the ideal of the examined life, freed from sensory deception. The internal dialogue at the end ('But the useful is the better') stages a potential objection and shows Marcus reasoning through it: 'useful' must mean useful to reason, not just to the body. The distinction between what benefits you 'as a rational being' versus 'as an animal' is the Stoic framework of oikeiosis — recognizing your essential nature.",
+    "proper_nouns": [
+      {
+        "name": "Socrates",
+        "context": "in_original",
+        "tip": "Socrates (c. 470–399 BCE), Athenian philosopher who taught that the unexamined life is not worth living. The Stoics regarded him as a proto-Stoic sage.",
+        "url": "https://en.wikipedia.org/wiki/Socrates"
+      }
+    ]
+  },
+  {
+    "id": "3.7",
+    "modern_english": "Never value as beneficial to yourself anything that will force you to break your word, abandon your self-respect, hate someone, be suspicious, curse, act the hypocrite, or desire anything that requires walls and closed doors. A person who has chosen above all else their own intelligence and divine spirit, and the service of its excellence, does not play a tragic role, does not groan, and needs neither solitude nor crowds. Most importantly, they will live without either chasing or fleeing from death. Whether the soul is enclosed in the body for a longer or shorter time makes no difference to them — even if they had to leave this moment, they would go as willingly as if they were going about any other task that can be done with decency and composure. Their only care throughout life is that their thoughts never stray from what belongs to an intelligent being and a member of a civic community.",
+    "notes": "The phrase 'anything that needs walls and curtains' alludes to shameful acts done in secret — if an action requires concealment, it violates the Stoic principle of living consistently and openly. The 'tragic part' means melodramatic self-pity; the Stoic sage faces all circumstances with calm dignity. The indifference to the timing of death — whether the soul's stay in the body is long or short — is among the most distinctive and demanding Stoic positions. The passage effectively defines the Stoic good life: transparent, principled, and ready for death at any moment.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.8",
+    "modern_english": "In the mind of a person who has been disciplined and purified, you would find nothing festering, nothing contaminated, nothing covered over like an unhealed wound. Fate does not catch such a person with their life unfinished — as one might say of an actor who leaves the stage before the play is done. There is nothing servile in them, nothing pretentious, nothing overly entangled with the world, yet nothing detached from it either — nothing blameworthy, nothing that seeks concealment.",
+    "notes": "Marcus uses medical and theatrical metaphors to describe the Stoic sage. The 'purified mind' contains no hidden corruption (the Greek puodes means 'festering with pus'). The actor metaphor is important: a good life, like a good play, should reach its proper conclusion — but the truly disciplined person is always 'complete,' no matter when death comes, because they have been living fully at every moment. This paradox (always finished, never incomplete) is central to Stoic thinking about death.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.9",
+    "modern_english": "Revere the faculty that forms your judgments. Everything depends on it — ensuring that no opinion arises in your ruling mind that is inconsistent with nature or with the constitution of a rational being. This faculty promises freedom from rash judgment, harmony with other human beings, and obedience to the gods.",
+    "notes": "A brief but foundational passage on Stoic epistemology. The 'faculty which produces opinion' (hupoleptike dunamis) is the capacity to form judgments — the critical mental act that, for Stoics, determines the quality of our entire lives. If our judgments are aligned with nature, we achieve the three goods listed: epistemic reliability (freedom from hasty assent), social virtue (friendship toward others), and piety (obedience to the divine rational order). This passage condenses the whole Stoic program into a single focus point.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.10",
+    "modern_english": "Cast everything else aside and hold fast to these few truths. Remember also that each of us lives only this present moment — an infinitesimal point — and that everything else is either already lived or entirely uncertain. The span of each person's life is small, and small too is the corner of the earth where they live. Even the longest posthumous fame is brief — passed along by a succession of poor mortals who will soon die themselves and who do not even know their own natures, much less the nature of someone long dead.",
+    "notes": "Marcus returns to the themes of 2.14: the present moment as the only reality, the smallness of human life in cosmic perspective, and the emptiness of posthumous fame. The phrase 'nook of the earth' (gonidion tes ges) evokes the Stoic 'view from above' exercise — imagining the entire earth from a great distance, where all human activity shrinks to insignificance. The chain of 'poor human beings' keeping a dead person's memory alive is itself destined to dissolve, making even lasting fame a temporary illusion.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.11",
+    "modern_english": "To the principles already mentioned, add one more: always form a definition or description of whatever presents itself to your mind, so that you can see it clearly for what it is in its essence — stripped bare, analyzed into its parts — and call it by its proper name, along with the names of the elements that compose it and those into which it will eventually dissolve. Nothing elevates the mind so much as the ability to examine every object in life methodically and truthfully, seeing at the same time what kind of universe this is, what role each thing plays in it, what value it has in relation to the whole and in relation to human beings — citizens of the highest city, of which all other cities are like households. Ask yourself: What is this thing? What is it made of? How long is it by nature meant to last? What virtue does it call on me to exercise — gentleness, courage, honesty, faithfulness, simplicity, self-sufficiency? Therefore, for each event you should say: this comes from God; this is according to the spinning thread of destiny and the web of coincidence; and this comes from a fellow human being, a kinsman and partner, though one who may not know what truly accords with their nature. But I do know — and for this reason I treat them with the benevolence and justice that the natural law of fellowship requires. At the same time, regarding things that are morally indifferent, I try to assess their proper value.",
+    "notes": "This passage articulates the Stoic discipline of definition and analysis — what Epictetus called 'testing impressions.' Each experience should be stripped to its bare elements: material composition, duration, and the virtue it calls forth. The 'highest city' is again the Stoic cosmopolis; all earthly cities are merely households within it. The threefold attribution of events — from God, from fate, from fellow humans — provides a complete framework for Stoic response: reverence, acceptance, and benevolence respectively. The concluding note about 'things indifferent' (adiaphora) reflects the Stoic doctrine that most external things have relative value (axia) but are not truly good or evil.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.12",
+    "modern_english": "If you work at what is right in front of you, following right reason with seriousness, energy, and goodwill — allowing no distractions, keeping your divine spirit pure as if you might have to give it back at any moment — if you hold to this course, expecting nothing, fearing nothing, content with your present activity according to nature, and committed to heroic truthfulness in every word you speak, you will live a happy life. And there is no one who can prevent this.",
+    "notes": "One of the most affirmative and concentrated statements in the Meditations. The conditions for happiness are entirely within the individual's control: present-focused attention, rational action, inner purity, fearlessness, and truthfulness. The phrase 'heroic truth in every word and sound' (heroike aletheia) elevates everyday honesty to an epic virtue. The concluding declaration — 'no man is able to prevent this' — is the Stoic guarantee of freedom: since happiness depends on internal states alone, no external power can take it away.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.13",
+    "modern_english": "Just as physicians always keep their instruments and scalpels at hand for emergencies, so you should keep your principles ready for understanding both divine and human affairs. In everything you do, even the smallest thing, remember the bond that connects the divine and the human to each other. You cannot deal properly with anything involving human life without reference to the divine, nor the other way around.",
+    "notes": "The physician analogy is apt: philosophical principles are tools for diagnosing and treating life's challenges, and they must be kept close and ready. The 'bond between divine and human' (sundesmos) is the Stoic Logos that permeates all reality — the same rational principle that governs the cosmos also governs proper human action. Marcus insists on their inseparability: practical ethics cannot function without metaphysical understanding, and cosmic contemplation must issue in right action.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.14",
+    "modern_english": "Stop drifting. You are not going to reread your own notebooks, or the histories of ancient Rome and Greece, or the anthologies of quotations you set aside for your old age. Hurry toward the finish. Let go of empty hopes and come to your own rescue — if you have any concern for yourself at all — while you still can.",
+    "notes": "A poignant self-rebuke. Marcus admits to having collected philosophical extracts (eklogai) and personal notebooks (hupomnemata) — the Meditations themselves may be this kind of notebook. The passage acknowledges that there will be no leisurely old age spent rereading them. The urgency is characteristic of Marcus's late writings: the theoretical preparation phase is over; what remains is practice. The phrase 'come to your own aid' (boethei seauto) frames philosophical self-improvement as a kind of rescue mission.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.15",
+    "modern_english": "People do not realize how many things are meant by the words stealing, sowing, buying, keeping quiet, and seeing what needs to be done — for this kind of seeing is not done with the eyes but with another kind of vision entirely.",
+    "notes": "A cryptic but suggestive passage. Marcus suggests that common words like 'stealing' and 'seeing' have deeper philosophical meanings beyond their everyday sense. The 'other kind of vision' is rational insight — the ability of the hegemonikon to perceive moral reality, as opposed to the mere physical sight of the eyes. This echoes the Stoic distinction between sense-perception (aisthesis) and rational comprehension (katalepsis). Even ordinary acts like buying and keeping quiet have an ethical dimension visible only to the philosophically trained mind.",
+    "proper_nouns": []
+  },
+  {
+    "id": "3.16",
+    "modern_english": "Body, soul, mind. To the body belong sensations; to the soul, impulses and desires; to the mind, principles. The ability to receive sense-impressions belongs even to animals. To be pulled around by the strings of desire belongs to wild beasts, and to men who have made themselves into women, and to a Phalaris and a Nero. To have intelligence that seems to guide one toward what appears appropriate belongs even to people who do not believe in the gods, who betray their country, and who do their foul deeds behind closed doors. If all these capacities are shared with the types I have just named, what then remains as the special mark of the good person? It is to be pleased and content with whatever happens and with the thread of fate spun for them, and not to pollute the divinity planted in their breast or disturb it with a crowd of mental images, but to keep it serene — following it obediently as a god, saying nothing contrary to truth, doing nothing contrary to justice. And if all others refuse to believe this person lives a simple, modest, and contented life, they are neither angry with anyone for it nor deflected from the path that leads to life's end — which a person should reach pure, at peace, ready to depart, and in perfect, unforced harmony with their fate.",
+    "notes": "The final passage of Book 3 builds a hierarchy of human faculties: body (sensations), soul (impulses), and mind (rational principles). Marcus demonstrates that the lower faculties are shared with animals and even with tyrants — Phalaris of Acragas, a 6th-century BCE Sicilian tyrant notorious for roasting victims alive in a bronze bull, and Nero, the Roman emperor (r. 54–68 CE) infamous for cruelty and excess. Even apparent rationality can be found in atheists and traitors. Only the distinctive Stoic constellation of virtues — acceptance of fate, inner purity, truthfulness, justice, and equanimity — separates the genuinely good person from all others.",
+    "proper_nouns": [
+      {
+        "name": "Phalaris",
+        "context": "in_original",
+        "tip": "Phalaris (c. 570–554 BCE), tyrant of Acragas (Agrigentum) in Sicily, notorious for the 'Brazen Bull' — a hollow bronze device in which he allegedly roasted victims alive.",
+        "url": "https://en.wikipedia.org/wiki/Phalaris"
+      },
+      {
+        "name": "Nero",
+        "context": "in_original",
+        "tip": "Nero Claudius Caesar (37–68 CE), Roman Emperor from 54–68 CE, widely regarded in antiquity as a model of tyrannical excess, cruelty, and moral depravity.",
+        "url": "https://en.wikipedia.org/wiki/Nero"
+      }
+    ]
+  }
+]

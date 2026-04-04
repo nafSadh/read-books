@@ -589,8 +589,42 @@ SOURCES = {
 }
 
 
+def load_leopold_annotations():
+    """Load Leopold-numbered annotations from data/annotations/leopold-*.json files."""
+    annotations = {}
+    ann_dir = os.path.join(SCRIPT_DIR, 'annotations')
+    if not os.path.isdir(ann_dir):
+        return annotations
+    for fname in sorted(os.listdir(ann_dir)):
+        if fname.startswith('leopold-') and fname.endswith('.json'):
+            fpath = os.path.join(ann_dir, fname)
+            with open(fpath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            for ann in data:
+                annotations[ann['id']] = {
+                    'modern_english': ann.get('modern_english', ''),
+                    'notes': ann.get('notes', ''),
+                    'proper_nouns': ann.get('proper_nouns', []),
+                }
+            print(f'    {fname}: {len(data)} annotations')
+    return annotations
+
+
 def write_combined(all_books):
     """Write combined JSON and Markdown files."""
+    # Load and merge annotations
+    print('  Loading Leopold annotations...')
+    annotations = load_leopold_annotations()
+    if annotations:
+        print(f'    Total: {len(annotations)} annotations')
+        for book in all_books:
+            for passage in book['passages']:
+                ann = annotations.get(passage['id'])
+                if ann:
+                    passage['annotation'] = ann
+        annotated = sum(1 for b in all_books for p in b['passages'] if 'annotation' in p)
+        print(f'    Merged into {annotated} passages')
+
     # Combined JSON
     combined = {
         'title': 'Meditations — Marcus Aurelius',

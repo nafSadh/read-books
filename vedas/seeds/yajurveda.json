@@ -1,0 +1,170 @@
+{
+  "book": {
+    "title": "যজুর্বেদ সংহিতা",
+    "title_en": "Yajurveda Samhita",
+    "title_sa": "यजुर्वेद संहिता",
+    "description_bn": "যজুর্বেদ হলো চার বেদের দ্বিতীয়। এটি প্রধানত যজ্ঞানুষ্ঠানের মন্ত্র ও বিধি সম্বলিত। শুক্ল যজুর্বেদ (বাজসনেয়ী সংহিতা) ৪০টি অধ্যায়ে বিভক্ত; এর ৪০তম অধ্যায়টি ঈশোপনিষদ নামে সুপরিচিত।",
+    "description_en": "The Yajurveda is the second of the four Vedas, primarily containing mantras and prose formulas for Vedic rituals. The Shukla (White) Yajurveda, also known as the Vajasaneyi Samhita, is organized in 40 chapters (adhyayas); its 40th chapter is the celebrated Isha Upanishad."
+  },
+  "suktas": [
+    {
+      "sukta_num": 1,
+      "title_bn": "পূর্ণমদঃ শান্তি মন্ত্র (ঈশোপনিষদ আবাহন)",
+      "title_en": "Purnamadah Shanti Mantra (Isha Upanishad Invocation)",
+      "rishi": "দধ্যঙ্ আথর্বণ / Dadhyang Atharvana",
+      "devata": "পরব্রহ্ম (পূর্ণতা) / Parabrahman (Wholeness)",
+      "chanda": "অনুষ্টুপ / Anushtubh",
+      "source": "বাজসনেয়ী সংহিতা ৪০ (শান্তিপাঠ) / Vajasaneyi Samhita 40 (Shanti Patha)",
+      "note_en": "This is the invocation (shanti mantra) of the Isha Upanishad, the 40th and final chapter of the Shukla Yajurveda. It is one of the most celebrated verses in all of Vedic literature, expressing the concept of absolute wholeness (purna) — that Brahman is complete, the manifest world is complete, and completeness arises from completeness while remaining complete. It is recited at the beginning and end of Upanishadic study.",
+      "note_bn": "এটি ঈশোপনিষদের আবাহন মন্ত্র (শান্তিপাঠ), শুক্ল যজুর্বেদের ৪০তম ও শেষ অধ্যায়। বৈদিক সাহিত্যের সর্বাধিক বিখ্যাত মন্ত্রগুলির অন্যতম। এটি পূর্ণতার (পূর্ণ) ধারণা প্রকাশ করে — ব্রহ্ম পূর্ণ, প্রকাশিত জগৎ পূর্ণ, পূর্ণ থেকে পূর্ণ উৎপন্ন হলেও পূর্ণই অবশিষ্ট থাকে। উপনিষদ পাঠের আরম্ভে ও সমাপ্তিতে এই মন্ত্র উচ্চারিত হয়।",
+      "mantras": [
+        {
+          "num": 1,
+          "sa_devanagari": "ॐ पूर्णमदः पूर्णमिदं पूर्णात्पूर्णमुदच्यते ।\nपूर्णस्य पूर्णमादाय पूर्णमेवावशिष्यते ॥\nॐ शान्तिः शान्तिः शान्तिः ॥",
+          "sa_bengali": "ওঁ পূর্ণমদঃ পূর্ণমিদং পূর্ণাৎপূর্ণমুদচ্যতে ।\nপূর্ণস্য পূর্ণমাদায় পূর্ণমেবাবশিষ্যতে ॥\nওঁ শান্তিঃ শান্তিঃ শান্তিঃ ॥",
+          "transliteration": "oṁ pūrṇam adaḥ pūrṇam idaṁ pūrṇāt pūrṇam udacyate |\npūrṇasya pūrṇam ādāya pūrṇam evāvaśiṣyate ||\noṁ śāntiḥ śāntiḥ śāntiḥ ||",
+          "meaning_bn": "ওঁ। ওটা (পরব্রহ্ম) পূর্ণ, এটা (দৃশ্যমান জগৎ) পূর্ণ। পূর্ণ থেকে পূর্ণ উৎপন্ন হয়। পূর্ণ থেকে পূর্ণ গ্রহণ করলেও পূর্ণই অবশিষ্ট থাকে। ওঁ শান্তি শান্তি শান্তি।",
+          "meaning_en": "Om. That (Brahman, the invisible) is whole; this (the visible universe) is whole. From wholeness emerges wholeness. When wholeness is taken from wholeness, wholeness alone remains. Om, peace, peace, peace."
+        }
+      ]
+    },
+    {
+      "sukta_num": 2,
+      "title_bn": "ঈশোপনিষদ (মূল মন্ত্রসমূহ)",
+      "title_en": "Isha Upanishad (Core Verses)",
+      "rishi": "দধ্যঙ্ আথর্বণ / Dadhyang Atharvana",
+      "devata": "আত্মবিদ্যা / Atmavidya (Self-knowledge)",
+      "chanda": "অনুষ্টুপ ও জগতী / Anushtubh and Jagati",
+      "source": "বাজসনেয়ী সংহিতা ৪০.১–৮ / Vajasaneyi Samhita 40.1–8",
+      "note_en": "The Isha Upanishad (Ishavasyopanishad) is the 40th chapter of the Vajasaneyi Samhita. It is the shortest major Upanishad, with only 18 verses, yet it is considered one of the most profound. The name comes from its opening word 'isha' (the Lord). Mahatma Gandhi regarded it as encapsulating the essence of Hinduism. These opening verses establish the core teaching: renunciation amid engagement with the world, and seeing the Self in all beings.",
+      "note_bn": "ঈশোপনিষদ (ঈশাবাস্যোপনিষদ) বাজসনেয়ী সংহিতার ৪০তম অধ্যায়। মাত্র ১৮টি মন্ত্রে রচিত এই ক্ষুদ্রতম প্রধান উপনিষদটি গভীরতম দার্শনিক গ্রন্থগুলির অন্যতম। এর নাম প্রথম শব্দ 'ঈশ' (ঈশ্বর) থেকে এসেছে। মহাত্মা গান্ধী এটিকে হিন্দুধর্মের সারসংক্ষেপ বলে মনে করতেন। এই প্রারম্ভিক মন্ত্রগুলিতে মূল শিক্ষা প্রতিষ্ঠিত: জগতে নিযুক্ত থেকেও বৈরাগ্য, এবং সমস্ত প্রাণীর মধ্যে আত্মদর্শন।",
+      "mantras": [
+        {
+          "num": 1,
+          "sa_devanagari": "ॐ ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+          "sa_bengali": "ওঁ ঈশা বাস্যমিদং সর্বং যৎকিঞ্চ জগত্যাং জগৎ ।\nতেন ত্যক্তেন ভুঞ্জীথা মা গৃধঃ কস্যস্বিদ্ধনম্ ॥",
+          "transliteration": "oṁ īśā vāsyam idaṁ sarvaṁ yat kiñca jagatyāṁ jagat |\ntena tyaktena bhuñjīthā mā gṛdhaḥ kasya svid dhanam ||",
+          "meaning_bn": "ওঁ। এই জগতে যা কিছু আছে, সমস্তই ঈশ্বর দ্বারা আচ্ছাদিত (ব্যাপ্ত)। ত্যাগের মাধ্যমে ভোগ কর। কারো ধনে লোভ করো না।",
+          "meaning_en": "Om. All this — whatever moves in this moving world — is pervaded by the Lord. Enjoy through renunciation; do not covet, for whose is wealth?"
+        },
+        {
+          "num": 2,
+          "sa_devanagari": "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः ।\nएवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे ॥",
+          "sa_bengali": "কুর্বন্নেবেহ কর্মাণি জিজীবিষেচ্ছতং সমাঃ ।\nএবং ত্বয়ি নান্যথেতোঽস্তি ন কর্ম লিপ্যতে নরে ॥",
+          "transliteration": "kurvan neveha karmāṇi jijīviṣec chataṁ samāḥ |\nevaṁ tvayi nānyatheto 'sti na karma lipyate nare ||",
+          "meaning_bn": "এই জগতে কর্ম করতে করতে শত বৎসর বাঁচতে ইচ্ছা করবে। এই পথেই (ত্যাগভাবে কর্ম করলে) তোমার প্রতি কর্ম লিপ্ত হয় না — এ ছাড়া অন্য কোনো উপায় নেই।",
+          "meaning_en": "By performing actions here, one should wish to live a hundred years. For a person such as you, there is no other way than this — action does not cling to one (who acts without attachment)."
+        },
+        {
+          "num": 3,
+          "sa_devanagari": "असुर्या नाम ते लोका अन्धेन तमसावृताः ।\nतांस्ते प्रेत्याभिगच्छन्ति ये के चात्महनो जनाः ॥",
+          "sa_bengali": "অসুর্যা নাম তে লোকা অন্ধেন তমসাবৃতাঃ ।\nতাংস্তে প্রেত্যাভিগচ্ছন্তি যে কে চাত্মহনো জনাঃ ॥",
+          "transliteration": "asuryā nāma te lokā andhena tamasāvṛtāḥ |\ntāṁs te pretyābhigacchanti ye ke cātmahano janāḥ ||",
+          "meaning_bn": "অসুর্য (সূর্যবিহীন) নামক সেই লোকগুলি ঘন অন্ধকারে আবৃত। যারা আত্মহন্তা (আত্মজ্ঞানের বিনাশকারী) তারা দেহত্যাগের পর সেই লোকে গমন করে।",
+          "meaning_en": "Sunless are those worlds, enveloped in blinding darkness. Those who are slayers of the Self (who deny their true nature) go to those worlds after departing from here."
+        },
+        {
+          "num": 4,
+          "sa_devanagari": "अनेजदेकं मनसो जवीयो नैनद्देवा आप्नुवन्पूर्वमर्षत् ।\nतद्धावतोऽन्यानत्येति तिष्ठत्तस्मिन्नपो मातरिश्वा दधाति ॥",
+          "sa_bengali": "অনেজদেকং মনসো জবীয়ো নৈনদ্দেবা আপ্নুবন্পূর্বমর্ষৎ ।\nতদ্ধাবতোঽন্যানত্যেতি তিষ্ঠত্তস্মিন্নপো মাতরিশ্বা দধাতি ॥",
+          "transliteration": "anejad ekaṁ manaso javīyo nainad devā āpnuvan pūrvam arṣat |\ntad dhāvato 'nyān atyeti tiṣṭhat tasmin napo mātariśvā dadhāti ||",
+          "meaning_bn": "সেই এক (আত্মা) অচঞ্চল, কিন্তু মনের চেয়ে দ্রুতগামী। দেবতারাও তাঁকে প্রাপ্ত হতে পারলেন না — তিনি সবার আগে গমন করেন। তিনি স্থির থেকেও দ্রুতগামীদের অতিক্রম করেন। তাঁর মধ্যে মাতরিশ্বা (বায়ু) সমস্ত কর্ম ধারণ করে।",
+          "meaning_en": "That One is motionless, yet swifter than the mind. The gods could not reach It, for It moves ahead of all. Standing still, It outstrips those who run. In It, Matarishvan (the cosmic breath) sustains all activity."
+        },
+        {
+          "num": 5,
+          "sa_devanagari": "तदेजति तन्नैजति तद्दूरे तद्वन्तिके ।\nतदन्तरस्य सर्वस्य तदु सर्वस्यास्य बाह्यतः ॥",
+          "sa_bengali": "তদেজতি তন্নৈজতি তদ্দূরে তদ্বন্তিকে ।\nতদন্তরস্য সর্বস্য তদু সর্বস্যাস্য বাহ্যতঃ ॥",
+          "transliteration": "tad ejati tan naijati tad dūre tad v antike |\ntad antar asya sarvasya tad u sarvasyāsya bāhyataḥ ||",
+          "meaning_bn": "সেটি চলে, সেটি চলে না। সেটি দূরে, সেটি নিকটে। সেটি এই সমস্তের অভ্যন্তরে, সেটি আবার এই সমস্তের বাহিরে।",
+          "meaning_en": "It moves and It moves not. It is far and It is near. It is within all this, and It is also outside all this."
+        },
+        {
+          "num": 6,
+          "sa_devanagari": "यस्तु सर्वाणि भूतान्यात्मन्येवानुपश्यति ।\nसर्वभूतेषु चात्मानं ततो न विजुगुप्सते ॥",
+          "sa_bengali": "যস্তু সর্বাণি ভূতান্যাত্মন্যেবানুপশ্যতি ।\nসর্বভূতেষু চাত্মানং ততো ন বিজুগুপ্সতে ॥",
+          "transliteration": "yas tu sarvāṇi bhūtāny ātmany evānupaśyati |\nsarvabhūteṣu cātmānaṁ tato na vijugupsate ||",
+          "meaning_bn": "যিনি সমস্ত ভূত (প্রাণী) কে আত্মাতেই দর্শন করেন এবং সমস্ত ভূতে আত্মাকে দর্শন করেন, তিনি আর কাউকে ঘৃণা করেন না।",
+          "meaning_en": "He who sees all beings in the Self alone, and the Self in all beings, does not feel hatred toward anyone."
+        },
+        {
+          "num": 7,
+          "sa_devanagari": "यस्मिन्सर्वाणि भूतान्यात्मैवाभूद्विजानतः ।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः ॥",
+          "sa_bengali": "যস্মিন্সর্বাণি ভূতান্যাত্মৈবাভূদ্বিজানতঃ ।\nতত্র কো মোহঃ কঃ শোক একত্বমনুপশ্যতঃ ॥",
+          "transliteration": "yasmin sarvāṇi bhūtāny ātmaivābhūd vijānataḥ |\ntatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||",
+          "meaning_bn": "যিনি জানেন যে সমস্ত ভূতই আত্মা হয়ে গেছে, সেই একত্ব-দর্শনকারী জ্ঞানীর মোহ কোথায়? শোক কোথায়?",
+          "meaning_en": "When, to the knower, all beings have become one with his own Self, then what delusion, what sorrow can afflict him who sees oneness everywhere?"
+        },
+        {
+          "num": 8,
+          "sa_devanagari": "स पर्यगाच्छुक्रमकायमव्रणमस्नाविरं शुद्धमपापविद्धम् ।\nकविर्मनीषी परिभूः स्वयम्भूर्याथातथ्यतोऽर्थान्व्यदधाच्छाश्वतीभ्यः समाभ्यः ॥",
+          "sa_bengali": "স পর্যগাচ্ছুক্রমকায়মব্রণমস্নাবিরং শুদ্ধমপাপবিদ্ধম্ ।\nকবির্মনীষী পরিভূঃ স্বয়ম্ভূর্যাথাতথ্যতোঽর্থান্ব্যদধাচ্ছাশ্বতীভ্যঃ সমাভ্যঃ ॥",
+          "transliteration": "sa paryagāc chukram akāyam avraṇam asnāviraṁ śuddham apāpaviddham |\nkavir manīṣī paribhūḥ svayambhūr yāthātathyato 'rthān vyadadhāc chāśvatībhyaḥ samābhyaḥ ||",
+          "meaning_bn": "তিনি সর্বব্যাপী, শুভ্র (জ্যোতির্ময়), শরীরবিহীন, ক্ষতবিহীন, স্নায়ুবিহীন (অশরীরী), শুদ্ধ, পাপ দ্বারা অবিদ্ধ। তিনি কবি (সর্বদ্রষ্টা), মনীষী (মেধাবী), সর্বোপরি স্থিত, স্বয়ম্ভূ — তিনিই অনাদিকাল থেকে সমস্ত বস্তুকে যথাযথরূপে বিধান করেছেন।",
+          "meaning_en": "He pervades all — radiant, bodiless, without scar, without sinews, pure, untouched by evil. He is the Seer, the Thinker, the All-pervading, the Self-existent; He has duly assigned their respective duties to the eternal years."
+        }
+      ]
+    },
+    {
+      "sukta_num": 3,
+      "title_bn": "শিবসঙ্কল্প সূক্ত",
+      "title_en": "Shiva Sankalpa Sukta (Hymn of Noble Resolve)",
+      "rishi": "মেধাতিথি কাণ্ব / Medhatithi Kanva",
+      "devata": "মনস্ (মন) / Manas (Mind)",
+      "chanda": "জগতী / Jagati",
+      "source": "বাজসনেয়ী সংহিতা ৩৪.১–৬ / Vajasaneyi Samhita 34.1–6",
+      "note_en": "The Shiva Sankalpa Sukta is a hymn of six verses from the Shukla Yajurveda (Vajasaneyi Samhita 34.1-6) dedicated to the mind (manas). Each verse ends with the refrain 'tan me manaḥ śivasaṅkalpam astu' — 'may my mind be of noble resolve.' It is one of the earliest known hymns exploring the nature of consciousness, describing the mind as the faculty that travels far in waking and sleep, as the inner light of beings, and as the charioteer of the senses. The word 'shiva' here means 'auspicious' or 'noble.'",
+      "note_bn": "শিবসঙ্কল্প সূক্ত শুক্ল যজুর্বেদের (বাজসনেয়ী সংহিতা ৩৪.১-৬) ছয়টি মন্ত্রের একটি সূক্ত, যা মনকে (মনস্) উদ্দেশ্য করে রচিত। প্রতিটি মন্ত্র 'তন্মে মনঃ শিবসঙ্কল্পমস্তু' — 'আমার মন শুভসঙ্কল্পযুক্ত হোক' — এই ধ্রুবপদে সমাপ্ত হয়। চেতনার প্রকৃতি অনুসন্ধানকারী প্রাচীনতম সূক্তগুলির অন্যতম। এতে মনকে জাগ্রত ও স্বপ্নে দূরগামী, প্রাণীদের অন্তর্জ্যোতি এবং ইন্দ্রিয়সমূহের সারথি রূপে বর্ণনা করা হয়েছে। এখানে 'শিব' শব্দের অর্থ 'মঙ্গলকর' বা 'কল্যাণকর'।",
+      "mantras": [
+        {
+          "num": 1,
+          "sa_devanagari": "यज्जाग्रतो दूरमुदैति दैवं तदु सुप्तस्य तथैवैति ।\nदूरङ्गमं ज्योतिषां ज्योतिरेकं तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "যজ্জাগ্রতো দূরমুদৈতি দৈবং তদু সুপ্তস্য তথৈবৈতি ।\nদূরঙ্গমং জ্যোতিষাং জ্যোতিরেকং তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "yaj jāgrato dūram udaiti daivaṁ tad u suptasya tathaivāiti |\ndūraṅgamaṁ jyotiṣāṁ jyotir ekaṁ tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "জাগ্রত অবস্থায় যে (মন) দিব্যরূপে দূরে গমন করে, নিদ্রিত অবস্থাতেও সেই একইভাবে গমন করে — যে দূরগামী, জ্যোতিসমূহের একমাত্র জ্যোতি — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That divine faculty which wanders far when one is awake, and likewise travels far when one is asleep — that far-reaching one, the one light of all lights — may my mind be of noble resolve."
+        },
+        {
+          "num": 2,
+          "sa_devanagari": "येन कर्माण्यपसो मनीषिणो यज्ञे कृण्वन्ति विदथेषु धीराः ।\nयदपूर्वं यक्षमन्तः प्रजानां तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "যেন কর্মাণ্যপসো মনীষিণো যজ্ঞে কৃণ্বন্তি বিদথেষু ধীরাঃ ।\nযদপূর্বং যক্ষমন্তঃ প্রজানাং তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "yena karmāṇy apaso manīṣiṇo yajñe kṛṇvanti vidatheṣu dhīrāḥ |\nyad apūrvaṁ yakṣam antaḥ prajānāṁ tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "যার সাহায্যে কর্মনিপুণ মনীষীরা যজ্ঞে ও বিদ্যাসভায় ধীরভাবে কর্ম সম্পাদন করেন — যে অপূর্ব রহস্যরূপ সত্তা প্রাণীদের অন্তরে বিরাজ করে — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That by which the wise and diligent perform their works in sacrifice and in the assemblies of knowledge — that wondrous being dwelling within all creatures — may my mind be of noble resolve."
+        },
+        {
+          "num": 3,
+          "sa_devanagari": "यत्प्रज्ञानमुत चेतो धृतिश्च यज्ज्योतिरन्तरमृतं प्रजासु ।\nयस्मान्न ऋते किञ्चन कर्म क्रियते तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "যৎপ্রজ্ঞানমুত চেতো ধৃতিশ্চ যজ্জ্যোতিরন্তরমৃতং প্রজাসু ।\nযস্মান্ন ঋতে কিঞ্চন কর্ম ক্রিয়তে তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "yat prajñānam uta ceto dhṛtiś ca yaj jyotir antaram amṛtaṁ prajāsu |\nyasmān na ṛte kiñcana karma kriyate tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "যা প্রজ্ঞান, চেতনা ও ধৃতি (ধৈর্য) — যা প্রাণীদের অন্তরে অমৃতরূপ জ্যোতি — যাকে ছাড়া কোনো কর্মই সম্পাদিত হয় না — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That which is wisdom, consciousness, and steadfastness — that immortal light within all beings — without which no action whatsoever is performed — may my mind be of noble resolve."
+        },
+        {
+          "num": 4,
+          "sa_devanagari": "येनेदं भूतं भुवनं भविष्यत्परिगृहीतममृतेन सर्वम् ।\nयेन यज्ञस्तायते सप्तहोता तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "যেনেদং ভূতং ভুবনং ভবিষ্যৎপরিগৃহীতমমৃতেন সর্বম্ ।\nযেন যজ্ঞস্তায়তে সপ্তহোতা তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "yenedaṁ bhūtaṁ bhuvanaṁ bhaviṣyat parigṛhītam amṛtena sarvam |\nyena yajñas tāyate saptahotā tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "যার দ্বারা অতীত, বর্তমান ভুবন ও ভবিষ্যৎ — সমস্তই অমৃতরূপে পরিগ্রহ করা হয়েছে — যার দ্বারা সপ্তহোতা বিশিষ্ট যজ্ঞ বিস্তৃত হয় — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That by which the past, the present world, and the future are all encompassed as the immortal — by which the sevenfold sacrifice is extended — may my mind be of noble resolve."
+        },
+        {
+          "num": 5,
+          "sa_devanagari": "यस्मिन्नृचः साम यजूंषि यस्मिन्प्रतिष्ठिता रथनाभाविवाराः ।\nयस्मिंश्चित्तं सर्वमोतं प्रजानां तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "যস্মিন্নৃচঃ সাম যজূংষি যস্মিন্প্রতিষ্ঠিতা রথনাভাবিবারাঃ ।\nযস্মিংশ্চিত্তং সর্বমোতং প্রজানাং তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "yasminn ṛcaḥ sāma yajūṁṣi yasmin pratiṣṭhitā rathanābhāv ivārāḥ |\nyasmiṁś cittaṁ sarvam otaṁ prajānāṁ tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "যার মধ্যে ঋক্, সাম ও যজুর্মন্ত্রসমূহ প্রতিষ্ঠিত — যেমন রথের নাভিতে অরাগুলি প্রতিষ্ঠিত — যার মধ্যে সমস্ত প্রাণীর চিত্ত ওতপ্রোত — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That in which the Rik, Saman, and Yajus verses are fixed, like spokes in the hub of a wheel — in which is woven the consciousness of all beings — may my mind be of noble resolve."
+        },
+        {
+          "num": 6,
+          "sa_devanagari": "सुषारथिरश्वानिव यन्मनुष्यान्नेनीयतेऽभीशुभिर्वाजिन इव ।\nहृत्प्रतिष्ठं यदजिरं जविष्ठं तन्मे मनः शिवसङ्कल्पमस्तु ॥",
+          "sa_bengali": "সুষারথিরশ্বানিব যন্মনুষ্যান্নেনীয়তেঽভীশুভির্বাজিন ইব ।\nহৃৎপ্রতিষ্ঠং যদজিরং জবিষ্ঠং তন্মে মনঃ শিবসঙ্কল্পমস্তু ॥",
+          "transliteration": "suṣārathir aśvān iva yan manuṣyān nenīyate 'bhīśubhir vājina iva |\nhṛtpratiṣṭhaṁ yad ajiraṁ javiṣṭhaṁ tan me manaḥ śivasaṅkalpam astu ||",
+          "meaning_bn": "দক্ষ সারথি যেমন লাগাম দিয়ে অশ্বদের নিয়ন্ত্রণ করেন, তেমনি যা মানুষকে (ইন্দ্রিয়সমূহের মাধ্যমে) পরিচালনা করে — যে বেগবান অশ্বের ন্যায় — হৃদয়ে প্রতিষ্ঠিত, চঞ্চল ও দ্রুততম — আমার সেই মন শুভসঙ্কল্পযুক্ত হোক।",
+          "meaning_en": "That which, like a skilled charioteer controlling horses with reins, guides human beings — that which is seated in the heart, swift-moving and swiftest of all — may my mind be of noble resolve."
+        }
+      ]
+    }
+  ]
+}

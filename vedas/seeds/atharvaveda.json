@@ -1,0 +1,201 @@
+{
+  "book": {
+    "title": "অথর্ববেদ সংহিতা",
+    "title_en": "Atharvaveda Samhita",
+    "title_sa": "अथर्ववेद संहिता",
+    "description_bn": "অথর্ববেদ চতুর্বেদের চতুর্থ বেদ। এতে ৭৩০টি সূক্তে প্রায় ৬,০০০ মন্ত্র রয়েছে, বিশটি কাণ্ডে বিভক্ত। এই বেদে দৈনন্দিন জীবনের প্রার্থনা, রোগমুক্তি, শান্তি, পৃথিবীর স্তুতি এবং দার্শনিক চিন্তার অপূর্ব সমন্বয় রয়েছে।",
+    "description_en": "The Atharvaveda is the fourth of the four Vedas. It contains approximately 6,000 mantras in 730 hymns, divided into 20 books (kandas). This Veda uniquely combines prayers for daily life, healing, peace, praise of the Earth, and profound philosophical speculation."
+  },
+  "kandas": [
+    {
+      "num": 12,
+      "title_bn": "দ্বাদশ কাণ্ড",
+      "title_en": "Twelfth Kanda",
+      "suktas": [
+        {
+          "sukta_num": 1,
+          "title_bn": "পৃথিবী সূক্ত (ভূমি সূক্ত)",
+          "title_en": "Prithivi Sukta (Bhumi Sukta) — Hymn to the Earth",
+          "rishi": "অথর্বা / Atharvan",
+          "devata": "ভূমি (পৃথিবী) / Bhumi (Prithivi)",
+          "chanda": "অনুষ্টুপ ও ত্রিষ্টুপ / Anushtubh and Trishtubh",
+          "note_en": "The Prithivi Sukta (also called Bhumi Sukta) of Atharvaveda 12.1 is one of the most celebrated hymns in all of Vedic literature. With 63 verses, it is the longest single hymn devoted to the Earth in any ancient scripture. It extols the Earth as mother, sustainer, and sacred ground of all life. These selected verses represent the most famous and frequently cited portions.",
+          "note_bn": "অথর্ববেদ ১২.১-এর পৃথিবী সূক্ত (ভূমি সূক্ত) সমগ্র বৈদিক সাহিত্যের অন্যতম বিখ্যাত স্তোত্র। ৬৩টি মন্ত্রে রচিত এটি প্রাচীন বিশ্বের পৃথিবীর প্রতি নিবেদিত দীর্ঘতম সূক্ত। পৃথিবীকে মাতা, পালনকর্ত্রী এবং সমস্ত জীবনের পবিত্র ভূমি রূপে স্তুতি করা হয়েছে। এখানে সর্বাধিক বিখ্যাত ও বহুল উদ্ধৃত মন্ত্রগুলি নির্বাচিত হয়েছে।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "सत्यं बृहद्ऋतमुग्रं दीक्षा तपो ब्रह्म यज्ञः पृथिवीं धारयन्ति ।\nसा नो भूतस्य भव्यस्य पत्न्युरुं लोकं पृथिवी नः कृणोतु ॥",
+              "sa_bengali": "সত্যং বৃহদৃতমুগ্রং দীক্ষা তপো ব্রহ্ম যজ্ঞঃ পৃথিবীং ধারয়ন্তি ।\nসা নো ভূতস্য ভব্যস্য পত্ন্যুরুং লোকং পৃথিবী নঃ কৃণোতু ॥",
+              "transliteration": "satyaṁ bṛhad ṛtam ugraṁ dīkṣā tapo brahma yajñaḥ pṛthivīṁ dhārayanti |\nsā no bhūtasya bhavyasya patny uruṁ lokaṁ pṛthivī naḥ kṛṇotu ||",
+              "meaning_bn": "সত্য, মহান ঋত (বিশ্বনিয়ম), তীব্র দীক্ষা, তপস্যা, ব্রহ্ম এবং যজ্ঞ — এরাই পৃথিবীকে ধারণ করে। সেই পৃথিবী, যিনি অতীত ও ভবিষ্যতের পত্নী, তিনি আমাদের জন্য প্রশস্ত লোক (স্থান) প্রদান করুন।",
+              "meaning_en": "Truth, the great cosmic order, consecration, austerity, prayer, and sacrifice sustain the Earth. May she, the mistress of what has been and what shall be, make wide space for us."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "असंबाधं मध्यतो मानवानां यस्या उद्वतः प्रवतः समं बहु ।\nनानावीर्या ओषधीर्या बिभर्ति पृथिवी नः प्रथतां राध्यतां नः ॥",
+              "sa_bengali": "অসংবাধং মধ্যতো মানবানাং যস্যা উদ্বতঃ প্রবতঃ সমং বহু ।\nনানাবীর্যা ওষধীর্যা বিভর্তি পৃথিবী নঃ প্রথতাং রাধ্যতাং নঃ ॥",
+              "transliteration": "asaṁbādhaṁ madhyato mānavānāṁ yasyā udvataḥ pravataḥ samaṁ bahu |\nnānāvīryā oṣadhīr yā bibharti pṛthivī naḥ prathatāṁ rādhyatāṁ naḥ ||",
+              "meaning_bn": "যিনি মানবদের মধ্যে অবাধ বিস্তৃত, যাঁর উচ্চভূমি, নিম্নভূমি ও সমতলভূমি প্রচুর, যিনি নানা শক্তিসম্পন্ন ওষধি ধারণ করেন — সেই পৃথিবী আমাদের জন্য প্রসারিত হোন, আমাদের সমৃদ্ধ করুন।",
+              "meaning_en": "Unconfined in the midst of men, she who has many heights, slopes, and plains, who bears plants of manifold potency — may that Earth spread wide for us and be bountiful."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "यस्यां समुद्र उत सिन्धुरापो यस्यामन्नं कृष्टयः सम्बभूवुः ।\nयस्यामिदं जिन्वति प्राणदेजत् सा नो भूमिः पूर्वपेये दधातु ॥",
+              "sa_bengali": "যস্যাং সমুদ্র উত সিন্ধুরাপো যস্যামন্নং কৃষ্টয়ঃ সম্বভূবুঃ ।\nযস্যামিদং জিন্বতি প্রাণদেজৎ সা নো ভূমিঃ পূর্বপেয়ে দধাতু ॥",
+              "transliteration": "yasyāṁ samudra uta sindhur āpo yasyām annaṁ kṛṣṭayaḥ sambabhūvuḥ |\nyasyām idaṁ jinvati prāṇad ejat sā no bhūmiḥ pūrvapeye dadhātu ||",
+              "meaning_bn": "যাঁর উপর সমুদ্র, নদী ও জলরাশি রয়েছে, যাঁর উপর অন্ন ও কৃষিজীবী মানুষ সৃষ্ট হয়েছে, যাঁর উপর এই প্রাণবান ও চলমান সব কিছু বিরাজ করে — সেই ভূমি আমাদের প্রথম পানীয় (জীবনের প্রথম অধিকার) প্রদান করুন।",
+              "meaning_en": "Upon whom are the ocean, the river, and the waters, upon whom food and the ploughmen have come to be, upon whom moves all that breathes and stirs — may that Earth grant us the first draught of sustenance."
+            },
+            {
+              "num": 12,
+              "sa_devanagari": "माता भूमिः पुत्रो अहं पृथिव्याः पर्जन्यः पिता स उ नः पिपर्तु ॥",
+              "sa_bengali": "মাতা ভূমিঃ পুত্রো অহং পৃথিব্যাঃ পর্জন্যঃ পিতা স উ নঃ পিপর্তু ॥",
+              "transliteration": "mātā bhūmiḥ putro ahaṁ pṛthivyāḥ parjanyaḥ pitā sa u naḥ pipartu ||",
+              "meaning_bn": "ভূমি আমার মাতা, আমি পৃথিবীর পুত্র। পর্জন্য (মেঘ/বৃষ্টি) আমার পিতা — তিনি আমাদের রক্ষা করুন।",
+              "meaning_en": "The Earth is my mother, I am the son of the Earth. Parjanya (the rain-cloud) is my father — may he nourish and protect us."
+            },
+            {
+              "num": 15,
+              "sa_devanagari": "यस्यां पूर्वे पूर्वजना विचक्रिरे यस्यां देवा असुरानभ्यवर्तयन् ।\nगवामश्वानां वयसश्च विष्ठा भगं वर्चः पृथिवी नो दधातु ॥",
+              "sa_bengali": "যস্যাং পূর্বে পূর্বজনা বিচক্রিরে যস্যাং দেবা অসুরানভ্যবর্তয়ন্ ।\nগবামশ্বানাং বয়সশ্চ বিষ্ঠা ভগং বর্চঃ পৃথিবী নো দধাতু ॥",
+              "transliteration": "yasyāṁ pūrve pūrvajanā vicakrire yasyāṁ devā asurān abhyavartayan |\ngavām aśvānāṁ vayasaś ca viṣṭhā bhagaṁ varcaḥ pṛthivī no dadhātu ||",
+              "meaning_bn": "যাঁর উপর পূর্বকালে পূর্বপুরুষেরা কর্ম করেছেন, যাঁর উপর দেবতারা অসুরদের পরাজিত করেছেন, যিনি গো, অশ্ব ও পক্ষীদের আশ্রয় — সেই পৃথিবী আমাদের ভাগ্য ও তেজ প্রদান করুন।",
+              "meaning_en": "Upon whom the men of old performed their deeds, upon whom the gods overcame the demons, the abode of cattle, horses, and birds — may that Earth bestow upon us fortune and splendour."
+            },
+            {
+              "num": 16,
+              "sa_devanagari": "विश्वम्भरा वसुधानी प्रतिष्ठा हिरण्यवक्षा जगतो निवेशनी ।\nवैश्वानरं बिभ्रती भूमिरग्निमिन्द्र ऋषभा द्रविणे नो दधातु ॥",
+              "sa_bengali": "বিশ্বম্ভরা বসুধানী প্রতিষ্ঠা হিরণ্যবক্ষা জগতো নিবেশনী ।\nবৈশ্বানরং বিভ্রতী ভূমিরগ্নিমিন্দ্র ঋষভা দ্রবিণে নো দধাতু ॥",
+              "transliteration": "viśvambharā vasudhānī pratiṣṭhā hiraṇyavakṣā jagato niveśanī |\nvaiśvānaraṁ bibhratī bhūmir agnim indra ṛṣabhā draviṇe no dadhātu ||",
+              "meaning_bn": "বিশ্বধারিণী, ধনধারিণী, সকলের আশ্রয়, স্বর্ণবক্ষা, জগতের নিবাসভূমি, বৈশ্বানর অগ্নি ধারণকারিণী — সেই ভূমি, ইন্দ্রের সাথে বৃষভতুল্যা, আমাদের ধন প্রদান করুন।",
+              "meaning_en": "She who bears all things, the treasure-holder, the firm foundation, golden-breasted, the dwelling of all life, who carries the universal fire (Vaishvanara Agni) — may that Earth, mighty as Indra, grant us wealth."
+            },
+            {
+              "num": 17,
+              "sa_devanagari": "यां रक्षन्त्यस्वप्ना विश्वदानीं देवा भूमिं पृथिवीमप्रमादम् ।\nसा नो मधु प्रियं दुहामथो उक्षतु वर्चसा ॥",
+              "sa_bengali": "যাং রক্ষন্ত্যস্বপ্না বিশ্বদানীং দেবা ভূমিং পৃথিবীমপ্রমাদম্ ।\nসা নো মধু প্রিয়ং দুহামথো উক্ষতু বর্চসা ॥",
+              "transliteration": "yāṁ rakṣanty asvaprā viśvadānīṁ devā bhūmiṁ pṛthivīm apramādam |\nsā no madhu priyaṁ duhām atho ukṣatu varcasā ||",
+              "meaning_bn": "নিদ্রাহীন দেবতারা যাঁকে সর্বদা অপ্রমত্তভাবে রক্ষা করেন, সেই সর্বদায়িনী ভূমি আমাদের জন্য প্রিয় মধু দোহন করুন এবং আমাদের তেজে সিঞ্চিত করুন।",
+              "meaning_en": "She whom the sleepless gods protect at all times with unwearying vigilance — may that all-giving Earth yield sweet honey for us and shower us with splendour."
+            },
+            {
+              "num": 35,
+              "sa_devanagari": "जनं बिभ्रती बहुधा विवाचसं नानाधर्माणं पृथिवी यथौकसम् ।\nसहस्रं धारा द्रविणस्य मे दुहां ध्रुवेव धेनुरनपस्फुरन्ती ॥",
+              "sa_bengali": "জনং বিভ্রতী বহুধা বিবাচসং নানাধর্মাণং পৃথিবী যথৌকসম্ ।\nসহস্রং ধারা দ্রবিণস্য মে দুহাং ধ্রুবেব ধেনুরনপস্ফুরন্তী ॥",
+              "transliteration": "janaṁ bibhratī bahudhā vivācasaṁ nānādharmāṇaṁ pṛthivī yathaukasam |\nsahasraṁ dhārā draviṇasya me duhāṁ dhruveva dhenur anapasphurantī ||",
+              "meaning_bn": "বিভিন্ন ভাষাভাষী, নানা ধর্মাচরণকারী মানুষকে নিজ নিজ গৃহে যথাযোগ্যভাবে ধারণকারিণী পৃথিবী — সহস্র ধারায় ধনের ধারা আমার জন্য দোহন করুন, স্থির ধেনুর মতো অক্ষুণ্ণ থেকে।",
+              "meaning_en": "Bearing people of many tongues, of diverse customs, as befits their dwelling — may the Earth, like a steady, unflinching cow, yield for me a thousand streams of wealth."
+            },
+            {
+              "num": 45,
+              "sa_devanagari": "यस्यां वृक्षा वानस्पत्या ध्रुवास्तिष्ठन्ति विश्वहा ।\nपृथिवीं विश्वधायसं धृतामच्छावदामसि ॥",
+              "sa_bengali": "যস্যাং বৃক্ষা বানস্পত্যা ধ্রুবাস্তিষ্ঠন্তি বিশ্বহা ।\nপৃথিবীং বিশ্বধায়সং ধৃতামচ্ছাবদামসি ॥",
+              "transliteration": "yasyāṁ vṛkṣā vānaspatyā dhruvās tiṣṭhanti viśvahā |\npṛthivīṁ viśvadhāyasaṁ dhṛtām acchāvadāmasi ||",
+              "meaning_bn": "যাঁর উপর বৃক্ষ ও বনস্পতিসমূহ চিরকাল সুদৃঢ়ভাবে দাঁড়িয়ে আছে, সেই বিশ্বপোষিণী, সুদৃঢ়া পৃথিবীকে আমরা আহ্বান করি।",
+              "meaning_en": "Upon whom trees and forests stand firm forever — that all-sustaining, steadfast Earth, we invoke."
+            },
+            {
+              "num": 63,
+              "sa_devanagari": "श्यामं च मे हरितं च मे भूमिः पृथिवी ददातु ।\nभूमिर्मातादितिर्नो यथा सुमनस्यमानाः ॥",
+              "sa_bengali": "শ্যামং চ মে হরিতং চ মে ভূমিঃ পৃথিবী দদাতু ।\nভূমির্মাতাদিতির্নো যথা সুমনস্যমানাঃ ॥",
+              "transliteration": "śyāmaṁ ca me haritaṁ ca me bhūmiḥ pṛthivī dadātu |\nbhūmir mātāditir no yathā sumanasyamānāḥ ||",
+              "meaning_bn": "শ্যামবর্ণ ও হরিৎবর্ণ (ফসল ও সবুজ) পৃথিবী ভূমি আমাকে প্রদান করুন। ভূমি আমাদের মাতা, অদিতি — যেন আমরা সুমনা (সুখী) থাকি।",
+              "meaning_en": "May the dark and the green — may the Earth bestow them upon me. The Earth is our mother, Aditi — may we dwell in happiness."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "num": 19,
+      "title_bn": "ঊনবিংশ কাণ্ড",
+      "title_en": "Nineteenth Kanda",
+      "suktas": [
+        {
+          "sukta_num": 53,
+          "title_bn": "কাল সূক্ত — কালের স্তুতি",
+          "title_en": "Kala Sukta — Hymn to Time",
+          "rishi": "অথর্বা / Atharvan",
+          "devata": "কাল / Kala (Time)",
+          "chanda": "অনুষ্টুপ ও ত্রিষ্টুপ / Anushtubh and Trishtubh",
+          "note_en": "The Kala Sukta (Atharvaveda 19.53) is one of the most philosophically profound hymns of the Atharvaveda. It personifies Time (Kala) as the supreme cosmic force — the first cause from which all creation proceeds. Time is depicted as the ultimate reality that drives the sun, sustains all beings, and encompasses all worlds. This hymn profoundly influenced later Hindu and Buddhist concepts of time.",
+          "note_bn": "কাল সূক্ত (অথর্ববেদ ১৯.৫৩) অথর্ববেদের সবচেয়ে দার্শনিকভাবে গভীর সূক্তগুলির অন্যতম। এতে কালকে (সময়কে) পরম মহাজাগতিক শক্তি রূপে মূর্ত করা হয়েছে — আদি কারণ যা থেকে সমস্ত সৃষ্টি প্রবাহিত হয়। কালকে চিত্রিত করা হয়েছে চরম সত্তা রূপে যিনি সূর্যকে চালিত করেন, সকল প্রাণী পালন করেন এবং সমস্ত লোক পরিবেষ্টন করেন। এই সূক্ত পরবর্তী হিন্দু ও বৌদ্ধ কাল-দর্শনকে গভীরভাবে প্রভাবিত করেছে।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "कालो अश्वो वहति सप्तरश्मिः सहस्राक्षो अजरो भूरिरेताः ।\nतमा रोहन्ति कवयो विपश्चितस्तस्य चक्रा भुवनानि विश्वा ॥",
+              "sa_bengali": "কালো অশ্বো বহতি সপ্তরশ্মিঃ সহস্রাক্ষো অজরো ভূরিরেতাঃ ।\nতমা রোহন্তি কবয়ো বিপশ্চিতস্তস্য চক্রা ভুবনানি বিশ্বা ॥",
+              "transliteration": "kālo aśvo vahati saptaraśmiḥ sahasrākṣo ajaro bhūriretāḥ |\ntam ā rohanti kavayo vipaścitas tasya cakrā bhuvanāni viśvā ||",
+              "meaning_bn": "কাল হলেন সপ্তরশ্মিযুক্ত অশ্ব, সহস্রচক্ষু, অজর, বহু বীর্যবান। জ্ঞানী কবিগণ তাঁকে আরোহণ করেন; তাঁর চক্র হলো সমস্ত ভুবন।",
+              "meaning_en": "Time is a horse with seven reins, thousand-eyed, ageless, rich in seed. The wise sages mount him — all the worlds are his wheels."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "सप्त चक्रान्वहति कालः स एष सप्तास्य नाभीरमृतं न्वक्षः ।\nस इमा विश्वा भुवनान्यञ्जत्कालः स ईयते प्रथमो नु देवः ॥",
+              "sa_bengali": "সপ্ত চক্রান্বহতি কালঃ স এষ সপ্তাস্য নাভীরমৃতং ন্বক্ষঃ ।\nস ইমা বিশ্বা ভুবনান্যঞ্জৎকালঃ স ঈয়তে প্রথমো নু দেবঃ ॥",
+              "transliteration": "sapta cakrān vahati kālaḥ sa eṣa saptāsya nābhīr amṛtaṁ nv akṣaḥ |\nsa imā viśvā bhuvanāny añjat kālaḥ sa īyate prathamo nu devaḥ ||",
+              "meaning_bn": "কাল সপ্ত চক্র বহন করেন, তাঁর সাতটি নাভি, তাঁর অক্ষ অমৃত। তিনিই এই সমস্ত ভুবনকে অভিষিক্ত (সচল) করেন — কালই প্রথম দেব, তিনি গতিশীল।",
+              "meaning_en": "Time carries seven wheels; he has seven navels; his axle is immortality. He anoints all these worlds — Time moves forward as the first god."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "पूर्णः कुम्भोऽधि काल आहितस्तं वै पश्यामो बहुधा नु सन्तः ।\nस इमा विश्वा भुवनानि प्रत्यङ्कालं तमाहुः परमे व्योमन् ॥",
+              "sa_bengali": "পূর্ণঃ কুম্ভোঽধি কাল আহিতস্তং বৈ পশ্যামো বহুধা নু সন্তঃ ।\nস ইমা বিশ্বা ভুবনানি প্রত্যঙ্কালং তমাহুঃ পরমে ব্যোমন্ ॥",
+              "transliteration": "pūrṇaḥ kumbho 'dhi kāla āhitas taṁ vai paśyāmo bahudhā nu santaḥ |\nsa imā viśvā bhuvanāni pratyaṅ kālaṁ tam āhuḥ parame vyoman ||",
+              "meaning_bn": "কালের উপর এক পূর্ণ কুম্ভ স্থাপিত — আমরা তাঁকে বহুরূপে দেখি, যদিও তিনি এক। তিনিই এই সমস্ত ভুবনের অভিমুখে — তাঁকে পরম ব্যোমে (পরম আকাশে) কাল বলে অভিহিত করেন।",
+              "meaning_en": "A full vessel is placed upon Time — we see him in many forms though he is one. He faces all these worlds — they call him Time in the highest heaven."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "स एव सं भुवनान्याभरत् स एव सं भुवनानि परि ।\nपिता सन्नभवत्पुत्र एषां तस्मात्वै नान्यत्परमस्ति तेजः ॥",
+              "sa_bengali": "স এব সং ভুবনান্যাভরৎ স এব সং ভুবনানি পরি ।\nপিতা সন্নভবৎপুত্র এষাং তস্মাৎবৈ নান্যৎপরমস্তি তেজঃ ॥",
+              "transliteration": "sa eva saṁ bhuvanāny ābharat sa eva saṁ bhuvanāni pari |\npitā sann abhavat putra eṣāṁ tasmād vai nānyat param asti tejaḥ ||",
+              "meaning_bn": "তিনিই সকল ভুবন একত্রিত করেছেন, তিনিই সকল ভুবন পরিবেষ্টন করেছেন। পিতা হয়েও তিনি এদের পুত্র হলেন — তাঁর চেয়ে শ্রেষ্ঠ অন্য কোনো তেজ নেই।",
+              "meaning_en": "He indeed gathered together all the worlds, he indeed encompasses all the worlds. Being their father, he became their son — there is no other power higher than him."
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "कालो अमूं दिवमजनयत् कालः इमाः पृथिवीरुत ।\nकाले ह भूतं भव्यं चेषितं ह वि तिष्ठते ॥",
+              "sa_bengali": "কালো অমূং দিবমজনয়ৎ কালঃ ইমাঃ পৃথিবীরুত ।\nকালে হ ভূতং ভব্যং চেষিতং হ বি তিষ্ঠতে ॥",
+              "transliteration": "kālo amūṁ divam ajanayat kālaḥ imāḥ pṛthivīr uta |\nkāle ha bhūtaṁ bhavyaṁ ceṣitaṁ ha vi tiṣṭhate ||",
+              "meaning_bn": "কাল সেই স্বর্গলোক সৃষ্টি করেছেন, কালই এই পৃথিবীসমূহ সৃষ্টি করেছেন। কালের মধ্যেই অতীত ও ভবিষ্যৎ, এবং যা কিছু প্রেরিত — সমস্তই বিরাজ করে।",
+              "meaning_en": "Time generated that heaven yonder, Time also generated these earths. In Time the past and the future, and all that is set in motion, have their being."
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "कालो भूतिमसृजत कालो अग्रे प्रजापतिम् ।\nस्वयम्भूः कश्यपः कालात्तपः कालादजायत ॥",
+              "sa_bengali": "কালো ভূতিমসৃজত কালো অগ্রে প্রজাপতিম্ ।\nস্বয়ম্ভূঃ কশ্যপঃ কালাত্তপঃ কালাদজায়ত ॥",
+              "transliteration": "kālo bhūtim asṛjata kālo agre prajāpatim |\nsvayambhūḥ kaśyapaḥ kālāt tapaḥ kālād ajāyata ||",
+              "meaning_bn": "কাল সমৃদ্ধি সৃষ্টি করেছেন, কালই প্রথমে প্রজাপতিকে সৃষ্টি করেছেন। স্বয়ম্ভূ কশ্যপ কাল থেকে, এবং তপস্যাও কাল থেকে জন্ম নিয়েছে।",
+              "meaning_en": "Time created prosperity, Time in the beginning created Prajapati (the Lord of Creatures). The self-born Kashyapa was born from Time, and austerity was born from Time."
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "कालादापः समभवन् कालाद्ब्रह्म तपो दिशः ।\nकालेनोदेति सूर्यः काले नि विशते पुनः ॥",
+              "sa_bengali": "কালাদাপঃ সমভবন্ কালাদ্ব্রহ্ম তপো দিশঃ ।\nকালেনোদেতি সূর্যঃ কালে নি বিশতে পুনঃ ॥",
+              "transliteration": "kālād āpaḥ samabhavan kālād brahma tapo diśaḥ |\nkālenodeti sūryaḥ kāle ni viśate punaḥ ||",
+              "meaning_bn": "কাল থেকে জল উৎপন্ন হয়েছে, কাল থেকে ব্রহ্ম, তপ ও দিকসমূহ। কালের দ্বারাই সূর্য উদিত হন, কালেই সূর্য পুনরায় অস্ত যান।",
+              "meaning_en": "From Time the waters were born, from Time came sacred knowledge, austerity, and the directions. By Time the sun rises, and in Time he sets again."
+            },
+            {
+              "num": 8,
+              "sa_devanagari": "कालेन वातः पवते कालेन पृथिवी मही ।\nद्यौर्महिकाले आहिता कालो ह भूतं भव्यं च ॥",
+              "sa_bengali": "কালেন বাতঃ পবতে কালেন পৃথিবী মহী ।\nদ্যৌর্মহীকালে আহিতা কালো হ ভূতং ভব্যং চ ॥",
+              "transliteration": "kālena vātaḥ pavate kālena pṛthivī mahī |\ndyaur mahī kāle āhitā kālo ha bhūtaṁ bhavyaṁ ca ||",
+              "meaning_bn": "কালের দ্বারাই বায়ু প্রবাহিত হয়, কালের দ্বারাই মহীয়সী পৃথিবী বিদ্যমান। মহতী দ্যুলোক কালের মধ্যে স্থাপিত — কালই অতীত ও ভবিষ্যৎ।",
+              "meaning_en": "By Time the wind blows, by Time the vast earth exists. The great heaven is established in Time — Time is both the past and the future."
+            },
+            {
+              "num": 9,
+              "sa_devanagari": "कालो ह सर्वमीशते यो ह प्रजापतेः परः ।\nतस्मात्सृष्टमिदं सर्वं तस्मिन्निदं प्रतिष्ठितम् ।\nकालो ह ब्रह्म भूत्वा बिभर्ति परमेष्ठिनम् ॥",
+              "sa_bengali": "কালো হ সর্বমীশতে যো হ প্রজাপতেঃ পরঃ ।\nতস্মাৎসৃষ্টমিদং সর্বং তস্মিন্নিদং প্রতিষ্ঠিতম্ ।\nকালো হ ব্রহ্ম ভূত্বা বিভর্তি পরমেষ্ঠিনম্ ॥",
+              "transliteration": "kālo ha sarvam īśate yo ha prajāpateḥ paraḥ |\ntasmāt sṛṣṭam idaṁ sarvaṁ tasminn idaṁ pratiṣṭhitam |\nkālo ha brahma bhūtvā bibharti parameṣṭhinam ||",
+              "meaning_bn": "কালই সকলের ঈশ্বর, তিনি প্রজাপতিরও ঊর্ধ্বে। তাঁর থেকেই এই সমস্ত সৃষ্ট, তাঁর মধ্যেই এই সমস্ত প্রতিষ্ঠিত। কালই ব্রহ্ম হয়ে পরমেষ্ঠীকে (সৃষ্টিকর্তাকে) ধারণ করেন।",
+              "meaning_en": "Time rules over all — he who is beyond even Prajapati. From him all this was created, in him all this is established. Time, having become Brahman, sustains Parameshtin (the Supreme Creator)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

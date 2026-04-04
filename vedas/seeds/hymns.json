@@ -1,0 +1,496 @@
+{
+  "book": {
+    "title": "ঋগ্বেদ সংহিতা",
+    "title_en": "Rigveda Samhita",
+    "title_sa": "ऋग्वेद संहिता",
+    "description_bn": "ঋগ্বেদ হলো সনাতন ধর্মের প্রাচীনতম ধর্মগ্রন্থ। এটি দশটি মণ্ডলে বিভক্ত এবং ১,০২৮টি সূক্তে ১০,৫৫২টি মন্ত্র রয়েছে।",
+    "description_en": "The Rigveda is the oldest extant text in any Indo-European language. Composed in Vedic Sanskrit, it consists of 1,028 hymns (suktas) with 10,552 verses (mantras), organized in 10 books (mandalas)."
+  },
+  "mandalas": [
+    {
+      "num": 1,
+      "title_bn": "প্রথম মণ্ডল",
+      "title_en": "First Mandala",
+      "suktas": [
+        {
+          "sukta_num": 1,
+          "title_bn": "অগ্নি সূক্ত",
+          "title_en": "Agni Sukta",
+          "rishi": "মধুচ্ছন্দা বৈশ্বামিত্র / Madhucchandas Vaishvamitra",
+          "devata": "অগ্নি / Agni",
+          "chanda": "গায়ত্রী / Gayatri",
+          "note_en": "The very first hymn of the Rigveda, addressed to Agni, the fire deity and divine messenger.",
+          "note_bn": "ঋগ্বেদের প্রথম সূক্ত, অগ্নিদেবের উদ্দেশ্যে রচিত। অগ্নি দেবতাদের কাছে মানুষের প্রার্থনা বহনকারী দূত।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम् ।\nहोतारं रत्नधातमम् ॥",
+              "sa_bengali": "অগ্নিমীলে পুরোহিতং যজ্ঞস্য দেবমৃত্বিজম্ ।\nহোতারং রত্নধাতমম্ ॥",
+              "transliteration": "agnim īḷe purohitaṁ yajñasya devam ṛtvijam |\nhōtāraṁ ratnadhātamam ||",
+              "meaning_bn": "আমি অগ্নিকে স্তুতি করি, যিনি যজ্ঞের পুরোহিত, দেবতাদের ঋত্বিজ, হোতা এবং সর্বোত্তম রত্নদাতা।",
+              "meaning_en": "I praise Agni, the foremost priest of the sacrifice, the divine minister, the invoker, the greatest bestower of treasures."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "अग्निः पूर्वेभिर्ऋषिभिरीड्यो नूतनैरुत ।\nस देवाँ एह वक्षति ॥",
+              "sa_bengali": "অগ্নিঃ পূর্বেভিরৃষিভিরীড্যো নূতনৈরুত ।\nস দেবাঁ এহ বক্ষতি ॥",
+              "transliteration": "agniḥ pūrvebhir ṛṣibhir īḍyo nūtanair uta |\nsa devām̐ eha vakṣati ||",
+              "meaning_bn": "অগ্নি পূর্বকালের ঋষিদের দ্বারা স্তুত এবং বর্তমানের ঋষিদের দ্বারাও স্তুত। তিনি দেবতাদের এখানে আনবেন।",
+              "meaning_en": "Agni, praised by the ancient sages and by the new, he shall bring the gods here."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "अग्निना रयिमश्नवत्पोषमेव दिवेदिवे ।\nयशसं वीरवत्तमम् ॥",
+              "sa_bengali": "অগ্নিনা রয়িমশ্নবত্পোষমেব দিবেদিবে ।\nযশসং বীরবত্তমম্ ॥",
+              "transliteration": "agninā rayim aśnavat poṣam eva dive-dive |\nyaśasaṁ vīravattamam ||",
+              "meaning_bn": "অগ্নির মাধ্যমে উপাসক প্রতিদিন ধন, সমৃদ্ধি, যশ এবং বীরপুত্র লাভ করেন।",
+              "meaning_en": "Through Agni may one obtain wealth and prosperity day by day, glory and heroic sons."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "अग्ने यं यज्ञमध्वरं विश्वतः परिभूरसि ।\nस इद्देवेषु गच्छति ॥",
+              "sa_bengali": "অগ্নে যং যজ্ঞমধ্বরং বিশ্বতঃ পরিভূরসি ।\nস ইদ্দেবেষু গচ্ছতি ॥",
+              "transliteration": "agne yaṁ yajñam adhvaraṁ viśvataḥ paribhūr asi |\nsa id deveṣu gacchati ||",
+              "meaning_bn": "হে অগ্নি, যে যজ্ঞকে তুমি সকল দিক থেকে পরিবেষ্টন কর, সেই যজ্ঞ দেবতাদের কাছে পৌঁছায়।",
+              "meaning_en": "O Agni, the sacrifice which you encompass on every side, that indeed goes to the gods."
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "अग्निर्होता कविक्रतुः सत्यश्चित्रश्रवस्तमः ।\nदेवो देवेभिरा गमत् ॥",
+              "sa_bengali": "অগ্নির্হোতা কবিক্রতুঃ সত্যশ্চিত্রশ্রবস্তমঃ ।\nদেবো দেবেভিরা গমত্ ॥",
+              "transliteration": "agnir hotā kavikratuḥ satyaś citraśravastamaḥ |\ndevo devebhir ā gamat ||",
+              "meaning_bn": "অগ্নি হোতা, জ্ঞানী কর্মকারী, সত্য, বিচিত্র যশের অধিকারী। এই দেব অন্যান্য দেবতাদের সাথে আসুন।",
+              "meaning_en": "Agni, the invoker, wise in action, truthful, most renowned — may that god come with the gods."
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "यदङ्ग दाशुषे त्वमग्ने भद्रं करिष्यसि ।\nतवेत्तत्सत्यमङ्गिरः ॥",
+              "sa_bengali": "যদঙ্গ দাশুষে ত্বমগ্নে ভদ্রং করিষ্যসি ।\nতবেত্তত্সত্যমঙ্গিরঃ ॥",
+              "transliteration": "yad aṅga dāśuṣe tvam agne bhadraṁ kariṣyasi |\ntavet tat satyam aṅgiraḥ ||",
+              "meaning_bn": "হে অগ্নি, তুমি দাতাকে যে কল্যাণ করবে, হে অঙ্গিরস, তা নিশ্চয়ই সত্য।",
+              "meaning_en": "Whatever blessing you will bestow upon the worshipper, O Agni, that indeed is true, O Angiras."
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "उप त्वाग्ने दिवेदिवे दोषावस्तर्धिया वयम् ।\nनमो भरन्त एमसि ॥",
+              "sa_bengali": "উপ ত্বাগ্নে দিবেদিবে দোষাবস্তর্ধিয়া বয়ম্ ।\nনমো ভরন্ত এমসি ॥",
+              "transliteration": "upa tvāgne dive-dive doṣāvastar dhiyā vayam |\nnamo bharanta emasi ||",
+              "meaning_bn": "হে অগ্নি, হে অন্ধকারের নাশক, আমরা প্রতিদিন ধ্যানচিত্তে তোমার কাছে নমস্কার নিবেদন করতে আসি।",
+              "meaning_en": "To you, O Agni, day by day, O dispeller of darkness, we come bearing our homage with reverential thought."
+            },
+            {
+              "num": 8,
+              "sa_devanagari": "राजन्तमध्वराणां गोपामृतस्य दीदिविम् ।\nवर्धमानं स्वे दमे ॥",
+              "sa_bengali": "রাজন্তমধ্বরাণাং গোপামৃতস্য দীদিবিম্ ।\nবর্ধমানং স্বে দমে ॥",
+              "transliteration": "rājantam adhvarāṇāṁ gopām ṛtasya dīdivim |\nvardhamānaṁ sve dame ||",
+              "meaning_bn": "যজ্ঞসমূহের রাজা, ঋতের রক্ষক, দীপ্তিমান, নিজ গৃহে বর্ধমান।",
+              "meaning_en": "The ruler of sacrifices, the guardian of truth, the shining one, ever growing in his own abode."
+            },
+            {
+              "num": 9,
+              "sa_devanagari": "स नः पितेव सूनवेऽग्ने सूपायनो भव ।\nसचस्वा नः स्वस्तये ॥",
+              "sa_bengali": "স নঃ পিতেব সূনবেঽগ্নে সূপায়নো ভব ।\nসচস্বা নঃ স্বস্তয়ে ॥",
+              "transliteration": "sa naḥ piteva sūnave 'gne sūpāyano bhava |\nsacasvā naḥ svastaye ||",
+              "meaning_bn": "হে অগ্নি, পিতা যেমন পুত্রের প্রতি স্নেহশীল, তেমনি তুমি আমাদের প্রতি সহজগম্য হও। আমাদের কল্যাণের জন্য আমাদের সঙ্গী হও।",
+              "meaning_en": "O Agni, be easy of access to us, as a father to a son. Be with us for our well-being."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "num": 3,
+      "title_bn": "তৃতীয় মণ্ডল",
+      "title_en": "Third Mandala",
+      "suktas": [
+        {
+          "sukta_num": 62,
+          "title_bn": "সাবিত্রী সূক্ত (গায়ত্রী মন্ত্র)",
+          "title_en": "Savitri Sukta (Gayatri Mantra)",
+          "rishi": "বিশ্বামিত্র গাথিন / Vishvamitra Gathina",
+          "devata": "সবিতৃ / Savitr",
+          "chanda": "গায়ত্রী / Gayatri",
+          "note_en": "Verse 10 of Sukta 62 in the Third Mandala is the world-famous Gayatri Mantra (also called Savitri), the most sacred verse of the Vedas — a meditation on the divine light of Savitr. Here we present the key verses of this sukta.",
+          "note_bn": "তৃতীয় মণ্ডলের ৬২তম সূক্তের দশম মন্ত্রটি বিশ্ববিখ্যাত গায়ত্রী মন্ত্র (সাবিত্রী মন্ত্র নামেও পরিচিত), বেদের সর্বাধিক পবিত্র মন্ত্র — সবিতৃদেবের দিব্য জ্যোতির ধ্যান।",
+          "mantras": [
+            {
+              "num": 10,
+              "sa_devanagari": "तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥",
+              "sa_bengali": "তৎসবিতুর্বরেণ্যং ভর্গো দেবস্য ধীমহি ।\nধিয়ো যো নঃ প্রচোদয়াৎ ॥",
+              "transliteration": "tat savitur vareṇyaṁ bhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||",
+              "meaning_bn": "আমরা সেই সবিতৃদেবের উৎকৃষ্ট তেজ ধ্যান করি, যিনি আমাদের বুদ্ধি ও ধীশক্তিকে প্রেরণা দান করেন।",
+              "meaning_en": "We meditate upon the excellent radiance of the divine Savitr; may He inspire our intellects."
+            },
+            {
+              "num": 11,
+              "sa_devanagari": "देवस्य सवितुर्वयं वाजयन्तः पुरन्ध्या ।\nधियं घृताचीं साधन्ता ॥",
+              "sa_bengali": "দেবস্য সবিতুর্বয়ং বাজয়ন্তঃ পুরন্ধ্যা ।\nধিয়ং ঘৃতাচীং সাধন্তা ॥",
+              "transliteration": "devasya savitur vayaṁ vājayantaḥ purandhyā |\ndhiyaṁ ghṛtācīṁ sādhantā ||",
+              "meaning_bn": "আমরা সবিতৃদেবের শক্তি প্রার্থনা করি, পুষ্টি ও প্রজ্ঞা সহকারে, ঘৃতাক্ত (সমৃদ্ধ) ধীশক্তি সাধন করতে।",
+              "meaning_en": "Of the god Savitr, we, seeking strength and inspired wisdom, perfecting the thought rich as ghee."
+            },
+            {
+              "num": 18,
+              "sa_devanagari": "विश्वानि देव सवितर्दुरितानि परासुव ।\nयद्भद्रं तन्न आसुव ॥",
+              "sa_bengali": "বিশ্বানি দেব সবিতর্দুরিতানি পরাসুব ।\nযদ্ভদ্রং তন্ন আসুব ॥",
+              "transliteration": "viśvāni deva savitar duritāni parā suva |\nyad bhadraṁ tan na ā suva ||",
+              "meaning_bn": "হে দেব সবিতৃ, সমস্ত পাপ ও দুরিত দূর করো। যা কল্যাণকর তা আমাদের দান করো।",
+              "meaning_en": "O god Savitr, drive away all evils. Bestow upon us that which is auspicious."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "num": 10,
+      "title_bn": "দশম মণ্ডল",
+      "title_en": "Tenth Mandala",
+      "suktas": [
+        {
+          "sukta_num": 90,
+          "title_bn": "পুরুষ সূক্ত",
+          "title_en": "Purusha Sukta",
+          "rishi": "নারায়ণ / Narayana",
+          "devata": "পুরুষ / Purusha",
+          "chanda": "অনুষ্টুপ / Anushtubh",
+          "note_en": "The Purusha Sukta is one of the most important hymns of the Rigveda. It describes the cosmic sacrifice of the primordial being (Purusha) from whose body the universe and all life emerged. It is widely recited in Vedic rituals to this day. The metre is predominantly Anushtubh, with some verses in Trishtubh.",
+          "note_bn": "পুরুষ সূক্ত ঋগ্বেদের অন্যতম গুরুত্বপূর্ণ সূক্ত। এতে আদি পুরুষের বিশ্বজনীন যজ্ঞের বর্ণনা রয়েছে, যাঁর দেহ থেকে সমগ্র বিশ্বব্রহ্মাণ্ড ও সমস্ত প্রাণী সৃষ্টি হয়েছে। বৈদিক অনুষ্ঠানে আজও এই সূক্ত বহুল পঠিত। ছন্দ প্রধানত অনুষ্টুপ, কিছু মন্ত্রে ত্রিষ্টুপ।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ।\nस भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥",
+              "sa_bengali": "সহস্রশীর্ষা পুরুষঃ সহস্রাক্ষঃ সহস্রপাৎ ।\nস ভূমিং বিশ্বতো বৃত্বাত্যতিষ্ঠদ্দশাঙ্গুলম্ ॥",
+              "transliteration": "sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt |\nsa bhūmiṁ viśvato vṛtvātyatiṣṭhad daśāṅgulam ||",
+              "meaning_bn": "পুরুষের সহস্র মস্তক, সহস্র চক্ষু, সহস্র পদ। তিনি পৃথিবীকে সর্বদিক থেকে আবৃত করে দশ অঙ্গুলি পরিমাণ অতিক্রম করে বিরাজ করেন।",
+              "meaning_en": "The Purusha has a thousand heads, a thousand eyes, and a thousand feet. He pervades the earth on all sides and extends beyond it by ten fingers' breadth."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "पुरुष एवेदं सर्वं यद्भूतं यच्च भव्यम् ।\nउतामृतत्वस्येशानो यदन्नेनातिरोहति ॥",
+              "sa_bengali": "পুরুষ এবেদং সর্বং যদ্ভূতং যচ্চ ভব্যম্ ।\nউতামৃতত্বস্যেশানো যদন্নেনাতিরোহতি ॥",
+              "transliteration": "puruṣa evedaṁ sarvaṁ yad bhūtaṁ yac ca bhavyam |\nutāmṛtatvasyeśāno yad annenātirohati ||",
+              "meaning_bn": "যা কিছু অতীত এবং যা কিছু ভবিষ্যৎ — এই সমস্তই পুরুষ। তিনি অমৃতত্বেরও ঈশান (প্রভু), যা অন্নের দ্বারা অতিক্রম করেন।",
+              "meaning_en": "The Purusha alone is all this — whatever has been and whatever shall be. He is the lord of immortality, which he outgrows through food."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "एतावानस्य महिमातो ज्यायांश्च पूरुषः ।\nपादोऽस्य विश्वा भूतानि त्रिपादस्यामृतं दिवि ॥",
+              "sa_bengali": "এতাবানস্য মহিমাতো জ্যায়াংশ্চ পূরুষঃ ।\nপাদোঽস্য বিশ্বা ভূতানি ত্রিপাদস্যামৃতং দিবি ॥",
+              "transliteration": "etāvān asya mahimāto jyāyāṁś ca pūruṣaḥ |\npādo 'sya viśvā bhūtāni tripād asyāmṛtaṁ divi ||",
+              "meaning_bn": "এত তাঁর মহিমা, এবং পুরুষ এর চেয়েও মহত্তর। সমস্ত ভূত-প্রাণী তাঁর এক পদ (চতুর্থাংশ) মাত্র; তাঁর তিন পদ (তিন চতুর্থাংশ) দিব্যলোকে অমৃতরূপে বিরাজমান।",
+              "meaning_en": "Such is his greatness, and the Purusha is even greater than this. All beings are one quarter of him; three quarters are the immortal in heaven."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "त्रिपादूर्ध्व उदैत्पुरुषः पादोऽस्येहाभवत्पुनः ।\nततो विष्वङ्व्यक्रामत्साशनानशने अभि ॥",
+              "sa_bengali": "ত্রিপাদূর্ধ্ব উদৈৎপুরুষঃ পাদোঽস্যেহাভবৎপুনঃ ।\nততো বিষ্বঙ্ব্যক্রামৎসাশনানশনে অভি ॥",
+              "transliteration": "tripād ūrdhva udait puruṣaḥ pādo 'syehābhavat punaḥ |\ntato viṣvaṅ vyakrāmat sāśanānaśane abhi ||",
+              "meaning_bn": "পুরুষের তিন পদ ঊর্ধ্বে উঠলেন, এক পদ এই লোকে পুনরায় প্রকাশিত হলেন। তারপর তিনি সর্বদিকে ব্যাপ্ত হলেন — চেতন ও অচেতন সকলের মধ্যে।",
+              "meaning_en": "Three quarters of the Purusha ascended above; one quarter manifested here again. Then he spread everywhere over that which eats and that which does not eat."
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "तस्माद्विराळजायत विराजो अधि पूरुषः ।\nस जातो अत्यरिच्यत पश्चाद्भूमिमथो पुरः ॥",
+              "sa_bengali": "তস্মাদ্বিরাळজায়ত বিরাজো অধি পূরুষঃ ।\nস জাতো অত্যরিচ্যত পশ্চাদ্ভূমিমথো পুরঃ ॥",
+              "transliteration": "tasmād virāḷ ajāyata virājo adhi pūruṣaḥ |\nsa jāto atyaricyata paścād bhūmim atho puraḥ ||",
+              "meaning_bn": "সেই পুরুষ থেকে বিরাট জন্ম নিলেন, বিরাট থেকে আবার পুরুষ। জন্ম নিয়ে তিনি পৃথিবীকে পশ্চাৎ ও সম্মুখে অতিক্রম করে ব্যাপ্ত হলেন।",
+              "meaning_en": "From him Viraj was born, and from Viraj again the Purusha. Being born, he extended beyond the earth behind and before."
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "यत्पुरुषेण हविषा देवा यज्ञमतन्वत ।\nवसन्तो अस्यासीदाज्यं ग्रीष्म इध्मः शरद्धविः ॥",
+              "sa_bengali": "যৎপুরুষেণ হবিষা দেবা যজ্ঞমতন্বত ।\nবসন্তো অস্যাসীদাজ্যং গ্রীষ্ম ইধ্মঃ শরদ্ধবিঃ ॥",
+              "transliteration": "yat puruṣeṇa haviṣā devā yajñam atanvata |\nvasanto asyāsīd ājyaṁ grīṣma idhmaḥ śaraddhaviḥ ||",
+              "meaning_bn": "যখন দেবতারা পুরুষকে হবি রূপে যজ্ঞে উৎসর্গ করলেন — বসন্ত ছিল ঘৃত, গ্রীষ্ম ছিল সমিধ, শরৎ ছিল হবি।",
+              "meaning_en": "When the gods performed the sacrifice with the Purusha as the offering — spring was its clarified butter, summer was the fuel, and autumn was the oblation."
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "तं यज्ञं बर्हिषि प्रौक्षन्पुरुषं जातमग्रतः ।\nतेन देवा अयजन्त साध्या ऋषयश्च ये ॥",
+              "sa_bengali": "তং যজ্ঞং বর্হিষি প্রৌক্ষন্পুরুষং জাতমগ্রতঃ ।\nতেন দেবা অযজন্ত সাধ্যা ঋষয়শ্চ যে ॥",
+              "transliteration": "taṁ yajñaṁ barhiṣi praukṣan puruṣaṁ jātam agrataḥ |\ntena devā ayajanta sādhyā ṛṣayaś ca ye ||",
+              "meaning_bn": "আদিতে জাত সেই পুরুষকে কুশের উপর যজ্ঞপশু রূপে প্রোক্ষণ (সংস্কার) করা হলো। তাঁকে দিয়ে দেবতারা, সাধ্যগণ ও ঋষিগণ যজ্ঞ সম্পাদন করলেন।",
+              "meaning_en": "That sacrifice, the Purusha born in the beginning, was sprinkled on the sacred grass. With him the gods sacrificed, as did the Sadhyas and the sages."
+            },
+            {
+              "num": 8,
+              "sa_devanagari": "तस्माद्यज्ञात्सर्वहुतः सम्भृतं पृषदाज्यम् ।\nपशून्ताँश्चक्रे वायव्यानारण्यान्ग्राम्याश्च ये ॥",
+              "sa_bengali": "তস্মাদ্যজ্ঞাৎসর্বহুতঃ সম্ভৃতং পৃষদাজ্যম্ ।\nপশূন্তাঁশ্চক্রে বায়ব্যানারণ্যান্গ্রাম্যাশ্চ যে ॥",
+              "transliteration": "tasmād yajñāt sarvahutaḥ sambhṛtaṁ pṛṣadājyam |\npaśūn tām̐ś cakre vāyavyān āraṇyān grāmyāś ca ye ||",
+              "meaning_bn": "সেই সম্পূর্ণ আহুতিযুক্ত যজ্ঞ থেকে দধিমিশ্রিত ঘৃত উৎপন্ন হলো। তিনি বায়ুচর পশু, অরণ্যচর পশু এবং গ্রাম্য পশু — এই সকল প্রাণী সৃষ্টি করলেন।",
+              "meaning_en": "From that sacrifice in which everything was offered, the clotted butter was gathered. He made the beasts of the air, of the forest, and those of the village."
+            },
+            {
+              "num": 9,
+              "sa_devanagari": "तस्माद्यज्ञात्सर्वहुत ऋचः सामानि जज्ञिरे ।\nछन्दांसि जज्ञिरे तस्माद्यजुस्तस्मादजायत ॥",
+              "sa_bengali": "তস্মাদ্যজ্ঞাৎসর্বহুত ঋচঃ সামানি জজ্ঞিরে ।\nছন্দাংসি জজ্ঞিরে তস্মাদ্যজুস্তস্মাদজায়ত ॥",
+              "transliteration": "tasmād yajñāt sarvahuta ṛcaḥ sāmāni jajñire |\nchandāṁsi jajñire tasmād yajus tasmād ajāyata ||",
+              "meaning_bn": "সেই সর্বহুত যজ্ঞ থেকে ঋক্ ও সাম মন্ত্রসমূহ জন্ম নিল। ছন্দসমূহ তা থেকে জন্ম নিল এবং যজুর্বেদও তা থেকে উৎপন্ন হলো।",
+              "meaning_en": "From that sacrifice in which everything was offered, the Rik and Saman verses were born. The metres were born from it, and the Yajus was born from it."
+            },
+            {
+              "num": 10,
+              "sa_devanagari": "तस्मादश्वा अजायन्त ये के चोभयादतः ।\nगावो ह जज्ञिरे तस्मात्तस्माज्जाता अजावयः ॥",
+              "sa_bengali": "তস্মাদশ্বা অজায়ন্ত যে কে চোভয়াদতঃ ।\nগাবো হ জজ্ঞিরে তস্মাত্তস্মাজ্জাতা অজাবয়ঃ ॥",
+              "transliteration": "tasmād aśvā ajāyanta ye ke cobhayādataḥ |\ngāvo ha jajñire tasmāt tasmāj jātā ajāvayaḥ ||",
+              "meaning_bn": "তা থেকে অশ্ব জন্ম নিল এবং যাদের উভয় পঙ্ক্তিতে দাঁত আছে তারাও। গাভী তা থেকে জন্ম নিল, এবং ছাগ ও মেষও তা থেকে জন্ম নিল।",
+              "meaning_en": "From that were born horses, and those with two rows of teeth. Cows were born from it, and from it were born goats and sheep."
+            },
+            {
+              "num": 11,
+              "sa_devanagari": "यत्पुरुषं व्यदधुः कतिधा व्यकल्पयन् ।\nमुखं किमस्य कौ बाहू का ऊरू पादा उच्येते ॥",
+              "sa_bengali": "যৎপুরুষং ব্যদধুঃ কতিধা ব্যকল্পয়ন্ ।\nমুখং কিমস্য কৌ বাহূ কা ঊরূ পাদা উচ্যেতে ॥",
+              "transliteration": "yat puruṣaṁ vyadadhuḥ katidhā vyakalpayan |\nmukhaṁ kim asya kau bāhū kā ūrū pādā ucyete ||",
+              "meaning_bn": "যখন তারা পুরুষকে বিভক্ত করলেন, কত ভাগে তাঁকে কল্পনা করলেন? তাঁর মুখ কী হলো? তাঁর বাহু কী? তাঁর ঊরু ও পদ কী বলে কথিত?",
+              "meaning_en": "When they divided the Purusha, into how many parts did they arrange him? What was his mouth? What were his arms? What were his thighs and feet called?"
+            },
+            {
+              "num": 12,
+              "sa_devanagari": "ब्राह्मणोऽस्य मुखमासीद्बाहू राजन्यः कृतः ।\nऊरू तदस्य यद्वैश्यः पद्भ्यां शूद्रो अजायत ॥",
+              "sa_bengali": "ব্রাহ্মণোঽস্য মুখমাসীদ্বাহূ রাজন্যঃ কৃতঃ ।\nঊরূ তদস্য যদ্বৈশ্যঃ পদ্ভ্যাং শূদ্রো অজায়ত ॥",
+              "transliteration": "brāhmaṇo 'sya mukham āsīd bāhū rājanyaḥ kṛtaḥ |\nūrū tad asya yad vaiśyaḥ padbhyāṁ śūdro ajāyata ||",
+              "meaning_bn": "তাঁর মুখ ব্রাহ্মণ হলেন, তাঁর বাহু থেকে রাজন্য (ক্ষত্রিয়) সৃষ্ট হলেন, তাঁর ঊরু থেকে বৈশ্য এবং পদদ্বয় থেকে শূদ্র জন্ম নিলেন।",
+              "meaning_en": "His mouth became the Brahmana, his arms were made the Rajanya (Kshatriya), his thighs the Vaishya, and from his feet the Shudra was born."
+            },
+            {
+              "num": 13,
+              "sa_devanagari": "चन्द्रमा मनसो जातश्चक्षोः सूर्यो अजायत ।\nमुखादिन्द्रश्चाग्निश्च प्राणाद्वायुरजायत ॥",
+              "sa_bengali": "চন্দ্রমা মনসো জাতশ্চক্ষোঃ সূর্যো অজায়ত ।\nমুখাদিন্দ্রশ্চাগ্নিশ্চ প্রাণাদ্বায়ুরজায়ত ॥",
+              "transliteration": "candramā manaso jātaś cakṣoḥ sūryo ajāyata |\nmukhād indraś cāgniś ca prāṇād vāyur ajāyata ||",
+              "meaning_bn": "তাঁর মন থেকে চন্দ্র জন্ম নিলেন, চক্ষু থেকে সূর্য উৎপন্ন হলেন। মুখ থেকে ইন্দ্র ও অগ্নি এবং প্রাণ থেকে বায়ু জন্ম নিলেন।",
+              "meaning_en": "The moon was born from his mind; from his eye the sun was born. From his mouth Indra and Agni, and from his breath Vayu (the wind) was born."
+            },
+            {
+              "num": 14,
+              "sa_devanagari": "नाभ्या आसीदन्तरिक्षं शीर्ष्णो द्यौः समवर्तत ।\nपद्भ्यां भूमिर्दिशः श्रोत्रात्तथा लोकाँ अकल्पयन् ॥",
+              "sa_bengali": "নাভ্যা আসীদন্তরিক্ষং শীর্ষ্ণো দ্যৌঃ সমবর্তত ।\nপদ্ভ্যাং ভূমির্দিশঃ শ্রোত্রাত্তথা লোকাঁ অকল্পয়ন্ ॥",
+              "transliteration": "nābhyā āsīd antarikṣaṁ śīrṣṇo dyauḥ samavartata |\npadbhyāṁ bhūmir diśaḥ śrotrāt tathā lokām̐ akalpayan ||",
+              "meaning_bn": "তাঁর নাভি থেকে অন্তরীক্ষ (আকাশ) উৎপন্ন হলো, মস্তক থেকে দ্যুলোক (স্বর্গ) সমুদ্ভূত হলো। পদদ্বয় থেকে পৃথিবী এবং কর্ণ থেকে দিকসমূহ — এভাবে লোকসমূহ নির্মিত হলো।",
+              "meaning_en": "From his navel arose the mid-region (atmosphere); from his head the sky evolved. From his feet the earth, and from his ear the directions — thus they fashioned the worlds."
+            },
+            {
+              "num": 15,
+              "sa_devanagari": "सप्तास्यासन्परिधयस्त्रिः सप्त समिधः कृताः ।\nदेवा यद्यज्ञं तन्वाना अबध्नन्पुरुषं पशुम् ॥",
+              "sa_bengali": "সপ্তাস্যাসন্পরিধয়স্ত্রিঃ সপ্ত সমিধঃ কৃতাঃ ।\nদেবা যদ্যজ্ঞং তন্বানা অবধ্নন্পুরুষং পশুম্ ॥",
+              "transliteration": "saptāsyāsan paridhayaḥ triḥ sapta samidhaḥ kṛtāḥ |\ndevā yad yajñaṁ tanvānā abadhnan puruṣaṁ paśum ||",
+              "meaning_bn": "সেই যজ্ঞে সাতটি পরিধি (বেষ্টনী) ছিল এবং একুশটি সমিধ নির্মিত হয়েছিল। দেবতারা যজ্ঞ বিস্তার করতে গিয়ে পুরুষকে যজ্ঞপশু রূপে বন্ধন করলেন।",
+              "meaning_en": "Seven were the enclosing sticks, and thrice seven were the fuel sticks made, when the gods, performing the sacrifice, bound the Purusha as the sacrificial animal."
+            },
+            {
+              "num": 16,
+              "sa_devanagari": "यज्ञेन यज्ञमयजन्त देवास्तानि धर्माणि प्रथमान्यासन् ।\nते ह नाकं महिमानः सचन्त यत्र पूर्वे साध्याः सन्ति देवाः ॥",
+              "sa_bengali": "যজ্ঞেন যজ্ঞময়জন্ত দেবাস্তানি ধর্মাণি প্রথমান্যাসন্ ।\nতে হ নাকং মহিমানঃ সচন্ত যত্র পূর্বে সাধ্যাঃ সন্তি দেবাঃ ॥",
+              "transliteration": "yajñena yajñam ayajanta devās tāni dharmāṇi prathamāny āsan |\nte ha nākaṁ mahimānaḥ sacanta yatra pūrve sādhyāḥ santi devāḥ ||",
+              "meaning_bn": "দেবতারা যজ্ঞের দ্বারা যজ্ঞকে সম্পন্ন করলেন — এগুলিই ছিল প্রথম ধর্মানুষ্ঠান। সেই মহিমাশালী দেবতারা সেই নাকলোক (স্বর্গ) প্রাপ্ত হলেন, যেখানে পূর্বকালের সাধ্যগণ ও দেবতারা বিরাজমান।",
+              "meaning_en": "With sacrifice the gods sacrificed the sacrifice — these were the first ordinances. These mighty ones attained the height of heaven, where the ancient Sadhyas and the gods dwell."
+            }
+          ]
+        },
+        {
+          "sukta_num": 129,
+          "title_bn": "নাসদীয় সূক্ত (সৃষ্টিসূক্ত)",
+          "title_en": "Nasadiya Sukta (Hymn of Creation)",
+          "rishi": "প্রজাপতি পরমেষ্ঠিন / Prajapati Parameshtin",
+          "devata": "ভাববৃত্ত (সৃষ্টিতত্ত্ব) / Bhavavrtta (Creation)",
+          "chanda": "ত্রিষ্টুপ / Trishtubh",
+          "note_en": "One of the most celebrated hymns of the Rigveda, a profound philosophical inquiry into the origin of the universe.",
+          "note_bn": "ঋগ্বেদের সর্বাধিক বিখ্যাত সূক্তগুলির অন্যতম। সৃষ্টির আদি রহস্য নিয়ে গভীর দার্শনিক অনুসন্ধান।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत् ।\nकिमावरीवः कुह कस्य शर्मन्नम्भः किमासीद्गहनं गभीरम् ॥",
+              "sa_bengali": "নাসদাসীন্নো সদাসীত্তদানীং নাসীদ্রজো নো ব্যোমা পরো যৎ ।\nকিমাবরীবঃ কুহ কস্য শর্মন্নম্ভঃ কিমাসীদ্গহনং গভীরম্ ॥",
+              "transliteration": "nāsad āsīn no sad āsīt tadānīṁ nāsīd rajo no vyomā paro yat |\nkim āvarīvaḥ kuha kasya śarmann ambhaḥ kim āsīd gahanaṁ gabhīram ||",
+              "meaning_bn": "তখন অসৎ ছিল না, সৎও ছিল না। রজঃ (অন্তরীক্ষ) ছিল না, তার পরের আকাশও ছিল না। কিসে আবৃত ছিল? কোথায়? কার আশ্রয়ে? জল কি ছিল — গহন, গভীর?",
+              "meaning_en": "Then there was neither existence nor non-existence; there was no realm of air, no sky beyond. What covered it? Where was it? In whose shelter? Was there water, fathomlessly deep?"
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "न मृत्युरासीदमृतं न तर्हि न रात्र्या अह्न आसीत्प्रकेतः ।\nआनीदवातं स्वधया तदेकं तस्माद्धान्यन्न परः किञ्चनास ॥",
+              "sa_bengali": "ন মৃত্যুরাসীদমৃতং ন তর্হি ন রাত্র্যা অহ্ন আসীৎপ্রকেতঃ ।\nআনীদবাতং স্বধয়া তদেকং তস্মাদ্ধান্যন্ন পরঃ কিঞ্চনাস ॥",
+              "transliteration": "na mṛtyur āsīd amṛtaṁ na tarhi na rātryā ahna āsīt praketaḥ |\nānīd avātaṁ svadhayā tad ekaṁ tasmād dhānyan na paraḥ kiñcanāsa ||",
+              "meaning_bn": "তখন মৃত্যু ছিল না, অমৃতও ছিল না। রাত্রি ও দিনের কোনো চিহ্ন ছিল না। সেই একমাত্র সত্তা বায়ুহীন অবস্থায় স্বশক্তিতে শ্বাস নিচ্ছিল। তা ছাড়া আর কিছুই ছিল না।",
+              "meaning_en": "There was neither death nor immortality then; there was no sign of night or day. That One breathed, windless, by its own power. Apart from that, there was nothing else."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "तम आसीत्तमसा गूळ्हमग्रे प्रकेतं सलिलं सर्वमा इदम् ।\nतुच्छ्येनाभ्वपिहितं यदासीत्तपसस्तन्महिनाजायतैकम् ॥",
+              "sa_bengali": "তম আসীত্তমসা গূঢ়মগ্রে প্রকেতং সলিলং সর্বমা ইদম্ ।\nতুচ্ছ্যেনাভ্বপিহিতং যদাসীত্তপসস্তন্মহিনাজায়তৈকম্ ॥",
+              "transliteration": "tama āsīt tamasā gūḷham agre praketaṁ salilaṁ sarvam ā idam |\ntucchyenābhv apihitaṁ yad āsīt tapasas tan mahinājāyataikam ||",
+              "meaning_bn": "আদিতে অন্ধকারে অন্ধকার আবৃত ছিল। সমস্ত কিছু অপ্রকাশিত জলরাশি ছিল। শূন্যতায় আবৃত যে সত্তা ছিল, তপস্যার মহিমায় সেই এক জন্ম নিলেন।",
+              "meaning_en": "Darkness was hidden by darkness in the beginning; all this was an indistinguishable sea. That which was covered by the void, that One was born through the power of heat (tapas)."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "कामस्तदग्रे समवर्तताधि मनसो रेतः प्रथमं यदासीत् ।\nसतो बन्धुमसति निरविन्दन्हृदि प्रतीष्या कवयो मनीषा ॥",
+              "sa_bengali": "কামস্তদগ্রে সমবর্ততাধি মনসো রেতঃ প্রথমং যদাসীৎ ।\nসতো বন্ধুমসতি নিরবিন্দন্হৃদি প্রতীষ্যা কবয়ো মনীষা ॥",
+              "transliteration": "kāmas tad agre samavartatādhi manaso retaḥ prathamaṁ yad āsīt |\nsato bandhum asati nir avindan hṛdi pratīṣyā kavayo manīṣā ||",
+              "meaning_bn": "আদিতে কাম (ইচ্ছাশক্তি) সেখানে জাগ্রত হলো, যা ছিল মনের প্রথম বীজ। কবিগণ হৃদয়ে ধ্যান করে অসতের মধ্যে সতের বন্ধন খুঁজে পেলেন।",
+              "meaning_en": "In the beginning desire arose, which was the first seed of mind. The wise, searching in their hearts with wisdom, found the bond of existence in non-existence."
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "तिरश्चीनो विततो रश्मिरेषामधः स्विदासी दुपरि स्विदासीत् ।\nरेतोधा आसन्महिमान आसन्त्स्वधा अवस्तात्प्रयतिः परस्तात् ॥",
+              "sa_bengali": "তিরশ্চীনো বিততো রশ্মিরেষামধঃ স্বিদাসীদুপরি স্বিদাসীৎ ।\nরেতোধা আসন্মহিমান আসন্ত্স্বধা অবস্তাৎপ্রয়তিঃ পরস্তাৎ ॥",
+              "transliteration": "tiraścīno vitato raśmir eṣām adhaḥ svid āsīd upari svid āsīt |\nretodhā āsan mahimāna āsant svadhā avastāt prayatiḥ parastāt ||",
+              "meaning_bn": "তাঁদের রশ্মি তির্যকভাবে বিস্তৃত ছিল। নিচে কি ছিল? উপরে কি ছিল? রেতোধারক ছিলেন, মহিমাশালী ছিলেন — স্বধা নিচে, প্রয়তি উপরে।",
+              "meaning_en": "Their ray was stretched across — was it below or was it above? There were seed-bearers, there were powers: self-sustaining force below, impulse above."
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "को अद्धा वेद क इह प्र वोचत्कुत आजाता कुत इयं विसृष्टिः ।\nअर्वाग्देवा अस्य विसर्जनेनाथा को वेद यत आबभूव ॥",
+              "sa_bengali": "কো অদ্ধা বেদ ক ইহ প্র বোচৎকুত আজাতা কুত ইয়ং বিসৃষ্টিঃ ।\nঅর্বাগ্দেবা অস্য বিসর্জনেনাথা কো বেদ যত আববভূব ॥",
+              "transliteration": "ko addhā veda ka iha pra vocat kuta ājātā kuta iyaṁ visṛṣṭiḥ |\narvāg devā asya visarjanenāthā ko veda yata ābabhūva ||",
+              "meaning_bn": "কে সত্যই জানে? কে এখানে বলতে পারবে — কোথা থেকে এই সৃষ্টি এলো, কোথা থেকে এই বিশ্বসৃজন? দেবতারাও এই সৃষ্টির পরে এসেছেন — তাহলে কে জানে কোথা থেকে এটি উদ্ভূত হয়েছে?",
+              "meaning_en": "Who truly knows? Who can declare it here — whence this creation arose, whence this emanation? The gods came later than this creation — so who knows whence it came into being?"
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "इयं विसृष्टिर्यत आबभूव यदि वा दधे यदि वा न ।\nयो अस्याध्यक्षः परमे व्योमन्त्सो अङ्ग वेद यदि वा न वेद ॥",
+              "sa_bengali": "ইয়ং বিসৃষ্টির্যত আববভূব যদি বা দধে যদি বা ন ।\nযো অস্যাধ্যক্ষঃ পরমে ব্যোমন্ত্সো অঙ্গ বেদ যদি বা ন বেদ ॥",
+              "transliteration": "iyaṁ visṛṣṭir yata ābabhūva yadi vā dadhe yadi vā na |\nyo asyādhyakṣaḥ parame vyomantso aṅga veda yadi vā na veda ||",
+              "meaning_bn": "এই সৃষ্টি কোথা থেকে উদ্ভূত হলো — তিনি কি এটি ধারণ করেছেন, নাকি করেননি — যিনি পরম ব্যোমে এর অধ্যক্ষ, তিনিই জানেন — অথবা তিনিও কি জানেন না?",
+              "meaning_en": "That from which this creation arose — whether it held it or did not — He who surveys it from the highest heaven, He alone knows — or perhaps even He does not know."
+            }
+          ]
+        },
+        {
+          "sukta_num": 121,
+          "title_bn": "হিরণ্যগর্ভ সূক্ত",
+          "title_en": "Hiranyagarbha Sukta",
+          "rishi": "হিরণ্যগর্ভ প্রাজাপত্য / Hiranyagarbha Prajapatya",
+          "devata": "কঃ (প্রজাপতি) / Ka (Prajapati)",
+          "chanda": "ত্রিষ্টুপ / Trishtubh",
+          "note_en": "The Hiranyagarbha Sukta is a celebrated cosmogonic hymn inquiring into the identity of the supreme creator god. Each verse describes an attribute of the unknown creator and concludes with the refrain 'kasmai devaya havisha vidhema' — 'To which god shall we offer our oblation?' The word 'Ka' (who?) was later interpreted as a name for Prajapati, the Lord of Creatures. The tenth verse breaks the pattern by directly addressing Prajapati, considered by some scholars to be a later addition.",
+          "note_bn": "হিরণ্যগর্ভ সূক্ত একটি বিখ্যাত সৃষ্টিতত্ত্বমূলক সূক্ত যা পরম স্রষ্টার স্বরূপ অনুসন্ধান করে। প্রতিটি মন্ত্রে অজ্ঞাত স্রষ্টার একটি গুণ বর্ণনা করা হয়েছে এবং প্রতিটি মন্ত্রের শেষে একই ধ্রুবপদ — 'কস্মৈ দেবায় হবিষা বিধেম' অর্থাৎ 'কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?' 'কঃ' (কে?) শব্দটি পরবর্তীকালে প্রজাপতির নাম হিসেবে ব্যাখ্যা করা হয়েছে। দশম মন্ত্রটি সরাসরি প্রজাপতিকে সম্বোধন করে ধ্রুবপদটি ভঙ্গ করে এবং কোনো কোনো পণ্ডিত এটিকে পরবর্তী সংযোজন মনে করেন।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "हिरण्यगर्भः समवर्तताग्रे भूतस्य जातः पतिरेक आसीत् ।\nस दाधार पृथिवीं द्यामुतेमां कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "হিরণ্যগর্ভঃ সমবর্ততাগ্রে ভূতস্য জাতঃ পতিরেক আসীৎ ।\nস দাধার পৃথিবীং দ্যামুতেমাং কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "hiraṇyagarbhaḥ samavartatāgre bhūtasya jātaḥ patir eka āsīt |\nsa dādhāra pṛthivīṁ dyām utemāṁ kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "সৃষ্টির আদিতে হিরণ্যগর্ভ আবির্ভূত হলেন। জন্মের সাথে সাথে তিনিই ছিলেন সমস্ত সৃষ্টির একমাত্র প্রভু। তিনি এই পৃথিবী ও আকাশকে ধারণ করলেন — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "In the beginning arose Hiranyagarbha (the Golden Embryo); born, he was the sole lord of all that exists. He established the earth and this heaven — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "य आत्मदा बलदा यस्य विश्व उपासते प्रशिषं यस्य देवाः ।\nयस्य छायामृतं यस्य मृत्युः कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "য আত্মদা বলদা যস্য বিশ্ব উপাসতে প্রশিষং যস্য দেবাঃ ।\nযস্য ছায়ামৃতং যস্য মৃত্যুঃ কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "ya ātmadā baladā yasya viśva upāsate praśiṣaṁ yasya devāḥ |\nyasya chāyāmṛtaṁ yasya mṛtyuḥ kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যিনি আত্মাদাতা ও বলদাতা, যাঁর আদেশ সমগ্র বিশ্ব ও দেবগণ মান্য করেন, যাঁর ছায়া হলো অমৃত এবং যাঁর ছায়া হলো মৃত্যু — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "He who gives life and strength, whose command all beings and the gods revere, whose shadow is immortality and whose shadow is death — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "यः प्राणतो निमिषतो महित्वैक इद्राजा जगतो बभूव ।\nय ईशे अस्य द्विपदश्चतुष्पदः कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "যঃ প্রাণতো নিমিষতো মহিত্বৈক ইদ্রাজা জগতো বভূব ।\nয ঈশে অস্য দ্বিপদশ্চতুষ্পদঃ কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "yaḥ prāṇato nimiṣato mahitvaika id rājā jagato babhūva |\nya īśe asya dvipadaś catuṣpadaḥ kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যিনি তাঁর মহিমায় প্রাণীকুলের — যারা শ্বাস নেয় ও চোখের পলক ফেলে — একমাত্র রাজা হলেন, যিনি দ্বিপদ ও চতুষ্পদ সকলের ঈশ্বর — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "He whose greatness made him the sole king of the breathing and blinking world, who is the lord of all two-footed and four-footed beings — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "यस्येमे हिमवन्तो महित्वा यस्य समुद्रं रसया सहाहुः ।\nयस्येमाः प्रदिशो यस्य बाहू कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "যস্যেমে হিমবন্তো মহিত্বা যস্য সমুদ্রং রসয়া সহাহুঃ ।\nযস্যেমাঃ প্রদিশো যস্য বাহূ কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "yasyeme himavanto mahitvā yasya samudraṁ rasayā sahāhuḥ |\nyasyemāḥ pradiśo yasya bāhū kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যাঁর মহিমা এই হিমবান পর্বতমালা ঘোষণা করে, সমুদ্র ও রসা নদী যাঁর বলে পরিচিত, যাঁর এই দিকসমূহ এবং যাঁর বাহুদ্বয় — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "Whose greatness these snowy mountains proclaim, whose are the ocean and the river Rasa, they say, whose are these directions and whose are the arms — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "येन द्यौरुग्रा पृथिवी च दृळ्हा येन स्वः स्तभितं येन नाकः ।\nयो अन्तरिक्षे रजसो विमानः कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "যেন দ্যৌরুগ্রা পৃথিবী চ দৃঢ়া যেন স্বঃ স্তভিতং যেন নাকঃ ।\nযো অন্তরিক্ষে রজসো বিমানঃ কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "yena dyaur ugrā pṛthivī ca dṛḷhā yena svaḥ stabhitaṁ yena nākaḥ |\nyo antarikṣe rajaso vimānaḥ kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যাঁর দ্বারা মহান আকাশ ও পৃথিবী সুদৃঢ় হয়েছে, যাঁর দ্বারা স্বর্গলোক স্থাপিত, যাঁর দ্বারা নাক (আকাশমণ্ডল) প্রতিষ্ঠিত, যিনি অন্তরীক্ষে রজঃলোকের পরিমাপকারী — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "By whom the mighty heaven and the earth were made firm, by whom the sun was established, by whom the vault of heaven, who is the measurer of the mid-region — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "यं क्रन्दसी अवसा तस्तभाने अभ्यैक्षेतां मनसा रेजमाने ।\nयत्राधि सूर उदितो विभाति कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "যং ক্রন্দসী অবসা তস্তভানে অভ্যৈক্ষেতাং মনসা রেজমানে ।\nযত্রাধি সূর উদিতো বিভাতি কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "yaṁ krandasī avasā tastabhāne abhyaikṣetāṁ manasā rejamāne |\nyatrādhi sūra udito vibhāti kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "তাঁর সহায়তায় স্থিত আকাশ ও পৃথিবী কম্পমান হৃদয়ে যাঁর দিকে দৃষ্টিপাত করে, যাঁর উপরে উদিত সূর্য দীপ্তি বিকিরণ করে — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "To whom the two heaven and earth, established by his aid, look up trembling in their mind, over whom the risen sun shines forth — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "आपो ह यद्बृहतीर्विश्वमायन्गर्भं दधानाः जनयन्तीरग्निम् ।\nततो देवानां समवर्ततासुरेकः कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "আপো হ যদ্বৃহতীর্বিশ্বমায়ন্গর্ভং দধানাঃ জনয়ন্তীরগ্নিম্ ।\nততো দেবানাং সমবর্ততাসুরেকঃ কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "āpo ha yad bṛhatīr viśvam āyan garbhaṁ dadhānāḥ janayantīr agnim |\ntato devānāṁ samavartatāsur ekaḥ kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যখন মহাজলরাশি সর্বত্র বিস্তৃত হয়ে গর্ভ ধারণ করে অগ্নি জন্ম দিল, তখন সেই জল থেকে দেবতাদের একমাত্র প্রাণশক্তি (অসু) আবির্ভূত হলো — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "When the mighty waters came, bearing all as a germ, generating fire, thence arose the one life-breath of the gods — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 8,
+              "sa_devanagari": "यश्चिदापो महिना पर्यपश्यद्दक्षं दधाना जनयन्तीर्यज्ञम् ।\nयो देवेष्वधि देव एक आसीत्कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "যশ্চিদাপো মহিনা পর্যপশ্যদ্দক্ষং দধানা জনয়ন্তীর্যজ্ঞম্ ।\nযো দেবেষ্বধি দেব এক আসীৎকস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "yaś cid āpo mahinā paryapaśyad dakṣaṁ dadhānā janayantīr yajñam |\nyo deveṣv adhi deva eka āsīt kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যিনি স্বীয় মহিমায় সেই জলরাশির উপর দৃষ্টিপাত করেছিলেন — যে জল দক্ষতা ধারণ করে যজ্ঞকে জন্ম দিচ্ছিল — যিনি দেবতাদের মধ্যেও একমাত্র পরম দেবতা — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "He who by his might surveyed the waters, which held power and generated the sacrifice — he who among the gods was the one supreme god — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 9,
+              "sa_devanagari": "मा नो हिंसीज्जनिता यः पृथिव्या यो वा दिवं सत्यधर्मा जजान ।\nयश्चापश्चन्द्रा बृहतीर्जजान कस्मै देवाय हविषा विधेम ॥",
+              "sa_bengali": "মা নো হিংসীজ্জনিতা যঃ পৃথিব্যা যো বা দিবং সত্যধর্মা জজান ।\nযশ্চাপশ্চন্দ্রা বৃহতীর্জজান কস্মৈ দেবায় হবিষা বিধেম ॥",
+              "transliteration": "mā no hiṁsīj janitā yaḥ pṛthivyā yo vā divaṁ satyadharmā jajāna |\nyaś cāpaś candrā bṛhatīr jajāna kasmai devāya haviṣā vidhema ||",
+              "meaning_bn": "যিনি পৃথিবীর জনক, তিনি আমাদের হিংসা করবেন না — যিনি সত্যধর্মা হয়ে আকাশকে জন্ম দিয়েছেন এবং যিনি উজ্জ্বল মহাজলরাশিকে সৃষ্টি করেছেন — কোন দেবতাকে আমরা হবি দিয়ে পূজা করব?",
+              "meaning_en": "May he not harm us — he who is the father of the earth, who with true laws created the heaven, and who generated the great shining waters — to which god shall we offer our oblation?"
+            },
+            {
+              "num": 10,
+              "sa_devanagari": "प्रजापते न त्वदेतान्यन्यो विश्वा जातानि परि ता बभूव ।\nयत्कामास्ते जुहुमस्तन्नो अस्तु वयं स्याम पतयो रयीणाम् ॥",
+              "sa_bengali": "প্রজাপতে ন ত্বদেতান্যন্যো বিশ্বা জাতানি পরি তা বভূব ।\nযৎকামাস্তে জুহুমস্তন্নো অস্তু বয়ং স্যাম পতয়ো রয়ীণাম্ ॥",
+              "transliteration": "prajāpate na tvad etāny anyo viśvā jātāni pari tā babhūva |\nyatkāmās te juhumas tan no astu vayaṁ syāma patayo rayīṇām ||",
+              "meaning_bn": "হে প্রজাপতি! তুমি ছাড়া অন্য কেউ এই সমস্ত সৃষ্টিকে পরিবেষ্টন করেনি। আমরা যে কামনায় তোমাকে হবি প্রদান করি, তা আমাদের পূর্ণ হোক। আমরা যেন ধনসম্পদের অধিপতি হই।",
+              "meaning_en": "O Prajapati! None other than you has encompassed all these created things. May that be ours for which we offer oblations unto you — may we be lords of riches."
+            }
+          ]
+        },
+        {
+          "sukta_num": 191,
+          "title_bn": "সংজ্ঞান সূক্ত (ঐক্যসূক্ত)",
+          "title_en": "Samjnana Sukta (Unity Hymn)",
+          "rishi": "সংবনন আঙ্গিরস / Samvanana Angirasa",
+          "devata": "সংজ্ঞান / Samjnana",
+          "chanda": "অনুষ্টুপ ও গায়ত্রী / Anushtubh and Gayatri",
+          "note_en": "The final hymn of the Rigveda, a powerful call for unity and harmony among people. It exhorts all to come together, speak together, and think together — a timeless vision of collective accord.",
+          "note_bn": "ঋগ্বেদের শেষ সূক্ত, মানুষের মধ্যে ঐক্য ও সম্প্রীতির এক শক্তিশালী আহ্বান। এতে সকলকে একত্রে চলতে, একত্রে বলতে এবং একত্রে চিন্তা করতে আহ্বান জানানো হয়েছে — সম্মিলিত সংহতির এক কালজয়ী দৃষ্টিভঙ্গি।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "सं समिद्युवसे वृषन्नग्ने विश्वान्यर्य आ ।\nइळस्पदे समिध्यसे स नो वसून्या भर ॥",
+              "sa_bengali": "সং সমিদ্যুবসে বৃষন্নগ্নে বিশ্বান্যর্য আ ।\nইলস্পদে সমিধ্যসে স নো বসূন্যা ভর ॥",
+              "transliteration": "saṁ samid yuvase vṛṣann agne viśvāny arya ā |\niḷas pade samidhyase sa no vasūny ā bhara ||",
+              "meaning_bn": "হে বৃষভ অগ্নি, তুমি সমিধের সাথে সকল আর্যজনকে একত্রিত কর। ইলার স্থানে তুমি প্রজ্বলিত হও — আমাদের জন্য ধনসম্পদ বহন করে আনো।",
+              "meaning_en": "O mighty Agni, with the sacred fuel you bring all people together. You are kindled at the place of offering — bring us wealth and treasures."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "सं गच्छध्वं सं वदध्वं सं वो मनांसि जानताम् ।\nदेवा भागं यथा पूर्वे सञ्जानाना उपासते ॥",
+              "sa_bengali": "সং গচ্ছধ্বং সং বদধ্বং সং বো মনাংসি জানতাম্ ।\nদেবা ভাগং যথা পূর্বে সঞ্জানানা উপাসতে ॥",
+              "transliteration": "saṁ gacchadhvaṁ saṁ vadadhvaṁ saṁ vo manāṁsi jānatām |\ndevā bhāgaṁ yathā pūrve sañjānānā upāsate ||",
+              "meaning_bn": "একত্রে চলো, একত্রে বলো, তোমাদের মন একমত হোক। পূর্বকালে দেবতারা যেমন একমতে নিজ নিজ ভাগ গ্রহণ করতেন, তোমরাও তেমন করো।",
+              "meaning_en": "Come together, speak together, let your minds be in harmony — just as the ancient gods, being of one mind, duly received their share of the offering."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "समानो मन्त्रः समितिः समानी समानं मनः सह चित्तमेषाम् ।\nसमानं मन्त्रमभि मन्त्रये वः समानेन वो हविषा जुहोमि ॥",
+              "sa_bengali": "সমানো মন্ত্রঃ সমিতিঃ সমানী সমানং মনঃ সহ চিত্তমেষাম্ ।\nসমানং মন্ত্রমভি মন্ত্রয়ে বঃ সমানেন বো হবিষা জুহোমি ॥",
+              "transliteration": "samāno mantraḥ samitiḥ samānī samānaṁ manaḥ saha cittam eṣām |\nsamānaṁ mantram abhi mantraye vaḥ samānena vo haviṣā juhomi ||",
+              "meaning_bn": "মন্ত্র হোক সমান, সভা হোক সমান, মন হোক সমান, এদের চিত্ত হোক একত্রিত। আমি তোমাদের সমান মন্ত্রে উপদেশ দিই এবং সমান হবিষ্যে তোমাদের জন্য আহুতি দিই।",
+              "meaning_en": "Common be your prayer, common be your assembly, common be your mind, united be your thoughts. I offer you a common prayer; I make oblation for you with a common offering."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "समानी व आकूतिः समाना हृदयानि वः ।\nसमानमस्तु वो मनो यथा वः सुसहासति ॥",
+              "sa_bengali": "সমানী ব আকূতিঃ সমানা হৃদয়ানি বঃ ।\nসমানমস্তু বো মনো যথা বঃ সুসহাসতি ॥",
+              "transliteration": "samānī va ākūtiḥ samānā hṛdayāni vaḥ |\nsamānam astu vo mano yathā vaḥ susahāsati ||",
+              "meaning_bn": "তোমাদের সংকল্প হোক সমান, তোমাদের হৃদয় হোক সমান। তোমাদের মন হোক এক, যাতে তোমাদের মধ্যে পূর্ণ সংহতি থাকে।",
+              "meaning_en": "Common be your intentions, united be your hearts. Common be your mind, so that there may be perfect unity among you."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

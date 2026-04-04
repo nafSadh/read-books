@@ -1,0 +1,145 @@
+{
+  "book": {
+    "title": "সামবেদ সংহিতা",
+    "title_en": "Samaveda Samhita",
+    "title_sa": "सामवेद संहिता",
+    "description_bn": "সামবেদ হলো চারটি বেদের মধ্যে তৃতীয়, যা 'সাম' অর্থাৎ সুরসংযুক্ত মন্ত্রের সংকলন। এটি মূলত ঋগ্বেদের মন্ত্রসমূহকে সঙ্গীতের সুরে বিন্যস্ত করে যজ্ঞে গানের জন্য সংকলিত। সামবেদে ১,৫৪৯টি মন্ত্র রয়েছে, যার মধ্যে ৭৫টি ব্যতীত সবগুলি ঋগ্বেদ থেকে গৃহীত। এটি দুটি প্রধান ভাগে বিভক্ত — পূর্বার্চিক ও উত্তরার্চিক। সামবেদ ভারতীয় সঙ্গীত ঐতিহ্যের আদি উৎস বলে বিবেচিত। এই বেদ থেকেই কেনোপনিষদ ও ছান্দোগ্যোপনিষদের মতো গুরুত্বপূর্ণ উপনিষদসমূহ উদ্ভূত।",
+    "description_en": "The Samaveda is the third of the four Vedas, known as the 'Veda of melodies' or 'Veda of chants'. It is primarily a liturgical collection of hymns taken mostly from the Rigveda but rearranged and set to musical notation (saman) for singing during Soma sacrifices. Of its 1,549 verses, all but 75 are derived from the Rigveda. It is divided into two main parts — Purvarchika (first collection) and Uttararchika (latter collection). The Samaveda is regarded as the fountainhead of Indian musical tradition. Important Upanishads such as the Kena Upanishad and the Chandogya Upanishad originate from this Veda."
+  },
+  "sections": [
+    {
+      "num": 1,
+      "title_bn": "উত্তরার্চিক — প্রথম প্রপাঠক",
+      "title_en": "Uttararchika — First Prapathaka",
+      "suktas": [
+        {
+          "sukta_num": 1,
+          "title_bn": "অগ্নি আবাহন (সামবেদ প্রথম সূক্ত)",
+          "title_en": "Invocation of Agni (Samaveda Opening Hymn)",
+          "rishi": "গৌতম রাহূগণ / Gautama Rahugana",
+          "devata": "অগ্নি / Agni",
+          "chanda": "গায়ত্রী / Gayatri",
+          "note_en": "The opening hymn of the Samaveda Uttararchika. These verses correspond to Rigveda 6.16.10–12 but are rearranged and set to the saman melody for chanting during the Soma sacrifice. The famous opening 'agna a yahi' is one of the most recognizable invocations in Vedic literature — a call for Agni to come to the sacrifice. As the god of fire and the divine messenger between humans and gods, Agni's invocation opens the chanting tradition.",
+          "note_bn": "সামবেদ উত্তরার্চিকের প্রারম্ভিক সূক্ত। এই মন্ত্রগুলি ঋগ্বেদ ৬.১৬.১০–১২ থেকে গৃহীত কিন্তু সোমযজ্ঞে গানের জন্য সামসুরে পুনর্বিন্যস্ত। বিখ্যাত প্রারম্ভিক পদ 'অগ্ন আ যাহি' বৈদিক সাহিত্যের সর্বাধিক পরিচিত আবাহন মন্ত্রগুলির অন্যতম — যজ্ঞে অগ্নিকে আহ্বান করার মন্ত্র। অগ্নি দেবতা আগুনের দেবতা এবং মানুষ ও দেবতাদের মধ্যে দিব্য দূত হওয়ায় তাঁর আবাহনেই সামগানের পরম্পরা শুরু হয়।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "अग्न आ याहि वीतये गृणानो हव्यदातये ।\nनि होता सत्सि बर्हिषि ॥",
+              "sa_bengali": "অগ্ন আ যাহি বীতয়ে গৃণানো হব্যদাতয়ে ।\nনি হোতা সত্সি বর্হিষি ॥",
+              "transliteration": "agna ā yāhi vītaye gṛṇāno havyadātaye |\nni hotā satsi barhiṣi ||",
+              "meaning_bn": "হে অগ্নি, আমাদের উপভোগের (যজ্ঞভোজনের) জন্য এসো, স্তুতিলাভ করে হব্যদানের জন্য এসো। হোতারূপে কুশাসনে (বর্হিষে) উপবেশন করো।",
+              "meaning_en": "O Agni, come hither for the feast, praised one, come for the offering of oblations. Sit down as the invoking priest upon the sacred grass."
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "अग्ने विवस्वदुषसो विभावसो दिवस्पृथिव्योरभि सन्धिमेषाम् ।\nमा नो मर्ता अभि दुश्चर्माणो मा तान्तृणद्वनुषो भूर्यग्ने ॥",
+              "sa_bengali": "অগ্নে বিবস্বদুষসো বিভাবসো দিবস্পৃথিব্যোরভি সন্ধিমেষাম্ ।\nমা নো মর্তা অভি দুশ্চর্মাণো মা তান্তৃণদ্বনুষো ভূর্যগ্নে ॥",
+              "transliteration": "agne vivasvad uṣaso vibhāvaso divas pṛthivyor abhi sandhim eṣām |\nmā no martā abhi duścarmāṇo mā tān tṛṇad vanuṣo bhūry agne ||",
+              "meaning_bn": "হে দীপ্তিমান অগ্নি, যিনি সূর্যের ন্যায় ঊষার আলো দান করেন, আকাশ ও পৃথিবীর সন্ধিস্থলে তুমি বিরাজ কর। দুর্বৃত্ত মর্ত্যরা যেন আমাদের ক্ষতি করতে না পারে; হে অগ্নি, সেই শত্রুদের তুমি বিনাশ করো।",
+              "meaning_en": "O Agni, radiant one, who illuminates the dawn like the sun, you stand at the junction of heaven and earth. May no evil-doers harm us; O Agni, destroy those enemies."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "तं त्वा समिद्भिरङ्गिरो घृतेन वर्धयामसि ।\nबृहच्छोचा यविष्ठ्य ॥",
+              "sa_bengali": "তং ত্বা সমিদ্ভিরঙ্গিরো ঘৃতেন বর্ধয়ামসি ।\nবৃহচ্ছোচা যবিষ্ঠ্য ॥",
+              "transliteration": "taṁ tvā samidbhir aṅgiro ghṛtena vardhayāmasi |\nbṛhac chocā yaviṣṭhya ||",
+              "meaning_bn": "হে অঙ্গিরস, সেই তোমাকে আমরা সমিধ ও ঘৃত দিয়ে বর্ধিত করি। হে নবীনতম, মহান দীপ্তিতে জ্বলে ওঠো।",
+              "meaning_en": "O Angiras, with fuel sticks and with ghee we make you grow. Blaze forth with great brilliance, O youngest one."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "num": 2,
+      "title_bn": "কেনোপনিষদ (তলবকার উপনিষদ)",
+      "title_en": "Kena Upanishad (Talavakara Upanishad)",
+      "suktas": [
+        {
+          "sukta_num": 1,
+          "title_bn": "কেনোপনিষদ — প্রথম খণ্ড (ব্রহ্মজিজ্ঞাসা)",
+          "title_en": "Kena Upanishad — Chapter 1 (Inquiry into Brahman)",
+          "rishi": "তলবকার / Talavakara",
+          "devata": "ব্রহ্ম (পরমাত্মা) / Brahman (Supreme Self)",
+          "chanda": "অনুষ্টুপ ও ত্রিষ্টুপ / Anushtubh and Trishtubh",
+          "note_en": "The Kena Upanishad derives its name from the opening word 'kena' (by whom?). It belongs to the Talavakara Brahmana of the Jaiminiya Samaveda and is one of the primary Upanishads commented upon by Adi Shankaracharya. The first chapter consists of a dialogue between a student and teacher, probing the nature of the ultimate reality (Brahman) that powers the mind, breath, speech, eyes, and ears. The teacher reveals that Brahman cannot be known as an object of knowledge — it is the very subject, the knower behind all knowing.",
+          "note_bn": "কেনোপনিষদ প্রথম শব্দ 'কেন' (কার দ্বারা?) থেকে এই নাম পেয়েছে। এটি সামবেদের জৈমিনীয় শাখার তলবকার ব্রাহ্মণের অন্তর্গত এবং আদি শঙ্করাচার্য ভাষ্যকৃত প্রধান উপনিষদগুলির অন্যতম। প্রথম খণ্ডে শিষ্য ও গুরুর সংলাপে পরমসত্তা (ব্রহ্ম) সম্পর্কে জিজ্ঞাসা করা হয়েছে — যা মন, প্রাণ, বাক্, চক্ষু ও শ্রোত্রকে চালিত করে। গুরু প্রকাশ করেন যে ব্রহ্মকে জ্ঞানের বিষয়রূপে জানা যায় না — তিনি স্বয়ং সকল জ্ঞানের পশ্চাতে বিরাজমান জ্ঞাতা।",
+          "mantras": [
+            {
+              "num": 1,
+              "sa_devanagari": "केनेषितं पतति प्रेषितं मनः केन प्राणः प्रथमः प्रैति युक्तः ।\nकेनेषितां वाचमिमां वदन्ति चक्षुः श्रोत्रं क उ देवो युनक्ति ॥",
+              "sa_bengali": "কেনেষিতং পততি প্রেষিতং মনঃ কেন প্রাণঃ প্রথমঃ প্রৈতি যুক্তঃ ।\nকেনেষিতাং বাচমিমাং বদন্তি চক্ষুঃ শ্রোত্রং ক উ দেবো যুনক্তি ॥",
+              "transliteration": "keneṣitaṁ patati preṣitaṁ manaḥ kena prāṇaḥ prathamaḥ praiti yuktaḥ |\nkeneṣitāṁ vācam imāṁ vadanti cakṣuḥ śrotraṁ ka u devo yunakti ||",
+              "meaning_bn": "কার দ্বারা প্রেরিত হয়ে মন গতিশীল হয়? কার দ্বারা প্রথম প্রাণ যুক্ত হয়ে চলে? কার ইচ্ছায় মানুষ এই বাক্য বলে? কোন দেব চক্ষু ও শ্রোত্রকে নিযুক্ত করেন?",
+              "meaning_en": "By whom directed does the mind go forth to its object? By whom commanded does the first breath move? By whose will do people utter this speech? What god directs the eyes and the ears?"
+            },
+            {
+              "num": 2,
+              "sa_devanagari": "श्रोत्रस्य श्रोत्रं मनसो मनो यद्वाचो ह वाचं स उ प्राणस्य प्राणः ।\nचक्षुषश्चक्षुरतिमुच्य धीराः प्रेत्यास्माल्लोकादमृता भवन्ति ॥",
+              "sa_bengali": "শ্রোত্রস্য শ্রোত্রং মনসো মনো যদ্বাচো হ বাচং স উ প্রাণস্য প্রাণঃ ।\nচক্ষুষশ্চক্ষুরতিমুচ্য ধীরাঃ প্রেত্যাস্মাল্লোকাদমৃতা ভবন্তি ॥",
+              "transliteration": "śrotrasya śrotraṁ manaso mano yad vāco ha vācaṁ sa u prāṇasya prāṇaḥ |\ncakṣuṣaś cakṣur atimucya dhīrāḥ pretyāsmāl lokād amṛtā bhavanti ||",
+              "meaning_bn": "তিনি শ্রোত্রের শ্রোত্র, মনের মন, বাক্যের বাক্য, তিনিই প্রাণের প্রাণ এবং চক্ষুর চক্ষু। এই সত্য জেনে ধীর ব্যক্তিরা এই লোক ত্যাগ করে অমৃতত্ব লাভ করেন।",
+              "meaning_en": "He is the ear of the ear, the mind of the mind, the speech of speech, the breath of breath, and the eye of the eye. Knowing this, the wise, relinquishing this world, become immortal."
+            },
+            {
+              "num": 3,
+              "sa_devanagari": "न तत्र चक्षुर्गच्छति न वाग्गच्छति नो मनः ।\nन विद्मो न विजानीमो यथैतदनुशिष्यात् ॥",
+              "sa_bengali": "ন তত্র চক্ষুর্গচ্ছতি ন বাগ্গচ্ছতি নো মনঃ ।\nন বিদ্মো ন বিজানীমো যথৈতদনুশিষ্যাৎ ॥",
+              "transliteration": "na tatra cakṣur gacchati na vāg gacchati no manaḥ |\nna vidmo na vijānīmo yathaitad anuśiṣyāt ||",
+              "meaning_bn": "সেখানে চক্ষু যায় না, বাক্য যায় না, মনও যায় না। আমরা জানি না, বুঝিও না, কীভাবে কেউ এটি শেখাতে পারে।",
+              "meaning_en": "The eye does not go there, nor speech, nor the mind. We do not know, we do not understand, how one can teach it."
+            },
+            {
+              "num": 4,
+              "sa_devanagari": "अन्यदेव तद्विदितादथो अविदितादधि ।\nइति शुश्रुम पूर्वेषां ये नस्तद्व्याचचक्षिरे ॥",
+              "sa_bengali": "অন্যদেব তদ্বিদিতাদথো অবিদিতাদধি ।\nইতি শুশ্রুম পূর্বেষাং যে নস্তদ্ব্যাচচক্ষিরে ॥",
+              "transliteration": "anyad eva tad viditād atho aviditād adhi |\niti śuśruma pūrveṣāṁ ye nas tad vyācacakṣire ||",
+              "meaning_bn": "তা জানা বস্তু থেকে ভিন্ন এবং অজানা বস্তু থেকেও অতীত — এইরূপ আমরা পূর্বাচার্যদের কাছে শুনেছি যাঁরা আমাদের কাছে তা ব্যাখ্যা করেছেন।",
+              "meaning_en": "It is other than the known and also above the unknown — thus we have heard from the ancients who explained it to us."
+            },
+            {
+              "num": 5,
+              "sa_devanagari": "यद्वाचानभ्युदितं येन वागभ्युद्यते ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+              "sa_bengali": "যদ্বাচানভ্যুদিতং যেন বাগভ্যুদ্যতে ।\nতদেব ব্রহ্ম ত্বং বিদ্ধি নেদং যদিদমুপাসতে ॥",
+              "transliteration": "yad vācānabhyuditaṁ yena vāg abhyudyate |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+              "meaning_bn": "যা বাক্যের দ্বারা প্রকাশিত হয় না, কিন্তু যার দ্বারা বাক্য প্রকাশিত হয় — তাকেই তুমি ব্রহ্ম বলে জানো; মানুষ যা উপাসনা করে তা (ব্রহ্ম) নয়।",
+              "meaning_en": "That which is not expressed by speech, but by which speech is expressed — know that alone as Brahman, not this that people worship here."
+            },
+            {
+              "num": 6,
+              "sa_devanagari": "यन्मनसा न मनुते येनाहुर्मनो मतम् ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+              "sa_bengali": "যন্মনসা ন মনুতে যেনাহুর্মনো মতম্ ।\nতদেব ব্রহ্ম ত্বং বিদ্ধি নেদং যদিদমুপাসতে ॥",
+              "transliteration": "yan manasā na manute yenāhur mano matam |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+              "meaning_bn": "যা মনের দ্বারা চিন্তিত হয় না, কিন্তু যার দ্বারা মন চিন্তা করে বলে কথিত হয় — তাকেই তুমি ব্রহ্ম বলে জানো; মানুষ যা উপাসনা করে তা (ব্রহ্ম) নয়।",
+              "meaning_en": "That which cannot be thought by the mind, but by which, they say, the mind thinks — know that alone as Brahman, not this that people worship here."
+            },
+            {
+              "num": 7,
+              "sa_devanagari": "यच्चक्षुषा न पश्यति येन चक्षूंषि पश्यति ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+              "sa_bengali": "যচ্চক্ষুষা ন পশ্যতি যেন চক্ষূংষি পশ্যতি ।\nতদেব ব্রহ্ম ত্বং বিদ্ধি নেদং যদিদমুপাসতে ॥",
+              "transliteration": "yac cakṣuṣā na paśyati yena cakṣūṁṣi paśyati |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+              "meaning_bn": "যা চক্ষুর দ্বারা দেখা যায় না, কিন্তু যার দ্বারা চক্ষুসমূহ দেখে — তাকেই তুমি ব্রহ্ম বলে জানো; মানুষ যা উপাসনা করে তা (ব্রহ্ম) নয়।",
+              "meaning_en": "That which cannot be seen by the eye, but by which the eyes see — know that alone as Brahman, not this that people worship here."
+            },
+            {
+              "num": 8,
+              "sa_devanagari": "यच्छ्रोत्रेण न शृणोति येन श्रोत्रमिदं श्रुतम् ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+              "sa_bengali": "যচ্ছ্রোত্রেণ ন শৃণোতি যেন শ্রোত্রমিদং শ্রুতম্ ।\nতদেব ব্রহ্ম ত্বং বিদ্ধি নেদং যদিদমুপাসতে ॥",
+              "transliteration": "yac chrotreṇa na śṛṇoti yena śrotram idaṁ śrutam |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+              "meaning_bn": "যা কানের দ্বারা শোনা যায় না, কিন্তু যার দ্বারা কান শোনে — তাকেই তুমি ব্রহ্ম বলে জানো; মানুষ যা উপাসনা করে তা (ব্রহ্ম) নয়।",
+              "meaning_en": "That which cannot be heard by the ear, but by which the ear hears — know that alone as Brahman, not this that people worship here."
+            },
+            {
+              "num": 9,
+              "sa_devanagari": "यत्प्राणेन न प्राणिति येन प्राणः प्रणीयते ।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते ॥",
+              "sa_bengali": "যৎপ্রাণেন ন প্রাণিতি যেন প্রাণঃ প্রণীয়তে ।\nতদেব ব্রহ্ম ত্বং বিদ্ধি নেদং যদিদমুপাসতে ॥",
+              "transliteration": "yat prāṇena na prāṇiti yena prāṇaḥ praṇīyate |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+              "meaning_bn": "যা প্রাণের দ্বারা প্রাণিত হয় না, কিন্তু যার দ্বারা প্রাণ পরিচালিত হয় — তাকেই তুমি ব্রহ্ম বলে জানো; মানুষ যা উপাসনা করে তা (ব্রহ্ম) নয়।",
+              "meaning_en": "That which one does not breathe with the breath, but by which breath is drawn — know that alone as Brahman, not this that people worship here."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

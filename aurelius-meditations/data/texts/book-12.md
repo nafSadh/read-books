@@ -135,7 +135,9 @@ Casaubon (1634): 27 passages
 
 **Greek:** Εἰ μὴ καθήκει, μὴ πράξῃς· εἰ μὴ ἀληθές ἐστι, μὴ εἴπῃς. ἡ γὰρ ὁρμή σου ἔστω ιη′ εἰς τὸ πᾶν ἀεὶ ὁρᾶν, τί ἐστιν αὐτὸ ἐκεῖνο τὸ τὴν φαντασίαν σοι ποιοῦν, καὶ ἀναπτύσσειν διαιροῦντα εἰς τὸ αἴτιον, εἰς τὸ ὑλικόν, εἰς τὴν ἀναφοράν, εἰς τὸν χρόνον, ἐντὸς οὗ πεπαῦσθαι αὐτὸ δεήσει.
 
-**Long (1862):** Either there is a fatal necessity and invincible order, or a kind Providence, or a confusion without a purpose and without a director [Book IV]. If then there is an invincible necessity, why dost thou resist? But if there is a Providence which allows itself to be propitiated, make thyself worthy of the help of the divinity. But if there is a confusion without governor, be content that in such a tempest thou hast in thyself a certain ruling intelligence. And even if the tempest carry thee away, let it carry away the poor flesh, the poor breath, everything else; for the intelligence at least it will not carry away.
+**Long (1862)** [2 parts]:
+- Either there is a fatal necessity and invincible order, or a kind Providence, or a confusion without a purpose and without a director [Book IV]. If then there is an invincible necessity, why dost thou resist? But if there is a Providence which allows itself to be propitiated, make thyself worthy of the help of the divinity. But if there is a confusion without governor, be content that in such a tempest thou hast in thyself a certain ruling intelligence. And even if the tempest carry thee away, let it carry away the poor flesh, the poor breath, everything else; for the intelligence at least it will not carry away.
+- Does the light of the lamp shine without losing its splendour until it is extinguished; and shall the truth which is in thee and justice and temperance be extinguished before thy death?
 
 ---
 
@@ -279,7 +281,11 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἄνθρωπε, ἐπολιτεύσω ἐν τῇ μεγάλῃ ταύτῃ πόλει· τί σοι διαφέρει, εἰ πέντε ἔτεσιν ἢ τρισί; τὸ γὰρ κατὰ τοὺς νόμους ἴσον ἑκάστῳ. τί οὖν δεινόν, εἰ τῆς πόλεως ἀποπέμπει σε οὐ τύραννος οὐδὲ δικαστὴς ἄδικος, ἀλλ’ ἡ φύσις ἡ εἰσαγαγοῦσα, οἷον εἰ κωμῳδὸν ἀπολύοι τῆς σκηνῆς ὁ παραλαβὼν στρατηγός;—ἀλλ’ οὐκ εἶπον τὰ πέντε μέρη, ἀλλὰ τὰ τρία.—καλῶς εἶπας· ἐν μέντοι τῷ βίῳ τὰ τρία ὅλον τὸ δρᾶμά ἐστι. τὸ γὰρ τέλειον ἐκεῖνος ὁρίζει ὁ τότε μὲν τῆς συγκρίσεως. νῦν δὲ τῆς διαλύσεως αἴτιος· σὺ δὲ ἀναίτιος ἀμφοτέρων. ἄπιθι οὖν ἵλεως· καὶ γὰρ ὁ ἀπολύων ἵλεως.
 
-**Long (1862):** How does the ruling faculty make use of itself? for all lies in this. But everything else, whether it is in the power of thy will or not, is only lifeless ashes and smoke.
+**Long (1862)** [4 parts]:
+- How does the ruling faculty make use of itself? for all lies in this. But everything else, whether it is in the power of thy will or not, is only lifeless ashes and smoke.
+- This reflection is most adapted to move us to contempt of death, that even those who think pleasure to be a good and pain an evil still have despised it.
+- The man to whom that only is good which comes in due season, and to whom it is the same thing whether he has done more or fewer acts conformable to right reason, and to whom it makes no difference whether he contemplates the world for a longer or a shorter time⁠—for this man neither is death a terrible thing [iii, 7; vi, 23; x, 20; xii, 23].
+- Man, thou hast been a citizen in this great state [the world]; what difference does it make to thee whether for five years [or three]? for that which is conformable to the laws is just for all. Where is the hardship then, if no tyrant nor yet an unjust judge sends thee away from the state, but nature who brought thee into it? the same as if a prætor who has employed an actor dismisses him from the stage.⁠—“But I have not finished the five acts, but only three of them.”⁠—Thou sayest well, but in life the three acts are the whole drama; for what shall be a complete drama is determined by him who was once the cause of its composition, and now of its dissolution: but thou art the cause of neither. Depart then satisfied, for he also who releases thee is satisfied.
 
 ---
 

@@ -601,7 +601,9 @@ Casaubon (1634): 44 passages
 
 **Greek:** Ἡ τοῦ ὅλου φύσις ἐπὶ τὴν κοσμοποιίαν ὥρμησε· νῦν δὲ ἤτοι πᾶν τὸ γινόμενον κατ’ ἐπακολούθησιν γίνεται ἢ ἀλόγιστα καὶ τὰ κυριώτατά ἐστιν ἐφ’ ἃ ποιεῖται ἰδίαν ὁρμὴν τὸ τοῦ κόσμου ἡγεμονικόν. εἰς πολλά σε γαληνότερον ποιήσει τοῦτο μνημονευόμενον.
 
-**Long (1862):** No man is tired of receiving what is useful. But it is useful to act according to nature. Do not then be tired of receiving what is useful by doing it to others.
+**Long (1862)** [2 parts]:
+- No man is tired of receiving what is useful. But it is useful to act according to nature. Do not then be tired of receiving what is useful by doing it to others.
+- The nature of the All moved to make the universe. But now either everything that takes place comes by way of consequence or continuity; or even the chief things towards which the ruling power of the universe directs its own movement are governed by no rational principle. If this is remembered it will make thee more tranquil in many things.
 
 ---
 

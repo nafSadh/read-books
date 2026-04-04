@@ -289,7 +289,13 @@ Casaubon (1634): 30 passages
 
 **Greek:** Μὴ ὁλοσχερῶς τῇ φαντασίᾳ συναρπάζεσθαι, ἀλλὰ βοηθεῖν μὲν κατὰ δύναμιν καὶ κατ’ ἀξίαν, κἂν εἰς τὰ μέσα ἐλαττῶνται, μὴ μέντοι βλάβην αὐτὸ φαντάζεσθαι· κακὸν γὰρ ἔθος. ἀλλ’ ὡς ὁ γέρων ἀπελθὼν τὸν τοῦ θρεπτοῦ ῥόμβον ἀπῄτει, μεμνημένος ὅτι ῥόμβος, οὕτως οὖν καὶ ὧδε. ἐπεί τοι γίνῃ καλῶν ἐπὶ τῶν ἐμβόλων. ἄνθρωπε, ἐπελάθου τί ταῦτα ἦν;—ναί· ἀλλὰ τούτοις περισπούδαστα.—διὰ τοῦτ’ οὖν καὶ σὺ μωρὸς γένῃ; Ἐγενόμην ποτέ, ὁπουδήποτε καταληφθείς, εὔμοιρος ἄνθρωπος· τὸ δὲ εὔμοιρος, ἀγαθὴν μοῖραν σεαυτῷ ἀπονείμας· ἀγαθαὶ δὲ μοῖραι ἀγαθαὶ τροπαὶ ψυχῆς, ἀγαθαὶ ὁρμαί, ἀγαθαὶ πράξεις.
 
-**Long (1862):** Up to Olympus from the widespread earth.
+**Long (1862)** [6 parts]:
+- Up to Olympus from the widespread earth.
+- What then is there which still detains thee here? If the objects of sense are easily changed and never stand still, and the organs of perception are dull and easily receive false impressions; and the poor soul itself is an exhalation from blood. But to have good repute amidst such a world as this is an empty thing. Why then dost thou not wait in tranquility for thy end, whether it is extinction or removal to another state? And until that time comes, what is sufficient? Why, what else than to venerate the gods and bless them, and to do good to men, and to practise tolerance and self-restraint; but as to everything which is beyond the limits of the poor flesh and breath, to remember that this is neither thine nor in thy power.
+- Thou canst pass thy life in an equable flow of happiness, if thou canst go by the right way, and think and act in the right way. These two things are common both to the soul of God and to the soul of man, and to the soul of every rational being, not to be hindered by another; and to hold good to consist in the disposition to justice and the practice of it, and in this to let thy desire find its termination.
+- If this is neither my own badness, nor an effect of my own badness, and the common weal is not injured, why am I troubled about it? And what is the harm to the common weal?
+- Do not be carried along inconsiderately by the appearance of things, but give help to all according to thy ability and their fitness; and if they should have sustained loss in matters which are indifferent, do not imagine this to be a damage. For it is a bad habit. But as the old man, when he went away, asked back his foster-child’s top, remembering that it was a top, so do thou in this case also.
+- When thou art calling out on the Rostra, hast thou forgotten, man, what these things are?⁠—Yes; but they are objects of great concern to these people⁠—wilt thou too then be made a fool for these things?⁠—I was once a fortunate man, but I lost it, I know not how.⁠—But fortunate means that a man has assigned to himself a good fortune: and a good fortune is good disposition of the soul, good emotions, good actions.
 
 ---
 

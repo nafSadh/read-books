@@ -194,7 +194,30 @@ def main():
 
     output = {
         'description': 'Alignment mapping between Casaubon (1634) and Long (1862) passage numbering',
-        'note': 'Each Casaubon passage maps to one or more Long/Greek passage IDs',
+        'note': 'Each Casaubon passage maps to one or more Long/Greek passage IDs. '
+                'Long uses Leopold (1908) numbering, which is the scholarly canonical standard.',
+        'sources': {
+            'canonical_numbering': {
+                'edition': 'Leopold (1908)',
+                'source': 'Perseus Digital Library',
+                'url': 'https://github.com/PerseusDL/canonical-greekLit',
+                'license': 'CC BY-SA 4.0',
+            },
+            'long': {
+                'translator': 'George Long',
+                'year': 1862,
+                'source': 'Standard Ebooks',
+                'url': 'https://github.com/standardebooks/marcus-aurelius_meditations_george-long',
+                'license': 'CC0 / Public Domain',
+            },
+            'casaubon': {
+                'translator': 'Meric Casaubon',
+                'year': 1634,
+                'source': 'Project Gutenberg #2680',
+                'url': 'https://www.gutenberg.org/ebooks/2680',
+                'license': 'Public Domain',
+            },
+        },
         'confidence_levels': {
             'high': 'Strong proper-noun and word overlap',
             'medium': 'Moderate word overlap',

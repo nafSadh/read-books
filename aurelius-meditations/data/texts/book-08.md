@@ -489,7 +489,11 @@ Casaubon (1634): 58 passages
 
 **Greek:** Εἰσιέναι εἰς τὸ ἡγεμονικὸν ἑκάστου, παρέχειν δὲ καὶ ἑτέρῳ παντὶ εἰσιέναι εἰς τὸ ἑαυτοῦ ἡγεμονικόν.
 
-**Long (1862):** He who fears death either fears the loss of sensation or a different kind of sensation. But if thou shalt have no sensation, neither wilt thou feel any harm; and if thou shalt acquire another kind of sensation, thou wilt be a different kind of living being and thou wilt not cease to live.
+**Long (1862)** [4 parts]:
+- He who fears death either fears the loss of sensation or a different kind of sensation. But if thou shalt have no sensation, neither wilt thou feel any harm; and if thou shalt acquire another kind of sensation, thou wilt be a different kind of living being and thou wilt not cease to live.
+- Men exist for the sake of one another. Teach them then or bear with them.
+- In one way an arrow moves, in another way the mind. The mind indeed, both when it exercises caution and when it is employed about inquiry, moves straight onward not the less, and to its object.
+- Enter into every man’s ruling faculty; and also let every other man enter into thine.
 
 ---
 

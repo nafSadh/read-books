@@ -313,7 +313,24 @@ Casaubon (1634): 31 passages
 
 **Greek:** Ὁ Σωκράτης ἔλεγε· τί θέλετε; λογικῶν ψυχὰς ἔχειν ἢ ἀλόγων;—λογικῶν.—τίνων λογικῶν; ὑγιῶν ἢ φαύλων;—ὑγιῶν.—τί οὖν οὐ ζητεῖτε;—ὅτι ἔχομεν.—τί οὖν μάχεσθε καὶ διαφέρεσθε;
 
-**Long (1862):** He who has not one and always the same object in life, cannot be one and the same all through his life. But what I have said is not enough, unless this also is added, what this object ought to be. For as there is not the same opinion about all the things which in some way or other are considered by the majority to be good, but only about some certain things, that is, things which concern the common interest; so also ought we to propose to ourselves an object which shall be of a common kind [social] and political. For he who directs all his own efforts to this object, will make all his acts alike, and thus will always be the same.
+**Long (1862)** [17 parts]:
+- He who has not one and always the same object in life, cannot be one and the same all through his life. But what I have said is not enough, unless this also is added, what this object ought to be. For as there is not the same opinion about all the things which in some way or other are considered by the majority to be good, but only about some certain things, that is, things which concern the common interest; so also ought we to propose to ourselves an object which shall be of a common kind [social] and political. For he who directs all his own efforts to this object, will make all his acts alike, and thus will always be the same.
+- Think of the country mouse and of the town mouse, and of the alarm and trepidation of the town mouse.
+- Socrates used to call the opinions of the many by the name of Lamiæ, bugbears to frighten children.
+- The Lacedæmonians at their public spectacles used to set seats in the shade for strangers, but themselves sat down anywhere.
+- Socrates excused himself to Perdiccas for not going to him, saying, It is because I would not perish by the worst of all ends, that is, I would not receive a favour and then be unable to return it.
+- In the writings of the Ephesians there was this precept, constantly to think of some one of the men of former times who practised virtue.
+- The Pythagoreans bid us in the morning look to the heavens that we may be reminded of those bodies which continually do the same things and in the same manner perform their work, and also be reminded of their purity and nudity. For there is no veil over a star.
+- Consider what a man Socrates was when he dressed himself in a skin, after Xanthippe had taken his cloak and gone out, and what Socrates said to his friends who were ashamed of him and drew back from him when they saw him dressed thus.
+- Neither in writing nor in reading wilt thou be able to lay down rules for others before thou shalt have first learned to obey rules thyself. Much more is this so in life.
+- A slave thou art: free speech is not for thee. —And my heart laughed within.
+- And virtue they will curse, speaking harsh words.
+- To look for the fig in winter is a madman’s act: such is he who looks for his child when it is no longer allowed.
+- When a man kisses his child, said Epictetus, he should whisper to himself, “Tomorrow perchance thou wilt die.”⁠—But those are words of bad omen.⁠—“No word is a word of bad omen,” said Epictetus, “which expresses any work of nature; or if it is so, it is also a word of bad omen to speak of the ears of corn being reaped.”
+- The unripe grape, the ripe bunch, the dried grape, all are changes, not into nothing, but into something which exists not yet.
+- No man can rob us of our free will. Epictetus also said, A man must discover an art [or rules] with respect to giving his assent; and in respect to his movements he must be careful that they be made with regard to circumstances, that they be consistent with social interests, that they have regard to the value of the object; and as to sensual desire, he should altogether keep away from it; and as to avoidance [aversion] he should not show it with respect to any of the things which are not in our power.
+- The dispute then, he said, is not about any common matter, but about being mad or not.
+- Socrates used to say, What do you want? Souls of rational men or irrational?⁠—Souls of rational men.⁠—Of what rational men? Sound or unsound?⁠—Sound.⁠—Why then do you not seek for them?⁠—Because we have them.⁠—Why then do you fight and quarrel?
 
 ---
 

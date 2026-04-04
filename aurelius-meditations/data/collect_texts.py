@@ -61,6 +61,48 @@ BOOK_TITLES = {
 # Utilities
 # ---------------------------------------------------------------------------
 
+class CompactJSONEncoder(json.JSONEncoder):
+    """JSON encoder that keeps short arrays on one line."""
+
+    def __init__(self, *args, **kwargs):
+        self._max_inline = kwargs.pop('max_inline_len', 80)
+        super().__init__(*args, **kwargs)
+
+    def encode(self, o):
+        return self._encode(o, indent_level=0)
+
+    def _encode(self, o, indent_level):
+        ind = ' ' * (self.indent * indent_level) if self.indent else ''
+        ind1 = ' ' * (self.indent * (indent_level + 1)) if self.indent else ''
+
+        if isinstance(o, dict):
+            if not o:
+                return '{}'
+            items = []
+            for k, v in o.items():
+                val = self._encode(v, indent_level + 1)
+                items.append(f'{ind1}{json.dumps(k, ensure_ascii=self.ensure_ascii)}: {val}')
+            return '{\n' + ',\n'.join(items) + '\n' + ind + '}'
+        elif isinstance(o, list):
+            if not o:
+                return '[]'
+            # Try compact form first
+            compact = json.dumps(o, ensure_ascii=self.ensure_ascii)
+            if len(compact) <= self._max_inline or all(
+                    isinstance(x, (int, float, bool, type(None))) for x in o):
+                return compact
+            items = [f'{ind1}{self._encode(x, indent_level + 1)}' for x in o]
+            return '[\n' + ',\n'.join(items) + '\n' + ind + ']'
+        else:
+            return json.dumps(o, ensure_ascii=self.ensure_ascii)
+
+
+def dump_json(obj, f):
+    """Write JSON with compact short arrays."""
+    f.write(CompactJSONEncoder(indent=2, ensure_ascii=False).encode(obj))
+    f.write('\n')
+
+
 def ensure_dirs():
     os.makedirs(OUT_DIR, exist_ok=True)
     os.makedirs(CACHE_DIR, exist_ok=True)
@@ -409,8 +451,35 @@ def collect_casaubon(use_cache=True):
 # Phase 4: Align and Output
 # ---------------------------------------------------------------------------
 
+_CAS_ALIGN_CACHE = None
+
+def _load_casaubon_alignment(book_num):
+    """Load Casaubon→Long mapping for a book from alignment JSON.
+
+    Returns dict: {casaubon_num: {long: [...], confidence: str}}
+    """
+    global _CAS_ALIGN_CACHE
+    if _CAS_ALIGN_CACHE is None:
+        align_path = os.path.join(OUT_DIR, 'casaubon-long-alignment.json')
+        if os.path.exists(align_path):
+            with open(align_path, 'r', encoding='utf-8') as f:
+                _CAS_ALIGN_CACHE = json.load(f)
+        else:
+            _CAS_ALIGN_CACHE = {}
+    if not _CAS_ALIGN_CACHE:
+        return {}
+    for b in _CAS_ALIGN_CACHE.get('books', []):
+        if b['book'] == book_num:
+            return {m['casaubon']: m for m in b['mappings']}
+    return {}
+
+
 def align_books(greek_books, long_books, casaubon_books):
-    """Align all translations using Greek chapter numbers as canonical."""
+    """Align all translations using Greek/Leopold chapter numbers as canonical.
+
+    Long passages are stored as arrays. When Long over-splits a Greek passage,
+    the extra Long paragraphs are folded into the preceding Greek passage's array.
+    """
     all_books = []
 
     for book_num in range(1, 13):
@@ -418,22 +487,67 @@ def align_books(greek_books, long_books, casaubon_books):
         long_dict = long_books.get(book_num, {})  # {passage_num: text}
         casaubon = casaubon_books.get(book_num, [])
 
+        greek_nums = sorted(g['chapter'] for g in greek)
+        greek_set = set(greek_nums)
+
+        # Assign every Long passage to a Greek passage.
+        # Long passages whose number matches a Greek number go there directly.
+        # Long-only passages (no Greek match) fold into the nearest preceding
+        # Greek passage — they're over-splits of that passage's content.
+        long_by_greek = {ch: [] for ch in greek_nums}
+        for long_num in sorted(long_dict.keys()):
+            if long_num in greek_set:
+                long_by_greek[long_num].append(
+                    {'num': long_num, 'text': long_dict[long_num]})
+            else:
+                # Find nearest preceding Greek passage
+                target = None
+                for gn in reversed(greek_nums):
+                    if gn < long_num:
+                        target = gn
+                        break
+                if target is None:
+                    # Before first Greek passage — assign to first
+                    target = greek_nums[0] if greek_nums else None
+                if target is not None:
+                    long_by_greek[target].append(
+                        {'num': long_num, 'text': long_dict[long_num]})
+
         passages = []
         for g in greek:
             ch = g['chapter']
+            long_entries = long_by_greek.get(ch, [])
             passage = {
                 'id': f'{book_num}.{ch}',
                 'greek': g['text'],
-                'long': long_dict.get(ch, ''),
+                'long': [e['text'] for e in long_entries],
+                'long_nums': [e['num'] for e in long_entries],
             }
             passages.append(passage)
 
         # Casaubon: stored as separate list (different numbering)
-        casaubon_list = [{'num': c['num'], 'text': c['text']} for c in casaubon]
+        # Enrich with reverse mapping from alignment JSON if available
+        cas_alignment = _load_casaubon_alignment(book_num)
+        casaubon_list = []
+        for c in casaubon:
+            entry = {'num': c['num'], 'text': c['text']}
+            if c['num'] in cas_alignment:
+                entry['leopold_ids'] = cas_alignment[c['num']]['long']
+                entry['confidence'] = cas_alignment[c['num']]['confidence']
+            casaubon_list.append(entry)
 
-        # Track Long passages not matched to Greek
-        greek_nums = {g['chapter'] for g in greek}
-        long_only = sorted(set(long_dict.keys()) - greek_nums)
+        # Log alignment info
+        g_count = len(greek)
+        l_count = len(long_dict)
+        matched = sum(1 for p in passages if p['long'])
+        long_only = sorted(set(long_dict.keys()) - greek_set)
+        folded = len(long_only)
+        c_count = len(casaubon)
+        status = f'matched={matched}/{g_count}'
+        if folded:
+            status += f', {folded} Long over-splits folded'
+        print(f'  Book {book_num}: Greek={g_count}, Long={l_count}, '
+              f'Casaubon={c_count} — {status}')
 
         book_data = {
             'book': book_num,
@@ -446,27 +560,42 @@ def align_books(greek_books, long_books, casaubon_books):
             },
         }
 
-        # Log alignment info
-        g_count = len(greek)
-        l_count = len(long_dict)
-        matched = sum(1 for p in passages if p['long'])
-        c_count = len(casaubon)
-        status = f'matched={matched}/{g_count}'
-        if long_only:
-            status += f', Long-only={long_only}'
-        print(f'  Book {book_num}: Greek={g_count}, Long={l_count}, '
-              f'Casaubon={c_count} — {status}')
-
         all_books.append(book_data)
 
     return all_books
 
 
+SOURCES = {
+    'greek': {
+        'edition': 'Leopold (1908)',
+        'source': 'Perseus Digital Library',
+        'url': 'https://github.com/PerseusDL/canonical-greekLit',
+        'license': 'CC BY-SA 4.0',
+    },
+    'long': {
+        'translator': 'George Long',
+        'year': 1862,
+        'source': 'Standard Ebooks',
+        'url': 'https://github.com/standardebooks/marcus-aurelius_meditations_george-long',
+        'license': 'CC0 / Public Domain',
+    },
+    'casaubon': {
+        'translator': 'Meric Casaubon',
+        'year': 1634,
+        'source': 'Project Gutenberg #2680',
+        'url': 'https://www.gutenberg.org/ebooks/2680',
+        'license': 'Public Domain',
+    },
+}
+
+
 def write_book_json(book_data):
     """Write a per-book JSON file."""
+    out = {'sources': SOURCES}
+    out.update(book_data)
     path = os.path.join(OUT_DIR, f'book-{book_data["book"]:02d}.json')
     with open(path, 'w', encoding='utf-8') as f:
-        json.dump(book_data, f, ensure_ascii=False, indent=2)
+        dump_json(out, f)
     return path
 
 
@@ -485,8 +614,14 @@ def write_book_md(book_data):
         lines.append('')
         lines.append(f'**Greek:** {p["greek"]}')
         lines.append('')
-        if p.get('long'):
-            lines.append(f'**Long (1862):** {p["long"]}')
+        long_texts = p.get('long', [])
+        if long_texts:
+            if len(long_texts) == 1:
+                lines.append(f'**Long (1862):** {long_texts[0]}')
+            else:
+                lines.append(f'**Long (1862)** [{len(long_texts)} parts]:')
+                for lt in long_texts:
+                    lines.append(f'- {lt}')
             lines.append('')
         lines.append('---')
         lines.append('')
@@ -514,30 +649,12 @@ def write_combined(all_books):
     # Combined JSON
     combined = {
         'title': 'Meditations — Marcus Aurelius',
-        'sources': {
-            'greek': {
-                'edition': 'Leopold (1908)',
-                'source': 'Perseus Digital Library',
-                'license': 'CC BY-SA 4.0',
-            },
-            'long': {
-                'translator': 'George Long',
-                'year': 1862,
-                'source': 'Standard Ebooks',
-                'license': 'CC0 / Public Domain',
-            },
-            'casaubon': {
-                'translator': 'Meric Casaubon',
-                'year': 1634,
-                'source': 'Project Gutenberg #2680',
-                'license': 'Public Domain',
-            },
-        },
+        'sources': SOURCES,
         'books': all_books,
     }
     json_path = os.path.join(OUT_DIR, 'meditations-complete.json')
     with open(json_path, 'w', encoding='utf-8') as f:
-        json.dump(combined, f, ensure_ascii=False, indent=2)
+        dump_json(combined, f)
     size_kb = os.path.getsize(json_path) / 1024
     print(f'  {json_path} ({size_kb:.0f} KB)')
 
@@ -560,8 +677,14 @@ def write_combined(all_books):
             md_lines.append('')
             md_lines.append(f'**Greek:** {p["greek"]}')
             md_lines.append('')
-            if p.get('long'):
-                md_lines.append(f'**Long (1862):** {p["long"]}')
+            long_texts = p.get('long', [])
+            if long_texts:
+                if len(long_texts) == 1:
+                    md_lines.append(f'**Long (1862):** {long_texts[0]}')
+                else:
+                    md_lines.append(f'**Long (1862)** [{len(long_texts)} parts]:')
+                    for lt in long_texts:
+                        md_lines.append(f'- {lt}')
                 md_lines.append('')
             md_lines.append('---')
             md_lines.append('')
@@ -606,7 +729,7 @@ def main():
             }
             path = os.path.join(OUT_DIR, f'greek-book-{book_num:02d}.json')
             with open(path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
+                dump_json(data, f)
             print(f'  Wrote {path}')
         return
 
@@ -625,7 +748,7 @@ def main():
             }
             path = os.path.join(OUT_DIR, f'long-book-{book_num:02d}.json')
             with open(path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
+                dump_json(data, f)
             print(f'  Wrote {path}')
         return
 

@@ -589,61 +589,6 @@ SOURCES = {
 }
 
 
-def write_book_json(book_data):
-    """Write a per-book JSON file."""
-    out = {'sources': SOURCES}
-    out.update(book_data)
-    path = os.path.join(OUT_DIR, f'book-{book_data["book"]:02d}.json')
-    with open(path, 'w', encoding='utf-8') as f:
-        dump_json(out, f)
-    return path
-
-
-def write_book_md(book_data):
-    """Write a per-book Markdown file."""
-    lines = [f'# {book_data["title"]}', '']
-    lines.append(f'Greek (Leopold): {book_data["passage_count"]} passages  ')
-    lines.append(f'Casaubon (1634): {book_data["casaubon"]["passage_count"]} passages')
-    lines.append('')
-
-    # Greek + Long aligned passages
-    lines.append('## Greek & Long (aligned)')
-    lines.append('')
-    for p in book_data['passages']:
-        lines.append(f'### {p["id"]}')
-        lines.append('')
-        lines.append(f'**Greek:** {p["greek"]}')
-        lines.append('')
-        long_texts = p.get('long', [])
-        if long_texts:
-            if len(long_texts) == 1:
-                lines.append(f'**Long (1862):** {long_texts[0]}')
-            else:
-                lines.append(f'**Long (1862)** [{len(long_texts)} parts]:')
-                for lt in long_texts:
-                    lines.append(f'- {lt}')
-            lines.append('')
-        lines.append('---')
-        lines.append('')
-
-    # Casaubon passages (separate section)
-    if book_data['casaubon']['passages']:
-        lines.append('## Casaubon (1634)')
-        lines.append('')
-        for c in book_data['casaubon']['passages']:
-            lines.append(f'### {c["num"]}')
-            lines.append('')
-            lines.append(c['text'])
-            lines.append('')
-            lines.append('---')
-            lines.append('')
-
-    path = os.path.join(OUT_DIR, f'book-{book_data["book"]:02d}.md')
-    with open(path, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(lines))
-    return path
-
-
 def write_combined(all_books):
     """Write combined JSON and Markdown files."""
     # Combined JSON
@@ -758,15 +703,8 @@ def main():
     print('\n=== Phase 4: Align & Output ===')
     all_books = align_books(greek_books, long_books, casaubon_books)
 
-    # Write per-book files
-    print('\n=== Writing per-book files ===')
-    for book in all_books:
-        jp = write_book_json(book)
-        mp = write_book_md(book)
-        print(f'  Book {book["book"]}: {os.path.basename(jp)}, {os.path.basename(mp)}')
-
     # Write combined files
-    print('\n=== Writing combined files ===')
+    print('\n=== Writing output files ===')
     write_combined(all_books)
 
     # Summary

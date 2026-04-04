@@ -16,6 +16,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
@@ -73,6 +74,78 @@ def inject_proper_nouns(text, proper_nouns, context_filter='in_original'):
     return text
 
 
+# Greek-to-Latin transliteration (base characters only)
+_GREEK_MAP = {
+    'α': 'a', 'β': 'b', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'ζ': 'z',
+    'η': 'ē', 'θ': 'th', 'ι': 'i', 'κ': 'k', 'λ': 'l', 'μ': 'm',
+    'ν': 'n', 'ξ': 'x', 'ο': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's',
+    'ς': 's', 'τ': 't', 'υ': 'y', 'φ': 'ph', 'χ': 'ch', 'ψ': 'ps',
+    'ω': 'ō',
+}
+
+
+def transliterate_word(word):
+    """Transliterate a Greek word to Latin characters."""
+    result = []
+    decomposed = unicodedata.normalize('NFD', word)
+    for ch in decomposed:
+        if unicodedata.category(ch).startswith('M'):
+            continue  # skip combining marks (accents, breathings)
+        low = ch.lower()
+        if low in _GREEK_MAP:
+            t = _GREEK_MAP[low]
+            result.append(t.capitalize() if ch.isupper() else t)
+        else:
+            result.append(ch)
+    return ''.join(result)
+
+
+def wrap_greek_words(greek_text):
+    """Wrap each Greek word in a span with transliteration tooltip."""
+    parts = re.split(r'(\s+)', greek_text)
+    out = []
+    for part in parts:
+        if not part.strip():
+            out.append(part)
+            continue
+        # Separate leading/trailing punctuation
+        m = re.match(r'^([^\w]*)([\w]+)([^\w]*)$', part, re.UNICODE)
+        if m:
+            pre, word, post = m.groups()
+            translit = transliterate_word(word)
+            out.append(
+                f'{escape(pre)}<span class="gw" data-t="{escape(translit)}">'
+                f'{escape(word)}</span>{escape(post)}'
+            )
+        else:
+            out.append(escape(part))
+    return ''.join(out)
+
+
+def segment_sentences(text):
+    """Split text into sentences by terminal punctuation."""
+    # Split on sentence-ending punctuation followed by space or end
+    parts = re.split(r'(?<=[.;·?!])\s+', text.strip())
+    return [p.strip() for p in parts if p.strip()]
+
+
+def wrap_sentences(text_html, sentences_raw, prefix):
+    """Wrap sentence boundaries in the HTML text with span tags.
+
+    Returns HTML with <span class="s" data-s="PREFIX-N"> wrappers.
+    Matching is best-effort: wraps each raw sentence's escaped text.
+    """
+    result = text_html
+    for i, sent in enumerate(sentences_raw):
+        esc = escape(sent)
+        # Only wrap first occurrence
+        idx = result.find(esc)
+        if idx >= 0:
+            wrapped = f'<span class="s" data-s="{prefix}-{i}">{esc}</span>'
+            result = result[:idx] + wrapped + result[idx + len(esc):]
+    return result
+
+
 def build_passage_html(passage, annotation=None):
     """Build HTML for a single passage."""
     pid = passage['id']
@@ -93,18 +166,13 @@ def build_passage_html(passage, annotation=None):
     if annotation and annotation.get('proper_nouns'):
         main_text = inject_proper_nouns(main_text, annotation['proper_nouns'], 'in_original')
 
-    # Build detail panel
+    # Build detail panel — Notes first, then Modern English
     detail_html = ''
     if annotation:
         modern = annotation.get('modern_english', '')
         notes = annotation.get('notes', '')
         if modern or notes:
             detail_parts = []
-            if modern:
-                detail_parts.append(
-                    f'<div class="narr-section"><span class="narr-label">Modern English</span>\n'
-                    f'      <p>{escape(modern)}</p></div>'
-                )
             if notes:
                 notes_html = escape(notes)
                 if annotation.get('proper_nouns'):
@@ -114,10 +182,38 @@ def build_passage_html(passage, annotation=None):
                     f'<div class="narr-section"><span class="narr-label">Notes</span>\n'
                     f'      <p>{notes_html}</p></div>'
                 )
+            if modern:
+                detail_parts.append(
+                    f'<div class="narr-section"><span class="narr-label">Modern English</span>\n'
+                    f'      <p>{escape(modern)}</p></div>'
+                )
             detail_html = '\n      '.join(detail_parts)
 
-    # Greek div (hidden by default, shown via CSS toggle)
-    greek_html = f'<div class="med-greek">{escape(greek_text)}</div>' if greek_text else ''
+    # Sentence cross-highlighting: segment both texts
+    greek_sents = segment_sentences(greek_text) if greek_text else []
+    eng_sents = segment_sentences(long_text) if long_text else []
+    can_highlight = len(greek_sents) > 1 and len(greek_sents) == len(eng_sents)
+
+    # Greek div with word transliteration tooltips
+    if greek_text:
+        greek_inner = wrap_greek_words(greek_text)
+        if can_highlight:
+            greek_inner_raw = wrap_greek_words(greek_text)
+            # Re-wrap with sentence spans over the word-wrapped HTML
+            for i, sent in enumerate(greek_sents):
+                esc_sent = wrap_greek_words(sent)
+                idx = greek_inner.find(esc_sent)
+                if idx >= 0:
+                    wrapped = f'<span class="s" data-s="{pid}-{i}">{esc_sent}</span>'
+                    greek_inner = greek_inner[:idx] + wrapped + greek_inner[idx + len(esc_sent):]
+        greek_html = f'<div class="med-greek">{greek_inner}</div>'
+    else:
+        greek_html = ''
+
+    # English text with sentence highlighting (if aligned)
+    if can_highlight:
+        main_text = wrap_sentences(main_text, eng_sents, pid)
+
 
     lines = []
     lines.append('    <div class="med-passage">')
@@ -178,22 +274,56 @@ GREEK_CSS = """
 }
 [data-greek="on"] .med-greek { display: block; }
 [data-greek="on"] .med-passage .med-body .med-main { flex: 1 1 60%; }
-/* When both detail and Greek are open — cap growth at viewport */
-[data-greek="on"] .med-passage.details-open {
-  --_grow: min(calc((100% + 56px) / 0.40 - 100%), calc(100vw - 100% - 48px));
+/* When both detail and Greek are open — stack Greek below English */
+[data-greek="on"] .med-passage.details-open .med-body {
+  display: grid;
+  grid-template-columns: minmax(0, 45%) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0 28px;
 }
 [data-greek="on"] .med-passage.details-open .med-detail {
-  flex: 0 0 25%; max-width: 25%;
+  grid-column: 1; grid-row: 1 / -1;
+  flex: unset; max-width: unset; order: unset;
 }
-[data-greek="on"] .med-passage.details-open .med-body .med-main { flex: 1 1 0%; }
+[data-greek="on"] .med-passage.details-open .med-body .med-main {
+  grid-column: 2; grid-row: 1; flex: unset;
+}
 [data-greek="on"] .med-passage.details-open .med-greek {
-  flex: 0 0 28%; max-width: 28%;
+  grid-column: 2; grid-row: 2;
+  flex: unset; max-width: unset; order: unset;
+  border-left: none; border-top: 1px solid var(--border);
+  padding: 12px 0 0 0;
 }
 #greek-btn { font-family: 'EB Garamond', Georgia, serif; font-size: 14px; letter-spacing: 0.5px; }
 #greek-btn.active { color: var(--accent); }
+
+/* ===== WORD TRANSLITERATION TOOLTIPS ===== */
+.gw { position: relative; cursor: default; }
+.gw::after {
+  content: attr(data-t);
+  position: absolute; bottom: 100%; left: 50%;
+  transform: translateX(-50%) translateY(2px);
+  padding: 2px 5px; border-radius: 4px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-sans); font-size: 0.7em; font-style: italic;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
+  z-index: 10;
+}
+.gw:hover::after {
+  opacity: 1; transform: translateX(-50%) translateY(-2px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* ===== SENTENCE CROSS-HIGHLIGHTING ===== */
+.s { transition: background-color 0.25s ease; border-radius: 2px; padding: 1px 0; }
+.s.s-hl { background-color: var(--btn-bg); }
+
 @media (max-width: 1199px) {
   .med-greek { flex: none; max-width: none; padding: 12px 0 0 0; border-left: none; border-top: 1px solid var(--border); }
   [data-greek="on"] .med-passage .med-body .med-main { flex: none; }
+  [data-greek="on"] .med-passage.details-open .med-body { display: flex; }
   [data-greek="on"] .med-passage.details-open .med-detail { flex: none; max-width: none; }
   [data-greek="on"] .med-passage.details-open .med-greek { flex: none; max-width: none; }
 }
@@ -212,6 +342,24 @@ greekBtn.addEventListener('click', () => {
   document.body.dataset.greek = isOn ? 'off' : 'on';
   greekBtn.classList.toggle('active', !isOn);
   savePrefs();
+});
+
+// ===== SENTENCE CROSS-HIGHLIGHTING =====
+document.addEventListener('mouseover', e => {
+  const s = e.target.closest('.s');
+  if (!s) return;
+  const id = s.dataset.s;
+  const passage = s.closest('.med-passage');
+  if (passage) passage.querySelectorAll('.s[data-s=\"' + id + '\"]').forEach(
+    el => el.classList.add('s-hl'));
+});
+document.addEventListener('mouseout', e => {
+  const s = e.target.closest('.s');
+  if (!s) return;
+  const id = s.dataset.s;
+  const passage = s.closest('.med-passage');
+  if (passage) passage.querySelectorAll('.s[data-s=\"' + id + '\"]').forEach(
+    el => el.classList.remove('s-hl'));
 });
 """
 

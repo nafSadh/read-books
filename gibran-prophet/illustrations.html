@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sepia">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Kahlil Gibran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== THEMES ===== */
+:root {
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Jost', -apple-system, Helvetica Neue, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+[data-theme="sepia"] {
+  --bg: #f5efe0; --text: #3a2e1e; --text-secondary: #7a6a52;
+  --border: #d4c8a8; --accent: #b45309;
+  --card-bg: rgba(255,255,255,0.35); --card-hover: rgba(255,255,255,0.55);
+  --bar-bg: rgba(245,239,224,0.94); --bar-border: rgba(0,0,0,0.06);
+  --btn-bg: rgba(0,0,0,0.05); --btn-hover: rgba(0,0,0,0.08);
+  --img-bg: #ede5d0;
+  --section-rule: #d4c8a8;
+}
+[data-theme="light-purple"] {
+  --bg: #faf8f3; --text: #363b48; --text-secondary: #65707a;
+  --border: #d6d0c4; --accent: #7c3aed;
+  --card-bg: rgba(255,255,255,0.4); --card-hover: rgba(255,255,255,0.6);
+  --bar-bg: rgba(250,248,243,0.94); --bar-border: rgba(0,0,0,0.06);
+  --btn-bg: rgba(0,0,0,0.05); --btn-hover: rgba(0,0,0,0.08);
+  --img-bg: #f2efe8;
+  --section-rule: #d6d0c4;
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff; --text: #363b48; --text-secondary: #65707a;
+  --border: #d6d0c4; --accent: #2e6ab4;
+  --card-bg: rgba(0,0,0,0.02); --card-hover: rgba(0,0,0,0.04);
+  --bar-bg: rgba(255,255,255,0.92); --bar-border: rgba(0,0,0,0.08);
+  --btn-bg: rgba(0,0,0,0.06); --btn-hover: rgba(0,0,0,0.1);
+  --img-bg: #f5f5f5;
+  --section-rule: #ddd;
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a; --text: #dce0ec; --text-secondary: #8490aa;
+  --border: #333; --accent: #9b7aed;
+  --card-bg: rgba(255,255,255,0.04); --card-hover: rgba(255,255,255,0.07);
+  --bar-bg: rgba(26,26,26,0.95); --bar-border: rgba(255,255,255,0.08);
+  --btn-bg: rgba(255,255,255,0.08); --btn-hover: rgba(255,255,255,0.12);
+  --img-bg: #222;
+  --section-rule: #333;
+}
+[data-theme="dark-blue"] {
+  --bg: #0e1525; --text: #c8d3e6; --text-secondary: #6b7fa0;
+  --border: #1f2d42; --accent: #4ea1d3;
+  --card-bg: rgba(255,255,255,0.03); --card-hover: rgba(255,255,255,0.06);
+  --bar-bg: rgba(14,21,37,0.95); --bar-border: rgba(255,255,255,0.06);
+  --btn-bg: rgba(255,255,255,0.06); --btn-hover: rgba(255,255,255,0.1);
+  --img-bg: #162030;
+  --section-rule: #1f2d42;
+}
+
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-serif); font-size: 17px;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bar-bg); border-bottom: 1px solid var(--bar-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 10px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.top-bar .title {
+  font-family: var(--font-sans); font-weight: 500; font-size: 14px;
+  color: var(--text-secondary); flex: 1;
+}
+.top-bar .title a {
+  color: var(--text-secondary); text-decoration: none;
+}
+.top-bar .title a:hover { color: var(--text); }
+
+/* Theme dots */
+#theme-wrap {
+  display: flex; align-items: center; gap: 6px;
+}
+.theme-dot {
+  width: 14px; height: 14px; border-radius: 50%; cursor: pointer;
+  border: none; padding: 0; transition: transform 0.15s;
+}
+.theme-dot:hover { transform: scale(1.2); }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-theme="sepia"]        { background: #d4a574; }
+.theme-dot[data-theme="light-purple"] { background: #b598ff; }
+.theme-dot[data-theme="light-azure"]  { background: #6aabdb; }
+.theme-dot[data-theme="dark-violet"]  { background: #7c5fbf; }
+.theme-dot[data-theme="dark-blue"]    { background: #3a7ca5; }
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  text-align: center; padding: 60px 20px 20px;
+  max-width: 720px; margin: 0 auto;
+}
+.page-header h1 {
+  font-family: var(--font-serif); font-size: 32px; font-weight: 400;
+  margin-bottom: 8px; color: var(--text);
+}
+.page-header .subtitle {
+  font-family: var(--font-sans); font-size: 14px; font-weight: 400;
+  color: var(--text-secondary); line-height: 1.7;
+  max-width: 560px; margin: 0 auto;
+}
+.page-header .subtitle a {
+  color: var(--accent); text-decoration: none;
+}
+.page-header .subtitle a:hover { text-decoration: underline; }
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  max-width: 1100px; margin: 0 auto;
+  padding: 48px 20px 24px;
+}
+.section-header::before {
+  content: '';
+  display: block;
+  width: 60px; height: 1px;
+  background: var(--section-rule);
+  margin-bottom: 28px;
+}
+.section-header h2 {
+  font-family: var(--font-serif); font-size: 24px; font-weight: 400;
+  color: var(--text); margin-bottom: 6px;
+}
+.section-header .section-desc {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+  color: var(--text-secondary); line-height: 1.7;
+  max-width: 600px;
+}
+.section-header .section-desc a {
+  color: var(--accent); text-decoration: none;
+}
+.section-header .section-desc a:hover { text-decoration: underline; }
+
+/* ===== GALLERY ===== */
+.gallery {
+  max-width: 1100px; margin: 0 auto; padding: 0 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.plate {
+  display: flex; flex-direction: column;
+  background: var(--card-bg); border-radius: 8px;
+  overflow: hidden; transition: background 0.2s;
+  cursor: zoom-in;
+}
+.plate:hover { background: var(--card-hover); }
+.plate-img {
+  width: 100%; aspect-ratio: 430 / 568;
+  background: var(--img-bg);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.plate-img img {
+  width: 100%; height: 100%; object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.plate:hover .plate-img img { transform: scale(1.03); }
+.plate-caption {
+  padding: 14px 16px 16px;
+}
+.plate-num {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.plate-title {
+  font-family: var(--font-serif); font-size: 18px; font-weight: 400;
+  color: var(--text); line-height: 1.4;
+}
+
+/* Twenty Drawings: landscape-friendly aspect ratio */
+.gallery-landscape .plate-img {
+  aspect-ratio: 4 / 3;
+}
+
+/* ===== RESOURCES ===== */
+.resources {
+  max-width: 720px; margin: 0 auto; padding: 20px 20px 80px;
+}
+.resources h3 {
+  font-family: var(--font-serif); font-size: 20px; font-weight: 400;
+  color: var(--text); margin-bottom: 16px;
+}
+.resource-list {
+  list-style: none; padding: 0;
+}
+.resource-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-sans); font-size: 14px;
+  line-height: 1.6;
+}
+.resource-list li:last-child { border-bottom: none; }
+.resource-list a {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+}
+.resource-list a:hover { text-decoration: underline; }
+.resource-list .resource-note {
+  color: var(--text-secondary); font-weight: 400;
+}
+
+/* ===== SOURCES ===== */
+.sources {
+  max-width: 720px; margin: 0 auto; padding: 0 20px 60px;
+  text-align: center; font-family: var(--font-sans); font-size: 13px;
+  color: var(--text-secondary); line-height: 1.7;
+}
+.sources a { color: var(--accent); text-decoration: none; }
+.sources a:hover { text-decoration: underline; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.88);
+  align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw; max-height: 88vh; object-fit: contain;
+  border-radius: 4px;
+}
+.lightbox-caption {
+  position: fixed; bottom: 24px; left: 0; right: 0;
+  text-align: center; color: rgba(255,255,255,0.7);
+  font-family: var(--font-sans); font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 24px; padding: 0 16px 20px;
+  }
+  .page-header { padding: 40px 16px 16px; }
+  .page-header h1 { font-size: 26px; }
+  .section-header { padding: 36px 16px 20px; }
+  .section-header h2 { font-size: 21px; }
+  .resources { padding: 20px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="title"><a href="reader.html">The Prophet</a> &mdash; Art &amp; Illustrations</span>
+  <div id="theme-wrap">
+    <span class="theme-dot active" data-theme="sepia"></span>
+    <span class="theme-dot" data-theme="light-purple"></span>
+    <span class="theme-dot" data-theme="light-azure"></span>
+    <span class="theme-dot" data-theme="dark-violet"></span>
+    <span class="theme-dot" data-theme="dark-blue"></span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>The Art of Kahlil Gibran</h1>
+  <div class="subtitle">
+    Gibran was a visual artist as much as a writer &mdash; working in pencil, ink,
+    watercolour, and oil. This page collects his illustrations for
+    <em>The Prophet</em> (1923) alongside the watercolours from
+    <em>Twenty Drawings</em> (1919), his only volume devoted exclusively to art.
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 1 — THE PROPHET (1923)
+     Thumbs: Wikimedia Commons PNGs (430×568, lighter)
+     Lightbox: Gutenberg JPGs (669×950, sharper)
+     ============================================================ -->
+
+<div class="section-header">
+  <h2>The Prophet (1923)</h2>
+  <div class="section-desc">
+    Twelve original drawings reproduced from the first edition
+    (Alfred A. Knopf, 1923). Click any plate for a larger view.
+  </div>
+</div>
+
+<div class="gallery" id="gallery-prophet">
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0007.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Kahlil_Gibran_-_The_Prophet_01.png"
+           alt="Illustration: The Coming of the Ship" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate I</div>
+      <div class="plate-title">The Coming of the Ship</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0020.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Kahlil_Gibran_-_The_Prophet_02.png"
+           alt="Illustration: On Love" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate II</div>
+      <div class="plate-title">On Love</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0029.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kahlil_Gibran_-_The_Prophet_03.png"
+           alt="Illustration: On Marriage" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate III</div>
+      <div class="plate-title">On Marriage</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0032.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Kahlil_Gibran_-_The_Prophet_04.png"
+           alt="Illustration: On Children" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate IV</div>
+      <div class="plate-title">On Children</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0039.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Kahlil_Gibran_-_The_Prophet_05.png"
+           alt="Illustration: On Giving" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate V</div>
+      <div class="plate-title">On Giving</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0042.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Kahlil_Gibran_-_The_Prophet_06.png"
+           alt="Illustration: On Crime and Punishment" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate VI</div>
+      <div class="plate-title">On Crime and Punishment</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0064.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Kahlil_Gibran_-_The_Prophet_07.png"
+           alt="Illustration: On Self-Knowledge" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate VII</div>
+      <div class="plate-title">On Self-Knowledge</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0083.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Kahlil_Gibran_-_The_Prophet_08.png"
+           alt="Illustration: On Prayer" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate VIII</div>
+      <div class="plate-title">On Prayer</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0100.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Kahlil_Gibran_-_The_Prophet_09.png"
+           alt="Illustration: On Beauty" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate IX</div>
+      <div class="plate-title">On Beauty</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0119.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Kahlil_Gibran_-_The_Prophet_10.png"
+           alt="Illustration: On Death" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate X</div>
+      <div class="plate-title">On Death</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0125.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kahlil_Gibran_-_The_Prophet_11.png"
+           alt="Illustration: The Farewell" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate XI</div>
+      <div class="plate-title">The Farewell</div>
+    </div>
+  </div>
+
+  <div class="plate"
+       data-full="https://www.gutenberg.org/files/58585/58585-h/images/0134.jpg">
+    <div class="plate-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kahlil_Gibran_-_The_Prophet_12.png"
+           alt="Illustration: The Farewell (closing)" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">Plate XII</div>
+      <div class="plate-title">The Farewell</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SECTION 2 — TWENTY DRAWINGS (1919)
+     Gibran's first and only art-only volume, published by Knopf.
+     Watercolours of ethereal human forms exploring Sufi mysticism
+     and the body as emanation of beauty.
+     Images: kahlilgibran.com (PD artwork, published 1919)
+     ============================================================ -->
+
+<div class="section-header">
+  <h2>Twenty Drawings (1919)</h2>
+  <div class="section-desc">
+    Gibran's first and only volume devoted exclusively to his paintings.
+    Watercolours of weightless, ethereal human forms &mdash; exploring
+    what the original introduction called "the human form as an image
+    and personification of Beauty, an icon of Life, an emanation of the Eternal."
+    <br>
+    <a href="https://www.kahlilgibran.com/latest/113-twenty-drawings-gibran%E2%80%99s-conception-of-beauty.html">Read more at kahlilgibran.com</a>
+  </div>
+</div>
+
+<div class="gallery gallery-landscape" id="gallery-twenty">
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Toward_the_Infinite.jpg"
+           alt="Drawing: Toward the Infinite" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">I</div>
+      <div class="plate-title">Toward the Infinite</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Blind2.jpg"
+           alt="Drawing: The Blind" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">II</div>
+      <div class="plate-title">The Blind</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Struggle.jpg"
+           alt="Drawing: The Struggle" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">III</div>
+      <div class="plate-title">The Struggle</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Triangle2.jpg"
+           alt="Drawing: The Triangle" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">IV</div>
+      <div class="plate-title">The Triangle</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Mountain2.jpg"
+           alt="Drawing: The Mountain" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">V</div>
+      <div class="plate-title">The Mountain</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Great_Aloneness.jpg"
+           alt="Drawing: The Great Aloneness" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">VI</div>
+      <div class="plate-title">The Great Aloneness</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Uplifted.jpg"
+           alt="Drawing: Uplifted" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">VII</div>
+      <div class="plate-title">Uplifted</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Greater_Self.jpg"
+           alt="Drawing: The Greater Self" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">VIII</div>
+      <div class="plate-title">The Greater Self</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Mother_and_Child2.jpg"
+           alt="Drawing: Mother and Child" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">IX</div>
+      <div class="plate-title">Mother and Child</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Centuer_BW.jpg"
+           alt="Drawing: The Great Longing" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">X</div>
+      <div class="plate-title">The Great Longing</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Centaur_and_Child2.jpg"
+           alt="Drawing: Centaur and Child" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XI</div>
+      <div class="plate-title">Centaur and Child</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Innermost.jpg"
+           alt="Drawing: The Innermost" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XII</div>
+      <div class="plate-title">The Innermost</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Veiled_Face.jpg"
+           alt="Drawing: Veiled Face" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XIII</div>
+      <div class="plate-title">Veiled Face</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Rock_The_Waterfall.jpg"
+           alt="Drawing: The Rock &amp; The Waterfall" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XIV &ndash; XV</div>
+      <div class="plate-title">The Rock &amp; The Waterfall</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Flight2.jpg"
+           alt="Drawing: Flight" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XVI</div>
+      <div class="plate-title">Flight</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Burden_Crucified.jpg"
+           alt="Drawing: The Burden &amp; Crucified" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XVII &ndash; XVIII</div>
+      <div class="plate-title">The Burden &amp; Crucified</div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-img">
+      <img src="https://www.kahlilgibran.com/images/20_Drawings_/Woman_with_Garment2.jpg"
+           alt="Drawing: Woman with Garment" loading="lazy">
+    </div>
+    <div class="plate-caption">
+      <div class="plate-num">XIX</div>
+      <div class="plate-title">Woman with Garment</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FURTHER RESOURCES
+     ============================================================ -->
+
+<div class="section-header">
+  <h2>Further Resources</h2>
+</div>
+
+<div class="resources">
+  <ul class="resource-list">
+    <li>
+      <a href="https://www.kahlilgibran.com/latest/113-twenty-drawings-gibran%E2%80%99s-conception-of-beauty.html">Twenty Drawings &mdash; kahlilgibran.com</a>
+      <br><span class="resource-note">Full essay on the 1919 collection with all twenty watercolours</span>
+    </li>
+    <li>
+      <a href="https://simipress.com/the-art-of-kahlil-gibran/">The Art of Kahlil Gibran &mdash; Simi Press</a>
+      <br><span class="resource-note">Gallery of 18 works spanning Gibran's career, with biographical context</span>
+    </li>
+    <li>
+      <a href="https://collections.telfair.org/objects/5182/the-blessed-mountain">The Blessed Mountain &mdash; Telfair Museums</a>
+      <br><span class="resource-note">Original Gibran artwork in the Telfair permanent collection</span>
+    </li>
+    <li>
+      <a href="https://commons.wikimedia.org/wiki/Category:Illustrations_by_Kahlil_Gibran">Illustrations by Kahlil Gibran &mdash; Wikimedia Commons</a>
+      <br><span class="resource-note">Public-domain scans including <em>The Prophet</em> and <em>Sand and Foam</em></span>
+    </li>
+    <li>
+      <a href="https://www.gutenberg.org/files/58585/58585-h/58585-h.htm">The Prophet &mdash; Project Gutenberg</a>
+      <br><span class="resource-note">Full text with higher-resolution illustration scans (669&times;950)</span>
+    </li>
+  </ul>
+</div>
+
+<div class="sources">
+  Prophet illustrations from the 1923 first edition (public domain).
+  Thumbnails via <a href="https://commons.wikimedia.org/wiki/Category:Illustrations_by_Kahlil_Gibran">Wikimedia Commons</a>;
+  full-size scans via <a href="https://www.gutenberg.org/files/58585/58585-h/58585-h.htm">Project Gutenberg</a>.
+  <em>Twenty Drawings</em> images via <a href="https://www.kahlilgibran.com/">kahlilgibran.com</a>.
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+// Theme
+const THEME_KEY = 'prophet-illustrations-theme';
+document.querySelectorAll('.theme-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+    document.documentElement.dataset.theme = dot.dataset.theme;
+    try { localStorage.setItem(THEME_KEY, dot.dataset.theme); } catch(e) {}
+  });
+});
+
+// Restore theme
+try {
+  const t = localStorage.getItem(THEME_KEY);
+  if (t) {
+    document.documentElement.dataset.theme = t;
+    document.querySelectorAll('.theme-dot').forEach(d =>
+      d.classList.toggle('active', d.dataset.theme === t));
+  }
+} catch(e) {}
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+
+document.querySelectorAll('.plate').forEach(plate => {
+  plate.addEventListener('click', () => {
+    const img = plate.querySelector('img');
+    const title = plate.querySelector('.plate-title');
+    const num = plate.querySelector('.plate-num');
+    // Use data-full (Gutenberg hi-res) if available, else the thumbnail src
+    lightboxImg.src = plate.dataset.full || img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = num.textContent + ' — ' + title.textContent;
+    lightbox.classList.add('open');
+  });
+});
+
+lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') lightbox.classList.remove('open');
+});
+</script>
+</body>
+</html>

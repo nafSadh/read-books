@@ -597,7 +597,7 @@ def write_combined(all_books):
         'sources': SOURCES,
         'books': all_books,
     }
-    json_path = os.path.join(OUT_DIR, 'meditations-complete.json')
+    json_path = os.path.join(SCRIPT_DIR, '..', 'aurelius-meditations.json')
     with open(json_path, 'w', encoding='utf-8') as f:
         dump_json(combined, f)
     size_kb = os.path.getsize(json_path) / 1024

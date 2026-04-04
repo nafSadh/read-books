@@ -118,17 +118,19 @@ aurelius-meditations/
     changelog.md         <- session log
     todo.md              <- task tracking
     agents-log.md        <- annotation agent history
+  aurelius-meditations.json <- canonical data: 486 passages (Greek + Long + Casaubon + annotations)
   index.html             <- book-spread landing page
-  reader.html            <- scrolling reader (full text, all 412 passages annotated)
+  reader.html            <- scrolling reader (Long translation, Leopold numbering)
+  reader-casaubon.html   <- scrolling reader (Casaubon translation, original 412 passages)
   fullbleed.html         <- book-spread reader (full text)
   data/
-    annotations/         <- JSON annotation data (book-01-remaining.json through book-12.json)
-    assemble-annotations.js  <- Node.js assembler (original)
-    assemble-annotations.py  <- Python assembler (used for injection)
-    collect_texts.py     <- fetches Greek + Long + Casaubon, outputs JSON/MD
+    annotations/         <- JSON annotation data (Casaubon-era, book-01-remaining through book-12)
+    assemble-annotations.js  <- Node.js assembler (original, Casaubon)
+    assemble-annotations.py  <- Python assembler (Casaubon injection)
+    collect_texts.py     <- fetches Greek + Long + Casaubon, outputs aurelius-meditations.json
     align_casaubon_long.py <- Casaubon↔Long passage alignment mapping
-    texts/               <- output: 12 per-book JSON/MD + combined + alignment (~4 MB)
+    texts/               <- output: combined MD + alignment JSON
   hammond/               <- (gitignored) Martin Hammond (Penguin 2006) extraction
     extract_hammond.py   <- PDF text extraction script (pymupdf)
-    hammond-meditations.json <- extracted passages (468/486)
+    hammond-meditations.json <- extracted passages (479/486)
 ```

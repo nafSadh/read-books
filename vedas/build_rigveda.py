@@ -177,24 +177,44 @@ def parse_sukta_html(html_text: str, mandala: int, sukta: int) -> dict:
 
 # ─── Bengali Meanings Overlay ────────────────────────────────────────
 def load_bengali_meanings() -> dict:
-    """Load hand-curated Bengali meanings from seeds/hymns.json."""
-    hymns_path = SEEDS_DIR / "hymns.json"
-    if not hymns_path.exists():
-        return {}
+    """Load Bengali meanings from merged extraction + hand-curated seeds.
 
-    with open(hymns_path, encoding='utf-8') as f:
-        data = json.load(f)
-
-    # Build lookup: (mandala, sukta, verse_num) → meaning_bn
+    Priority: curated (hymns.json) > merged extraction (scripts/output/).
+    """
     lookup = {}
-    for mandala in data.get("mandalas", []):
-        m = mandala["num"]
-        for sukta in mandala.get("suktas", []):
-            s = sukta["sukta_num"]
-            for mantra in sukta.get("mantras", []):
-                key = (m, s, mantra["num"])
-                if mantra.get("meaning_bn"):
-                    lookup[key] = mantra["meaning_bn"]
+
+    # 1. Load merged extraction (bulk — 98.6% coverage)
+    merged_path = SCRIPT_DIR / "scripts" / "output" / "rigveda_bengali_merged.json"
+    if merged_path.exists():
+        with open(merged_path, encoding='utf-8') as f:
+            data = json.load(f)
+        for mandala in data.get("mandalas", []):
+            m = int(mandala["num"])
+            for sukta in mandala.get("suktas", []):
+                s = int(sukta["sukta_num"])
+                for mantra in sukta.get("mantras", []):
+                    if mantra.get("meaning_bn"):
+                        key = (m, s, int(mantra["num"]))
+                        lookup[key] = mantra["meaning_bn"]
+        print(f"  Loaded merged Bengali: {len(lookup)} mantras")
+
+    # 2. Overlay hand-curated (highest priority, overwrites merged)
+    hymns_path = SEEDS_DIR / "hymns.json"
+    curated_count = 0
+    if hymns_path.exists():
+        with open(hymns_path, encoding='utf-8') as f:
+            data = json.load(f)
+        for mandala in data.get("mandalas", []):
+            m = mandala["num"]
+            for sukta in mandala.get("suktas", []):
+                s = sukta["sukta_num"]
+                for mantra in sukta.get("mantras", []):
+                    if mantra.get("meaning_bn"):
+                        key = (m, s, mantra["num"])
+                        lookup[key] = mantra["meaning_bn"]
+                        curated_count += 1
+        print(f"  Loaded curated Bengali: {curated_count} mantras (overrides merged)")
+
     return lookup
 
 
@@ -260,8 +280,28 @@ def overlay_bengali(mandalas: list, bn_lookup: dict) -> int:
 
 
 def build_compact_json(mandalas: list) -> str:
-    """Build compact JSON string for HTML embedding."""
+    """Build compact JSON string for HTML embedding (legacy monolithic)."""
     return json.dumps({"m": mandalas}, ensure_ascii=False, separators=(',', ':'))
+
+
+def build_mandala_files(mandalas: list) -> str:
+    """Write per-mandala JSON files and return metadata JSON for HTML embedding."""
+    data_dir = SCRIPT_DIR / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+
+    meta = []
+    for mandala in mandalas:
+        # Write per-mandala data file
+        mandala_json = json.dumps(mandala, ensure_ascii=False, separators=(',', ':'))
+        out_path = data_dir / f"mandala-{mandala['n']}.json"
+        out_path.write_text(mandala_json, encoding='utf-8')
+        print(f"    data/mandala-{mandala['n']}.json: {len(mandala_json):,} bytes")
+
+        # Build metadata entry (titles + counts, no verse data)
+        titles = [s.get("t", "") for s in mandala["s"]]
+        meta.append({"n": mandala["n"], "c": len(mandala["s"]), "t": titles})
+
+    return json.dumps(meta, ensure_ascii=False, separators=(',', ':'))
 
 
 def build_readable_json(mandalas: list) -> str:
@@ -786,12 +826,20 @@ def main():
     # Phase 3: Generate outputs
     print("\nGenerating outputs...")
 
-    # 3a: Compact JSON for HTML
-    compact_json = build_compact_json(mandalas)
-    print(f"  Compact JSON: {len(compact_json):,} bytes")
+    # 3a: Per-mandala JSON files + metadata
+    print("  Writing per-mandala data files:")
+    meta_json = build_mandala_files(mandalas)
+    print(f"  Metadata JSON: {len(meta_json):,} bytes")
 
-    # 3b: rigveda.html
-    html = HTML_TEMPLATE.replace('__DATA_JSON__', compact_json)
+    # 3b: rigveda.html (from external template with all UI improvements)
+    template_path = SCRIPT_DIR / "rigveda-template.html"
+    if template_path.exists():
+        html_template = template_path.read_text(encoding='utf-8')
+        print(f"  Using external template: {template_path.name}")
+    else:
+        html_template = HTML_TEMPLATE
+        print(f"  Using inline template (external not found)")
+    html = html_template.replace('__META_JSON__', meta_json)
     html_path = SCRIPT_DIR / "rigveda.html"
     html_path.write_text(html, encoding='utf-8')
     print(f"  {html_path.name}: {len(html):,} bytes")

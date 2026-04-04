@@ -1,0 +1,23 @@
+{
+  "title": "RKM Bengali Rigveda (per-Mandala PDFs)",
+  "publisher": "Ramakrishna Mission Institute of Culture",
+  "source_url": "https://www.agniveerbangla.org/2023/11/vedic-scriptures-pdf.html",
+  "extraction_date": "2026-04-04",
+  "note": "Mandalas 6-10 not yet available on source. Scanned PDFs require OCR for text extraction.",
+  "available_mandalas": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "mandalas": [
+    {
+      "n": 2,
+      "suktas": [],
+      "extraction_note": "no extraction tools available",
+      "pdf_cached": "/tmp/rkm_pdf_cache/rkm_rigveda_mandala_2.pdf",
+      "pdf_size_mb": 18.53072738647461
+    }
+  ]
+}

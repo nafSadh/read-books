@@ -4,12 +4,12 @@
 
 ### Session 4 — Meditations (Marcus Aurelius)
 
-- **Built `meditations/reader.html`** — scrolling reader with full George Long (1862) translation
+- **Built `aurelius-meditations/reader.html`** — scrolling reader with full George Long (1862) translation
   - All 12 Books, ~400 meditations from Project Gutenberg #2680
   - 5 themes: light-purple (default), sepia, light-azure, dark-violet, dark-blue
   - Alice-pattern UI: sidebar, segmented progress bar, chapter scrubber, settings
   - Meditation numbers as `[icon] IV.` on own line above passage text
-- **Built `meditations/fullbleed.html`** — two-page spread reader
+- **Built `aurelius-meditations/fullbleed.html`** — two-page spread reader
   - Full text, pagination engine, 3D page flip, cover/title/TOC
   - 5 themes with sepia default, chapter scrubber, mobile fallback
 - **Annotated reader prototype** (Book I, passages I-V):
@@ -23,7 +23,7 @@
   - Section count differences between Greek and English editions mapped
   - Not yet integrated into readers
 - **Updated `index.html`** — added Meditations card
-- **Project files** — created `meditations/CLAUDE.md`, `.project/changelog.md`, `.project/todo.md`
+- **Project files** — created `aurelius-meditations/CLAUDE.md`, `.project/changelog.md`, `.project/todo.md`
 
 ### Session 3 — Alice fullbleed.html major refactor + reader.html polish
 

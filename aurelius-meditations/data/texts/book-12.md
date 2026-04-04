@@ -41,7 +41,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πῶς ποτε πάντα καλῶς καὶ φιλανθρώπως διατάξαντες οἱ θεοὶ τοῦτο μόνον παρεῖδον, τὸ ἐνίους τῶν ἀνθρώπων καὶ πάνυ χρηστοὺς καὶ πλεῖστα πρὸς τὸ θεῖον ὥσπερ συμβόλαια θεμένους καὶ ἐπὶ πλεῖστον δι’ ἔργων ὁσίων καὶ ἱερουργιῶν συνήθεις τῷ θείῳ γενομένους, ἐπειδὰν ἅπαξ ἀποθάνωσι, μηκέτι αὖθις γίνεσθαι, ἀλλ’ εἰς τὸ παντελὲς ἀπεσβηκέναι; τοῦτο δὲ εἴπερ ἄρα καὶ οὕτως ἔχει, εὖ ἴσθι ὅτι, εἰ ὡς ἑτέρως ἔχειν ἔδει, ἐποίησαν ἄν· εἰ γὰρ δίκαιον ἦν, ἦν ἃν καὶ δυνατόν, καὶ εἰ κατὰ φύσιν, ἤνεγκεν ἂν αὐτὸ ἡ φύσις. ἐκ δὴ τοῦ μὴ οὕτως ἔχειν, εἴπερ οὐχ οὕτως ἔχει, πιστούσθω σοι τὸ μὴ δεῆσαι οὕτως γίνεσθαι· ὁρᾷς γὰρ καὶ αὐτὸς ὅτι τοῦτο παραζητῶν δικαιολογῇ πρὸς τὸν θεόν· οὐκ ἂν δ’ οὕτως διελεγόμεθα τοῖς θεοῖς, εἰ μὴ ἄριστοι καὶ δικαιότατοί εἰσιν. εἰ δὲ τοῦτο, οὐκ ἄν τι περιεῖδον ἀδίκως καὶ ἀλόγως ἠμελημένον τῶν ἐν τῇ διακοσμήσει.
 
-**Long (1862):** and if thou shalt strive to live only what is really thy life, that is, the present⁠—then thou wilt be able to pass that portion of life which remains for thee up to the time of thy death, free from perturbations, nobly, and obedient to thy own daemon [to the god that is within thee].
+**Long (1862):** I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinion of himself than on the opinion of others. If then a god or a wise teacher should present himself to a man and bid him to think of nothing and to design nothing which he would not express as soon as he conceived it, he could not endure it even for a single day. So much more respect have we to what our neighbours shall think of us than to what we shall think of ourselves.
 
 ---
 
@@ -49,7 +49,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἔθιζε καὶ ὅσα ἀπογινώσκεις. καὶ γὰρ ἡ χεὶρ ἡ ἀριστερὰ πρὸς τὰ ἄλλα διὰ τὸ ἀνέθιστον ἀργὸς οὖσα τοῦ χαλινοῦ ἐρρωμενέστερον ἢ ἡ δεξιὰ κρατεῖ· τοῦτο γὰρ εἴθισται.
 
-**Long (1862):** I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinion of himself than on the opinion of others. If then a god or a wise teacher should present himself to a man and bid him to think of nothing and to design nothing which he would not express as soon as he conceived it, he could not endure it even for a single day. So much more respect have we to what our neighbours shall think of us than to what we shall think of ourselves.
+**Long (1862):** How can it be that the gods after having arranged all things well and benevolently for mankind, have overlooked this alone, that some men and very good men, and men who, as we may say, have had most communion with the divinity, and through pious acts and religious observances have been most intimate with the divinity, when they have once died should never exist again, but should be completely extinguished?
 
 ---
 
@@ -57,7 +57,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὁποῖον δεῖ καταληφθῆναι ὑπὸ τοῦ θανάτου καὶ σώματι καὶ ψυχῇ· τὴν βραχύτητα τοῦ βίου· τὴν ἀχάνειαν τοῦ ὀπίσω καὶ πρόσω αἰῶνος· τὴν ἀσθένειαν πάσης ὕλης.
 
-**Long (1862):** How can it be that the gods after having arranged all things well and benevolently for mankind, have overlooked this alone, that some men and very good men, and men who, as we may say, have had most communion with the divinity, and through pious acts and religious observances have been most intimate with the divinity, when they have once died should never exist again, but should be completely extinguished?
+**Long (1862):** But if this is so, be assured that if it ought to have been otherwise, the gods would have done it. For if it were just, it would also be possible; and if it were according to nature, nature would have had it so. But because it is not so, if in fact it is not so, be thou convinced that it ought not to have been so:⁠—for thou seest even of thyself that in this inquiry thou art disputing with the diety; and we should not thus dispute with the gods, unless they were most excellent and most just;⁠—but if this is so, they would not have allowed anything in the ordering of the universe to be neglected unjustly and irrationally.
 
 ---
 
@@ -65,7 +65,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Γυμνὰ τῶν φλοιῶν θεάσασθαι τὰ αἰτιώδη· τὰς ἀναφορὰς τῶν πράξεων· τί πόνος· τί ἡδονή· τί θάνατος· τί δόξα· τίς ὁ ἑαυτῷ ἀσχολίας αἴτιος· πῶς οὐδεὶς ὑπ’ ἄλλου ἐμποδίζεται· ὅτι πάντα ὑπόληψις.
 
-**Long (1862):** But if this is so, be assured that if it ought to have been otherwise, the gods would have done it. For if it were just, it would also be possible; and if it were according to nature, nature would have had it so. But because it is not so, if in fact it is not so, be thou convinced that it ought not to have been so:⁠—for thou seest even of thyself that in this inquiry thou art disputing with the diety; and we should not thus dispute with the gods, unless they were most excellent and most just;⁠—but if this is so, they would not have allowed anything in the ordering of the universe to be neglected unjustly and irrationally.
+**Long (1862):** Practise thyself even in the things which thou despairest of accomplishing. For even the left hand, which is ineffectual for all other things for want of practice, holds the bridle more vigorously than the right hand; for it has been practised in this.
 
 ---
 
@@ -73,7 +73,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὅμοιον δ’ εἶναι δεῖ ἐν τῇ τῶν δογμάτων χρήσει παγκρατιαστῇ, οὐχὶ μονομάχῳ· ὁ μὲν γὰρ τὸ ξίφος ᾧ χρῆται ἀποτίθεται καὶ ἀναιρεῖται· ὁ δὲ τὴν χεῖρα ἀεὶ ἔχει καὶ οὐδὲν ἄλλο ἢ συστρέψαι αὐτὴν δεῖ.
 
-**Long (1862):** Practise thyself even in the things which thou despairest of accomplishing. For even the left hand, which is ineffectual for all other things for want of practice, holds the bridle more vigorously than the right hand; for it has been practised in this.
+**Long (1862):** Consider in what condition both in body and soul a man should be when he is overtaken by death; and consider the shortness of life, the boundless abyss of time past and future, the feebleness of all matter.
 
 ---
 
@@ -81,7 +81,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Τοιαῦτα τὰ πράγματα ὁρᾶν, διαιροῦντα εἰς ὕλην, αἴτιον, ἀναφοράν.
 
-**Long (1862):** Consider in what condition both in body and soul a man should be when he is overtaken by death; and consider the shortness of life, the boundless abyss of time past and future, the feebleness of all matter.
+**Long (1862):** Contemplate the formative principles [forms] of things bare of their coverings; the purposes of actions; consider what pain is, what pleasure is, and death, and fame; who is to himself the cause of his uneasiness; how no man is hindered by another; that everything is opinion.
 
 ---
 
@@ -89,7 +89,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἡλίκην ἐξουσίαν ἔχει ἄνθρωπος μὴ ποιεῖν ἄλλο ἢ ὅπερ μέλλει ὁ θεὸς ἐπαινεῖν, καὶ δέχεσθαι πᾶν ὃν νέμῃ αὐτῷ ὁ θεός. τὸ ἑξῆς τῇ φύσει.
 
-**Long (1862):** Contemplate the formative principles [forms] of things bare of their coverings; the purposes of actions; consider what pain is, what pleasure is, and death, and fame; who is to himself the cause of his uneasiness; how no man is hindered by another; that everything is opinion.
+**Long (1862):** In the application of thy principles thou must be like the pancratiast, not like the gladiator; for the gladiator lets fall the sword which he uses and is killed; but the other always has his hand, and needs to do nothing else than use it.
 
 ---
 
@@ -97,7 +97,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Μήτε θεοῖς μεμπτέον· οὐδὲν γὰρ ἑκόντες ἢ ἄκοντες ἁμαρτάνουσι· μήτε ἀνθρώποις· οὐδὲν γὰρ οὐχὶ ἄκοντες. ὥστε οὐδενὶ μεμπτέον.
 
-**Long (1862):** In the application of thy principles thou must be like the pancratiast, not like the gladiator; for the gladiator lets fall the sword which he uses and is killed; but the other always has his hand, and needs to do nothing else than use it.
+**Long (1862):** See what things are in themselves, dividing them into matter, form and purpose.
 
 ---
 
@@ -105,7 +105,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πῶς γελοῖος καὶ ξένος ὁ θαυμάζων ὁτιοῦν τῶν ἐν τῷ βίῳ γινομένων.
 
-**Long (1862):** See what things are in themselves, dividing them into matter, form and purpose.
+**Long (1862):** What a power man has to do nothing except what God will approve, and to accept all that God may give him.
 
 ---
 
@@ -113,7 +113,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἤτοι ἀνάγκη εἱμαρμένης καὶ ἀπαράβατος τάξις ἢ πρόνοια ἱλάσιμος ἢ φυρμὸς εἰκαιότητος ἀπροστάτητος. εἰ μὲν οὖν ἀπαράβατος ἀνάγκη, τί ἀντιτείνεις; εἰ δὲ πρόνοια ἐπιδεχομένη τὸ ἱλάσκεσθαι, ἄξιον σαυτὸν ποίησον τῆς ἐκ τοῦ θείου βοηθείας. εἰ δὲ φυρμὸς ἀνηγεμόνευτος, ἀσμένιζε ὅτι ἐν τοιούτῳ κλύδωνι αὐτὸς ἔχεις ἐν σαυτῷ τινα νοῦν ἡγεμονικόν, κἂν παραφέρῃ σε ὁ κλύδων, παραφερέτω τὸ σαρκίδιον, τὸ πνευμάτιον, τἄλλα· τὸν γὰρ νοῦν οὐ παροίσει.
 
-**Long (1862):** What a power man has to do nothing except what God will approve, and to accept all that God may give him.
+**Long (1862):** With respect to that which happens conformably to nature, we ought to blame neither gods, for they do nothing wrong either voluntarily or involuntarily, nor men, for they do nothing wrong except involuntarily. Consequently we should blame nobody.
 
 ---
 
@@ -121,15 +121,13 @@ Casaubon (1634): 27 passages
 
 **Greek:** ἢ τὸ μὲν τοῦ λύχνου φῶς, μέχρι σβεσθῇ, φαίνει καὶ τὴν αὐγὴν οὐκ ἀποβάλλει· ἡ δὲ ἐν σοὶ ἀλήθεια καὶ δικαιοσύνη καὶ σωφροσύνη προαποσβήσεται;
 
-**Long (1862):** With respect to that which happens conformably to nature, we ought to blame neither gods, for they do nothing wrong either voluntarily or involuntarily, nor men, for they do nothing wrong except involuntarily. Consequently we should blame nobody.
+**Long (1862):** How ridiculous and what a stranger he is who is surprised at anything which happens in life.
 
 ---
 
 ### 12.16
 
 **Greek:** Ἐπὶ τοῦ φαντασίαν παρασχόντος ὅτι ἥμαρτε· τί δαὶ οἶδα εἰ τοῦτο ἁμάρτημα; εἰ δὲ καὶ ἥμαρτεν, ὅτι κατέκρινεν αὐτὸς ἑαυτόν, καὶ οὕτως ὅμοιον τοῦτο τῷ καταδρύπτειν τὴν ἑαυτοῦ ὄψιν. Ὅτι ὁ μὴ θέλων τὸν φαῦλον ἁμαρτάνειν ὅμοιος τῷ μὴ θέλοντι τὴν συκῆν ὀπὸν ἐν τοῖς σύκοις φέρειν καὶ τὰ βρέφη κλαυθμυρίζεσθαι καὶ τὸν ἵππον χρεμετίζειν καὶ ὅσα ἄλλα ἀναγκαῖα. τί γὰρ πάθῃ τὴν ἕξιν ἔχων τοιαύτην; εἰ οὖν γοργὸς εἶ, ταύτην θεράπευσον.
-
-**Long (1862):** How ridiculous and what a stranger he is who is surprised at anything which happens in life.
 
 ---
 
@@ -145,7 +143,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Αἴσθου ποτὲ ὅτι κρεῖττόν τι καὶ δαιμονιώτερον ἔχεις ἐν σαυτῷ τῶν τὰ πάθη ποιούντων καὶ καθάπαξ τῶν νευροσπαστούντων σε. τί μου νῦν ἐστιν ἡ διάνοια; μὴ φόβος; μὴ ὑποψία; μὴ ἐπιθυμία; μὴ ἄλλο τι τοιοῦτον;
 
-**Long (1862):** Does the light of the lamp shine without losing its splendour until it is extinguished; and shall the truth which is in thee and justice and temperance be extinguished before thy death?
+**Long (1862):** When a man has presented the appearance of having done wrong, say, How then do I know if this is a wrongful act? And even if he has done wrong, how do I know that he has not condemned himself? and so this is like tearing his own face. Consider that he, who would not have the bad man do wrong, is like the man who would not have the fig-tree to bear juice in the figs and infants to cry and the horse to neigh, and whatever else must of necessity be. For what must a man do who has such a character? If then thou art irritable, cure this man’s disposition.
 
 ---
 
@@ -153,7 +151,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πρῶτον τὸ μὴ εἰκῇ μηδὲ ἄνευ ἀναφορᾶς. δεύτερον τὸ μὴ ἐπ’ ἄλλο τι ἢ ἐπὶ τὸ κοινωνικὸν τέλος τὴν ἀναγωγὴν ποιεῖσθαι.
 
-**Long (1862):** When a man has presented the appearance of having done wrong, say, How then do I know if this is a wrongful act? And even if he has done wrong, how do I know that he has not condemned himself? and so this is like tearing his own face. Consider that he, who would not have the bad man do wrong, is like the man who would not have the fig-tree to bear juice in the figs and infants to cry and the horse to neigh, and whatever else must of necessity be. For what must a man do who has such a character? If then thou art irritable, cure this man’s disposition.
+**Long (1862):** If it is not right, do not do it: if it is not true, do not say it. For let thy efforts be⁠—
 
 ---
 
@@ -161,7 +159,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὅτι μετ’ οὐ πολὺ οὐδεὶς οὐδαμοῦ ἔσῃ οὐδὲ τούτων τι ἃ νῦν βλέπεις οὐδὲ τούτων τις τῶν νῦν βιούντων· ἅπαντα γὰρ μεταβάλλειν καὶ τρέπεσθαι καὶ φθείρεσθαι πέφυκεν, ἵνα ἕτερα ἐφεξῆς γίνηται.
 
-**Long (1862):** If it is not right, do not do it: if it is not true, do not say it. For let thy efforts be⁠—
+**Long (1862):** In everything always observe what the thing is which produces for thee an appearance, and resolve it by dividing it into the formal, the material, the purpose, and the time within which it must end.
 
 ---
 
@@ -169,7 +167,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὅτι πάντα ὑπόληψις καὶ αὕτη ἐπὶ σοί. ἆρον οὖν ὅτε θέλεις τὴν ὑπόληψιν καὶ ὥσπερ κάμψαντι τὴν ἄκραν γαλήνη, σταθερὰ πάντα καὶ κόλπος ἀκύμων.
 
-**Long (1862):** In everything always observe what the thing is which produces for thee an appearance, and resolve it by dividing it into the formal, the material, the purpose, and the time within which it must end.
+**Long (1862):** Perceive at last that thou hast in thee something better and more divine than the things which cause the various affects, and as it were pull thee by the strings. What is there now in my mind? Is it fear, or suspicion, or desire, or anything of the kind?
 
 ---
 
@@ -177,7 +175,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Μία καὶ ἡτισοῦν ἐνέργεια κατὰ καιρὸν παυσαμένη οὐδὲν κακὸν πάσχει, καθὸ πέπαυται· οὐδὲ ὁ πράξας τὴν πρᾶξιν ταύτην κατ’ αὐτὸ τοῦτο, καθὸ πέπαυται, κακόν τι πέπονθεν. ὁμοίως οὖν τὸ ἐκ πασῶν τῶν πράξεων σύστημα, ὅπερ ἐστὶν ὁ βίος, ἐὰν ἐν καιρῷ παύσηται, οὐδὲν κακὸν πάσχει κατ’ αὐτὸ τοῦτο, καθὸ πέπαυται· οὐδὲ ὁ καταπαύσας ἐν καιρῷ τὸν εἱρμὸν τοῦτον κακῶς διετέθη. τὸν δὲ καιρὸν καὶ τὸν ὅρον δίδωσιν ἡ φύσις, ποτὲ μὲν καὶ ἡ ἰδία, ὅταν ἐν γήρᾳ, πάντως δὲ ἡ τῶν ὅλων, ἧς τῶν μερῶν μεταβαλλόντων νεαρὸς ἀεὶ καὶ ἀκμαῖος ὁ σύμπας κόσμος διαμένει. καλὸν δὲ ἀεὶ πᾶν καὶ ὡραῖον τὸ συμφέρον τῷ ὅλῳ. ἡ οὖν κατάπαυσις τοῦ βίου ἑκάστῳ οὐ κακὸν μὲν ὅτι οὐδὲ αἰσχρόν, εἴπερ καὶ ἀπροαίρετον καὶ οὐκ ἀκοινώνητον· ἀγαθὸν δὲ εἴπερ τῷ ὅλῳ καίριον καὶ συμφέρον καὶ συμφερόμενον. οὕτως γὰρ καὶ θεοφόρητος ὁ φερόμενος κατὰ ταὐτὰ θεῷ καὶ ἐπὶ ταὐτὰ τῇ γνώμῃ φερόμενος.
 
-**Long (1862):** Perceive at last that thou hast in thee something better and more divine than the things which cause the various affects, and as it were pull thee by the strings. What is there now in my mind? Is it fear, or suspicion, or desire, or anything of the kind?
+**Long (1862):** First, do nothing inconsiderately, nor without a purpose. Second, make thy acts refer to nothing else than to a social end.
 
 ---
 
@@ -185,7 +183,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Τρία ταῦτα δεῖ πρόχειρα ἔχειν· ἐπὶ μὲν ὧν ποιεῖς, εἰ μήτε εἰκῇ μήτε ἄλλως ἢ ὡς ἂν ἡ Δίκη αὐτὴ ἐνήργησεν· ἐπὶ δὲ τῶν ἔξωθεν συμβαινόντων, ὅτι ἤτοι κατ’ ἐπιτυχίαν ἢ κατὰ πρόνοιαν· οὔτε δὲ τῇ ἐπιτυχίᾳ μεμπτέον οὔτε τῇ προνοίᾳ ἐγκλητέον. δεύτερον τό· ὁποῖον ἕκαστον ἀπὸ σπέρματος μέχρι ψυχώσεως καὶ ἀπὸ ψυχώσεως μέχρι τοῦ τὴν ψυχὴν ἀποδοῦναι καὶ ἐξ οἵων ἡ σύγκρισις καὶ εἰς οἷα ἡ λύσις. τρίτον, εἰ ἄφνω μετέωρος ἐξαρθεὶς κατασκέψαιο τὰ ἀνθρώπεια καὶ τὴν πολυτροπίαν, ὅτι καταφρονήσεις συνιδὼν ἅμα καὶ ὅσον τὸ περιοικοῦν ἐναερίων καὶ ἐναιθερίων· καὶ ὅτι, ὁσάκις ἂν ἐξαρθῇς, ταὐτὰ ὄψῃ, τὸ ὁμοειδές, τὸ ὀλιγοχρόνιον. ἐπὶ τούτοις ὁ τῦφος.
 
-**Long (1862):** First, do nothing inconsiderately, nor without a purpose. Second, make thy acts refer to nothing else than to a social end.
+**Long (1862):** Consider that before long thou wilt be nobody and nowhere, nor will any of the things exist which thou now seest, nor any of those who are now living. For all things are formed by nature to change and be turned and to perish in order that other things in continuous succession may exist.
 
 ---
 
@@ -193,7 +191,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Βάλε ἔξω τὴν ὑπόληψιν· σέσωσαι. τίς οὖν ὁ κωλύων ἐκβάλλειν;
 
-**Long (1862):** Consider that before long thou wilt be nobody and nowhere, nor will any of the things exist which thou now seest, nor any of those who are now living. For all things are formed by nature to change and be turned and to perish in order that other things in continuous succession may exist.
+**Long (1862):** Consider that everything is opinion, and opinion is in thy power. Take away then, when thou choosest, thy opinion, and like a mariner, who has doubled the promontory, thou wilt find calm, everything stable, and a waveless bay.
 
 ---
 
@@ -201,7 +199,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὅταν δυσφορῇς ἐπί τινι, ἐπελάθου τοῦ, ὅτι πάντα κατὰ τὴν τῶν ὅλων φύσιν γίνεται, καὶ τοῦ, ὅτι τὸ ἁμαρτανόμενον ἀλλότριον, καὶ ἐπὶ τούτοις τοῦ, ὅτι πᾶν τὸ γινόμενον οὕτως ἀεὶ ἐγίνετο καὶ γενήσεται καὶ νῦν πανταχοῦ γίνεται· τοῦ, ὅση ἡ συγγένεια ἀνθρώπου πρὸς πᾶν τὸ ἀνθρώπειον γένος· οὐ γὰρ αἱματίου ἢ σπερματίου, ἀλλὰ νοῦ κοινωνία. ἐπελάθου δὲ καὶ τοῦ, ὅτι ὁ ἑκάστου νοῦς θεὸς καὶ ἐκεῖθεν ἐρρύηκεν· τοῦ, ὅτι οὐδὲν ἴδιον οὐδενός, ἀλλὰ καὶ τὸ τεκνίον καὶ τὸ σωμάτιον καὶ αὐτὸ τὸ ψυχάριον ἐκεῖθεν ἐλήλυθεν· τοῦ, ὅτι πάνθ’ ὑπόληψις· τοῦ, ὅτι τὸ παρὸν μόνον ἕκαστος ζῇ καὶ τοῦτο ἀποβάλλει.
 
-**Long (1862):** Consider that everything is opinion, and opinion is in thy power. Take away then, when thou choosest, thy opinion, and like a mariner, who has doubled the promontory, thou wilt find calm, everything stable, and a waveless bay.
+**Long (1862):** Any one activity whatever it may be, when it has ceased at its proper time, suffers no evil because it has ceased; nor he who has done this act, does he suffer any evil for this reason that the act has ceased. In like manner then the whole which consists of all the acts, which is our life, if it cease at its proper time, suffers no evil for this reason that it has ceased; nor he who has terminated this series at the proper time, has he been ill dealt with. But the proper time and the limit nature fixes, sometimes as in old age the peculiar nature of man, but always the universal nature, by the change of whose parts the whole universe continues ever young and perfect. And everything which is useful to the universal is always good and in season. Therefore the termination of life for every man is no evil, because neither is it shameful, since it is both independent of the will and not opposed to the general interest, but it is good, since it is seasonable and profitable to and congruent with the universal. For thus too he is moved by the deity who is moved in the same manner with the deity and moved towards the same things in his mind.
 
 ---
 
@@ -209,7 +207,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Συνεχῶς ἀναπολεῖν τοὺς ἐπί τινι λίαν ἀγανακτήσαντας, τοὺς ἐν μεγίσταις δόξαις ἢ συμφοραῖς ἢ ἔχθραις ἢ ὁποιαισοῦν τύχαις ἀκμάσαντας· εἶτα ἐφιστάνειν· ποῦ νῦν πάντα ἐκεῖνα; καπνὸς καὶ σποδὸς καὶ μῦθος ἢ οὐδὲ μῦθος. συμπροσπιπτέτω δὲ καὶ τὸ τοιοῦτο πᾶν, οἷον· Φάβιος Κατουλλῖνος ἐπ’ ἀγροῦ καὶ Λούσιος Δοῦπος ἐν τοῖς κήποις καὶ Στερτίνιος ἐν Βαίαις καὶ Τιβέριος ἐν Καπρίαις καὶ Οὐήλιος Ῥοῦφος καὶ ὅλως ἡ πρὸς ὁτιοῦν μετ’ οἰήσεως διαφορά· καὶ ὡς εὐτελὲς πᾶν τὸ κατεντεινόμενον καὶ ὅσῳ φιλοσοφώτερον τὸ ἐπὶ τῆς δοθείσης ὕλης ἑαυτὸν δίκαιον, σώφρονα, θεοῖς ἑπόμενον ἀφελῶς παρέχειν· ὁ γὰρ ὑπὸ ἀτυφίᾳ τῦφος τυφόμενος πάντων χαλεπώτατος.
 
-**Long (1862):** Any one activity whatever it may be, when it has ceased at its proper time, suffers no evil because it has ceased; nor he who has done this act, does he suffer any evil for this reason that the act has ceased. In like manner then the whole which consists of all the acts, which is our life, if it cease at its proper time, suffers no evil for this reason that it has ceased; nor he who has terminated this series at the proper time, has he been ill dealt with. But the proper time and the limit nature fixes, sometimes as in old age the peculiar nature of man, but always the universal nature, by the change of whose parts the whole universe continues ever young and perfect. And everything which is useful to the universal is always good and in season. Therefore the termination of life for every man is no evil, because neither is it shameful, since it is both independent of the will and not opposed to the general interest, but it is good, since it is seasonable and profitable to and congruent with the universal. For thus too he is moved by the deity who is moved in the same manner with the deity and moved towards the same things in his mind.
+**Long (1862):** These three principles thou must have in readiness. In the things which thou doest do nothing either inconsiderately or otherwise than as justice herself would act; but with respect to what may happen to thee from without, consider that it happens either by chance or according to Providence, and thou must neither blame chance nor accuse Providence. Second, consider what every being is from the seed to the time of its receiving a soul, and from the reception of a soul to the giving back of the same, and of what things every being is compounded and into what things it is resolved. Third, if thou shouldst suddenly be raised up above the earth, and shouldst look down on human things, and observe the variety of them how great it is, and at the same time also shouldst see at a glance how great is the number of beings who dwell around in the air and the æther, consider that as often as thou shouldst be raised up, thou wouldst see the same things, sameness of form and shortness of duration. Are these things to be proud of?
 
 ---
 
@@ -217,7 +215,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πρὸς τοὺς ἐπιζητοῦντας· ποῦ γὰρ ἰδὼν τοὺς θεοὺς ἢ πόθεν κατειληφὼς ὅτι εἰσὶν οὕτως σέβεις; πρῶτον μὲν καὶ ὄψει ὁρατοί εἰσιν· ἔπειτα μέντοι οὐδὲ τὴν ψυχὴν τὴν ἐμαυτοῦ ἑώρακα καὶ ὅμως τιμῶ· οὕτως οὖν καὶ τοὺς θεούς, ἐξ ὧν τῆς δυνάμεως αὐτῶν ἑκάστοτε πειρῶμαι, ἐκ τούτων ὅτι τε εἰσὶ καταλαμβάνω καὶ αἰδοῦμαι.
 
-**Long (1862):** These three principles thou must have in readiness. In the things which thou doest do nothing either inconsiderately or otherwise than as justice herself would act; but with respect to what may happen to thee from without, consider that it happens either by chance or according to Providence, and thou must neither blame chance nor accuse Providence. Second, consider what every being is from the seed to the time of its receiving a soul, and from the reception of a soul to the giving back of the same, and of what things every being is compounded and into what things it is resolved. Third, if thou shouldst suddenly be raised up above the earth, and shouldst look down on human things, and observe the variety of them how great it is, and at the same time also shouldst see at a glance how great is the number of beings who dwell around in the air and the æther, consider that as often as thou shouldst be raised up, thou wouldst see the same things, sameness of form and shortness of duration. Are these things to be proud of?
+**Long (1862):** Cast away opinion: thou art saved. Who then hinders thee from casting it away?
 
 ---
 
@@ -225,7 +223,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Σωτηρία βίου ἕκαστον δι’ ὅλου αὐτὸ τί ἐστιν ὁρᾶν, τί μὲν αὐτοῦ τὸ ὑλικόν, τί δὲ τὸ αἰτιῶδες· ἐξ ὅλης τῆς ψυχῆς τὰ δίκαια ποιεῖν καὶ τἀληθῆ λέγειν. τί λοιπὸν ἢ ἀπολαύειν τοῦ ζῆν συνάπτοντα ἄλλο ἐπ’ ἄλλῳ ἀγαθόν, ὥστε μηδὲ τὸ βραχύτατον διάστημα ἀπολείπειν;
 
-**Long (1862):** Cast away opinion: thou art saved. Who then hinders thee from casting it away?
+**Long (1862):** When thou art troubled about anything, thou hast forgotten this, that all things happen according to the universal nature; and forgotten this, that a man’s wrongful act is nothing to thee; and further thou hast forgotten this, that everything which happens, always happened so and will happen so, and now happens so everywhere; forgotten this too, how close is the kinship between a man and the whole human race, for it is a community, not of a little blood or seed, but of intelligence. And thou hast forgotten this too, that every man’s intelligence is a god, and is an efflux of the deity; and forgotten this, that nothing is a man’s own, but that his child and his body and his very soul came from the deity; forgotten this, that everything is opinion; and lastly thou hast forgotten that every man lives the present time only, and loses only this.
 
 ---
 
@@ -233,7 +231,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἓν φῶς ἡλίου, κἂν διείργηται τοίχοις, ὄρεσιν, ἄλλοις μυρίοις. μία οὐσία κοινή, κἂν διείργηται ἰδίως ποιοῖς σώμασι μυρίοις. μία ψυχή, κἂν φύσεσι διείργηται μυρίαις καὶ ἰδίαις περιγραφαῖς. μία νοερὰ ψυχή, κἂν διακεκρίσθαι δοκῇ. τὰ μὲν οὖν ἄλλα μέρη τῶν εἰρημένων, οἷον πνεύματα καὶ ὑποκείμενα, ἀναίσθητα καὶ ἀνοικείωτα ἀλλήλοις· καίτοι κἀκεῖνα τὸ ἑνοῦν συνέχει καὶ τὸ ἐπὶ τὰ αὐτὰ βρῖθον. διάνοια δὲ ἰδίως ἐπὶ τὸ ὁμόφυλον τείνεται καὶ συνίσταται καὶ οὐ διείργεται τὸ κοινωνικὸν πάθος.
 
-**Long (1862):** When thou art troubled about anything, thou hast forgotten this, that all things happen according to the universal nature; and forgotten this, that a man’s wrongful act is nothing to thee; and further thou hast forgotten this, that everything which happens, always happened so and will happen so, and now happens so everywhere; forgotten this too, how close is the kinship between a man and the whole human race, for it is a community, not of a little blood or seed, but of intelligence. And thou hast forgotten this too, that every man’s intelligence is a god, and is an efflux of the deity; and forgotten this, that nothing is a man’s own, but that his child and his body and his very soul came from the deity; forgotten this, that everything is opinion; and lastly thou hast forgotten that every man lives the present time only, and loses only this.
+**Long (1862):** Constantly bring to thy recollection those who have complained greatly about anything, those who have been most conspicuous by the greatest fame or misfortunes or enmities or fortunes of any kind: then think where are they all now? Smoke and ash and a tale, or not even a tale. And let there be present to thy mind also everything of this sort, how Fabius Catullinus lived in the country, and Lucius Lupus in his gardens, and Stertinius at Baiæ, and Tiberius at Capreæ and Velius Rufus [or Rufus at Velia]; and in fine think of the eager pursuit of anything conjoined with pride; and how worthless everything is after which men violently strain; and how much more philosophical it is for a man in the opportunities presented to him to show himself just, temperate, obedient to the gods, and to do this with all simplicity: for the pride which is proud of its want of pride is the most intolerable of all.
 
 ---
 
@@ -241,7 +239,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Τί ἐπιζητεῖς; τὸ διαπνεῖσθαι; ἀλλὰ τὸ αἰσθάνεσθαι; τὸ ὁρμᾶν; τὸ αὔξεσθαι; τὸ λήγειν αὖθις; τὸ φωνῇ χρῆσθαι; τὸ διανοεῖσθαι; τί τούτων πόθου σοι ἄξιον δοκεῖ; εἰ δὲ ἕκαστα εὐκαταφρόνητα, πρόιθι ἐπὶ τελευταῖον τὸ ἕπεσθαι τῷ λόγῳ καὶ τῷ θεῷ. ἀλλὰ μάχεται τὸ τιμᾶν ταῦτα, τὸ ἄχθεσθαι εἰ διὰ τοῦ τεθνηκέναι στερήσεταί τις αὐτῶν.
 
-**Long (1862):** Constantly bring to thy recollection those who have complained greatly about anything, those who have been most conspicuous by the greatest fame or misfortunes or enmities or fortunes of any kind: then think where are they all now? Smoke and ash and a tale, or not even a tale. And let there be present to thy mind also everything of this sort, how Fabius Catullinus lived in the country, and Lucius Lupus in his gardens, and Stertinius at Baiæ, and Tiberius at Capreæ and Velius Rufus [or Rufus at Velia]; and in fine think of the eager pursuit of anything conjoined with pride; and how worthless everything is after which men violently strain; and how much more philosophical it is for a man in the opportunities presented to him to show himself just, temperate, obedient to the gods, and to do this with all simplicity: for the pride which is proud of its want of pride is the most intolerable of all.
+**Long (1862):** To those who ask, Where hast thou seen the gods or how dost thou comprehend that they exist and so worshipest them? I answer, in the first place, they may be seen even with the eyes; in the second place, neither have I seen even my own soul and yet I honour it. Thus then with respect to the gods, from what I constantly experience of their power, from this I comprehend that they exist and I venerate them.
 
 ---
 
@@ -249,7 +247,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πόστον μέρος τοῦ ἀπείρου καὶ ἀχανοῦς αἰῶνος ἀπομεμέρισται ἑκάστῳ· τάχιστα γὰρ ἐναφανίζεται τῷ ἀιδίῳ· πόστον δὲ τῆς ὅλης οὐσίας· πόστον δὲ τῆς ὅλης ψυχῆς· ἐν πόστῳ δὲ βωλαρίῳ τῆς ὅλης γῆς ἕρπεις. πάντα ταῦτα ἐνθυμούμενος μηδὲν μέγα φαντάζου ἢ τό, ὡς μὲν ἡ σὴ φύσις ἄγει ποιεῖν, πάσχειν δὲ ὡς ἡ κοινὴ φύσις φέρει.
 
-**Long (1862):** To those who ask, Where hast thou seen the gods or how dost thou comprehend that they exist and so worshipest them? I answer, in the first place, they may be seen even with the eyes; in the second place, neither have I seen even my own soul and yet I honour it. Thus then with respect to the gods, from what I constantly experience of their power, from this I comprehend that they exist and I venerate them.
+**Long (1862):** The safety of life is this, to examine everything all through, what it is itself, what is its material, what the formal part; with all thy soul to do justice and to say the truth. What remains except to enjoy life by joining one good thing to another so as not to leave even the smallest intervals between?
 
 ---
 
@@ -257,7 +255,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πῶς ἑαυτῷ χρῆται τὸ ἡγεμονικόν; ἐν γὰρ τούτῳ τὸ πᾶν ἐστι. τὰ δὲ λοιπὰ ἢ προαιρετικά ἐστιν ἢ ἀπροαίρετα, νεκρὰ καὶ καπνός.
 
-**Long (1862):** The safety of life is this, to examine everything all through, what it is itself, what is its material, what the formal part; with all thy soul to do justice and to say the truth. What remains except to enjoy life by joining one good thing to another so as not to leave even the smallest intervals between?
+**Long (1862):** There is one light of the sun, though it is interrupted by walls, mountains, and other things infinite. There is one common substance, though it is distributed among countless bodies which have their several qualities. There is one soul, though it is distributed among infinite natures and individual circumscriptions [or individuals]. There is one intelligent soul, though it seems to be divided. Now in the things which have been mentioned all the other parts, such as those which are air and matter, are without sensation and have no fellowship: and yet even these parts the intelligent principle holds together, and the gravitation towards the same. But intellect in a peculiar manner tends to that which is of the same kin, and combines with it, and the feeling for communion is not interrupted.
 
 ---
 
@@ -265,7 +263,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Πρὸς θανάτου καταφρόνησιν ἐγερτικώτατον ὅτι καὶ οἱ τὴν ἡδονὴν ἀγαθὸν καὶ τὸν πόνον κακὸν κρίνοντες ὅμως τούτου κατεφρόνησαν.
 
-**Long (1862):** There is one light of the sun, though it is interrupted by walls, mountains, and other things infinite. There is one common substance, though it is distributed among countless bodies which have their several qualities. There is one soul, though it is distributed among infinite natures and individual circumscriptions [or individuals]. There is one intelligent soul, though it seems to be divided. Now in the things which have been mentioned all the other parts, such as those which are air and matter, are without sensation and have no fellowship: and yet even these parts the intelligent principle holds together, and the gravitation towards the same. But intellect in a peculiar manner tends to that which is of the same kin, and combines with it, and the feeling for communion is not interrupted.
+**Long (1862):** What dost thou wish? to continue to exist? Well, dost thou wish to have sensation? movement? growth? and then again to cease to grow? to use thy speech? to think? What is there of all these things which seems to thee worth desiring? But if it is easy to set little value on all these things, turn to that which remains, which is to follow reason and god. But it is inconsistent with honouring reason and god to be troubled because by death a man will be deprived of the other things.
 
 ---
 
@@ -273,7 +271,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ὧι τὸ εὔκαιρον μόνον ἀγαθὸν καὶ ᾧ τὸ πλείους κατὰ λόγον ὀρθὸν πράξεις ἀποδοῦναι τῷ ὀλιγωτέρας ἐν ἴσῳ ἐστὶ καὶ ᾧ τὸν κόσμον θεωρῆσαι πλείονι ἢ ἐλάσσονι χρόνῳ οὐ διαφέρει, τούτῳ οὐδὲ ὁ θάνατος φοβερόν.
 
-**Long (1862):** What dost thou wish? to continue to exist? Well, dost thou wish to have sensation? movement? growth? and then again to cease to grow? to use thy speech? to think? What is there of all these things which seems to thee worth desiring? But if it is easy to set little value on all these things, turn to that which remains, which is to follow reason and god. But it is inconsistent with honouring reason and god to be troubled because by death a man will be deprived of the other things.
+**Long (1862):** How small a part of the boundless and unfathomable time is assigned to every man! for it is very soon swallowed up in the eternal. And how small a part of the whole substance! and how small a part of the universal soul! and on what a small clod of the whole earth thou creepest! Reflecting on all this, consider nothing to be great, except to act as thy nature leads thee, and to endure that which the common nature brings.
 
 ---
 
@@ -281,7 +279,7 @@ Casaubon (1634): 27 passages
 
 **Greek:** Ἄνθρωπε, ἐπολιτεύσω ἐν τῇ μεγάλῃ ταύτῃ πόλει· τί σοι διαφέρει, εἰ πέντε ἔτεσιν ἢ τρισί; τὸ γὰρ κατὰ τοὺς νόμους ἴσον ἑκάστῳ. τί οὖν δεινόν, εἰ τῆς πόλεως ἀποπέμπει σε οὐ τύραννος οὐδὲ δικαστὴς ἄδικος, ἀλλ’ ἡ φύσις ἡ εἰσαγαγοῦσα, οἷον εἰ κωμῳδὸν ἀπολύοι τῆς σκηνῆς ὁ παραλαβὼν στρατηγός;—ἀλλ’ οὐκ εἶπον τὰ πέντε μέρη, ἀλλὰ τὰ τρία.—καλῶς εἶπας· ἐν μέντοι τῷ βίῳ τὰ τρία ὅλον τὸ δρᾶμά ἐστι. τὸ γὰρ τέλειον ἐκεῖνος ὁρίζει ὁ τότε μὲν τῆς συγκρίσεως. νῦν δὲ τῆς διαλύσεως αἴτιος· σὺ δὲ ἀναίτιος ἀμφοτέρων. ἄπιθι οὖν ἵλεως· καὶ γὰρ ὁ ἀπολύων ἵλεως.
 
-**Long (1862):** How small a part of the boundless and unfathomable time is assigned to every man! for it is very soon swallowed up in the eternal. And how small a part of the whole substance! and how small a part of the universal soul! and on what a small clod of the whole earth thou creepest! Reflecting on all this, consider nothing to be great, except to act as thy nature leads thee, and to endure that which the common nature brings.
+**Long (1862):** How does the ruling faculty make use of itself? for all lies in this. But everything else, whether it is in the power of thy will or not, is only lifeless ashes and smoke.
 
 ---
 

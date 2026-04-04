@@ -7,7 +7,7 @@ Sources:
   - George Long (1862): Standard Ebooks (CC0)
   - Meric Casaubon (1634): Project Gutenberg (public domain)
 
-Outputs per-book JSON/MD + combined files into seeds/texts/.
+Outputs per-book JSON/MD + combined files into data/texts/.
 Uses only stdlib. Caches fetched data in /tmp/meditations_texts_cache/.
 
 Usage:
@@ -233,23 +233,119 @@ def collect_greek(use_cache=True):
 # ---------------------------------------------------------------------------
 
 def parse_long_xhtml(xhtml_text, book_num):
-    """Parse a Standard Ebooks XHTML file into list of passage texts."""
-    passages = []
+    """Parse a Standard Ebooks XHTML file into dict {passage_num: text}.
 
-    # Extract <p> elements (skip <h2> header)
-    p_pattern = re.compile(r'<p(?:\s[^>]*)?>(.+?)</p>', re.DOTALL)
+    Uses <p id="book-N-p-M"> anchors to establish passage numbering.
+    Merges multi-paragraph passages (verse continuations, sub-points).
+    Filters trailing location notes.
+    """
+    # Extract all <p> elements with optional id
+    p_pattern = re.compile(
+        r'<p(?:\s+id="(book-\d+-p-\d+)")?\s*>(.+?)</p>', re.DOTALL
+    )
+    raw_paras = []
     for m in p_pattern.finditer(xhtml_text):
-        raw_html = m.group(1)
+        pid = m.group(1)
+        raw_html = m.group(2)
         text = strip_html(f'<p>{raw_html}</p>')
         text = re.sub(r'\s+', ' ', text).strip()
-        if text:
-            passages.append(text)
+        passage_num = None
+        if pid:
+            passage_num = int(re.search(r'p-(\d+)', pid).group(1))
+        raw_paras.append({'text': text, 'id_num': passage_num})
+
+    if not raw_paras:
+        return {}
+
+    # Filter trailing location notes (short end-of-book lines)
+    LOCATION_NOTES = {
+        'Among the Quadi at the Granua.',
+        'This in Carnuntum.',
+    }
+    while raw_paras and (
+        raw_paras[-1]['text'].rstrip('.') + '.' in LOCATION_NOTES
+        or (len(raw_paras[-1]['text']) < 40
+            and re.match(r'^(Among|This in|Written)', raw_paras[-1]['text']))
+    ):
+        removed = raw_paras.pop()
+        print(f'      [filter] Removed location note: "{removed["text"][:60]}"')
+
+    # Build anchor map: paragraph_index -> passage_number
+    anchors = {}
+    for i, p in enumerate(raw_paras):
+        if p['id_num'] is not None:
+            anchors[i] = p['id_num']
+
+    # Assign passage numbers to all paragraphs using anchors + interpolation
+    # Strategy: between two anchors, if para count > passage count,
+    #   merge excess paragraphs into the previous passage.
+    #   If para count == passage count, assign sequentially.
+    def assign_numbers():
+        """Return list of (passage_num, text) tuples."""
+        n = len(raw_paras)
+        # Add implicit anchors: position 0 = passage 1 (if not already anchored)
+        all_anchors = sorted(anchors.items())
+        if not all_anchors or all_anchors[0][0] != 0:
+            all_anchors.insert(0, (0, 1))
+
+        # Process segments between consecutive anchors
+        results = []
+        for seg_idx in range(len(all_anchors)):
+            seg_start_pos, seg_start_num = all_anchors[seg_idx]
+            if seg_idx + 1 < len(all_anchors):
+                seg_end_pos, seg_end_num = all_anchors[seg_idx + 1]
+            else:
+                # Last segment: extends to end of paragraphs
+                seg_end_pos = n
+                # Estimate: sequential from seg_start_num
+                seg_end_num = seg_start_num + (seg_end_pos - seg_start_pos)
+
+            para_count = seg_end_pos - seg_start_pos
+            passage_count = seg_end_num - seg_start_num
+
+            if para_count <= 0:
+                continue
+
+            if para_count == passage_count:
+                # 1:1 mapping
+                for j in range(para_count):
+                    pnum = seg_start_num + j
+                    results.append((pnum, raw_paras[seg_start_pos + j]['text']))
+            elif para_count > passage_count:
+                # More paragraphs than passages — merge extras into previous
+                # Heuristic: assign first passage_count paras sequentially,
+                # merge remainder into the last passage of this segment
+                for j in range(passage_count):
+                    pnum = seg_start_num + j
+                    texts = [raw_paras[seg_start_pos + j]['text']]
+                    if j == passage_count - 1:
+                        # Merge remaining paragraphs
+                        for k in range(j + 1, para_count):
+                            texts.append(raw_paras[seg_start_pos + k]['text'])
+                    results.append((pnum, ' '.join(texts)))
+            else:
+                # Fewer paragraphs than passages — shouldn't happen, but handle
+                for j in range(para_count):
+                    pnum = seg_start_num + j
+                    results.append((pnum, raw_paras[seg_start_pos + j]['text']))
+
+        return results
+
+    numbered = assign_numbers()
+
+    # Deduplicate: merge entries with same passage number
+    passages = {}
+    for pnum, text in numbered:
+        if pnum in passages:
+            passages[pnum] += ' ' + text
+        else:
+            passages[pnum] = text
 
     return passages
 
 
 def collect_long(use_cache=True):
-    """Collect George Long translation."""
+    """Collect George Long translation. Returns {book_num: {passage_num: text}}."""
     print('\n=== Phase 2: George Long (1862) ===')
     books = {}
     for n in range(1, 13):
@@ -319,31 +415,25 @@ def align_books(greek_books, long_books, casaubon_books):
 
     for book_num in range(1, 13):
         greek = greek_books.get(book_num, [])
-        long = long_books.get(book_num, [])
+        long_dict = long_books.get(book_num, {})  # {passage_num: text}
         casaubon = casaubon_books.get(book_num, [])
 
         passages = []
-        for i, g in enumerate(greek):
+        for g in greek:
+            ch = g['chapter']
             passage = {
-                'id': f'{book_num}.{g["chapter"]}',
+                'id': f'{book_num}.{ch}',
                 'greek': g['text'],
+                'long': long_dict.get(ch, ''),
             }
-
-            # Long: sequential alignment
-            if i < len(long):
-                passage['long'] = long[i]
-            else:
-                passage['long'] = ''
-
             passages.append(passage)
 
         # Casaubon: stored as separate list (different numbering)
-        casaubon_list = []
-        for c in casaubon:
-            casaubon_list.append({
-                'num': c['num'],
-                'text': c['text'],
-            })
+        casaubon_list = [{'num': c['num'], 'text': c['text']} for c in casaubon]
+
+        # Track Long passages not matched to Greek
+        greek_nums = {g['chapter'] for g in greek}
+        long_only = sorted(set(long_dict.keys()) - greek_nums)
 
         book_data = {
             'book': book_num,
@@ -358,9 +448,12 @@ def align_books(greek_books, long_books, casaubon_books):
 
         # Log alignment info
         g_count = len(greek)
-        l_count = len(long)
+        l_count = len(long_dict)
+        matched = sum(1 for p in passages if p['long'])
         c_count = len(casaubon)
-        status = 'OK' if g_count == l_count else f'MISMATCH (Greek={g_count}, Long={l_count})'
+        status = f'matched={matched}/{g_count}'
+        if long_only:
+            status += f', Long-only={long_only}'
         print(f'  Book {book_num}: Greek={g_count}, Long={l_count}, '
               f'Casaubon={c_count} — {status}')
 
@@ -521,11 +614,14 @@ def main():
 
     if long_only:
         for book_num in sorted(long_books.keys()):
+            long_dict = long_books[book_num]
+            passages = [{'passage': k, 'text': v}
+                        for k, v in sorted(long_dict.items())]
             data = {
                 'book': book_num,
                 'title': BOOK_TITLES[book_num],
-                'passage_count': len(long_books[book_num]),
-                'passages': long_books[book_num],
+                'passage_count': len(passages),
+                'passages': passages,
             }
             path = os.path.join(OUT_DIR, f'long-book-{book_num:02d}.json')
             with open(path, 'w', encoding='utf-8') as f:
@@ -552,10 +648,11 @@ def main():
 
     # Summary
     total_greek = sum(b['passage_count'] for b in all_books)
-    total_long = sum(1 for b in all_books for p in b['passages'] if p.get('long'))
+    total_long_matched = sum(1 for b in all_books for p in b['passages'] if p.get('long'))
+    total_long_raw = sum(len(long_books.get(n, {})) for n in range(1, 13))
     total_casaubon = sum(b['casaubon']['passage_count'] for b in all_books)
-    print(f'\nDone! {total_greek} Greek passages, {total_long} Long passages, '
-          f'{total_casaubon} Casaubon passages')
+    print(f'\nDone! {total_greek} Greek passages, {total_long_raw} Long passages '
+          f'({total_long_matched} aligned), {total_casaubon} Casaubon passages')
 
 
 if __name__ == '__main__':

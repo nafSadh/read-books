@@ -1,0 +1,2996 @@
+{
+  "description": "Alignment mapping between Casaubon (1634) and Long (1862) passage numbering",
+  "note": "Each Casaubon passage maps to one or more Long/Greek passage IDs",
+  "confidence_levels": {
+    "high": "Strong proper-noun and word overlap",
+    "medium": "Moderate word overlap",
+    "low": "Weak match — may need manual review"
+  },
+  "books": [
+    {
+      "book": 1,
+      "long_count": 17,
+      "casaubon_count": 17,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "1.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "1.5"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "1.6"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "1.7"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "1.8"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "1.9"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "1.10"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "1.11"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "1.12"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "1.13"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "1.14"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "1.15"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "1.16"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "1.17"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "1.17"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "1.17"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "1.17"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 2,
+      "long_count": 17,
+      "casaubon_count": 14,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "2.4"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "2.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "2.6"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "2.7",
+            "2.8"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "2.9"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "2.10"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "2.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "2.12"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "2.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "2.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "2.14"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "2.15"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "2.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "2.17"
+          ],
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "book": 3,
+      "long_count": 16,
+      "casaubon_count": 17,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "3.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "3.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "3.3"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "3.4"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "3.5"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "3.5"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "3.6"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "3.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "3.8"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "3.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "3.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "3.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "3.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "3.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "3.14"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "3.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "3.16"
+          ],
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "book": 4,
+      "long_count": 51,
+      "casaubon_count": 43,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "4.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "4.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "4.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "4.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "4.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "4.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "4.9"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "4.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "4.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "4.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "4.14"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "4.15",
+            "4.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "4.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "4.18"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "4.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "4.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "4.22"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "4.27"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "4.29"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "4.35"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "4.34"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "4.33"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "4.41"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "4.41"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "4.44"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "4.43"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "4.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "4.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIV",
+          "long": [
+            "4.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVIII",
+          "long": [
+            "4.49"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXIX",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XL",
+          "long": [
+            "4.51"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLI",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIII",
+          "long": [
+            "4.50"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 5,
+      "long_count": 36,
+      "casaubon_count": 30,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "5.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "5.2"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "5.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "5.4"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "5.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "5.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "5.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "5.8"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "5.9",
+            "5.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "5.10"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "5.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "5.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "5.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "5.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "5.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "5.19"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "5.20"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "5.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "5.23",
+            "5.24",
+            "5.25"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "5.26"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "5.27"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "5.28"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "5.29"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "5.30"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "5.33"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "5.34"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "5.35"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "5.34",
+            "5.35"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "5.35"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "5.34"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 6,
+      "long_count": 59,
+      "casaubon_count": 51,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "6.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "6.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "6.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "6.4"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "6.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "6.7"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "6.8"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "6.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "6.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "6.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "6.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "6.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "6.14"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "6.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "6.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "6.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "6.18"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "6.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "6.20"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "6.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "6.23"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "6.24",
+            "6.25"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "6.26"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "6.27"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "6.28"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "6.30"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "6.30"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "6.31"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "6.32"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "6.33"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "6.35"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "6.36"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "6.40"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "6.41"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "6.42"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXXIX",
+          "long": [
+            "6.44"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XL",
+          "long": [
+            "6.44"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLI",
+          "long": [
+            "6.45"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLII",
+          "long": [
+            "6.46"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XLIII",
+          "long": [
+            "6.47"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLIV",
+          "long": [
+            "6.48"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLV",
+          "long": [
+            "6.49"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLVI",
+          "long": [
+            "6.52"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLVII",
+          "long": [
+            "6.51"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLVIII",
+          "long": [
+            "6.52"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIX",
+          "long": [
+            "6.53"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "L",
+          "long": [
+            "6.52"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "LI",
+          "long": [
+            "6.55"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "LII",
+          "long": [
+            "6.56"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "LIII",
+          "long": [
+            "6.57"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "LIV",
+          "long": [
+            "6.58"
+          ],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "book": 7,
+      "long_count": 75,
+      "casaubon_count": 44,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "7.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "7.2"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "7.3"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "7.11"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "7.19"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "7.19"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "7.25"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "7.28"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "7.33"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "7.43"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "7.45"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "7.55"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "7.65"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "7.71"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "7.74",
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "7.74",
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "7.73"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "7.72"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "7.71"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "7.73"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "7.73"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIV",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVIII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIX",
+          "long": [
+            "7.74",
+            "7.75"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XL",
+          "long": [
+            "7.73"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLI",
+          "long": [
+            "7.72"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLII",
+          "long": [
+            "7.73"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIII",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLIV",
+          "long": [
+            "7.74"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 8,
+      "long_count": 61,
+      "casaubon_count": 58,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "8.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "8.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "8.3"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "8.5"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "8.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "8.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "8.8"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "8.9"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "8.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "8.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "8.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "8.13"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "8.14",
+            "8.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "8.16"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "8.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "8.18"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "8.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "8.20"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "8.22"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "8.23"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "8.24"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "8.25"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "8.26"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "8.27"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "8.29"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "8.30"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "8.31"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "8.32"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "8.33"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "8.34"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "8.35"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "8.36"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "8.37"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIV",
+          "long": [
+            "8.38"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "8.39"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "8.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "8.41"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXXVIII",
+          "long": [
+            "8.42"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIX",
+          "long": [
+            "8.43"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XL",
+          "long": [
+            "8.47"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLI",
+          "long": [
+            "8.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLII",
+          "long": [
+            "8.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIII",
+          "long": [
+            "8.49"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIV",
+          "long": [
+            "8.53"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLV",
+          "long": [
+            "8.52"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLVI",
+          "long": [
+            "8.52"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLVII",
+          "long": [
+            "8.51"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLVIII",
+          "long": [
+            "8.52"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLIX",
+          "long": [
+            "8.53"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "L",
+          "long": [
+            "8.54"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "LI",
+          "long": [
+            "8.55",
+            "8.56"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "LII",
+          "long": [
+            "8.57"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "LIII",
+          "long": [
+            "8.59"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "LIV",
+          "long": [
+            "8.60"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "LV",
+          "long": [
+            "8.61"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "LVI",
+          "long": [
+            "8.61"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "LVII",
+          "long": [
+            "8.60"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "LVIII",
+          "long": [
+            "8.60"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 9,
+      "long_count": 42,
+      "casaubon_count": 43,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "9.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "9.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "9.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "9.4"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "9.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "9.7"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "9.9"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "9.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "9.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "9.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "9.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "9.14"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "9.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "9.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "9.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "9.18"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "9.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "9.20"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "9.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "9.22"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "9.23"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "9.24"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "9.25"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "9.26"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "9.27"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "9.28"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "9.29"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "9.30"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "9.31"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "9.36"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "9.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "9.41"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIV",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "9.41"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "9.40"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "9.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVIII",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXIX",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XL",
+          "long": [
+            "9.41"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLI",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XLII",
+          "long": [
+            "9.42"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XLIII",
+          "long": [
+            "9.41"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 10,
+      "long_count": 38,
+      "casaubon_count": 37,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "10.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "10.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "10.4"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "10.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "10.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "10.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "10.8"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "10.9"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "10.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "10.11"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "10.13"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "10.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "10.13"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "10.13"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "10.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "10.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "10.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "10.18"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "10.20"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "10.21"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "10.22"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "10.23"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "10.25"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "10.27"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "10.28"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "10.29"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "10.31"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "10.32"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "10.33"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "10.34"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XXXII",
+          "long": [
+            "10.34"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXIII",
+          "long": [
+            "10.36"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXXIV",
+          "long": [
+            "10.37",
+            "10.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXV",
+          "long": [
+            "10.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVI",
+          "long": [
+            "10.37"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVII",
+          "long": [
+            "10.36"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXVIII",
+          "long": [
+            "10.36"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 11,
+      "long_count": 39,
+      "casaubon_count": 31,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "11.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "11.2"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "11.3"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "11.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "11.6"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "11.15"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "11.16"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "11.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "11.18"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "11.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "11.20"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "11.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "11.22"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "11.23"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "11.24"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "11.34",
+            "11.35"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "11.37"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "11.38"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "11.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "11.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVIII",
+          "long": [
+            "11.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXIX",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXX",
+          "long": [
+            "11.38"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXXI",
+          "long": [
+            "11.39"
+          ],
+          "confidence": "low"
+        }
+      ]
+    },
+    {
+      "book": 12,
+      "long_count": 35,
+      "casaubon_count": 27,
+      "mappings": [
+        {
+          "casaubon": "I",
+          "long": [
+            "12.1"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "II",
+          "long": [
+            "12.3"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "III",
+          "long": [
+            "12.5"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IV",
+          "long": [
+            "12.7"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "V",
+          "long": [
+            "12.8"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VI",
+          "long": [
+            "12.9",
+            "12.10"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VII",
+          "long": [
+            "12.12"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "VIII",
+          "long": [
+            "12.13"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "IX",
+          "long": [
+            "12.14"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "X",
+          "long": [
+            "12.15"
+          ],
+          "confidence": "high"
+        },
+        {
+          "casaubon": "XI",
+          "long": [
+            "12.17"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XII",
+          "long": [
+            "12.19"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIII",
+          "long": [
+            "12.20"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XIV",
+          "long": [
+            "12.21"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XV",
+          "long": [
+            "12.22",
+            "12.23"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVI",
+          "long": [
+            "12.25"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVII",
+          "long": [
+            "12.26"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XVIII",
+          "long": [
+            "12.27"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XIX",
+          "long": [
+            "12.29"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XX",
+          "long": [
+            "12.30"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXI",
+          "long": [
+            "12.31"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXII",
+          "long": [
+            "12.32"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIII",
+          "long": [
+            "12.33"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXIV",
+          "long": [
+            "12.34"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXV",
+          "long": [
+            "12.35"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "casaubon": "XXVI",
+          "long": [
+            "12.36"
+          ],
+          "confidence": "low"
+        },
+        {
+          "casaubon": "XXVII",
+          "long": [
+            "12.35",
+            "12.36"
+          ],
+          "confidence": "low"
+        }
+      ]
+    }
+  ]
+}

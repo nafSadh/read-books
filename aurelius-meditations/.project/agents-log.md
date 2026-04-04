@@ -11,15 +11,15 @@
 
 ## Wave 2 — JSON-first (no file conflicts)
 
-Each agent writes annotation JSON to `seeds/annotations/book-NN.json`.
+Each agent writes annotation JSON to `data/annotations/book-NN.json`.
 
 | Books | Agent ID | Output |
 |-------|----------|--------|
-| 4-5 | af60ad172463c6c54 | seeds/annotations/book-04.json, book-05.json |
-| 6-7 | a7013b62bf3bc97fe | seeds/annotations/book-06.json, book-07.json |
-| 8-9 | a6c046ef037e02871 | seeds/annotations/book-08.json, book-09.json |
-| 10-11 | ab156be9cb0495d90 | seeds/annotations/book-10.json, book-11.json |
-| 12 + I(XIV-XVII) | a12ba5f1f73b5f131 | seeds/annotations/book-12.json, book-01-remaining.json |
+| 4-5 | af60ad172463c6c54 | data/annotations/book-04.json, book-05.json |
+| 6-7 | a7013b62bf3bc97fe | data/annotations/book-06.json, book-07.json |
+| 8-9 | a6c046ef037e02871 | data/annotations/book-08.json, book-09.json |
+| 10-11 | ab156be9cb0495d90 | data/annotations/book-10.json, book-11.json |
+| 12 + I(XIV-XVII) | a12ba5f1f73b5f131 | data/annotations/book-12.json, book-01-remaining.json |
 
 ## Wave 3 — Assembly + Index Page (Session 3, 2026-04-04)
 
@@ -35,6 +35,6 @@ Each agent writes annotation JSON to `seeds/annotations/book-NN.json`.
 
 ## Completed
 
-All annotation work is done. The assembler script (`seeds/assemble-annotations.py`)
+All annotation work is done. The assembler script (`data/assemble-annotations.py`)
 can be re-run if JSON annotations are updated — it only converts plain `<p>` passages
 (already-annotated `med-passage` blocks are skipped).

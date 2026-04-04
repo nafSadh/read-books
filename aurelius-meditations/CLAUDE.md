@@ -8,7 +8,7 @@ beyond Google Fonts).
 
 - **Author**: Marcus Aurelius (121-180 CE), Roman Emperor
 - **Written**: c. 170-180 CE, in Koine Greek
-- **English translation**: George Long (1862), public domain (Project Gutenberg #2680)
+- **English translation in readers**: Meric Casaubon (1634), public domain (Project Gutenberg #2680)
 - **Greek text**: Perseus Digital Library, Leopold edition (CC BY-SA 4.0)
 - **Structure**: 12 Books, ~400+ meditations/passages
 - **Content embedding**: Full text embedded directly in HTML (no external JSON)
@@ -18,7 +18,7 @@ beyond Google Fonts).
 ### 1. `reader.html` (scrolling reader)
 
 Follows `../alice-in-wonderland/reader.html` pattern:
-- All 12 Books with full George Long translation
+- All 12 Books with full Meric Casaubon (1634) translation
 - Each Book = a "chapter" in the sidebar
 - 5 themes: light-purple (default), sepia, light-azure, dark-violet, dark-blue
 - Font/size/width controls (serif, sans, slab, mono; small/medium/large; narrow/medium/wide)
@@ -83,18 +83,36 @@ Sepia theme uses warm parchment tones (`--bg: #f5efe0`, `--accent: #8b6914`).
 
 ## Data sources
 
-| Source | Edition | License |
-|--------|---------|---------|
-| English | George Long, 1862 | Public domain (Gutenberg #2680) |
-| Greek | Leopold, Perseus DL | CC BY-SA 4.0 |
+| Source | Edition | License | Passages |
+|--------|---------|---------|----------|
+| Greek | Leopold (1908), Perseus DL | CC BY-SA 4.0 | 486 |
+| English | George Long, 1862 | Public domain (Gutenberg #2680) / CC0 (Standard Ebooks) | 522 |
+| English | Meric Casaubon, 1634 | Public domain (Gutenberg #2680) | 412 |
 
-Greek text downloaded from `PerseusDL/canonical-greekLit` on GitHub.
-Section numbering differs between Long (English) and Leopold (Greek) editions.
+Greek text from `PerseusDL/canonical-greekLit` on GitHub.
+Long translation from `standardebooks/marcus-aurelius_meditations_george-long`.
+Section numbering differs across all three editions; Greek (Leopold) is canonical.
+
+## Text collection pipeline
+
+`data/collect_texts.py` fetches and aligns all three translations:
+- Caches in `/tmp/meditations_texts_cache/`
+- Greek passage numbers as canonical IDs
+- Long matched by number (484/486 aligned); Casaubon stored separately
+- Outputs per-book JSON/MD + combined files to `data/texts/`
+- Run: `python3 data/collect_texts.py` (stdlib only, no pip deps)
+
+`data/align_casaubon_long.py` builds Casaubon↔Long passage mapping:
+- Text similarity: proper noun overlap (3x weight) + word cosine
+- Monotonicity constraint preserves ordering; handles 1:many mappings
+- Confidence levels: high (strong noun+word overlap), medium, low (needs manual review)
+- Output: `data/texts/casaubon-long-alignment.json` (56 KB, 412 mappings)
+- Run: `python3 data/align_casaubon_long.py [--verbose]`
 
 ## File inventory
 
 ```
-meditations/
+aurelius-meditations/
   CLAUDE.md              <- this file
   .project/
     changelog.md         <- session log
@@ -103,8 +121,14 @@ meditations/
   index.html             <- book-spread landing page
   reader.html            <- scrolling reader (full text, all 412 passages annotated)
   fullbleed.html         <- book-spread reader (full text)
-  seeds/
+  data/
     annotations/         <- JSON annotation data (book-01-remaining.json through book-12.json)
     assemble-annotations.js  <- Node.js assembler (original)
     assemble-annotations.py  <- Python assembler (used for injection)
+    collect_texts.py     <- fetches Greek + Long + Casaubon, outputs JSON/MD
+    align_casaubon_long.py <- Casaubon↔Long passage alignment mapping
+    texts/               <- output: 12 per-book JSON/MD + combined + alignment (~4 MB)
+  hammond/               <- (gitignored) Martin Hammond (Penguin 2006) extraction
+    extract_hammond.py   <- PDF text extraction script (pymupdf)
+    hammond-meditations.json <- extracted passages (468/486)
 ```

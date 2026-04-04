@@ -30,9 +30,10 @@ read-books/
 │   ├── ...                       ← 9 reader formats
 │   └── seeds/                    ← (if applicable)
 │
-├── meditations/                  ← legacy naming
+├── aurelius-meditations/          ← author-book convention
 │   ├── reader.html
-│   └── fullbleed.html
+│   ├── fullbleed.html
+│   └── data/texts/               ← Greek + Long + Casaubon aligned JSON/MD
 │
 ├── gibran-prophet/               ← author-book convention
 │   ├── CLAUDE.md                 ← book-specific build instructions

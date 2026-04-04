@@ -12,11 +12,12 @@ read-books/
 │   └── todo.md
 │
 ├── alice-in-wonderland/          9 reader formats (legacy naming) + .project/ + CLAUDE.md
-├── meditations/                  2 formats: reader, fullbleed (legacy naming) + .project/ + CLAUDE.md
+├── aurelius-meditations/          2 formats: reader, fullbleed + .project/ + CLAUDE.md
 │   ├── .project/
 │   ├── CLAUDE.md
-│   ├── reader.html               scrolling reader (annotated prototype, Book I.1-5)
-│   └── fullbleed.html            two-page spread reader
+│   ├── reader.html               scrolling reader (all 412 passages annotated)
+│   ├── fullbleed.html            two-page spread reader
+│   └── data/texts/               Greek + Long + Casaubon aligned JSON/MD
 ├── gibran-prophet/               2 formats: reader, fullbleed + .project/ + CLAUDE.md
 │   ├── .project/
 │   ├── CLAUDE.md
@@ -41,7 +42,7 @@ read-books/
 | Book | Author | Dir | Formats | Hash | .project/ |
 |------|--------|-----|---------|------|-----------|
 | Alice's Adventures in Wonderland | Lewis Carroll, 1865 | alice-in-wonderland/ | 9 | No | Yes |
-| Meditations | Marcus Aurelius, c. 170–180 CE | meditations/ | 2 | No | Yes |
+| Meditations | Marcus Aurelius, c. 170–180 CE | aurelius-meditations/ | 2 | No | Yes |
 | The Prophet | Kahlil Gibran, 1923 | gibran-prophet/ | 2 | Yes | Yes |
 | Vedas (curated) | c. 1500–500 BCE | vedas/ | 2 (reader, fullbleed) | No | No |
 | Rigveda (complete) | c. 1500–1200 BCE | vedas/ | 1 (rigveda.html) | Yes | N/A (generated) |
@@ -63,10 +64,11 @@ read-books/
 - [x] URL hash state in Vedas rigveda.html
 - [x] Add .project/ directory to alice-in-wonderland/
 - [x] Add CLAUDE.md to alice-in-wonderland/
-- [x] Add .project/ directory to meditations/
-- [x] Add CLAUDE.md to meditations/
+- [x] Add .project/ directory to meditations/ (now aurelius-meditations/)
+- [x] Add CLAUDE.md to meditations/ (now aurelius-meditations/)
+- [x] Renamed meditations/ → aurelius-meditations/
 - [ ] Add .project/ directory to vedas/
-- [ ] Consider renaming legacy directories to author-book style (needs user approval)
+- [ ] Consider renaming remaining legacy directories to author-book style
 
 ## Future candidates
 

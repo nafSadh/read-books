@@ -15,46 +15,27 @@ beyond Google Fonts).
 
 ## Reader formats
 
-### 1. `reader.html` (scrolling reader)
+### 1. `reader.html` (scrolling reader — Long translation)
 
-Follows `../alice-in-wonderland/reader.html` pattern:
-- All 12 Books with full Meric Casaubon (1634) translation
-- Each Book = a "chapter" in the sidebar
-- 5 themes: light-purple (default), sepia, light-azure, dark-violet, dark-blue
-- Font/size/width controls (serif, sans, slab, mono; small/medium/large; narrow/medium/wide)
-- Meditation numbers on own line: `[detail-icon] IV.` above passage text
+Built by `data/assemble-reader.py` from `aurelius-meditations.json` + `reader-casaubon.html` template.
+- George Long (1862) translation, Leopold numbering (486 passages)
+- All 486 passages annotated: modern English rewrite, notes, proper noun tooltips
+- Greek text toggle ("Αα" button): shows original Greek alongside English
+- 5 themes, font/size/width controls, sidebar, keyboard shortcuts
 - localStorage key: `meditations-reader-prefs`
 
-**Annotation system** (prototype, Book I passages I-V):
-- Side-panel details: Modern English rewrite + Notes
-- Proper noun tooltips: dotted underline, hover popup with biographical info + Wikipedia links
-- `s-detail-btn` document icon (from read-rd convention)
-- Global "open all details" toggle in top bar
-- Side panel appears to the **left** of passage text (`flex-direction: row-reverse`)
-- Detail text right-aligned with right-side accent border; 55:45 main:detail ratio
-- Only the open passage grows (center-aligned); other passages stay unchanged
-- When open, `med-head` switches to CSS grid: icon right-aligned in detail column (centered on separator), number at start of main column
-- Proper noun tooltips include hover bridge so links are clickable
-- On mobile/narrow screens: detail panel stacks below with left border
+**Layout modes**:
+- Default: English text only (single column)
+- Greek on: English + Greek side-by-side (60%/40%)
+- Detail open: Detail panel (left, 45%) + English (right, 55%)
+- Both open: Detail (25%) + Greek (28%) + English (47%), viewport-capped via `min()`
+- Mobile (<1200px): all columns stack vertically
 
-**HTML structure for annotated passages**:
-```html
-<div class="med-passage">
-  <div class="med-head">
-    <button class="med-detail-btn">...</button>
-    <span class="med-num">I.</span>
-  </div>
-  <div class="med-body">
-    <div class="med-main"><p>archaic text...</p></div>
-    <div class="med-detail">
-      <div class="narr-section"><span class="narr-label">Modern English</span><p>...</p></div>
-      <div class="narr-section"><span class="narr-label">Notes</span><p>...</p></div>
-    </div>
-  </div>
-</div>
-```
+**Rebuild**: `python3 data/assemble-reader.py` (reads JSON + template, outputs reader.html)
 
-Non-annotated passages use plain `<p><span class="med-num">VI.</span>text...</p>`.
+### 1b. `reader-casaubon.html` (scrolling reader — Casaubon translation)
+
+Original Casaubon (1634) reader preserved as-is. localStorage key: `meditations-casaubon-prefs`.
 
 ### 2. `fullbleed.html` (book-spread reader)
 
@@ -99,7 +80,10 @@ Section numbering differs across all three editions; Greek (Leopold) is canonica
 - Caches in `/tmp/meditations_texts_cache/`
 - Greek passage numbers as canonical IDs
 - Long matched by number (484/486 aligned); Casaubon stored separately
-- Outputs per-book JSON/MD + combined files to `data/texts/`
+- Long stored as arrays per Greek passage (over-splits folded)
+- Casaubon entries include reverse mapping (`leopold_ids`, `confidence`)
+- Loads Leopold annotations from `data/annotations/leopold-books-*.json`
+- Outputs `aurelius-meditations.json` (canonical) + `data/texts/meditations-complete.md`
 - Run: `python3 data/collect_texts.py` (stdlib only, no pip deps)
 
 `data/align_casaubon_long.py` builds Casaubon↔Long passage mapping:
@@ -124,10 +108,16 @@ aurelius-meditations/
   reader-casaubon.html   <- scrolling reader (Casaubon translation, original 412 passages)
   fullbleed.html         <- book-spread reader (full text)
   data/
-    annotations/         <- JSON annotation data (Casaubon-era, book-01-remaining through book-12)
+    annotations/         <- JSON annotation data
+      leopold-books-01-03.json  <- Books 1-3 Leopold annotations (50 passages)
+      leopold-books-04-06.json  <- Books 4-6 Leopold annotations (146 passages)
+      leopold-books-07-09.json  <- Books 7-9 Leopold annotations (178 passages)
+      leopold-books-10-12.json  <- Books 10-12 Leopold annotations (112 passages)
+      book-01-remaining.json .. book-12.json  <- legacy Casaubon-era annotations
+    assemble-reader.py   <- builds reader.html from JSON + template (Long + Greek toggle)
     assemble-annotations.js  <- Node.js assembler (original, Casaubon)
     assemble-annotations.py  <- Python assembler (Casaubon injection)
-    collect_texts.py     <- fetches Greek + Long + Casaubon, outputs aurelius-meditations.json
+    collect_texts.py     <- fetches Greek + Long + Casaubon, merges annotations → aurelius-meditations.json
     align_casaubon_long.py <- Casaubon↔Long passage alignment mapping
     texts/               <- output: combined MD + alignment JSON
   hammond/               <- (gitignored) Martin Hammond (Penguin 2006) extraction

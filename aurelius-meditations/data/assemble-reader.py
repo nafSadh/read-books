@@ -166,6 +166,7 @@ GREEK_CSS = """
   display: none;
   flex: 0 0 40%;
   max-width: 40%;
+  order: -1;
   padding: 0 0 0 20px;
   border-left: 2px solid var(--border);
   font-family: 'EB Garamond', Georgia, serif;

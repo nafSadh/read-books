@@ -373,7 +373,7 @@ body {
 /* ===== SIDE-PANEL DETAILS ===== */
 .med-passage { margin-bottom: 1.2em; position: relative; }
 .med-passage.details-open {
-  --_grow: calc((100% + 28px) / 0.55 - 100%);
+  --_grow: min(calc((100% + 28px) / 0.55 - 100%), calc(100vw - 100% - 48px));
   width: calc(100% + var(--_grow));
   margin-left: calc(-0.5 * var(--_grow)); /* center: grow equally left and right */
 }
@@ -533,6 +533,7 @@ body {
   display: none;
   flex: 0 0 40%;
   max-width: 40%;
+  order: -1;
   padding: 0 0 0 20px;
   border-left: 2px solid var(--border);
   font-family: 'EB Garamond', Georgia, serif;

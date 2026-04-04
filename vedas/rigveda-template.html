@@ -206,11 +206,23 @@ const RV={m:RV_META.map(m=>({n:m.n,s:m.t.map((t,i)=>({n:i+1,t:t,v:[]})),_loaded:
 
 async function ensureMandala(mi){
   if(RV.m[mi]._loaded) return;
-  const resp=await fetch('data/mandala-'+RV.m[mi].n+'.json');
-  if(!resp.ok) throw new Error('Failed to load mandala '+RV.m[mi].n);
-  const md=await resp.json();
-  md._loaded=true;
-  RV.m[mi]=md;
+  const n=RV.m[mi].n;
+  try{
+    const resp=await fetch('data/mandala-'+n+'.json');
+    if(!resp.ok) throw new Error(resp.status);
+    const md=await resp.json();
+    md._loaded=true;
+    RV.m[mi]=md;
+  }catch(e){
+    // file:// fallback: load via <script> tag (no CORS restriction)
+    await new Promise((resolve,reject)=>{
+      window._rvLoad=function(md){md._loaded=true;RV.m[mi]=md;delete window._rvLoad;resolve();};
+      const s=document.createElement('script');
+      s.src='data/mandala-'+n+'.js';
+      s.onerror=()=>{delete window._rvLoad;reject(new Error('Cannot load mandala '+n));};
+      document.head.appendChild(s);
+    });
+  }
 }
 
 let mIdx=0,sIdx=0;

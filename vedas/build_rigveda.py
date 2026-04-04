@@ -291,11 +291,13 @@ def build_mandala_files(mandalas: list) -> str:
 
     meta = []
     for mandala in mandalas:
-        # Write per-mandala data file
+        # Write per-mandala data file (.json for fetch, .js for file:// fallback)
         mandala_json = json.dumps(mandala, ensure_ascii=False, separators=(',', ':'))
         out_path = data_dir / f"mandala-{mandala['n']}.json"
         out_path.write_text(mandala_json, encoding='utf-8')
-        print(f"    data/mandala-{mandala['n']}.json: {len(mandala_json):,} bytes")
+        js_path = data_dir / f"mandala-{mandala['n']}.js"
+        js_path.write_text(f"window._rvLoad({mandala_json});", encoding='utf-8')
+        print(f"    data/mandala-{mandala['n']}.json: {len(mandala_json):,} chars")
 
         # Build metadata entry (titles + counts, no verse data)
         titles = [s.get("t", "") for s in mandala["s"]]

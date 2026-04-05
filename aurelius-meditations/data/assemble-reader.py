@@ -122,26 +122,41 @@ def wrap_greek_words(greek_text):
     return ''.join(out)
 
 
-def segment_sentences(text):
+def segment_sentences(text, greek=False):
     """Split text into sentences by terminal punctuation."""
-    # Split on sentence-ending punctuation followed by space or end
-    parts = re.split(r'(?<=[.;·?!])\s+', text.strip())
+    if greek:
+        # Greek: . is period, ; is question mark (don't split on · middle dot)
+        parts = re.split(r'(?<=[.;])\s+', text.strip())
+    else:
+        # English: . ? ! end sentences (don't split on ; which is not a sentence break)
+        parts = re.split(r'(?<=[.?!])\s+', text.strip())
     return [p.strip() for p in parts if p.strip()]
 
 
-def wrap_sentences(text_html, sentences_raw, prefix):
+def align_sentence_groups(n_greek, n_eng):
+    """Map sentence indices to shared group IDs for cross-highlighting.
+
+    Uses proportional mapping so mismatched counts still align.
+    Returns (greek_groups, eng_groups) — lists of group IDs per sentence.
+    """
+    k = min(n_greek, n_eng)
+    g_groups = [min(i * k // n_greek, k - 1) for i in range(n_greek)]
+    e_groups = [min(j * k // n_eng, k - 1) for j in range(n_eng)]
+    return g_groups, e_groups
+
+
+def wrap_sentences(text_html, sentences_raw, prefix, groups):
     """Wrap sentence boundaries in the HTML text with span tags.
 
-    Returns HTML with <span class="s" data-s="PREFIX-N"> wrappers.
-    Matching is best-effort: wraps each raw sentence's escaped text.
+    Each sentence gets data-s="PREFIX-GROUP_ID" for cross-highlighting.
     """
     result = text_html
     for i, sent in enumerate(sentences_raw):
         esc = escape(sent)
-        # Only wrap first occurrence
         idx = result.find(esc)
         if idx >= 0:
-            wrapped = f'<span class="s" data-s="{prefix}-{i}">{esc}</span>'
+            gid = groups[i]
+            wrapped = f'<span class="s" data-s="{prefix}-{gid}">{esc}</span>'
             result = result[:idx] + wrapped + result[idx + len(esc):]
     return result
 
@@ -161,8 +176,17 @@ def build_passage_html(passage, annotation=None):
     # Passage number display
     num_display = f'{passage_num}.'
 
-    # Build main text with proper noun injection
+    # Sentence cross-highlighting: segment both texts, proportional grouping
+    greek_sents = segment_sentences(greek_text, greek=True) if greek_text else []
+    eng_sents = segment_sentences(long_text, greek=False) if long_text else []
+    can_highlight = len(greek_sents) > 1 and len(eng_sents) > 1
+    if can_highlight:
+        g_groups, e_groups = align_sentence_groups(len(greek_sents), len(eng_sents))
+
+    # Build main text: escape → sentence wrap → proper noun inject
     main_text = escape(long_text)
+    if can_highlight:
+        main_text = wrap_sentences(main_text, eng_sents, pid, e_groups)
     if annotation and annotation.get('proper_nouns'):
         main_text = inject_proper_nouns(main_text, annotation['proper_nouns'], 'in_original')
 
@@ -189,30 +213,20 @@ def build_passage_html(passage, annotation=None):
                 )
             detail_html = '\n      '.join(detail_parts)
 
-    # Sentence cross-highlighting: segment both texts
-    greek_sents = segment_sentences(greek_text) if greek_text else []
-    eng_sents = segment_sentences(long_text) if long_text else []
-    can_highlight = len(greek_sents) > 1 and len(greek_sents) == len(eng_sents)
-
-    # Greek div with word transliteration tooltips
+    # Greek div with word transliteration tooltips + sentence spans
     if greek_text:
         greek_inner = wrap_greek_words(greek_text)
         if can_highlight:
-            greek_inner_raw = wrap_greek_words(greek_text)
-            # Re-wrap with sentence spans over the word-wrapped HTML
             for i, sent in enumerate(greek_sents):
                 esc_sent = wrap_greek_words(sent)
                 idx = greek_inner.find(esc_sent)
                 if idx >= 0:
-                    wrapped = f'<span class="s" data-s="{pid}-{i}">{esc_sent}</span>'
+                    gid = g_groups[i]
+                    wrapped = f'<span class="s" data-s="{pid}-{gid}">{esc_sent}</span>'
                     greek_inner = greek_inner[:idx] + wrapped + greek_inner[idx + len(esc_sent):]
         greek_html = f'<div class="med-greek">{greek_inner}</div>'
     else:
         greek_html = ''
-
-    # English text with sentence highlighting (if aligned)
-    if can_highlight:
-        main_text = wrap_sentences(main_text, eng_sents, pid)
 
 
     lines = []

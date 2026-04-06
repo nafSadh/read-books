@@ -10,7 +10,7 @@
 <style>
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   min-height: 100vh;
   transition: background-color 0.3s, color 0.3s;
@@ -426,9 +426,11 @@ body {
 }
 
 @media (max-width: 1199px) {
+  .med-passage.details-open { --_grow: 0px; width: 100%; margin-left: 0; }
   .med-passage .med-body { flex-direction: column; gap: 12px; }
   .med-passage.details-open .med-head { display: flex; }
-  .med-detail { flex: none; max-width: none; padding: 12px 0 0 16px; border-right: none; border-left: 3px solid var(--accent); text-align: left; }
+  .med-detail { flex: none; max-width: none; padding: 12px 0 0 16px; border-right: none; border-left: 3px solid var(--accent); text-align: left; order: 1; }
+  .med-passage.details-open .med-detail { border-right: none; }
 }
 
 /* ===== PROPER NOUN ANNOTATIONS ===== */

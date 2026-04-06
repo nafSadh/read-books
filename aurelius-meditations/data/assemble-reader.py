@@ -161,7 +161,7 @@ def wrap_sentences(text_html, sentences_raw, prefix, groups):
     return result
 
 
-def build_passage_html(passage, annotation=None):
+def build_passage_html(passage, annotation=None, sentence_alignment=None):
     """Build HTML for a single passage."""
     pid = passage['id']
     book_num, passage_num = pid.split('.')
@@ -176,12 +176,20 @@ def build_passage_html(passage, annotation=None):
     # Passage number display
     num_display = f'{passage_num}.'
 
-    # Sentence cross-highlighting: segment both texts, proportional grouping
+    # Sentence cross-highlighting: segment both texts
     greek_sents = segment_sentences(greek_text, greek=True) if greek_text else []
     eng_sents = segment_sentences(long_text, greek=False) if long_text else []
     can_highlight = len(greek_sents) > 1 and len(eng_sents) > 1
     if can_highlight:
-        g_groups, e_groups = align_sentence_groups(len(greek_sents), len(eng_sents))
+        # Use pre-computed alignment if available, else proportional fallback
+        if sentence_alignment:
+            g_groups = sentence_alignment['greek_groups']
+            e_groups = sentence_alignment['english_groups']
+            # Validate lengths match; fall back if mismatch
+            if len(g_groups) != len(greek_sents) or len(e_groups) != len(eng_sents):
+                g_groups, e_groups = align_sentence_groups(len(greek_sents), len(eng_sents))
+        else:
+            g_groups, e_groups = align_sentence_groups(len(greek_sents), len(eng_sents))
 
     # Build main text: escape → sentence wrap → proper noun inject
     main_text = escape(long_text)
@@ -244,7 +252,7 @@ def build_passage_html(passage, annotation=None):
     return '\n'.join(lines)
 
 
-def build_chapter_html(book_data, annotations_by_id):
+def build_chapter_html(book_data, annotations_by_id, alignments_by_id=None):
     """Build HTML for one book/chapter."""
     book_num = book_data['book']
     subtitle = BOOK_SUBTITLES.get(book_num, '')
@@ -261,8 +269,10 @@ def build_chapter_html(book_data, annotations_by_id):
     lines.append(f'  <div class="chapter-text">')
 
     for passage in book_data['passages']:
-        annotation = annotations_by_id.get(passage['id'])
-        lines.append(build_passage_html(passage, annotation))
+        pid = passage['id']
+        annotation = annotations_by_id.get(pid)
+        alignment = alignments_by_id.get(pid) if alignments_by_id else None
+        lines.append(build_passage_html(passage, annotation, alignment))
         lines.append('')
 
     lines.append(f'  </div>')
@@ -335,11 +345,11 @@ GREEK_CSS = """
 .s.s-hl { background-color: var(--btn-bg); }
 
 @media (max-width: 1199px) {
-  .med-greek { flex: none; max-width: none; padding: 12px 0 0 0; border-left: none; border-top: 1px solid var(--border); }
+  .med-greek { flex: none; max-width: none; padding: 12px 0 0 0; border-left: none; border-top: 1px solid var(--border); order: -1; }
   [data-greek="on"] .med-passage .med-body .med-main { flex: none; }
-  [data-greek="on"] .med-passage.details-open .med-body { display: flex; }
+  [data-greek="on"] .med-passage.details-open .med-body { display: flex; flex-direction: column; }
   [data-greek="on"] .med-passage.details-open .med-detail { flex: none; max-width: none; }
-  [data-greek="on"] .med-passage.details-open .med-greek { flex: none; max-width: none; }
+  [data-greek="on"] .med-passage.details-open .med-greek { flex: none; max-width: none; order: -1; }
 }
 """
 
@@ -431,6 +441,22 @@ def load_annotations():
     return annotations
 
 
+def load_sentence_alignments():
+    """Load pre-computed sentence alignment files and return dict keyed by passage ID."""
+    alignments = {}
+    ann_dir = os.path.join(SCRIPT_DIR, 'annotations')
+
+    for fname in sorted(os.listdir(ann_dir)):
+        if fname.startswith('sentence-align-') and fname.endswith('.json'):
+            fpath = os.path.join(ann_dir, fname)
+            with open(fpath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            alignments.update(data)
+            print(f'  Loaded {len(data)} sentence alignments from {fname}')
+
+    return alignments
+
+
 def main():
     if not os.path.exists(JSON_PATH):
         sys.exit(f'JSON not found: {JSON_PATH}\nRun collect_texts.py first.')
@@ -447,6 +473,10 @@ def main():
     # Load annotations
     annotations = load_annotations()
     print(f'  Total annotations: {len(annotations)}')
+
+    # Load pre-computed sentence alignments
+    alignments = load_sentence_alignments()
+    print(f'  Total sentence alignments: {len(alignments)}')
 
     # Load template
     with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
@@ -501,7 +531,7 @@ def main():
     content_lines.append('  </header>')
 
     for book in data['books']:
-        content_lines.append(build_chapter_html(book, annotations))
+        content_lines.append(build_chapter_html(book, annotations, alignments))
         content_lines.append('')
 
     content_lines.append('')

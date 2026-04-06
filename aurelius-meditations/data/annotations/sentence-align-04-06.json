@@ -1,0 +1,1034 @@
+{
+  "4.1": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "4.3": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "4.4": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      2,
+      2
+    ]
+  },
+  "4.5": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "4.13": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "4.14": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1
+    ]
+  },
+  "4.20": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "4.21": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "4.23": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "4.26": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "4.29": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      0
+    ]
+  },
+  "4.48": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "english_groups": [
+      1,
+      0
+    ]
+  },
+  "4.50": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "4.51": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "5.1": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "5.3": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "5.5": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "5.6": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      4,
+      3
+    ]
+  },
+  "5.8": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      4,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      10,
+      10,
+      10,
+      10
+    ]
+  },
+  "5.9": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      4,
+      2,
+      3
+    ]
+  },
+  "5.10": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4
+    ]
+  },
+  "5.11": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "5.12": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      3,
+      4
+    ]
+  },
+  "5.13": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "5.14": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "5.15": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "5.16": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      4
+    ]
+  },
+  "5.18": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "5.20": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "5.21": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "5.22": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "5.23": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      2,
+      2
+    ]
+  },
+  "5.25": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      2
+    ]
+  },
+  "5.26": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "5.27": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      0,
+      1
+    ]
+  },
+  "5.28": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      4
+    ]
+  },
+  "5.29": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      1,
+      2
+    ]
+  },
+  "5.30": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "5.31": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "5.34": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1
+    ]
+  },
+  "5.36": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  },
+  "6.1": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.10": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "6.12": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.13": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "6.14": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "6.15": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      3,
+      3
+    ]
+  },
+  "6.16": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      13,
+      13
+    ]
+  },
+  "6.18": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "6.20": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "6.23": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1
+    ]
+  },
+  "6.26": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "6.27": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "6.30": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      5,
+      5,
+      4
+    ]
+  },
+  "6.32": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      3
+    ]
+  },
+  "6.33": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "6.35": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.36": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "6.38": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.40": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "6.41": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.42": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "6.43": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.44": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "english_groups": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      6
+    ]
+  },
+  "6.45": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.46": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "6.47": {
+    "greek_groups": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "english_groups": [
+      0,
+      1,
+      2
+    ]
+  },
+  "6.48": {
+    "greek_groups": [
+      0,
+      1,
+      2
+    ],
+    "english_groups": [
+      0,
+      1
+    ]
+  },
+  "6.49": {
+    "greek_groups": [
+      0,
+      1
+    ],
+    "english_groups": [
+      0,
+      1,
+      1,
+      1
+    ]
+  }
+}

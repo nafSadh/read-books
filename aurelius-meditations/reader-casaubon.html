@@ -215,9 +215,20 @@ body {
   color: var(--text-secondary); border-radius: 6px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   font-size: 15px; transition: background 0.15s; font-family: var(--font-sans);
+  position: relative;
 }
 .bar-btn:hover { background: var(--btn-bg); }
 .bar-btn.active { background: var(--btn-bg); color: var(--text); }
+.bar-btn::after {
+  content: attr(title);
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  margin-top: 4px; padding: 3px 8px; border-radius: 4px;
+  background: var(--bar-bg); border: 1px solid var(--border);
+  color: var(--text-secondary); font-size: 10px; white-space: nowrap;
+  pointer-events: none; opacity: 0; transition: opacity 0.2s;
+  z-index: 999;
+}
+.bar-btn:hover::after { opacity: 1; }
 
 /* Theme toggle */
 .theme-wrap { position: relative; display: flex; align-items: center; }
@@ -350,7 +361,7 @@ body {
 /* When details open, lay out icon + number to match the two columns below */
 .med-passage.details-open .med-head {
   display: grid;
-  grid-template-columns: 45% 1fr;
+  grid-template-columns: 50% 1fr;
   gap: 0 28px;
 }
 .med-passage.details-open .med-head .med-detail-btn {
@@ -373,7 +384,7 @@ body {
 /* ===== SIDE-PANEL DETAILS ===== */
 .med-passage { margin-bottom: 1.2em; position: relative; }
 .med-passage.details-open {
-  --_grow: min(calc((100% + 28px) / 0.55 - 100%), calc(100vw - 100% - 48px));
+  --_grow: min(calc((100% + 28px) / 0.50 - 100%), calc(100vw - 100% - 48px));
   width: calc(100% + var(--_grow));
   margin-left: calc(-0.5 * var(--_grow)); /* center: grow equally left and right */
 }
@@ -383,8 +394,8 @@ body {
 .med-passage .med-body .med-main { flex: 1 1 0%; min-width: 0; }
 .med-detail {
   display: none;
-  flex: 0 0 45%;
-  max-width: 45%;
+  flex: 0 0 50%;
+  max-width: 50%;
   padding: 0 20px 0 0;
   text-align: right;
   font-family: var(--font-sans);

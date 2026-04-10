@@ -301,7 +301,7 @@ GREEK_CSS = """
 /* When both detail and Greek are open — stack Greek below English */
 [data-greek="on"] .med-passage.details-open .med-body {
   display: grid;
-  grid-template-columns: minmax(0, 45%) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 50%) minmax(0, 1fr);
   grid-template-rows: auto auto;
   gap: 0 28px;
 }
@@ -355,7 +355,7 @@ GREEK_CSS = """
 
 GREEK_BTN_HTML = (
     '<button class="bar-btn" id="greek-btn" title="Toggle Greek text" '
-    'aria-label="Toggle Greek text">Αα</button>'
+    'aria-label="Toggle Greek text">Γγ</button>'
 )
 
 GREEK_JS = """

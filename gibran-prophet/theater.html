@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-violet">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prophet — Theater — Kahlil Gibran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== THEMES ===== */
+[data-theme="light-purple"] {
+  --bg: #faf8f3;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d6d0c4;
+  --accent: #7c3aed;
+  --dim: #8a8fa8;
+  --overlay-bg: rgba(250,248,243,0.0);
+  --controls-bg: rgba(250,248,243,0.92);
+  --controls-border: rgba(0,0,0,0.08);
+  --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+  --bg: #f5efe0;
+  --text: #3a2e1e;
+  --text-secondary: #7a6a52;
+  --border: #d4c8a8;
+  --accent: #b45309;
+  --dim: #9a8a72;
+  --overlay-bg: rgba(245,239,224,0.0);
+  --controls-bg: rgba(245,239,224,0.92);
+  --controls-border: rgba(0,0,0,0.06);
+  --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d0d8e4;
+  --accent: #2e6ab4;
+  --dim: #8a98b0;
+  --overlay-bg: rgba(255,255,255,0.0);
+  --controls-bg: rgba(255,255,255,0.92);
+  --controls-border: rgba(0,0,0,0.08);
+  --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a;
+  --text: #dce0ec;
+  --text-secondary: #8490aa;
+  --border: #333;
+  --accent: #9b7aed;
+  --dim: #546080;
+  --overlay-bg: rgba(26,26,26,0.0);
+  --controls-bg: rgba(20,20,28,0.92);
+  --controls-border: rgba(255,255,255,0.08);
+  --progress-bg: rgba(255,255,255,0.08);
+}
+[data-theme="dark-blue"] {
+  --bg: #000000;
+  --text: #8490aa;
+  --text-secondary: #546080;
+  --border: #1c2440;
+  --accent: #4a90d9;
+  --dim: #364060;
+  --overlay-bg: rgba(0,0,0,0.0);
+  --controls-bg: rgba(0,4,16,0.92);
+  --controls-border: rgba(255,255,255,0.06);
+  --progress-bg: rgba(255,255,255,0.06);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s, color 0.5s;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== STAGE ===== */
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px 40px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ===== CHAPTER DISPLAY ===== */
+.chapter-view {
+  max-width: 600px;
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow-y: auto;
+  max-height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.chapter-view::-webkit-scrollbar { display: none; }
+
+.chapter-view.fading {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ===== CHAPTER TITLE AREA ===== */
+.chapter-title-area {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.chapter-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 600;
+}
+.chapter-title {
+  font-size: 28px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--accent);
+  margin-top: 10px;
+  line-height: 1.3;
+}
+.chapter-rule {
+  width: 60px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* ===== POETRY CONTENT ===== */
+.chapter-content {
+  font-size: 21px;
+  line-height: 2.2;
+  color: var(--text);
+  text-align: left;
+}
+.chapter-content .stanza {
+  margin-bottom: 2.4em;
+}
+.chapter-content .stanza:last-child {
+  margin-bottom: 0;
+}
+.chapter-content p {
+  margin: 0;
+  padding: 0;
+}
+.chapter-content em {
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+/* ===== CONTROLS BAR ===== */
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--controls-bg);
+  border-top: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+  padding: 0 20px;
+}
+.controls.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctrl-btn {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  transition: color 0.2s;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ctrl-btn:hover { color: var(--accent); }
+.ctrl-btn:disabled { opacity: 0.25; cursor: default; }
+
+.ctrl-pos {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 1px;
+  min-width: 56px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ctrl-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ===== THEME DOTS ===== */
+.theme-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.theme-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+.theme-dot:hover { transform: scale(1.3); }
+.theme-dot.active {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent);
+}
+.theme-dot[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot[data-t="sepia"]        { background: #b45309; }
+.theme-dot[data-t="light-azure"]  { background: #2e6ab4; }
+.theme-dot[data-t="dark-violet"]  { background: #9b7aed; }
+.theme-dot[data-t="dark-blue"]    { background: #4a90d9; }
+
+/* ===== BACK LINK ===== */
+.ctrl-back {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  padding: 8px 10px;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.ctrl-back:hover { color: var(--accent); }
+
+/* ===== PROGRESS BAR ===== */
+.progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--progress-bg);
+  z-index: 101;
+  pointer-events: none;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+/* ===== CHAPTER INDICATOR (top) ===== */
+.chapter-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+  pointer-events: none;
+  background: var(--controls-bg);
+  border-bottom: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.chapter-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .stage { padding: 48px 24px 32px; }
+  .chapter-content { font-size: 19px; line-height: 2.0; }
+  .chapter-title { font-size: 24px; }
+  .controls { gap: 8px; }
+  .ctrl-btn { padding: 8px 8px; font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .stage { padding: 44px 20px 28px; }
+  .chapter-content { font-size: 18px; line-height: 1.95; }
+  .chapter-title { font-size: 22px; }
+  .chapter-title-area { margin-bottom: 32px; }
+  .ctrl-sep { display: none; }
+  .ctrl-back { display: none; }
+  .theme-dots { gap: 6px; }
+  .theme-dot { width: 10px; height: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="chapter-indicator" id="ch-indicator"></div>
+
+<div class="stage" id="stage">
+  <div class="chapter-view" id="chapter-view">
+    <!-- content rendered by JS -->
+  </div>
+</div>
+
+<div class="controls" id="controls">
+  <button class="ctrl-btn" id="prev" onclick="go(-1)">&#8592; Prev</button>
+  <span class="ctrl-pos" id="pos"></span>
+  <button class="ctrl-btn" id="next" onclick="go(1)">Next &#8594;</button>
+  <div class="ctrl-sep"></div>
+  <div class="theme-dots" id="theme-dots">
+    <button class="theme-dot" data-t="light-purple" title="Light Purple" onclick="setTheme('light-purple')"></button>
+    <button class="theme-dot" data-t="sepia"        title="Sepia"        onclick="setTheme('sepia')"></button>
+    <button class="theme-dot" data-t="light-azure"  title="Light Azure"  onclick="setTheme('light-azure')"></button>
+    <button class="theme-dot" data-t="dark-violet"  title="Dark Violet"  onclick="setTheme('dark-violet')"></button>
+    <button class="theme-dot" data-t="dark-blue"    title="Dark Blue"    onclick="setTheme('dark-blue')"></button>
+  </div>
+  <div class="ctrl-sep"></div>
+  <a class="ctrl-back" href="reader.html" title="Back to reader">&#8617; Reader</a>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+
+<script>
+const BOOK_DATA = {"book":{"title":"The Prophet","author":"Kahlil Gibran","year":1923,"source":"Project Gutenberg"},"chapters":[{"num":1,"title":"The Coming of the Ship","html":"<div class=\"stanza\">\n<p>Almustafa, the chosen and the beloved, who was a dawn unto his own day, had waited twelve years in the city of Orphalese for his ship that was to return and bear him back to the isle of his birth.</p>\n<p>And in the twelfth year, on the seventh day of Ielool, the month of reaping, he climbed the hill without the city walls and looked seaward; and he beheld his ship coming with the mist.</p>\n<p>Then the gates of his heart were flung open, and his joy flew far over the sea. And he closed his eyes and prayed in the silences of his soul.</p>\n</div>\n<div class=\"stanza\">\n<p>But as he descended the hill, a sadness came upon him, and he thought in his heart:</p>\n<p>How shall I go in peace and without sorrow? Nay, not without a wound in the spirit shall I leave this city.</p>\n<p>Long were the days of pain I have spent within its walls, and long were the nights of aloneness; and who can depart from his pain and his aloneness without regret?</p>\n<p>Too many fragments of the spirit have I scattered in these streets, and too many are the children of my longing that walk naked among these hills, and I cannot withdraw from them without a burden and an ache.</p>\n<p>It is not a garment I cast off this day, but a skin that I tear with my own hands.</p>\n<p>Nor is it a thought I leave behind me, but a heart made sweet with hunger and with thirst.</p>\n</div>\n<div class=\"stanza\">\n<p>Yet I cannot tarry longer.</p>\n<p>The sea that calls all things unto her calls me, and I must embark.</p>\n<p>For to stay, though the hours burn in the night, is to freeze and crystallize and be bound in a mould.</p>\n<p>Fain would I take with me all that is here. But how shall I?</p>\n<p>A voice cannot carry the tongue and the lips that gave it wings. Alone must it seek the ether.</p>\n<p>And alone and without his nest shall the eagle fly across the sun.</p>\n</div>\n<div class=\"stanza\">\n<p>Now when he reached the foot of the hill, he turned again towards the sea, and he saw his ship approaching the harbour, and upon her prow the mariners, the men of his own land.</p>\n<p>And his soul cried out to them, and he said:</p>\n<p>Sons of my ancient mother, you riders of the tides,</p>\n<p>How often have you sailed in my dreams. And now you come in my awakening, which is my deeper dream.</p>\n<p>Ready am I to go, and my eagerness with sails full set awaits the wind.</p>\n<p>Only another breath will I breathe in this still air, only another loving look cast backward,</p>\n<p>And then I shall stand among you, a seafarer among seafarers.</p>\n<p>And you, vast sea, sleepless mother,</p>\n<p>Who alone are peace and freedom to the river and the stream,</p>\n<p>Only another winding will this stream make, only another murmur in this glade,</p>\n<p>And then shall I come to you, a boundless drop to a boundless ocean.</p>\n</div>\n<div class=\"stanza\">\n<p>And as he walked he saw from afar men and women leaving their fields and their vineyards and hastening towards the city gates.</p>\n<p>And he heard their voices calling his name, and shouting from field to field telling one another of the coming of his ship.</p>\n<p>And he said to himself:</p>\n<p>Shall the day of parting be the day of gathering?</p>\n<p>And shall it be said that my eve was in truth my dawn?</p>\n<p>And what shall I give unto him who has left his plough in midfurrow, or to him who has stopped the wheel of his winepress?</p>\n<p>Shall my heart become a tree heavy-laden with fruit that I may gather and give unto them?</p>\n<p>And shall my desires flow like a fountain that I may fill their cups?</p>\n<p>Am I a harp that the hand of the mighty may touch me, or a flute that his breath may pass through me?</p>\n<p>A seeker of silences am I, and what treasure have I found in silences that I may dispense with confidence?</p>\n<p>If this is my day of harvest, in what fields have I sowed the seed, and in what unremembered seasons?</p>\n<p>If this indeed be the hour in which I lift up my lantern, it is not my flame that shall burn therein.</p>\n<p>Empty and dark shall I raise my lantern,</p>\n<p>And the guardian of the night shall fill it with oil and he shall light it also.</p>\n</div>\n<div class=\"stanza\">\n<p>These things he said in words. But much in his heart remained unsaid. For he himself could not speak his deeper secret.</p>\n</div>\n<div class=\"stanza\">\n<p>And when he entered into the city all the people came to meet him, and they were crying out to him as with one voice.</p>\n<p>And the elders of the city stood forth and said:</p>\n<p>Go not yet away from us.</p>\n<p>A noontide have you been in our twilight, and your youth has given us dreams to dream.</p>\n<p>No stranger are you among us, nor a guest, but our son and our dearly beloved.</p>\n<p>Suffer not yet our eyes to hunger for your face.</p>\n</div>\n<div class=\"stanza\">\n<p>And the priests and the priestesses said unto him:</p>\n<p>Let not the waves of the sea separate us now, and the years you have spent in our midst become a memory.</p>\n<p>You have walked among us a spirit, and your shadow has been a light upon our faces.</p>\n<p>Much have we loved you. But speechless was our love, and with veils has it been veiled.</p>\n<p>Yet now it cries aloud unto you, and would stand revealed before you.</p>\n<p>And ever has it been that love knows not its own depth until the hour of separation.</p>\n</div>\n<div class=\"stanza\">\n<p>And others came also and entreated him. But he answered them not. He only bent his head; and those who stood near saw his tears falling upon his breast.</p>\n<p>And he and the people proceeded towards the great square before the temple.</p>\n<p>And there came out of the sanctuary a woman whose name was Almitra. And she was a seeress.</p>\n<p>And he looked upon her with exceeding tenderness, for it was she who had first sought and believed in him when he had been but a day in their city.</p>\n<p>And she hailed him, saying:</p>\n<p>Prophet of God, in quest of the uttermost, long have you searched the distances for your ship.</p>\n<p>And now your ship has come, and you must needs go.</p>\n<p>Deep is your longing for the land of your memories and the dwelling place of your greater desires; and our love would not bind you nor our needs hold you.</p>\n<p>Yet this we ask ere you leave us, that you speak to us and give us of your truth.</p>\n<p>And we will give it unto our children, and they unto their children, and it shall not perish.</p>\n<p>In your aloneness you have watched with our days, and in your wakefulness you have listened to the weeping and the laughter of our sleep.</p>\n<p>Now therefore disclose us to ourselves, and tell us all that has been shown you of that which is between birth and death.</p>\n</div>\n<div class=\"stanza\">\n<p>And he answered,</p>\n<p>People of Orphalese, of what can I speak save of that which is even now moving within your souls?</p>\n</div>"},{"num":2,"title":"On Love","html":"<div class=\"stanza\">\n<p>Then said Almitra, Speak to us of <em>Love</em>.</p>\n<p>And he raised his head and looked upon the people, and there fell a stillness upon them. And with a great voice he said:</p>\n<p>When love beckons to you, follow him,</p>\n<p>Though his ways are hard and steep.</p>\n<p>And when his wings enfold you yield to him,</p>\n<p>Though the sword hidden among his pinions may wound you.</p>\n<p>And when he speaks to you believe in him,</p>\n<p>Though his voice may shatter your dreams as the north wind lays waste the garden.</p>\n<p>For even as love crowns you so shall he crucify you. Even as he is for your growth so is he for your pruning.</p>\n<p>Even as he ascends to your height and caresses your tenderest branches that quiver in the sun,</p>\n<p>So shall he descend to your roots and shake them in their clinging to the earth.</p>\n</div>\n<div class=\"stanza\">\n<p>Like sheaves of corn he gathers you unto himself.</p>\n<p>He threshes you to make you naked.</p>\n<p>He sifts you to free you from your husks.</p>\n<p>He grinds you to whiteness.</p>\n<p>He kneads you until you are pliant;</p>\n<p>And then he assigns you to his sacred fire, that you may become sacred bread for God’s sacred feast.</p>\n</div>\n<div class=\"stanza\">\n<p>All these things shall love do unto you that you may know the secrets of your heart, and in that knowledge become a fragment of Life’s heart.</p>\n<p>But if in your fear you would seek only love’s peace and love’s pleasure,</p>\n<p>Then it is better for you that you cover your nakedness and pass out of love’s threshing-floor,</p>\n<p>Into the seasonless world where you shall laugh, but not all of your laughter, and weep, but not all of your tears.</p>\n</div>\n<div class=\"stanza\">\n<p>Love gives naught but itself and takes naught but from itself.</p>\n<p>Love possesses not nor would it be possessed;</p>\n<p>For love is sufficient unto love.</p>\n<p>When you love you should not say, “God is in my heart,” but rather, “I am in the heart of God.”</p>\n<p>And think not you can direct the course of love, for love, if it finds you worthy, directs your course.</p>\n<p>Love has no other desire but to fulfil itself.</p>\n<p>But if you love and must needs have desires, let these be your desires:</p>\n<p>To melt and be like a running brook that sings its melody to the night.</p>\n<p>To know the pain of too much tenderness.</p>\n<p>To be wounded by your own understanding of love;</p>\n<p>And to bleed willingly and joyfully.</p>\n<p>To wake at dawn with a winged heart and give thanks for another day of loving;</p>\n<p>To rest at the noon hour and meditate love’s ecstacy;</p>\n<p>To return home at eventide with gratitude;</p>\n<p>And then to sleep with a prayer for the beloved in your heart and a song of praise upon your lips.</p>\n</div>"},{"num":3,"title":"On Marriage","html":"<div class=\"stanza\">\n<p>Then Almitra spoke again and said, And what of <em>Marriage</em> master?</p>\n<p>And he answered saying:</p>\n<p>You were born together, and together you shall be forevermore.</p>\n<p>You shall be together when the white wings of death scatter your days.</p>\n<p>Aye, you shall be together even in the silent memory of God.</p>\n<p>But let there be spaces in your togetherness,</p>\n<p>And let the winds of the heavens dance between you.</p>\n</div>\n<div class=\"stanza\">\n<p>Love one another, but make not a bond of love:</p>\n<p>Let it rather be a moving sea between the shores of your souls.</p>\n<p>Fill each other’s cup but drink not from one cup.</p>\n<p>Give one another of your bread but eat not from the same loaf.</p>\n<p>Sing and dance together and be joyous, but let each one of you be alone,</p>\n<p>Even as the strings of a lute are alone though they quiver with the same music.</p>\n</div>\n<div class=\"stanza\">\n<p>Give your hearts, but not into each other’s keeping.</p>\n<p>For only the hand of Life can contain your hearts.</p>\n<p>And stand together yet not too near together:</p>\n<p>For the pillars of the temple stand apart,</p>\n<p>And the oak tree and the cypress grow not in each other’s shadow.</p>\n</div>"},{"num":4,"title":"On Children","html":"<div class=\"stanza\">\n<p>And a woman who held a babe against her bosom said, Speak to us of <em>Children</em>.</p>\n<p>And he said:</p>\n<p>Your children are not your children.</p>\n<p>They are the sons and daughters of Life’s longing for itself.</p>\n<p>They come through you but not from you,</p>\n<p>And though they are with you yet they belong not to you.</p>\n</div>\n<div class=\"stanza\">\n<p>You may give them your love but not your thoughts,</p>\n<p>For they have their own thoughts.</p>\n<p>You may house their bodies but not their souls,</p>\n<p>For their souls dwell in the house of tomorrow, which you cannot visit, not even in your dreams.</p>\n<p>You may strive to be like them, but seek not to make them like you.</p>\n<p>For life goes not backward nor tarries with yesterday.</p>\n<p>You are the bows from which your children as living arrows are sent forth.</p>\n<p>The archer sees the mark upon the path of the infinite, and He bends you with His might that His arrows may go swift and far.</p>\n<p>Let your bending in the Archer’s hand be for gladness;</p>\n<p>For even as he loves the arrow that flies, so He loves also the bow that is stable.</p>\n</div>"},{"num":5,"title":"On Giving","html":"<div class=\"stanza\">\n<p>Then said a rich man, Speak to us of <em>Giving</em>.</p>\n<p>And he answered:</p>\n<p>You give but little when you give of your possessions.</p>\n<p>It is when you give of yourself that you truly give.</p>\n<p>For what are your possessions but things you keep and guard for fear you may need them tomorrow?</p>\n<p>And tomorrow, what shall tomorrow bring to the overprudent dog burying bones in the trackless sand as he follows the pilgrims to the holy city?</p>\n<p>And what is fear of need but need itself?</p>\n<p>Is not dread of thirst when your well is full, the thirst that is unquenchable?</p>\n<p>There are those who give little of the much which they have--and they give it for recognition and their hidden desire makes their gifts unwholesome.</p>\n<p>And there are those who have little and give it all.</p>\n<p>These are the believers in life and the bounty of life, and their coffer is never empty.</p>\n<p>There are those who give with joy, and that joy is their reward.</p>\n<p>And there are those who give with pain, and that pain is their baptism.</p>\n<p>And there are those who give and know not pain in giving, nor do they seek joy, nor give with mindfulness of virtue;</p>\n<p>They give as in yonder valley the myrtle breathes its fragrance into space.</p>\n<p>Through the hands of such as these God speaks, and from behind their eyes He smiles upon the earth.</p>\n<p>It is well to give when asked, but it is better to give unasked, through understanding;</p>\n<p>And to the open-handed the search for one who shall receive is joy greater than giving.</p>\n<p>And is there aught you would withhold?</p>\n<p>All you have shall some day be given;</p>\n<p>Therefore give now, that the season of giving may be yours and not your inheritors’.</p>\n<p>You often say, “I would give, but only to the deserving.”</p>\n<p>The trees in your orchard say not so, nor the flocks in your pasture.</p>\n<p>They give that they may live, for to withhold is to perish.</p>\n<p>Surely he who is worthy to receive his days and his nights, is worthy of all else from you.</p>\n<p>And he who has deserved to drink from the ocean of life deserves to fill his cup from your little stream.</p>\n<p>And what desert greater shall there be, than that which lies in the courage and the confidence, nay the charity, of receiving?</p>\n<p>And who are you that men should rend their bosom and unveil their pride, that you may see their worth naked and their pride unabashed?</p>\n<p>See first that you yourself deserve to be a giver, and an instrument of giving.</p>\n<p>For in truth it is life that gives unto life--while you, who deem yourself a giver, are but a witness.</p>\n<p>And you receivers--and you are all receivers--assume no weight of gratitude, lest you lay a yoke upon yourself and upon him who gives.</p>\n<p>Rather rise together with the giver on his gifts as on wings;</p>\n<p>For to be overmindful of your debt, is to doubt his generosity who has the freehearted earth for mother, and God for father.</p>\n</div>"},{"num":6,"title":"On Eating and Drinking","html":"<div class=\"stanza\">\n<p>Then an old man, a keeper of an inn, said, Speak to us of <em>Eating and Drinking</em>.</p>\n<p>And he said:</p>\n<p>Would that you could live on the fragrance of the earth, and like an air plant be sustained by the light.</p>\n<p>But since you must kill to eat, and rob the newly born of its mother’s milk to quench your thirst, let it then be an act of worship,</p>\n<p>And let your board stand an altar on which the pure and the innocent of forest and plain are sacrificed for that which is purer and still more innocent in man.</p>\n</div>\n<div class=\"stanza\">\n<p>When you kill a beast say to him in your heart,</p>\n<p>“By the same power that slays you, I too am slain; and I too shall be consumed.</p>\n<p>For the law that delivered you into my hand shall deliver me into a mightier hand.</p>\n<p>Your blood and my blood is naught but the sap that feeds the tree of heaven.”</p>\n</div>\n<div class=\"stanza\">\n<p>And when you crush an apple with your teeth, say to it in your heart,</p>\n<p>“Your seeds shall live in my body,</p>\n<p>And the buds of your tomorrow shall blossom in my heart,</p>\n<p>And your fragrance shall be my breath, And together we shall rejoice through all the seasons.”</p>\n</div>\n<div class=\"stanza\">\n<p>And in the autumn, when you gather the grapes of your vineyards for the winepress, say in your heart,</p>\n<p>“I too am a vineyard, and my fruit shall be gathered for the winepress,</p>\n<p>And like new wine I shall be kept in eternal vessels.”</p>\n<p>And in winter, when you draw the wine, let there be in your heart a song for each cup;</p>\n<p>And let there be in the song a remembrance for the autumn days, and for the vineyard, and for the winepress.</p>\n</div>"},{"num":7,"title":"On Work","html":"<div class=\"stanza\">\n<p>Then a ploughman said, Speak to us of <em>Work</em>.</p>\n<p>And he answered, saying:</p>\n<p>You work that you may keep pace with the earth and the soul of the earth.</p>\n<p>For to be idle is to become a stranger unto the seasons, and to step out of life’s procession, that marches in majesty and proud submission towards the infinite.</p>\n<p>When you work you are a flute through whose heart the whispering of the hours turns to music.</p>\n<p>Which of you would be a reed, dumb and silent, when all else sings together in unison?</p>\n<p>Always you have been told that work is a curse and labour a misfortune.</p>\n<p>But I say to you that when you work you fulfil a part of earth’s furthest dream, assigned to you when that dream was born,</p>\n<p>And in keeping yourself with labour you are in truth loving life,</p>\n<p>And to love life through labour is to be intimate with life’s inmost secret.</p>\n</div>\n<div class=\"stanza\">\n<p>But if you in your pain call birth an affliction and the support of the flesh a curse written upon your brow, then I answer that naught but the sweat of your brow shall wash away that which is written.</p>\n<p>You have been told also that life is darkness, and in your weariness you echo what was said by the weary.</p>\n<p>And I say that life is indeed darkness ‘save when there is urge,</p>\n<p>And all urge is blind save when there is knowledge,</p>\n<p>And all knowledge is vain save when there is work,</p>\n<p>And all work is empty save when there is love;</p>\n<p>And when you work with love you bind yourself to yourself, and to one another, and to God.</p>\n</div>\n<div class=\"stanza\">\n<p>And what is it to work with love?</p>\n<p>It is to weave the cloth with threads drawn from your heart, even as if your beloved were to wear that cloth.</p>\n<p>It is to build a house with affection, even as if your beloved were to dwell in that house.</p>\n<p>It is to sow seeds with tenderness and reap the harvest with joy, even as if your beloved were to eat the fruit.</p>\n<p>It is to charge all things you fashion with a breath of your own spirit,</p>\n<p>And to know that all the blessed dead are standing about you and watching.</p>\n<p>Often have I heard you say, as if speaking in sleep, “He who works in marble, and finds the shape of his own soul in the stone, is nobler than he who ploughs the soil.</p>\n<p>And he who seizes the rainbow to lay it on a cloth in the likeness of man, is more than he who makes the sandals for our feet.”</p>\n<p>But I say, not in sleep but in the overwakefulness of noontide, that the wind speaks not more sweetly to the giant oaks than to the least of all the blades of grass;</p>\n<p>And he alone is great who turns the voice of the wind into a song made sweeter by his own loving.</p>\n</div>\n<div class=\"stanza\">\n<p>Work is love made visible.</p>\n<p>And if you cannot work with love but only with distaste, it is better that you should leave your work and sit at the gate of the temple and take alms of those who work with joy.</p>\n<p>For if you bake bread with indifference, you bake a bitter bread that feeds but half man’s hunger.</p>\n<p>And if you grudge the crushing of the grapes, your grudge distils a poison in the wine.</p>\n<p>And if you sing though as angels, and love not the singing, you muffle man’s ears to the voices of the day and the voices of the night.</p>\n</div>"},{"num":8,"title":"On Joy and Sorrow","html":"<div class=\"stanza\">\n<p>Then a woman said, Speak to us of <em>Joy and Sorrow</em>.</p>\n<p>And he answered:</p>\n<p>Your joy is your sorrow unmasked.</p>\n<p>And the selfsame well from which your laughter rises was oftentimes filled with your tears.</p>\n<p>And how else can it be?</p>\n<p>The deeper that sorrow carves into your being, the more joy you can contain.</p>\n<p>Is not the cup that holds your wine the very cup that was burned in the potter’s oven?</p>\n<p>And is not the lute that soothes your spirit, the very wood that was hollowed with knives?</p>\n<p>When you are joyous, look deep into your heart and you shall find it is only that which has given you sorrow that is giving you joy.</p>\n<p>When you are sorrowful look again in your heart, and you shall see that in truth you are weeping for that which has been your delight.</p>\n</div>\n<div class=\"stanza\">\n<p>Some of you say, “Joy is greater than sorrow,” and others say, “Nay, sorrow is the greater.”</p>\n<p>But I say unto you, they are inseparable.</p>\n<p>Together they come, and when one sits alone with you at your board, remember that the other is asleep upon your bed.</p>\n<p>Verily you are suspended like scales between your sorrow and your joy.</p>\n<p>Only when you are empty are you at standstill and balanced.</p>\n<p>When the treasure-keeper lifts you to weigh his gold and his silver, needs must your joy or your sorrow rise or fall.</p>\n</div>"},{"num":9,"title":"On Houses","html":"<div class=\"stanza\">\n<p>Then a mason came forth and said, Speak to us of <em>Houses</em>.</p>\n<p>And he answered and said:</p>\n<p>Build of your imaginings a bower in the wilderness ere you build a house within the city walls.</p>\n<p>For even as you have home-comings in your twilight, so has the wanderer in you, the ever distant and alone.</p>\n<p>Your house is your larger body.</p>\n<p>It grows in the sun and sleeps in the stillness of the night; and it is not dreamless. Does not your house dream? and dreaming, leave the city for grove or hilltop?</p>\n<p>Would that I could gather your houses into my hand, and like a sower scatter them in forest and meadow.</p>\n<p>Would the valleys were your streets, and the green paths your alleys, that you might seek one another through vineyards, and come with the fragrance of the earth in your garments.</p>\n<p>But these things are not yet to be.</p>\n<p>In their fear your forefathers gathered you too near together. And that fear shall endure a little longer. A little longer shall your city walls separate your hearths from your fields.</p>\n</div>\n<div class=\"stanza\">\n<p>And tell me, people of Orphalese, what have you in these houses? And what is it you guard with fastened doors?</p>\n<p>Have you peace, the quiet urge that reveals your power?</p>\n<p>Have you remembrances, the glimmering arches that span the summits of the mind?</p>\n<p>Have you beauty, that leads the heart from things fashioned of wood and stone to the holy mountain?</p>\n<p>Tell me, have you these in your houses?</p>\n<p>Or have you only comfort, and the lust for comfort, that stealthy thing that enters the house a guest, and then becomes a host, and then a master?</p>\n</div>\n<div class=\"stanza\">\n<p>Ay, and it becomes a tamer, and with hook and scourge makes puppets of your larger desires.</p>\n<p>Though its hands are silken, its heart is of iron.</p>\n<p>It lulls you to sleep only to stand by your bed and jeer at the dignity of the flesh.</p>\n<p>It makes mock of your sound senses, and lays them in thistledown like fragile vessels.</p>\n<p>Verily the lust for comfort murders the passion of the soul, and then walks grinning in the funeral.</p>\n<p>But you, children of space, you restless in rest, you shall not be trapped nor tamed.</p>\n<p>Your house shall be not an anchor but a mast.</p>\n<p>It shall not be a glistening film that covers a wound, but an eyelid that guards the eye.</p>\n<p>You shall not fold your wings that you may pass through doors, nor bend your heads that they strike not against a ceiling, nor fear to breathe lest walls should crack and fall down.</p>\n<p>You shall not dwell in tombs made by the dead for the living.</p>\n<p>And though of magnificence and splendour, your house shall not hold your secret nor shelter your longing.</p>\n<p>For that which is boundless in you abides in the mansion of the sky, whose door is the morning mist, and whose windows are the songs and the silences of night.</p>\n</div>"},{"num":10,"title":"On Clothes","html":"<div class=\"stanza\">\n<p>And the weaver said, Speak to us of <em>Clothes</em>.</p>\n<p>And he answered:</p>\n<p>Your clothes conceal much of your beauty, yet they hide not the unbeautiful.</p>\n<p>And though you seek in garments the freedom of privacy you may find in them a harness and a chain.</p>\n<p>Would that you could meet the sun and the wind with more of your skin and less of your raiment,</p>\n<p>For the breath of life is in the sunlight and the hand of life is in the wind.</p>\n<p>Some of you say, “It is the north wind who has woven the clothes we wear.”</p>\n<p>And I say, Ay, it was the north wind,</p>\n<p>But shame was his loom, and the softening of the sinews was his thread.</p>\n<p>And when his work was done he laughed in the forest.</p>\n<p>Forget not that modesty is for a shield against the eye of the unclean.</p>\n<p>And when the unclean shall be no more, what were modesty but a fetter and a fouling of the mind?</p>\n<p>And forget not that the earth delights to feel your bare feet and the winds long to play with your hair.</p>\n</div>"},{"num":11,"title":"On Buying and Selling","html":"<div class=\"stanza\">\n<p>And a merchant said, Speak to us of <em>Buying and Selling</em>.</p>\n<p>And he answered and said:</p>\n<p>To you the earth yields her fruit, and you shall not want if you but know how to fill your hands.</p>\n<p>It is in exchanging the gifts of the earth that you shall find abundance and be satisfied.</p>\n<p>Yet unless the exchange be in love and kindly justice, it will but lead some to greed and others to hunger.</p>\n<p>When in the market place you toilers of the sea and fields and vineyards meet the weavers and the potters and the gatherers of spices,--</p>\n<p>Invoke then the master spirit of the earth, to come into your midst and sanctify the scales and the reckoning that weighs value against value.</p>\n<p>And suffer not the barren-handed to take part in your transactions, who would sell their words for your labour.</p>\n<p>To such men you should say,</p>\n<p>“Come with us to the field, or go with our brothers to the sea and cast your net;</p>\n<p>For the land and the sea shall be bountiful to you even as to us.”</p>\n</div>\n<div class=\"stanza\">\n<p>And if there come the singers and the dancers and the flute players,--buy of their gifts also.</p>\n<p>For they too are gatherers of fruit and frankincense, and that which they bring, though fashioned of dreams, is raiment and food for your soul.</p>\n<p>And before you leave the market place, see that no one has gone his way with empty hands.</p>\n<p>For the master spirit of the earth shall not sleep peacefully upon the wind till the needs of the least of you are satisfied.</p>\n</div>"},{"num":12,"title":"On Crime and Punishment","html":"<div class=\"stanza\">\n<p>Then one of the judges of the city stood forth and said, Speak to us of <em>Crime and Punishment</em>.</p>\n<p>And he answered, saying:</p>\n<p>It is when your spirit goes wandering upon the wind,</p>\n<p>That you, alone and unguarded, commit a wrong unto others and therefore unto yourself.</p>\n<p>And for that wrong committed must you knock and wait a while unheeded at the gate of the blessed.</p>\n<p>Like the ocean is your god-self;</p>\n<p>It remains for ever undefiled.</p>\n<p>And like the ether it lifts but the winged.</p>\n<p>Even like the sun is your god-self;</p>\n<p>It knows not the ways of the mole nor seeks it the holes of the serpent.</p>\n<p>But your god-self dwells not alone in your being.</p>\n<p>Much in you is still man, and much in you is not yet man,</p>\n<p>But a shapeless pigmy that walks asleep in the mist searching for its own awakening.</p>\n<p>And of the man in you would I now speak.</p>\n<p>For it is he and not your god-self nor the pigmy in the mist, that knows crime and the punishment of crime.</p>\n</div>\n<div class=\"stanza\">\n<p>Oftentimes have I heard you speak of one who commits a wrong as though he were not one of you, but a stranger unto you and an intruder upon your world.</p>\n<p>But I say that even as the holy and the righteous cannot rise beyond the highest which is in each one of you,</p>\n<p>So the wicked and the weak cannot fall lower than the lowest which is in you also.</p>\n<p>And as a single leaf turns not yellow but with the silent knowledge of the whole tree,</p>\n<p>So the wrong-doer cannot do wrong without the hidden will of you all.</p>\n<p>Like a procession you walk together towards your god-self.</p>\n<p>You are the way and the wayfarers.</p>\n<p>And when one of you falls down he falls for those behind him, a caution against the stumbling stone.</p>\n<p>Ay, and he falls for those ahead of him, who though faster and surer of foot, yet removed not the stumbling stone.</p>\n<p>And this also, though the word lie heavy upon your hearts:</p>\n<p>The murdered is not unaccountable for his own murder,</p>\n<p>And the robbed is not blameless in being robbed.</p>\n<p>The righteous is not innocent of the deeds of the wicked,</p>\n<p>And the white-handed is not clean in the doings of the felon.</p>\n<p>Yea, the guilty is oftentimes the victim of the injured,</p>\n<p>And still more often the condemned is the burden bearer for the guiltless and unblamed.</p>\n<p>You cannot separate the just from the unjust and the good from the wicked;</p>\n<p>For they stand together before the face of the sun even as the black thread and the white are woven together.</p>\n<p>And when the black thread breaks, the weaver shall look into the whole cloth, and he shall examine the loom also.</p>\n</div>\n<div class=\"stanza\">\n<p>If any of you would bring to judgment the unfaithful wife,</p>\n<p>Let him also weigh the heart of her husband in scales, and measure his soul with measurements.</p>\n<p>And let him who would lash the offender look unto the spirit of the offended.</p>\n<p>And if any of you would punish in the name of righteousness and lay the ax unto the evil tree, let him see to its roots;</p>\n<p>And verily he will find the roots of the good and the bad, the fruitful and the fruitless, all entwined together in the silent heart of the earth.</p>\n<p>And you judges who would be just,</p>\n<p>What judgment pronounce you upon him who though honest in the flesh yet is a thief in spirit?</p>\n<p>What penalty lay you upon him who slays in the flesh yet is himself slain in the spirit?</p>\n<p>And how prosecute you him who in action is a deceiver and an oppressor,</p>\n<p>Yet who also is aggrieved and outraged?</p>\n</div>\n<div class=\"stanza\">\n<p>And how shall you punish those whose remorse is already greater than their misdeeds?</p>\n<p>Is not remorse the justice which is administered by that very law which you would fain serve?</p>\n<p>Yet you cannot lay remorse upon the innocent nor lift it from the heart of the guilty.</p>\n<p>Unbidden shall it call in the night, that men may wake and gaze upon themselves.</p>\n<p>And you who would understand justice, how shall you unless you look upon all deeds in the fullness of light?</p>\n<p>Only then shall you know that the erect and the fallen are but one man standing in twilight between the night of his pigmy-self and the day of his god-self, And that the corner-stone of the temple is not higher than the lowest stone in its foundation.</p>\n</div>"},{"num":13,"title":"On Laws","html":"<div class=\"stanza\">\n<p>Then a lawyer said, But what of our <em>Laws</em>, master?</p>\n<p>And he answered:</p>\n<p>You delight in laying down laws,</p>\n<p>Yet you delight more in breaking them.</p>\n<p>Like children playing by the ocean who build sand-towers with constancy and then destroy them with laughter.</p>\n<p>But while you build your sand-towers the ocean brings more sand to the shore,</p>\n<p>And when you destroy them the ocean laughs with you.</p>\n<p>Verily the ocean laughs always with the innocent.</p>\n<p>But what of those to whom life is not an ocean, and man-made laws are not sand-towers,</p>\n<p>But to whom life is a rock, and the law a chisel with which they would carve it in their own likeness?</p>\n<p>What of the cripple who hates dancers?</p>\n<p>What of the ox who loves his yoke and deems the elk and deer of the forest stray and vagrant things?</p>\n<p>What of the old serpent who cannot shed his skin, and calls all others naked and shameless?</p>\n<p>And of him who comes early to the wedding-feast, and when over-fed and tired goes his way saying that all feasts are violation and all feasters lawbreakers?</p>\n</div>\n<div class=\"stanza\">\n<p>What shall I say of these save that they too stand in the sunlight, but with their backs to the sun?</p>\n<p>They see only their shadows, and their shadows are their laws.</p>\n<p>And what is the sun to them but a caster of shadows?</p>\n<p>And what is it to acknowledge the laws but to stoop down and trace their shadows upon the earth?</p>\n<p>But you who walk facing the sun, what images drawn on the earth can hold you?</p>\n<p>You who travel with the wind, what weather-vane shall direct your course?</p>\n<p>What man’s law shall bind you if you break your yoke but upon no man’s prison door?</p>\n<p>What laws shall you fear if you dance but stumble against no man’s iron chains?</p>\n<p>And who is he that shall bring you to judgment if you tear off your garment yet leave it in no man’s path?</p>\n</div>\n<div class=\"stanza\">\n<p>People of Orphalese, you can muffle the drum, and you can loosen the strings of the lyre, but who shall command the skylark not to sing?</p>\n</div>"},{"num":14,"title":"On Freedom","html":"<div class=\"stanza\">\n<p>And an orator said, Speak to us of <em>Freedom</em>.</p>\n<p>And he answered:</p>\n<p>At the city gate and by your fireside I have seen you prostrate yourself and worship your own freedom,</p>\n<p>Even as slaves humble themselves before a tyrant and praise him though he slays them.</p>\n<p>Ay, in the grove of the temple and in the shadow of the citadel I have seen the freest among you wear their freedom as a yoke and a handcuff.</p>\n<p>And my heart bled within me; for you can only be free when even the desire of seeking freedom becomes a harness to you, and when you cease to speak of freedom as a goal and a fulfilment.</p>\n<p>You shall be free indeed when your days are not without a care nor your nights without a want and a grief,</p>\n<p>But rather when these things girdle your life and yet you rise above them naked and unbound.</p>\n</div>\n<div class=\"stanza\">\n<p>And how shall you rise beyond your days and nights unless you break the chains which you at the dawn of your understanding have fastened around your noon hour?</p>\n<p>In truth that which you call freedom is the strongest of these chains, though its links glitter in the sun and dazzle your eyes.</p>\n<p>And what is it but fragments of your own self you would discard that you may become free?</p>\n<p>If it is an unjust law you would abolish, that law was written with your own hand upon your own forehead.</p>\n<p>You cannot erase it by burning your law books nor by washing the foreheads of your judges, though you pour the sea upon them.</p>\n<p>And if it is a despot you would dethrone, see first that his throne erected within you is destroyed.</p>\n<p>For how can a tyrant rule the free and the proud, but for a tyranny in their own freedom and a shame in their own pride?</p>\n<p>And if it is a care you would cast off, that cart has been chosen by you rather than imposed upon you.</p>\n<p>And if it is a fear you would dispel, the seat of that fear is in your heart and not in the hand of the feared.</p>\n</div>\n<div class=\"stanza\">\n<p>Verily all things move within your being in constant half embrace, the desired and the dreaded, the repugnant and the cherished, the pursued and that which you would escape.</p>\n<p>These things move within you as lights and shadows in pairs that cling.</p>\n<p>And when the shadow fades and is no more, the light that lingers becomes a shadow to another light.</p>\n<p>And thus your freedom when it loses its fetters becomes itself the fetter of a greater freedom.</p>\n</div>"},{"num":15,"title":"On Reason and Passion","html":"<div class=\"stanza\">\n<p>And the priestess spoke again and said: Speak to us of <em>Reason and Passion</em>.</p>\n<p>And he answered, saying:</p>\n<p>Your soul is oftentimes a battlefield, upon which your reason and your judgment wage war against your passion and your appetite.</p>\n<p>Would that I could be the peacemaker in your soul, that I might turn the discord and the rivalry of your elements into oneness and melody.</p>\n<p>But how shall I, unless you yourselves be also the peacemakers, nay, the lovers of all your elements?</p>\n<p>Your reason and your passion are the rudder and the sails of your seafaring soul.</p>\n<p>If either your sails or your rudder be broken, you can but toss and drift, or else be held at a standstill in mid-seas.</p>\n<p>For reason, ruling alone, is a force confining; and passion, unattended, is a flame that burns to its own destruction.</p>\n<p>Therefore let your soul exalt your reason to the height of passion, that it may sing;</p>\n<p>And let it direct your passion with reason, that your passion may live through its own daily resurrection, and like the phoenix rise above its own ashes.</p>\n</div>\n<div class=\"stanza\">\n<p>I would have you consider your judgment and your appetite even as you would two loved guests in your house.</p>\n<p>Surely you would not honour one guest above the other; for he who is more mindful of one loses the love and the faith of both</p>\n<p>Among the hills, when you sit in the cool shade of the white poplars, sharing the peace and serenity of distant fields and meadows--then let your heart say in silence, “God rests in reason.”</p>\n<p>And when the storm comes, and the mighty wind shakes the forest, and thunder and lightning proclaim the majesty of the sky,--then let your heart say in awe, “God moves in passion.”</p>\n<p>And since you are a breath in God’s sphere, and a leaf in God’s forest, you too should rest in reason and move in passion.</p>\n</div>"},{"num":16,"title":"On Pain","html":"<div class=\"stanza\">\n<p>And a woman spoke, saying, Tell us of <em>Pain</em>.</p>\n<p>And he said:</p>\n<p>Your pain is the breaking of the shell that encloses your understanding.</p>\n<p>Even as the stone of the fruit must break, that its heart may stand in the sun, so must you know pain.</p>\n<p>And could you keep your heart in wonder at the daily miracles of your life, your pain would not seem less wondrous than your joy;</p>\n<p>And you would accept the seasons of your heart, even as you have always accepted the seasons that pass over your fields.</p>\n<p>And you would watch with serenity through the winters of your grief.</p>\n<p>Much of your pain is self-chosen.</p>\n<p>It is the bitter potion by which the physician within you heals your sick self.</p>\n<p>Therefore trust the physician, and drink his remedy in silence and tranquillity: For his hand, though heavy and hard, is guided by the tender hand of the Unseen, And the cup he brings, though it burn your lips, has been fashioned of the clay which the Potter has moistened with His own sacred tears.</p>\n</div>"},{"num":17,"title":"On Self-Knowledge","html":"<div class=\"stanza\">\n<p>And a man said, Speak to us of <em>Self-Knowledge</em>.</p>\n<p>And he answered, saying:</p>\n<p>Your hearts know in silence the secrets of the days and the nights.</p>\n<p>But your ears thirst for the sound of your heart’s knowledge.</p>\n<p>You would know in words that which you have always known in thought.</p>\n<p>You would touch with your fingers the naked body of your dreams.</p>\n<p>And it is well you should.</p>\n<p>The hidden well-spring of your soul must needs rise and run murmuring to the sea;</p>\n<p>And the treasure of your infinite depths would be revealed to your eyes.</p>\n<p>But let there be no scales to weigh your unknown treasure;</p>\n<p>And seek not the depths of your knowledge with staff or sounding line.</p>\n<p>For self is a sea boundless and measureless.</p>\n</div>\n<div class=\"stanza\">\n<p>Say not, “I have found the truth,” but rather, “I have found a truth.”</p>\n<p>Say not, “I have found the path of the soul.” Say rather, “I have met the soul walking upon my path.”</p>\n<p>For the soul walks upon all paths.</p>\n<p>The soul walks not upon a line, neither does it grow like a reed.</p>\n<p>The soul unfolds itself, like a lotus of countless petals.</p>\n</div>"},{"num":18,"title":"On Teaching","html":"<div class=\"stanza\">\n<p>Then said a teacher, Speak to us of <em>Teaching</em>.</p>\n<p>And he said:</p>\n<p>“No man can reveal to you aught but that which already lies half asleep in the dawning of your knowledge.</p>\n<p>The teacher who walks in the shadow of the temple, among his followers, gives not of his wisdom but rather of his faith and his lovingness.</p>\n<p>If he is indeed wise he does not bid you enter the house of his wisdom, but rather leads you to the threshold of your own mind.</p>\n<p>The astronomer may speak to you of his understanding of space, but he cannot give you his understanding.</p>\n<p>The musician may sing to you of the rhythm which is in all space, but he cannot give you the ear which arrests the rhythm nor the voice that echoes it.</p>\n<p>And he who is versed in the science of numbers can tell of the regions of weight and measure, but he cannot conduct you thither.</p>\n<p>For the vision of one man lends not its wings to another man.</p>\n<p>And even as each one of you stands alone in God’s knowledge, so must each one of you be alone in his knowledge of God and in his understanding of the earth.</p>\n</div>"},{"num":19,"title":"On Friendship","html":"<div class=\"stanza\">\n<p>And a youth said, Speak to us of <em>Friendship</em>.</p>\n<p>And he answered, saying:</p>\n<p>Your friend is your needs answered.</p>\n<p>He is your field which you sow with love and reap with thanksgiving.</p>\n<p>And he is your board and your fireside.</p>\n<p>For you come to him with your hunger, and you seek him for peace.</p>\n<p>When your friend speaks his mind you fear not the “nay” in your own mind, nor do you withhold the “ay.”</p>\n<p>And when he is silent your heart ceases not to listen to his heart;</p>\n<p>For without words, in friendship, all thoughts, all desires, all expectations are born and shared, with joy that is unacclaimed.</p>\n<p>When you part from your friend, you grieve not;</p>\n<p>For that which you love most in him may be clearer in his absence, as the mountain to the climber is clearer from the plain.</p>\n<p>And let there be no purpose in friendship save the deepening of the spirit.</p>\n<p>For love that seeks aught but the disclosure of its own mystery is not love but a net cast forth: and only the unprofitable is caught.</p>\n</div>\n<div class=\"stanza\">\n<p>And let your best be for your friend.</p>\n<p>If he must know the ebb of your tide, let him know its flood also.</p>\n<p>For what is your friend that you should seek him with hours to kill?</p>\n<p>Seek him always with hours to live.</p>\n<p>For it is his to fill your need, but not your emptiness.</p>\n<p>And in the sweetness of friendship let there be laughter, and sharing of pleasures.</p>\n<p>For in the dew of little things the heart finds its morning and is refreshed.</p>\n</div>"},{"num":20,"title":"On Talking","html":"<div class=\"stanza\">\n<p>And then a scholar said, Speak of <em>Talking</em>.</p>\n<p>And he answered, saying:</p>\n<p>You talk when you cease to be at peace with your thoughts;</p>\n<p>And when you can no longer dwell in the solitude of your heart you live in your lips, and sound is a diversion and a pastime.</p>\n<p>And in much of your talking, thinking is half murdered.</p>\n<p>For thought is a bird of space, that in a cage of words may indeed unfold its wings but cannot fly.</p>\n<p>There are those among you who seek the talkative through fear of being alone.</p>\n<p>The silence of aloneness reveals to their eyes their naked selves and they would escape.</p>\n<p>And there are those who talk, and without knowledge or forethought reveal a truth which they themselves do not understand.</p>\n<p>And there are those who have the truth within them, but they tell it not in words.</p>\n<p>In the bosom of such as these the spirit dwells in rhythmic silence.</p>\n</div>\n<div class=\"stanza\">\n<p>When you meet your friend on the roadside or in the market place, let the spirit in you move your lips and direct your tongue.</p>\n<p>Let the voice within your voice speak to the ear of his ear;</p>\n<p>For his soul will keep the truth of your heart as the taste of the wine is remembered</p>\n<p>When the colour is forgotten and the vessel is no more.</p>\n</div>"},{"num":21,"title":"On Time","html":"<div class=\"stanza\">\n<p>And an astronomer said, Master, what of <em>Time</em>?</p>\n<p>And he answered:</p>\n<p>You would measure time the measureless and the immeasurable.</p>\n<p>You would adjust your conduct and even direct the course of your spirit according to hours and seasons.</p>\n<p>Of time you would make a stream upon whose bank you would sit and watch its flowing.</p>\n<p>Yet the timeless in you is aware of life’s timelessness,</p>\n<p>And knows that yesterday is but today’s memory and tomorrow is today’s dream.</p>\n<p>And that that which sings and contemplates in you is still dwelling within the bounds of that first moment which scattered the stars into space.</p>\n<p>Who among you does not feel that his power to love is boundless?</p>\n<p>And yet who does not feel that very love, though boundless, encompassed within the centre of his being, and moving not from love thought to love thought, nor from love deeds to other love deeds?</p>\n<p>And is not time even as love is, undivided and paceless?</p>\n</div>\n<div class=\"stanza\">\n<p>But if in your thought you must measure time into seasons, let each season encircle all the other seasons,</p>\n<p>And let today embrace the past with remembrance and the future with longing.</p>\n</div>"},{"num":22,"title":"On Good and Evil","html":"<div class=\"stanza\">\n<p>And one of the elders of the city said, Speak to us of <em>Good and Evil</em>.</p>\n<p>And he answered:</p>\n<p>Of the good in you I can speak, but not of the evil.</p>\n<p>For what is evil but good tortured by its own hunger and thirst?</p>\n<p>Verily when good is hungry it seeks food even in dark caves, and when it thirsts it drinks even of dead waters.</p>\n<p>You are good when you are one with yourself.</p>\n<p>Yet when you are not one with yourself you are not evil.</p>\n<p>For a divided house is not a den of thieves; it is only a divided house.</p>\n<p>And a ship without rudder may wander aimlessly among perilous isles yet sink not to the bottom.</p>\n<p>You are good when you strive to give of yourself.</p>\n<p>Yet you are not evil when you seek gain for yourself.</p>\n<p>For when you strive for gain you are but a root that clings to the earth and sucks at her breast.</p>\n<p>Surely the fruit cannot say to the root, “Be like me, ripe and full and ever giving of your abundance.”</p>\n<p>For to the fruit giving is a need, as receiving is a need to the root.</p>\n</div>\n<div class=\"stanza\">\n<p>You are good when you are fully awake in your speech,</p>\n<p>Yet you are not evil when you sleep while your tongue staggers without purpose.</p>\n<p>And even stumbling speech may strengthen a weak tongue.</p>\n<p>You are good when you walk to your goal firmly and with bold steps.</p>\n<p>Yet you are not evil when you go thither limping.</p>\n<p>Even those who limp go not backward.</p>\n<p>But you who are strong and swift, see that you do not limp before the lame, deeming it kindness.</p>\n</div>\n<div class=\"stanza\">\n<p>You are good in countless ways, and you are not evil when you are not good,</p>\n<p>You are only loitering and sluggard.</p>\n<p>Pity that the stags cannot teach swiftness to the turtles.</p>\n<p>In your longing for your giant self lies your goodness: and that longing is in all of you.</p>\n<p>But in some of you that longing is a torrent rushing with might to the sea, carrying the secrets of the hillsides and the songs of the forest.</p>\n<p>And in others it is a flat stream that loses itself in angles and bends and lingers before it reaches the shore.</p>\n<p>But let not him who longs much say to him who longs little, “Wherefore are you slow and halting?”</p>\n<p>For the truly good ask not the naked, “Where is your garment?” nor the houseless, “What has befallen your house?”</p>\n</div>"},{"num":23,"title":"On Prayer","html":"<div class=\"stanza\">\n<p>Then a priestess said, Speak to us of <em>Prayer</em>.</p>\n<p>And he answered, saying:</p>\n<p>You pray in your distress and in your need; would that you might pray also in the fullness of your joy and in your days of abundance.</p>\n<p>For what is prayer but the expansion of yourself into the living ether?</p>\n<p>And if it is for your comfort to pour your darkness into space, it is also for your delight to pour forth the dawning of your heart.</p>\n<p>And if you cannot but weep when your soul summons you to prayer, she should spur you again and yet again, though weeping, until you shall come laughing.</p>\n<p>When you pray you rise to meet in the air those who are praying at that very hour, and whom save in prayer you may not meet.</p>\n<p>Therefore let your visit to that temple invisible be for naught but ecstasy and sweet communion.</p>\n<p>For if you should enter the temple for no other purpose than asking you shall not receive:</p>\n<p>And if you should enter into it to humble yourself you shall not be lifted:</p>\n<p>Or even if you should enter into it to beg for the good of others you shall not be heard.</p>\n<p>It is enough that you enter the temple invisible.</p>\n</div>\n<div class=\"stanza\">\n<p>I cannot teach you how to pray in words.</p>\n<p>God listens not to your words save when He Himself utters them through your lips.</p>\n<p>And I cannot teach you the prayer of the seas and the forests and the mountains.</p>\n<p>But you who are born of the mountains and the forests and the seas can find their prayer in your heart,</p>\n<p>And if you but listen in the stillness of the night you shall hear them saying in silence,</p>\n<p>“Our God, who art our winged self, it is thy will in us that willeth.</p>\n<p>It is thy desire in us that desireth.</p>\n<p>It is thy urge in us that would turn our nights, which are thine, into days which are thine also.</p>\n<p>We cannot ask thee for aught, for thou knowest our needs before they are born in us:</p>\n<p>Thou art our need; and in giving us more of thyself thou givest us all.”</p>\n</div>"},{"num":24,"title":"On Pleasure","html":"<div class=\"stanza\">\n<p>Then a hermit, who visited the city once a year, came forth and said, Speak to us of <em>Pleasure</em>.</p>\n<p>And he answered, saying:</p>\n<p>Pleasure is a freedom-song,</p>\n<p>But it is not freedom.</p>\n<p>It is the blossoming of your desires,</p>\n<p>But it is not their fruit.</p>\n<p>It is a depth calling unto a height,</p>\n<p>But it is not the deep nor the high.</p>\n<p>It is the caged taking wing,</p>\n<p>But it is not space encompassed.</p>\n<p>Ay, in very truth, pleasure is a freedom-song.</p>\n<p>And I fain would have you sing it with fullness of heart; yet I would not have you lose your hearts in the singing.</p>\n<p>Some of your youth seek pleasure as if it were all, and they are judged and rebuked.</p>\n<p>I would not judge nor rebuke them. I would have them seek.</p>\n<p>For they shall find pleasure, but not her alone;</p>\n<p>Seven are her sisters, and the least of them is more beautiful than pleasure.</p>\n<p>Have you not heard of the man who was digging in the earth for roots and found a treasure?</p>\n</div>\n<div class=\"stanza\">\n<p>And some of your elders remember pleasures with regret like wrongs committed in drunkenness.</p>\n<p>But regret is the beclouding of the mind and not its chastisement.</p>\n<p>They should remember their pleasures with gratitude, as they would the harvest of a summer.</p>\n<p>Yet if it comforts them to regret, let them be comforted.</p>\n<p>And there are among you those who are neither young to seek nor old to remember;</p>\n<p>And in their fear of seeking and remembering they shun all pleasures, lest they neglect the spirit or offend against it.</p>\n<p>But even in their foregoing is their pleasure.</p>\n<p>And thus they too find a treasure though they dig for roots with quivering hands.</p>\n<p>But tell me, who is he that can offend the spirit?</p>\n<p>Shall the nightingale offend the stillness of the night, or the firefly the stars?</p>\n<p>And shall your flame or your smoke burden the wind?</p>\n<p>Think you the spirit is a still pool which you can trouble with a staff?</p>\n</div>\n<div class=\"stanza\">\n<p>Oftentimes in denying yourself pleasure you do but store the desire in the recesses of your being.</p>\n<p>Who knows but that which seems omitted today, waits for tomorrow?</p>\n<p>Even your body knows its heritage and its rightful need and will not be deceived.</p>\n<p>And your body is the harp of your soul,</p>\n<p>And it is yours to bring forth sweet music from it or confused sounds.</p>\n</div>\n<div class=\"stanza\">\n<p>And now you ask in your heart, “How shall we distinguish that which is good in pleasure from that which is not good?”</p>\n<p>Go to your fields and your gardens, and you shall learn that it is the pleasure of the bee to gather honey of the flower,</p>\n<p>But it is also the pleasure of the flower to yield its honey to the bee.</p>\n<p>For to the bee a flower is a fountain of life,</p>\n<p>And to the flower a bee is a messenger of love,</p>\n<p>And to both, bee and flower, the giving and the receiving of pleasure is a need and an ecstasy.</p>\n<p>People of Orphalese, be in your pleasures like the flowers and the bees.</p>\n</div>"},{"num":25,"title":"On Beauty","html":"<div class=\"stanza\">\n<p>And a poet said, Speak to us of <em>Beauty</em>.</p>\n<p>And he answered:</p>\n<p>Where shall you seek beauty, and how shall you find her unless she herself be your way and your guide?</p>\n<p>And how shall you speak of her except she be the weaver of your speech?</p>\n<p>The aggrieved and the injured say, “Beauty is kind and gentle.</p>\n<p>Like a young mother half-shy of her own glory she walks among us.”</p>\n<p>And the passionate say, “Nay, beauty is a thing of might and dread.</p>\n<p>Like the tempest she shakes the earth beneath us and the sky above us.”</p>\n<p>The tired and the weary say, “Beauty is of soft whisperings. She speaks in our spirit.</p>\n<p>Her voice yields to our silences like a faint light that quivers in fear of the shadow.”</p>\n<p>But the restless say, “We have heard her shouting among the mountains,</p>\n<p>And with her cries came the sound of hoofs, and the beating of wings and the roaring of lions.”</p>\n<p>At night the watchmen of the city say, “Beauty shall rise with the dawn from the east.”</p>\n<p>And at noontide the toilers and the wayfarers say, “We have seen her leaning over the earth from the windows of the sunset.”</p>\n</div>\n<div class=\"stanza\">\n<p>In winter say the snow-bound, “She shall come with the spring leaping upon the hills.”</p>\n<p>And in the summer heat the reapers say, “We have seen her dancing with the autumn leaves, and we saw a drift of snow in her hair.”</p>\n<p>All these things have you said of beauty,</p>\n<p>Yet in truth you spoke not of her but of needs unsatisfied,</p>\n<p>And beauty is not a need but an ecstasy.</p>\n<p>It is not a mouth thirsting nor an empty hand stretched forth,</p>\n<p>But rather a heart enflamed and a soul enchanted.</p>\n<p>It is not the image you would see nor the song you would hear,</p>\n<p>But rather an image you see though you close your eyes and a song you hear though you shut your ears.</p>\n<p>It is not the sap within the furrowed bark, nor a wing attached to a claw,</p>\n<p>But rather a garden for ever in bloom and a flock of angels for ever in flight.</p>\n</div>\n<div class=\"stanza\">\n<p>People of Orphalese, beauty is life when life unveils her holy face.</p>\n<p>But you are life and you are the veil.</p>\n<p>Beauty is eternity gazing at itself in a mirror.</p>\n<p>But you are eternity and you are the mirror.</p>\n</div>"},{"num":26,"title":"On Religion","html":"<div class=\"stanza\">\n<p>And an old priest said, Speak to us of <em>Religion</em>.</p>\n<p>And he said:</p>\n<p>Have I spoken this day of aught else?</p>\n<p>Is not religion all deeds and all reflection,</p>\n<p>And that which is neither deed nor reflection, but a wonder and a surprise ever springing in the soul, even while the hands hew the stone or tend the loom?</p>\n<p>Who can separate his faith from his actions, or his belief from his occupations?</p>\n<p>Who can spread his hours before him, saying, “This for God and this for myself; This for my soul, and this other for my body?”</p>\n<p>All your hours are wings that beat through space from self to self.</p>\n<p>He who wears his morality but as his best garment were better naked.</p>\n<p>The wind and the sun will tear no holes in his skin.</p>\n<p>And he who defines his conduct by ethics imprisons his song-bird in a cage.</p>\n<p>The freest song comes not through bars and wires.</p>\n<p>And he to whom worshipping is a window, to open but also to shut, has not yet visited the house of his soul whose windows are from dawn to dawn.</p>\n</div>\n<div class=\"stanza\">\n<p>Your daily life is your temple and your religion.</p>\n<p>Whenever you enter into it take with you your all.</p>\n<p>Take the plough and the forge and the mallet and the lute,</p>\n<p>The things you have fashioned in necessity or for delight.</p>\n<p>For in revery you cannot rise above your achievements nor fall lower than your failures.</p>\n<p>And take with you all men:</p>\n<p>For in adoration you cannot fly higher than their hopes nor humble yourself lower than their despair.</p>\n</div>\n<div class=\"stanza\">\n<p>And if you would know God be not therefore a solver of riddles.</p>\n<p>Rather look about you and you shall see Him playing with your children.</p>\n<p>And look into space; you shall see Him walking in the cloud, outstretching His arms in the lightning and descending in rain.</p>\n<p>You shall see Him smiling in flowers, then rising and waving His hands in trees.</p>\n</div>"},{"num":27,"title":"On Death","html":"<div class=\"stanza\">\n<p>Then Almitra spoke, saying, We would ask now of <em>Death</em>.</p>\n<p>And he said:</p>\n<p>You would know the secret of death.</p>\n<p>But how shall you find it unless you seek it in the heart of life?</p>\n<p>The owl whose night-bound eyes are blind unto the day cannot unveil the mystery of light.</p>\n<p>If you would indeed behold the spirit of death, open your heart wide unto the body of life.</p>\n<p>For life and death are one, even as the river and the sea are one.</p>\n<p>In the depth of your hopes and desires lies your silent knowledge of the beyond;</p>\n<p>And like seeds dreaming beneath the snow your heart dreams of spring.</p>\n<p>Trust the dreams, for in them is hidden the gate to eternity.</p>\n<p>Your fear of death is but the trembling of the shepherd when he stands before the king whose hand is to be laid upon him in honour.</p>\n<p>Is the shepherd not joyful beneath his trembling, that he shall wear the mark of the king?</p>\n<p>Yet is he not more mindful of his trembling?</p>\n</div>\n<div class=\"stanza\">\n<p>For what is it to die but to stand naked in the wind and to melt into the sun?</p>\n<p>And what is it to cease breathing, but to free the breath from its restless tides, that it may rise and expand and seek God unencumbered?</p>\n<p>Only when you drink from the river of silence shall you indeed sing.</p>\n<p>And when you have reached the mountain top, then you shall begin to climb.</p>\n<p>And when the earth shall claim your limbs, then shall you truly dance.</p>\n</div>"},{"num":28,"title":"The Farewell","html":"<div class=\"stanza\">\n<p>And now it was evening.</p>\n<p>And Almitra the seeress said, Blessed be this day and this place and your spirit that has spoken.</p>\n<p>And he answered, Was it I who spoke? Was I not also a listener?</p>\n</div>\n<div class=\"stanza\">\n<p>Then he descended the steps of the Temple and all the people followed him. And he reached his ship and stood upon the deck.</p>\n<p>And facing the people again, he raised his voice and said:</p>\n<p>People of Orphalese, the wind bids me leave you.</p>\n<p>Less hasty am I than the wind, yet I must go.</p>\n<p>We wanderers, ever seeking the lonelier way, begin no day where we have ended another day; and no sunrise finds us where sunset left us.</p>\n<p>Even while the earth sleeps we travel.</p>\n<p>We are the seeds of the tenacious plant, and it is in our ripeness and our fullness of heart that we are given to the wind and are scattered.</p>\n</div>\n<div class=\"stanza\">\n<p>Brief were my days among you, and briefer still the words I have spoken.</p>\n<p>But should my voice fade in your ears, and my love vanish in your memory, then I will come again,</p>\n<p>And with a richer heart and lips more yielding to the spirit will I speak.</p>\n<p>Yea, I shall return with the tide,</p>\n<p>And though death may hide me, and the greater silence enfold me, yet again will I seek your understanding.</p>\n<p>And not in vain will I seek.</p>\n<p>If aught I have said is truth, that truth shall reveal itself in a clearer voice, and in words more kin to your thoughts.</p>\n<p>I go with the wind, people of Orphalese, but not down into emptiness;</p>\n<p>And if this day is not a fulfilment of your needs and my love, then let it be a promise till another day.</p>\n<p>Man’s needs change, but not his love, nor his desire that his love should satisfy his needs.</p>\n<p>Know therefore, that from the greater silence I shall return.</p>\n<p>The mist that drifts away at dawn, leaving but dew in the fields, shall rise and gather into a cloud and then fall down in rain.</p>\n<p>And not unlike the mist have I been.</p>\n<p>In the stillness of the night I have walked in your streets, and my spirit has entered your houses,</p>\n<p>And your heart-beats were in my heart, and your breath was upon my face, and I knew you all.</p>\n<p>Ay, I knew your joy and your pain, and in your sleep your dreams were my dreams.</p>\n<p>And oftentimes I was among you a lake among the mountains.</p>\n<p>I mirrored the summits in you and the bending slopes, and even the passing flocks of your thoughts and your desires.</p>\n<p>And to my silence came the laughter of your children in streams, and the longing of your youths in rivers.</p>\n<p>And when they reached my depth the streams and the rivers ceased not yet to sing.</p>\n<p>But sweeter still than laughter and greater than longing came to me.</p>\n<p>It was the boundless in you;</p>\n<p>The vast man in whom you are all but cells and sinews;</p>\n<p>He in whose chant all your singing is but a soundless throbbing.</p>\n<p>It is in the vast man that you are vast,</p>\n<p>And in beholding him that I beheld you and loved you.</p>\n<p>For what distances can love reach that are not in that vast sphere?</p>\n<p>What visions, what expectations and what presumptions can outsoar that flight?</p>\n<p>Like a giant oak tree covered with apple blossoms is the vast man in you.</p>\n<p>His might binds you to the earth, his fragrance lifts you into space, and in his durability you are deathless.</p>\n</div>\n<div class=\"stanza\">\n<p>You have been told that, even like a chain, you are as weak as your weakest link.</p>\n<p>This is but half the truth. You are also as strong as your strongest link.</p>\n<p>To measure you by your smallest deed is to reckon the power of ocean by the frailty of its foam.</p>\n<p>To judge you by your failures is to cast blame upon the seasons for their inconstancy.</p>\n<p>Ay, you are like an ocean,</p>\n<p>And though heavy-grounded ships await the tide upon your shores, yet, even like an ocean, you cannot hasten your tides.</p>\n<p>And like the seasons you are also,</p>\n<p>And though in your winter you deny your spring,</p>\n<p>Yet spring, reposing within you, smiles in her drowsiness and is not offended.</p>\n<p>Think not I say these things in order that you may say the one to the other, “He praised us well. He saw but the good in us.”</p>\n<p>I only speak to you in words of that which you yourselves know in thought.</p>\n<p>And what is word knowledge but a shadow of wordless knowledge?</p>\n<p>Your thoughts and my words are waves from a sealed memory that keeps records of our yesterdays,</p>\n<p>And of the ancient days when the earth knew not us nor herself,</p>\n<p>And of nights when earth was up-wrought with confusion.</p>\n</div>\n<div class=\"stanza\">\n<p>Wise men have come to you to give you of their wisdom. I came to take of your wisdom:</p>\n<p>And behold I have found that which is greater than wisdom.</p>\n<p>It is a flame spirit in you ever gathering more of itself,</p>\n<p>While you, heedless of its expansion, bewail the withering of your days.</p>\n<p>It is life in quest of life in bodies that fear the grave.</p>\n</div>\n<div class=\"stanza\">\n<p>There are no graves here.</p>\n<p>These mountains and plains are a cradle and a stepping-stone.</p>\n<p>Whenever you pass by the field where you have laid your ancestors look well thereupon, and you shall see yourselves and your children dancing hand in hand.</p>\n<p>Verily you often make merry without knowing.</p>\n<p>Others have come to you to whom for golden promises made unto your faith you have given but riches and power and glory.</p>\n<p>Less than a promise have I given, and yet more generous have you been to me.</p>\n<p>You have given me my deeper thirsting after life.</p>\n<p>Surely there is no greater gift to a man than that which turns all his aims into parching lips and all life into a fountain.</p>\n<p>And in this lies my honour and my reward,--</p>\n<p>That whenever I come to the fountain to drink I find the living water itself thirsty;</p>\n<p>And it drinks me while I drink it.</p>\n</div>\n<div class=\"stanza\">\n<p>Some of you have deemed me proud and over-shy to receive gifts.</p>\n<p>Too proud indeed am I to receive wages, but not gifts.</p>\n<p>And though I have eaten berries among the hills when you would have had me sit at your board,</p>\n<p>And slept in the portico of the temple when you would gladly have sheltered me,</p>\n<p>Yet was it not your loving mindfulness of my days and my nights that made food sweet to my mouth and girdled my sleep with visions?</p>\n<p>For this I bless you most:</p>\n<p>You give much and know not that you give at all.</p>\n<p>Verily the kindness that gazes upon itself in a mirror turns to stone,</p>\n<p>And a good deed that calls itself by tender names becomes the parent to a curse.</p>\n</div>\n<div class=\"stanza\">\n<p>And some of you have called me aloof, and drunk with my own aloneness,</p>\n<p>And you have said, “He holds council with the trees of the forest, but not with men.</p>\n<p>He sits alone on hill-tops and looks down upon our city.”</p>\n<p>True it is that I have climbed the hills and walked in remote places.</p>\n<p>How could I have seen you save from a great height or a great distance?</p>\n<p>How can one be indeed near unless he be far?</p>\n<p>And others among you called unto me, not in words, and they said,</p>\n<p>“Stranger, stranger, lover of unreachable heights, why dwell you among the summits where eagles build their nests?</p>\n<p>Why seek you the unattainable?</p>\n<p>What storms would you trap in your net,</p>\n<p>And what vaporous birds do you hunt in the sky?</p>\n<p>Come and be one of us.</p>\n<p>Descend and appease your hunger with our bread and quench your thirst with our wine.”</p>\n<p>In the solitude of their souls they said these things;</p>\n<p>But were their solitude deeper they would have known that I sought but the secret of your joy and your pain,</p>\n<p>And I hunted only your larger selves that walk the sky.</p>\n</div>\n<div class=\"stanza\">\n<p>But the hunter was also the hunted;</p>\n<p>For many of my arrows left my bow only to seek my own breast.</p>\n<p>And the flier was also the creeper;</p>\n<p>For when my wings were spread in the sun their shadow upon the earth was a turtle.</p>\n<p>And I the believer was also the doubter;</p>\n<p>For often have I put my finger in my own wound that I might have the greater belief in you and the greater knowledge of you.</p>\n</div>\n<div class=\"stanza\">\n<p>And it is with this belief and this knowledge that I say,</p>\n<p>You are not enclosed within your bodies, nor confined to houses or fields.</p>\n<p>That which is you dwells above the mountain and roves with the wind.</p>\n<p>It is not a thing that crawls into the sun for warmth or digs holes into darkness for safety,</p>\n<p>But a thing free, a spirit that envelops the earth and moves in the ether.</p>\n<p>If these be vague words, then seek not to clear them.</p>\n<p>Vague and nebulous is the beginning of all things, but not their end,</p>\n<p>And I fain would have you remember me as a beginning.</p>\n<p>Life, and all that lives, is conceived in the mist and not in the crystal.</p>\n<p>And who knows but a crystal is mist in decay?</p>\n</div>\n<div class=\"stanza\">\n<p>This would I have you remember in remembering me:</p>\n<p>That which seems most feeble and bewildered in you is the strongest and most determined.</p>\n<p>Is it not your breath that has erected and hardened the structure of your bones?</p>\n<p>And is it not a dream which none of you remember having dreamt, that builded your city and fashioned all there is in it?</p>\n<p>Could you but see the tides of that breath you would cease to see all else,</p>\n<p>And if you could hear the whispering of the dream you would hear no other sound.</p>\n<p>But you do not see, nor do you hear, and it is well.</p>\n<p>The veil that clouds your eyes shall be lifted by the hands that wove it,</p>\n<p>And the clay that fills your ears shall be pierced by those fingers that kneaded it.</p>\n<p>And you shall see.</p>\n<p>And you shall hear.</p>\n<p>Yet you shall not deplore having known blindness, nor regret having been deaf.</p>\n<p>For in that day you shall know the hidden purposes in all things,</p>\n<p>And you shall bless darkness as you would bless light.</p>\n<p>After saying these things he looked about him, and he saw the pilot of his ship standing by the helm and gazing now at the full sails and now at the distance.</p>\n<p>And he said:</p>\n<p>Patient, over patient, is the captain of my ship.</p>\n<p>The wind blows, and restless are the sails;</p>\n<p>Even the rudder begs direction;</p>\n<p>Yet quietly my captain awaits my silence.</p>\n<p>And these my mariners, who have heard the choir of the greater sea, they too have heard me patiently.</p>\n<p>Now they shall wait no longer.</p>\n<p>I am ready.</p>\n<p>The stream has reached the sea, and once more the great mother holds her son against her breast.</p>\n</div>\n<div class=\"stanza\">\n<p>Fare you well, people of Orphalese.</p>\n<p>This day has ended.</p>\n<p>It is closing upon us even as the water-lily upon its own tomorrow.</p>\n<p>What was given us here we shall keep,</p>\n<p>And if it suffices not, then again must we come together and together stretch our hands unto the giver.</p>\n<p>Forget not that I shall come back to you.</p>\n<p>A little while, and my longing shall gather dust and foam for another body.</p>\n<p>A little while, a moment of rest upon the wind, and another woman shall bear me.</p>\n<p>Farewell to you and the youth I have spent with you.</p>\n<p>It was but yesterday we met in a dream.</p>\n<p>You have sung to me in my aloneness, and I of your longings have built a tower in the sky.</p>\n<p>But now our sleep has fled and our dream is over, and it is no longer dawn.</p>\n<p>The noontide is upon us and our half waking has turned to fuller day, and we must part.</p>\n<p>If in the twilight of memory we should meet once more, we shall speak again together and you shall sing to me a deeper song.</p>\n<p>And if our hands should meet in another dream we shall build another tower in the sky.</p>\n</div>\n<div class=\"stanza\">\n<p>So saying he made a signal to the seamen, and straightway they weighed anchor and cast the ship loose from its moorings, and they moved eastward.</p>\n<p>And a cry came from the people as from a single heart, and it rose into the dusk and was carried out over the sea like a great trumpeting.</p>\n<p>Only Almitra was silent, gazing after the ship until it had vanished into the mist.</p>\n<p>And when all the people were dispersed she still stood alone upon the sea-wall, remembering in her heart his saying,</p>\n<p>“A little while, a moment of rest upon the wind, and another woman shall bear me.”</p>\n</div>"}]};
+
+const CHAPTERS = BOOK_DATA.chapters;
+const TOTAL = CHAPTERS.length;
+
+let current = 0;
+let animating = false;
+let hideTimer = null;
+let controlsVisible = false;
+
+/* ── Render ── */
+function render(idx, direction) {
+  if (animating) return;
+  animating = true;
+
+  const view = document.getElementById('chapter-view');
+  const ch = CHAPTERS[idx];
+
+  view.classList.add('fading');
+
+  setTimeout(() => {
+    // Build chapter HTML
+    view.innerHTML = \`
+      <div class="chapter-title-area">
+        <div class="chapter-num">Chapter ${idx + 1} of ${TOTAL}</div>
+        <div class="chapter-title">${ch.title}</div>
+        <div class="chapter-rule"></div>
+      </div>
+      <div class="chapter-content">${ch.html}</div>
+    \`;
+
+    // Scroll back to top after content swap
+    view.scrollTop = 0;
+
+    // Update UI
+    document.getElementById('pos').textContent = \`${idx + 1} / ${TOTAL}\`;
+    document.getElementById('prev').disabled = idx === 0;
+    document.getElementById('next').disabled = idx === TOTAL - 1;
+    document.getElementById('progress-fill').style.width =
+      (idx / (TOTAL - 1) * 100) + '%';
+
+    // Chapter indicator at top
+    document.getElementById('ch-indicator').textContent = ch.title;
+
+    // Update theme dot active states
+    const dots = document.querySelectorAll('.theme-dot');
+    const curTheme = document.documentElement.dataset.theme;
+    dots.forEach(d => d.classList.toggle('active', d.dataset.t === curTheme));
+
+    // Save progress
+    try { localStorage.setItem('prophet-theater-chapter', idx); } catch(e) {}
+
+    view.classList.remove('fading');
+    animating = false;
+  }, 280);
+}
+
+function go(dir) {
+  if (animating) return;
+  const next = current + dir;
+  if (next < 0 || next >= TOTAL) return;
+  current = next;
+  render(current, dir);
+}
+
+/* ── Theme ── */
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  try { localStorage.setItem('prophet-theater-theme', t); } catch(e) {}
+  // Update active dot
+  document.querySelectorAll('.theme-dot').forEach(d =>
+    d.classList.toggle('active', d.dataset.t === t)
+  );
+}
+
+/* ── Controls auto-hide ── */
+function showControls() {
+  const ctrl = document.getElementById('controls');
+  const ind = document.getElementById('ch-indicator');
+  ctrl.classList.add('visible');
+  ind.classList.add('visible');
+  controlsVisible = true;
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(hideControls, 2000);
+}
+
+function hideControls() {
+  const ctrl = document.getElementById('controls');
+  const ind = document.getElementById('ch-indicator');
+  ctrl.classList.remove('visible');
+  ind.classList.remove('visible');
+  controlsVisible = false;
+}
+
+document.addEventListener('mousemove', showControls);
+document.addEventListener('touchstart', showControls, { passive: true });
+
+/* ── Click to advance (on stage, not controls) ── */
+document.getElementById('stage').addEventListener('click', function(e) {
+  // Don't advance if clicking on controls
+  if (e.target.closest('#controls')) return;
+  go(1);
+});
+
+/* ── Keyboard navigation ── */
+document.addEventListener('keydown', e => {
+  showControls();
+  if (e.key === 'ArrowRight' || e.key === 'j' || e.key === ' ') {
+    e.preventDefault();
+    go(1);
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'k') {
+    e.preventDefault();
+    go(-1);
+  }
+  // Number keys 1-9 for quick chapter jump
+  if (e.key >= '1' && e.key <= '9') {
+    const idx = parseInt(e.key) - 1;
+    if (idx < TOTAL) { current = idx; render(current, 1); }
+  }
+});
+
+/* ── Touch swipe ── */
+let touchStartX = 0;
+let touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  // Only trigger horizontal swipes
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    go(dx < 0 ? 1 : -1);
+  }
+}, { passive: true });
+
+/* ── Init ── */
+(function init() {
+  // Restore theme
+  try {
+    const savedTheme = localStorage.getItem('prophet-theater-theme');
+    if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+  } catch(e) {}
+
+  // Restore chapter position (from URL hash or localStorage)
+  let startIdx = 0;
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const n = parseInt(hash);
+    if (!isNaN(n) && n >= 1 && n <= TOTAL) startIdx = n - 1;
+  } else {
+    try {
+      const saved = parseInt(localStorage.getItem('prophet-theater-chapter'));
+      if (!isNaN(saved) && saved >= 0 && saved < TOTAL) startIdx = saved;
+    } catch(e) {}
+  }
+
+  current = startIdx;
+  render(current, 1);
+
+  // Show controls briefly on load
+  showControls();
+})();
+</script>
+</body>
+</html>

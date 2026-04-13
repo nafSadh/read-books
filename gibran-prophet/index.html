@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prophet — Kahlil Gibran — read-rd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* ── Themes ── */
+[data-theme="light-purple"] {
+  --bg: #faf8f3; --bg2: #f2efe8; --text: #363b48; --dim: #65707a;
+  --bright: #141a1e; --accent: #7c3aed; --border: #d6d0c4;
+  --card-bg: #fff; --card-shadow: #00000008;
+  --quote-bg: #f2efe8; --quote-border: #7c3aed;
+  --spine: #7c3aed;
+}
+[data-theme="sepia"] {
+  --bg: #f5efe0; --bg2: #ede5d0; --text: #3a2e1e; --dim: #7a6a52;
+  --bright: #1a1008; --accent: #b45309; --border: #d4c8a8;
+  --card-bg: #faf4e8; --card-shadow: #00000010;
+  --quote-bg: #ede5d0; --quote-border: #b45309;
+  --spine: #b45309;
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff; --bg2: #f5f5f5; --text: #363b48; --dim: #65707a;
+  --bright: #141a1e; --accent: #2e6ab4; --border: #d6d0c4;
+  --card-bg: #fff; --card-shadow: #00000008;
+  --quote-bg: #f0f4fa; --quote-border: #2e6ab4;
+  --spine: #2e6ab4;
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a; --bg2: #222; --text: #dce0ec; --dim: #8490aa;
+  --bright: #f0f4ff; --accent: #9b7aed; --border: #333;
+  --card-bg: #222; --card-shadow: #00000030;
+  --quote-bg: #1e1e2e; --quote-border: #9b7aed;
+  --spine: #9b7aed;
+}
+[data-theme="dark-blue"] {
+  --bg: #000000; --bg2: #0a0a0a; --text: #8490aa; --dim: #546080;
+  --bright: #dce0ec; --accent: #2e6ab4; --border: #1c2440;
+  --card-bg: #0a0e18; --card-shadow: #00000040;
+  --quote-bg: #060a12; --quote-border: #2e6ab4;
+  --spine: #2e6ab4;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Jost', -apple-system, Helvetica Neue, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background .4s, color .4s;
+}
+
+/* ── Shell ── */
+.shell { max-width: 680px; margin: 0 auto; padding: 48px 24px 96px; }
+
+/* ── Header ── */
+.head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+.head-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.head-nav {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.head-nav a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.head-nav a:hover { text-decoration: underline; }
+.head h1 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--bright);
+  line-height: 1.15;
+  letter-spacing: .3px;
+}
+.head h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.head-byline {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--dim);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.head-rule {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  width: 50%;
+  opacity: .4;
+  margin-top: 14px;
+}
+.head-controls {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* ── Theme controls ── */
+.ctrl-btn {
+  width: 32px; height: 32px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.ctrl-btn:hover { color: var(--accent); border-color: var(--accent); }
+.theme-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  height: 32px;
+}
+.theme-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: transform .15s, box-shadow .15s;
+  flex-shrink: 0;
+}
+.theme-dot:hover { transform: scale(1.25); }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px currentColor; }
+.dot-lp  { background: #7c3aed; color: #7c3aed; }
+.dot-sep { background: #b45309; color: #b45309; }
+.dot-la  { background: #2e6ab4; color: #2e6ab4; }
+.dot-dv  { background: #9b7aed; color: #9b7aed; }
+.dot-db  { background: #2e6ab4; color: #2e6ab4; }
+
+/* ── Description ── */
+.description {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+.description em { color: var(--accent); font-style: italic; }
+
+/* ── Featured quote ── */
+.quote-block {
+  background: var(--quote-bg);
+  border-left: 3px solid var(--quote-border);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+.quote-text {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--bright);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.quote-source {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ── Section heading ── */
+.section-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 400;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Formats ── */
+.formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+.format-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: color .2s, border-color .2s, background .2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.format-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--bg2);
+}
+.format-link .fmt-icon {
+  font-size: 14px;
+  opacity: .7;
+}
+.format-link .fmt-name {
+  text-transform: uppercase;
+}
+.format-link .fmt-desc {
+  font-size: 9px;
+  opacity: .7;
+  letter-spacing: .5px;
+}
+.format-primary {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Chapter list ── */
+.chapter-list {
+  margin-bottom: 48px;
+}
+.chapter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+@media (max-width: 520px) {
+  .chapter-grid { grid-template-columns: 1fr; }
+}
+.chapter-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.chapter-item:hover { background: var(--bg2); }
+/* last row: remove bottom border */
+.chapter-item:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 520px) {
+  .chapter-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .chapter-item:last-child { border-bottom: none; }
+}
+/* if odd number of chapters, last item in a 2-col grid spans */
+.chapter-item.solo {
+  grid-column: 1 / -1;
+  border-bottom: none;
+}
+.ch-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  opacity: .7;
+  flex-shrink: 0;
+  min-width: 22px;
+}
+.ch-title {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 15.5px;
+  color: var(--text);
+  line-height: 1.3;
+}
+.ch-title em {
+  font-style: italic;
+  color: var(--dim);
+}
+
+/* ── Book metadata ── */
+.meta-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 20px 22px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+@media (max-width: 420px) {
+  .meta-block { grid-template-columns: 1fr; }
+}
+.meta-item {}
+.meta-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 3px;
+}
+.meta-value {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  color: var(--bright);
+}
+
+/* ── Footer ── */
+.footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.footer a { color: var(--accent); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Header -->
+  <header class="head">
+    <div class="head-nav">
+      <a href="../index.html">&#8592; lib.sadh.app</a>
+    </div>
+    <div class="head-top">
+      <div>
+        <h1><em>The</em> Prophet</h1>
+        <p class="head-byline">Kahlil Gibran &middot; 1923</p>
+        <div class="head-rule"></div>
+      </div>
+      <div class="head-controls">
+        <div class="theme-dots" role="group" aria-label="Theme">
+          <button class="theme-dot dot-lp active" data-theme="light-purple" title="Light Purple" aria-label="Light Purple"></button>
+          <button class="theme-dot dot-sep" data-theme="sepia" title="Sepia" aria-label="Sepia"></button>
+          <button class="theme-dot dot-la" data-theme="light-azure" title="Light Azure" aria-label="Light Azure"></button>
+          <button class="theme-dot dot-dv" data-theme="dark-violet" title="Dark Violet" aria-label="Dark Violet"></button>
+          <button class="theme-dot dot-db" data-theme="dark-blue" title="Dark Blue" aria-label="Dark Blue"></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Description -->
+  <p class="description">
+    <em>Almustafa</em>, the chosen and beloved, prepares to depart from <em>Orphalese</em>
+    after 12 years. As he waits for his ship, the people gather and ask him to speak his
+    truth. In 26&nbsp;discourses &mdash; on love, marriage, children, work, joy and sorrow,
+    and more &mdash; he delivers his timeless wisdom before sailing home.
+  </p>
+
+  <!-- Featured quote -->
+  <blockquote class="quote-block">
+    <p class="quote-text">&ldquo;Work is love made visible.&rdquo;</p>
+    <p class="quote-source">On Work &mdash; Chapter VII</p>
+  </blockquote>
+
+  <!-- Reading formats -->
+  <section class="formats-section">
+    <p class="section-head">Reading Formats</p>
+    <div class="formats">
+      <a href="reader.html" class="format-link format-primary">
+        <span class="fmt-icon">&#9656;</span>
+        <span class="fmt-name">Reader</span>
+      </a>
+      <a href="fullbleed.html" class="format-link">
+        <span class="fmt-icon">&#9633;</span>
+        <span class="fmt-name">Full Bleed</span>
+      </a>
+      <a href="illustrations.html" class="format-link">
+        <span class="fmt-icon">&#10070;</span>
+        <span class="fmt-name">Illustrations</span>
+      </a>
+      <a href="mobile.html" class="format-link">
+        <span class="fmt-icon">&#9635;</span>
+        <span class="fmt-name">Mobile</span>
+      </a>
+      <a href="theater.html" class="format-link">
+        <span class="fmt-icon">&#9670;</span>
+        <span class="fmt-name">Theater</span>
+      </a>
+      <a href="pdf-reader.html" class="format-link">
+        <span class="fmt-icon">&#9741;</span>
+        <span class="fmt-name">PDF Viewer</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Chapter list -->
+  <section class="chapter-list">
+    <p class="section-head">28 Chapters</p>
+    <div class="chapter-grid">
+      <div class="chapter-item"><span class="ch-num">I</span><span class="ch-title">The Coming of the Ship</span></div>
+      <div class="chapter-item"><span class="ch-num">II</span><span class="ch-title">On Love</span></div>
+      <div class="chapter-item"><span class="ch-num">III</span><span class="ch-title">On Marriage</span></div>
+      <div class="chapter-item"><span class="ch-num">IV</span><span class="ch-title">On Children</span></div>
+      <div class="chapter-item"><span class="ch-num">V</span><span class="ch-title">On Giving</span></div>
+      <div class="chapter-item"><span class="ch-num">VI</span><span class="ch-title">On Eating and Drinking</span></div>
+      <div class="chapter-item"><span class="ch-num">VII</span><span class="ch-title">On Work</span></div>
+      <div class="chapter-item"><span class="ch-num">VIII</span><span class="ch-title">On Joy and Sorrow</span></div>
+      <div class="chapter-item"><span class="ch-num">IX</span><span class="ch-title">On Houses</span></div>
+      <div class="chapter-item"><span class="ch-num">X</span><span class="ch-title">On Clothes</span></div>
+      <div class="chapter-item"><span class="ch-num">XI</span><span class="ch-title">On Buying and Selling</span></div>
+      <div class="chapter-item"><span class="ch-num">XII</span><span class="ch-title">On Crime and Punishment</span></div>
+      <div class="chapter-item"><span class="ch-num">XIII</span><span class="ch-title">On Laws</span></div>
+      <div class="chapter-item"><span class="ch-num">XIV</span><span class="ch-title">On Freedom</span></div>
+      <div class="chapter-item"><span class="ch-num">XV</span><span class="ch-title">On Reason and Passion</span></div>
+      <div class="chapter-item"><span class="ch-num">XVI</span><span class="ch-title">On Pain</span></div>
+      <div class="chapter-item"><span class="ch-num">XVII</span><span class="ch-title">On Self-Knowledge</span></div>
+      <div class="chapter-item"><span class="ch-num">XVIII</span><span class="ch-title">On Teaching</span></div>
+      <div class="chapter-item"><span class="ch-num">XIX</span><span class="ch-title">On Friendship</span></div>
+      <div class="chapter-item"><span class="ch-num">XX</span><span class="ch-title">On Talking</span></div>
+      <div class="chapter-item"><span class="ch-num">XXI</span><span class="ch-title">On Time</span></div>
+      <div class="chapter-item"><span class="ch-num">XXII</span><span class="ch-title">On Good and Evil</span></div>
+      <div class="chapter-item"><span class="ch-num">XXIII</span><span class="ch-title">On Prayer</span></div>
+      <div class="chapter-item"><span class="ch-num">XXIV</span><span class="ch-title">On Pleasure</span></div>
+      <div class="chapter-item"><span class="ch-num">XXV</span><span class="ch-title">On Beauty</span></div>
+      <div class="chapter-item"><span class="ch-num">XXVI</span><span class="ch-title">On Religion</span></div>
+      <div class="chapter-item"><span class="ch-num">XXVII</span><span class="ch-title">On Death</span></div>
+      <div class="chapter-item solo"><span class="ch-num">XXVIII</span><span class="ch-title">The Farewell</span></div>
+    </div>
+  </section>
+
+  <!-- Book metadata -->
+  <section>
+    <p class="section-head">About this Edition</p>
+    <div class="meta-block">
+      <div class="meta-item">
+        <div class="meta-label">Author</div>
+        <div class="meta-value">Kahlil Gibran</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">First Published</div>
+        <div class="meta-value">1923</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Source</div>
+        <div class="meta-value">Project Gutenberg</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Copyright Status</div>
+        <div class="meta-value">Public domain since 2019</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Structure</div>
+        <div class="meta-value">28 chapters of poetic prose</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Format</div>
+        <div class="meta-value">Self-contained HTML</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>Text from <a href="https://www.gutenberg.org/">Project Gutenberg</a></span>
+    <span>Part of <a href="https://lib.sadh.app">lib.sadh.app</a></span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const THEMES = ['light-purple', 'sepia', 'light-azure', 'dark-violet', 'dark-blue'];
+
+  function applyTheme(t) {
+    root.dataset.theme = t;
+    document.querySelectorAll('.theme-dot').forEach(d => {
+      d.classList.toggle('active', d.dataset.theme === t);
+    });
+    try { localStorage.setItem('prophet-index-theme', t); } catch (e) {}
+  }
+
+  // Restore saved theme
+  try {
+    const saved = localStorage.getItem('prophet-index-theme');
+    if (saved && THEMES.includes(saved)) applyTheme(saved);
+  } catch (e) {}
+
+  // Dot clicks
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.addEventListener('click', () => applyTheme(d.dataset.theme));
+  });
+})();
+</script>
+</body>
+</html>

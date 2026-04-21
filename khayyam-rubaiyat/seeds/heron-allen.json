@@ -1,0 +1,992 @@
+{
+  "source": "Project Gutenberg #38511 / Heron-Allen's Analysis of FitzGerald's 5th Edition",
+  "license": "public domain",
+  "count": 101,
+  "entries": [
+    {
+      "fg_5th_num": 1,
+      "source_lines": [
+        "The Sun casts the noose of morning upon the roofs,",
+        "Kai Khosru of the day, he throws a stone into the bowl:",
+        "Drink wine! for the Herald of the Dawn, rising up,",
+        "Hurls into the days the cry of \"Drink ye!\""
+      ],
+      "refs": "L. 235, B. 232, C. 134, P. 320, T. 138.--W. 233, V. 242."
+    },
+    {
+      "fg_5th_num": 2,
+      "source_lines": [
+        "There came one morning a cry from our tavern:",
+        "\"Ho! our crazy, tavern-haunting profligate[16]",
+        "\"Arise! that we may fill the measure with wine,",
+        "\"Ere they fill up our measure (of life).\""
+      ],
+      "refs": "L. 1, B. 1, C. 5, B. ii. 1, T. 3.--W. 1, N. 1, V. 1."
+    },
+    {
+      "fg_5th_num": 3,
+      "source_lines": [
+        "It is the hour for the morning draught, and the cock-crow, O Saki,",
+        "Here are we, and the wine, and the street of the vintners, O Saki,",
+        "What time is this for devotions? Be silent, O Saki,",
+        "Let be the traditions,[18] and drink to the dregs, O Saki."
+      ],
+      "refs": "L. 685, B. 676, C. 461, S.P. 448, B. ii. 599.--W. 483, N. 454, V. 737.",
+      "note": "(composite: 4 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 4,
+      "source_lines": [
+        "Now that there is a possibility of happiness for the world,",
+        "Every living heart[19] has yearnings towards the desert,",
+        "Upon every bough is the appearance of Moses' hand,",
+        "In every breeze is the exhalation of Jesus' breath.[20]"
+      ],
+      "refs": "P. 194, O. 13.--W. 116.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 5,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 6,
+      "source_lines": [
+        "It is a pleasant day, and the weather is neither hot nor cold;",
+        "The rain has washed the dust from the faces of the roses;",
+        "The nightingale in the Pehlevi tongue[25] to the yellow[26] rose",
+        "Cries ever: \"Thou must drink wine!\""
+      ],
+      "refs": "O. 67, L. 291, B. 287, S.P. 153, P. 230.--W. 174, N. 153, V. 294."
+    },
+    {
+      "fg_5th_num": 7,
+      "source_lines": [
+        "Every day I resolve to repent in the evening,",
+        "Repenting of the brimful goblet, and the cup;",
+        "(But) now that the season of roses has come, I cannot grieve,",
+        "Give penitence for repentance[27] in the season of roses, O Lord!"
+      ],
+      "refs": "C. 431, L. 655, B. 647, B. ii. 510.--W. 425, V. 704.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 8,
+      "source_lines": [
+        "Since life passes; what is Baghdad and what is Balkh?",
+        "When the cup is full, what matter if it be sweet or bitter?[29]",
+        "Drink wine, for often, after thee and me, this moon",
+        "Will pass on from the last day of the month to the first, and from the first to the last."
+      ],
+      "refs": "O. 47, L. 299, B. 226, C. 123, S.P. 105, P. 51, T. 99.--W. 134, N. 105, E.C. 2, V. 236.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 9,
+      "source_lines": [
+        "Sit in the shade of the rose, for, by the wind, many roses",
+        "Have been scattered to earth and have become dust."
+      ],
+      "refs": "O. 135, L. 671, B. 663, S.P. 366, B. ii. 483, T. 277.--W. 414, N. 370, V. 720.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 10,
+      "source_lines": [
+        "The cup is a hundred times better than the kingdom of Feridun,[33]",
+        "The tile that covers the jar is better than the crown of Kai Khosru."
+      ],
+      "refs": "O. 136, L. 650, B. 642, S.P. 378, P. 246, B. ii. 511, P. v. 178.--N. 382, V. 609.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 11,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 12,
+      "source_lines": [
+        "If a loaf of wheaten bread be forthcoming,",
+        "A gourd of wine, and a thigh-bone of mutton,",
+        "And then, if thou and I be sitting in the wilderness,--",
+        "That were a joy not within the power of any Sultan."
+      ],
+      "refs": "O. 155, C. 474, L. 697, B. 688, S.P. 442, P. 229, B. ii. 591. T. 292, P. iv. 24, P. v. 109.--W. 479, N. 448, V. 749.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 13,
+      "source_lines": [
+        "They say that the Garden of Eden is pleasant with houris:",
+        "_I_ say that the juice of the grape is pleasant.",
+        "Hold fast this cash and keep thy hand from that credit,",
+        "For the noise of drums, brother, is pleasant from afar."
+      ],
+      "refs": "O. 34, C. 51, L. 95, B. 91, P. iii. 3, P. 323, P. v. 36.--W. 108, V. 95.",
+      "note": "(composite: 4 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 14,
+      "source_lines": [
+        "The rose said: I brought a gold-scattering hand,",
+        "Laughing, laughing, have I blown into the world,",
+        "I snatched the noose-string from off the head of my purse and I am gone!",
+        "I flung into the world all the ready money that I had."
+      ],
+      "refs": "C. 383 _only_."
+    },
+    {
+      "fg_5th_num": 15,
+      "source_lines": [
+        "Ere that fate makes an attack upon thy head",
+        "Give orders that they bring thee rose-coloured wine;",
+        "Thou art not treasure, O heedless dunce! that thee",
+        "They hide in the earth and then dig up again.[39]"
+      ],
+      "refs": "O. 68, C. 151, L. 277, B. 273, S.P. 156, P. 336, P. v. 11.--W. 175, N. 156, E.C. 31, V. 281."
+    },
+    {
+      "fg_5th_num": 16,
+      "source_lines": [
+        "O heart! Suppose all this world's affairs were within your power,",
+        "And the whole world from end to end as you desire it,",
+        "And then, like snow in the desert, upon its surface",
+        "Resting for two or three days, understand yourself to be gone!"
+      ],
+      "refs": "C. 266, L. 420, B. 416, P. 144, B. ii. 260, T. 168.--V 443."
+    },
+    {
+      "fg_5th_num": 17,
+      "source_lines": [
+        "This worn caravanserai which is called the world",
+        "Is the resting-place of the piebald horse of night and day;",
+        "It is a pavilion which has been abandoned by an hundred Jamshyds;",
+        "It is a palace that is the resting-place of an hundred Bahrams.[40]"
+      ],
+      "refs": "C. 95, L. 203, B. 200, S.P. 67, P. 120, B. ii. 42, T. 79 and 357.--W. 70, N. 67, V. 199."
+    },
+    {
+      "fg_5th_num": 18,
+      "source_lines": [
+        "In that palace where Bahram grasped the wine-cup;",
+        "The foxes whelp, and the lions take their rest;",
+        "Bahram who was always catching (_gur_) wild asses,--",
+        "To-day behold that the (_gur_) grave has caught Bahram."
+      ],
+      "refs": "C. 99, L. 210, B. 207, S.P. 69, P. 48 and 139, B. ii. 51, T. 82 and 294, P. iv. 12, P. v. 156.--W. 72, N. 69, V. 205."
+    },
+    {
+      "fg_5th_num": 19,
+      "source_lines": [
+        "Everywhere that there has been a rose or tulip bed,",
+        "It has come from the redness of the blood of a king;",
+        "Every violet shoot that grows from the earth",
+        "Is a mole[41] that was (once) upon the cheek of a beauty."
+      ],
+      "refs": "O. 43, C. 47, L. 110, B. 106, B. ii. 105, T. 304, P. v. 159.--W. 104, E.C. 4, V. 109."
+    },
+    {
+      "fg_5th_num": 20,
+      "source_lines": [
+        "All verdure that grows upon the margin of a stream,",
+        "You may say, grows from the lip of one angel-natured;",
+        "Beware not to set foot contemptuously upon the verdure,",
+        "For that verdure grows from the clay of one tulip-cheeked."
+      ],
+      "refs": "C. 44, L. 62, B. 59, S.P. 59, P. 64, T. 349, P. iv. 20.--W. 62, N. 59, V. 61."
+    },
+    {
+      "fg_5th_num": 21,
+      "source_lines": [
+        "Come, O friend! and let us not suffer anguish concerning the morrow.",
+        "Let us take advantage of these few ready-money moments,",
+        "When, to-morrow, we depart from the face of the earth",
+        "We shall be equal with those who went seven thousand years ago."
+      ],
+      "refs": "C. 348, L. 546, B. 540, S.P. 268, P. 122, B. ii. 351, T. 233, P. v. 96.--W. 312, N. 269, V. 586."
+    },
+    {
+      "fg_5th_num": 22,
+      "source_lines": [
+        "All my sympathetic friends have left me,",
+        "One by one they have sunk low at the foot of Death.",
+        "In the fellowship of souls they were cup-companions,",
+        "A turn or two before me they became drunk."
+      ],
+      "refs": "C. 185, L. 381, B. 377, P. ii. 4, B. ii. 141.--W. 219, V. 379."
+    },
+    {
+      "fg_5th_num": 23,
+      "source_lines": [
+        "Arise, and do not sorrow for this fleeting world,",
+        "Be at peace, and pass through the world with happiness.",
+        "If the nature of the world were constant",
+        "The turn of others would not have descended to you yourself.[42]"
+      ],
+      "refs": "C. 388, L. 585, B. 578, S.P. 322, P. 159 and 178, B. ii. 430, T. 264, P. iv. 29 and 62.--W. 366, N. 325, V. 632.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 24,
+      "source_lines": [
+        "Do not allow sorrow to embrace thee,",
+        "Nor an idle grief to occupy thy days,",
+        "Forsake not the book and the lover's lips and the green bank of the field,",
+        "Ere that the earth enfold thee in its bosom."
+      ],
+      "refs": "O. 76, C. 173, L. 315, B. 311, P. 189, B. ii. 233, T. 121, P. v. 39.--de T. 9, V. 317.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 25,
+      "source_lines": [
+        "Some are immersed in contemplation of doctrine and faith,",
+        "Others stand stupefied between doubt and certainty,",
+        "Suddenly a Muezzin, from his lurking place, cries out",
+        "\"O Fools! the Road[43] is neither here nor there.\""
+      ],
+      "refs": "C. 396, L. 591, B. 584, S.P. 324, P. iii. 6, P. 65.--W. 376, N. 337, V. 638."
+    },
+    {
+      "fg_5th_num": 26,
+      "source_lines": [
+        "Those, O Saki, who have gone before us,",
+        "Have fallen asleep, O Saki, in the dust (or _khwab_ sleep) of self-esteem,",
+        "Go thou and drink wine, and hear the truth from me,",
+        "Whatever they have said, O Saki, is but wind!"
+      ],
+      "refs": "O. 140, C. 453, L. 687, B. 678, S.P. 380, P. 260, B. ii. 525, T. 279, P. v. 22.--W 428, N. 384, V. 739.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 27,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 28,
+      "source_lines": [
+        "For a while, when young, we frequented a teacher,",
+        "For a while we were contented with our proficiency;",
+        "Behold the end of the discourse:--what happened to us?",
+        "We came like water and we went like wind."
+      ],
+      "refs": "O. 121, L. 544, B. 538, B. ii. 420, P. v. 99.--W 353, V. 584.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 29,
+      "source_lines": [
+        "He first brought me in confusion into existence,",
+        "What do I gain from my life save my amazement at it?",
+        "We went away against our will, and we know not what was",
+        "The purpose of this coming, and going, and being."
+      ],
+      "refs": "C. 235, L. 324, B. 320, S.P. 117, T. 153.--W. 145, N. 117, V. 326.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 30,
+      "source_lines": [
+        "Seeing that my coming was not in my power at the Day of Creation,[47]",
+        "And that my undesired departure hence is a purpose fixed (for me),",
+        "Get up and gird well thy loins, O nimble cup-bearer,",
+        "For I will wash down the misery of the world in wine."
+      ],
+      "refs": "O. 21, C. 49, L. 94, B. 90, B. ii. 86, P. v. 123.--W. 110, V. 94.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 31,
+      "source_lines": [
+        "From the Nadir of the earthly globe, up to the Zenith of Saturn",
+        "I solved all the problems of heaven;",
+        "I escaped from the bondage of all trickery and deceit,",
+        "All obstacles were removed save only the Bond of Fate."
+      ],
+      "refs": "C. 314, L. 491, B. 487, B. ii. 338, T. 215.--W. 303, V. 531."
+    },
+    {
+      "fg_5th_num": 32,
+      "source_lines": [
+        "Neither thou nor I know the secret of Eternity,",
+        "And neither thou nor I can de-cypher this riddle;",
+        "There is a talk behind the Curtain[48] of me and thee",
+        "But when the Curtain falls neither thou nor I are there."
+      ],
+      "refs": "C. 387, L. 581, B. 574, P. 33, B. ii. 421, T. 260.--W. 389, V. 628.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 33,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 34,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 35,
+      "source_lines": [
+        "In great desire I pressed my lips to the lip of the jar,",
+        "To enquire from it how long life might be attained;",
+        "It joined its lip to mine and whispered,",
+        "\"Drink wine! for to this world thou returnest not.\""
+      ],
+      "refs": "O. 100, C. 283, L. 446, B. 442, P. 99, B. ii. 303, T. 185, P. v. 193.--W. 274, E.C. 25, V. 482.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 36,
+      "source_lines": [
+        "This jug was once a plaintive lover, as I am,",
+        "And was in pursuit of one of comely face;[50]",
+        "This handle that thou seest upon its neck",
+        "Is an arm that once lay around the neck of a friend."
+      ],
+      "refs": "O. 9, C. 48 and 426, L. 81, B. 77, S.P. 28, P. 108, B. ii. 28, P. v. 142.--W. 32, N. 28, E.C. 5, V. 80."
+    },
+    {
+      "fg_5th_num": 37,
+      "source_lines": [
+        "I saw a potter in the bazaar yesterday,",
+        "He was violently pounding some fresh clay,",
+        "And that clay said to him in mystic language,",
+        "\"I was once like thee--so treat me well.\""
+      ],
+      "refs": "O. 89, C. 261, L. 411, B. 407, S.P. 210, P. 100, B. ii. 274, P. iv. 71, P. v. 198.--W. 252, N. 211, V. 434."
+    },
+    {
+      "fg_5th_num": 38,
+      "source_lines": [
+        "I pondered over the workshop of a potter;",
+        "In the shadow of the wheel I saw that the master, with his feet,",
+        "Made handles and covers for goblets and jars,",
+        "Out of the skulls of kings and the feet of beggars."
+      ],
+      "refs": "C. 475, L. 698, B. 689, S.P. 426, P. 103, B. ii. 576.--W. 466, N. 431, V. 750.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 39,
+      "source_lines": [
+        "Every draught that the Cup-bearer scatters upon the earth",
+        "Quenches the fire of anguish in some burning eye."
+      ],
+      "refs": "O. 81, C. 180, L. 367, B. 363, S.P. 188, P. 231, B. ii. 241, P. v. 187.--W. 203, N. 188, V. 366."
+    },
+    {
+      "fg_5th_num": 40,
+      "source_lines": [
+        "Like a tulip in the spring uplift your cup;",
+        "If you get a (happy) opportunity with a moon-faced one,",
+        "Drink wine with cheerfulness, for this worn-out sky",
+        "Will suddenly invert you to the level of the earth."
+      ],
+      "refs": "C. 37, L. 136, B. 133, S.P. 39, B. ii. 84, T. 40 and 311.--W 44, N. 40, V. 135."
+    },
+    {
+      "fg_5th_num": 41,
+      "source_lines": [
+        "Set limits to thy desire for worldly things and live content,",
+        "Sever the bonds of thy dependence upon the good and bad of life,",
+        "Take wine in hand and (play with) the curls of a loved one; for quickly",
+        "All passeth away--and these few days will not remain."
+      ],
+      "refs": "O. 73, C. 179, L. 256, B. 253, S.P. 176.--W. 191, N. 176, V. 262.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 42,
+      "source_lines": [
+        "Khayyam, if thou art drunk with wine,[52] be happy,",
+        "If thou reposest with one tulip-cheeked, be happy,",
+        "Since the end of all things is that thou wilt be naught,",
+        "Whilst thou art, imagine that thou art not--be happy!"
+      ],
+      "refs": "O. 102, C. 291, L. 454, B. 450, S.P. 241, P. 202, B. ii. 322, T. 192 and 296, P. iv. 26, P. v. 5.--W. 282, N. 242, V. 493.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 43,
+      "source_lines": [
+        "In the circle of the firmament, whose depths are invisible,",
+        "There is a cup which, in due time, they will cause all to drink;",
+        "When thy turn comes, do not utter lamentations,",
+        "Drink wine gaily for it has come to be thy turn."
+      ],
+      "refs": "C. 256, L. 408, B. 404, B. ii. 273.--W. 254, V. 431."
+    },
+    {
+      "fg_5th_num": 44,
+      "source_lines": [
+        "Oh Soul! if thou canst purify thyself from the dust of the body,",
+        "Thou, naked spirit, canst soar in the heavens,",
+        "The Empyrean is thy sphere--let it be thy shame,",
+        "That thou comest and art a dweller within the confines of earth.[54]"
+      ],
+      "refs": "O. 145, C. 447, L. 707, B. 697, S.P. 389, P. 111, B. ii. 523.--W. 436, N. 394, E.C. 7, V. 759."
+    },
+    {
+      "fg_5th_num": 45,
+      "source_lines": [
+        "Khayyam! thy body surely resembles a tent;",
+        "The soul is a Sultan and the halting-place is the perishable world,",
+        "The ferrash of fate, preparing for the next halting-place,",
+        "Will overthrow this tent when the Sultan has arisen.[55]"
+      ],
+      "refs": "C. 110, L. 100, B. 96, S.P. 80, B. ii. 95, T. 86, P. v. 172.--W. 82, N. 80, V. 100."
+    },
+    {
+      "fg_5th_num": 46,
+      "source_lines": [
+        "Khayyam! although the pavilion of heaven",
+        "Has spread its tent and closed the door upon all discussion,",
+        "In the goblet of existence, like bubbles of wine",
+        "The Eternal Saki brings to light a thousand Khayyams."
+      ],
+      "refs": "N. 137,[56] W. 161, V. 397."
+    },
+    {
+      "fg_5th_num": 47,
+      "source_lines": [
+        "Know this--that from thy soul thou shalt be separated,",
+        "Thou shalt pass behind the Curtain of the Secrets of God."
+      ],
+      "refs": "O. 26, C. 83, L. 192, B. 189, S.P. 85, B. ii. 110, T. 64, P. v. J 34.--W. 87, N. 85, V. 188.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 48,
+      "source_lines": [
+        "This caravan of life passes by mysteriously;",
+        "Mayest thou seize the moment that passes happily!",
+        "Cup-bearer, why grieve about the to-morrow of thy patrons?[58]",
+        "Give us a cup of wine, for the night wanes."
+      ],
+      "refs": "O. 60, C. 135, L. 245, B. 242, P. 223, S.P. 106, B. ii. 146, T. 139.--W. 136, N. 106, V. 251.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 49,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 50,
+      "source_lines": [
+        "Oh Boy! since thou art learned in all secrets,",
+        "Why grieve so much after vain cares?",
+        "If things will not shape themselves according to thy desire,",
+        "At any rate be happy in this moment of thy existence."
+      ],
+      "refs": "C. 482, L. 714, B. 703, S.P. 414, B. ii. 560.--W. 458, N. 419, V. 766.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 51,
+      "source_lines": [
+        "That Moon which is by nature skilled in metamorphosis",
+        "Is sometimes animal and sometimes vegetable,",
+        "Do not imagine that it will become non-existent--away with thought!",
+        "It is always possessed of its essence though its qualities cease to be.[60]"
+      ],
+      "refs": "C. 72, L. 179, B. 176, S.P. 73, B. ii. 31, T. 51.--W. 75, N. 73, V. 175.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 52,
+      "source_lines": [
+        "Hidden sometimes thou shewest thy face to none,",
+        "Sometimes thou appearest in the forms of created beings,",
+        "Thou exhibitest this spectacle to thyself.",
+        "Thou art thyself both the real thing seen and the spectator."
+      ],
+      "refs": "C. 479, L. 705, B. 695, S.P. 437.--W. 475, N. 443, V. 757."
+    },
+    {
+      "fg_5th_num": 53,
+      "source_lines": [
+        "If the heart understood the secret of existence as it _is_,",
+        "In death it would know all the secrets of God:",
+        "If to-day thou knowest nothing, being _with_ thyself,",
+        "What wilt thou know to-morrow when thou abandonest thyself?"
+      ],
+      "refs": "C. 24, L. 78, B. 74, S.P. 49, P. 85, B. ii. 106, T. 25.--W. 52, N. 49. V. 77."
+    },
+    {
+      "fg_5th_num": 54,
+      "source_lines": [
+        "Those who are the slaves of intellect and hair-splitting,[61]",
+        "Have perished in bickerings about existence and non-existence;",
+        "Go, thou dunce! and choose (rather) grape juice,",
+        "For the ignorant from (eating) dry raisins, have become (like) unripe grapes (themselves).[62]"
+      ],
+      "refs": "O. 50, L. 262, T. 102, P. v. 164.--W. 216, V. 267.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 55,
+      "source_lines": [
+        "I will fill a one-maund goblet with wine,",
+        "I will enrich myself with two half-maunds of wine:",
+        "First I will thrice pronounce the divorce from learning and faith,[64]",
+        "And then I will take the daughter of the vine[65] to spouse."
+      ],
+      "refs": "C. 175, L. 267, B. 263, P. 288, P. v. 209.--V. 271."
+    },
+    {
+      "fg_5th_num": 56,
+      "source_lines": [
+        "I know the outwardness of existence and non-existence,[66]",
+        "I know the inwardness of all that is high and low;",
+        "Nevertheless let me be ashamed of[67] my own knowledge",
+        "If I recognise any degree higher than drunkenness."
+      ],
+      "refs": "O. 120, L. 523, B. 518, S.P. 299, P. 265, B. ii. 409, P. v. 38.--W. 336, N. 300, V. 563."
+    },
+    {
+      "fg_5th_num": 57,
+      "source_lines": [
+        "My enemies erroneously have called me a philosopher,[68]",
+        "God knows I am not what they have called me;",
+        "But, as I have come into this nesting place of sorrow,",
+        "In the end I am in a still worse plight, for I know not who I am."
+      ],
+      "refs": "C. 381, L. 580, B. 573, B. ii. 383, T. 259.--W. 350, V. 619.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 58,
+      "source_lines": [
+        "Yesterday, whilst drunk, I was passing a tavern,",
+        "I saw a drunken old man bearing a vessel on his shoulder.",
+        "I said, \"Old man, does not God make thee ashamed?\"",
+        "He replied, \"God is merciful, go, drink wine!\""
+      ],
+      "refs": "C. 297, L. 462, B. 458, S.P. 243, P. 278, T. 197.--W. 284, N. 244, V. 501."
+    },
+    {
+      "fg_5th_num": 59,
+      "source_lines": [
+        "Drink wine, that will banish thine abundant woes.",
+        "And will banish thought of the Seventy-two Sects;",
+        "Avoid not the Alchemist,[70] from whom",
+        "Thou takest one draught, and he banishes a thousand calamities."
+      ],
+      "refs": "O. 77, C. 165, L. 305, B. 301, S.P. 179, P. 283, T. 112, P. v. 152.--W. 194, V. 308."
+    },
+    {
+      "fg_5th_num": 60,
+      "source_lines": [
+        "Praise be to God! thou realizest that wine",
+        "Is a juice that frees thy heart from a hundred pains."
+      ],
+      "refs": "O. 81, C. 180, L. 367, B. 363, S.P. 188, P. 231, B. ii. 241, P. v. 187.--W. 203, N. 188, V. 366."
+    },
+    {
+      "fg_5th_num": 61,
+      "source_lines": [
+        "I drink wine, and everyone drinks who, like me, is worthy of it;",
+        "My wine-drinking is but a small thing to Him;",
+        "God knew on the Day of Creation, that I should drink wine;",
+        "If I do not drink wine God's knowledge would be ignorance."
+      ],
+      "refs": "O. 75, C. 202, L. 356, B. 352, S.P. 182, P. 324, B. ii. 234, T. 129, P. v. 181.--W. 197, N. 182, V. 355."
+    },
+    {
+      "fg_5th_num": 62,
+      "source_lines": [
+        "They say, \"Do not drink wine for thou wilt suffer for it,",
+        "On the Day of Rewards thou wilt be cast into the fire.\"",
+        "That is so; but what is worth both the worlds",
+        "Is the moment when thou art elated with wine."
+      ],
+      "refs": "C. 505, L. 748, B. 734, P. 250, B. ii. 587.--V. 800.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 63,
+      "source_lines": [
+        "Take care that thou tellest not this hidden secret to anyone",
+        "The tulips that are withered will never bloom again."
+      ],
+      "refs": "O. 35, C. 80, L. 188, B. 185, P. 284, T. 60.--W. 107, V. 184."
+    },
+    {
+      "fg_5th_num": 64,
+      "source_lines": [
+        "I have travelled far in a wandering by valley and desert,",
+        "It came to pass I wandered in all quarters of the world,",
+        "I have not heard from anyone who came from that road,",
+        "The road he has travelled, no traveller travels again."
+      ],
+      "refs": "C. 36, L. 57, B. 54. T. 39.--W. 129, V. 56.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 65,
+      "source_lines": [
+        "Those who have become oceans of excellence and cultivation,",
+        "And from the collection of their perfections have become lights of their fellows,",
+        "Have not made a road out of this dark night,",
+        "They have told a fable and have gone to sleep."
+      ],
+      "refs": "C. 127, L. 261, B. 258, P. 86, T. 101.--W. 209, N. 464, V. 266."
+    },
+    {
+      "fg_5th_num": 66,
+      "source_lines": [
+        "Already on the Day of Creation, beyond the heavens, my soul",
+        "Searched for the Tablet and Pen, and for heaven and hell,",
+        "At last the Teacher said to me with His enlightened judgment,",
+        "\"Tablet and Pen, and heaven and hell, are within thyself.\"[71]"
+      ],
+      "refs": "O. 15, L. 59, B. 56, P. 114, B. ii. 69, P. v. 79--W. 114, V. 58."
+    },
+    {
+      "fg_5th_num": 67,
+      "source_lines": [
+        "The heavenly vault is a girdle (cast) from my weary body.",
+        "Jihun[72] is a water-course worn by my filtered tears,",
+        "Hell is a spark from my useless worries,",
+        "Paradise is a moment of time when I am tranquil."
+      ],
+      "refs": "O. 33, C. 90, L. 199, B. 196, S.P. 90, P. 148, T. 70, P. v. 183.--W. 92, N. 90, V. 195."
+    },
+    {
+      "fg_5th_num": 68,
+      "source_lines": [
+        "This vault of heaven beneath which we stand bewildered,",
+        "We know to be a sort of magic-lantern:[73]",
+        "Know thou that the sun is the flame and the universe is the lamp,",
+        "We are like figures that revolve in it."
+      ],
+      "refs": "O. 108, C. 332, L. 505, B. 501, S.P. 266, P. 40, B. ii. 356, P. iv. 34.--W. 310, N. 267, E.C. 28, de T. 10, V. 545."
+    },
+    {
+      "fg_5th_num": 69,
+      "source_lines": [
+        "To speak plain language, and not in parables,",
+        "We are the pieces and heaven plays the game,",
+        "We are played together in a baby-game upon the chess-board of existence,",
+        "And one by one we return to the box of non-existence."
+      ],
+      "refs": "O. 94, C. 280, L. 443, B. 439, S.P. 230, P. 31, B. ii. 291, T. 183, P. v. 10.--W. 270, N. 231, E.C. 27, V. 480."
+    },
+    {
+      "fg_5th_num": 70,
+      "source_lines": [
+        "O thou who art driven like a ball by the mallet of Fate,",
+        "Go to the right or take the left, but say nothing;[74]",
+        "For He who set thee running and galloping",
+        "He knows, he knows, he knows, he----."
+      ],
+      "refs": "C. 422, L. 633, B. 625, P. 167, B. ii. 462, T. 274.--W. 401, V. 682."
+    },
+    {
+      "fg_5th_num": 71,
+      "source_lines": [
+        "From the beginning[75] was written what shall be;",
+        "Unhaltingly the Pen (writes) and is heedless of good and bad;",
+        "On the First Day He appointed everything that must be--",
+        "Our grief and our efforts are vain."
+      ],
+      "refs": "O. 31, C. 87, L. 195, B. 192, S.P. 31, B. ii. 60, T. 67, P. v. 211.--W. 35, N. 31, V. 191."
+    },
+    {
+      "fg_5th_num": 72,
+      "source_lines": [
+        "This heavenly vault is like a bowl fallen upside down,",
+        "Under which all the wise have fallen helpless."
+      ],
+      "refs": "O. 134, C. 435, L. 657, B. 649, S.P. 360, P. 34, B. ii. 481, P. v. 154.--W. 408, N. 363, V. 706.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 73,
+      "source_lines": [
+        "Oh, heart! since, in this world, truth itself is hyperbole,",
+        "Why art thou so disquieted with this trouble and abasement?",
+        "Resign thy body to destiny and adapt thyself to the times,",
+        "For, what the Pen has written, it will not re-write for thy sake.[76]"
+      ],
+      "refs": "O. 95, L. 430, B. 426, S.P. 215, P. 59, B. ii. 292.--W. 257, N. 216, E.C. 15, V. 468."
+    },
+    {
+      "fg_5th_num": 74,
+      "source_lines": [
+        "Live happily, for without any importunity on thy part yesterday,",
+        "They appointed with certainty what thou wilt do to-morrow--yesterday!"
+      ],
+      "refs": "O. 152, C. 473, L. 702, B. ii. 564, P. v. 196.--W. 489, V. 754.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 75,
+      "source_lines": [
+        "On that day when they saddled the wild horses of the Sun,",
+        "And settled the laws of Parwin and Mushtari,[77]",
+        "This was the lot decreed for me from the Diwan of Fate:",
+        "How can I sin? (my sins) are what Fate allotted me as my portion."
+      ],
+      "refs": "C. 147, L. 286, B. 282, S.P. 110.--W. 140, N. 110, V. 289."
+    },
+    {
+      "fg_5th_num": 76,
+      "source_lines": [
+        "Since Eternity itself was He created me,",
+        "From the first he dictated to me the lesson of love,",
+        "At that time a small filing of the dust of my heart,",
+        "He made into a key of the treasure-house of substance.[78]"
+      ],
+      "refs": "C. 143, L. 311, B. 307, P. 81, T. 134.--V. 314."
+    },
+    {
+      "fg_5th_num": 77,
+      "source_lines": [
+        "If I talk of the mystery with Thee in a tavern,",
+        "It is better than if I make my devotions before the Mihrab[79] without Thee.",
+        "O Thou, the first and last of all created beings,",
+        "Burn me an Thou wilt, cherish me an Thou wilt."
+      ],
+      "refs": "O. 2, C. 272, L. 427, B. 423, S.P. 221, P. 7, B. ii. 294, T. 172.--W. 262, N. 222, V. 465."
+    },
+    {
+      "fg_5th_num": 78,
+      "source_lines": [
+        "God, when he fashioned the clay of my body,",
+        "Knew by my making what would come of it;",
+        "(Since) there is no sin of mine without his order",
+        "Why should he seek to burn me at the Day of Resurrection?"
+      ],
+      "refs": "C. 85, L. 194, B. 191, S.P. 99, P. 18, T. 66.--W. 100, N. 99, V. 190.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 79,
+      "source_lines": [
+        "When they mixed the earth of my shaping-mould,",
+        "They produced an hundred wonders from me;[81]",
+        "I cannot be better than I am,",
+        "For this is how I was turned out of the crucible."
+      ],
+      "refs": "C. 201, L. 355, B. 351, T. 128.--W. 221, V. 354."
+    },
+    {
+      "fg_5th_num": 80,
+      "source_lines": [
+        "In a thousand places on the road I walk, Thou placest snares,",
+        "Thou say'st \"I will catch thee if thou settest foot in them,\"",
+        "In no smallest thing is the world independent of Thee,",
+        "Thou orderest all things, and (yet) callest me rebellious!"
+      ],
+      "refs": "O. 148, B. ii. 546.--W. 432, N. 390."
+    },
+    {
+      "fg_5th_num": 81,
+      "source_lines": [
+        "I am a disobedient slave, where is Thy mercy?",
+        "My heart is dark, where is Thy light and clearness?",
+        "If, for serving Thee, Thou givest me heaven,",
+        "This a reward, but Thy grace and Thy gifts--where are they?"
+      ],
+      "refs": "C. 115, L. 217, B. 214, S.P. 91, P. 23.--W. 93, N. 91, V. 211.",
+      "note": "(composite: 3 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 82,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 83,
+      "source_lines": [
+        "I went last night into the workshop of a potter,",
+        "I saw two thousand pots, some speaking, and some silent;",
+        "Suddenly one of the pots cried out aggressively:--",
+        "\"Where are the pot-maker, and the pot-buyer, and the pot-seller?\""
+      ],
+      "refs": "O. 103, C. 301, L. 470, B. 466, S.P. 242, P. 102, B. ii. 323, T. 202 and 297, P. v. 37.--W. 283, N. 243, E.C. 26, V. 509.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 84,
+      "source_lines": [
+        "There is a cup which wisdom loud acclaims,",
+        "And for its beauty gives it a hundred kisses on the brow,",
+        "Such a sweet cup, this Potter of the World",
+        "Makes, and then shatters it upon the ground."
+      ],
+      "refs": "C. 293, L. 456, B. 452, B. ii. 321, T. 194.--W. 290, V. 495."
+    },
+    {
+      "fg_5th_num": 85,
+      "source_lines": [
+        "The elements of a cup which he has put together,",
+        "Their breaking up a drinker cannot approve;[84]",
+        "All these heads and feet--with his finger-tips,",
+        "For love of whom did he make them?--for hate of whom did he break them?"
+      ],
+      "refs": "O. 19, C. 64, L. 40, S.P. 37, P. ii. 7, P. 95, B. ii. 77, T. 309.--W. 42, N. 38, V. 220."
+    },
+    {
+      "fg_5th_num": 86,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 87,
+      "source_lines": null,
+      "refs": ""
+    },
+    {
+      "fg_5th_num": 88,
+      "source_lines": [
+        "Since the Director set in order the elements of natures,",
+        "For what cause does He again disperse them into loss and deficiency?",
+        "If they are good, why should He break them?",
+        "And if they turn out bad, well, why is there any blame to these forms?"
+      ],
+      "refs": "C. 69, L. 103, B. 99, P. 94, B. ii. 107.--W. 126, V. 103.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 89,
+      "source_lines": [
+        "At that moment when the plant of my existence shall be rooted up,",
+        "And its branches scattered in all directions;",
+        "If then they make a flagon of my clay,",
+        "When they fill it with wine it will live again."
+      ],
+      "refs": "C. 188, S.P. 115.--N. 115.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 90,
+      "source_lines": [
+        "The month of Ramazan passes and Shawwal comes,",
+        "The season of increase, and joy, and storytellers comes;",
+        "Now comes that time when \"Bottles upon the shoulder!\"",
+        "They say--for the porters come and are back to back.[86]"
+      ],
+      "refs": "O. 158.--W. 218."
+    },
+    {
+      "fg_5th_num": 91,
+      "source_lines": [
+        "When I am dead wash me with wine,",
+        "Say my funeral service with pure wine,",
+        "If thou wishest that thou shouldst see me on the resurrection-day",
+        "Thou must seek me in the earth of the tavern threshold."
+      ],
+      "refs": "C. 12, L. 13, B. 12, S.P. 7, P. 299, B. ii. 9, T. 12.--W 6, N. 7, V. 11",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    },
+    {
+      "fg_5th_num": 92,
+      "source_lines": [
+        "I will drink so much wine that this aroma of wine",
+        "Shall rise from the earth when I am beneath it;",
+        "So that when a drinker shall pass above my body,",
+        "He shall become drunk and degraded from the aroma of my potations."
+      ],
+      "refs": "C. 16, L. 28, B. 26, S.P. 14, B. ii. 11.--W. 17, N. 14, V. 27."
+    },
+    {
+      "fg_5th_num": 93,
+      "source_lines": [
+        "When my mood inclined to prayer and fasting,",
+        "I said that all my salvation was attained;",
+        "Alas! that those Ablutions[88] are destroyed by my pleasures,",
+        "And that Fast of mine is annulled by half a draught of wine."
+      ],
+      "refs": "C. 170, L. 366, B. 362, S.P. 162, P. 343, B. ii. 207, T. 118.--W. 180, N. 162, V. 365."
+    },
+    {
+      "fg_5th_num": 94,
+      "source_lines": [
+        "Every day I resolve to repent in the evening,",
+        "Making repentance of the brimful goblet and cup;",
+        "Now that the season of roses[89] has come, I cannot grieve",
+        "Give penitence for repentance in the season of roses, O Lord!"
+      ],
+      "refs": "C. 431, L. 655, B. 647 B. ii. 510.--W. 425, V. 704."
+    },
+    {
+      "fg_5th_num": 95,
+      "source_lines": [
+        "Although wine has rent my veil (of reputation),",
+        "So long as I have a soul I will not be separated from wine;",
+        "I am in perplexity concerning vintners, for they--",
+        "What will they buy that is better than what they sell?"
+      ],
+      "refs": "O. 62, C. 196, L. 350, B. 346, P. 311, B. ii. 167, T. 123, P. iv. 63, P. v. 202.--W. 208, N. 463, E.C. 11, V. 350."
+    },
+    {
+      "fg_5th_num": 96,
+      "source_lines": [
+        "Alas! that the book of youth is folded up?",
+        "And that this fresh purple spring is winter-stricken;[90]",
+        "That bird of joy, whose name is Youth,",
+        "Alas! I know not when it came nor when it went."
+      ],
+      "refs": "C. 223, L. 332, B. 328, S.P. 128, B. ii. 155, T. 161.--W. 155, N. 128, V. 334."
+    },
+    {
+      "fg_5th_num": 97,
+      "source_lines": [
+        "Oh! would that there were a place of repose,",
+        "Or that we might come to the end of the road;",
+        "Would that from the heart of earth, after a hundred thousand years,",
+        "We might all hope to blossom again like the verdure."
+      ],
+      "refs": "C. 509, L. 768, B. 754, S.P. 395, B. ii. 522.--W. 442, N. 400, V. 820."
+    },
+    {
+      "fg_5th_num": 98,
+      "source_lines": [
+        "I would that God should entirely alter the world,",
+        "And that he should do it now, that I might see him do it;",
+        "And either that he should cross my name from the Roll,",
+        "Or else raise my condition from want to plenty.[91]"
+      ],
+      "refs": "N. 457, S.P. 451.--W. 486, V. 841."
+    },
+    {
+      "fg_5th_num": 99,
+      "source_lines": [
+        "Had I, like God, control of the heavens,",
+        "Would I not do away with the heavens altogether,",
+        "Would I not so construct another heaven from the beginning",
+        "That, being free, one might attain to the heart's desire?"
+      ],
+      "refs": "C. 395, L. 594, B. 587, S.P. 337, P. 98, B. ii, 450, T. 268.--W. 379, N. 340, V. 641."
+    },
+    {
+      "fg_5th_num": 100,
+      "source_lines": [
+        "Since no one will guarantee thee a to-morrow,",
+        "Make thou happy now this lovesick heart;[92]",
+        "Drink wine in the moonlight, O Moon, for the moon[93]",
+        "Shall seek us long and shall not find us."
+      ],
+      "refs": "O. 5, C. 7, L. 5, S.P. 8, P. 219, B. 4, B. ii. 8, T. 6, P. v. 168.--W. 7, N. 8, E.C. 5, V. 4."
+    },
+    {
+      "fg_5th_num": 101,
+      "source_lines": [
+        "Friends when ye hold a meeting together,",
+        "It behoves ye warmly to remember your friend;",
+        "When ye drink wholesome wine together,",
+        "And my turn comes, turn (a goblet) upside down."
+      ],
+      "refs": "O. 83.--W. 234, V. 459.",
+      "note": "(composite: 2 source blocks in original; keeping first)"
+    }
+  ]
+}

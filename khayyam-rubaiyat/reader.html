@@ -488,11 +488,15 @@ body[data-edition="persian"] .book-header .translator-line { display: none; }
 .edition[data-edition] { display: none; }
 .edition[data-edition].visible { display: block; }
 
-/* q-flow: holds detail | main | persian-side. Default: single column. */
+/* q-flow: holds detail | main | persian-side. Default: single column.
+   Always LTR so the grid arranges consistently across edition types;
+   individual columns set their own direction for their content. */
 .quatrain .q-flow {
   display: grid; grid-template-columns: 1fr; gap: 16px;
   min-width: 0;
+  direction: ltr;
 }
+.quatrain.persian-q .q-main { direction: rtl; }
 .quatrain .q-main { position: relative; min-width: 0; }
 
 /* Prose-style quatrain (Nicolas) */
@@ -691,7 +695,7 @@ body[data-persian="on"] .quatrain.has-persian .q-persian { display: block; }
 }
 .persian-q .q-verse p.indented { text-indent: 0; padding-right: 1.4em; }
 .persian-q .translit {
-  direction: ltr; text-align: left;
+  direction: ltr; text-align: right;
   font-family: var(--font-mono); font-size: 0.62em; line-height: 1.9;
   color: var(--text-secondary); opacity: .85;
   font-style: normal; letter-spacing: .2px;
@@ -699,9 +703,6 @@ body[data-persian="on"] .quatrain.has-persian .q-persian { display: block; }
 }
 body[data-translit="off"] .persian-q .translit { display: none; }
 .persian-q .q-detail { direction: ltr; text-align: left; }
-.persian-q .q-detail-btn {
-  left: -8px; right: auto;
-}
 
 /* Persian "فا" chip keeps font consistent with its script */
 .ed-switch .ed-opt[lang="fa"] { font-family: 'Vazirmatn', 'Noto Naskh Arabic', sans-serif; font-size: 13px; padding: 3px 9px; }

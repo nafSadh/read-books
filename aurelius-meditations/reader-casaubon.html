@@ -450,7 +450,8 @@ body {
   cursor: help; position: relative;
   color: var(--text);
 }
-.pn:hover { color: var(--accent); }
+.pn:hover, .pn:focus { color: var(--accent); }
+.pn:focus { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 .pn .pn-tip {
   display: none; position: absolute;
   bottom: calc(100% + 2px); left: 50%; transform: translateX(-50%);
@@ -467,7 +468,9 @@ body {
 .pn .pn-tip::after {
   content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 8px;
 }
-.pn:hover .pn-tip { display: block; }
+.pn:hover .pn-tip,
+.pn:focus .pn-tip,
+.pn:focus-within .pn-tip { display: block; }
 .pn .pn-tip a {
   color: var(--accent); text-decoration: none;
   font-size: 11px; display: inline-block; margin-top: 3px;
@@ -539,6 +542,22 @@ body {
   .book-header h1 { font-size: 1.8em; }
   .book-header { padding: 40px 0 32px; }
   #settings-panel { right: 8px; }
+}
+
+/* ── Focus-visible ── */
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
@@ -5788,6 +5807,21 @@ globalDetailsBtn.addEventListener('click', () => {
   });
   syncContentClass();
 });
+</script>
+<script>
+/* A11y: make .pn proper-noun annotations keyboard-accessible.
+   Covers spans added after load (e.g. by the assembler output) too. */
+(function(){
+  function markAll(root){
+    (root||document).querySelectorAll('.pn:not([tabindex])').forEach(el => el.setAttribute('tabindex', '0'));
+  }
+  markAll();
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('pn')) {
+      document.activeElement.blur();
+    }
+  });
+})();
 </script>
 </body>
 </html>

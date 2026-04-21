@@ -257,6 +257,22 @@ body{
 .toc-num{font-size:11px;color:var(--text2);flex-shrink:0;width:22px;text-align:right;font-family:'EB Garamond',Georgia,serif}
 .toc-item.active .toc-num{color:var(--accent)}
 .toc-title{font-size:15px;font-style:italic;line-height:1.4}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Focus-visible ── */
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button:focus:not(:focus-visible) { outline: none; }
 </style>
 </head>
 <body>
@@ -283,7 +299,7 @@ body{
 </div>
 
 <!-- Theme picker sheet -->
-<div id="theme-overlay" role="dialog" aria-label="Choose theme">
+<div id="theme-overlay" role="dialog" aria-modal="true" aria-label="Choose theme" aria-hidden="true">
   <div id="theme-sheet">
     <h3>Theme</h3>
     <div class="theme-options">
@@ -312,7 +328,7 @@ body{
 </div>
 
 <!-- TOC panel -->
-<div id="toc-overlay" role="dialog" aria-label="Table of contents">
+<div id="toc-overlay" role="dialog" aria-modal="true" aria-label="Table of contents" aria-hidden="true">
   <div id="toc-panel">
     <h2>Contents</h2>
   </div>
@@ -459,18 +475,49 @@ function applyTheme(t) {
   });
 }
 
-function openThemeSheet() {
-  document.getElementById('theme-overlay').classList.add('open');
+/* ── Overlay focus trap ──
+   Shared open/close handler: stores previous focus, moves focus into the
+   overlay, traps Tab/Shift+Tab, and closes on Escape. */
+const FOCUSABLE = 'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])';
+const _overlayState = new WeakMap();
+
+function _trapHandler(overlay) {
+  return e => {
+    if (e.key === 'Escape') { e.preventDefault(); closeOverlay(overlay); return; }
+    if (e.key !== 'Tab') return;
+    const focusables = Array.from(overlay.querySelectorAll(FOCUSABLE))
+      .filter(el => el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
 }
-function closeThemeSheet() {
-  document.getElementById('theme-overlay').classList.remove('open');
+function openOverlay(overlay) {
+  const prevFocus = document.activeElement;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  const first = overlay.querySelector(FOCUSABLE);
+  if (first) first.focus();
+  const handler = _trapHandler(overlay);
+  overlay.addEventListener('keydown', handler);
+  _overlayState.set(overlay, { prevFocus, handler });
 }
-function openTOC() {
-  document.getElementById('toc-overlay').classList.add('open');
+function closeOverlay(overlay) {
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  const state = _overlayState.get(overlay);
+  if (state) {
+    overlay.removeEventListener('keydown', state.handler);
+    _overlayState.delete(overlay);
+    if (state.prevFocus && typeof state.prevFocus.focus === 'function') state.prevFocus.focus();
+  }
 }
-function closeTOC() {
-  document.getElementById('toc-overlay').classList.remove('open');
-}
+
+function openThemeSheet() { openOverlay(document.getElementById('theme-overlay')); }
+function closeThemeSheet() { closeOverlay(document.getElementById('theme-overlay')); }
+function openTOC() { openOverlay(document.getElementById('toc-overlay')); }
+function closeTOC() { closeOverlay(document.getElementById('toc-overlay')); }
 
 /* ══════════════════════════════════════════════
    Preferences

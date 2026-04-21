@@ -1,3 +1,21 @@
 meditations/epdf.pub_meditations.pdf
 aurelius-meditations/epdf.pub_meditations.pdf
 aurelius-meditations/hammond/
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Editor / env
+*.swp
+*.swo
+.env
+.env.local

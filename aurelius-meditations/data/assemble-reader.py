@@ -67,7 +67,7 @@ def inject_proper_nouns(text, proper_nouns, context_filter='in_original'):
         match = pattern.search(text)
         if match:
             replacement = (
-                f'<span class="pn">{match.group()}'
+                f'<span class="pn" tabindex="0">{match.group()}'
                 f'<span class="pn-tip">{tip_text}</span></span>'
             )
             text = text[:match.start()] + replacement + text[match.end():]
@@ -114,7 +114,7 @@ def wrap_greek_words(greek_text):
             pre, word, post = m.groups()
             translit = transliterate_word(word)
             out.append(
-                f'{escape(pre)}<span class="gw" data-t="{escape(translit)}">'
+                f'{escape(pre)}<span class="gw" data-t="{escape(translit)}" title="{escape(translit)}">'
                 f'{escape(word)}</span>{escape(post)}'
             )
         else:

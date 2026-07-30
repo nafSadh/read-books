@@ -1826,6 +1826,10 @@ document.addEventListener('touchend', (e) => {
   }
 });
 
+// ===== HASH STATE =====
+let userHasScrolled = false;
+window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true });
+
 // Build sidebar chapter list from DOM
 (function buildSidebar() {
   const container = document.getElementById('sidebar-chapters');
@@ -1846,6 +1850,8 @@ document.addEventListener('touchend', (e) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       closeSidebar();
+      userHasScrolled = true;
+      history.replaceState(null, '', '#ch-' + (i + 1));
       const offset = ch.offsetTop - 56;
       window.scrollTo({ top: offset, behavior: 'smooth' });
     });
@@ -1924,6 +1930,9 @@ function setupChapterObserver() {
         });
         chapterIndicator.textContent = chapterTitles[idx] || '';
         document.querySelectorAll('.ch-node').forEach((n, i) => n.classList.toggle('active', i === idx));
+        if (userHasScrolled) {
+          history.replaceState(null, '', '#ch-' + (idx + 1));
+        }
       }
     });
   }, {
@@ -1936,6 +1945,32 @@ function setupChapterObserver() {
 
 setupChapterObserver();
 
+// ===== HASH NAVIGATION =====
+function parseHash() {
+  const h = location.hash.replace('#', '');
+  const m = h.match(/^ch-(\d+)$/);
+  if (m) {
+    const idx = parseInt(m[1]) - 1;
+    if (idx >= 0 && idx < chapterEls.length) {
+      const el = chapterEls[idx];
+      window.scrollTo({ top: el.offsetTop - 56 });
+    }
+  }
+}
+function restoreHash() {
+  if (!location.hash) return;
+  function go() {
+    void document.body.offsetHeight;
+    parseHash();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => setTimeout(go, 50));
+  } else {
+    setTimeout(go, 500);
+  }
+}
+window.addEventListener('hashchange', parseHash);
+
 // ===== CHAPTER SCRUBBER =====
 (function buildScrubber() {
   const scrubber = document.getElementById('ch-scrubber');
@@ -1947,6 +1982,8 @@ setupChapterObserver();
     node.dataset.title = chapterTitles[i];
     node.addEventListener('click', (e) => {
       e.stopPropagation(); // don't trigger back-to-top
+      userHasScrolled = true;
+      history.replaceState(null, '', '#ch-' + (i + 1));
       window.scrollTo({ top: ch.offsetTop - 56, behavior: 'smooth' });
     });
     scrubber.appendChild(node);
@@ -2039,6 +2076,7 @@ function loadPrefs() {
 
 loadPrefs();
 updateScroll();
+restoreHash();
 </script>
 </body>
 </html>

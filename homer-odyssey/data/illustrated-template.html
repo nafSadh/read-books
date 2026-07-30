@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="The Odyssey of Homer — an illustrated edition of the modern prose translation, read one plate at a time.">
+<title>The Odyssey — Illustrated — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=IBM+Plex+Mono:wght@400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* --bg: backdrop behind the panel · --ink: panel border/linework
+   --paper: caption/paper fill · --ptext: caption text · --halftone: dot-texture
+   --accent: UI accent */
+[data-theme="light-purple"] {
+  --bg: #120e1c; --ink: #1c1626; --paper: #faf3e4; --ptext: #241c30; --accent: #b599ff;
+  --halftone: rgba(124,58,237,.10); --bar-bg: rgba(18,14,28,0.92); --bar-text: #b9aee0;
+}
+[data-theme="sepia"] {
+  --bg: #1e150a; --ink: #241708; --paper: #f7ecd2; --ptext: #2b1d0e; --accent: #e0a15c;
+  --halftone: rgba(180,83,9,.12); --bar-bg: rgba(30,21,10,0.92); --bar-text: #cdb794;
+}
+[data-theme="light-azure"] {
+  --bg: #2b323c; --ink: #12161c; --paper: #ffffff; --ptext: #171d26; --accent: #7fb2ea;
+  --halftone: rgba(46,106,180,.10); --bar-bg: rgba(30,36,44,0.92); --bar-text: #b8c4d4;
+}
+[data-theme="dark-violet"] {
+  --bg: #0a0a0a; --ink: #e7defc; --paper: #241f30; --ptext: #e9e4f5; --accent: #9b7aed;
+  --halftone: rgba(155,122,237,.10); --bar-bg: rgba(10,10,10,0.95); --bar-text: #8490aa;
+}
+[data-theme="dark-blue"] {
+  --bg: #000000; --ink: #9fd0ff; --paper: #0a121e; --ptext: #cfe0f5; --accent: #4a90d9;
+  --halftone: rgba(74,144,217,.10); --bar-bg: rgba(0,0,0,0.95); --bar-text: #546080;
+}
+
+html, body { height: 100%; overflow: hidden; }
+body {
+  background: var(--bg);
+  font-family: 'EB Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased; transition: background .35s;
+  display: flex; flex-direction: column;
+}
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important} }
+
+#top-bar {
+  height: 42px; flex-shrink: 0; z-index: 50;
+  background: var(--bar-bg); border-bottom: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; gap: 14px; padding: 0 16px;
+  font-family: 'Jost', sans-serif; font-size: 12px; color: var(--bar-text);
+}
+#top-bar a { color: var(--bar-text); text-decoration: none; letter-spacing: 1px; white-space: nowrap; }
+#top-bar a:hover { color: #fff; }
+#book-select {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--bar-text);
+  background: transparent; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; padding: 3px 6px;
+}
+#book-select option { color: #222; }
+#il-label { opacity: .85; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .5px; }
+.theme-dots { display: flex; gap: 7px; align-items: center; }
+.theme-dot { width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot[data-t="sepia"] { background: #b45309; }
+.theme-dot[data-t="light-azure"] { background: #2e6ab4; }
+.theme-dot[data-t="dark-violet"] { background: #9b7aed; }
+.theme-dot[data-t="dark-blue"] { background: #4a90d9; }
+
+#stage {
+  flex: 1; min-height: 0; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  padding: 26px 60px 20px;
+}
+/* The panel: art on top (true aspect, uncropped in the common case),
+   caption band on paper *below* the art — no text over the artwork. */
+#panel {
+  display: flex; flex-direction: column;
+  max-height: 100%; overflow: hidden;
+  background: var(--paper); border-radius: 1px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+}
+/* side-by-side: plate on one side, the text column set beside it */
+#panel.beside { flex-direction: row; align-items: stretch; }
+/* full-bleed beat page: art alone, edge to edge */
+#panel.full #art-wrap { margin: 0; box-shadow: none; }
+#panel.beside #art-wrap { flex: none; margin: 22px 0 22px 22px; }
+#panel.beside #cap-wrap { padding-left: 34px; }
+#panel.beside #cap-wrap {
+  flex: 1; margin-top: 0; padding: 46px 46px 40px;
+  display: flex; align-items: flex-start; min-width: 0;
+}
+#panel.beside .caption-box { width: 100%; }
+#art-wrap {
+  position: relative; flex: none; overflow: hidden; background: var(--ink);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.28);   /* hairline frame, not a sticker shadow */
+}
+#panel:not(.beside):not(.full) #art-wrap { margin: 22px 22px 0; }
+#art-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.no-art-tex {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, var(--halftone) 0, var(--halftone) 2px, transparent 2px, transparent 10px);
+  background-color: color-mix(in srgb, var(--ink) 88%, var(--bg));
+}
+
+
+/* caption band: paper gutter under the art; box straddles the art edge a little */
+#cap-wrap { flex: none; position: relative; z-index: 3; padding: 26px 40px 34px; margin-top: 0; }
+#cap-wrap.plateless { margin-top: 0; padding: 54px 46px; flex: 1; display: flex; align-items: center; justify-content: center; }
+.caption-box {
+  color: var(--ptext);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 19.5px; line-height: 1.72; letter-spacing: .1px;
+}
+.caption-box.big { width: min(620px, 92%); }
+.caption-box p { margin: 0 0 .9em; text-indent: 1.3em; text-align: justify; hyphens: auto; }
+.caption-box p:first-child { text-indent: 0; }
+.caption-box p:last-child { margin-bottom: 0; }
+/* opening page of a book: a restrained drop cap, as a set book would have */
+.caption-box.opens p:first-child::first-letter {
+  float: left; font-size: 3.05em; line-height: .86;
+  padding: .04em .09em 0 0; color: var(--ptext); font-weight: 500;
+}
+.cap-anim { animation: capIn .18s ease; }
+@keyframes capIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* splash / book-title page (full-art panel, overlay text) */
+.splash, .cover-page { --scrim: linear-gradient(to bottom, rgba(10,8,14,.12) 0%, rgba(10,8,14,.52) 45%, rgba(10,8,14,.72) 100%); }
+.splash { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 3; background: var(--scrim); }
+.splash .sp-over { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #f4ece0; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
+.splash .sp-roman { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 72px; color: #f7f0e4; text-shadow: 0 2px 18px rgba(0,0,0,.75); margin: 10px 0 14px; line-height: 1; }
+.splash .sp-rule { width: 76px; height: 1px; background: rgba(247,240,228,.75); margin: 0 auto 14px; }
+.splash .sp-note { font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(247,240,228,.85); text-shadow: 0 1px 6px rgba(0,0,0,.7); }
+.splash.no-bg { background: none; }
+.splash.no-bg .sp-roman { color: var(--ptext); text-shadow: none; }
+.splash.no-bg .sp-over, .splash.no-bg .sp-note { color: var(--ptext); opacity: .6; text-shadow: none; }
+.splash.no-bg .sp-rule { background: var(--ptext); opacity: .35; }
+
+.cover-page { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 3; gap: 6px; padding: 20px; background: var(--scrim); }
+.cover-page .cv-title { font-family: 'EB Garamond', Georgia, serif; font-size: 54px; font-weight: 500; color: #f7f0e4; text-shadow: 0 2px 20px rgba(0,0,0,.8); }
+.cover-page .cv-title em { font-style: italic; }
+.cover-page .cv-sub { font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(247,240,228,.9); margin-top: 14px; text-shadow: 0 1px 8px rgba(0,0,0,.75); }
+.cover-page .cv-hint { font-family: 'Jost', sans-serif; font-size: 11px; color: rgba(247,240,228,.7); margin-top: 26px; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
+.cover-page .cv-hint kbd { font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--paper); border-radius: 3px; padding: 1px 5px; font-size: 10px; }
+
+#hit-left, #hit-right { position: fixed; top: 42px; bottom: 40px; width: 11vw; z-index: 40; cursor: pointer; }
+#hit-left { left: 0; } #hit-right { right: 0; }
+
+#bottom-bar {
+  height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 22px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--bar-text);
+  border-top: 1px solid rgba(255,255,255,.07); background: var(--bar-bg); padding: 0 16px;
+}
+.bb-btn {
+  font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  background: none; border: none; color: var(--bar-text); cursor: pointer; padding: 6px 10px;
+}
+.bb-btn:hover { color: #fff; }
+.bb-btn:disabled { opacity: .25; cursor: default; }
+#progress { position: fixed; bottom: 0; left: 0; height: 2px; background: var(--accent); transition: width .25s ease; z-index: 60; }
+
+@media (max-width: 640px) {
+  #stage { padding: 10px 8px 10px; }
+  #cap-wrap { padding: 22px 22px 24px; }
+  #cap-wrap.plateless { padding: 30px 24px; }
+  .caption-box { font-size: 17px; line-height: 1.68; }
+  .splash .sp-roman { font-size: 48px; }
+  .cover-page .cv-title { font-size: 34px; }
+}
+button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav id="top-bar">
+  <a href="index.html">&larr; Odyssey</a>
+  <span style="opacity:.6;letter-spacing:1.5px;text-transform:uppercase;font-size:11px;font-family:'Jost',sans-serif">Illustrated</span>
+  <select id="book-select" aria-label="Go to book"></select>
+  <span style="flex:1"></span>
+  <span id="il-label"></span>
+  <span style="flex:1"></span>
+  <div class="theme-dots" role="group" aria-label="Theme">
+    <button class="theme-dot active" data-t="light-purple" aria-label="Light purple theme"></button>
+    <button class="theme-dot" data-t="sepia" aria-label="Sepia theme"></button>
+    <button class="theme-dot" data-t="light-azure" aria-label="Light azure theme"></button>
+    <button class="theme-dot" data-t="dark-violet" aria-label="Dark violet theme"></button>
+    <button class="theme-dot" data-t="dark-blue" aria-label="Dark blue theme"></button>
+  </div>
+</nav>
+
+<div id="stage">
+  <div id="panel"><!-- rendered by JS --></div>
+</div>
+<div id="hit-left" title="Previous page"></div>
+<div id="hit-right" title="Next page"></div>
+
+<div id="bottom-bar">
+  <button class="bb-btn" id="prev-book">&#8592; Prev Book</button>
+  <span id="pos-label">&nbsp;</span>
+  <button class="bb-btn" id="next-book">Next Book &#8594;</button>
+</div>
+<div id="progress"></div>
+
+<script>
+const DATA = __IDATA__;
+</script>
+<script>
+(function () {
+  const KEY = 'odyssey-illustrated-prefs';
+  const DEFAULT_R = 1.79;      /* landscape plates are 2752x1536 */
+  let prefs = {};
+  try { prefs = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (e) {} }
+
+  const stageEl = document.getElementById('stage');
+  const panelEl = document.getElementById('panel');
+  const posLabel = document.getElementById('pos-label');
+  const ilLabel = document.getElementById('il-label');
+  const progress = document.getElementById('progress');
+  const bookSel = document.getElementById('book-select');
+  const prevBookBtn = document.getElementById('prev-book');
+  const nextBookBtn = document.getElementById('next-book');
+
+  const dots = document.querySelectorAll('.theme-dot');
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    dots.forEach(d => d.classList.toggle('active', d.dataset.t === t));
+    prefs.theme = t; save();
+  }
+  dots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.t)));
+  if (prefs.theme) setTheme(prefs.theme);
+
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  /* speech-bubble styling only for shortish lines; long speeches stay plain
+     text (a 10-line "bubble" reads as ruled stripes, not a bubble) */
+  function renderCaptionPara(t) {
+    return esc(t);
+  }
+  function splitSentences(text) {
+    const m = text.match(/[^.!?]*[.!?]+[”’"')]*|[^.!?]+$/g);
+    return (m || [text]).map(s => s.trim()).filter(Boolean);
+  }
+  function unitsToHTML(units, escapeFn) {
+    let html = '', lastPara = null, buf = [];
+    const flushBuf = () => { if (buf.length) { html += `<p>${escapeFn(buf.join(' '))}</p>`; buf = []; } };
+    units.forEach(u => { if (u.para !== lastPara) { flushBuf(); lastPara = u.para; } buf.push(u.text); });
+    flushBuf();
+    return html;
+  }
+
+  /* ---- geometry ----
+     Panel width follows the current plate's aspect ratio so landscape art is
+     shown full-width, uncropped, with the caption band below it. */
+  /* Layout picker: squarish art on a wide screen goes side-by-side (art left,
+     caption column right); tall/landscape art, or a narrow screen, stacks. */
+  /* The measuring probe must be exactly as wide as the real text column, or
+     pagination silently overfills: a wider probe fits more words per line,
+     counts fewer lines, and the last line falls off the page. These paddings
+     used to be hand-copied constants in geom() and had drifted from the CSS
+     by 8px (beside) and 6px (stacked) — enough to clip a line. Read them off
+     the live element instead so they cannot drift again. */
+  const ART_M = 22;                      /* #art-wrap margin, see CSS */
+  let PAD = null;
+  function measurePads() {
+    const p = panelEl, c = document.getElementById('cap-wrap');
+    if (!p || !c) return { beside: { x: 92, y: 86 }, stack: { x: 80, y: 60 }, plain: { x: 92, y: 108 } };
+    const saveP = p.className, saveC = c.className;
+    const read = () => {
+      const s = getComputedStyle(c);
+      return { x: parseFloat(s.paddingLeft) + parseFloat(s.paddingRight),
+               y: parseFloat(s.paddingTop) + parseFloat(s.paddingBottom) };
+    };
+    p.className = 'beside'; c.className = ''; const beside = read();
+    p.className = '';       c.className = ''; const stack  = read();
+    p.className = '';       c.className = 'plateless'; const plain = read();
+    p.className = saveP;    c.className = saveC;
+    return { beside, stack, plain };
+  }
+
+  function geom(plateR) {
+    const stW = Math.max(320, stageEl.clientWidth - 32);
+    const stH = Math.max(320, stageEl.clientHeight - 24);
+    const pad = PAD || measurePads();
+    if (!plateR) { /* plateless caption page: full paper panel */
+      const panelW = Math.min(760, stW * .96);
+      /* .caption-box.big is width: min(620px, 92%) of the padded column */
+      return { beside: false, panelW, artH: 0, capAvail: stH * .80 - 90,
+               textW: Math.min(620, (panelW - pad.plain.x) * .92) };
+    }
+    const beside = plateR > 0.8 && plateR < 1.3 && stW > 860;
+    if (beside) {
+      const artH = Math.min(stH * .96, stW * 0.52 / plateR);
+      const artW = artH * plateR;
+      /* art carries a left margin only; the panel must make room for it */
+      const capW = Math.min(520, Math.max(300, stW - artW - ART_M));
+      /* the column stretches to the art's full height including its margins */
+      return { beside: true, panelW: ART_M + artW + capW, artW, artH,
+               capAvail: artH + 2 * ART_M - pad.beside.y - 2,
+               textW: capW - pad.beside.x };
+    }
+    let panelW = Math.min(880, stW * .96, Math.max(560, stH * .60 * plateR));
+    const artH = Math.min(panelW / plateR, stH * .60);
+    const capAvail = stH - artH - ART_M - pad.stack.y - 14;  /* + frame/straddle slack */
+    const textW = panelW - pad.stack.x;
+    return { beside: false, panelW, artH, capAvail, textW };
+  }
+
+  /* ---- pagination ---- */
+  let pages = [], cur = 0;
+
+  function paginate() {
+    PAD = measurePads();   /* re-read each pass: CSS can change with viewport */
+    pages = [{ k: 'cover' }];
+    const probe = document.createElement('div');
+    probe.className = 'caption-box';
+    probe.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;bottom:auto;right:auto;clip-path:none;box-shadow:none;overflow:visible;max-height:none;height:auto;';
+    document.body.appendChild(probe);
+
+    DATA.books.forEach((b, bi) => {
+      pages.push({ k: 'splash', bi });
+      let plate = null, pending = [], paraIdx = 0, firstCap = true;
+      const packAndPush = () => {
+        if (!pending.length) return;
+        const m = geom(plate ? (plate.r || DEFAULT_R) : null);
+        probe.style.width = m.textW + 'px';
+        let cur2 = [];
+        pending.forEach(u => {
+          cur2.push(u);
+          probe.innerHTML = unitsToHTML(cur2, esc);
+          if (probe.scrollHeight > m.capAvail) {
+            if (cur2.length === 1) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; cur2 = []; }
+            else { cur2.pop(); pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; cur2 = [u]; }
+          }
+        });
+        if (cur2.length) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; }
+        pending = [];
+      };
+      b.blocks.forEach(blk => {
+        /* splashOnly plates (e.g. a title montage) front the book but are not
+           used as sticky scene art behind the narration */
+        if (blk.t === 'img') {
+          if (!blk.splashOnly) {
+            packAndPush(); plate = blk;
+            /* A bigBeat plate lands as its own full-bleed page first — but only
+               where the next page would not already show it large. In the
+               side-by-side layout the plate fills half the spread, so the beat
+               page is the same picture twice in a row, smaller the first time.
+               Pagination reruns on resize, so this follows the layout. */
+            if (blk.bigBeat && !geom(blk.r).beside) pages.push({ k: 'beat', bi, plate: blk });
+          }
+          return;
+        }
+        /* A paragraph flagged `brk` starts a fresh page. Plate changes already
+           flush the buffer, so this is only for scene shifts that have no
+           plate of their own — a jump to a different place or a different day
+           that would otherwise begin halfway down a page still carrying the
+           previous scene's art. */
+        if (blk.brk) packAndPush();
+        splitSentences(blk.x).forEach(s => pending.push({ text: s, para: paraIdx }));
+        paraIdx++;
+      });
+      packAndPush();
+    });
+    probe.remove();
+  }
+
+  /* ---- rendering (flicker-free: art element persists across caption turns) ---- */
+  let lastShape = null, lastArtSrc = null;
+
+  function artInner(src, cap) {
+    return src ? `<img id="art-img" src="${src}" alt="${esc(cap || '')}">` : `<div class="no-art-tex"></div>`;
+  }
+
+  function render() {
+    const p = pages[cur];
+    const bk = p.bi != null ? DATA.books[p.bi] : null;
+
+    if (p.k === 'beat') {
+      const r = p.plate.r || DEFAULT_R;
+      const stH = Math.max(320, stageEl.clientHeight - 24);
+      const stW = Math.max(320, stageEl.clientWidth - 32);
+      const panelH = Math.min(stH * .98, stW * .96 / r);
+      panelEl.classList.remove('beside');
+      panelEl.classList.add('full');
+      panelEl.style.width = (panelH * r) + 'px';
+      panelEl.innerHTML = `<div id="art-wrap" style="height:${panelH}px">${artInner(p.plate.src, p.plate.cap)}</div>`;
+      lastShape = 'beat'; lastArtSrc = p.plate.src;
+    } else if (p.k === 'cover' || p.k === 'splash') {
+      panelEl.classList.remove('full');
+      const b = p.k === 'cover' ? DATA.books[0] : bk;
+      const art = p.k === 'cover'
+        ? b.blocks.find(x => x.t === 'img' && x.portrait) || b.blocks.find(x => x.t === 'img')
+        : b.blocks.find(x => x.t === 'img');
+      const r = art ? (art.r || DEFAULT_R) : DEFAULT_R;
+      const stH = Math.max(320, stageEl.clientHeight - 24);
+      const stW = Math.max(320, stageEl.clientWidth - 32);
+      const panelH = Math.min(stH * .94, stW * .94 / r);
+      const panelW = panelH * r;
+      panelEl.style.width = panelW + 'px';
+      const overlay = p.k === 'cover'
+        ? `<div class="cover-page"><div class="cv-title"><em>The</em> Odyssey</div>
+           <div class="cv-sub">Homer &middot; a new prose translation, illustrated</div>
+           <div class="cv-hint">flip with <kbd>&larr;</kbd> <kbd>&rarr;</kbd>, click the edges, or swipe</div></div>`
+        : `<div class="splash${art ? '' : ' no-bg'}"><div class="sp-over">Book</div>
+           <div class="sp-roman">${b.roman}</div>
+           <div class="sp-rule"></div>
+           <div class="sp-note">${b.plates ? b.plates + ' plates' : 'plates pending'}</div></div>`;
+      panelEl.classList.remove('beside');
+      panelEl.innerHTML =
+        `<div id="art-wrap" style="height:${panelH}px">${artInner(art && art.src, art && art.cap)}${overlay}</div>`;
+      lastShape = p.k; lastArtSrc = art ? art.src : null;
+    } else {
+      panelEl.classList.remove('full');
+      const r = p.plate ? (p.plate.r || DEFAULT_R) : null;
+      const m = geom(r);
+      panelEl.style.width = m.panelW + 'px';
+      panelEl.classList.toggle('beside', !!m.beside);
+      const capHTML = unitsToHTML(p.units, renderCaptionPara);
+      const shape = p.plate ? (m.beside ? 'cap-beside' : 'cap-art') : 'cap-plain';
+      const artSrc = p.plate ? p.plate.src : null;
+      const artStyle = m.beside
+        ? `width:${m.artW}px;height:${m.artH}px`
+        : `height:${m.artH}px`;
+
+      if (shape === lastShape && artSrc === lastArtSrc) {
+        /* same scene: swap ONLY the caption — art stays untouched, no flicker */
+        const capBox = panelEl.querySelector('.caption-box');
+        capBox.innerHTML = capHTML;
+        capBox.classList.toggle('opens', !!p.opens);
+        capBox.classList.remove('cap-anim');
+        void capBox.offsetWidth;               /* restart the entry animation */
+        capBox.classList.add('cap-anim');
+        const aw = panelEl.querySelector('#art-wrap');
+        if (aw) aw.style.cssText = artStyle;
+      } else {
+        panelEl.innerHTML = (p.plate
+          ? `<div id="art-wrap" style="${artStyle}">${artInner(artSrc, p.plate.cap)}
+               </div>
+             <div id="cap-wrap"><div class="caption-box cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`
+          : `<div id="cap-wrap" class="plateless"><div class="caption-box big cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`);
+        if (!p.plate) panelEl.style.height = ''; /* content-driven */
+        lastShape = shape; lastArtSrc = artSrc;
+      }
+    }
+
+    ilLabel.textContent = bk ? `Book ${bk.roman}` : 'Cover';
+    posLabel.textContent = bk ? `Book ${bk.roman} · page ${cur + 1}/${pages.length}` : `page ${cur + 1}/${pages.length}`;
+    progress.style.width = ((cur + 1) / pages.length * 100) + '%';
+    if (bk) bookSel.value = String(p.bi);
+    prevBookBtn.disabled = !bk || p.bi === 0;
+    nextBookBtn.disabled = bk ? p.bi === DATA.books.length - 1 : false;
+    prefs.page = cur; save();
+    /* replaceState, not location.hash: a hash assignment per page-turn would
+       push hundreds of history entries and break the Back button */
+    history.replaceState(null, '', bk ? `#bk-${bk.num}-p${cur}` : '#cover');
+    for (let i = cur + 1; i <= cur + 3; i++) {
+      const q = pages[i];
+      const src = q && (q.k === 'splash' ? ((DATA.books[q.bi].blocks.find(x => x.t === 'img') || {}).src)
+        : q.k === 'cap' ? (q.plate || {}).src : null);
+      if (src) { const im = new Image(); im.src = src; }
+    }
+  }
+
+  function go(delta) {
+    const n = Math.min(pages.length - 1, Math.max(0, cur + delta));
+    if (n === cur) return;
+    cur = n;
+    render();
+  }
+  function goBook(bi) {
+    bi = Math.min(DATA.books.length - 1, Math.max(0, bi));
+    const idx = pages.findIndex(p => p.k === 'splash' && p.bi === bi);
+    if (idx >= 0) { cur = idx; render(); }
+  }
+
+  document.getElementById('hit-left').addEventListener('click', () => go(-1));
+  document.getElementById('hit-right').addEventListener('click', () => go(1));
+  prevBookBtn.addEventListener('click', () => { const p = pages[cur]; goBook((p.bi != null ? p.bi : 0) - 1); });
+  nextBookBtn.addEventListener('click', () => { const p = pages[cur]; goBook((p.bi != null ? p.bi : -1) + 1); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+    if (e.key === 'Home') { cur = 0; render(); }
+    if (e.key === 'End') { cur = pages.length - 1; render(); }
+  });
+  let tx = null;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (tx == null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
+    tx = null;
+  }, { passive: true });
+
+  DATA.books.forEach((b, i) => {
+    const o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = `Book ${b.roman}${b.plates ? ' ✦' : ''}`;
+    bookSel.appendChild(o);
+  });
+  bookSel.addEventListener('change', () => goBook(parseInt(bookSel.value, 10)));
+
+  function restore() {
+    const m = location.hash.match(/^#bk-(\d+)-p(\d+)$/);
+    if (m) { const n = parseInt(m[2], 10); if (n < pages.length) return n; }
+    const mb = location.hash.match(/^#bk-(\d+)$/);
+    if (mb) {
+      const idx = pages.findIndex(p => p.k === 'splash' && DATA.books[p.bi].num === parseInt(mb[1], 10));
+      if (idx >= 0) return idx;
+    }
+    if (typeof prefs.page === 'number' && prefs.page < pages.length) return prefs.page;
+    return 0;
+  }
+
+
+
+  function repaginateKeepingPosition() {
+    const anchor = pages[cur];
+    paginate();
+    let n = 0;
+    if (anchor && anchor.bi != null) {
+      n = pages.findIndex(p => p.k === anchor.k && p.bi === anchor.bi);
+      if (n < 0) n = pages.findIndex(p => p.bi === anchor.bi);
+    }
+    cur = Math.max(0, n);
+    lastShape = null; lastArtSrc = null;  /* force full re-render */
+  }
+
+  paginate();
+  cur = restore();
+  render();
+  /* Web-font race: paginate() measures text with a hidden probe, so if it runs
+     before EB Garamond has loaded it measures fallback-font metrics and every
+     page comes out short (observed: 866 pages with ~180px of unused column on
+     each, vs 748 correctly). Repaginate once the real face is ready. */
+  if (document.fonts && document.fonts.status !== 'loaded') {
+    document.fonts.ready.then(() => { repaginateKeepingPosition(); render(); });
+  }
+  /* Defensive: 0-sized layout at load (backgrounded tab) bakes in a bogus
+     pagination that nothing but 'resize' would fix — recheck once real
+     layout exists. Only fires when the initial measurement was invalid. */
+  if (stageEl.clientWidth <= 40 || stageEl.clientHeight <= 40) {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (stageEl.clientWidth > 40 && stageEl.clientHeight > 40) {
+        repaginateKeepingPosition(); render();
+      }
+    }));
+  }
+  let rt = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => { repaginateKeepingPosition(); render(); }, 150);
+  });
+})();
+</script>
+</body>
+</html>

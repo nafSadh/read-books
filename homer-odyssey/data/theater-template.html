@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-violet">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Odyssey of Homer — cinematic one-book-at-a-time theater reader.">
+<title>The Odyssey — Theater — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+[data-theme="light-purple"] {
+  --bg: #faf8f3; --text: #363b48; --text-secondary: #65707a; --border: #d6d0c4;
+  --accent: #7c3aed; --dim: #8a8fa8; --controls-bg: rgba(250,248,243,0.92);
+  --controls-border: rgba(0,0,0,0.08); --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+  --bg: #f5efe0; --text: #3a2e1e; --text-secondary: #7a6a52; --border: #d4c8a8;
+  --accent: #b45309; --dim: #9a8a72; --controls-bg: rgba(245,239,224,0.92);
+  --controls-border: rgba(0,0,0,0.06); --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff; --text: #363b48; --text-secondary: #65707a; --border: #d0d8e4;
+  --accent: #2e6ab4; --dim: #8a98b0; --controls-bg: rgba(255,255,255,0.92);
+  --controls-border: rgba(0,0,0,0.08); --progress-bg: rgba(0,0,0,0.1);
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a; --text: #dce0ec; --text-secondary: #8490aa; --border: #333;
+  --accent: #9b7aed; --dim: #546080; --controls-bg: rgba(20,20,28,0.92);
+  --controls-border: rgba(255,255,255,0.08); --progress-bg: rgba(255,255,255,0.08);
+}
+[data-theme="dark-blue"] {
+  --bg: #000000; --text: #8490aa; --text-secondary: #546080; --border: #1c2440;
+  --accent: #4a90d9; --dim: #364060; --controls-bg: rgba(0,4,16,0.92);
+  --controls-border: rgba(255,255,255,0.06); --progress-bg: rgba(255,255,255,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  background: var(--bg); color: var(--text); font-family: 'EB Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased; transition: background 0.5s, color 0.5s;
+  display: flex; flex-direction: column;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+.stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 40px 40px; overflow: hidden; cursor: pointer; position: relative; }
+
+.book-view {
+  max-width: 620px; width: 100%; opacity: 1; transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  overflow-y: auto; max-height: 100%; scrollbar-width: none; -ms-overflow-style: none;
+}
+.book-view::-webkit-scrollbar { display: none; }
+.book-view.fading { opacity: 0; transform: translateY(20px); }
+
+.book-title-area { text-align: center; margin-bottom: 40px; }
+.book-num { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--dim); font-weight: 600; }
+.book-title { font-size: 34px; font-weight: 500; font-style: italic; color: var(--accent); margin-top: 10px; line-height: 1.2; }
+.book-rule { width: 60px; height: 1px; margin: 18px auto 0; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.book-argument { font-size: 0.8em; font-style: italic; color: var(--text-secondary); margin-top: 20px; line-height: 1.6; }
+.book-argument p { margin: 0 0 0.5em; }
+.book-argument p:last-child { margin-bottom: 0; }
+
+.book-content { font-size: 20px; line-height: 2.0; color: var(--text); text-align: left; }
+.book-content p { margin: 0 0 0.15em 0; }
+.book-content em { font-style: italic; color: var(--accent); opacity: 0.9; }
+.book-content.prose p { text-align: justify; text-indent: 1.5em; margin: 0 0 0.85em 0; hyphens: auto; }
+.book-content.prose p:first-child { text-indent: 0; }
+
+.controls {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  background: var(--controls-bg); border-top: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  opacity: 0; transform: translateY(100%); transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100; padding: 0 16px; flex-wrap: wrap;
+}
+.controls.visible { opacity: 1; transform: translateY(0); }
+
+.ctrl-btn { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); background: none; border: none; cursor: pointer; padding: 8px 12px; transition: color 0.2s; min-height: 40px; display: flex; align-items: center; gap: 6px; }
+.ctrl-btn:hover { color: var(--accent); }
+.ctrl-btn:disabled { opacity: 0.25; cursor: default; }
+.ctrl-btn.active { color: var(--accent); }
+.ctrl-pos { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--dim); letter-spacing: 1px; min-width: 56px; text-align: center; flex-shrink: 0; }
+.ctrl-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+
+.theme-dots { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.theme-dot { width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer; padding: 0; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
+.theme-dot:hover { transform: scale(1.3); }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot[data-t="sepia"] { background: #b45309; }
+.theme-dot[data-t="light-azure"] { background: #2e6ab4; }
+.theme-dot[data-t="dark-violet"] { background: #9b7aed; }
+.theme-dot[data-t="dark-blue"] { background: #4a90d9; }
+
+.ctrl-back { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); text-decoration: none; padding: 8px 10px; transition: color 0.2s; flex-shrink: 0; }
+.ctrl-back:hover { color: var(--accent); }
+
+.progress { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: var(--progress-bg); z-index: 101; pointer-events: none; }
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.4s ease; }
+
+.book-indicator {
+  position: fixed; top: 0; left: 0; right: 0; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--dim); opacity: 0; transform: translateY(-100%); transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100; pointer-events: none; background: var(--controls-bg); border-bottom: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.book-indicator.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .stage { padding: 48px 24px 32px; }
+  .book-content { font-size: 18px; line-height: 1.9; }
+  .book-title { font-size: 28px; }
+  .controls { gap: 6px; }
+  .ctrl-btn { padding: 8px 8px; font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .stage { padding: 44px 20px 28px; }
+  .book-content { font-size: 17px; line-height: 1.85; }
+  .book-title { font-size: 24px; }
+  .book-title-area { margin-bottom: 28px; }
+  .ctrl-sep { display: none; }
+  .ctrl-back { display: none; }
+  .theme-dots { gap: 6px; }
+  .theme-dot { width: 10px; height: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="book-indicator" id="bk-indicator"></div>
+
+<div class="stage" id="stage">
+  <div class="book-view" id="book-view"><!-- rendered by JS --></div>
+</div>
+
+<div class="controls" id="controls">
+  <button class="ctrl-btn" id="prev" title="Previous book">&#8592; Prev</button>
+  <span class="ctrl-pos" id="pos"></span>
+  <button class="ctrl-btn" id="next" title="Next book">Next &#8594;</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn ed-opt" data-ed="butler" title="Samuel Butler — prose">Butler</button>
+  <button class="ctrl-btn ed-opt" data-ed="pope" title="Alexander Pope — heroic-couplet verse">Pope</button>
+  <button class="ctrl-btn ed-opt" data-ed="cowper" title="William Cowper — blank verse">Cowper</button>
+  <button class="ctrl-btn ed-opt" data-ed="murray" title="A. T. Murray — Loeb prose, 1919">Murray</button>
+  <button class="ctrl-btn ed-opt" data-ed="greek" title="Original Ancient Greek">Greek</button>
+  <button class="ctrl-btn ed-opt" data-ed="modern" title="Modern English prose, Claude (Anthropic) — modern prose, 2026">Modern</button>
+  <div class="ctrl-sep"></div>
+  <div class="theme-dots" id="theme-dots">
+    <button class="theme-dot" data-t="light-purple" title="Light Purple"></button>
+    <button class="theme-dot" data-t="sepia" title="Sepia"></button>
+    <button class="theme-dot" data-t="light-azure" title="Light Azure"></button>
+    <button class="theme-dot" data-t="dark-violet" title="Dark Violet"></button>
+    <button class="theme-dot" data-t="dark-blue" title="Dark Blue"></button>
+  </div>
+  <div class="ctrl-sep"></div>
+  <a class="ctrl-back" href="reader.html" title="Back to reader">&#8617; Reader</a>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+
+<script>
+const EDITIONS = __CONTENT__;
+</script>
+<script>
+const EDITION_ORDER = ['butler', 'pope', 'cowper', 'murray', 'greek', 'modern'];
+const TOTAL = 24;
+
+let activeEdition = 'pope';
+let current = 0; // 0-indexed book
+let animating = false;
+let hideTimer = null;
+
+const ITALIC_RE = /_([^_]+)_/g;
+function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function renderText(s) { return escapeHtml(s).replace(ITALIC_RE, '<em>$1</em>'); }
+function renderArgument(argument) {
+  if (!argument) return '';
+  const paras = argument.split('\n\n').map(p => p.trim()).filter(Boolean);
+  return '<div class="book-argument">' + paras.map(p => `<p>${renderText(p)}</p>`).join('') + '</div>';
+}
+
+function render(idx) {
+  if (animating) return;
+  animating = true;
+  const view = document.getElementById('book-view');
+  const data = EDITIONS[activeEdition];
+  const book = data.books[idx];
+  const unitKey = data.form === 'prose' ? 'paragraphs' : 'lines';
+  const textHtml = book[unitKey].map(u => `<p>${renderText(u)}</p>`).join('');
+
+  view.classList.add('fading');
+  setTimeout(() => {
+    view.innerHTML =
+      '<div class="book-title-area">' +
+      '<div class="book-num">Book ' + (idx + 1) + ' of ' + TOTAL + ' &middot; ' + data.translator + '</div>' +
+      '<div class="book-title">' + book.roman + '</div>' +
+      '<div class="book-rule"></div>' +
+      renderArgument(book.argument) +
+      '</div>' +
+      '<div class="book-content ' + (data.form === 'prose' ? 'prose' : '') + '">' + textHtml + '</div>';
+    view.scrollTop = 0;
+
+    document.getElementById('pos').textContent = (idx + 1) + ' / ' + TOTAL;
+    document.getElementById('prev').disabled = idx === 0;
+    document.getElementById('next').disabled = idx === TOTAL - 1;
+    document.getElementById('progress-fill').style.width = (idx / (TOTAL - 1) * 100) + '%';
+    document.getElementById('bk-indicator').textContent = 'Book ' + book.roman + ' · ' + data.translator;
+    document.querySelectorAll('.ed-opt').forEach(b => b.classList.toggle('active', b.dataset.ed === activeEdition));
+    document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.t === document.documentElement.dataset.theme));
+
+    try {
+      localStorage.setItem('odyssey-theater-book', idx);
+      localStorage.setItem('odyssey-theater-edition', activeEdition);
+    } catch(e) {}
+
+    history.replaceState(null, '', '#bk-' + activeEdition + '-' + (idx + 1));
+    view.classList.remove('fading');
+    animating = false;
+  }, 260);
+}
+
+function go(dir) {
+  if (animating) return;
+  const next = current + dir;
+  if (next < 0 || next >= TOTAL) return;
+  current = next;
+  render(current);
+}
+
+function setEdition(ed) {
+  if (ed === activeEdition) return;
+  activeEdition = ed;
+  render(current);
+}
+
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  try { localStorage.setItem('odyssey-theater-theme', t); } catch(e) {}
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.t === t));
+}
+
+document.getElementById('prev').addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+document.getElementById('next').addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+document.querySelectorAll('.ed-opt').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); setEdition(btn.dataset.ed); }));
+document.querySelectorAll('.theme-dot').forEach(dot => dot.addEventListener('click', (e) => { e.stopPropagation(); setTheme(dot.dataset.t); }));
+
+function showControls() {
+  document.getElementById('controls').classList.add('visible');
+  document.getElementById('bk-indicator').classList.add('visible');
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(hideControls, 2200);
+}
+function hideControls() {
+  document.getElementById('controls').classList.remove('visible');
+  document.getElementById('bk-indicator').classList.remove('visible');
+}
+document.addEventListener('mousemove', showControls);
+document.addEventListener('touchstart', showControls, { passive: true });
+
+document.getElementById('stage').addEventListener('click', function(e) {
+  if (e.target.closest('#controls')) return;
+  go(1);
+});
+
+document.addEventListener('keydown', e => {
+  showControls();
+  if (e.key === 'ArrowRight' || e.key === 'j' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft' || e.key === 'k') { e.preventDefault(); go(-1); }
+});
+
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+(function init() {
+  try {
+    const savedTheme = localStorage.getItem('odyssey-theater-theme');
+    if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+  } catch(e) {}
+
+  let startIdx = 0, startEd = 'pope';
+  const hash = location.hash.replace('#', '');
+  let m = hash.match(/^bk-(butler|pope|cowper|murray|greek|modern)-(\d+)$/);
+  if (m) { startEd = m[1]; startIdx = parseInt(m[2]) - 1; }
+  else {
+    m = hash.match(/^bk-(\d+)$/);
+    if (m) startIdx = parseInt(m[1]) - 1;
+    try {
+      const savedEd = localStorage.getItem('odyssey-theater-edition');
+      if (EDITION_ORDER.includes(savedEd)) startEd = savedEd;
+      if (!hash) {
+        const saved = parseInt(localStorage.getItem('odyssey-theater-book'));
+        if (!isNaN(saved) && saved >= 0 && saved < TOTAL) startIdx = saved;
+      }
+    } catch(e) {}
+  }
+  if (isNaN(startIdx) || startIdx < 0 || startIdx >= TOTAL) startIdx = 0;
+
+  activeEdition = startEd;
+  current = startIdx;
+  render(current);
+  showControls();
+})();
+</script>
+</body>
+</html>

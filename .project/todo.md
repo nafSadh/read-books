@@ -46,6 +46,9 @@ read-books/
 | The Prophet | Kahlil Gibran, 1923 | gibran-prophet/ | 2 | Yes | Yes |
 | Vedas (curated) | c. 1500–500 BCE | vedas/ | 2 (reader, fullbleed) | No | No |
 | Rigveda (complete) | c. 1500–1200 BCE | vedas/ | 1 (rigveda.html) | Yes | N/A (generated) |
+| Rubáiyát of Omar Khayyám | Omar Khayyám, translated by FitzGerald, 1859/1889 | khayyam-rubaiyat/ | 2 (index, reader) | Yes | No (empty) |
+| The Iliad | Homer, c. 8th century BCE | homer-iliad/ | 6 (index, reader, fullbleed, mobile, theater, pdf-reader) | Yes | Yes |
+| The Odyssey | Homer, c. 8th century BCE | homer-odyssey/ | 6 (index, reader, fullbleed, mobile, theater, pdf-reader) | Yes | Yes |
 
 ## Vedas — next steps
 

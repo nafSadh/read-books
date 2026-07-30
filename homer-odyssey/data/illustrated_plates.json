@@ -1,0 +1,156 @@
+{
+  "bk01": {
+    "plates": [
+      {
+        "file": "title-plate.jpeg",
+        "anchor": null,
+        "splashOnly": true,
+        "caption": "The long way home."
+      },
+      {
+        "file": "calypso-glimpse.jpeg",
+        "anchor": null,
+        "caption": "Odysseus alone, longing for his home and his wife, was held back by the queenly nymph Calypso."
+      },
+      {
+        "file": "council-of-gods.jpeg",
+        "anchor": "But Poseidon had gone off to visit the distant Ethiopians",
+        "caption": "“But my heart aches for wise Odysseus, poor man — why then, Zeus, are you so angry with him?”",
+        "bigBeat": true
+      },
+      {
+        "file": "athena-at-the-gate.jpeg",
+        "anchor": "bound beneath her feet the beautiful sandals",
+        "caption": "She came to stand at Odysseus’s outer gate, the bronze spear in her hand, disguised as a stranger — Mentes, chieftain of the Taphians.",
+        "bigBeat": true
+      },
+      {
+        "file": "telemachus-sees-her.jpeg",
+        "anchor": "There she found the arrogant suitors. They were amusing themselves",
+        "caption": "Telemachus was the first by far to see her, for he sat among the suitors with his heart heavy with grief."
+      },
+      {
+        "file": "spear-rack.jpeg",
+        "anchor": "He went straight to the doorway",
+        "caption": "He set the spear against a tall pillar, in a polished spear-rack where many other spears of steadfast Odysseus stood."
+      },
+      {
+        "file": "the-feast.jpeg",
+        "anchor": "Meanwhile Telemachus spoke to bright-eyed Athena, leaning his head close",
+        "caption": "Telemachus leaned close, so the suitors would not hear."
+      },
+      {
+        "file": "bird-departure.jpeg",
+        "anchor": "she flew up and away like a bird",
+        "caption": "She flew up and away like a bird — and he guessed that it had been a god."
+      },
+      {
+        "file": "phemius-sings.jpeg",
+        "anchor": "The famous singer was singing for them",
+        "caption": "From her room upstairs, Penelope took in his inspired song — “stop this song, this painful one, which always breaks my heart.”"
+      },
+      {
+        "file": "eurycleia-torches.jpeg",
+        "anchor": "The suitors then turned back to dancing",
+        "caption": "Beside him, carrying blazing torches, walked faithful Eurycleia, who had nursed him since he was a small child.",
+        "bigBeat": true
+      }
+    ]
+  },
+  "bk02": {
+    "plates": [
+      {
+        "file": "assembly-dawn.jpeg",
+        "anchor": null,
+        "caption": "He told the clear-voiced heralds to call the long-haired Achaeans to assembly."
+      },
+      {
+        "file": "aegyptius-speaks.jpeg",
+        "anchor": "His own dear son, the spearman Antiphus, had sailed with godlike Odysseus",
+        "caption": "The first to speak was the hero Aegyptius, an old man bent with age who knew countless things."
+      },
+      {
+        "file": "the-staff-thrown.jpeg",
+        "bigBeat": true,
+        "anchor": "dashed the staff to the ground, bursting into tears",
+        "caption": "And pity took hold of all the people. Then all the rest sat silent, and no one dared answer."
+      },
+      {
+        "file": "penelopes-web.jpeg",
+        "anchor": "Now here is the suitors' answer to you",
+        "caption": "By day she would weave at the great web — and by night she would unravel it, with torches set beside her."
+      },
+      {
+        "file": "two-eagles.jpeg",
+        "bigBeat": true,
+        "anchor": "two eagles flying down from the mountain peak",
+        "caption": "They tore at each other's cheeks and necks with their talons, and darted away to the right."
+      },
+      {
+        "file": "seer-and-suitor.jpeg",
+        "anchor": "Old man, go home and prophesy to your children",
+        "caption": "“In this matter I am a far better prophet than you.”"
+      },
+      {
+        "file": "the-storeroom.jpeg",
+        "anchor": "went down to his father's storeroom",
+        "caption": "A wide, high-roofed chamber where gold and bronze lay piled, and clothing in chests, and olive oil in jars."
+      },
+      {
+        "file": "night-launch.jpeg",
+        "bigBeat": true,
+        "anchor": "And all night long, and into the dawn, the ship cut on her way",
+        "caption": "And all night long, and into the dawn, the ship cut on her way."
+      }
+    ],
+    "pageBreaks": [
+      "But Telemachus walked apart, down to the shore of the sea",
+      "The sun went down, and all the streets fell into shadow"
+    ]
+  },
+  "bk03": {
+    "plates": [
+      {
+        "file": "pylos-sacrifice.jpeg",
+        "anchor": null,
+        "caption": "They came to the gathering-place of the men of Pylos, where Nestor sat with his sons."
+      },
+      {
+        "file": "the-golden-cup.jpeg",
+        "anchor": "set the cup of sweet wine in her hand",
+        "caption": "Athena was pleased with the man's tact and fairness, that he had given the golden cup to her first."
+      },
+      {
+        "file": "nestor-tells.jpeg",
+        "bigBeat": true,
+        "anchor": "since you have called back to my mind the misery we endured in that land",
+        "caption": "“There the best of us were killed. There warlike Ajax lies, and there Achilles.”"
+      },
+      {
+        "file": "agamemnon-returns.jpeg",
+        "bigBeat": true,
+        "anchor": "Then I will tell you the whole truth, child",
+        "caption": "“He came home glad, and touched his native land, and kissed it.”"
+      },
+      {
+        "file": "sea-eagle.jpeg",
+        "bigBeat": true,
+        "anchor": "in the likeness of a sea-eagle, and amazement took all who saw it",
+        "caption": "The old man marveled, when his eyes beheld it."
+      },
+      {
+        "file": "gilded-horns.jpeg",
+        "anchor": "the axe cut through the neck-tendons and loosed the heifer's strength",
+        "caption": "The women raised the cry — the daughters, the sons' wives, and the honoured wife of Nestor."
+      },
+      {
+        "file": "chariot-departure.jpeg",
+        "anchor": "quickly yoked swift horses beneath the chariot",
+        "caption": "He laid the lash on them to start them, and the two flew off, not unwilling, into the plain."
+      }
+    ],
+    "pageBreaks": [
+      "When early-born, rosy-fingered Dawn appeared, the Gerenian horseman Nestor rose"
+    ]
+  }
+}

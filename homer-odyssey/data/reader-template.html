@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Odyssey of Homer — three parallel public-domain translations (Butler, Pope, Cowper), 24 books.">
+<title>The Odyssey — Homer — Reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+}
+
+/* ===== THEMES ===== */
+:root {
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Jost', -apple-system, Helvetica Neue, sans-serif;
+  --font-slab: 'Roboto Slab', 'Georgia', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-body: var(--font-serif);
+  --font-size: 19px;
+  --line-height: 2.0;
+  --content-width: 620px;
+}
+
+[data-theme="sepia"] {
+  --bg: #f5efe0; --text: #3a2e1e; --text-secondary: #7a6a52; --border: #d4c8a8;
+  --bar-bg: rgba(245,239,224,0.94); --bar-border: rgba(0,0,0,0.06);
+  --chapter-rule: #d4c8a8; --dropcap: #b45309; --accent: #b45309;
+  --btn-bg: rgba(0,0,0,0.05); --btn-hover: rgba(0,0,0,0.08);
+  --sidebar-bg: #ede5d0; --sidebar-hover: #e3d9c2;
+}
+[data-theme="light-purple"] {
+  --bg: #faf8f3; --text: #363b48; --text-secondary: #65707a; --border: #d6d0c4;
+  --bar-bg: rgba(250,248,243,0.94); --bar-border: rgba(0,0,0,0.06);
+  --chapter-rule: #d6d0c4; --dropcap: #7c3aed; --accent: #7c3aed;
+  --btn-bg: rgba(0,0,0,0.05); --btn-hover: rgba(0,0,0,0.08);
+  --sidebar-bg: #f2efe8; --sidebar-hover: #e8e4dc;
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff; --text: #363b48; --text-secondary: #65707a; --border: #d6d0c4;
+  --bar-bg: rgba(255,255,255,0.92); --bar-border: rgba(0,0,0,0.08);
+  --chapter-rule: #d6d0c4; --dropcap: #2e6ab4; --accent: #2e6ab4;
+  --btn-bg: rgba(0,0,0,0.06); --btn-hover: rgba(0,0,0,0.1);
+  --sidebar-bg: #f5f5f5; --sidebar-hover: #eee;
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a; --text: #dce0ec; --text-secondary: #8490aa; --border: #333;
+  --bar-bg: rgba(26,26,26,0.95); --bar-border: rgba(255,255,255,0.08);
+  --chapter-rule: #444; --dropcap: #b598ff; --accent: #9b7aed;
+  --btn-bg: rgba(255,255,255,0.08); --btn-hover: rgba(255,255,255,0.12);
+  --sidebar-bg: #222; --sidebar-hover: #2a2a2a;
+}
+[data-theme="dark-blue"] {
+  --bg: #000000; --text: #8490aa; --text-secondary: #546080; --border: #1c2440;
+  --bar-bg: rgba(0,0,0,0.95); --bar-border: rgba(255,255,255,0.06);
+  --chapter-rule: #1c2440; --dropcap: #4a90d9; --accent: #2e6ab4;
+  --btn-bg: rgba(255,255,255,0.06); --btn-hover: rgba(255,255,255,0.1);
+  --sidebar-bg: #0a0a0a; --sidebar-hover: #111;
+}
+
+body {
+  background: var(--bg); color: var(--text); font-family: var(--font-body);
+  font-size: var(--font-size); line-height: var(--line-height);
+}
+
+[data-font="sans"] { --font-body: var(--font-sans); }
+[data-font="slab"] { --font-body: var(--font-slab); }
+[data-font="mono"] { --font-body: var(--font-mono); --font-size: 15px; --line-height: 1.7; }
+
+[data-size="small"] { --font-size: 16px; --line-height: 1.85; }
+[data-size="large"] { --font-size: 22px; --line-height: 2.1; }
+
+[data-width="narrow"] { --content-width: 480px; }
+[data-width="medium"] { --content-width: 620px; }
+[data-width="wide"] { --content-width: 780px; }
+
+/* ===== SIDEBAR & OVERLAY ===== */
+#sidebar-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+  z-index: 1002; opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+#sidebar-overlay.open { opacity: 1; pointer-events: auto; }
+
+#chapter-sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 260px; max-width: 80vw; background: var(--sidebar-bg);
+  z-index: 1003; transform: translateX(-100%); transition: transform 0.3s ease;
+  overflow-y: auto; padding: 20px 0; font-family: var(--font-sans);
+}
+#chapter-sidebar.open { transform: translateX(0); }
+#chapter-sidebar h2 {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text-secondary);
+  padding: 0 20px 12px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+}
+.sidebar-chapter {
+  display: flex; align-items: baseline; gap: 10px; padding: 10px 20px;
+  cursor: pointer; transition: background 0.15s; text-decoration: none;
+  color: var(--text); font-size: 14px; line-height: 1.4; background: none; border: none;
+  width: 100%; text-align: left; font-family: var(--font-sans);
+}
+.sidebar-chapter:hover { background: var(--sidebar-hover); }
+.sidebar-chapter.active { color: var(--accent); font-weight: 500; }
+.sidebar-chapter .ch-num {
+  color: var(--text-secondary); font-size: 11px; font-family: var(--font-mono);
+  flex-shrink: 0; width: 26px; text-align: right;
+}
+.sidebar-chapter .ch-title { flex: 1; }
+
+#sidebar-toggle {
+  width: 32px; height: 32px; border: none; background: transparent;
+  color: var(--text-secondary); border-radius: 6px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+}
+#sidebar-toggle:hover { background: var(--btn-bg); color: var(--text); }
+
+/* ===== BOOK PROGRESS (24 discrete segments, not scroll-based) ===== */
+#progress-track {
+  position: fixed; top: 44px; left: 0; right: 0; height: 3px;
+  z-index: 1001; background: var(--border); cursor: pointer;
+  display: flex; transition: height 0.15s;
+}
+#progress-track:hover { height: 8px; }
+.progress-seg {
+  height: 100%; flex: 1 1 0; border: none; padding: 0; cursor: pointer;
+  background: var(--border); transition: background 0.15s;
+}
+.progress-seg + .progress-seg { border-left: 1px solid var(--bg); }
+.progress-seg.filled { background: var(--accent); opacity: .55; }
+.progress-seg.current { background: var(--accent); opacity: 1; }
+
+/* ===== TOP BAR ===== */
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 44px; background: var(--bar-bg);
+  border-bottom: 1px solid var(--bar-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; padding: 0 16px; gap: 10px;
+  font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary);
+}
+#top-bar .book-title {
+  font-weight: 600; color: var(--text-secondary); letter-spacing: 1px;
+  font-size: 13px; white-space: nowrap; flex-shrink: 0;
+}
+#top-bar .chapter-indicator {
+  font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic;
+  color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 200px; flex-shrink: 1;
+}
+#top-bar .chapter-indicator::before {
+  content: '\00b7'; margin: 0 8px; color: var(--text-secondary); font-style: normal;
+}
+
+.bar-controls { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.bar-btn {
+  width: 32px; height: 32px; border: none; background: transparent;
+  color: var(--text-secondary); border-radius: 6px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; transition: background 0.15s; font-family: var(--font-sans);
+}
+.bar-btn:hover:not(:disabled) { background: var(--btn-bg); }
+.bar-btn:disabled { opacity: .3; cursor: default; }
+.bar-btn.active { background: var(--btn-bg); color: var(--text); }
+
+.theme-wrap { position: relative; display: flex; align-items: center; }
+.theme-dots {
+  position: absolute; right: 100%; top: 50%; transform: translateY(-50%);
+  display: flex; gap: 6px; align-items: center; padding-right: 8px;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.theme-wrap:hover .theme-dots,
+.theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
+.theme-dot {
+  width: 14px; height: 14px; border-radius: 50%; border: none; cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+}
+.theme-dot:hover { transform: scale(1.25); }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-theme="sepia"] { background: #d4c8a8; }
+.theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
+.theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
+.theme-dot[data-theme="dark-violet"] { background: #4a3a6a; }
+.theme-dot[data-theme="dark-blue"] { background: #1e2a4a; }
+
+/* ===== SETTINGS PANEL ===== */
+#settings-panel {
+  position: fixed; top: 52px; right: 16px; z-index: 999;
+  background: var(--bar-bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  width: 240px; max-width: calc(100vw - 32px);
+  display: none; font-family: var(--font-sans); font-size: 13px;
+}
+#settings-panel.open { display: block; }
+.setting-group { margin-bottom: 16px; }
+.setting-group:last-child { margin-bottom: 0; }
+.setting-label {
+  color: var(--text-secondary); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 1.5px; font-weight: 600; margin-bottom: 8px; display: block;
+}
+.btn-row { display: flex; gap: 0; }
+.btn-row .opt {
+  flex: 1; height: 32px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: transparent; color: var(--text);
+  cursor: pointer; font-family: var(--font-sans); font-size: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-row .opt:first-child { border-radius: 5px 0 0 5px; }
+.btn-row .opt:last-child { border-radius: 0 5px 5px 0; }
+.btn-row .opt + .opt { border-left: none; }
+.btn-row .opt:hover { background: var(--btn-bg); }
+.btn-row .opt.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-row .opt.active + .opt { border-left-color: var(--accent); }
+
+/* ===== MAIN CONTENT ===== */
+#content { max-width: var(--content-width); margin: 0 auto; padding: 80px 24px 60px; }
+
+/* ===== BOOK HEADER ===== */
+.book-header {
+  text-align: center; padding: 60px 0 48px;
+  border-bottom: 1px solid var(--chapter-rule); margin-bottom: 48px;
+}
+.book-header h1 {
+  font-family: var(--font-serif); font-size: 2.6em; font-weight: 400;
+  letter-spacing: 0.02em; margin-bottom: 8px; color: var(--text);
+}
+.book-header .author {
+  font-family: var(--font-sans); font-size: 14px; font-weight: 400;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary);
+}
+.book-header .translator-line {
+  font-family: var(--font-serif); font-style: italic; font-size: 14px;
+  color: var(--text-secondary); margin-top: 6px;
+}
+.book-header .edition-caption {
+  font-family: var(--font-sans); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); margin-top: 16px; font-weight: 600;
+}
+
+/* ===== CURRENT BOOK (rendered client-side, one at a time) ===== */
+.chapter-divider { text-align: center; padding: 0 0 20px; scroll-margin-top: 70px; }
+.chapter-divider .ch-num {
+  font-family: var(--font-sans); font-size: 10px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--text-secondary); font-weight: 600;
+}
+.chapter-divider .ch-title {
+  font-family: var(--font-serif); font-size: 40px; font-weight: 500;
+  color: var(--text); font-style: italic; margin-top: 6px; line-height: 1.2;
+}
+.chapter-divider .ch-rule {
+  width: 60px; height: 1px; margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.ch-argument {
+  font-family: var(--font-serif); font-style: italic; font-size: 0.85em;
+  color: var(--text-secondary); text-align: center; max-width: 90%;
+  margin: 20px auto 32px; line-height: 1.6;
+}
+.ch-argument p { margin: 0 0 0.6em; }
+.ch-argument p:last-child { margin-bottom: 0; }
+
+/* Default: verse (Pope, Cowper) — left-aligned, no indent, one <p> per line. */
+.chapter-text {
+  font-size: var(--font-size); line-height: var(--line-height); color: var(--text);
+  text-align: left; hyphens: manual; -webkit-hyphens: manual;
+}
+.chapter-text p { text-indent: 0; margin: 0 0 0.15em 0; }
+.chapter-text em { font-style: italic; }
+
+/* Prose edition (Butler) — justified paragraphs, classic indent + drop cap */
+.chapter-text.prose { hyphens: auto; -webkit-hyphens: auto; }
+.chapter-text.prose p { text-align: justify; text-indent: 1.5em; margin: 0 0 0.9em 0; }
+.chapter-text.prose p:first-child { text-indent: 0; }
+.chapter-text.prose p:first-child::first-letter {
+  font-size: 3.1em; float: left; line-height: 0.8; margin: 0.05em 0.08em 0 0;
+  color: var(--accent); font-weight: 500;
+}
+
+/* ===== BOOK NAV (prev/next) ===== */
+.book-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--chapter-rule);
+  font-family: var(--font-sans);
+}
+.book-nav-btn {
+  display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+  border: 1px solid var(--border); background: transparent; color: var(--text);
+  cursor: pointer; font-family: var(--font-sans); font-size: 13px;
+  transition: border-color 0.15s, color 0.15s; border-radius: 4px;
+  max-width: 42%;
+}
+.book-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.book-nav-btn:disabled { opacity: .3; cursor: default; }
+.book-nav-btn .bn-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.book-nav-btn.next { flex-direction: row-reverse; text-align: right; }
+.book-nav-mid {
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);
+  letter-spacing: 1px; flex-shrink: 0;
+}
+
+/* ===== EDITION SWITCH (topbar) ===== */
+.ed-switch { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.ed-switch .ed-opt {
+  background: transparent; border: none; color: var(--text-secondary);
+  font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+  padding: 5px 11px; cursor: pointer; line-height: 1.4;
+  transition: background .15s, color .15s; min-height: 26px; letter-spacing: .3px;
+}
+.ed-switch .ed-opt:hover { background: var(--btn-bg); color: var(--text); }
+.ed-switch .ed-opt.active { color: var(--accent); background: var(--btn-bg); }
+.ed-switch .ed-opt + .ed-opt { border-left: 1px solid var(--border); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #top-bar .book-title { display: none; }
+  .theme-dots { opacity: 0; }
+  .theme-wrap:hover .theme-dots, .theme-wrap.expanded .theme-dots { opacity: 1; }
+  #sidebar-toggle { width: 44px; height: 44px; }
+  .bar-btn { width: 44px; height: 44px; }
+}
+@media (max-width: 600px) {
+  #content { padding: 64px 16px 48px; }
+  .chapter-divider .ch-title { font-size: 30px; }
+  .book-header h1 { font-size: 1.9em; }
+  .book-header { padding: 40px 0 32px; }
+  #settings-panel { right: 8px; }
+  .ed-switch .ed-opt { padding: 4px 8px; font-size: 10px; }
+  .book-nav-btn .bn-label { display: none; }
+}
+
+/* ── Focus-visible ── */
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+</style>
+</head>
+<body data-theme="light-purple" data-font="serif" data-size="medium" data-width="medium">
+
+<div id="progress-track"></div>
+<div id="sidebar-overlay"></div>
+
+<nav id="chapter-sidebar">
+  <h2>Books</h2>
+  <div id="sidebar-chapters"></div>
+</nav>
+
+<nav id="top-bar">
+  <button id="sidebar-toggle" title="Books" aria-label="Open book list">&#9776;</button>
+  <span class="book-title">Odyssey</span>
+  <div class="ed-switch" role="tablist" aria-label="Choose translation">
+    <button class="ed-opt" id="ed-butler" role="tab" aria-selected="false" title="Samuel Butler, 1900 — prose">Butler</button>
+    <button class="ed-opt active" id="ed-pope" role="tab" aria-selected="true" title="Alexander Pope, 1725 — heroic-couplet verse">Pope</button>
+    <button class="ed-opt" id="ed-cowper" role="tab" aria-selected="false" title="William Cowper, 1791 — blank verse">Cowper</button>
+    <button class="ed-opt" id="ed-murray" role="tab" aria-selected="false" title="A. T. Murray, 1919 — Loeb prose">Murray</button>
+    <button class="ed-opt" id="ed-greek" role="tab" aria-selected="false" title="Original Ancient Greek, ed. A. T. Murray 1919">Greek</button>
+    <button class="ed-opt" id="ed-modern" role="tab" aria-selected="false" title="Modern English prose, translated by Claude (Anthropic), 2026 — modern prose">Modern</button>
+  </div>
+  <span class="chapter-indicator" id="chapter-indicator"></span>
+  <span style="flex:1"></span>
+  <div class="bar-controls">
+    <div class="theme-wrap" id="theme-wrap">
+      <button class="bar-btn" id="theme-btn" title="Cycle theme (hover for all)" aria-label="Change theme">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="10" cy="10" r="4"/>
+          <path d="M10 6V10H6A4 4 0 0 1 10 6z" fill="currentColor" stroke="none"/>
+          <path d="M10 10V14H14A4 4 0 0 1 10 14z" fill="currentColor" stroke="none"/>
+          <line x1="10" y1="2" x2="10" y2="4"/><line x1="10" y1="16" x2="10" y2="18"/>
+          <line x1="2" y1="10" x2="4" y2="10"/><line x1="16" y1="10" x2="18" y2="10"/>
+          <line x1="4.3" y1="4.3" x2="5.7" y2="5.7"/><line x1="14.3" y1="14.3" x2="15.7" y2="15.7"/>
+          <line x1="4.3" y1="15.7" x2="5.7" y2="14.3"/><line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
+        </svg>
+      </button>
+      <div class="theme-dots">
+        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
+        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
+        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
+        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
+        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+      </div>
+    </div>
+    <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">
+      <svg width="18" height="16" viewBox="0 0 18 16" fill="currentColor" stroke="none">
+        <text x="1.5" y="10.5" font-family="Georgia,serif" font-size="12" font-weight="600">Aa</text>
+        <rect x="1" y="12.8" width="16" height="1.3" rx=".65"/>
+        <rect x="1" y="15" width="10" height="1.1" rx=".55" opacity=".4"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div id="settings-panel">
+  <div class="setting-group">
+    <span class="setting-label">Text Size</span>
+    <div class="btn-row">
+      <button class="opt" data-size="small" style="font-size:10px">Small</button>
+      <button class="opt active" data-size="medium" style="font-size:12px">Medium</button>
+      <button class="opt" data-size="large" style="font-size:14px">Large</button>
+    </div>
+  </div>
+  <div class="setting-group">
+    <span class="setting-label">Font</span>
+    <div class="btn-row">
+      <button class="opt active" data-font="serif" style="font-family:'EB Garamond',Georgia,serif">Serif</button>
+      <button class="opt" data-font="sans" style="font-family:'Jost',sans-serif">Sans</button>
+      <button class="opt" data-font="slab" style="font-family:'Roboto Slab',Georgia,serif">Slab</button>
+      <button class="opt" data-font="mono" style="font-family:'IBM Plex Mono',monospace;font-size:11px">Mono</button>
+    </div>
+  </div>
+  <div class="setting-group">
+    <span class="setting-label">Page Width</span>
+    <div class="btn-row">
+      <button class="opt" data-width="narrow">Narrow</button>
+      <button class="opt active" data-width="medium">Medium</button>
+      <button class="opt" data-width="wide">Wide</button>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+  <header class="book-header">
+    <h1><em>The</em> Odyssey</h1>
+    <div class="author">Homer</div>
+    <div class="translator-line" id="translator-line">translated by Alexander Pope</div>
+    <div class="edition-caption" id="edition-caption">1720 &middot; heroic-couplet verse &middot; 24 books</div>
+  </header>
+  <div id="chapter-view"><!-- rendered client-side: current book only --></div>
+  <nav class="book-nav">
+    <button class="book-nav-btn prev" id="prev-book-btn" aria-label="Previous book">
+      <span>&#8592;</span><span class="bn-label" id="prev-book-label"></span>
+    </button>
+    <span class="book-nav-mid" id="book-nav-mid">BOOK 1 / 24</span>
+    <button class="book-nav-btn next" id="next-book-btn" aria-label="Next book">
+      <span>&#8594;</span><span class="bn-label" id="next-book-label"></span>
+    </button>
+  </nav>
+</div>
+
+<script>
+const EDITIONS = __CONTENT__;
+</script>
+<script>
+// ===== SETTINGS =====
+const settingsBtn = document.getElementById('settings-btn');
+const settingsPanel = document.getElementById('settings-panel');
+
+const themeBtnEl = document.getElementById('theme-btn');
+const themeWrap = document.getElementById('theme-wrap');
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+
+themeBtnEl.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const cur = document.body.dataset.theme || 'light-purple';
+  const next = THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length];
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.theme === next));
+  document.documentElement.dataset.theme = next;
+  document.body.dataset.theme = next;
+  savePrefs();
+  settingsPanel.classList.remove('open');
+  settingsBtn.classList.remove('active');
+});
+themeBtnEl.addEventListener('touchstart', () => { themeWrap.classList.toggle('expanded'); }, { passive: true });
+
+settingsBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  settingsPanel.classList.toggle('open');
+  settingsBtn.classList.toggle('active');
+  themeWrap.classList.remove('expanded');
+});
+
+document.addEventListener('click', (e) => {
+  if (!settingsPanel.contains(e.target) && e.target !== settingsBtn) {
+    settingsPanel.classList.remove('open');
+    settingsBtn.classList.remove('active');
+  }
+  if (!themeWrap.contains(e.target)) themeWrap.classList.remove('expanded');
+});
+
+document.querySelectorAll('[data-size].opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-size].opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.dataset.size = btn.dataset.size;
+    savePrefs();
+  });
+});
+document.querySelectorAll('[data-font].opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-font].opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.dataset.font = btn.dataset.font;
+    savePrefs();
+  });
+});
+document.querySelectorAll('[data-width].opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-width].opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.dataset.width = btn.dataset.width;
+    savePrefs();
+  });
+});
+
+document.querySelectorAll('.theme-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+    document.documentElement.dataset.theme = dot.dataset.theme;
+    document.body.dataset.theme = dot.dataset.theme;
+    savePrefs();
+  });
+});
+
+// ===== SIDEBAR =====
+const sidebarEl = document.getElementById('chapter-sidebar');
+const overlayEl = document.getElementById('sidebar-overlay');
+const sidebarBtn = document.getElementById('sidebar-toggle');
+
+function openSidebar() { sidebarEl.classList.add('open'); overlayEl.classList.add('open'); }
+function closeSidebar() { sidebarEl.classList.remove('open'); overlayEl.classList.remove('open'); }
+sidebarBtn.addEventListener('click', () => { sidebarEl.classList.contains('open') ? closeSidebar() : openSidebar(); });
+overlayEl.addEventListener('click', closeSidebar);
+
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 2) {
+    if (dx > 0 && touchStartX < 40) openSidebar();
+    else if (dx < 0 && sidebarEl.classList.contains('open')) closeSidebar();
+  }
+});
+
+// ===== RENDERING: one book at a time =====
+const ITALIC_RE = /_([^_]+)_/g;
+function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function renderText(s) { return escapeHtml(s).replace(ITALIC_RE, '<em>$1</em>'); }
+
+function renderArgument(argument) {
+  if (!argument) return '';
+  const paras = argument.split('\n\n').map(p => p.trim()).filter(Boolean);
+  return '<div class="ch-argument">' + paras.map(p => `<p>${renderText(p)}</p>`).join('') + '</div>';
+}
+
+const EDITION_ORDER = ['butler', 'pope', 'cowper', 'murray', 'greek', 'modern'];
+const EDITION_META = {
+  butler: { translator: 'translated by Samuel Butler', caption: 'prose' },
+  pope:   { translator: 'translated by Alexander Pope', caption: 'heroic-couplet verse' },
+  cowper: { translator: 'translated by William Cowper', caption: 'blank verse' },
+  murray: { translator: 'translated by A. T. Murray', caption: 'Loeb prose' },
+  greek:  { translator: 'original Ancient Greek', caption: 'ed. A. T. Murray' },
+  modern: { translator: 'translated by Claude (Anthropic)', caption: 'modern prose' },
+};
+
+let activeEdition = 'pope';
+let currentBookNum = 1;
+
+const chapterIndicator = document.getElementById('chapter-indicator');
+const editionCaption = document.getElementById('edition-caption');
+const translatorLine = document.getElementById('translator-line');
+const chapterView = document.getElementById('chapter-view');
+const prevBtn = document.getElementById('prev-book-btn');
+const nextBtn = document.getElementById('next-book-btn');
+const prevLabel = document.getElementById('prev-book-label');
+const nextLabel = document.getElementById('next-book-label');
+const bookNavMid = document.getElementById('book-nav-mid');
+
+function bookData(edition, num) {
+  const data = EDITIONS[edition];
+  return { data, book: data.books[num - 1] };
+}
+
+function renderCurrentBook(opts) {
+  opts = opts || {};
+  const { data, book } = bookData(activeEdition, currentBookNum);
+  const unitKey = data.form === 'prose' ? 'paragraphs' : 'lines';
+  const textHtml = book[unitKey].map(u => `<p>${renderText(u)}</p>`).join('');
+  chapterView.innerHTML =
+    '<section class="chapter" id="bk-' + activeEdition + '-' + book.num + '">' +
+    '<div class="chapter-divider">' +
+    '<div class="ch-num">Book</div>' +
+    '<div class="ch-title">' + book.roman + '</div>' +
+    '<div class="ch-rule"></div>' +
+    '</div>' +
+    renderArgument(book.argument) +
+    '<div class="chapter-text ' + (data.form === 'prose' ? 'prose' : '') + '">' + textHtml + '</div>' +
+    '</section>';
+
+  const meta = EDITION_META[activeEdition];
+  editionCaption.textContent = data.publication_year + ' · ' + meta.caption + ' · 24 books';
+  translatorLine.textContent = meta.translator;
+  chapterIndicator.textContent = 'Book ' + book.roman;
+  bookNavMid.textContent = 'BOOK ' + currentBookNum + ' / 24';
+
+  prevBtn.disabled = currentBookNum <= 1;
+  nextBtn.disabled = currentBookNum >= 24;
+  if (currentBookNum > 1) {
+    const pb = bookData(activeEdition, currentBookNum - 1).book;
+    prevLabel.textContent = 'Book ' + pb.roman;
+  } else prevLabel.textContent = '';
+  if (currentBookNum < 24) {
+    const nb = bookData(activeEdition, currentBookNum + 1).book;
+    nextLabel.textContent = 'Book ' + nb.roman;
+  } else nextLabel.textContent = '';
+
+  document.querySelectorAll('.sidebar-chapter').forEach((el, i) => el.classList.toggle('active', i === currentBookNum - 1));
+  document.querySelectorAll('.progress-seg').forEach((el, i) => {
+    el.classList.toggle('filled', i < currentBookNum - 1);
+    el.classList.toggle('current', i === currentBookNum - 1);
+  });
+
+  if (!opts.noScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+  if (opts.updateHash !== false) {
+    history.replaceState(null, '', '#bk-' + activeEdition + '-' + currentBookNum);
+  }
+}
+
+function goToBook(num, opts) {
+  currentBookNum = Math.max(1, Math.min(24, num));
+  renderCurrentBook(opts);
+  closeSidebar();
+}
+
+function setEdition(ed, opts) {
+  opts = opts || {};
+  activeEdition = ed;
+  EDITION_ORDER.forEach(k => {
+    const btn = document.getElementById('ed-' + k);
+    btn.classList.toggle('active', ed === k);
+    btn.setAttribute('aria-selected', ed === k);
+  });
+  renderCurrentBook(opts);
+  savePrefs();
+}
+
+EDITION_ORDER.forEach(k => {
+  document.getElementById('ed-' + k).addEventListener('click', () => {
+    if (activeEdition !== k) setEdition(k);
+  });
+});
+prevBtn.addEventListener('click', () => goToBook(currentBookNum - 1));
+nextBtn.addEventListener('click', () => goToBook(currentBookNum + 1));
+
+// ===== SIDEBAR / PROGRESS BUILD (static — 24 books, same across editions) =====
+(function buildStaticNav() {
+  const container = document.getElementById('sidebar-chapters');
+  const track = document.getElementById('progress-track');
+  for (let i = 1; i <= 24; i++) {
+    const romanEl = document.createElement('button');
+    romanEl.className = 'sidebar-chapter';
+    romanEl.innerHTML = '<span class="ch-num">' + i + '</span><span class="ch-title">Book ' + toRoman(i) + '</span>';
+    romanEl.addEventListener('click', () => goToBook(i));
+    container.appendChild(romanEl);
+
+    const seg = document.createElement('button');
+    seg.className = 'progress-seg';
+    seg.title = 'Book ' + toRoman(i);
+    seg.addEventListener('click', () => goToBook(i));
+    track.appendChild(seg);
+  }
+})();
+function toRoman(n) {
+  const vals = [[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+  let out = '';
+  for (const [v, s] of vals) { while (n >= v) { out += s; n -= v; } }
+  return out;
+}
+
+// ===== HASH NAVIGATION =====
+// #bk-<ed>-<N> explicit translation, or #bk-<N> for the current one.
+function parseHash() {
+  const h = location.hash.replace('#', '');
+  let ed = null, n = null;
+  let m = h.match(/^bk-(butler|pope|cowper|murray|greek|modern)-(\d+)$/);
+  if (m) { ed = m[1]; n = parseInt(m[2]); }
+  else {
+    m = h.match(/^bk-(\d+)$/);
+    if (m) { n = parseInt(m[1]); }
+  }
+  if (n === null || n < 1 || n > 24) return false;
+  if (ed && ed !== activeEdition) {
+    activeEdition = ed;
+    EDITION_ORDER.forEach(k => {
+      const btn = document.getElementById('ed-' + k);
+      btn.classList.toggle('active', ed === k);
+      btn.setAttribute('aria-selected', ed === k);
+    });
+  }
+  currentBookNum = n;
+  return true;
+}
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  const scrollAmt = window.innerHeight * 0.85;
+  switch(e.key) {
+    case 'j': case 'ArrowDown':
+      window.scrollBy({ top: scrollAmt, behavior: 'smooth' }); e.preventDefault(); break;
+    case 'k': case 'ArrowUp':
+      window.scrollBy({ top: -scrollAmt, behavior: 'smooth' }); e.preventDefault(); break;
+    case ' ':
+      if (e.shiftKey) window.scrollBy({ top: -scrollAmt, behavior: 'smooth' });
+      else window.scrollBy({ top: scrollAmt, behavior: 'smooth' });
+      e.preventDefault(); break;
+    case 'ArrowLeft': case '[':
+      if (!prevBtn.disabled) goToBook(currentBookNum - 1);
+      e.preventDefault(); break;
+    case 'ArrowRight': case ']':
+      if (!nextBtn.disabled) goToBook(currentBookNum + 1);
+      e.preventDefault(); break;
+    case 'Escape':
+      settingsPanel.classList.remove('open'); settingsBtn.classList.remove('active'); closeSidebar(); break;
+  }
+});
+window.addEventListener('hashchange', () => { if (parseHash()) renderCurrentBook({ updateHash: false }); });
+
+// ===== PREFERENCES =====
+function savePrefs() {
+  try {
+    const prefs = {
+      theme: document.body.dataset.theme, font: document.body.dataset.font,
+      size: document.body.dataset.size, width: document.body.dataset.width,
+      edition: activeEdition,
+    };
+    localStorage.setItem('odyssey-reader-prefs', JSON.stringify(prefs));
+  } catch(e) {}
+}
+function loadPrefs() {
+  try {
+    const saved = localStorage.getItem('odyssey-reader-prefs');
+    if (!saved) return {};
+    const prefs = JSON.parse(saved);
+    if (prefs.theme) {
+      document.documentElement.dataset.theme = prefs.theme;
+      document.body.dataset.theme = prefs.theme;
+      document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.theme === prefs.theme));
+    }
+    if (prefs.font) {
+      document.body.dataset.font = prefs.font;
+      document.querySelectorAll('[data-font].opt').forEach(b => b.classList.toggle('active', b.dataset.font === prefs.font));
+    }
+    if (prefs.size) {
+      document.body.dataset.size = prefs.size;
+      document.querySelectorAll('[data-size].opt').forEach(b => b.classList.toggle('active', b.dataset.size === prefs.size));
+    }
+    if (prefs.width) {
+      document.body.dataset.width = prefs.width;
+      document.querySelectorAll('[data-width].opt').forEach(b => b.classList.toggle('active', b.dataset.width === prefs.width));
+    }
+    return prefs;
+  } catch(e) { return {}; }
+}
+
+const loadedPrefs = loadPrefs();
+activeEdition = (EDITION_ORDER.includes(loadedPrefs.edition)) ? loadedPrefs.edition : 'pope';
+EDITION_ORDER.forEach(k => {
+  const btn = document.getElementById('ed-' + k);
+  btn.classList.toggle('active', activeEdition === k);
+  btn.setAttribute('aria-selected', activeEdition === k);
+});
+if (location.hash) parseHash();
+renderCurrentBook({ noScroll: !!location.hash, updateHash: false });
+if (location.hash) {
+  // Land at top of the target book without an intermediate scroll animation.
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>

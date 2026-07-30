@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Odyssey of Homer — side-by-side study reader: original Greek, transliteration, word-by-word glosses, and A. T. Murray's 1919 facing English.">
+<title>The Odyssey — Study — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+[data-theme="light-purple"] {
+  --bg: #faf8f3; --text: #363b48; --text2: #65707a; --border: #d6d0c4;
+  --bar-bg: rgba(250,248,243,0.94); --accent: #7c3aed; --btn-bg: rgba(0,0,0,0.05);
+  --card-bg: #ffffff; --pop-bg: #ffffff; --pop-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  --hl: rgba(124,58,237,0.12);
+}
+[data-theme="sepia"] {
+  --bg: #f5efe0; --text: #3a2e1e; --text2: #7a6a52; --border: #d4c8a8;
+  --bar-bg: rgba(245,239,224,0.94); --accent: #b45309; --btn-bg: rgba(0,0,0,0.05);
+  --card-bg: #fbf7ec; --pop-bg: #fbf7ec; --pop-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  --hl: rgba(180,83,9,0.14);
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff; --text: #363b48; --text2: #65707a; --border: #d0d8e4;
+  --bar-bg: rgba(255,255,255,0.94); --accent: #2e6ab4; --btn-bg: rgba(0,0,0,0.06);
+  --card-bg: #f8fafc; --pop-bg: #ffffff; --pop-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  --hl: rgba(46,106,180,0.12);
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a; --text: #dce0ec; --text2: #8490aa; --border: #333;
+  --bar-bg: rgba(26,26,26,0.95); --accent: #9b7aed; --btn-bg: rgba(255,255,255,0.08);
+  --card-bg: #222; --pop-bg: #262630; --pop-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  --hl: rgba(155,122,237,0.2);
+}
+[data-theme="dark-blue"] {
+  --bg: #000; --text: #8490aa; --text2: #546080; --border: #1c2440;
+  --bar-bg: rgba(0,0,0,0.95); --accent: #4a90d9; --btn-bg: rgba(255,255,255,0.06);
+  --card-bg: #060a14; --pop-bg: #0a1020; --pop-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  --hl: rgba(74,144,217,0.18);
+}
+
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ===== top bar ===== */
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 46px;
+  background: var(--bar-bg); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; gap: 10px; padding: 0 14px;
+  font-family: 'Jost', sans-serif; font-size: 13px; color: var(--text2);
+}
+#top-bar .brand { font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
+#top-bar .brand em { color: var(--accent); font-style: italic; font-family: 'EB Garamond', serif; }
+#top-bar a.back { color: var(--text2); text-decoration: none; font-size: 16px; padding: 4px 6px; }
+#top-bar a.back:hover { color: var(--accent); }
+#book-select {
+  font-family: 'Jost', sans-serif; font-size: 13px; color: var(--text);
+  background: var(--btn-bg); border: 1px solid var(--border); border-radius: 6px;
+  padding: 4px 8px; cursor: pointer;
+}
+.bar-spacer { flex: 1; }
+.tog {
+  font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  background: none; border: 1px solid var(--border); border-radius: 999px; color: var(--text2);
+  padding: 4px 12px; cursor: pointer; transition: color .15s, border-color .15s; white-space: nowrap;
+}
+.tog.on { color: var(--accent); border-color: var(--accent); }
+.theme-dots { display: flex; gap: 7px; align-items: center; }
+.theme-dot { width: 13px; height: 13px; border-radius: 50%; border: none; cursor: pointer; padding: 0; }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot[data-t="sepia"] { background: #b45309; }
+.theme-dot[data-t="light-azure"] { background: #2e6ab4; }
+.theme-dot[data-t="dark-violet"] { background: #9b7aed; }
+.theme-dot[data-t="dark-blue"] { background: #4a90d9; }
+
+/* ===== layout ===== */
+#wrap { max-width: 1200px; margin: 0 auto; padding: 76px 20px 60px; }
+.book-head { text-align: center; margin-bottom: 14px; }
+.book-head .bh-label { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text2); }
+.book-head h1 { font-size: 34px; font-style: italic; font-weight: 500; color: var(--accent); margin-top: 4px; }
+.book-head .bh-sub { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--text2); margin-top: 8px; }
+.bh-rule { width: 60px; height: 1px; margin: 16px auto 0; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+
+.chunk {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0 28px;
+  padding: 20px 0; border-bottom: 1px solid var(--border); align-items: start;
+}
+.chunk:target, .chunk.flash { background: var(--hl); }
+
+.gk { min-width: 0; }
+.gk-line { display: flex; gap: 12px; align-items: baseline; margin-bottom: 2px; }
+.gk-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text2);
+  opacity: .55; min-width: 30px; text-align: right; flex-shrink: 0; user-select: none;
+  padding-top: 6px;
+}
+.gk-body { min-width: 0; }
+.gk-text { font-size: 19.5px; line-height: 1.55; }
+.gk-text .w { cursor: pointer; border-radius: 3px; padding: 0 1px; transition: background .12s; }
+.gk-text .w:hover, .gk-text .w.sel { background: var(--hl); color: var(--accent); }
+.tr-text {
+  font-size: 12.5px; font-style: italic; color: var(--text2); line-height: 1.5;
+  letter-spacing: .2px; margin: 0 0 6px; font-family: Georgia, serif;
+}
+body:not(.show-translit) .tr-text { display: none; }
+
+.en { min-width: 0; font-size: 16px; line-height: 1.75; color: var(--text); }
+.en .en-range {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--text2);
+  opacity: .6; display: block; margin-bottom: 4px; letter-spacing: 1px;
+}
+.en p { margin: 0; }
+body:not(.show-english) .en { display: none; }
+body:not(.show-english) .chunk { grid-template-columns: 1fr; }
+
+/* ===== word popover ===== */
+#pop {
+  position: absolute; z-index: 200; max-width: 320px; min-width: 220px;
+  background: var(--pop-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: var(--pop-shadow); padding: 12px 14px; display: none;
+  font-family: 'Jost', sans-serif; font-size: 13px; line-height: 1.5;
+}
+#pop.open { display: block; }
+#pop .p-form { font-family: 'EB Garamond', serif; font-size: 21px; color: var(--accent); }
+#pop .p-tr { font-style: italic; color: var(--text2); font-family: Georgia, serif; font-size: 13px; margin-bottom: 6px; }
+#pop .p-lemma { font-family: 'EB Garamond', serif; font-size: 16px; margin-top: 2px; }
+#pop .p-lemma b { font-weight: 600; }
+#pop .p-gloss { color: var(--text); margin: 2px 0 6px; }
+#pop .p-morph {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--text2);
+  border-top: 1px dashed var(--border); padding-top: 6px; letter-spacing: .3px;
+}
+#pop .p-close {
+  position: absolute; top: 6px; right: 8px; background: none; border: none;
+  color: var(--text2); font-size: 14px; cursor: pointer; padding: 2px 5px;
+}
+
+/* ===== book nav ===== */
+.book-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 26px 0 0; font-family: 'Jost', sans-serif; font-size: 12px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+.book-nav button {
+  background: none; border: 1px solid var(--border); border-radius: 8px; color: var(--text2);
+  font: inherit; padding: 10px 18px; cursor: pointer; transition: color .15s, border-color .15s;
+}
+.book-nav button:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+.book-nav button:disabled { opacity: .3; cursor: default; }
+.book-nav .pos { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text2); }
+
+button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .chunk { grid-template-columns: 1fr; gap: 10px; }
+  .en { border-left: 2px solid var(--border); padding-left: 14px; }
+  #top-bar { gap: 6px; overflow-x: auto; }
+  #wrap { padding: 72px 14px 50px; }
+  .gk-num { min-width: 24px; }
+}
+</style>
+</head>
+<body class="show-translit show-english">
+
+<nav id="top-bar">
+  <a class="back" href="index.html" title="Back to The Odyssey" aria-label="Back">&larr;</a>
+  <span class="brand">Odyssey <em>Study</em></span>
+  <select id="book-select" aria-label="Choose book"></select>
+  <span class="bar-spacer"></span>
+  <button class="tog on" id="tog-translit" aria-pressed="true">Translit</button>
+  <button class="tog on" id="tog-english" aria-pressed="true">English</button>
+  <div class="theme-dots" role="group" aria-label="Theme">
+    <button class="theme-dot" data-t="light-purple" aria-label="Light purple theme"></button>
+    <button class="theme-dot" data-t="sepia" aria-label="Sepia theme"></button>
+    <button class="theme-dot" data-t="light-azure" aria-label="Light azure theme"></button>
+    <button class="theme-dot" data-t="dark-violet" aria-label="Dark violet theme"></button>
+    <button class="theme-dot" data-t="dark-blue" aria-label="Dark blue theme"></button>
+  </div>
+</nav>
+
+<main id="wrap">
+  <div class="book-head">
+    <div class="bh-label">Book</div>
+    <h1 id="bh-roman">I</h1>
+    <div class="bh-sub">Greek: ed. A. T. Murray 1919 &middot; English: A. T. Murray 1919 &middot; tap any Greek word for lemma &amp; meaning</div>
+    <div class="bh-rule"></div>
+  </div>
+  <div id="chunks"><!-- rendered by JS --></div>
+  <div class="book-nav">
+    <button id="prev-btn">&larr; Prev</button>
+    <span class="pos" id="nav-pos">BOOK 1 / 24</span>
+    <button id="next-btn">Next &rarr;</button>
+  </div>
+</main>
+
+<div id="pop" role="dialog" aria-label="Word details">
+  <button class="p-close" id="pop-close" aria-label="Close">&times;</button>
+  <div class="p-form" id="p-form"></div>
+  <div class="p-tr" id="p-tr"></div>
+  <div class="p-lemma" id="p-lemma"></div>
+  <div class="p-gloss" id="p-gloss"></div>
+  <div class="p-morph" id="p-morph"></div>
+</div>
+
+<script>
+const STUDY = __STUDY__;
+const TOTAL = 24;
+const PREFS_KEY = 'odyssey-study-prefs';
+
+/* ---------- transliteration (polytonic Greek -> Latin, scholarly-ish) ---------- */
+const TR_BASE = {
+  'α':'a','β':'b','γ':'g','δ':'d','ε':'e','ζ':'z','η':'ē','θ':'th','ι':'i','κ':'k',
+  'λ':'l','μ':'m','ν':'n','ξ':'x','ο':'o','π':'p','ρ':'r','σ':'s','ς':'s','τ':'t',
+  'υ':'y','φ':'ph','χ':'ch','ψ':'ps','ω':'ō','ϝ':'w','ϊ':'i','ϋ':'y'
+};
+const DIPHTHONG_U = { 'α':'au','ε':'eu','η':'ēu','ο':'ou','ω':'ōu' };
+function translitWord(word) {
+  // decompose, track breathing (rough = h), keep iota subscript as i
+  const nfd = word.normalize('NFD');
+  let letters = [];
+  let rough = false, idx0 = -1;
+  for (const ch of nfd) {
+    const cc = ch.charCodeAt(0);
+    if (ch === '̔') { rough = true; continue; }          // rough breathing
+    if (ch === 'ͅ') { letters.push({b:'i', comb:true}); continue; } // iota subscript
+    if (cc >= 0x300 && cc <= 0x36F) continue;                  // other diacritics
+    letters.push({b: ch, comb:false});
+  }
+  let out = '';
+  for (let i = 0; i < letters.length; i++) {
+    const c = letters[i], lower = c.b.toLowerCase();
+    if (c.comb) { out += 'i'; continue; }
+    const isUpper = c.b !== lower;
+    let piece;
+    if (lower === 'γ' && i+1 < letters.length && 'γκχξ'.includes(letters[i+1].b.toLowerCase())) piece = 'n';
+    else if (lower === 'υ' && i > 0 && DIPHTHONG_U[letters[i-1].b.toLowerCase()] && out.length) {
+      // previous vowel + upsilon -> diphthong: rewrite last emitted vowel
+      const prev = letters[i-1].b.toLowerCase();
+      out = out.slice(0, out.length - TR_BASE[prev].length) + DIPHTHONG_U[prev];
+      continue;
+    }
+    else piece = TR_BASE[lower] !== undefined ? TR_BASE[lower] : c.b;
+    if (isUpper) piece = piece.charAt(0).toUpperCase() + piece.slice(1);
+    out += piece;
+  }
+  if (rough) out = (out === out.toLowerCase()) ? 'h' + out : 'H' + out.charAt(0).toLowerCase() + out.slice(1);
+  // rho with rough breathing -> rh
+  if (/^[Hh]r/.test(out)) out = out.charAt(0) === 'H' ? 'Rh' + out.slice(2) : 'rh' + out.slice(2);
+  return out;
+}
+function translitLine(line) {
+  return line.split(/(\s+)/).map(tok => /\s/.test(tok) ? tok :
+    tok.split(/([,.;·:’ʼ()—’]+)/).map(p => /[,.;·:’ʼ()—’]/.test(p) ? p.replace(/·/g,';') : (p ? translitWord(p) : p)).join('')
+  ).join('');
+}
+
+/* ---------- morphology decoding ---------- */
+const POS = { n:'noun', v:'verb', a:'adjective', d:'adverb', l:'article', g:'particle',
+  c:'conjunction', r:'preposition', p:'pronoun', m:'numeral', i:'interjection', e:'exclamation', u:'punct' };
+const TENSE = { p:'present', i:'imperfect', r:'perfect', l:'pluperfect', t:'future perfect', f:'future', a:'aorist' };
+const MOOD = { i:'indicative', s:'subjunctive', o:'optative', n:'infinitive', m:'imperative', p:'participle' };
+const VOICE = { a:'active', p:'passive', m:'middle', e:'middle/passive' };
+const GEND = { m:'masc', f:'fem', n:'neut' };
+const CASE = { n:'nom', g:'gen', d:'dat', a:'acc', v:'voc', l:'loc' };
+const NUM = { s:'sg', d:'dual', p:'pl' };
+const DEG = { c:'comparative', s:'superlative' };
+function decodeMorph(tag) {
+  if (!tag || tag.length < 9) return '';
+  const parts = [];
+  const [pos, per, num, ten, moo, voi, gen, cas, deg] = tag.split('');
+  if (POS[pos]) parts.push(POS[pos]);
+  if (per !== '-') parts.push(per + (per==='1'?'st':per==='2'?'nd':'rd') + ' person');
+  if (TENSE[ten]) parts.push(TENSE[ten]);
+  if (MOOD[moo]) parts.push(MOOD[moo]);
+  if (VOICE[voi]) parts.push(VOICE[voi]);
+  if (GEND[gen]) parts.push(GEND[gen]);
+  if (CASE[cas]) parts.push(CASE[cas]);
+  if (NUM[num]) parts.push(NUM[num]);
+  if (DEG[deg]) parts.push(DEG[deg]);
+  return parts.join(' · ');
+}
+
+/* ---------- state ---------- */
+let curBook = 1;
+function loadPrefs() { try { return JSON.parse(localStorage.getItem(PREFS_KEY)) || {}; } catch(e) { return {}; } }
+function savePrefs(p) { try { localStorage.setItem(PREFS_KEY, JSON.stringify(p)); } catch(e) {} }
+const prefs = loadPrefs();
+if (prefs.theme) document.documentElement.dataset.theme = prefs.theme;
+if (prefs.translit === false) document.body.classList.remove('show-translit');
+if (prefs.english === false) document.body.classList.remove('show-english');
+
+/* ---------- render ---------- */
+const chunksEl = document.getElementById('chunks');
+const bookSelect = document.getElementById('book-select');
+for (let i = 1; i <= TOTAL; i++) {
+  const b = STUDY.books[i-1];
+  const opt = document.createElement('option');
+  opt.value = i; opt.textContent = 'Book ' + b.roman;
+  bookSelect.appendChild(opt);
+}
+
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderBook(n) {
+  curBook = n;
+  const b = STUDY.books[n-1];
+  document.getElementById('bh-roman').textContent = b.roman;
+  document.getElementById('nav-pos').textContent = 'BOOK ' + n + ' / ' + TOTAL;
+  document.getElementById('prev-btn').disabled = n <= 1;
+  document.getElementById('next-btn').disabled = n >= TOTAL;
+  bookSelect.value = n;
+
+  const frag = [];
+  const chunks = b.chunks.length ? b.chunks : [[1, b.lines.length, '']];
+  chunks.forEach(([start, end, entext], ci) => {
+    frag.push('<section class="chunk" id="ch-' + n + '-' + start + '">');
+    frag.push('<div class="gk">');
+    for (let ln = start; ln <= end && ln <= b.lines.length; ln++) {
+      const [text, words] = b.lines[ln-1];
+      let html;
+      if (words.length) {
+        // wrap each greek token that matches a treebank word
+        let rem = text, out = '', wi = 0;
+        const toks = text.split(/(\s+|[,.;·—’]+)/);
+        html = toks.map(tok => {
+          if (!tok || /^\s+$/.test(tok) || /^[,.;·—’]+$/.test(tok)) return esc(tok);
+          const idx = words.findIndex((w, j) => j >= wi && (w[0] === tok || tok.startsWith(w[0]) || w[0].startsWith(tok)));
+          if (idx >= 0) { wi = idx + 1; return '<span class="w" data-l="' + n + '.' + ln + '.' + idx + '">' + esc(tok) + '</span>'; }
+          return esc(tok);
+        }).join('');
+      } else html = esc(text);
+      frag.push('<div class="gk-line"><span class="gk-num">' + ln + '</span><div class="gk-body">' +
+        '<div class="gk-text">' + html + '</div>' +
+        '<div class="tr-text">' + esc(translitLine(text)) + '</div>' +
+        '</div></div>');
+    }
+    frag.push('</div>');
+    frag.push('<div class="en"><span class="en-range">' + start + '&ndash;' + Math.min(end, b.lines.length) + '</span><p>' + esc(entext) + '</p></div>');
+    frag.push('</section>');
+  });
+  chunksEl.innerHTML = frag.join('');
+  closePop();
+  history.replaceState(null, '', '#bk-' + n);
+  window.scrollTo(0, 0);
+}
+
+/* ---------- word popover ---------- */
+const pop = document.getElementById('pop');
+let selEl = null;
+function closePop() {
+  pop.classList.remove('open');
+  if (selEl) { selEl.classList.remove('sel'); selEl = null; }
+}
+document.getElementById('pop-close').addEventListener('click', closePop);
+document.addEventListener('click', (e) => {
+  const w = e.target.closest('.w');
+  if (!w) { if (!e.target.closest('#pop')) closePop(); return; }
+  const [bn, ln, wi] = w.dataset.l.split('.').map(Number);
+  const word = STUDY.books[bn-1].lines[ln-1][1][wi];
+  if (!word) return;
+  const [form, lemma, postag] = word;
+  if (selEl) selEl.classList.remove('sel');
+  selEl = w; w.classList.add('sel');
+  document.getElementById('p-form').textContent = form;
+  document.getElementById('p-tr').textContent = translitWord(form);
+  const gloss = STUDY.lemmas[lemma] || '';
+  document.getElementById('p-lemma').innerHTML = 'lemma: <b>' + esc(lemma) + '</b> <span style="color:var(--text2)">(' + esc(translitWord(lemma)) + ')</span>';
+  document.getElementById('p-gloss').textContent = gloss || '(proper name / no short gloss)';
+  document.getElementById('p-morph').textContent = decodeMorph(postag) + '  ·  Od. ' + bn + '.' + ln;
+  pop.classList.add('open');
+  const r = w.getBoundingClientRect();
+  const popW = Math.min(320, window.innerWidth - 24);
+  let x = window.scrollX + r.left;
+  if (x + popW > window.scrollX + window.innerWidth - 12) x = window.scrollX + window.innerWidth - popW - 12;
+  pop.style.left = x + 'px';
+  pop.style.top = (window.scrollY + r.bottom + 8) + 'px';
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePop(); });
+
+/* ---------- controls ---------- */
+document.getElementById('prev-btn').addEventListener('click', () => { if (curBook > 1) renderBook(curBook - 1); });
+document.getElementById('next-btn').addEventListener('click', () => { if (curBook < TOTAL) renderBook(curBook + 1); });
+bookSelect.addEventListener('change', () => renderBook(Number(bookSelect.value)));
+document.addEventListener('keydown', (e) => {
+  if (e.target.matches('input,select,textarea')) return;
+  if (e.key === 'ArrowLeft' && curBook > 1) renderBook(curBook - 1);
+  if (e.key === 'ArrowRight' && curBook < TOTAL) renderBook(curBook + 1);
+});
+
+function wireToggle(btnId, cls, prefKey) {
+  const btn = document.getElementById(btnId);
+  btn.classList.toggle('on', document.body.classList.contains(cls));
+  btn.setAttribute('aria-pressed', document.body.classList.contains(cls));
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle(cls);
+    const on = document.body.classList.contains(cls);
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', on);
+    const p = loadPrefs(); p[prefKey] = on; savePrefs(p);
+  });
+}
+wireToggle('tog-translit', 'show-translit', 'translit');
+wireToggle('tog-english', 'show-english', 'english');
+
+document.querySelectorAll('.theme-dot').forEach(dot => {
+  dot.classList.toggle('active', document.documentElement.dataset.theme === dot.dataset.t);
+  dot.addEventListener('click', () => {
+    document.documentElement.dataset.theme = dot.dataset.t;
+    document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d === dot));
+    const p = loadPrefs(); p.theme = dot.dataset.t; savePrefs(p);
+  });
+});
+
+/* ---------- init from hash ---------- */
+let start = 1;
+const m = location.hash.match(/^#bk-(\d+)$/);
+if (m) start = Math.min(TOTAL, Math.max(1, Number(m[1])));
+renderBook(start);
+</script>
+</body>
+</html>

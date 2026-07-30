@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Odyssey of Homer — PDF-viewer style reader, three parallel translations.">
+<title>The Odyssey — PDF Viewer — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important} }
+
+[data-theme="light-purple"] { --toolbar-bg:#3c3c3c; --toolbar-text:#e8e8e8; --canvas-bg:#525659; --page-bg:#faf8f3; --text:#363b48; --text-secondary:#65707a; --accent:#7c3aed; --border:#d6d0c4; }
+[data-theme="sepia"] { --toolbar-bg:#3c3630; --toolbar-text:#ece4d4; --canvas-bg:#4a4238; --page-bg:#f5efe0; --text:#3a2e1e; --text-secondary:#7a6a52; --accent:#b45309; --border:#d4c8a8; }
+[data-theme="light-azure"] { --toolbar-bg:#33383e; --toolbar-text:#e4eaf2; --canvas-bg:#455060; --page-bg:#ffffff; --text:#363b48; --text-secondary:#65707a; --accent:#2e6ab4; --border:#d6d0c4; }
+[data-theme="dark-violet"] { --toolbar-bg:#161320; --toolbar-text:#d8d2ec; --canvas-bg:#0d0b14; --page-bg:#1a1a1a; --text:#dce0ec; --text-secondary:#8490aa; --accent:#9b7aed; --border:#333; }
+[data-theme="dark-blue"] { --toolbar-bg:#05070c; --toolbar-text:#c4cede; --canvas-bg:#000; --page-bg:#050810; --text:#8490aa; --text-secondary:#546080; --accent:#2e6ab4; --border:#1c2440; }
+
+body { background: var(--canvas-bg); font-family: 'EB Garamond', Georgia, serif; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+
+#toolbar {
+  height: 44px; flex-shrink: 0; background: var(--toolbar-bg); color: var(--toolbar-text);
+  display: flex; align-items: center; padding: 0 10px; gap: 6px;
+  font-family: 'Jost', sans-serif; font-size: 12px; z-index: 50; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+#toolbar a { color: var(--toolbar-text); text-decoration: none; opacity: .85; }
+.tb-sep { width: 1px; height: 22px; background: rgba(255,255,255,.15); margin: 0 4px; }
+.tb-btn { background: none; border: none; color: var(--toolbar-text); cursor: pointer; font-size: 15px; padding: 6px 9px; border-radius: 3px; opacity: .9; }
+.tb-btn:hover:not(:disabled) { background: rgba(255,255,255,.1); }
+.tb-btn:disabled { opacity: .3; }
+select#book-select {
+  background: rgba(255,255,255,.08); color: var(--toolbar-text); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 3px; font-family: 'Jost', sans-serif; font-size: 11px; padding: 5px 6px; max-width: 220px;
+}
+#page-input { width: 34px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: var(--toolbar-text); text-align: center; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 4px 2px; }
+#page-total { font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: .8; }
+.ed-switch-pdf { display: inline-flex; gap: 3px; }
+.ed-opt-pdf { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); color: var(--toolbar-text); font-family: 'Jost', sans-serif; font-size: 10px; padding: 4px 8px; border-radius: 3px; cursor: pointer; opacity: .85; }
+.ed-opt-pdf.active { color: var(--accent); border-color: var(--accent); opacity: 1; background: rgba(255,255,255,.12); }
+.theme-dots-pdf { display: flex; gap: 5px; }
+.theme-dot-pdf { width: 11px; height: 11px; border-radius: 50%; border: none; cursor: pointer; }
+.theme-dot-pdf.active { box-shadow: 0 0 0 2px var(--toolbar-bg), 0 0 0 3.5px var(--accent); }
+.theme-dot-pdf[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot-pdf[data-t="sepia"] { background: #b45309; }
+.theme-dot-pdf[data-t="light-azure"] { background: #2e6ab4; }
+.theme-dot-pdf[data-t="dark-violet"] { background: #9b7aed; }
+.theme-dot-pdf[data-t="dark-blue"] { background: #4a90d9; }
+
+#canvas { flex: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; }
+#page-viewport {
+  width: 620px; height: 760px; max-width: 92vw; max-height: 90vh; overflow: hidden;
+  background: var(--page-bg); box-shadow: 0 4px 24px rgba(0,0,0,.5); position: relative;
+  contain: paint; clip-path: inset(0);
+}
+#pageset-pdf {
+  columns: 540px; column-gap: 80px; height: 100%; padding: 56px 40px;
+  color: var(--text); font-size: 16px; line-height: 1.8;
+  transition: margin-left .22s ease;
+}
+#pageset-pdf p { margin: 0 0 .15em 0; text-align: left; }
+#pageset-pdf.prose p { text-align: justify; text-indent: 1.4em; margin: 0 0 .75em 0; hyphens: auto; }
+#pageset-pdf em { font-style: italic; color: var(--accent); opacity: .9; }
+.book-head-pdf { text-align: center; margin-bottom: 22px; }
+.book-head-pdf .bh-num { font-family: 'Jost', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-secondary); }
+.book-head-pdf .bh-title { font-size: 30px; font-style: italic; color: var(--accent); margin-top: 6px; }
+.book-head-pdf .bh-rule { width: 40px; height: 1px; margin: 14px auto 0; background: linear-gradient(90deg,transparent,var(--accent),transparent); }
+.book-argument-pdf { font-size: .78em; font-style: italic; color: var(--text-secondary); text-align: center; margin: 16px 0 20px; line-height: 1.5; }
+.book-argument-pdf p { margin: 0 0 .5em; text-align: center !important; text-indent: 0 !important; }
+
+#hit-left-pdf, #hit-right-pdf { position: fixed; top: 44px; bottom: 0; width: 20%; z-index: 40; cursor: pointer; }
+#hit-left-pdf { left: 0; }
+#hit-right-pdf { right: 0; }
+
+button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 700px) {
+  #page-viewport { width: 94vw; height: 82vh; }
+  select#book-select { max-width: 110px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="toolbar">
+  <a href="reader.html" title="Back to reader"><button class="tb-btn">&#8592;</button></a>
+  <div class="tb-sep"></div>
+  <select id="book-select" aria-label="Jump to book"></select>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" id="pdf-prev" title="Previous page">&#8249;</button>
+  <input id="page-input" type="text" value="1" aria-label="Page number">
+  <span id="page-total">/ 1</span>
+  <button class="tb-btn" id="pdf-next" title="Next page">&#8250;</button>
+  <div class="tb-sep"></div>
+  <div class="ed-switch-pdf" id="ed-switch-pdf">
+    <button class="ed-opt-pdf" data-ed="butler">Butler</button>
+    <button class="ed-opt-pdf" data-ed="pope">Pope</button>
+    <button class="ed-opt-pdf" data-ed="cowper">Cowper</button>
+    <button class="ed-opt-pdf" data-ed="murray">Murray</button>
+    <button class="ed-opt-pdf" data-ed="greek">Greek</button>
+    <button class="ed-opt-pdf" data-ed="modern">Modern</button>
+  </div>
+  <span style="flex:1"></span>
+  <div class="theme-dots-pdf" id="theme-dots-pdf"></div>
+</nav>
+
+<div id="canvas">
+  <div id="page-viewport">
+    <div id="pageset-pdf"><!-- rendered by JS; CSS columns paginate --></div>
+  </div>
+</div>
+<div id="hit-left-pdf" title="Previous page"></div>
+<div id="hit-right-pdf" title="Next page"></div>
+
+<script>
+const EDITIONS = __CONTENT__;
+</script>
+<script>
+const EDITION_ORDER = ['butler', 'pope', 'cowper', 'murray', 'greek', 'modern'];
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const TOTAL = 24;
+const COL_STEP = 620; // column-width (540) + column-gap (80) — must equal the viewport width so
+                      // each page-turn reveals exactly the next column at the same visual offset,
+                      // and the following (hidden) column clears the viewport edge with margin.
+
+let activeEdition = 'pope';
+let currentBook = 0;
+let pageIdx = 0;        // 0-indexed page within current book
+let totalPages = 1;
+
+const ITALIC_RE = /_([^_]+)_/g;
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderText(s){ return escapeHtml(s).replace(ITALIC_RE, '<em>$1</em>'); }
+function toRoman(n){ const vals=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]; let out=''; for(const [v,s] of vals){ while(n>=v){out+=s;n-=v;} } return out; }
+
+function loadBook(idx, opts) {
+  opts = opts || {};
+  currentBook = Math.max(0, Math.min(TOTAL - 1, idx));
+  const data = EDITIONS[activeEdition];
+  const book = data.books[currentBook];
+  const prose = data.form === 'prose';
+  const unitKey = prose ? 'paragraphs' : 'lines';
+
+  const argHtml = book.argument
+    ? '<div class="book-argument-pdf">' + book.argument.split('\n\n').map(p => `<p>${renderText(p.trim())}</p>`).join('') + '</div>'
+    : '';
+  const bodyHtml = book[unitKey].map(u => `<p>${renderText(u)}</p>`).join('');
+
+  const pageset = document.getElementById('pageset-pdf');
+  pageset.className = prose ? 'prose' : '';
+  pageset.innerHTML =
+    '<div class="book-head-pdf"><div class="bh-num">Book</div><div class="bh-title">' + book.roman + '</div><div class="bh-rule"></div></div>' +
+    argHtml + bodyHtml;
+
+  totalPages = Math.max(1, Math.round(pageset.scrollWidth / COL_STEP));
+  pageIdx = opts.fromEnd ? totalPages - 1 : 0;
+
+  document.getElementById('book-select').value = String(currentBook);
+  applyPageOffset();
+  history.replaceState(null, '', '#bk-' + activeEdition + '-' + (currentBook + 1));
+  try { localStorage.setItem('odyssey-pdf-prefs', JSON.stringify({ book: currentBook, edition: activeEdition, theme: document.documentElement.dataset.theme })); } catch(e) {}
+}
+
+function applyPageOffset() {
+  document.getElementById('pageset-pdf').style.marginLeft = '-' + (pageIdx * COL_STEP) + 'px';
+  document.getElementById('page-input').value = pageIdx + 1;
+  document.getElementById('page-total').textContent = '/ ' + totalPages;
+  document.getElementById('pdf-prev').disabled = currentBook === 0 && pageIdx === 0;
+  document.getElementById('pdf-next').disabled = currentBook === TOTAL - 1 && pageIdx === totalPages - 1;
+}
+
+function turnPage(dir) {
+  const next = pageIdx + dir;
+  if (next < 0) {
+    if (currentBook === 0) return;
+    loadBook(currentBook - 1, { fromEnd: true });
+    return;
+  }
+  if (next >= totalPages) {
+    if (currentBook === TOTAL - 1) return;
+    loadBook(currentBook + 1);
+    return;
+  }
+  pageIdx = next;
+  applyPageOffset();
+}
+
+document.getElementById('hit-left-pdf').addEventListener('click', () => turnPage(-1));
+document.getElementById('hit-right-pdf').addEventListener('click', () => turnPage(1));
+document.getElementById('pdf-prev').addEventListener('click', () => turnPage(-1));
+document.getElementById('pdf-next').addEventListener('click', () => turnPage(1));
+
+document.getElementById('page-input').addEventListener('change', (e) => {
+  const n = parseInt(e.target.value);
+  if (!isNaN(n) && n >= 1 && n <= totalPages) { pageIdx = n - 1; applyPageOffset(); }
+  else e.target.value = pageIdx + 1;
+});
+
+(function buildBookSelect() {
+  const sel = document.getElementById('book-select');
+  for (let i = 0; i < TOTAL; i++) {
+    const opt = document.createElement('option');
+    opt.value = String(i);
+    opt.textContent = 'Book ' + toRoman(i + 1);
+    sel.appendChild(opt);
+  }
+  sel.addEventListener('change', () => loadBook(parseInt(sel.value)));
+})();
+
+document.querySelectorAll('.ed-opt-pdf').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (activeEdition === btn.dataset.ed) return;
+    activeEdition = btn.dataset.ed;
+    document.querySelectorAll('.ed-opt-pdf').forEach(b => b.classList.toggle('active', b === btn));
+    loadBook(currentBook);
+  });
+});
+
+(function buildThemeDots() {
+  const row = document.getElementById('theme-dots-pdf');
+  THEME_ORDER.forEach(t => {
+    const dot = document.createElement('button');
+    dot.className = 'theme-dot-pdf';
+    dot.dataset.t = t;
+    dot.title = t;
+    dot.addEventListener('click', () => {
+      document.documentElement.dataset.theme = t;
+      document.querySelectorAll('.theme-dot-pdf').forEach(d => d.classList.toggle('active', d.dataset.t === t));
+      try {
+        const raw = localStorage.getItem('odyssey-pdf-prefs');
+        const prefs = raw ? JSON.parse(raw) : {};
+        prefs.theme = t;
+        localStorage.setItem('odyssey-pdf-prefs', JSON.stringify(prefs));
+      } catch(e) {}
+    });
+    row.appendChild(dot);
+  });
+})();
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); turnPage(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); turnPage(-1); }
+});
+
+window.addEventListener('resize', () => loadBook(currentBook));
+
+(function init() {
+  let startBook = 0, startEd = 'pope', startTheme = 'light-purple';
+  try {
+    const raw = localStorage.getItem('odyssey-pdf-prefs');
+    if (raw) {
+      const prefs = JSON.parse(raw);
+      if (Number.isInteger(prefs.book)) startBook = prefs.book;
+      if (EDITION_ORDER.includes(prefs.edition)) startEd = prefs.edition;
+      if (THEME_ORDER.includes(prefs.theme)) startTheme = prefs.theme;
+    }
+  } catch(e) {}
+  const hash = location.hash.replace('#', '');
+  let m = hash.match(/^bk-(butler|pope|cowper|murray|greek|modern)-(\d+)$/);
+  if (m) { startEd = m[1]; startBook = parseInt(m[2]) - 1; }
+  else { m = hash.match(/^bk-(\d+)$/); if (m) startBook = parseInt(m[1]) - 1; }
+  if (isNaN(startBook) || startBook < 0 || startBook >= TOTAL) startBook = 0;
+
+  document.documentElement.dataset.theme = startTheme;
+  document.querySelectorAll('.theme-dot-pdf').forEach(d => d.classList.toggle('active', d.dataset.t === startTheme));
+  activeEdition = startEd;
+  document.querySelectorAll('.ed-opt-pdf').forEach(b => b.classList.toggle('active', b.dataset.ed === activeEdition));
+  loadBook(startBook);
+})();
+</script>
+</body>
+</html>

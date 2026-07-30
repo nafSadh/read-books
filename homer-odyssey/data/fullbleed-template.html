@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Odyssey of Homer — two-page spread reader, three parallel translations.">
+<title>The Odyssey — Full Bleed — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important} }
+
+[data-theme="light-purple"] { --bg:#0f0e14; --page-bg:#faf8f3; --text:#363b48; --text-secondary:#65707a; --accent:#7c3aed; --border:#d6d0c4; --bar-bg:rgba(15,14,20,.9); --bar-text:#c9c4d6; }
+[data-theme="sepia"] { --bg:#14100a; --page-bg:#f5efe0; --text:#3a2e1e; --text-secondary:#7a6a52; --accent:#b45309; --border:#d4c8a8; --bar-bg:rgba(20,16,10,.9); --bar-text:#d6c9b0; }
+[data-theme="light-azure"] { --bg:#0a0e14; --page-bg:#ffffff; --text:#363b48; --text-secondary:#65707a; --accent:#2e6ab4; --border:#d6d0c4; --bar-bg:rgba(10,14,20,.9); --bar-text:#c4cede; }
+[data-theme="dark-violet"] { --bg:#000; --page-bg:#1a1a1a; --text:#dce0ec; --text-secondary:#8490aa; --accent:#9b7aed; --border:#333; --bar-bg:rgba(0,0,0,.9); --bar-text:#a8a0c0; }
+[data-theme="dark-blue"] { --bg:#000; --page-bg:#050810; --text:#8490aa; --text-secondary:#546080; --accent:#2e6ab4; --border:#1c2440; --bar-bg:rgba(0,0,0,.9); --bar-text:#8a96b8; }
+
+body {
+  background: var(--bg); font-family: 'EB Garamond', Georgia, serif;
+  display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
+}
+
+#top-bar {
+  height: 44px; flex-shrink: 0; background: var(--bar-bg); color: var(--bar-text);
+  display: flex; align-items: center; padding: 0 16px; gap: 10px;
+  font-family: 'Jost', sans-serif; font-size: 12px; z-index: 50;
+}
+#top-bar a { color: var(--bar-text); text-decoration: none; opacity: .8; }
+#top-bar a:hover { opacity: 1; }
+.ed-switch-fb { display: inline-flex; gap: 4px; }
+.ed-opt-fb { background: none; border: 1px solid var(--border); color: var(--bar-text); font-family: 'Jost', sans-serif; font-size: 11px; padding: 4px 9px; border-radius: 4px; cursor: pointer; opacity: .8; }
+.ed-opt-fb.active { color: var(--accent); border-color: var(--accent); opacity: 1; }
+.theme-dots-fb { display: flex; gap: 5px; }
+.theme-dot-fb { width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer; }
+.theme-dot-fb.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
+.theme-dot-fb[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot-fb[data-t="sepia"] { background: #b45309; }
+.theme-dot-fb[data-t="light-azure"] { background: #2e6ab4; }
+.theme-dot-fb[data-t="dark-violet"] { background: #9b7aed; }
+.theme-dot-fb[data-t="dark-blue"] { background: #4a90d9; }
+.fb-btn { background: none; border: none; color: var(--bar-text); cursor: pointer; font-size: 14px; padding: 6px 8px; opacity: .8; }
+.fb-btn:hover { opacity: 1; }
+
+#spread-outer { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 24px; position: relative; }
+#spread-viewport {
+  width: 920px; height: 620px; max-width: 94vw; max-height: 78vh;
+  overflow: hidden; position: relative; background: var(--page-bg);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5); transition: opacity .2s ease;
+  contain: paint; clip-path: inset(0);
+}
+#spread-viewport.fading { opacity: 0; }
+#spread-viewport::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+  background: var(--border); opacity: .6; pointer-events: none;
+}
+#pageset {
+  columns: 380px; column-gap: 80px; height: 100%; padding: 44px 40px;
+  color: var(--text); font-size: 16px; line-height: 1.75;
+  transition: margin-left .3s ease;
+}
+#pageset p { margin: 0 0 .15em 0; text-align: left; }
+#pageset.prose p { text-align: justify; text-indent: 1.2em; margin: 0 0 .7em 0; hyphens: auto; }
+#pageset.prose .book-head + p { text-indent: 0; }
+#pageset em { font-style: italic; color: var(--accent); opacity: .9; }
+.book-head { text-align: center; margin-bottom: 22px; break-after: avoid; break-inside: avoid; }
+.book-head .bh-num { font-family: 'Jost', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-secondary); }
+.book-head .bh-title { font-size: 28px; font-style: italic; color: var(--accent); margin-top: 6px; }
+.book-head .bh-rule { width: 40px; height: 1px; margin: 14px auto 0; background: linear-gradient(90deg,transparent,var(--accent),transparent); }
+.book-argument { font-size: .78em; font-style: italic; color: var(--text-secondary); text-align: center; margin: 16px 0 20px; line-height: 1.5; break-inside: avoid-column; }
+.book-argument p { margin: 0 0 .5em; text-align: center !important; text-indent: 0 !important; }
+
+#hit-left, #hit-right { position: fixed; top: 44px; bottom: 40px; width: 18%; z-index: 40; cursor: pointer; }
+#hit-left { left: 0; }
+#hit-right { right: 0; }
+
+#bottom-bar {
+  height: 40px; flex-shrink: 0; background: var(--bar-bg); color: var(--bar-text);
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1px;
+}
+.bb-btn { background: none; border: none; color: var(--bar-text); cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; padding: 4px 10px; }
+.bb-btn:disabled { opacity: .3; }
+
+@media (max-width: 860px) {
+  #spread-viewport { width: 94vw; height: 78vh; }
+  #pageset { columns: 1; }
+  #spread-viewport::after { display: none; }
+  #hit-left, #hit-right { width: 26%; }
+}
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav id="top-bar">
+  <a href="reader.html" title="Back to reader">&#8592; Reader</a>
+  <span style="opacity:.6">Odyssey</span>
+  <div class="ed-switch-fb" id="ed-switch-fb">
+    <button class="ed-opt-fb" data-ed="butler">Butler</button>
+    <button class="ed-opt-fb" data-ed="pope">Pope</button>
+    <button class="ed-opt-fb" data-ed="cowper">Cowper</button>
+    <button class="ed-opt-fb" data-ed="murray">Murray</button>
+    <button class="ed-opt-fb" data-ed="greek">Greek</button>
+    <button class="ed-opt-fb" data-ed="modern">Modern</button>
+  </div>
+  <span style="flex:1"></span>
+  <span id="fb-book-label" style="opacity:.8;font-style:italic"></span>
+  <span style="flex:1"></span>
+  <div class="theme-dots-fb" id="theme-dots-fb"></div>
+</nav>
+
+<div id="spread-outer">
+  <div id="spread-viewport">
+    <div id="pageset"><!-- rendered by JS; browser flows content into CSS columns as pages --></div>
+  </div>
+</div>
+<div id="hit-left" title="Previous page"></div>
+<div id="hit-right" title="Next page"></div>
+
+<div id="bottom-bar">
+  <button class="bb-btn" id="fb-prev-book">&#8592; Prev Book</button>
+  <span id="fb-pos">Book I &middot; Spread 1/1</span>
+  <button class="bb-btn" id="fb-next-book">Next Book &#8594;</button>
+</div>
+
+<script>
+const EDITIONS = __CONTENT__;
+</script>
+<script>
+const EDITION_ORDER = ['butler', 'pope', 'cowper', 'murray', 'greek', 'modern'];
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const TOTAL = 24;
+const COL_WIDTH = 380, COL_GAP = 80, PAD_X = 40;
+const SPREAD_WIDTH = PAD_X * 2 + COL_WIDTH * 2 + COL_GAP; // = 920, matches #spread-viewport width
+const COL_STEP = COL_WIDTH + COL_GAP; // = 460 — width consumed per column in the flowing track
+
+let activeEdition = 'pope';
+let currentBook = 0;
+let spreadIdx = 0;      // 0-indexed spread (2 columns each)
+let totalSpreads = 1;
+let animating = false;
+
+const ITALIC_RE = /_([^_]+)_/g;
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderText(s){ return escapeHtml(s).replace(ITALIC_RE, '<em>$1</em>'); }
+
+function loadBook(idx, opts) {
+  opts = opts || {};
+  currentBook = Math.max(0, Math.min(TOTAL - 1, idx));
+  const data = EDITIONS[activeEdition];
+  const book = data.books[currentBook];
+  const prose = data.form === 'prose';
+  const unitKey = prose ? 'paragraphs' : 'lines';
+
+  const argHtml = book.argument
+    ? '<div class="book-argument">' + book.argument.split('\n\n').map(p => `<p>${renderText(p.trim())}</p>`).join('') + '</div>'
+    : '';
+  const bodyHtml = book[unitKey].map(u => `<p>${renderText(u)}</p>`).join('');
+
+  const pageset = document.getElementById('pageset');
+  pageset.className = prose ? 'prose' : '';
+  pageset.innerHTML =
+    '<div class="book-head"><div class="bh-num">Book</div><div class="bh-title">' + book.roman + '</div><div class="bh-rule"></div></div>' +
+    argHtml + bodyHtml;
+
+  // Force layout, then measure how many columns the browser actually generated.
+  const totalWidth = pageset.scrollWidth;
+  const totalCols = Math.max(1, Math.round(totalWidth / COL_STEP));
+  totalSpreads = Math.ceil(totalCols / 2);
+  spreadIdx = opts.fromEnd ? totalSpreads - 1 : 0;
+
+  document.getElementById('fb-book-label').textContent = 'Book ' + book.roman + ' — ' + data.translator;
+  applySpreadOffset();
+
+  history.replaceState(null, '', '#bk-' + activeEdition + '-' + (currentBook + 1));
+  try { localStorage.setItem('odyssey-fullbleed-prefs', JSON.stringify({ book: currentBook, edition: activeEdition, theme: document.documentElement.dataset.theme })); } catch(e) {}
+}
+
+function applySpreadOffset() {
+  const pageset = document.getElementById('pageset');
+  pageset.style.marginLeft = '-' + (spreadIdx * SPREAD_WIDTH) + 'px';
+  document.getElementById('fb-pos').textContent =
+    'Book ' + EDITIONS[activeEdition].books[currentBook].roman + ' · Spread ' + (spreadIdx + 1) + '/' + totalSpreads;
+  document.getElementById('fb-prev-book').disabled = currentBook === 0 && spreadIdx === 0;
+  document.getElementById('fb-next-book').disabled = currentBook === TOTAL - 1 && spreadIdx === totalSpreads - 1;
+}
+
+function turnPage(dir) {
+  if (animating) return;
+  const next = spreadIdx + dir;
+  if (next < 0) {
+    if (currentBook === 0) return;
+    animating = true;
+    const vp = document.getElementById('spread-viewport');
+    vp.classList.add('fading');
+    setTimeout(() => { loadBook(currentBook - 1, { fromEnd: true }); vp.classList.remove('fading'); animating = false; }, 180);
+    return;
+  }
+  if (next >= totalSpreads) {
+    if (currentBook === TOTAL - 1) return;
+    animating = true;
+    const vp = document.getElementById('spread-viewport');
+    vp.classList.add('fading');
+    setTimeout(() => { loadBook(currentBook + 1); vp.classList.remove('fading'); animating = false; }, 180);
+    return;
+  }
+  spreadIdx = next;
+  applySpreadOffset();
+}
+
+document.getElementById('hit-left').addEventListener('click', () => turnPage(-1));
+document.getElementById('hit-right').addEventListener('click', () => turnPage(1));
+document.getElementById('fb-prev-book').addEventListener('click', () => { if (currentBook > 0) loadBook(currentBook - 1); });
+document.getElementById('fb-next-book').addEventListener('click', () => { if (currentBook < TOTAL - 1) loadBook(currentBook + 1); });
+
+document.querySelectorAll('.ed-opt-fb').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (activeEdition === btn.dataset.ed) return;
+    activeEdition = btn.dataset.ed;
+    document.querySelectorAll('.ed-opt-fb').forEach(b => b.classList.toggle('active', b === btn));
+    loadBook(currentBook);
+  });
+});
+
+(function buildThemeDots() {
+  const row = document.getElementById('theme-dots-fb');
+  THEME_ORDER.forEach(t => {
+    const dot = document.createElement('button');
+    dot.className = 'theme-dot-fb';
+    dot.dataset.t = t;
+    dot.title = t;
+    dot.addEventListener('click', () => {
+      document.documentElement.dataset.theme = t;
+      document.querySelectorAll('.theme-dot-fb').forEach(d => d.classList.toggle('active', d.dataset.t === t));
+      try {
+        const raw = localStorage.getItem('odyssey-fullbleed-prefs');
+        const prefs = raw ? JSON.parse(raw) : {};
+        prefs.theme = t;
+        localStorage.setItem('odyssey-fullbleed-prefs', JSON.stringify(prefs));
+      } catch(e) {}
+    });
+    row.appendChild(dot);
+  });
+})();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); turnPage(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); turnPage(-1); }
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 60) turnPage(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+window.addEventListener('resize', () => { /* re-measure on resize to stay accurate */ loadBook(currentBook); });
+
+(function init() {
+  let startBook = 0, startEd = 'pope', startTheme = 'light-purple';
+  try {
+    const raw = localStorage.getItem('odyssey-fullbleed-prefs');
+    if (raw) {
+      const prefs = JSON.parse(raw);
+      if (Number.isInteger(prefs.book)) startBook = prefs.book;
+      if (EDITION_ORDER.includes(prefs.edition)) startEd = prefs.edition;
+      if (THEME_ORDER.includes(prefs.theme)) startTheme = prefs.theme;
+    }
+  } catch(e) {}
+  const hash = location.hash.replace('#', '');
+  let m = hash.match(/^bk-(butler|pope|cowper|murray|greek|modern)-(\d+)$/);
+  if (m) { startEd = m[1]; startBook = parseInt(m[2]) - 1; }
+  else { m = hash.match(/^bk-(\d+)$/); if (m) startBook = parseInt(m[1]) - 1; }
+  if (isNaN(startBook) || startBook < 0 || startBook >= TOTAL) startBook = 0;
+
+  document.documentElement.dataset.theme = startTheme;
+  document.querySelectorAll('.theme-dot-fb').forEach(d => d.classList.toggle('active', d.dataset.t === startTheme));
+  activeEdition = startEd;
+  document.querySelectorAll('.ed-opt-fb').forEach(b => b.classList.toggle('active', b.dataset.ed === activeEdition));
+  loadBook(startBook);
+})();
+</script>
+</body>
+</html>

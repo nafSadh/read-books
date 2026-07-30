@@ -23,6 +23,19 @@ Text from [Project Gutenberg](https://www.gutenberg.org/ebooks/11). 9 reader var
 | [theater](alice-in-wonderland/theater.html) | Cinematic dark stage | One passage at a time |
 | [mobile](alice-in-wonderland/mobile.html) | Mobile-first, full-width single page | 3D swipe flip, tap nav, chapter scrubber |
 
+### The Iliad & The Odyssey
+*Homer, c. 8th century BCE*
+
+Three parallel public-domain translations — Samuel Butler (prose, 1898/1900), Alexander Pope (heroic-couplet verse, 1720/1725), William Cowper (blank verse, 1791) — from [Project Gutenberg](https://www.gutenberg.org/ebooks/subject/674). 5 reader variants each, one book of 24 rendered at a time:
+
+| Reader | Style | Navigation |
+|--------|-------|------------|
+| [reader](homer-iliad/reader.html) / [odyssey](homer-odyssey/reader.html) | Scroll with book sidebar, 5 themes, translation switcher | Sidebar, book scrubber, prev/next |
+| [fullbleed](homer-iliad/fullbleed.html) / [odyssey](homer-odyssey/fullbleed.html) | Edge-to-edge two-page spread | Click/swipe/arrow page turn |
+| [mobile](homer-iliad/mobile.html) / [odyssey](homer-odyssey/mobile.html) | Mobile-first, full-width single page | Swipe between books, bottom sheets |
+| [theater](homer-iliad/theater.html) / [odyssey](homer-odyssey/theater.html) | Cinematic dark stage | Click-to-advance, one book at a time |
+| [pdf-reader](homer-iliad/pdf-reader.html) / [odyssey](homer-odyssey/pdf-reader.html) | Chrome PDF viewer style | Toolbar, book dropdown, page input |
+
 ## Design
 
 All readers are self-contained HTML files — no build step, no dependencies, no external fetches. Chapter text is embedded as a JS constant. Fonts loaded from Google Fonts CDN.

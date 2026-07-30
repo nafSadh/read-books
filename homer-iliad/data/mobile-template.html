@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#faf8f3" id="tc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="The Iliad of Homer — mobile reader, one book at a time.">
+<title>The Iliad — Homer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+[data-theme="light-purple"]{--bg:#faf8f3;--text:#363b48;--text2:#65707a;--accent:#7c3aed;--bar-bg:rgba(250,248,243,.95);--border:rgba(124,58,237,.12);--tc:#faf8f3;--sheet-bg:#f2efe8;}
+[data-theme="sepia"]{--bg:#f5efe0;--text:#3a2e1e;--text2:#7a6a52;--accent:#b45309;--bar-bg:rgba(245,239,224,.95);--border:rgba(180,83,9,.12);--tc:#f5efe0;--sheet-bg:#ede5d0;}
+[data-theme="light-azure"]{--bg:#ffffff;--text:#363b48;--text2:#65707a;--accent:#2e6ab4;--bar-bg:rgba(255,255,255,.95);--border:rgba(46,106,180,.12);--tc:#ffffff;--sheet-bg:#f5f5f5;}
+[data-theme="dark-violet"]{--bg:#1a1a1a;--text:#dce0ec;--text2:#8490aa;--accent:#9b7aed;--bar-bg:rgba(26,26,26,.97);--border:rgba(155,122,237,.15);--tc:#1a1a1a;--sheet-bg:#222;}
+[data-theme="dark-blue"]{--bg:#000000;--text:#8490aa;--text2:#546080;--accent:#2e6ab4;--bar-bg:rgba(0,0,0,.97);--border:rgba(46,106,180,.15);--tc:#000000;--sheet-bg:#0a0a0a;}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:2.0;
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+  transition:background .35s,color .35s;
+}
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important} }
+
+#top-bar{
+  position:fixed;top:0;left:0;right:0;
+  height:calc(44px + env(safe-area-inset-top,0px));
+  background:var(--bar-bg);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:0 12px 8px;padding-top:env(safe-area-inset-top,0px);
+  z-index:100;
+}
+#top-bar-left{display:flex;flex-direction:column;gap:1px;overflow:hidden;flex:1}
+#book-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text2);opacity:.7;white-space:nowrap}
+#bk-label{font-size:15px;font-style:italic;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}
+#top-bar-right{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:8px}
+.tb-btn{background:none;border:none;padding:6px;cursor:pointer;color:var(--text2);opacity:.75;font-size:16px;-webkit-tap-highlight-color:transparent;min-width:36px;min-height:36px}
+.tb-btn:active{opacity:1}
+
+#pager{position:fixed;top:calc(44px + env(safe-area-inset-top,0px));left:0;right:0;bottom:calc(56px + env(safe-area-inset-bottom,0px));overflow:hidden}
+#bk-slide{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:28px 20px 40px;transition:opacity .28s ease, transform .28s ease;}
+#bk-slide.fading{opacity:0;transform:translateX(var(--slide-dir,0));}
+
+.bk-title-area{text-align:center;margin-bottom:28px}
+.bk-num{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text2);opacity:.7}
+.bk-title{font-size:30px;font-style:italic;color:var(--accent);margin-top:8px;line-height:1.2}
+.bk-rule{width:44px;height:1px;margin:14px auto 0;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.bk-argument{font-size:.78em;font-style:italic;color:var(--text2);margin-top:16px;line-height:1.55}
+.bk-argument p{margin:0 0 .5em}
+.bk-argument p:last-child{margin-bottom:0}
+
+.bk-content{font-size:17px;line-height:1.95;text-align:left}
+.bk-content p{margin:0 0 .15em 0}
+.bk-content em{font-style:italic;color:var(--accent);opacity:.9}
+.bk-content.prose p{text-align:justify;text-indent:1.3em;margin:0 0 .8em 0;hyphens:auto}
+.bk-content.prose p:first-child{text-indent:0}
+
+/* Bottom nav */
+#bottom-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  height:calc(56px + env(safe-area-inset-bottom,0px));
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:var(--bar-bg);border-top:1px solid var(--border);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding-left:8px;padding-right:8px;z-index:100;
+}
+.bn-btn{background:none;border:none;padding:10px 14px;color:var(--text2);font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:6px;min-height:44px}
+.bn-btn:disabled{opacity:.3}
+.bn-btn:not(:disabled):active{color:var(--accent)}
+#bn-pos{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);letter-spacing:1px}
+#ed-switch-mobile{display:flex;gap:2px}
+.ed-opt-m{background:none;border:1px solid var(--border);color:var(--text2);font-family:'Jost',sans-serif;font-size:10px;padding:4px 7px;border-radius:4px}
+.ed-opt-m.active{color:var(--accent);border-color:var(--accent)}
+
+/* Overlays: book list + theme sheet */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;max-height:70vh;
+  background:var(--sheet-bg);border-radius:16px 16px 0 0;z-index:201;
+  transform:translateY(100%);transition:transform .3s ease;
+  padding:16px 0 calc(16px + env(safe-area-inset-bottom,0px));overflow-y:auto;
+}
+.sheet.open{transform:translateY(0)}
+.sheet h2{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);padding:0 20px 10px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.sheet-book-item{display:flex;align-items:baseline;gap:12px;padding:12px 20px;font-family:'EB Garamond',Georgia,serif;font-size:16px;color:var(--text);width:100%;background:none;border:none;text-align:left}
+.sheet-book-item.active{color:var(--accent)}
+.sheet-book-item .sb-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text2);min-width:24px;text-align:right}
+.theme-sheet-row{display:flex;justify-content:center;gap:16px;padding:16px 20px}
+.theme-dot-m{width:32px;height:32px;border-radius:50%;border:none;cursor:pointer}
+.theme-dot-m.active{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent)}
+.theme-dot-m[data-t="light-purple"]{background:#7c3aed}
+.theme-dot-m[data-t="sepia"]{background:#b45309}
+.theme-dot-m[data-t="light-azure"]{background:#2e6ab4}
+.theme-dot-m[data-t="dark-violet"]{background:#9b7aed}
+.theme-dot-m[data-t="dark-blue"]{background:#4a90d9}
+
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<nav id="top-bar">
+  <div id="top-bar-left">
+    <span id="book-label">Iliad · <span id="translator-label">Pope</span></span>
+    <span id="bk-label">Book I</span>
+  </div>
+  <div id="top-bar-right">
+    <button class="tb-btn" id="list-btn" aria-label="Book list">&#9776;</button>
+    <button class="tb-btn" id="theme-btn-mobile" aria-label="Theme">&#9788;</button>
+  </div>
+</nav>
+
+<div id="pager"><div id="bk-slide"><!-- rendered by JS --></div></div>
+
+<nav id="bottom-bar">
+  <button class="bn-btn" id="prev-btn-m" aria-label="Previous book">&#8592;</button>
+  <div id="ed-switch-mobile">
+    <button class="ed-opt-m" data-ed="butler">Butler</button>
+    <button class="ed-opt-m" data-ed="pope">Pope</button>
+    <button class="ed-opt-m" data-ed="cowper">Cowper</button>
+  </div>
+  <span id="bn-pos">1 / 24</span>
+  <button class="bn-btn" id="next-btn-m" aria-label="Next book">&#8594;</button>
+</nav>
+
+<div class="overlay" id="overlay-m"></div>
+<div class="sheet" id="book-sheet" role="dialog" aria-modal="true" aria-label="Book list">
+  <h2>24 Books</h2>
+  <div id="sheet-books"></div>
+</div>
+<div class="sheet" id="theme-sheet" role="dialog" aria-modal="true" aria-label="Theme">
+  <h2>Theme</h2>
+  <div class="theme-sheet-row" id="theme-sheet-row"></div>
+</div>
+
+<script>
+const EDITIONS = __CONTENT__;
+</script>
+<script>
+const EDITION_ORDER = ['butler', 'pope', 'cowper'];
+const TOTAL = 24;
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+let activeEdition = 'pope';
+let current = 0;
+let animating = false;
+
+const ITALIC_RE = /_([^_]+)_/g;
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderText(s){ return escapeHtml(s).replace(ITALIC_RE, '<em>$1</em>'); }
+function renderArgument(argument){
+  if (!argument) return '';
+  const paras = argument.split('\n\n').map(p=>p.trim()).filter(Boolean);
+  return '<div class="bk-argument">' + paras.map(p=>`<p>${renderText(p)}</p>`).join('') + '</div>';
+}
+function toRoman(n){ const vals=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]; let out=''; for(const [v,s] of vals){ while(n>=v){out+=s;n-=v;} } return out; }
+
+function render(idx, dir) {
+  if (animating) return;
+  animating = true;
+  const slide = document.getElementById('bk-slide');
+  const data = EDITIONS[activeEdition];
+  const book = data.books[idx];
+  const unitKey = data.form === 'prose' ? 'paragraphs' : 'lines';
+  const textHtml = book[unitKey].map(u => `<p>${renderText(u)}</p>`).join('');
+
+  slide.style.setProperty('--slide-dir', (dir < 0 ? '-16px' : '16px'));
+  slide.classList.add('fading');
+  setTimeout(() => {
+    slide.innerHTML =
+      '<div class="bk-title-area">' +
+      '<div class="bk-num">Book ' + book.roman + '</div>' +
+      '<div class="bk-title">' + book.roman + '</div>' +
+      '<div class="bk-rule"></div>' +
+      renderArgument(book.argument) +
+      '</div>' +
+      '<div class="bk-content ' + (data.form === 'prose' ? 'prose' : '') + '">' + textHtml + '</div>';
+    slide.scrollTop = 0;
+
+    document.getElementById('translator-label').textContent = data.translator.split(' ').pop();
+    document.getElementById('bk-label').textContent = 'Book ' + book.roman;
+    document.getElementById('bn-pos').textContent = (idx + 1) + ' / ' + TOTAL;
+    document.getElementById('prev-btn-m').disabled = idx === 0;
+    document.getElementById('next-btn-m').disabled = idx === TOTAL - 1;
+    document.querySelectorAll('.ed-opt-m').forEach(b => b.classList.toggle('active', b.dataset.ed === activeEdition));
+    document.querySelectorAll('.sheet-book-item').forEach((el, i) => el.classList.toggle('active', i === idx));
+
+    try {
+      localStorage.setItem('iliad-mobile-prefs', JSON.stringify({ book: idx, edition: activeEdition, theme: document.documentElement.dataset.theme }));
+    } catch(e) {}
+    history.replaceState(null, '', '#bk-' + activeEdition + '-' + (idx + 1));
+
+    slide.classList.remove('fading');
+    animating = false;
+  }, 220);
+}
+
+function goTo(idx, dir) {
+  idx = Math.max(0, Math.min(TOTAL - 1, idx));
+  if (idx === current) return;
+  dir = dir || (idx > current ? 1 : -1);
+  current = idx;
+  render(current, dir);
+}
+function setEdition(ed) {
+  if (ed === activeEdition) return;
+  activeEdition = ed;
+  render(current, 0);
+}
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  document.getElementById('tc').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--tc').trim());
+  document.querySelectorAll('.theme-dot-m').forEach(d => d.classList.toggle('active', d.dataset.t === t));
+  try {
+    const raw = localStorage.getItem('iliad-mobile-prefs');
+    const prefs = raw ? JSON.parse(raw) : {};
+    prefs.theme = t;
+    localStorage.setItem('iliad-mobile-prefs', JSON.stringify(prefs));
+  } catch(e) {}
+}
+
+document.getElementById('prev-btn-m').addEventListener('click', () => goTo(current - 1, -1));
+document.getElementById('next-btn-m').addEventListener('click', () => goTo(current + 1, 1));
+document.querySelectorAll('.ed-opt-m').forEach(btn => btn.addEventListener('click', () => setEdition(btn.dataset.ed)));
+
+/* Book list sheet */
+(function buildSheet() {
+  const container = document.getElementById('sheet-books');
+  for (let i = 0; i < TOTAL; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'sheet-book-item';
+    btn.innerHTML = '<span class="sb-num">' + (i + 1) + '</span><span>Book ' + toRoman(i + 1) + '</span>';
+    btn.addEventListener('click', () => { goTo(i); closeSheets(); });
+    container.appendChild(btn);
+  }
+  const row = document.getElementById('theme-sheet-row');
+  THEME_ORDER.forEach(t => {
+    const dot = document.createElement('button');
+    dot.className = 'theme-dot-m';
+    dot.dataset.t = t;
+    dot.title = t;
+    dot.addEventListener('click', () => { setTheme(t); closeSheets(); });
+    row.appendChild(dot);
+  });
+})();
+
+const overlayM = document.getElementById('overlay-m');
+const bookSheet = document.getElementById('book-sheet');
+const themeSheet = document.getElementById('theme-sheet');
+function openSheet(sheet) { overlayM.classList.add('open'); sheet.classList.add('open'); }
+function closeSheets() {
+  overlayM.classList.remove('open');
+  bookSheet.classList.remove('open');
+  themeSheet.classList.remove('open');
+}
+document.getElementById('list-btn').addEventListener('click', () => openSheet(bookSheet));
+document.getElementById('theme-btn-mobile').addEventListener('click', () => openSheet(themeSheet));
+overlayM.addEventListener('click', closeSheets);
+
+/* Swipe between books */
+let touchStartX = 0, touchStartY = 0;
+const pager = document.getElementById('pager');
+pager.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY;
+}, { passive: true });
+pager.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    if (dx < 0) goTo(current + 1, 1); else goTo(current - 1, -1);
+  }
+}, { passive: true });
+
+/* Init */
+(function init() {
+  let startIdx = 0, startEd = 'pope', startTheme = 'light-purple';
+  try {
+    const raw = localStorage.getItem('iliad-mobile-prefs');
+    if (raw) {
+      const prefs = JSON.parse(raw);
+      if (Number.isInteger(prefs.book)) startIdx = prefs.book;
+      if (EDITION_ORDER.includes(prefs.edition)) startEd = prefs.edition;
+      if (THEME_ORDER.includes(prefs.theme)) startTheme = prefs.theme;
+    }
+  } catch(e) {}
+
+  const hash = location.hash.replace('#', '');
+  let m = hash.match(/^bk-(butler|pope|cowper)-(\d+)$/);
+  if (m) { startEd = m[1]; startIdx = parseInt(m[2]) - 1; }
+  else { m = hash.match(/^bk-(\d+)$/); if (m) startIdx = parseInt(m[1]) - 1; }
+  if (isNaN(startIdx) || startIdx < 0 || startIdx >= TOTAL) startIdx = 0;
+
+  document.documentElement.dataset.theme = startTheme;
+  document.querySelectorAll('.theme-dot-m').forEach(d => d.classList.toggle('active', d.dataset.t === startTheme));
+  activeEdition = startEd;
+  current = startIdx;
+  render(current, 0);
+})();
+
+/* Redirect desktop users here back to the full reader is NOT applied on mobile.html itself;
+   reader.html contains the UA redirect INTO this file. */
+</script>
+</body>
+</html>

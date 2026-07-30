@@ -891,6 +891,19 @@ function renderSpread(s) {
   }
 
   updateIndicator();
+
+  // ===== HASH STATE =====
+  if (s === 0) {
+    history.replaceState(null, '', location.pathname);
+  } else if (s <= 2) {
+    history.replaceState(null, '', '#s-' + s);
+  } else {
+    const ri = isMobile() ? (s - 3) : contentIndexForSpreadRight(s);
+    const li = isMobile() ? -1 : contentIndexForSpreadLeft(s);
+    const ci = ri >= 0 ? ri : li;
+    if (ci >= 0) history.replaceState(null, '', '#p-' + (ci + 1));
+    else history.replaceState(null, '', '#s-' + s);
+  }
 }
 
 function computeTotalSpreads() {
@@ -1351,9 +1364,24 @@ function init() {
     scrubber.appendChild(s);
   });
 
-  // 5. Render cover
+  // 5. Render initial spread (cover, or restore from hash)
   currentSpread = 0;
-  renderSpread(0);
+  if (location.hash) {
+    const h = location.hash.replace('#', '');
+    const pm = h.match(/^p-(\d+)$/);
+    const sm = h.match(/^s-(\d+)$/);
+    if (pm) {
+      const ci = parseInt(pm[1]) - 1;
+      if (ci >= 0 && ci < contentPages.length) {
+        if (isMobile()) { currentSpread = ci + 3; }
+        else if (ci === 0) { currentSpread = 3; }
+        else { currentSpread = 3 + Math.floor((ci + 1) / 2); }
+      }
+    } else if (sm) {
+      currentSpread = Math.min(parseInt(sm[1]), totalSpreads - 1);
+    }
+  }
+  renderSpread(currentSpread);
 
   // 6. Event listeners
   document.getElementById('btn-prev').addEventListener('click', flipBackward);

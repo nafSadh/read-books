@@ -22,7 +22,27 @@ python3 data/build.py              # the 6-edition readers + study.html
 python3 data/build_illustrated.py  # illustrated.html only
 ```
 
-**Illustrated edition: Book I live, Books II–XXIV pending art.**
+**Illustrated edition: Books I–VI live (6/24), VII in progress, VIII–XXIV
+pending art.** 21 character sheets exist (see roster below); Calypso,
+Nausicaa, Alcinous, Arete, Demodocus all added this session, all clean on
+the red-signature scan. `img/attic/` holds superseded art (v1 character
+sheets, the old landscape set, alt takes rejected during review — never
+mixed into a live book).
+
+**Book VII status, mid-session:** manifest written and validated (4
+plates: `mist-walk`, `palace-threshold`, `orchard`, `knees-of-arete`), all
+in `data/illustrated_plates.json`. Only `mist-walk.jpeg` is installed in
+`img/bk07/`. `palace-threshold` was generated and rendered on screen (gold
+and silver dogs flanking the golden doors, blue-enamel frieze, matches the
+prompt) but the Chrome extension disconnected before it could be
+downloaded and installed — it is NOT in `img/bk07/` yet and the build will
+correctly WARN and skip it until it lands. Its prompt is in
+`data/illustration-prompts.md` under "BOOK VII". Scenes 3 (`orchard`) and 4
+(`knees-of-arete`) were never generated. Same Gemini session/thread
+(the one opened after the "context rot" pivot, character sheets for
+Alcinous/Arete/Demodocus all live there too) should still have the
+palace-threshold image visible if the thread is reopened — worth checking
+before regenerating from scratch.
 
 ## The illustrated edition — current design
 
@@ -60,6 +80,34 @@ for why, including two framing errors I made and the user corrected.
   one by anchoring it to a paragraph, which left Book I opening on a bare
   text page. Do not anchor it. Books II and III each have exactly one
   unanchored opener and are fine.
+- **`"focus"` on a plate crops into the same sticky image instead of
+  repeating it full-frame.** A wide composition held sticky across many
+  pages used to show the identical full frame on every one — static. Add a
+  `focus` array to a plate entry:
+  ```json
+  "focus": [
+    { "anchor": "I am Mentes, son of wise Anchialus", "rect": [0.50, 0.10, 0.45, 0.55] },
+    { "anchor": "this house was once rich and blameless", "rect": [0.05, 0.15, 0.45, 0.55] }
+  ]
+  ```
+  `rect` is `[x, y, w, h]`, fractions (0–1) of the *image*, the crop window
+  shown once that focus's `anchor` paragraph is reached. Each `anchor` is a
+  substring resolved against `seeds/modern.md` exactly like a plate anchor,
+  but it must land strictly after the plate's own anchor paragraph and
+  before the next plate's (i.e. inside this plate's sticky span) —
+  `build_illustrated.py` validates that and prints `WARN <bk>: focus anchor
+  not found: ...` (then skips it) for anything outside the span or
+  unmatched, same as a bad plate anchor. Once reached, a focus stays sticky
+  in turn — it keeps cropping the same region across subsequent pages until
+  the next focus (or the plate itself changes, which always resets to full
+  frame). Frontend-side this is all done with a CSS `transform:
+  translate()/scale()` on the *same* `<img id="art-img">` element (see
+  `applyFocus()` in `illustrated-template.html`) — never a src swap — so the
+  existing flicker-free sticky-art path is untouched, and it never affects
+  `geom()`'s `beside`/`stacked` layout call, which is still driven purely by
+  the plate's own aspect ratio. Live example: `the-feast.jpeg` in `bk01`
+  (two focuses, panning between Mentes/Athena and Telemachus across the
+  dialogue that plays out under that one plate).
 
 ## NEXT ACTIONS, in order
 

@@ -318,7 +318,7 @@ const DATA = __IDATA__;
 
     DATA.books.forEach((b, bi) => {
       pages.push({ k: 'splash', bi });
-      let plate = null, pending = [], paraIdx = 0, firstCap = true;
+      let plate = null, pending = [], paraIdx = 0, firstCap = true, curFocus = null;
       const packAndPush = () => {
         if (!pending.length) return;
         const m = geom(plate ? (plate.r || DEFAULT_R) : null);
@@ -328,11 +328,11 @@ const DATA = __IDATA__;
           cur2.push(u);
           probe.innerHTML = unitsToHTML(cur2, esc);
           if (probe.scrollHeight > m.capAvail) {
-            if (cur2.length === 1) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; cur2 = []; }
-            else { cur2.pop(); pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; cur2 = [u]; }
+            if (cur2.length === 1) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; cur2 = []; }
+            else { cur2.pop(); pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; cur2 = [u]; }
           }
         });
-        if (cur2.length) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap }); firstCap = false; }
+        if (cur2.length) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; }
         pending = [];
       };
       b.blocks.forEach(blk => {
@@ -340,7 +340,7 @@ const DATA = __IDATA__;
            used as sticky scene art behind the narration */
         if (blk.t === 'img') {
           if (!blk.splashOnly) {
-            packAndPush(); plate = blk;
+            packAndPush(); plate = blk; curFocus = null;  /* new plate: back to full frame */
             /* A bigBeat plate lands as its own full-bleed page first — but only
                where the next page would not already show it large. In the
                side-by-side layout the plate fills half the spread, so the beat
@@ -356,6 +356,10 @@ const DATA = __IDATA__;
            that would otherwise begin halfway down a page still carrying the
            previous scene's art. */
         if (blk.brk) packAndPush();
+        /* A paragraph flagged `foc` (build script resolved a focus anchor)
+           crops the still-sticky plate into a sub-region from here on —
+           flush first so a page never mixes two crop states. */
+        if (blk.foc) { packAndPush(); curFocus = blk.foc; }
         splitSentences(blk.x).forEach(s => pending.push({ text: s, para: paraIdx }));
         paraIdx++;
       });
@@ -369,6 +373,24 @@ const DATA = __IDATA__;
 
   function artInner(src, cap) {
     return src ? `<img id="art-img" src="${src}" alt="${esc(cap || '')}">` : `<div class="no-art-tex"></div>`;
+  }
+
+  /* A focus crops the SAME <img> into a sub-region — [x,y,w,h] as fractions
+     of the image — via transform, not a src swap, so the flicker-free path
+     above is untouched. transform-origin 0 0 makes translate/scale compose
+     as plain crop math: scale by 1/w,1/h to blow the rect up to fill the
+     box, translate by -(x/w),-(y/h) (in % of the box, i.e. the untransformed
+     image) so the rect's top-left lands at the box's top-left. */
+  function applyFocus(img, foc) {
+    if (!img) return;
+    if (foc) {
+      const [x, y, w, h] = foc;
+      img.style.transformOrigin = '0 0';
+      img.style.transform = `translate(${(-x / w * 100).toFixed(3)}%, ${(-y / h * 100).toFixed(3)}%) scale(${(1 / w).toFixed(4)}, ${(1 / h).toFixed(4)})`;
+    } else {
+      img.style.transform = '';
+      img.style.transformOrigin = '';
+    }
   }
 
   function render() {
@@ -432,6 +454,7 @@ const DATA = __IDATA__;
         capBox.classList.add('cap-anim');
         const aw = panelEl.querySelector('#art-wrap');
         if (aw) aw.style.cssText = artStyle;
+        applyFocus(panelEl.querySelector('#art-img'), p.plate ? p.foc : null);
       } else {
         panelEl.innerHTML = (p.plate
           ? `<div id="art-wrap" style="${artStyle}">${artInner(artSrc, p.plate.cap)}
@@ -439,6 +462,7 @@ const DATA = __IDATA__;
              <div id="cap-wrap"><div class="caption-box cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`
           : `<div id="cap-wrap" class="plateless"><div class="caption-box big cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`);
         if (!p.plate) panelEl.style.height = ''; /* content-driven */
+        applyFocus(panelEl.querySelector('#art-img'), p.plate ? p.foc : null);
         lastShape = shape; lastArtSrc = artSrc;
       }
     }

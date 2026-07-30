@@ -95,6 +95,41 @@ CHARACTERS = {
         "Nestor's youngest son; travels with Telemachus",
         "chestnut-brown riding tunic · first dark beard · driving reins",
     ),
+    "menelaus": (
+        "MENELAUS",
+        "King of Sparta, husband of Helen",
+        "red-gold hair and beard · steel-grey robe · gold circlet",
+    ),
+    "helen": (
+        "HELEN",
+        "Queen of Sparta",
+        "ivory-white chiton · silver-grey veil · pale gold hair",
+    ),
+    "calypso": (
+        "CALYPSO",
+        "Nymph of Ogygia; holds Odysseus captive seven years",
+        "sea-teal gown · dark hair with tiny white shells",
+    ),
+    "nausicaa": (
+        "NAUSICAA",
+        "Phaeacian princess, about sixteen",
+        "pale sea-foam chiton · simple girlish braid · bare feet",
+    ),
+    "alcinous": (
+        "ALCINOUS",
+        "King of the Phaeacians",
+        "deep sea-blue robe with gold border · gold circlet · staff of office",
+    ),
+    "arete": (
+        "ARETE",
+        "Queen of the Phaeacians, wiser than her husband",
+        "deep plum mantle · distaff and spindle · grave steady gaze",
+    ),
+    "demodocus": (
+        "DEMODOCUS",
+        "Blind court bard of the Phaeacians",
+        "pale-grey robe · tortoiseshell lyre · eyes closed, unscarred",
+    ),
     "aegyptius": (
         "AEGYPTIUS",
         "Oldest man of the Ithacan assembly",

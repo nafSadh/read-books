@@ -37,7 +37,27 @@
       {
         "file": "the-feast.jpeg",
         "anchor": "Meanwhile Telemachus spoke to bright-eyed Athena, leaning his head close",
-        "caption": "Telemachus leaned close, so the suitors would not hear."
+        "caption": "Telemachus leaned close, so the suitors would not hear.",
+        "focus": [
+          {
+            "anchor": "I am Mentes, son of wise Anchialus",
+            "rect": [
+              0.5,
+              0.1,
+              0.45,
+              0.55
+            ]
+          },
+          {
+            "anchor": "this house was once rich and blameless",
+            "rect": [
+              0.05,
+              0.15,
+              0.45,
+              0.55
+            ]
+          }
+        ]
       },
       {
         "file": "bird-departure.jpeg",
@@ -151,6 +171,147 @@
     ],
     "pageBreaks": [
       "When early-born, rosy-fingered Dawn appeared, the Gerenian horseman Nestor rose"
+    ]
+  },
+  "bk04": {
+    "plates": [
+      {
+        "file": "double-wedding.jpeg",
+        "anchor": null,
+        "caption": "They came to the hollow of Lacedaemon, deep in its ravines, and drove to the house of glorious Menelaus."
+      },
+      {
+        "file": "helen-recognizes.jpeg",
+        "anchor": "Helen came out of her fragrant high-roofed chamber, looking like Artemis",
+        "caption": "“I have never seen such a likeness in anyone, man or woman — as this man bears to the son of great-hearted Odysseus.”"
+      },
+      {
+        "file": "nepenthe.jpeg",
+        "anchor": "Then Helen, daughter of Zeus, thought of another thing",
+        "caption": "Into the wine they were drinking she cast a drug that dissolves grief and anger and brings forgetfulness of every ill."
+      },
+      {
+        "file": "proteus-wrestling.jpeg",
+        "bigBeat": true,
+        "anchor": "First he turned into a great-bearded lion, and then a serpent, and a leopard, and a huge boar",
+        "caption": "We held on unshakably, with enduring hearts."
+      },
+      {
+        "file": "penelope-threshold.jpeg",
+        "anchor": "but sank down on the threshold of her richly-wrought chamber",
+        "caption": "Heart-wasting grief poured around her."
+      },
+      {
+        "file": "dream-sister.jpeg",
+        "bigBeat": true,
+        "anchor": "She made a phantom, shaped in the likeness of a woman — Iphthime",
+        "caption": "“Take heart; do not fear too greatly in your mind.”"
+      },
+      {
+        "file": "ambush-set.jpeg",
+        "bigBeat": true,
+        "anchor": "The suitors meanwhile had embarked and were sailing the watery ways, plotting sheer murder",
+        "caption": "There is a rocky island in the middle of the sea, between Ithaca and rugged Same."
+      }
+    ]
+  },
+  "bk05": {
+    "plates": [
+      {
+        "file": "calypso-cave.jpeg",
+        "anchor": null,
+        "caption": "He came to the great cave where the fair-haired nymph made her home."
+      },
+      {
+        "file": "shore-grief.jpeg",
+        "anchor": "Coming close, the shining goddess said to him: “Poor man",
+        "caption": "He sat where he always sat, weeping, groaning, breaking his heart, gazing out over the barren sea."
+      },
+      {
+        "file": "raft-building.jpeg",
+        "anchor": "Calypso, shining among goddesses, brought him augers",
+        "caption": "He bored all the pieces and fitted them to one another, and hammered the raft together with pegs and joints."
+      },
+      {
+        "file": "poseidon-sees.jpeg",
+        "bigBeat": true,
+        "anchor": "the mighty Earthshaker, coming back from the Ethiopians, saw him far off",
+        "caption": "He gathered the clouds and seized his trident, and stirred up the sea."
+      },
+      {
+        "file": "raft-wrecked.jpeg",
+        "bigBeat": true,
+        "anchor": "a great wave drove down on him from above, rushing terribly",
+        "caption": "Far from the raft he fell, and let go of the steering-oar."
+      },
+      {
+        "file": "ino-veil.jpeg",
+        "anchor": "the daughter of Cadmus saw him — Ino of the beautiful ankles",
+        "caption": "“Strip off these clothes and leave the raft to drift, and swim with your hands, and strive to reach the land of the Phaeacians.”"
+      },
+      {
+        "file": "leaf-bed.jpeg",
+        "bigBeat": true,
+        "anchor": "what now? What will become of me at the last? If I keep watch through the wretched night",
+        "caption": "He crept beneath two olive trees that grew from a single stock, and heaped the fallen leaves over himself."
+      }
+    ]
+  },
+  "bk06": {
+    "plates": [
+      {
+        "file": "dream-visit.jpeg",
+        "anchor": null,
+        "caption": "Nausicaa, daughter of great-hearted Alcinous; and near her two handmaids, with beauty from the Graces."
+      },
+      {
+        "file": "wagon-day.jpeg",
+        "anchor": "they loosed the mules from the wagon and turned them along the eddying river",
+        "caption": "From the wagon they took the clothing in armfuls and carried it into the dark water, and trod it briskly in the pits, racing one another."
+      },
+      {
+        "file": "ball-scream.jpeg",
+        "bigBeat": true,
+        "anchor": "threw it into a deep eddy; and they all shrieked aloud",
+        "caption": "Godlike Odysseus woke, and sitting up he debated in his mind and heart."
+      },
+      {
+        "file": "artemis-still.jpeg",
+        "anchor": "Alone the daughter of Alcinous stayed, for Athena put courage in her heart",
+        "caption": "He loomed terrible to them, crusted with brine, and they scattered in fright along the jutting spits of shore."
+      },
+      {
+        "file": "follow-behind.jpeg",
+        "bigBeat": true,
+        "anchor": "so that the handmaids and Odysseus could follow on foot",
+        "caption": "The sun set as they reached the famous grove sacred to Athena."
+      }
+    ]
+  },
+  "bk07": {
+    "plates": [
+      {
+        "file": "mist-walk.jpeg",
+        "anchor": null,
+        "caption": "Athena poured a thick mist around him, so that no great-hearted Phaeacian meeting him should jeer at him and ask who he was."
+      },
+      {
+        "file": "palace-threshold.jpeg",
+        "bigBeat": true,
+        "anchor": "On either side stood dogs of gold and silver, which Hephaestus had fashioned",
+        "caption": "A radiance like the sun's or the moon's filled the high-roofed house of great-hearted Alcinous."
+      },
+      {
+        "file": "orchard.jpeg",
+        "anchor": "Outside the courtyard, near the doors, is a great orchard of four acres",
+        "caption": "Their fruit never perishes and never fails, winter or summer, the year round."
+      },
+      {
+        "file": "knees-of-arete.jpeg",
+        "bigBeat": true,
+        "anchor": "So saying, he sat down in the ashes on the hearth, by the fire; and they all stayed hushed",
+        "caption": "“Alcinous, this is not the finer way, and it is not fitting, that a stranger should sit on the ground, on the hearth, in the ashes.”"
+      }
     ]
   }
 }

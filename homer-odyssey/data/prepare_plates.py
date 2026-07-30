@@ -32,7 +32,11 @@ from PIL import Image, ImageFilter
 
 TARGET = 2048
 TRIM_CAP = 0.12      # never remove more than this fraction of a side, total
-FLATNESS = 14        # max spread within a row/col for it to count as matting
+FLATNESS = 24        # max spread within a row/col for it to count as matting.
+                      # JPEG grain on an off-white matte alone can spread ~15;
+                      # 14 was tight enough that real borders were missed —
+                      # nepenthe.jpeg's top row spread 15 on blue and the
+                      # whole trim silently no-opped on the very first check.
 NEARNESS = 26        # max distance from the sampled border colour
 MAX_PASSES = 4
 

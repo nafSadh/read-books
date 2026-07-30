@@ -1066,57 +1066,192 @@ a bad anchor.
 5. **bk03/chariot-to-sparta.png** — The plain road at dusk: Telemachus and
    Peisistratus small in an open chariot, dust-line behind them, mountains
    ahead; enormous sky, the day's last light.
+## BOOK IV — 7 plates (Gemini app workflow)
 
-## BOOK IV — 7 plates
+Cast: Menelaus, Helen, Nestor (mentioned only, no plate), Peisistratus,
+Telemachus, and — inline only, no sheet — Antinous and Penelope's household
+(Eurycleia, Medon; Penelope herself needs her existing sheet).
 
-1. **bk04/double-wedding.png** — Menelaus's gold-lit megaron mid-feast: a
-   bard, two tumblers spinning, wedding garlands; at the threshold, dusty and
-   hesitant, two young travelers looking in.
-2. **bk04/helen-recognizes.png** — Helen pausing at the foot of the stairs
-   with her silver work-basket, eyes fixed on Telemachus's face across the
-   room, the likeness landing on her; Menelaus mid-sentence, unaware.
-3. **bk04/nepenthe.png** — Close plate: Helen's hand tipping a dark phial of
-   the grief-dissolving drug into the gleaming wine-bowl; her expression
-   unreadable, reflections in the wine.
-4. **bk04/proteus-wrestling.png** — Menelaus and three companions in sealskins
-   grappling the Old Man of the Sea mid-transformation — half lion, half
-   running water, a tree bursting from his shoulder — on blinding noon sand;
-   seals ranked like an audience.
-5. **bk04/ambush-set.png** — Ithaca, night: the suitors' ship sliding out,
-   twenty spearmen aboard, to lie in wait in the strait of Asteris; oily calm
-   water, weapons bundled low.
-6. **bk04/penelope-threshold.png** — Penelope sunk down on the threshold of
-   her own chamber amid whimpering maids, the news of the ambush just landed;
-   the geometry of the doorway boxing her in.
-7. **bk04/dream-sister.png** — The dream-phantom of her sister leaning over
-   sleeping Penelope at the gates of dreams, translucent, one hand raised in
-   reassurance; the room's real dark all around.
+### The seven scenes
 
-## BOOK V — 7 plates
+**1 — double-wedding.jpeg** *(opener, no anchor)*
+> A gold-lit megaron mid-feast, wide and warm: a double wedding — son and
+> daughter both being married the same night. Long tables, garlands, a bard
+> with a lyre in the middle distance, two tumblers spinning through a
+> cleared space to music. At the open threshold, small and travel-dusty,
+> two young men hesitate before entering — Telemachus from his sheet in his
+> plain cream tunic, and Peisistratus from his sheet in his chestnut-brown
+> riding tunic, both road-worn against the gold room. Nobody has noticed
+> them yet. Warmth and noise pulling against two hesitant strangers.
 
-1. **bk05/calypso-cave.png** — The hollow cave from outside: cedar smoke,
-   vine heavy with clusters over the arch, four springs, meadow of violets;
-   Hermes just alighting, sandals still glowing faintly (terracotta accent),
-   Calypso singing at her loom within.
-2. **bk05/shore-grief.png** — Odysseus alone on the point of rock where he
-   sits every day, back to the viewer, staring at an empty enormous horizon;
-   the island paradise-lush behind him, ignored.
-3. **bk05/oath.png** — Calypso and Odysseus facing each other at dusk, she
-   with hand raised swearing by Styx, he wary, arms crossed; between them the
-   laid table of ambrosia and mortal food, two cuisines that cannot mix.
-4. **bk05/raft-building.png** — Craftsman-plate: Odysseus felling the twenty
-   dry trees, adze-work, auger holes, the raft taking shape on rollers;
-   drawn with the loving precision of a boat-plan, Calypso approaching with
-   cloth for the sail.
-5. **bk05/poseidon-sees.png** — From behind Poseidon's shoulder high on the
-   Solymi mountains: far below, a tiny raft with a square sail on a huge
-   curved sea; the god's trident-hand already gathering clouds.
-6. **bk05/ino-veil.png** — Storm chaos, the raft's timbers scattering like
-   chaff; the sea-goddess Ino risen as a diving bird on the wreckage,
-   holding out the immortal veil (terracotta accent) to the swimmer.
-7. **bk05/leaf-bed.png** — Naked, salt-crusted Odysseus asleep under the
-   twin olives, buried in fallen leaves like a firebrand banked in ash;
-   drawn from above, tender, almost a burial — or a seed.
+**2 — helen-recognizes.jpeg**
+> Interior, the same hall, quieter. Helen from her sheet entering from a side
+> chamber, an attendant behind her carrying the wheeled silver work-basket,
+> the golden distaff wound with violet wool laid across it. Helen has
+> stopped mid-step, her eyes fixed across the room on Telemachus's face —
+> the likeness has just landed on her. Menelaus from his sheet sits at the
+> table mid-sentence, gesturing, still unaware of what she's seeing.
+> Telemachus, seated, hasn't noticed her look yet either. The whole plate
+> turns on one woman's arrested eyes.
+
+**3 — nepenthe.jpeg**
+> Close plate, warm firelight. Helen from her sheet, seen from the side and
+> slightly behind, her hand tipping a small dark phial over a wide gleaming
+> wine-bowl, a single drop just leaving the lip of the phial. Her face is
+> turned three-quarters away, unreadable — not furtive, not tender, simply
+> unreadable. Faint warped reflections of the hall's firelight in the
+> wine's surface. Everything else in soft shadow. Quiet and a little
+> uncanny: a private, competent act of mercy or control, and the reader
+> cannot tell which.
+
+**4 — proteus-wrestling.jpeg** *(bigBeat — full-bleed page)*
+> Blinding noon on open sand. Menelaus from his sheet and three companions,
+> crudely disguised in raw sealskins, gripping an old bearded man from all
+> sides as he transforms under their hands — mid-change, genuinely strange:
+> one arm still human, the shoulder already sprouting bark and leaves like a
+> young tree, the lower body shifting into a coil of serpent, the face
+> caught between an old man's and a lion's. Ranked along the tideline behind
+> them, dozens of true seals lie motionless, watching like an audience.
+> Hard white light, hard black shadows, no softness anywhere. Grip and
+> endurance are the whole subject — hold on, don't let go.
+
+**5 — penelope-threshold.jpeg**
+> Ithaca, interior. Penelope — a queen of forty-two, dark hair parted at the
+> centre and gathered low, wearing a long moss-olive-green chiton and a pale
+> sage-green veil pushed back off her hair for now — sunk down onto the
+> stone threshold of her own chamber, unable to sit in a proper chair, her
+> back against the doorframe, knees drawn up, one hand pressed flat to the
+> stone beside her. Two or three maids kneel and hover near her, one with a hand
+> half-raised and unable to finish the gesture of comfort. The doorway's
+> straight verticals box her in on both sides — she is framed by her own
+> house. Muted, cold light. The news has just landed and no one has moved
+> yet.
+
+**6 — dream-sister.jpeg** *(bigBeat — full-bleed page)*
+> Night, Penelope's bedchamber. Penelope from her sheet asleep, turned on
+> her side, one arm loose over the edge of the bed. Bending over her, close
+> and gentle, a translucent female shape — the dream-phantom of her sister,
+> visible faintly through to the dark wall behind it, one hand raised near
+> Penelope's shoulder in reassurance, not quite touching. The room's real
+> darkness presses in around the one pale, softly glowing figure. No
+> special effects beyond the transparency itself — restrained, tender,
+> a little eerie.
+
+**7 — ambush-set.jpeg** *(bigBeat — full-bleed page)*
+> Night at sea, oily calm black water, no moon. A long dark ship sliding out
+> from Ithaca's shore under oars, no sail raised, moving low and quiet.
+> Twenty armed men crouch aboard, spears and shields bundled flat and kept
+> low rather than raised — deliberately inconspicuous. Antinous, described
+> only (no reference sheet needed here — keep him distant and in shadow, a
+> terracotta-red hem just visible at the stern, the one warm note in an
+> otherwise cold, colourless plate), stands at the steering oar. Ahead in
+> the dark, barely visible, a low rocky island waits in the strait. Tension
+> through stillness and quiet, not action — a trap being set, not sprung.
+
+### After generating
+
+Save into `img/bk04/`, then:
+
+```
+python3 data/prepare_plates.py img/bk04/*.jpeg
+python3 data/verify_plates.py bk04
+python3 data/build_illustrated.py
+```
+
+Plates 4, 6, 7 are `bigBeat` full-bleed pages. All 7 anchors were validated
+against the real paragraphs of `seeds/modern.md` before this manifest was
+written.
+## BOOK V — 7 plates (Gemini app workflow)
+
+**New character sheet needed first: Calypso.** Paragraph already in the pack
+under "Ogygia and Scheria" — paste PREAMBLE v3 + that paragraph + the
+colour lock, save as `img/characters/calypso.jpeg`.
+
+Odysseus's existing sheet carries the whole book otherwise. Consider a
+fresh Gemini thread for this book — Calypso's sea-teal is close to some of
+the cooler blues used for night scenes in Book IV, worth keeping visually
+distinct from what's already in-thread.
+
+### The seven scenes
+
+**1 — calypso-cave.jpeg** *(opener, no anchor)*
+> A great sea-cave seen from just outside its mouth. Cedar and citron
+> smoke drifting out, a vine heavy with grape-clusters trained over the
+> arch, four clear springs running near each other through a meadow of
+> violets and wild celery. Just landing at the threshold, Hermes: an
+> ageless young man, quick and light, short belted cloud-grey tunic, low
+> winged sandals, a slim golden wand in hand. Inside, glimpsed past him in
+> shadow, a beautiful woman with long dark hair braided with tiny white
+> shells, in a flowing sea-teal gown, singing at a golden loom. Lush and
+> paradisal — and closed, self-contained, a world sealed off from the sea.
+
+**2 — shore-grief.jpeg**
+> A rocky point at the island's edge. A weathered bearded man in a
+> grey-blue tunic and olive cloak sits with his back to the viewer, knees
+> drawn up, staring out at an empty, enormous horizon of grey sea. The
+> lush green island fills the frame behind him, ignored, out of focus. No
+> ship anywhere on the water. He sits exactly where he sits every day.
+> Vast loneliness through scale: a small figure, an immense empty sea.
+
+**3 — raft-building.jpeg**
+> Craftsman's plate, precise and loving. A bearded man in a plain tunic,
+> sleeves pushed up, kneeling beside a half-built raft on wooden rollers —
+> twenty felled logs, some already trimmed square, auger holes bored and
+> pegged, the frame taking shape with real carpentry logic. Wood shavings
+> curl on the ground. A little apart, a woman in a sea-teal gown
+> approaches carrying folded cloth for a sail. Bright open-air daylight.
+> The plate should read like an actual boat-plan someone could learn from.
+
+**4 — poseidon-sees.jpeg** *(bigBeat — full-bleed page)*
+> Seen from just behind and above a god's shoulder, high on dark mountains.
+> A powerful weathered hand, storm-grey, gripping a tall bronze trident,
+> gathering clouds from the sky with the other. Far below and small, an
+> enormous curved grey-green sea, and on it one tiny raft under one small
+> square sail — barely visible, the entire subject of the god's attention.
+> The scale gap between the god's hand and the raft is the whole point.
+> No face needed; just the hand, the trident, the gathering weather, and
+> the impossibly small target far below.
+
+**5 — raft-wrecked.jpeg** *(bigBeat — full-bleed page)*
+> Violent grey chaos at sea. A raft's timbers scattering apart like
+> loose kindling on a huge dark wave, ropes trailing, the mast at a broken
+> angle. A bearded man in the water, mid-fall, one arm flung wide, having
+> just lost his grip on the steering oar — caught at the exact instant of
+> falling, not yet underwater. No other figures. Hard cold spray, heavy
+> grey-green water, no horizon visible. Genuine peril, not stylised.
+
+**6 — ino-veil.jpeg**
+> Rough grey sea, calmer than the wreck but still heavy swells. A pale
+> web-footed seabird has just broken the surface beside the exhausted
+> swimming man — mid-transformation, one wing still becoming a woman's
+> pale arm, offering out a small folded length of shimmering cloth toward
+> him. He is barely afloat, gripping a single loose plank of the wrecked
+> raft, hollow-eyed with exhaustion, reaching for the cloth uncertainly.
+> Cold light, heavy water, an uncanny rescue rather than a triumphant one.
+
+**7 — leaf-bed.jpeg** *(bigBeat — full-bleed page)*
+> Seen from directly above, like a burial or a planting. A salt-crusted,
+> naked-shouldered man curled on his side asleep in a hollow between two
+> olive trees grown from a single root, their branches interlocked
+> overhead. He is nearly buried in a deep drift of fallen dry leaves,
+> only his face, one shoulder and a curled hand visible above them. Warm
+> ochre-brown leaf tones against cool dawn-grey ground. Tender, exhausted,
+> ambiguous — could be a grave, could be a seed underground. No nudity;
+> the leaves and the angle cover him completely below the shoulder.
+
+### After generating
+
+Save into `img/bk05/`, then:
+
+```
+python3 data/prepare_plates.py img/bk05/*.jpeg
+python3 data/verify_plates.py bk05
+python3 data/build_illustrated.py
+```
+
+All 7 anchors were validated against the real paragraphs of `seeds/modern.md`
+before this manifest was written. Plates 4, 5, 7 are `bigBeat` full-bleed
+pages.
 
 ## BOOK VI — 5 plates
 

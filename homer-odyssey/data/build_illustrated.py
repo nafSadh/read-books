@@ -92,8 +92,29 @@ for b in data["books"]:
         if blk is not None:
             blocks.append(blk)
 
+    # `state["plate"]/["focus"]` track the plate currently sticky on screen —
+    # mirrors the frontend, where only a non-splashOnly plate ever becomes
+    # the active sticky image (splashOnly plates front a book but never hold
+    # the reader's attention across pages). A plate's own `focus` entries
+    # (crops into a sub-region of that same sticky image) may only resolve
+    # to paragraphs strictly after its own anchor paragraph and before the
+    # next sticky plate's — i.e. within its span on screen — so unresolved
+    # focuses are flushed to a WARN the moment that span closes.
+    state = {"plate": None, "focus": []}
+
+    def flush_focus_warnings():
+        for f in state["focus"]:
+            print(f"WARN {book_dir}: focus anchor not found: {f['anchor'][:50]!r}")
+
+    def activate(p):
+        if p.get("splashOnly"):
+            return
+        flush_focus_warnings()
+        state["plate"], state["focus"] = p, list(p.get("focus", []))
+
     for p in [p for p in plates if p.get("anchor") is None]:
         add_img(p)
+        activate(p)
     pending = [p for p in plates if p.get("anchor")]
     for para in b["paragraphs"]:
         # Plates land BEFORE the paragraph they match, not after. Art is
@@ -102,15 +123,29 @@ for b in data["books"]:
         # scene while you read this one, and only catches up on the
         # paragraph that follows. Inserting before means an anchor reads as
         # "this is the paragraph this plate illustrates".
+        switched = False
         for p in [p for p in pending if p["anchor"] in para]:
             add_img(p)
             pending.remove(p)
+            activate(p)
+            if not p.get("splashOnly"):
+                switched = True
         blk = {"t": "p", "x": para}
         for s in list(breaks):
             if s in para:
                 blk["brk"] = True
                 breaks.remove(s)
+        # A paragraph carrying a focus is marked `foc` (the crop rect); the
+        # frontend applies it while the current sticky plate is still
+        # active. Only checked on paragraphs after the plate's own anchor
+        # (skipped the same turn a plate switches in, above).
+        if not switched:
+            match = next((f for f in state["focus"] if f["anchor"] in para), None)
+            if match:
+                blk["foc"] = match["rect"]
+                state["focus"].remove(match)
         blocks.append(blk)
+    flush_focus_warnings()
     for p in pending:
         print(f"WARN {book_dir}: anchor not found: {p['anchor'][:50]!r}")
         add_img(p)

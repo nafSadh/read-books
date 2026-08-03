@@ -35,7 +35,13 @@
   --halftone: rgba(74,144,217,.10); --bar-bg: rgba(0,0,0,0.95); --bar-text: #546080;
 }
 
-html, body { height: 100%; overflow: hidden; }
+/* height:100% (not 100vh/100dvh) is deliberate and load-bearing: 100vh
+   resolves to the LARGE viewport on iOS Safari and would push the bottom bar
+   under the URL bar, and 100dvh would resize the reader — and therefore
+   repaginate it — every time the browser chrome slides. Do not "fix" this.
+   overscroll-behavior stops Chrome for Android turning a slightly-downward
+   page-swipe into pull-to-refresh, which reloads the book. */
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 body {
   background: var(--bg);
   font-family: 'EB Garamond', Georgia, serif;
@@ -44,23 +50,69 @@ body {
 }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important} }
 
+/* ONE bar, on every screen size, at the bottom — desktop had the same disease
+   mobile did: two bars (82px) whose controls duplicated each other, plus 46px
+   of stage padding, spent on chrome you glance at once a session. The bar
+   pads itself out of the display cutouts (viewport-fit=cover extends layout
+   under the notch/home indicator; without env() insets the back link sat
+   under the camera in landscape and the buttons inside the home-swipe strip).
+   On desktop it stays dark — the desk the book lies on; narrow re-skins it
+   as the page's own running foot. */
 #top-bar {
-  height: 42px; flex-shrink: 0; z-index: 50;
-  background: var(--bar-bg); border-bottom: 1px solid rgba(255,255,255,.07);
-  display: flex; align-items: center; gap: 14px; padding: 0 16px;
+  order: 3;
+  height: calc(44px + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0; z-index: 50;
+  background: var(--bar-bg); border-top: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 calc(16px + env(safe-area-inset-right, 0px))
+           env(safe-area-inset-bottom, 0px) calc(16px + env(safe-area-inset-left, 0px));
   font-family: 'Jost', sans-serif; font-size: 12px; color: var(--bar-text);
 }
-#top-bar a { color: var(--bar-text); text-decoration: none; letter-spacing: 1px; white-space: nowrap; }
-#top-bar a:hover { color: #fff; }
+/* Stretch the back link to the bar height. As a bare inline <a> it was a
+   17.5px-tall target with 12px of dead bar above and below — and it is the
+   only route out of the reader. The negative inline margin cancels the
+   padding so the text stays optically flush with the bar edge. */
+#top-bar a {
+  color: var(--bar-text); text-decoration: none; letter-spacing: 1px; white-space: nowrap;
+  display: inline-flex; align-items: center; align-self: stretch;
+  padding-inline: 8px; margin-inline: -8px;
+}
+/* Gated on a real pointer: on touch, :hover latches after a tap and the
+   control stays lit until you tap somewhere else. */
+@media (hover: hover) { #top-bar a:hover { color: #fff; } }
 #book-select {
   font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--bar-text);
   background: transparent; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; padding: 3px 6px;
 }
 #book-select option { color: #222; }
-#il-label { opacity: .85; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .5px; }
-.theme-dots { display: flex; gap: 7px; align-items: center; }
-.theme-dot { width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer; padding: 0; flex-shrink: 0; }
-.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
+.tb-mark { opacity: .6; letter-spacing: 1.5px; text-transform: uppercase; font-size: 11px; font-family: 'Jost', sans-serif; white-space: nowrap; }
+.tb-gap { flex: 1; }
+.foot-title, #theme-cycle { display: none; }   /* narrow only */
+/* page turners live in the bar on every size — Prev/Next Book went with the
+   second bar (they duplicated the book picker) */
+.pg-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-family: 'EB Garamond', Georgia, serif; font-size: 22px; line-height: 1;
+  color: var(--bar-text);
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.pg-arrow:disabled { opacity: .22; cursor: default; }
+@media (hover: hover) { .pg-arrow:hover:not(:disabled) { color: #fff; } }
+#il-label { min-width: 5em; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+#bottom-bar { display: none; }
+.theme-dots { display: flex; gap: 2px; align-items: center; }
+/* The dot you see is 12px, but the button is 28px: a 12x12 target is half the
+   WCAG 2.5.8 minimum, and these five were the controls a night reader most
+   wants. The swatch is drawn with a background-clip'd content box so the
+   visual weight in the bar is unchanged. */
+.theme-dot {
+  width: 28px; height: 28px; padding: 8px; box-sizing: border-box;
+  border: none; background-clip: content-box; border-radius: 50%;
+  cursor: pointer; flex-shrink: 0; -webkit-tap-highlight-color: transparent;
+}
+.theme-dot.active { box-shadow: inset 0 0 0 2px var(--accent); }
 .theme-dot[data-t="light-purple"] { background: #7c3aed; }
 .theme-dot[data-t="sepia"] { background: #b45309; }
 .theme-dot[data-t="light-azure"] { background: #2e6ab4; }
@@ -70,7 +122,9 @@ body {
 #stage {
   flex: 1; min-height: 0; position: relative;
   display: flex; align-items: center; justify-content: center;
-  padding: 26px 60px 20px;
+  /* was 26/20 vertical — with the top bar gone the book gets that height
+     back; 12px is enough desk to read the panel as floating */
+  padding: 12px 60px 12px;
 }
 /* The panel: art on top (true aspect, uncropped in the common case),
    caption band on paper *below* the art — no text over the artwork. */
@@ -85,8 +139,7 @@ body {
 /* full-bleed beat page: art alone, edge to edge */
 #panel.full #art-wrap { margin: 0; box-shadow: none; }
 #panel.beside #art-wrap { flex: none; margin: 22px 0 22px 22px; }
-#panel.beside #cap-wrap { padding-left: 34px; }
-#panel.beside #cap-wrap {
+#panel.beside #cap-wrap, #panel-probe.beside #cap-probe {
   flex: 1; margin-top: 0; padding: 46px 46px 40px;
   display: flex; align-items: flex-start; min-width: 0;
 }
@@ -105,15 +158,17 @@ body {
 
 
 /* caption band: paper gutter under the art; box straddles the art edge a little */
-#cap-wrap { flex: none; position: relative; z-index: 3; padding: 26px 40px 34px; margin-top: 0; }
-#cap-wrap.plateless { margin-top: 0; padding: 54px 46px; flex: 1; display: flex; align-items: center; justify-content: center; }
+#cap-wrap, #cap-probe { flex: none; position: relative; z-index: 3; padding: 26px 40px 34px; margin-top: 0; }
+#cap-wrap.plateless, #cap-probe.plateless { margin-top: 0; padding: 54px 46px; flex: 1; display: flex; align-items: center; justify-content: center; }
+/* the probe only ever has its paddings read; keep it out of layout and a11y */
+#pad-probe { position: absolute; left: -9999px; top: 0; width: 600px; visibility: hidden; pointer-events: none; }
 .caption-box {
   color: var(--ptext);
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 19.5px; line-height: 1.72; letter-spacing: .1px;
 }
 .caption-box.big { width: min(620px, 92%); }
-.caption-box p { margin: 0 0 .9em; text-indent: 1.3em; text-align: justify; hyphens: auto; }
+.caption-box p { margin: 0 0 .9em; text-indent: 1.3em; text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
 .caption-box p:first-child { text-indent: 0; }
 .caption-box p:last-child { margin-bottom: 0; }
 /* opening page of a book: a restrained drop cap, as a set book would have */
@@ -121,8 +176,16 @@ body {
   float: left; font-size: 3.05em; line-height: .86;
   padding: .04em .09em 0 0; color: var(--ptext); font-weight: 500;
 }
-.cap-anim { animation: capIn .18s ease; }
-@keyframes capIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* Page turns should read as a page moving, not a crossfade: text comes in from
+   the side you turned from, with a soft leading edge. Direction-aware so
+   flipping back feels like flipping back. */
+.cap-anim { animation: capIn .22s cubic-bezier(.22,.61,.36,1); }
+.cap-anim.back { animation-name: capBack; }
+@keyframes capIn   { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+@keyframes capBack { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: none; } }
+/* the paper itself gets a brief lift as it settles, like a leaf laid down */
+#panel.turning { animation: pageSettle .22s ease-out; }
+@keyframes pageSettle { from { transform: scale(.994); } to { transform: none; } }
 
 /* splash / book-title page (full-art panel, overlay text) */
 .splash, .cover-page { --scrim: linear-gradient(to bottom, rgba(10,8,14,.12) 0%, rgba(10,8,14,.52) 45%, rgba(10,8,14,.72) 100%); }
@@ -143,29 +206,148 @@ body {
 .cover-page .cv-hint { font-family: 'Jost', sans-serif; font-size: 11px; color: rgba(247,240,228,.7); margin-top: 26px; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
 .cover-page .cv-hint kbd { font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--paper); border-radius: 3px; padding: 1px 5px; font-size: 10px; }
 
-#hit-left, #hit-right { position: fixed; top: 42px; bottom: 40px; width: 11vw; z-index: 40; cursor: pointer; }
-#hit-left { left: 0; } #hit-right { right: 0; }
-
-#bottom-bar {
-  height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 22px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--bar-text);
-  border-top: 1px solid rgba(255,255,255,.07); background: var(--bar-bg); padding: 0 16px;
+/* Tap-to-turn strips. Inset from the screen edge on purpose: flush against it
+   they sat inside the OS back-gesture / edge-swipe zones, and they cleared the
+   justified text by only 3.6px so the first and last word of every line was
+   unselectable. touch-action keeps double-tap-to-zoom from eating a fast
+   double page-turn; the tap highlight is suppressed because a full-height grey
+   flash on every turn is not a page-turn affordance. */
+#hit-left, #hit-right {
+  position: fixed; z-index: 40; cursor: pointer;
+  width: 8vw; max-width: 64px;
+  top: env(safe-area-inset-top, 0px);
+  bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
 }
+#hit-left  { left:  calc(22px + env(safe-area-inset-left, 0px)); }
+#hit-right { right: calc(22px + env(safe-area-inset-right, 0px)); }
+
+/* retired: everything it held lives in the single bar now; markup kept so the
+   render() writes to #pos-label and the book buttons stay harmless */
+#bottom-bar { display: none; }
 .bb-btn {
   font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
   background: none; border: none; color: var(--bar-text); cursor: pointer; padding: 6px 10px;
+  white-space: nowrap;                 /* both labels wrapped and clipped at 390px */
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
 }
-.bb-btn:hover { color: #fff; }
+@media (hover: hover) { .bb-btn:hover { color: #fff; } }
 .bb-btn:disabled { opacity: .25; cursor: default; }
-#progress { position: fixed; bottom: 0; left: 0; height: 2px; background: var(--accent); transition: width .25s ease; z-index: 60; }
+#pos-label { white-space: nowrap; }
+/* rides the top edge of the single bar */
+#progress { position: fixed; bottom: calc(44px + env(safe-area-inset-bottom, 0px)); left: 0; height: 2px; background: var(--accent); transition: width .25s ease; z-index: 60; }
 
-@media (max-width: 640px) {
-  #stage { padding: 10px 8px 10px; }
-  #cap-wrap { padding: 22px 22px 24px; }
-  #cap-wrap.plateless { padding: 30px 24px; }
-  .caption-box { font-size: 17px; line-height: 1.68; }
+/* Height-aware as well as width-aware: a landscape phone is 844-956px wide but
+   only ~390 tall, and the desktop 60px side gutters plus the tall paddings do
+   not fit it. */
+@media (max-width: 640px), (max-height: 560px) {
+  #stage { padding: 10px calc(8px + env(safe-area-inset-left, 0px))
+                   10px calc(8px + env(safe-area-inset-right, 0px)); }
+  #cap-wrap, #cap-probe { padding: 20px 20px 22px; }
+  #cap-wrap.plateless, #cap-probe.plateless { padding: 28px 22px; }
+  /* EB Garamond's x-height is ~0.44em, so 17px read a size smaller than the
+     phone's own body text. 18px costs ~10% more page-turns (1270 vs 1154 at
+     390x844) and is the trade this edition should take; drop to 17.5 if turns
+     matter more than legibility. */
+  .caption-box { font-size: 18px; line-height: 1.62; }
+  /* Justification needs ~65 characters to behave. At a 45-character phone
+     measure it stretched word spaces to 2.9x natural and opened rivers, and
+     the hyphens:auto that would have relieved it is inert in Safari without
+     the prefix. Ragged-right is the normal setting for a narrow printed
+     column and costs the register nothing. */
+  .caption-box p { text-align: left; }
   .splash .sp-roman { font-size: 48px; }
   .cover-page .cv-title { font-size: 34px; }
+
+  /* The bar wanted 468px of content in a 390px phone, so all five theme dots
+     — the whole point of which is night reading — were pushed off-screen with
+     no way to scroll to them. Drop the word-mark and one spacer, tighten the
+     gaps, and the row fits with room to spare. */
+  /* Edge to edge: no stage gutter, no panel inset, no art margin. The paper is
+     the page. Keeps only the safe-area insets. */
+  #stage { padding: 0 env(safe-area-inset-right, 0px) 0 env(safe-area-inset-left, 0px); }
+  #panel.fill {
+    height: 100%; border-radius: 0; box-shadow: none;
+  }
+  #panel.fill #cap-wrap { flex: 1; }     /* paper runs to the bottom bar */
+  #panel:not(.beside):not(.full) #art-wrap { margin: 0; }
+
+  /* ONE bar in reading mode, at the bottom where the thumb is — and it is the
+     book's running foot, not app chrome: same paper, same ink, same face, a
+     hairline rule above it exactly as a printed foot has. There is no seam
+     between the page and the bar because there is no bar, only the foot of
+     the page. Two bars cost 82px of an 844px screen, and Prev/Next Book
+     duplicated the book picker. */
+  #top-bar {
+    order: 3; gap: 4px;
+    background: var(--paper); color: var(--ptext);
+    border-bottom: none; border-top: 1px solid color-mix(in srgb, var(--ptext) 18%, transparent);
+    font-family: 'EB Garamond', Georgia, serif;
+    height: calc(44px + env(safe-area-inset-bottom, 0px));
+    padding: 0 calc(12px + env(safe-area-inset-right, 0px))
+             env(safe-area-inset-bottom, 0px) calc(12px + env(safe-area-inset-left, 0px));
+  }
+  #bottom-bar { display: none; }
+  .tb-mark, .tb-back, .tb-gap:first-of-type, .theme-dots { display: none; }
+
+  /* the title, as a running foot carries it */
+  .foot-title {
+    display: block; flex-shrink: 0;
+    font-family: 'EB Garamond', Georgia, serif; font-style: italic;
+    font-size: 13px; letter-spacing: .3px;
+    color: color-mix(in srgb, var(--ptext) 62%, transparent);
+    white-space: nowrap;
+  }
+  #il-label {
+    flex-shrink: 0; font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px; letter-spacing: .2px;
+    color: color-mix(in srgb, var(--ptext) 70%, transparent);
+    min-width: 4.5em; text-align: center;
+  }
+  /* page turners, set as printed marks rather than buttons */
+  .pg-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; flex-shrink: 0;
+    background: none; border: none; cursor: pointer; padding: 0;
+    font-family: 'EB Garamond', Georgia, serif; font-size: 22px; line-height: 1;
+    color: color-mix(in srgb, var(--ptext) 72%, transparent);
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  }
+  .pg-arrow:disabled { opacity: .22; cursor: default; }
+  .pg-arrow:active { color: var(--ptext); }
+
+  /* quiet enough to read as a printed folio mark, not a form control */
+  #book-select {
+    max-width: 74px; flex-shrink: 0;
+    font-family: 'EB Garamond', Georgia, serif; font-size: 15px;
+    color: var(--ptext); background: transparent;
+    border: none; border-radius: 0; padding: 2px 0;
+    appearance: none; -webkit-appearance: none; text-align: center;
+  }
+  #book-select option { color: #222; }
+
+  #theme-cycle {
+    display: block; width: 26px; height: 26px; flex-shrink: 0;
+    border-radius: 50%; padding: 5px; box-sizing: border-box;
+    background-clip: content-box; cursor: pointer;
+    border: 1px solid color-mix(in srgb, var(--ptext) 22%, transparent);
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  }
+  #progress { bottom: calc(44px + env(safe-area-inset-bottom, 0px)); }
+  /* stage is now the top element; hit strips run from its top edge */
+  #hit-left, #hit-right {
+    top: env(safe-area-inset-top, 0px);
+    bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+  }
+  /* 16px exactly: below it, iOS Safari zooms the layout on focus, and in a
+     non-scrolling flip-book the reader is left on an off-centre crop with no
+     way back but a pinch. */
+  #book-select { font-size: 16px; padding: 5px 6px; }
+
+  #bottom-bar { gap: 12px; padding-left: calc(8px + env(safe-area-inset-left, 0px));
+                           padding-right: calc(8px + env(safe-area-inset-right, 0px)); }
+  .bb-btn { font-size: 10px; letter-spacing: .5px; padding: 8px 6px; }
+  #pos-label { font-size: 10px; }
 }
 button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
@@ -173,20 +355,32 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid
 <body>
 
 <nav id="top-bar">
-  <a href="index.html">&larr; Odyssey</a>
-  <span style="opacity:.6;letter-spacing:1.5px;text-transform:uppercase;font-size:11px;font-family:'Jost',sans-serif">Illustrated</span>
+  <a href="index.html">&larr;<span class="tb-back">&nbsp;Odyssey</span></a>
+  <span class="tb-mark">Illustrated</span>
+  <span class="foot-title">The Odyssey</span>
   <select id="book-select" aria-label="Go to book"></select>
-  <span style="flex:1"></span>
+  <span class="tb-gap"></span>
+  <button class="pg-arrow" id="pg-prev" aria-label="Previous page">&lsaquo;</button>
   <span id="il-label"></span>
-  <span style="flex:1"></span>
+  <button class="pg-arrow" id="pg-next" aria-label="Next page">&rsaquo;</button>
+  <span class="tb-gap"></span>
   <div class="theme-dots" role="group" aria-label="Theme">
-    <button class="theme-dot active" data-t="light-purple" aria-label="Light purple theme"></button>
-    <button class="theme-dot" data-t="sepia" aria-label="Sepia theme"></button>
-    <button class="theme-dot" data-t="light-azure" aria-label="Light azure theme"></button>
-    <button class="theme-dot" data-t="dark-violet" aria-label="Dark violet theme"></button>
-    <button class="theme-dot" data-t="dark-blue" aria-label="Dark blue theme"></button>
+    <button class="theme-dot active" data-t="light-purple" aria-pressed="true"  aria-label="Light purple theme"></button>
+    <button class="theme-dot" data-t="sepia"        aria-pressed="false" aria-label="Sepia theme"></button>
+    <button class="theme-dot" data-t="light-azure"  aria-pressed="false" aria-label="Light azure theme"></button>
+    <button class="theme-dot" data-t="dark-violet"  aria-pressed="false" aria-label="Dark violet theme"></button>
+    <button class="theme-dot" data-t="dark-blue"    aria-pressed="false" aria-label="Dark blue theme"></button>
   </div>
+  <!-- narrow only: the five swatches collapse to one that shows the current
+       theme and cycles on tap — five 24px targets was most of the bar -->
+  <button id="theme-cycle" aria-label="Change theme"></button>
 </nav>
+
+<!-- Permanent off-screen twin of panel > cap-wrap. measurePads() reads the
+     caption paddings off THIS, so they are always available — the live
+     #cap-wrap does not exist on the first pagination or on any cover/splash
+     page, and the hardcoded fallback it used instead was desktop-only. -->
+<div id="pad-probe" aria-hidden="true"><div id="panel-probe"><div id="cap-probe"></div></div></div>
 
 <div id="stage">
   <div id="panel"><!-- rendered by JS --></div>
@@ -220,15 +414,38 @@ const DATA = __IDATA__;
   const bookSel = document.getElementById('book-select');
   const prevBookBtn = document.getElementById('prev-book');
   const nextBookBtn = document.getElementById('next-book');
+  const pgPrev = document.getElementById('pg-prev');
+  const pgNext = document.getElementById('pg-next');
 
   const dots = document.querySelectorAll('.theme-dot');
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
-    dots.forEach(d => d.classList.toggle('active', d.dataset.t === t));
+    /* the ring is the only visual state; mirror it for screen readers, which
+       otherwise announce five identically-named buttons and no current value */
+    dots.forEach(d => {
+      const on = d.dataset.t === t;
+      d.classList.toggle('active', on);
+      d.setAttribute('aria-pressed', String(on));
+    });
+    paintCycle(t);
     prefs.theme = t; save();
   }
   dots.forEach(d => d.addEventListener('click', () => setTheme(d.dataset.t)));
-  if (prefs.theme) setTheme(prefs.theme);
+
+  /* Narrow: one swatch instead of five. It wears the CURRENT theme's colour,
+     so it reads as state rather than as a menu, and cycles on tap. */
+  const themeOrder = [...dots].map(d => d.dataset.t);
+  const cycleBtn = document.getElementById('theme-cycle');
+  function paintCycle(t) {
+    const src = [...dots].find(d => d.dataset.t === t) || dots[0];
+    cycleBtn.style.background = getComputedStyle(src).backgroundColor;
+  }
+  cycleBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || themeOrder[0];
+    setTheme(themeOrder[(themeOrder.indexOf(cur) + 1) % themeOrder.length]);
+  });
+
+  if (prefs.theme) setTheme(prefs.theme); else setTheme(themeOrder[0]);
 
   function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
   /* speech-bubble styling only for shortish lines; long speeches stay plain
@@ -259,12 +476,24 @@ const DATA = __IDATA__;
      used to be hand-copied constants in geom() and had drifted from the CSS
      by 8px (beside) and 6px (stacked) — enough to clip a line. Read them off
      the live element instead so they cannot drift again. */
-  const ART_M = 22;                      /* #art-wrap margin, see CSS */
+  /* Touch device: the cover's only instruction named two affordances that do
+     not exist on a phone (arrow keys, "click") and listed swipe last. */
+  const COARSE = matchMedia('(pointer: coarse)').matches;
+  /* #art-wrap margin, mirroring the CSS — the narrow block tightens it, and
+     geom subtracts it from the caption budget, so the two must agree. */
+  const NARROW = '(max-width: 640px), (max-height: 560px)';
+  const artMargin = () => matchMedia(NARROW).matches ? 0 : 22;
   let PAD = null;
+  /* Measure off a permanent hidden probe, never off the live page. The old
+     version read #cap-wrap and fell back to hardcoded desktop constants when
+     it was absent — but it IS absent on the very first paginate() (the panel
+     still holds only a comment) and on every cover/splash/beat page. So every
+     first pagination on a phone used desktop numbers: a 36-44px too-narrow
+     column, ~40px of dead paper on every page, and a book ~24% longer than it
+     should be. Invisible on desktop, where the fallback happened to match. */
   function measurePads() {
-    const p = panelEl, c = document.getElementById('cap-wrap');
-    if (!p || !c) return { beside: { x: 92, y: 86 }, stack: { x: 80, y: 60 }, plain: { x: 92, y: 108 } };
-    const saveP = p.className, saveC = c.className;
+    const p = document.getElementById('panel-probe'),
+          c = document.getElementById('cap-probe');
     const read = () => {
       const s = getComputedStyle(c);
       return { x: parseFloat(s.paddingLeft) + parseFloat(s.paddingRight),
@@ -273,36 +502,88 @@ const DATA = __IDATA__;
     p.className = 'beside'; c.className = ''; const beside = read();
     p.className = '';       c.className = ''; const stack  = read();
     p.className = '';       c.className = 'plateless'; const plain = read();
-    p.className = saveP;    c.className = saveC;
+    p.className = '';       c.className = '';
     return { beside, stack, plain };
   }
 
   function geom(plateR) {
-    const stW = Math.max(320, stageEl.clientWidth - 32);
-    const stH = Math.max(320, stageEl.clientHeight - 24);
+    /* clientWidth/Height INCLUDE #stage's own padding, which is 120px
+       horizontally on desktop — not the 32 this used to subtract. On a
+       landscape phone that made geom hand the panel a width the stage could
+       not give, so the probe measured a column 33px wider than the real one
+       and overflow:hidden ate the last two lines of every page. Read the
+       content box. */
+    const scs = getComputedStyle(stageEl);
+    const stW = Math.max(320, stageEl.clientWidth
+      - parseFloat(scs.paddingLeft) - parseFloat(scs.paddingRight));
+    const stH = Math.max(320, stageEl.clientHeight
+      - parseFloat(scs.paddingTop) - parseFloat(scs.paddingBottom));
     const pad = PAD || measurePads();
+    const ART_M = artMargin();
     if (!plateR) { /* plateless caption page: full paper panel */
       const panelW = Math.min(760, stW * .96);
-      /* .caption-box.big is width: min(620px, 92%) of the padded column */
-      return { beside: false, panelW, artH: 0, capAvail: stH * .80 - 90,
+      /* .caption-box.big is width: min(620px, 92%) of the padded column.
+         Budget from the real geometry, not the old `stH*.80 - 90` magic —
+         that formula left ~120px of dead paper at the foot of every
+         plateless page (measured at stH 700: budget 470 vs 592 actually
+         available). Books X-XXIV are all plateless, so this was half the
+         reading session running short pages. */
+      return { beside: false, panelW, artH: 0,
+               capAvail: stH - pad.plain.y - 24,
                textW: Math.min(620, (panelW - pad.plain.x) * .92) };
     }
-    const beside = plateR > 0.8 && plateR < 1.3 && stW > 860;
+    const narrowV = matchMedia(NARROW).matches;
+    /* Side-by-side is about SHAPE, not screen class. A phone in landscape is
+       844-956px wide and only ~310 tall: stacking a square plate above text
+       there leaves a 92px letterbox strip and three lines of prose, while
+       beside gives the plate its full height and a proper column next to it.
+       The width-only gate sent those to the stacked path; the reason it used
+       to look broken in landscape was the stage-padding bug above, not the
+       layout choice. */
+    const beside = plateR > 0.8 && plateR < 1.3
+      && (stW > 860 || (stW >= 700 && stW > stH * 1.6));
     if (beside) {
-      const artH = Math.min(stH * .96, stW * 0.52 / plateR);
+      /* the CSS `#panel.beside #art-wrap` margin is an unconditional 22px, so
+         the math must use 22 here even when the narrow artMargin() is 0 — and
+         subtract it exactly: the old `stH * .96` fudge left no room for the
+         margins on a 330px-tall landscape phone and clipped 30px of every
+         page. */
+      const BM = 22;
+      const artH = Math.min(stH - 2 * BM, stW * 0.52 / plateR);
       const artW = artH * plateR;
       /* art carries a left margin only; the panel must make room for it */
-      const capW = Math.min(520, Math.max(300, stW - artW - ART_M));
+      const capW = Math.min(520, Math.max(300, stW - artW - BM));
       /* the column stretches to the art's full height including its margins */
-      return { beside: true, panelW: ART_M + artW + capW, artW, artH,
-               capAvail: artH + 2 * ART_M - pad.beside.y - 2,
-               textW: capW - pad.beside.x };
+      return { beside: true, panelW: BM + artW + capW, artW, artH,
+               capAvail: artH + 2 * BM - pad.beside.y - 2,
+               textW: capW - pad.beside.x, fill: narrowV };
     }
-    let panelW = Math.min(880, stW * .96, Math.max(560, stH * .60 * plateR));
-    const artH = Math.min(panelW / plateR, stH * .60);
-    const capAvail = stH - artH - ART_M - pad.stack.y - 14;  /* + frame/straddle slack */
+    /* On a phone the page IS the screen: paper edge to edge, plate the full
+       width of it. Boxing a 359px panel inside a 390px stage, and then a 222px
+       plate inside that, left dead backdrop on all four sides and a small
+       floating square where a headpiece belongs. */
+    const narrow = narrowV;
+    let panelW = narrow ? stW : Math.min(880, stW * .96, Math.max(560, stH * .60 * plateR));
+    /* Size the art from the cell it actually occupies. CSS gives #art-wrap a
+       22px margin each side, so deriving artH from the full panelW made every
+       square plate 44px too wide for its box and object-fit:cover shaved 13%
+       off its sides — cutting figures placed near the frame edge — while also
+       stealing those 44px from the caption. */
+    const artAvailW = panelW - 2 * ART_M;
+    /* Full width, natural height — a square plate on a 390px portrait phone is
+       390x390 and still leaves ~306px (about 10 lines) for the caption, so it
+       needs neither cropping nor shrinking. The .55/.60 clamp is only a floor
+       for the caption so a tall plate can never squeeze the text to nothing —
+       and when it engages, the plate NARROWS to its true ratio and centres
+       instead of being cover-cropped: at a 700px window the old path shaved
+       14% off every square plate, cutting figures at the frame edge. A
+       tipped-in plate with paper either side is book-honest; a trimmed
+       composition is not. */
+    const artH = Math.min(artAvailW / plateR, stH * (narrow ? .55 : .60));
+    const artW = Math.min(artAvailW, artH * plateR);
+    const capAvail = stH - artH - (narrow ? 0 : ART_M) - pad.stack.y - (narrow ? 4 : 14);
     const textW = panelW - pad.stack.x;
-    return { beside: false, panelW, artH, capAvail, textW };
+    return { beside: false, panelW, artW, artH, capAvail, textW, fill: narrow };
   }
 
   /* ---- pagination ---- */
@@ -316,6 +597,11 @@ const DATA = __IDATA__;
     probe.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;top:0;bottom:auto;right:auto;clip-path:none;box-shadow:none;overflow:visible;max-height:none;height:auto;';
     document.body.appendChild(probe);
 
+    /* Monotonic sentence id across the whole corpus. Page indices are only
+       meaningful at the viewport that produced them, so repagination anchors
+       on this instead — it is the one thing that survives a resize. */
+    let gi = 0;
+
     DATA.books.forEach((b, bi) => {
       pages.push({ k: 'splash', bi });
       let plate = null, pending = [], paraIdx = 0, firstCap = true, curFocus = null;
@@ -328,7 +614,30 @@ const DATA = __IDATA__;
           cur2.push(u);
           probe.innerHTML = unitsToHTML(cur2, esc);
           if (probe.scrollHeight > m.capAvail) {
-            if (cur2.length === 1) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; cur2 = []; }
+            if (cur2.length === 1) {
+              /* One sentence alone overruns the page. Pushing it whole made an
+                 over-tall page that overflow:hidden then clipped — and since
+                 nothing scrolls, those lines existed on no page at all (9 such
+                 pages in Books I-IX on a phone, up to 7 lines lost each). Break
+                 it on a word boundary instead: a mid-sentence turn is invisible,
+                 a swallowed clause is not. */
+              const words = u.text.split(' ');
+              let head = [];
+              const flush = () => {
+                pages.push({ k: 'cap', bi, plate, units: [{ text: head.join(' '), para: u.para, gi: u.gi }],
+                             opens: firstCap, foc: curFocus });
+                firstCap = false;
+              };
+              for (let i = 0; i < words.length; i++) {
+                head.push(words[i]);
+                probe.innerHTML = unitsToHTML([{ text: head.join(' '), para: u.para }], esc);
+                if (probe.scrollHeight > m.capAvail && head.length > 1) {
+                  head.pop(); flush(); head = [words[i]];
+                }
+              }
+              if (head.length) flush();
+              cur2 = [];
+            }
             else { cur2.pop(); pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; cur2 = [u]; }
           }
         });
@@ -360,7 +669,7 @@ const DATA = __IDATA__;
            crops the still-sticky plate into a sub-region from here on —
            flush first so a page never mixes two crop states. */
         if (blk.foc) { packAndPush(); curFocus = blk.foc; }
-        splitSentences(blk.x).forEach(s => pending.push({ text: s, para: paraIdx }));
+        splitSentences(blk.x).forEach(s => pending.push({ text: s, para: paraIdx, gi: gi++ }));
         paraIdx++;
       });
       packAndPush();
@@ -408,7 +717,12 @@ const DATA = __IDATA__;
       panelEl.innerHTML = `<div id="art-wrap" style="height:${panelH}px">${artInner(p.plate.src, p.plate.cap)}</div>`;
       lastShape = 'beat'; lastArtSrc = p.plate.src;
     } else if (p.k === 'cover' || p.k === 'splash') {
-      panelEl.classList.remove('full');
+      /* `full` zeroes the art margin. Without it these pages kept the stacked
+         22px margin on three sides and none at the bottom — a cream L wrapping
+         the plate while it ran off the bottom edge — and panelW was computed
+         as panelH * r as if the art filled the panel anyway, which also
+         cover-cropped the plate 13%. */
+      panelEl.classList.add('full');
       const b = p.k === 'cover' ? DATA.books[0] : bk;
       const art = p.k === 'cover'
         ? b.blocks.find(x => x.t === 'img' && x.portrait) || b.blocks.find(x => x.t === 'img')
@@ -422,7 +736,8 @@ const DATA = __IDATA__;
       const overlay = p.k === 'cover'
         ? `<div class="cover-page"><div class="cv-title"><em>The</em> Odyssey</div>
            <div class="cv-sub">Homer &middot; a new prose translation, illustrated</div>
-           <div class="cv-hint">flip with <kbd>&larr;</kbd> <kbd>&rarr;</kbd>, click the edges, or swipe</div></div>`
+           <div class="cv-hint">${COARSE ? 'swipe, or tap the edges'
+             : 'flip with <kbd>&larr;</kbd> <kbd>&rarr;</kbd>, click the edges, or swipe'}</div></div>`
         : `<div class="splash${art ? '' : ' no-bg'}"><div class="sp-over">Book</div>
            <div class="sp-roman">${b.roman}</div>
            <div class="sp-rule"></div>
@@ -440,18 +755,25 @@ const DATA = __IDATA__;
       const capHTML = unitsToHTML(p.units, renderCaptionPara);
       const shape = p.plate ? (m.beside ? 'cap-beside' : 'cap-art') : 'cap-plain';
       const artSrc = p.plate ? p.plate.src : null;
+      /* stacked plates centre themselves: when the height clamp narrows the
+         art below the panel width, auto margins keep it a centred tipped-in
+         plate rather than a left-hugging one */
       const artStyle = m.beside
         ? `width:${m.artW}px;height:${m.artH}px`
-        : `height:${m.artH}px`;
+        : `width:${m.artW}px;height:${m.artH}px;margin-left:auto;margin-right:auto`;
+      /* narrow: the panel fills the stage so the paper is the page, not a card
+         floating on a backdrop */
+      panelEl.classList.toggle('fill', !!m.fill);
 
       if (shape === lastShape && artSrc === lastArtSrc) {
         /* same scene: swap ONLY the caption — art stays untouched, no flicker */
         const capBox = panelEl.querySelector('.caption-box');
         capBox.innerHTML = capHTML;
         capBox.classList.toggle('opens', !!p.opens);
-        capBox.classList.remove('cap-anim');
+        capBox.classList.remove('cap-anim', 'back');
         void capBox.offsetWidth;               /* restart the entry animation */
         capBox.classList.add('cap-anim');
+        if (lastDir < 0) capBox.classList.add('back');
         const aw = panelEl.querySelector('#art-wrap');
         if (aw) aw.style.cssText = artStyle;
         applyFocus(panelEl.querySelector('#art-img'), p.plate ? p.foc : null);
@@ -467,12 +789,16 @@ const DATA = __IDATA__;
       }
     }
 
-    ilLabel.textContent = bk ? `Book ${bk.roman}` : 'Cover';
+    /* the single bar's centre slot is the position on every screen size —
+       the book name lives in the picker and the back link */
+    ilLabel.textContent = `${cur + 1}/${pages.length}`;
     posLabel.textContent = bk ? `Book ${bk.roman} · page ${cur + 1}/${pages.length}` : `page ${cur + 1}/${pages.length}`;
     progress.style.width = ((cur + 1) / pages.length * 100) + '%';
     if (bk) bookSel.value = String(p.bi);
     prevBookBtn.disabled = !bk || p.bi === 0;
     nextBookBtn.disabled = bk ? p.bi === DATA.books.length - 1 : false;
+    pgPrev.disabled = cur === 0;
+    pgNext.disabled = cur === pages.length - 1;
     prefs.page = cur; save();
     /* replaceState, not location.hash: a hash assignment per page-turn would
        push hundreds of history entries and break the Back button */
@@ -485,9 +811,11 @@ const DATA = __IDATA__;
     }
   }
 
+  let lastDir = 1;                       /* which way the last turn went */
   function go(delta) {
     const n = Math.min(pages.length - 1, Math.max(0, cur + delta));
     if (n === cur) return;
+    lastDir = delta < 0 ? -1 : 1;
     cur = n;
     render();
   }
@@ -499,6 +827,8 @@ const DATA = __IDATA__;
 
   document.getElementById('hit-left').addEventListener('click', () => go(-1));
   document.getElementById('hit-right').addEventListener('click', () => go(1));
+  pgPrev.addEventListener('click', () => go(-1));
+  pgNext.addEventListener('click', () => go(1));
   prevBookBtn.addEventListener('click', () => { const p = pages[cur]; goBook((p.bi != null ? p.bi : 0) - 1); });
   nextBookBtn.addEventListener('click', () => { const p = pages[cur]; goBook((p.bi != null ? p.bi : -1) + 1); });
   document.addEventListener('keydown', e => {
@@ -507,26 +837,66 @@ const DATA = __IDATA__;
     if (e.key === 'Home') { cur = 0; render(); }
     if (e.key === 'End') { cur = pages.length - 1; render(); }
   });
-  let tx = null;
-  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  /* Swipe. The previous version stored only clientX and turned the page on any
+     |dx| > 48, which misfired constantly on a phone:
+       - a near-vertical drag (55px across, 340px down) turned the page;
+       - a thumb resting at the screen edge — how a phone is actually held —
+         made touches[0] the thumb and changedTouches[0] the moving finger, so
+         swipes registered INVERTED;
+       - a pinch-zoom on a plate turned the page;
+       - sliding off a button to cancel a mistaken tap navigated instead, the
+         opposite of the universal cancel idiom;
+       - and a stale tx survived touchcancel to fire on an unrelated touch.
+     Track one identified finger, require the gesture to be horizontally
+     dominant and reasonably quick, and ignore anything that starts on chrome. */
+  const SWIPE_MIN = 40, SWIPE_RATIO = 1.7, SWIPE_MS = 700;
+  let sw = null;
+  const onChrome = t => !!(t && t.closest && t.closest('#top-bar, #bottom-bar'));
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length > 1) { sw = null; return; }   /* pinch / second finger */
+    if (onChrome(e.target)) { sw = null; return; }
+    const t = e.changedTouches[0];
+    sw = { id: t.identifier, x: t.clientX, y: t.clientY, t: Date.now() };
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    if (sw && e.touches.length > 1) sw = null;         /* became a pinch */
+  }, { passive: true });
+  document.addEventListener('touchcancel', () => { sw = null; }, { passive: true });
   document.addEventListener('touchend', e => {
-    if (tx == null) return;
-    const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
-    tx = null;
+    if (!sw) return;
+    const t = [...e.changedTouches].find(c => c.identifier === sw.id);
+    if (!t) return;                                    /* a different finger lifted */
+    const dx = t.clientX - sw.x, dy = t.clientY - sw.y;
+    const ok = Math.abs(dx) > SWIPE_MIN
+            && Math.abs(dx) > Math.abs(dy) * SWIPE_RATIO
+            && Date.now() - sw.t < SWIPE_MS;
+    sw = null;
+    if (ok) go(dx < 0 ? 1 : -1);
   }, { passive: true });
 
   DATA.books.forEach((b, i) => {
     const o = document.createElement('option');
     o.value = String(i);
-    o.textContent = `Book ${b.roman}${b.plates ? ' ✦' : ''}`;
+    /* "Bk" not "Book": the control is obviously a book picker, and the four
+       characters it saves are what let the foot hold everything at 390px */
+    o.textContent = `Bk ${b.roman}${b.plates ? ' ✦' : ''}`;
     bookSel.appendChild(o);
   });
   bookSel.addEventListener('change', () => goBook(parseInt(bookSel.value, 10)));
 
   function restore() {
+    /* A page index only means anything at the viewport that produced it — the
+       same book paginates to 1125 pages at 430x932 and 2250 at 932x430. So a
+       link opened on a different device landed somewhere arbitrary. Fall back
+       to the book number, which is right there in the hash and used to be
+       parsed and thrown away. */
     const m = location.hash.match(/^#bk-(\d+)-p(\d+)$/);
-    if (m) { const n = parseInt(m[2], 10); if (n < pages.length) return n; }
+    if (m) {
+      const n = parseInt(m[2], 10);
+      if (n < pages.length) return n;
+      const idx = pages.findIndex(p => p.k === 'splash' && DATA.books[p.bi].num === parseInt(m[1], 10));
+      if (idx >= 0) return idx;
+    }
     const mb = location.hash.match(/^#bk-(\d+)$/);
     if (mb) {
       const idx = pages.findIndex(p => p.k === 'splash' && DATA.books[p.bi].num === parseInt(mb[1], 10));
@@ -540,9 +910,19 @@ const DATA = __IDATA__;
 
   function repaginateKeepingPosition() {
     const anchor = pages[cur];
+    /* Anchor on the first sentence shown, not on {kind, book}. findIndex on
+       kind returned the FIRST page of that kind in the book — so a reader 400
+       pages into Book IV was thrown 165 pages back on every rotation, and the
+       new position was then written to localStorage and the hash, making it
+       unrecoverable. */
+    const target = anchor && anchor.units && anchor.units.length ? anchor.units[0].gi : null;
     paginate();
-    let n = 0;
-    if (anchor && anchor.bi != null) {
+    let n = -1;
+    if (target != null) {
+      n = pages.findIndex(p => p.units && p.units.length &&
+                               p.units[p.units.length - 1].gi >= target);
+    }
+    if (n < 0 && anchor && anchor.bi != null) {
       n = pages.findIndex(p => p.k === anchor.k && p.bi === anchor.bi);
       if (n < 0) n = pages.findIndex(p => p.bi === anchor.bi);
     }
@@ -556,24 +936,52 @@ const DATA = __IDATA__;
   /* Web-font race: paginate() measures text with a hidden probe, so if it runs
      before EB Garamond has loaded it measures fallback-font metrics and every
      page comes out short (observed: 866 pages with ~180px of unused column on
-     each, vs 748 correctly). Repaginate once the real face is ready. */
-  if (document.fonts && document.fonts.status !== 'loaded') {
-    document.fonts.ready.then(() => { repaginateKeepingPosition(); render(); });
+     each, vs 748 correctly). Repaginate once the real face is ready.
+     The `status !== 'loaded'` guard this used to carry never fired: at inline-
+     script time no font request has started yet, so status is already
+     'loaded' and the handler was never registered — the whole phone session
+     then ran on Georgia metrics (16% wider, ~1.5 dead lines per page, 275
+     extra turns). Ask for the faces explicitly and always repaginate; the
+     pass is idempotent, so a warm cache just costs one extra run. */
+  if (document.fonts) {
+    Promise.all([
+      document.fonts.load('400 18px "EB Garamond"'),
+      document.fonts.load('500 52px "EB Garamond"'),
+      document.fonts.ready,
+    ]).then(() => { repaginateKeepingPosition(); render(); }).catch(() => {});
   }
-  /* Defensive: 0-sized layout at load (backgrounded tab) bakes in a bogus
-     pagination that nothing but 'resize' would fix — recheck once real
-     layout exists. Only fires when the initial measurement was invalid. */
+  /* Defensive: a 0-sized layout at load (backgrounded tab, or a pane that has
+     not sized itself yet) bakes in a bogus pagination that nothing but a
+     'resize' would fix — and the Math.max(320,...) floors in geom() mean the
+     result still looks plausible rather than obviously broken, so it survives.
+     Observed: paginating at 0x0 gave 4293 pages where the settled layout gives
+     1449. A single double-rAF recheck can land inside the same bad window, so
+     watch the stage until it reports a real size, then rebuild once. */
   if (stageEl.clientWidth <= 40 || stageEl.clientHeight <= 40) {
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    const ro = new ResizeObserver(() => {
       if (stageEl.clientWidth > 40 && stageEl.clientHeight > 40) {
+        ro.disconnect();
         repaginateKeepingPosition(); render();
       }
-    }));
+    });
+    ro.observe(stageEl);
   }
-  let rt = null;
+  /* Repagination walks every sentence of all 24 books and costs ~300ms on a
+     laptop, several times that on a phone. Mobile browsers fire resize
+     continuously as the URL bar slides in and out — a height-only change that
+     does not deserve a reflow — so ignore pure-height jitter under the bar's
+     own height and only rebuild when the text measure actually changed.
+     Landscape/portrait flips change width and still come through. */
+  let rt = null, lastW = innerWidth, lastH = innerHeight;
+  const CHROME_SLOP = 140;               /* taller than any mobile toolbar */
   window.addEventListener('resize', () => {
+    const dw = Math.abs(innerWidth - lastW), dh = Math.abs(innerHeight - lastH);
+    if (dw === 0 && dh <= CHROME_SLOP) { lastH = innerHeight; return; }
     clearTimeout(rt);
-    rt = setTimeout(() => { repaginateKeepingPosition(); render(); }, 150);
+    rt = setTimeout(() => {
+      lastW = innerWidth; lastH = innerHeight;
+      repaginateKeepingPosition(); render();
+    }, 200);
   });
 })();
 </script>

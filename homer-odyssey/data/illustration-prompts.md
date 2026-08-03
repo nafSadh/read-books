@@ -1161,6 +1161,69 @@ python3 data/build_illustrated.py
 Plates 4, 6, 7 are `bigBeat` full-bleed pages. All 7 anchors were validated
 against the real paragraphs of `seeds/modern.md` before this manifest was
 written.
+
+### BOOK IV — second pass, 4 more plates (density fix)
+
+Book IV is the longest book in the first half (8,419 words) and shipped with
+only 7 plates — 1,202 words each, roughly 3× sparser than Book I. Mapping the
+plate anchors against the paragraphs found two long unillustrated runs: paras
+24–38 (2,622 words, a third of the book, held under a single sticky image)
+and paras 14–22 (1,883 words). These four plates close both gaps and bring
+the book to 765 words/plate, in band with Books III and V.
+
+Anchors validated at paras 4, 19, 27, 34 — unique, ascending, no collision
+with the existing seven. Sheets needed: `odysseus` is not in any of them;
+upload `telemachus`, `menelaus`, `antinous`, `eurymachus`.
+
+**8 — sparta-wealth.jpeg**
+> The great high-roofed hall of Sparta seen wide, blazing with worked metal:
+> bronze catching the light down the length of the echoing room, gold, amber,
+> silver and ivory on the walls and fittings. Telemachus from the sheet, the
+> beardless young man in a plain cream tunic, is leaning close to another
+> young man to whisper, his face tilted up, openly staggered by the room.
+> Menelaus from the sheet — red-gold hair and beard, steel-grey robe, gold
+> circlet — has caught the remark and is turning toward them with a wry,
+> tired expression. The wealth is the subject and it should feel *heavy*
+> rather than joyful: this is a house that was paid for by a long war.
+
+**9 — lion-and-fawns.jpeg**
+> Homer's simile, drawn straight, with no human figures at all. A lion's
+> thicket-lair in dry mountain scrub. Bedded down in the hollow of it, small
+> and unaware, two newborn spotted fawns curled asleep. Returning along the
+> ridge above, still at a distance but unmistakably coming — a big lion,
+> heavy-shouldered, head low. The doe is far off on the grassy slope beyond,
+> grazing, oblivious, facing away. Hard noon light, bleached ochre and olive
+> scrub, deep shadow in the lair. Utterly still. Dread arriving on its own
+> schedule — the plate must be quiet, and it must be obvious how it ends.
+
+**10 — agamemnon-falls.jpeg** *(bigBeat — full-bleed page)*
+> The aftermath, not the act. A long feasting-hall at night after a
+> massacre: benches overturned, a great table knocked askew, cups and mixing
+> bowls scattered and rolling, spilled wine running dark across the floor
+> stones and pooling. Not a single body shown — the hall is empty of figures
+> entirely. On the far wall, thrown huge and distorted by guttering torches,
+> the shadows of standing armed men. In the very foreground, close and
+> sharp, a single ox-goad or butcher's implement lying where it fell, and
+> beside it an overturned cup. Cold, silent, and completely still. The
+> violence has already happened and everyone who did it has gone.
+>
+> No blood on bodies, no wounds, no corpses — the wine on the floor carries
+> it. This is Homer's own comparison (a man cut down at the manger like an
+> ox) rendered as an emptied room.
+
+**11 — suitors-at-games.jpeg**
+> Bright hard midday in front of a great house — a hard scene change: after
+> pages in Sparta we are back in Ithaca and the tone drops. On a levelled
+> ground, a loose crowd of well-dressed young men throwing the discus and
+> casting hunting-spears, lounging, laughing, entirely at ease on property
+> that is not theirs. Set apart from the rest and seated, two figures from
+> the sheets: Antinous in his deep terracotta-red himation with the heavy
+> gold armband, and Eurymachus in pale grey-blue, clean-shaven. A third man
+> is approaching them and has just spoken; both have turned, and their faces
+> have changed. Antinous's red is the only strong colour in the plate and
+> should pull the eye immediately. Insolence caught at the exact moment it
+> curdles into alarm.
+
 ## BOOK V — 7 plates (Gemini app workflow)
 
 **New character sheet needed first: Calypso.** Paragraph already in the pack
@@ -1289,29 +1352,207 @@ pages.
    hearth on his hands; Alcinous half-risen, old Echeneus mid-gesture,
    every cup stopped.
 
-## BOOK VIII — 6 plates
+## BOOK VIII — 10 plates (Gemini app workflow)
 
-1. **bk08/blind-singer.png** — Demodocus with the lyre against the tall
-   pillar, eyes closed and blank, mouth open in song; around him the feast,
-   and at its edge Odysseus with his purple cloak drawn over his head.
-2. **bk08/discus.png** — The stone mid-flight, humming, Phaeacians ducking;
-   Odysseus follow-through like an uncoiled spring, cloak still swinging —
-   the taunter Euryalus caught flat-footed in the foreground.
-3. **bk08/ares-aphrodite.png** — The bard's song made visible, framed as an
-   inset "song-plate": the golden net of Hephaestus fine as spiderweb over
-   the guilty bed, gods crowding the doorway roaring with laughter, the lame
-   smith at the threshold; comic, scandalous, exquisite.
-4. **bk08/dancers-ball.png** — Halius and Laodamas dancing with the purple
-   ball (terracotta accent) — one bent back hurling it to the shadowed
-   clouds, the other airborne to catch it; the ring of youths beating time.
-5. **bk08/nausicaa-farewell.png** — Nausicaa by the doorpost of the hall,
-   Odysseus bathed and shining, the goodbye that is four lines long:
-   "remember me, for to me first you owe your life." Distance, formality,
-   and everything underneath it.
-6. **bk08/weeping-at-troy.png** — Odysseus melting as the singer reaches
-   the wooden horse: the simile made image — behind/above him, ghost-faint,
-   a woman flung over a fallen soldier at a burning wall, spear-butts
-   driving her into slavery; his tears and hers the same line.
+**No new character sheets needed.** Upload three clean sheets: `alcinous`,
+`arete` (background only, one plate), `odysseus`, plus `demodocus` and
+`nausicaa`. All five already exist. Five sheets is the most this edition has
+needed at once — if the thread starts drifting, drop `arete`, which appears
+in one plate and only as a seated figure.
+
+Book VIII is the bard's book: three of Demodocus's songs, the games, and
+Odysseus breaking down twice in public. The structural rhyme worth
+protecting in the art is **plate 3 and plate 10** — the same man, the same
+cloak-over-the-head gesture, the first time hidden from everyone but
+Alcinous, the last time undone completely. Generate them in the same
+session so the cloak, the posture and the light match; they are the beginning
+and end of one movement.
+
+### SETUP (paste once, after uploading the 5 sheets)
+
+> I am illustrating a serious literary edition of Homer's Odyssey for adult
+> readers. I have uploaded 5 character model sheets. They are: (1) Alcinous,
+> king of the Phaeacians — an older bearded man in a deep sea-blue robe with
+> a gold border, a thin gold circlet, carrying a tall staff of office;
+> (2) Arete, his queen — a middle-aged woman in a deep plum mantle over a
+> cream gown, grey-streaked dark hair, a grave steady gaze, often with a
+> distaff and spindle; (3) Demodocus, the blind court singer — an older man
+> in a pale-grey robe with a tortoiseshell lyre, his eyes closed and
+> unscarred, never with a blindfold or damaged eyes; (4) Nausicaa, the
+> Phaeacian princess, about sixteen — a girl in a pale sea-foam chiton with
+> a simple braid, often barefoot; (5) Odysseus — a weathered bearded man in
+> an olive-green cloak over a grey-blue tunic, short curled beard.
+>
+> When a scene names one of these people, draw them exactly as their sheet
+> shows them: same face, same build, same garments, same colours. This
+> matters more than anything else in the image — a reader must recognise
+> them across a hundred pictures.
+>
+> Two colour rules that hold for every image in this conversation. Deep
+> terracotta-red is reserved for a different character who does not appear
+> in this book, so use it only as a rare small accent — a jar, a column
+> band, firelight — never for clothing. And where a scene calls for purple,
+> keep it clearly purple (violet, wine-dark), never drifting toward red.
+>
+> STYLE, for every image in this conversation: illustration for a serious
+> literary edition of an ancient epic, in the tradition of Charles Keeping,
+> Barry Moser and Alan Lee. Clean confident dark ink linework over flat,
+> soft watercolour washes on lightly textured paper. Restrained Aegean
+> palette — pale blue-grey, cream, sun-bleached limestone, olive and moss
+> green, muted teal. Minimal rendering, no gradients, no glow, no
+> photorealism, no anime, no 3D, nothing cute or sentimental. Grave,
+> unhurried, adult: stillness rather than spectacle, but never sanitised —
+> this poem holds grief, captivity and killing, and the pictures must be
+> able to hold them too. Archaic Mycenaean material culture: long ships with
+> a single square sail, bronze tripods, geometric-pattern hems, megaron
+> halls with a central hearth and red-banded columns, wooden benches, clay
+> amphorae. Figures at a composed middle distance, faces readable but rarely
+> close-up.
+>
+> Every image is square 1:1. No lettering of any kind anywhere in any image:
+> no caption, no title, no label, no speech balloon, no signature, no
+> watermark, no panel border and no frame.
+>
+> Reply "ready" and nothing else. I will send scenes one at a time.
+
+### The ten scenes (paste one per turn)
+
+**1 — launch-escort.jpeg** *(opener, no anchor)*
+> Morning on a stone-built harbour. Fifty-two young men hauling a black ship
+> down into deep water on rollers — mast being stepped, white sail spread,
+> oars being fitted into leather slings, all of it purposeful and orderly.
+> Beyond, a polished-stone assembly-place set back from the shore. Crisp
+> early light, long shadows, cool Aegean blues and stone-greys. A working
+> plate: competence and preparation, nobody in distress. The ship is the
+> promise the whole book turns on.
+
+**2 — demodocus-seated.jpeg**
+> A blind singer in a pale-grey robe seated on a silver-studded chair set
+> against a tall painted pillar, in the middle of a crowded feast. A
+> tortoiseshell lyre hangs on a peg just above his head; a herald's hand is
+> guiding the singer's reaching fingers to it. Beside him a small table, a
+> basket, a cup of wine. His eyes are closed and unscarred, his face lifted
+> slightly. The feasters around him are already turning toward him. Warm
+> interior light. The dignity of the man is the subject.
+
+**3 — cloak-over-head.jpeg** *(bigBeat — full-bleed page)*
+> A crowded bright feasting-hall, everyone leaning happily toward an unseen
+> singer at frame-left. At the near end of the table, alone in the middle
+> of all that cheer, a weathered bearded man in an olive-green cloak has
+> pulled a great purple cloak up over his head with both hands and hidden
+> his face in it — shoulders locked, only his jaw and beard showing beneath
+> the hem. One older man in a sea-blue robe with a gold border, seated
+> beside him, has turned his head and is looking directly at him: the only
+> person in the room who has noticed. Everyone else is laughing. The
+> loneliness of grief inside a party. No visible tears — the hiding is the
+> whole image.
+
+**4 — footrace.jpeg**
+> A dusty flat plain, a marked turning-post, a field of young runners flat
+> out at full stride with dust boiling up behind them, one clearly ahead and
+> pulling further away. Low camera, close to the ground, so the dust and the
+> legs dominate. Bright hard daylight, ochre dust against a pale sky. Pure
+> kinetic sport — no crowd detail needed, just speed and distance opening up.
+
+**5 — the-discus.jpeg**
+> A stone discus caught in mid-flight, close to the viewer and slightly
+> blurred with speed, humming past. In the middle ground a weathered bearded
+> man in an olive-green cloak at the end of a full spinning throw —
+> follow-through uncoiled, cloak still swinging out around him, his weight
+> still turning. All around, seated Phaeacian spectators are flinching and
+> ducking to the ground under the rush of the stone. Far in the background,
+> tiny, the marks of all the previous throws — and the new one landing well
+> beyond them all. The gap between the marks is the point.
+
+**6 — gods-in-doorway.jpeg** *(bigBeat — full-bleed page)*
+> **Framed as the bard's song made visible — a scene inside a scene.** Give
+> the whole image a decorative inset border, like a panel woven into cloth
+> or inlaid in metal, so it reads as something being sung rather than
+> something happening.
+>
+> Inside the border: a smith's house with a bronze floor. Filling the
+> doorway, crowded shoulder to shoulder, a group of male gods roaring with
+> laughter — one gripping a tall trident, one with a slim golden wand and
+> winged sandals, one young and golden with a bow; they are doubled over,
+> slapping each other, pointing. In the near foreground, seen only as a
+> dark silhouetted back and shoulders, a broad lame smith stands leaning on
+> the doorpost watching them. What they are all looking at is at the far
+> side of the room and is **almost entirely obscured** — a fine golden net,
+> fine as spiderweb, catching the light, drawn taut over a low couch, with
+> only the glint of the net and a suggestion of shape beneath it. The
+> laughing faces in the doorway are the subject; the couch is small, distant,
+> and covered. Comic, scandalous, elegant. No nudity, no bodies visible —
+> the joke is entirely on the faces in the doorway.
+
+**7 — ball-dance.jpeg**
+> Two young dancers on a cleared, leveled dancing-floor. One is bent far
+> back, arm extended, having just hurled a deep purple ball straight up
+> toward high shadowy clouds; the other is airborne, fully off the ground,
+> body arched, catching it before his feet touch down. Around them a ring of
+> young men standing and beating time, hands raised. Late-afternoon light,
+> long shadows across the swept floor. Joy and physical skill — the one
+> weightless plate in the book.
+
+**8 — nausicaa-farewell.jpeg**
+> A young girl of about sixteen in a pale sea-foam chiton, hair in a simple
+> braid, standing very still against the painted doorpost of a great hall,
+> one hand resting on the stone. Some distance from her, mid-hall, a
+> weathered bearded man in a fresh olive-green cloak, bathed and formal,
+> has stopped and turned back to face her. A wide, deliberate gap of empty
+> polished floor between them. Neither is reaching toward the other.
+> Servants moving in the far background, oblivious. Formality holding
+> something unspoken in place — the distance between the two figures carries
+> the entire emotional weight.
+
+**9 — wooden-horse.jpeg**
+> Night, inside a walled city. An enormous wooden horse standing in an open
+> square, ropes still slung around it, torchlight raking up its flank from
+> below. On the plain beyond the walls, small and far, the glow of huts
+> burning and ships pulling away from a dark shore. **Cutaway or shadowed
+> interior**: within the horse's belly, ranks of armed men sitting shoulder
+> to shoulder in the dark, absolutely still, waiting — faces lit only by
+> what little light comes through the planking. Dread held completely still.
+> No violence in frame; the horror is entirely in the waiting.
+
+**10 — widow-simile.jpeg** *(bigBeat — full-bleed page)*
+> **Homer's own simile made image — two layers in one plate.**
+>
+> Foreground, solid and fully rendered: a weathered bearded man seated at a
+> feast, head bowed, one hand over his eyes, tears on his cheeks, a great
+> purple cloak fallen from his head into his lap. Beside him an older man in
+> a sea-blue robe with a gold border, leaning in, watching him with concern.
+>
+> Behind and above him, ghost-faint, drained of colour, painted as if it
+> were smoke rising off the feast-fire: a burning city wall, and a woman
+> flung across the body of a fallen soldier, arms around him, mouth open in a
+> cry — while behind her, indistinct figures drive her away with the butts of
+> their spears. She and the weeping man should occupy the same vertical axis
+> of the composition, so the two griefs read as one line. Her figure is
+> pale, translucent, unmistakably a vision, not an event in the room.
+>
+> No blood, no wounds, no nudity. The pity is the subject.
+
+### After generating
+
+Save into `img/bk08/`, then:
+
+```
+python3 data/prepare_plates.py img/bk08/*.jpeg
+python3 data/verify_plates.py bk08
+python3 data/build_illustrated.py
+```
+
+All 10 anchors were validated against the real paragraphs of `seeds/modern.md`
+before this manifest was written — unique substrings, ascending paragraph
+order (2, 3, 5, 7, 11, 16, 17, 21, 24, 25 of 27). Plates 3, 6, 10 are
+`bigBeat` full-bleed pages. Plate 1 is the unanchored opener and carries the
+book's first three paragraphs.
+
+**Note on the terracotta budget**: the purple ball in plate 7 and the purple
+cloak in plates 3 and 10 must stay clearly *purple*, not drifting to
+terracotta-red — that is Antinous's reserved signature. He does not appear in
+Book VIII, but the colour needs to stay findable for Books XVI–XXII. Check
+`verify_plates.py bk08` red% after installing.
 
 ---
 

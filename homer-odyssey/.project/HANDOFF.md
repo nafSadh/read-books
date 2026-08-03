@@ -22,27 +22,71 @@ python3 data/build.py              # the 6-edition readers + study.html
 python3 data/build_illustrated.py  # illustrated.html only
 ```
 
-**Illustrated edition: Books I–VI live (6/24), VII in progress, VIII–XXIV
-pending art.** 21 character sheets exist (see roster below); Calypso,
-Nausicaa, Alcinous, Arete, Demodocus all added this session, all clean on
-the red-signature scan. `img/attic/` holds superseded art (v1 character
-sheets, the old landscape set, alt takes rejected during review — never
-mixed into a live book).
+**Illustrated edition: Books I–VII live (7/24), VIII–XXIV pending art.**
+21 character sheets exist (see roster below); Calypso, Nausicaa, Alcinous,
+Arete, Demodocus all clean on the red-signature scan. `img/attic/` holds
+superseded art (v1 character sheets, the old landscape set, alt takes
+rejected during review — never mixed into a live book).
 
-**Book VII status, mid-session:** manifest written and validated (4
-plates: `mist-walk`, `palace-threshold`, `orchard`, `knees-of-arete`), all
-in `data/illustrated_plates.json`. Only `mist-walk.jpeg` is installed in
-`img/bk07/`. `palace-threshold` was generated and rendered on screen (gold
-and silver dogs flanking the golden doors, blue-enamel frieze, matches the
-prompt) but the Chrome extension disconnected before it could be
-downloaded and installed — it is NOT in `img/bk07/` yet and the build will
-correctly WARN and skip it until it lands. Its prompt is in
-`data/illustration-prompts.md` under "BOOK VII". Scenes 3 (`orchard`) and 4
-(`knees-of-arete`) were never generated. Same Gemini session/thread
-(the one opened after the "context rot" pivot, character sheets for
-Alcinous/Arete/Demodocus all live there too) should still have the
-palace-threshold image visible if the thread is reopened — worth checking
-before regenerating from scratch.
+**Book IX: DONE.** All 11 plates installed; 9/24 books illustrated. New sheet
+`polyphemus` added (22 sheets now), in `label_character_sheets.py` and the
+cast sheet under a new "THE WANDERINGS" row.
+
+**The two hard plates of the epic both worked, first try, no refusal:**
+- `the-blinding` renders **Homer's own drill simile** instead of the wound —
+  four men hauling a strap, Odysseus driving from above, the target entirely
+  outside the frame in glare and smoke. No eye, no blood.
+- `he-seizes-two` is **the watching faces only**, lit red by firelight, with
+  the giant present solely as a shadow thrown on the cave wall.
+  Reuse both shapes for the slaughter (XXII) and the hanged maids.
+
+**`verify_plates.py` red% false positives**: `he-seizes-two` (11.6%) and
+`the-blinding` (9.0%) are *firelight on skin and forge-glare*, not dyed
+cloth — Antinous's signature is intact. Same for the character sheets:
+menelaus 7.0% (red-gold hair), nestor 5.2% (saffron robe), peisistratus
+3.9% (chestnut tunic). The scan is a prompt to look, not a verdict.
+
+**Polyphemus sheet — two failed attempts before the good one.** Landscape
+format and warm rendered concept-art skin were the failures; the fix was a
+correction pass attaching the bad image and changing format + wash style +
+costume in one message. His skin came out grey-blue rather than weathered
+warm — deliberate on balance (separates him from every human) but noted as
+an open call. He appears in 8 of the 11 plates, so changing it now means
+regenerating those too.
+
+**Book VIII: DONE.** All 10 plates installed and verified; build reports no
+WARN. `gods-in-doorway` (the Ares/Aphrodite net) generated first try with no
+refusal — the staging that worked is the decorative inset border plus "the
+laughing faces in the doorway are the subject; the couch is small, distant
+and covered". Reuse that shape for the other hard scenes. `the-discus`
+arrived with 204px of dead sky on the top edge only; the trimmer took it and
+the composition improved.
+
+**Book IV second pass: DONE.** All 4 added plates installed
+(`sparta-wealth`, `lion-and-fawns`, `agamemnon-falls`, `suitors-at-games`).
+Book IV now has 11 plates at 765 words/plate. `agamemnon-falls` — the empty
+hall, spilled wine, shadows of armed men, ox-goad in the foreground, no
+bodies — is the best demonstration in the edition of aftermath-over-act.
+
+**Book VII: DONE.** All 5 plates installed and verified — `mist-walk`,
+`palace-threshold`, `orchard`, `knees-of-arete`, `arete-recognizes`. Build
+reports no WARN. `palace-threshold` arrived with a ~99px cream matte on all
+four sides, trimmed by `prepare_plates.py`.
+
+**`img/attic/gemini-originals/`** holds the 33 raw `Gemini_Generated_Image_*`
+downloads that had accumulated loose in `img/`. They are pre-trim originals
+of installed plates plus rejected alt takes — nothing references them (the
+build output was byte-identical after moving them). Match a loose download
+against the installed set with a **centre-crop** perceptual hash, not a
+whole-image one: `prepare_plates.py` trims borders, which shifts every pixel
+and inflates a plain phash distance past any sane threshold (an already-
+installed plate scored d=103 whole-image, d=7 centre-crop).
+
+**Working split that works:** the user drives Gemini and drops the downloads
+in; Claude writes manifests/prompts and does install → prepare → build →
+verify. Claude driving the Gemini web UI directly was tried and is much
+slower and more token-hungry — the UI needs retries, the submit button often
+needs two clicks, and long threads develop context rot.
 
 ## The illustrated edition — current design
 
@@ -108,6 +152,115 @@ for why, including two framing errors I made and the user corrected.
   the plate's own aspect ratio. Live example: `the-feast.jpeg` in `bk01`
   (two focuses, panning between Mentes/Athena and Telemachus across the
   dialogue that plays out under that one plate).
+
+## illustrated.html — mobile-first pass (done)
+
+Was responsive by accident, not by design. Audited with four parallel agents
+against the real file, then measured in-browser at 390/430/480 and landscape.
+What it is now on a phone:
+
+- **One bar, and it is the book's running foot.** Two bars cost 82px of an
+  844px screen for controls you touch once a session, and Prev/Next Book
+  duplicated the book picker. Under `NARROW` the bottom bar is hidden and
+  `#top-bar` takes `order: 3`, so it sits under the stage where the thumb is —
+  in `var(--paper)`, `var(--ptext)` and EB Garamond, with a hairline rule
+  above, so there is no seam between page and chrome: it reads as the foot of
+  the page, not a bar under it. It carries `←` / *The Odyssey* (italic, the
+  title kept visible) / `Bk I ✦` / `‹ 12/1193 ›` / one theme swatch.
+  - The five theme dots collapse to **one** `#theme-cycle` swatch that wears
+    the current theme's colour and cycles on tap — five 24px targets were most
+    of the bar's width.
+  - Options read `Bk I`, not `Book I`; those four characters are what let the
+    foot fit at 390px.
+  - `#book-select` is `appearance: none`, borderless and transparent on narrow
+    so it reads as a folio mark rather than a form control.
+  - Explicit `‹ ›` page turners, disabled at the ends, for people who do not
+    discover edge-taps.
+- **Edge to edge.** `#stage` padding drops to the safe-area insets, the panel
+  takes `.fill` (full stage height, no radius, no shadow) and the plate runs
+  the full width with `artMargin() === 0`. The paper is the page.
+- **The plate is not capped or cropped on a phone.** A square plate at 390px
+  wide is 390 tall and still leaves ~306px (≈10 lines) for the caption. An
+  earlier version capped it to a 222px band; that was solving a problem only
+  created by the plate not being full-width.
+- **Landscape uses `beside`.** The gate is now shape-aware
+  (`stW > 860 || (stW >= 700 && stW > stH * 1.6)`), so a 852x393 phone gets
+  the square plate at full height with the column next to it instead of a
+  92px letterbox strip.
+
+Bugs fixed on the way (all measured, not inferred):
+
+- `geom()` subtracted a hardcoded 32/24 for `#stage` padding that is actually
+  120px horizontally on desktop — landscape phones got a panel wider than the
+  stage, and `overflow:hidden` ate the last two lines of every page.
+- `measurePads()` fell back to hardcoded DESKTOP paddings whenever `#cap-wrap`
+  was absent — which is *always* true on the first pagination and on every
+  cover/splash page. Now reads a permanent `#pad-probe` twin; the CSS padding
+  rules are mirrored onto `#cap-probe` and **must stay mirrored**.
+- The web-font guard `status !== 'loaded'` never fired: at inline-script time
+  no font request has started, so status is already `loaded`. The whole
+  session paginated on Georgia metrics. Now awaits `fonts.load(...)` explicitly.
+- `repaginateKeepingPosition()` anchored on `{kind, book}` via `findIndex`, so
+  it returned the FIRST page of that kind — a reader 400 pages into Book IV
+  was thrown 165 pages back on every rotation, then that position was written
+  to localStorage and the hash. Now anchors on a monotonic sentence id (`gi`).
+- A sentence longer than one page was pushed as an over-tall page and silently
+  clipped by `overflow:hidden` — those lines existed on no page at all. Now
+  split on word boundaries.
+- Swipe had no vertical, velocity, multi-touch or target guard: a near-vertical
+  drag turned the page, and **a thumb resting at the screen edge inverted the
+  direction** (touches[0] was the thumb). Rewritten to track one identified
+  finger.
+- No `env(safe-area-inset-*)` anywhere despite `viewport-fit=cover`; no
+  `overscroll-behavior` (Android pull-to-refresh reloaded the book); no
+  `touch-action`; `:hover` latched after tap; theme dots were 12px targets and
+  **all five were off-screen at 390px**.
+
+**Do not "fix" `html, body { height: 100% }` to `100vh`/`100dvh`** — checked
+deliberately. `100vh` is the LARGE viewport on iOS and pushes the bar
+off-screen; `100dvh` would repaginate the whole book every time the URL bar
+slides. The resize listener now ignores height-only jitter under 140px for the
+same reason.
+
+**Trap:** the preview pane reports `innerWidth: 0` right after navigate, and
+`geom()`'s `Math.max(320, ...)` floors make a 0x0 pagination look plausible
+rather than broken (4293 pages vs 1449). A `ResizeObserver` on `#stage` now
+rebuilds once real layout arrives. When verifying, always settle the viewport
+first — and serve over `python3 -m http.server`, because the pane caches
+`file://` snapshots and will happily show you the previous build.
+
+## illustrated.html — desktop pass (done, same session)
+
+The mobile cures applied upstairs, keeping the basics (dark desk, floating
+paper panel, side-by-side spread):
+
+- **One bar everywhere.** `#bottom-bar` is retired (`display:none`, markup
+  kept so render()'s writes stay harmless); `#top-bar` has `order: 3` in the
+  BASE rules now, so every size gets a single 44px bar at the bottom — dark
+  on desktop (the desk), paper running-foot on narrow. Prev/Next Book are
+  gone (they duplicated the picker); `‹ ›` page arrows and the `n/total`
+  position (`#il-label`) are in the bar on all sizes. Stage vertical padding
+  26/20 → 12/12. Net: stage 674 → 756px tall at 1280x800.
+- **Plateless budget fixed.** `capAvail` for plateless pages was
+  `stH*.80 - 90`, which left ~120px of dead paper at the foot of every page —
+  and Books X–XXIV are ALL plateless. Now `stH - pad.plain.y - 24`, measured
+  against the real geometry. Desktop plateless pages went to ~1160 chars,
+  zero clipping; phones gained too (1193 → 1038 pages).
+- **Stacked plates never crop.** When the stacked height clamp engages, the
+  plate narrows to its true ratio and centres (`artW = min(artAvailW,
+  artH*plateR)` + auto margins) instead of being cover-cropped — at a 700px
+  window the old path shaved 14% off every square plate (user caught it on
+  `artemis-still`: the fleeing handmaids were half-cut). Tipped-in plate
+  with paper either side, never a trimmed composition.
+- **beside-mode margins are an unconditional 22px in CSS**, so `geom()`'s
+  beside branch uses a literal `BM = 22` even when narrow `artMargin()` is 0,
+  and subtracts it exactly — the old `stH*.96` fudge clipped 30px of every
+  page on a landscape phone (`fill beside`).
+
+**Trap, again and forever:** the preview pane loads pages at 0x0 and never
+fires a real `resize`; always `window.dispatchEvent(new Event('resize'))` and
+wait ~700ms before trusting page counts, and serve over http.server — the
+pane caches `file://` snapshots.
 
 ## NEXT ACTIONS, in order
 
@@ -201,8 +354,20 @@ Two remaining soft spots, neither worth a regeneration on its own:
 
 ## Loose ends, explicitly not done
 
-- Books II–XXIV have no art; those 23 books read as text-only in
+- Books VIII–XXIV have no art; those 17 books read as text-only in
   `illustrated.html` and show "plates pending" on their splash page.
+- **Book IV second pass: manifest + prompts written, art not generated.**
+  The book shipped at 1,202 words/plate, ~3× sparser than Book I. Four plates
+  added — `sparta-wealth`, `lion-and-fawns`, `agamemnon-falls`,
+  `suitors-at-games` (paras 4, 19, 27, 34, validated) — closing two long
+  unillustrated runs: paras 24–38 (2,622 words under one sticky image) and
+  14–22 (1,883). Brings it to 765 w/plate. Prompts are in the pack under
+  "BOOK IV — second pass". Sheets: `telemachus`, `menelaus`, `antinous`,
+  `eurymachus`. **The build WARNs 4× for bk04 until the art lands** — that is
+  expected, not a regression (`img/bk04/` already exists, so unlike bk08 the
+  plates are not skipped wholesale).
+- Density across the illustrated books, for calibration:
+  I 451 · II 560 · VIII 562 · VI 646 · VII 669 · III 702 · V 713 · IV 765.
 - Book I's plates were regenerated against the finished character sheets
   and are live. One defect remains: `phemius-sings` puts **four suitors in
   terracotta-red**, which breaks Antinous's reserved signature. `the-feast`

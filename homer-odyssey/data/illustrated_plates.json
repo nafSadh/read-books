@@ -181,6 +181,11 @@
         "caption": "They came to the hollow of Lacedaemon, deep in its ravines, and drove to the house of glorious Menelaus."
       },
       {
+        "file": "sparta-wealth.jpeg",
+        "anchor": "the flashing of bronze through the echoing halls, and gold and amber",
+        "caption": "“The court of Olympian Zeus within must be like this — such unspeakable wealth everywhere. Awe takes me as I look.”"
+      },
+      {
         "file": "helen-recognizes.jpeg",
         "anchor": "Helen came out of her fragrant high-roofed chamber, looking like Artemis",
         "caption": "“I have never seen such a likeness in anyone, man or woman — as this man bears to the son of great-hearted Odysseus.”"
@@ -191,10 +196,26 @@
         "caption": "Into the wine they were drinking she cast a drug that dissolves grief and anger and brings forgetfulness of every ill."
       },
       {
+        "file": "lion-and-fawns.jpeg",
+        "anchor": "As when a deer beds her newborn suckling fawns in a mighty lion",
+        "caption": "“Then the lion comes back to his own bed and lets loose an unseemly doom on both alike.”"
+      },
+      {
         "file": "proteus-wrestling.jpeg",
         "bigBeat": true,
         "anchor": "First he turned into a great-bearded lion, and then a serpent, and a leopard, and a huge boar",
         "caption": "We held on unshakably, with enduring hearts."
+      },
+      {
+        "file": "agamemnon-falls.jpeg",
+        "bigBeat": true,
+        "anchor": "he picked the twenty best men in the land and set them in ambush",
+        "caption": "He brought him up unsuspecting of his death, and feasted him, and killed him — as a man cuts down an ox at the manger."
+      },
+      {
+        "file": "suitors-at-games.jpeg",
+        "anchor": "throwing the discus and the hunting-spear on the leveled ground",
+        "caption": "In front of Odysseus's palace the suitors were amusing themselves as before, with all their old insolence."
       },
       {
         "file": "penelope-threshold.jpeg",
@@ -311,6 +332,130 @@
         "bigBeat": true,
         "anchor": "So saying, he sat down in the ashes on the hearth, by the fire; and they all stayed hushed",
         "caption": "“Alcinous, this is not the finer way, and it is not fitting, that a stranger should sit on the ground, on the hearth, in the ashes.”"
+      },
+      {
+        "file": "arete-recognizes.jpeg",
+        "anchor": "she had recognized the mantle and tunic, the fine clothes she herself had made",
+        "caption": "“Stranger, this first will I ask you myself: who are you, and from where among men? Who gave you these clothes?”"
+      }
+    ]
+  },
+  "bk08": {
+    "plates": [
+      {
+        "file": "launch-escort.jpeg",
+        "anchor": null,
+        "caption": "They hauled the black ship down into deep water, set the mast and sails in her, and moored her well out in the roadstead."
+      },
+      {
+        "file": "demodocus-seated.jpeg",
+        "anchor": "hung the clear-toned lyre on a peg just above his head",
+        "caption": "The Muse loved him above all men, and gave him both good and evil: she robbed him of his eyes, but gave him sweet song."
+      },
+      {
+        "file": "cloak-over-head.jpeg",
+        "bigBeat": true,
+        "anchor": "drew it over his head, and hid his handsome face",
+        "caption": "He was ashamed to let the Phaeacians see the tears falling from under his brows."
+      },
+      {
+        "file": "footrace.jpeg",
+        "anchor": "a team of mules gains on oxen in fallow land",
+        "caption": "They all flew off together at speed, raising the dust of the plain."
+      },
+      {
+        "file": "the-discus.jpeg",
+        "anchor": "ducked to the ground under the rush of the stone",
+        "caption": "He spun and let it fly from his sturdy hand, and the stone hummed."
+      },
+      {
+        "file": "gods-in-doorway.jpeg",
+        "bigBeat": true,
+        "anchor": "There in the doorway stood the gods",
+        "caption": "Unquenchable laughter rose among the blessed gods as they gazed at the arts of shrewd Hephaestus."
+      },
+      {
+        "file": "ball-dance.jpeg",
+        "anchor": "throw it up toward the shadowy clouds",
+        "caption": "“You promised your dancers were the best, and here is the proof. Wonder takes me as I look.”"
+      },
+      {
+        "file": "nausicaa-farewell.jpeg",
+        "anchor": "stood by the doorpost of the strong-built hall",
+        "caption": "“Farewell, stranger. When you are in your own country, remember me sometimes — for to me first you owe the saving of your life.”"
+      },
+      {
+        "file": "wooden-horse.jpeg",
+        "anchor": "hidden in the horse beside famous Odysseus",
+        "caption": "The Argives had set fire to their huts and were sailing away — while the others already sat in the Trojans' meeting-place, hidden in the horse."
+      },
+      {
+        "file": "widow-simile.jpeg",
+        "bigBeat": true,
+        "anchor": "As a woman wails, falling on the body of her dear husband",
+        "caption": "So Odysseus let pitiful tears fall from under his brows."
+      }
+    ]
+  },
+  "bk09": {
+    "plates": [
+      {
+        "file": "ismarus-sack.jpeg",
+        "anchor": "There I sacked the city and destroyed the men",
+        "caption": "“There I sacked the city and destroyed the men; and I ordered my men to flee with swift feet — but the great fools did not listen.”"
+      },
+      {
+        "file": "lotus-eaters.jpeg",
+        "anchor": "we set foot on the land of the Lotus-eaters",
+        "caption": "Whoever ate the honey-sweet fruit of the lotus no longer wished to bring back word, or to return."
+      },
+      {
+        "file": "goat-island.jpeg",
+        "anchor": "a wooded island where wild goats breed beyond number",
+        "caption": "A wooded island where wild goats breed beyond number; no hunters trouble them, and no men plow it."
+      },
+      {
+        "file": "the-cave-stores.jpeg",
+        "anchor": "crates loaded down with cheeses, and pens crowded with lambs and kids",
+        "caption": "Crates loaded down with cheeses, and pens crowded with lambs and kids — and all the vessels swimming with whey."
+      },
+      {
+        "file": "cyclops-returns.jpeg",
+        "bigBeat": true,
+        "anchor": "He carried a huge load of dry wood",
+        "caption": "He lifted a great doorstone and set it in place — twenty-two stout four-wheeled wagons could not have shifted it from the ground."
+      },
+      {
+        "file": "he-seizes-two.jpeg",
+        "anchor": "sprang up and laid hands on my companions",
+        "caption": "And we wept and lifted up our hands to Zeus at the sight of such monstrous work, and helplessness gripped our hearts."
+      },
+      {
+        "file": "sharpening-stake.jpeg",
+        "anchor": "Beside one of the pens lay the Cyclops's great club, of green olive wood",
+        "caption": "We judged it as big as the mast of a black ship of twenty oars. I cut off a fathom's length and sharpened it."
+      },
+      {
+        "file": "the-wine-bowl.jpeg",
+        "anchor": "holding in my hands an ivy-wood bowl of dark wine",
+        "caption": "“Here, Cyclops, drink wine, now that you have eaten human flesh, so that you may know what kind of drink our ship carried.”"
+      },
+      {
+        "file": "the-blinding.jpeg",
+        "bigBeat": true,
+        "anchor": "as when a man bores a ship's timber with a drill",
+        "caption": "As when a man bores a ship's timber with a drill, and the men below keep it spinning with a strap they hold at either end."
+      },
+      {
+        "file": "under-the-rams.jpeg",
+        "bigBeat": true,
+        "anchor": "the fool never saw that my men were bound beneath the breasts",
+        "caption": "The fool never saw that my men were bound beneath the breasts of his own fleecy sheep."
+      },
+      {
+        "file": "boulder-thrown.jpeg",
+        "anchor": "I seized a long pole in my hands and pushed her off",
+        "caption": "He broke off the peak of a great hill and threw it; it fell in front of the dark-prowed ship, and the sea heaved under the stone."
       }
     ]
   }

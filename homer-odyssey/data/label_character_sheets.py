@@ -130,6 +130,11 @@ CHARACTERS = {
         "Blind court bard of the Phaeacians",
         "pale-grey robe · tortoiseshell lyre · eyes closed, unscarred",
     ),
+    "polyphemus": (
+        "POLYPHEMUS",
+        "The Cyclops; a giant shepherd, son of Poseidon",
+        "undyed wool tunic, rope belt · one centred eye · uprooted pine",
+    ),
     "aegyptius": (
         "AEGYPTIUS",
         "Oldest man of the Ithacan assembly",

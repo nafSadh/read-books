@@ -458,5 +458,190 @@
         "caption": "He broke off the peak of a great hill and threw it; it fell in front of the dark-prowed ship, and the sea heaved under the stone."
       }
     ]
+  },
+  "bk10": {
+    "plates": [
+      {
+        "file": "aeolia-island.jpeg",
+        "anchor": null,
+        "caption": "A floating island; all around it runs a wall of unbreakable bronze, and the rock rises up sheer."
+      },
+      {
+        "file": "winds-burst.jpeg",
+        "bigBeat": true,
+        "anchor": "They opened the bag, and all the winds burst free",
+        "caption": "They opened the bag, and all the winds burst free — and the storm swept them out to sea, weeping, away from their native land."
+      },
+      {
+        "file": "spearing-the-fleet.jpeg",
+        "bigBeat": true,
+        "anchor": "cut the cables of my dark-prowed ship",
+        "caption": "Gladly my ship fled the overhanging cliffs and reached the open water; but the others were destroyed there, all together."
+      },
+      {
+        "file": "the-stag.jpeg",
+        "anchor": "sent a great high-antlered stag right into my path",
+        "caption": "Some god took pity on me, alone as I was, and sent a great high-antlered stag right into my path."
+      },
+      {
+        "file": "wolves-and-lions.jpeg",
+        "anchor": "rose up and fawned about them, wagging their long tails",
+        "caption": "The strong-clawed wolves and lions fawned around my men; and from inside they could hear Circe singing at her great immortal loom."
+      },
+      {
+        "file": "the-transformation.jpeg",
+        "bigBeat": true,
+        "anchor": "she struck them at once with her wand",
+        "caption": "They had the heads of pigs now, the voice, the bristles, the body — but their minds remained steadfast, just as before."
+      },
+      {
+        "file": "hermes-moly.jpeg",
+        "anchor": "At the root it was black, but its flower was like milk",
+        "caption": "At the root it was black, but its flower was like milk. Moly, the gods call it; and it is hard for mortal men to dig up."
+      },
+      {
+        "file": "sword-and-goddess.jpeg",
+        "anchor": "she ducked beneath the blade and clasped my knees",
+        "caption": "“You drank these drugs, and you were not bewitched. Surely you are resourceful Odysseus, the man of many turns.”"
+      },
+      {
+        "file": "restored.jpeg",
+        "anchor": "the bristles fell away from their limbs",
+        "caption": "They became men again, younger than they were before; and a sweet longing for weeping came over them all."
+      },
+      {
+        "file": "year-of-feasting.jpeg",
+        "anchor": "day after day for a full year",
+        "caption": "So there, day after day for a full year, we sat feasting on meat past counting and sweet wine."
+      },
+      {
+        "file": "elpenor-roof.jpeg",
+        "anchor": "heavy with wine and wanting the cool air, high up on the roof",
+        "caption": "There was one, Elpenor, the youngest of them all, not remarkably brave in battle nor steady in his wits."
+      }
+    ]
+  },
+  "bk11": {
+    "plates": [
+      {
+        "file": "ocean-edge.jpeg",
+        "anchor": null,
+        "caption": "She came to deep-flowing Ocean, the boundary of the earth, where the Cimmerians have their land and city, wrapped in mist and cloud."
+      },
+      {
+        "file": "blood-pit.jpeg",
+        "anchor": "dug a pit a cubit long and a cubit wide",
+        "caption": "I dug a pit a cubit long and a cubit wide, and around it I poured a drink-offering to all the dead."
+      },
+      {
+        "file": "gathering-dead.jpeg",
+        "bigBeat": true,
+        "anchor": "Brides, and unmarried young men, and old men",
+        "caption": "Brides, and unmarried young men, and old men who had endured much, and tender girls with hearts new to grief."
+      },
+      {
+        "file": "elpenor-shade.jpeg",
+        "anchor": "not yet been buried under the wide-wayed earth",
+        "caption": "The first soul to come was that of my companion Elpenor, for he had not yet been buried under the wide-wayed earth."
+      },
+      {
+        "file": "tiresias.jpeg",
+        "anchor": "holding a golden staff, and he knew me",
+        "caption": "Then came the soul of Theban Tiresias, holding a golden staff, and he knew me."
+      },
+      {
+        "file": "three-times.jpeg",
+        "bigBeat": true,
+        "anchor": "Three times I started toward her",
+        "caption": "Three times I started toward her, and three times she flew out of my hands like a shadow or a dream."
+      },
+      {
+        "file": "the-heroines.jpeg",
+        "anchor": "the wives and daughters of great men",
+        "caption": "Then the women came, for dread Persephone sent them — all those who had been the wives and daughters of great men."
+      },
+      {
+        "file": "agamemnon-shade.jpeg",
+        "anchor": "there came the soul of Agamemnon son of Atreus",
+        "caption": "There came the soul of Agamemnon son of Atreus, grieving; and around him others were gathered."
+      },
+      {
+        "file": "achilles-shade.jpeg",
+        "anchor": "I would rather be bound to the soil, the hired man of another",
+        "caption": "“I would rather be bound to the soil, the hired man of another, than be lord over all the wasted dead.”"
+      },
+      {
+        "file": "ajax-silent.jpeg",
+        "anchor": "forget your anger at me over those accursed arms",
+        "caption": "He answered me not a word, but went his way into Erebus after the other souls of the dead."
+      },
+      {
+        "file": "hard-torments.jpeg",
+        "anchor": "the water lapped at his chin",
+        "caption": "He strained with thirst, but he could not take a drop to drink."
+      },
+      {
+        "file": "heracles-phantom.jpeg",
+        "anchor": "his phantom only",
+        "caption": "His phantom only; for the man himself is with the immortal gods — around him rose a clamor of the dead, like birds scattering."
+      }
+    ]
+  },
+  "bk12": {
+    "plates": [
+      {
+        "file": "elpenor-barrow.jpeg",
+        "anchor": null,
+        "caption": "We buried him where the headland juts furthest into the sea, and heaped a mound, and on top of it we planted his shapely oar."
+      },
+      {
+        "file": "circe-warns.jpeg",
+        "anchor": "First you will come to the Sirens",
+        "caption": "“First you will come to the Sirens, who enchant all men, whoever comes their way.”"
+      },
+      {
+        "file": "wax-and-rope.jpeg",
+        "anchor": "the well-built ship swiftly reached the island of the two Sirens",
+        "caption": "I kneaded the wax in my strong hands, and anointed the ears of all my companions in turn; and they bound me hand and foot in the swift ship."
+      },
+      {
+        "file": "the-sirens.jpeg",
+        "bigBeat": true,
+        "anchor": "they raised their clear-toned song",
+        "caption": "“Come here, much-praised Odysseus, great glory of the Achaeans — no man has ever rowed past this island in his black ship until he has heard the honey-sweet voice from our lips.”"
+      },
+      {
+        "file": "the-strait.jpeg",
+        "anchor": "So we sailed up the narrow strait, lamenting",
+        "caption": "On one side was Scylla; on the other, divine Charybdis terribly sucked down the salt water of the sea."
+      },
+      {
+        "file": "six-taken.jpeg",
+        "bigBeat": true,
+        "anchor": "I saw their feet and hands already above me",
+        "caption": "They cried out and called to me by name, for the last time, in anguish of heart."
+      },
+      {
+        "file": "cattle-of-the-sun.jpeg",
+        "anchor": "the fine broad-browed cattle and the many sturdy sheep of Helios",
+        "caption": "There the many cattle and sturdy sheep of Helios graze. They bear no young, and they never die."
+      },
+      {
+        "file": "hides-crawl.jpeg",
+        "anchor": "the gods began showing portents",
+        "caption": "The hides crawled, and the meat on the spits bellowed, roasted and raw alike; and there came a sound as of cattle lowing."
+      },
+      {
+        "file": "thunderbolt.jpeg",
+        "bigBeat": true,
+        "anchor": "set a dark cloud over the hollow ship",
+        "caption": "The son of Cronus set a dark cloud over the hollow ship, and the sea grew black beneath it."
+      },
+      {
+        "file": "keel-alone.jpeg",
+        "anchor": "the wave carried the bare keel along",
+        "caption": "Riding on these I was carried along by the deadly winds — nine days; and on the tenth night the gods brought me to Ogygia."
+      }
+    ]
   }
 }

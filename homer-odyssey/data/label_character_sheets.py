@@ -135,6 +135,41 @@ CHARACTERS = {
         "The Cyclops; a giant shepherd, son of Poseidon",
         "undyed wool tunic, rope belt · one centred eye · uprooted pine",
     ),
+    "circe": (
+        "CIRCE",
+        "Witch-goddess of Aeaea, daughter of Helios",
+        "bronze-gold embroidered gown · auburn braids · slim dark wand",
+    ),
+    "eurylochus": (
+        "EURYLOCHUS",
+        "Odysseus' second-in-command and kinsman",
+        "salt-stained dark brown tunic · leather corselet · grizzled beard",
+    ),
+    "elpenor": (
+        "ELPENOR",
+        "Youngest of the crew; amiable, unlucky",
+        "undyed tunic, rope belt · barefoot · scruffy first beard",
+    ),
+    "tiresias": (
+        "TIRESIAS",
+        "Blind Theban seer, authoritative even in death",
+        "shroud-grey robes · sightless eyes · golden staff, the one bright thing",
+    ),
+    "anticleia": (
+        "ANTICLEIA",
+        "Odysseus' dead mother",
+        "pale ash-grey veil and chiton · slightly translucent · gentle",
+    ),
+    "agamemnon-shade": (
+        "AGAMEMNON (SHADE)",
+        "Murdered king of Mycenae, bitter and warning",
+        "dark bronze-brown robe · stain-like shadow across the breast · dulled circlet",
+    ),
+    "achilles-shade": (
+        "ACHILLES (SHADE)",
+        "The most beautiful of the Greek dead",
+        "plain pale-grey tunic · NO armour · fame was a bad trade",
+    ),
     "aegyptius": (
         "AEGYPTIUS",
         "Oldest man of the Ithacan assembly",

@@ -28,6 +28,61 @@ Arete, Demodocus all clean on the red-signature scan. `img/attic/` holds
 superseded art (v1 character sheets, the old landscape set, alt takes
 rejected during review — never mixed into a live book).
 
+**Book X: DONE.** 11 plates installed, 10/24 books live. Sheets `circe`,
+`eurylochus`, `elpenor` added (25 total). Rejects in the batch: a bk09
+`the-wine-bowl` alt that invented a woman in the giant's lap (not installed)
+and a 4-up contact sheet — both attic'd.
+
+**Book XI: DONE.** All 12 plates installed; 11/24 books live. Flags for a
+later polish pass: `achilles-shade` has a generation artifact (a truncated
+figure, legs with no torso, bottom-left); `hard-torments` shows Tantalus
+knee-deep where the caption says chin-deep; `heracles-phantom` has a faint
+scribble in the mist lower-left. 10 of 12 arrived at 1024 and several lost
+~120px of sky to the paper-band trim, so effective sources run 858-989px —
+the softest batch in the edition. If any read muddy in situ, regenerate at
+2048 (prompts in session history).
+(Original planning note, superseded:)
+All four dead sheets installed (29 total, new cast row "THE DEAD"):
+`tiresias`, `anticleia`, `agamemnon-shade`, `achilles-shade` — every one
+0.00% red. Gemini gave ALL the male dead blank white eyes, so sightlessness
+is now the shade convention rather than Tiresias's personal marker; he
+distinguishes by the golden staff + shroud-grey, Agamemnon by the breast
+stain + bronze-brown + circlet. Internally consistent — kept. Scene chat
+uploads 6 sheets: odysseus, elpenor + these four. bigBeats: gathering-dead,
+three-times.
+
+**Book XII: manifest written (10 plates, validated at paras 4,12,13,16,17,
+18,26,27,28 + unanchored opener `elpenor-barrow`), art pending.** No new
+sheets — scene chat uploads `odysseus`, `circe`, `eurylochus`. Sirens/
+Scylla/monsters described inline. bigBeats: the-sirens, six-taken,
+thunderbolt. Register: six-taken is silhouettes-against-sky, no gore;
+the Sirens are beautiful and the bone-meadow stays subtle.
+
+**prepare_plates.py grew a paper-band pass**: near-white rows (min channel
+avg >= 228, spread <= 48) are eaten per side before the flatness passes —
+Gemini borders that fade into the art fail the flatness proof and used to
+survive as messy edges (user caught one). Plus a 0.6% uniform INSET after
+trimming. NOTE: reprocessing a plate shaves INSET again each run — do not
+re-run over live dirs casually. Render-time overscan was tried and REJECTED
+by the user ("trim the badly generated images") — fix files, not the lens.
+
+**Trim box widened after use on a big monitor**: W cap 1200 -> 1440, and the
+beside caption column now reaches the full 620px book measure
+(capW = min(712, max(340, W*.42))) — the art yields width to the column,
+never the reverse. Cover carries the credit line "nafSadh · lord of cool
+stuff" (user-commissioned, keep it).
+
+**Book splash pages redesigned as typographic title pages** (user rejected
+the first-plate-as-backdrop design: "boring and meaningless"). Now: paper
+page, "BOOK" over a grand EB Garamond numeral, hairline rule, and the book's
+plates as a loose fan of ≤5 small rotated tiles (`.tp-tiles`, deterministic
+rotation pattern — no Math.random, it would break nothing here but keep it
+deterministic anyway). A book with no art gets the pure-text page
+automatically. The plate-count note ("10 PLATES" / "plates pending") is
+GONE — production metadata the reader never needed. The splash render branch
+pins `panelEl.style.height = '100%'`; every other branch must clear it (beat
+and cap branches do — keep it that way).
+
 **Book IX: DONE.** All 11 plates installed; 9/24 books illustrated. New sheet
 `polyphemus` added (22 sheets now), in `label_character_sheets.py` and the
 cast sheet under a new "THE WANDERINGS" row.
@@ -261,6 +316,36 @@ paper panel, side-by-side spread):
 fires a real `resize`; always `window.dispatchEvent(new Event('resize'))` and
 wait ~700ms before trusting page counts, and serve over http.server — the
 pane caches `file://` snapshots.
+
+## illustrated.html — unified trim size (done)
+
+**The book has ONE trim size now.** `trim()` picks the box once per
+viewport — wide: `min(stage content, H*1.55, 1200) x stage height`
+(1135x732 at 1280x800); narrow: the full screen. Every render branch
+(cover, title page, beat, plated, plateless) and every pagination budget
+lays out inside it. Verified: at each of 1280x800 / 700x800 / 393x852 /
+852x393 the panel is a single constant size across cover, title pages,
+reading pages and beats, with zero clipping over 300-400-page walks.
+Beat and cover plates now tip into the page centred (`margin:auto` inline
+on #art-wrap) rather than owning their own panel; the caption column is
+capped at 620px and centred by CSS (`.caption-box max-width + auto
+margins`) — geom()'s textW mirrors that 620 so the probe measures what
+renders. Plateless pages are top-aligned (`align-items:flex-start`): a
+short last page reads from the top of the paper like a book's final page.
+
+**Pagination bug found by the tighter budgets — the carried-unit hole.**
+The greedy packer reset its buffer to `[u]` after an overflow pop WITHOUT
+measuring u alone; a single sentence taller than the page budget then
+sailed through unchecked (the length===1 word-split guard never saw it —
+the buffer was length 2 when the NEXT unit overflowed) and rendered as a
+clipped page. Latent since the beginning: harmless at the old ~640px
+budgets where no sentence outgrew a page, exposed by the trim box's
+~200px mid-width budget. Fixed: packAndPush now routes EVERY unit —
+including carried ones — through one measured `addUnit()` path that
+word-splits anything that overruns alone. Diagnosed by stamping pack-time
+budget/textW onto each page object and comparing at render (instrumentation
+since removed); the probe and render agreed exactly, which is what proved
+the page had never been measured at all.
 
 ## NEXT ACTIONS, in order
 

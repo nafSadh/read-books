@@ -159,13 +159,18 @@ body {
 
 /* caption band: paper gutter under the art; box straddles the art edge a little */
 #cap-wrap, #cap-probe { flex: none; position: relative; z-index: 3; padding: 26px 40px 34px; margin-top: 0; }
-#cap-wrap.plateless, #cap-probe.plateless { margin-top: 0; padding: 54px 46px; flex: 1; display: flex; align-items: center; justify-content: center; }
+/* top-aligned: with a fixed trim page, a short final page reads from the top
+   of the paper like a book's last page, not floated in its middle */
+#cap-wrap.plateless, #cap-probe.plateless { margin-top: 0; padding: 54px 46px; flex: 1; display: flex; align-items: flex-start; justify-content: center; }
 /* the probe only ever has its paddings read; keep it out of layout and a11y */
 #pad-probe { position: absolute; left: -9999px; top: 0; width: 600px; visibility: hidden; pointer-events: none; }
 .caption-box {
   color: var(--ptext);
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 19.5px; line-height: 1.72; letter-spacing: .1px;
+  /* the trim box is fixed, so wide pages must cap the measure themselves and
+     centre it — geom()'s textW mirrors this 620 exactly for the probe */
+  max-width: 620px; margin-left: auto; margin-right: auto;
 }
 .caption-box.big { width: min(620px, 92%); }
 .caption-box p { margin: 0 0 .9em; text-indent: 1.3em; text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
@@ -188,21 +193,35 @@ body {
 @keyframes pageSettle { from { transform: scale(.994); } to { transform: none; } }
 
 /* splash / book-title page (full-art panel, overlay text) */
-.splash, .cover-page { --scrim: linear-gradient(to bottom, rgba(10,8,14,.12) 0%, rgba(10,8,14,.52) 45%, rgba(10,8,14,.72) 100%); }
-.splash { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 3; background: var(--scrim); }
-.splash .sp-over { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #f4ece0; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
-.splash .sp-roman { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 72px; color: #f7f0e4; text-shadow: 0 2px 18px rgba(0,0,0,.75); margin: 10px 0 14px; line-height: 1; }
-.splash .sp-rule { width: 76px; height: 1px; background: rgba(247,240,228,.75); margin: 0 auto 14px; }
-.splash .sp-note { font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(247,240,228,.85); text-shadow: 0 1px 6px rgba(0,0,0,.7); }
-.splash.no-bg { background: none; }
-.splash.no-bg .sp-roman { color: var(--ptext); text-shadow: none; }
-.splash.no-bg .sp-over, .splash.no-bg .sp-note { color: var(--ptext); opacity: .6; text-shadow: none; }
-.splash.no-bg .sp-rule { background: var(--ptext); opacity: .35; }
+.cover-page { --scrim: linear-gradient(to bottom, rgba(10,8,14,.12) 0%, rgba(10,8,14,.52) 45%, rgba(10,8,14,.72) 100%); }
+/* Book title page: a typographic page in the book's own paper — grand numeral,
+   hairline rule, and the book's plates as a loose fan of small tiles, like
+   prints laid on the page. The old design blew the first scene plate up as a
+   backdrop, which read as a wallpaper, spoiled the plate before its scene,
+   and printed the plate count (production metadata). A book with no art
+   simply gets the pure-text page: the tiles row is empty. */
+.title-page {
+  height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 40px 30px; color: var(--ptext);
+}
+.tp-over { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 7px; text-transform: uppercase; opacity: .55; }
+.tp-roman { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; font-size: min(150px, 20vh); line-height: 1.05; margin: 14px 0 20px; }
+.tp-rule { width: 64px; height: 1px; background: var(--ptext); opacity: .35; }
+.tp-tiles { display: flex; margin-top: 40px; }
+.tp-tiles img {
+  width: 96px; height: 96px; object-fit: cover; background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35), 0 3px 10px rgba(0,0,0,.18);
+  transform: rotate(var(--r)) translateY(var(--y));
+  margin-left: -14px;
+}
+.tp-tiles img:first-child { margin-left: 0; }
 
 .cover-page { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 3; gap: 6px; padding: 20px; background: var(--scrim); }
 .cover-page .cv-title { font-family: 'EB Garamond', Georgia, serif; font-size: 54px; font-weight: 500; color: #f7f0e4; text-shadow: 0 2px 20px rgba(0,0,0,.8); }
 .cover-page .cv-title em { font-style: italic; }
 .cover-page .cv-sub { font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(247,240,228,.9); margin-top: 14px; text-shadow: 0 1px 8px rgba(0,0,0,.75); }
+.cover-page .cv-credit { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 13px; letter-spacing: .5px; color: rgba(247,240,228,.75); margin-top: 10px; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
 .cover-page .cv-hint { font-family: 'Jost', sans-serif; font-size: 11px; color: rgba(247,240,228,.7); margin-top: 26px; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
 .cover-page .cv-hint kbd { font-family: 'IBM Plex Mono', monospace; border: 1px solid var(--paper); border-radius: 3px; padding: 1px 5px; font-size: 10px; }
 
@@ -256,7 +275,8 @@ body {
      the prefix. Ragged-right is the normal setting for a narrow printed
      column and costs the register nothing. */
   .caption-box p { text-align: left; }
-  .splash .sp-roman { font-size: 48px; }
+  .tp-roman { font-size: min(96px, 14vh); }
+  .tp-tiles img { width: 68px; height: 68px; margin-left: -10px; }
   .cover-page .cv-title { font-size: 34px; }
 
   /* The bar wanted 468px of content in a 390px phone, so all five theme dots
@@ -506,84 +526,83 @@ const DATA = __IDATA__;
     return { beside, stack, plain };
   }
 
-  function geom(plateR) {
-    /* clientWidth/Height INCLUDE #stage's own padding, which is 120px
-       horizontally on desktop — not the 32 this used to subtract. On a
-       landscape phone that made geom hand the panel a width the stage could
-       not give, so the probe measured a column 33px wider than the real one
-       and overflow:hidden ate the last two lines of every page. Read the
-       content box. */
+  /* THE BOOK HAS ONE TRIM SIZE. Every page kind used to size its own panel
+     from its own content — cover from the title plate's ratio (~710px wide),
+     title pages 760, the beside spread ~1145, beat pages ~740 — so the book
+     itself changed size as you flipped, which a physical book never does.
+     trim() picks the box once per viewport; every render branch and every
+     pagination budget lays out INSIDE it. Wide screens get an open-spread
+     box (height-driven, capped); narrow gets the full screen.
+     clientWidth/Height include #stage's own padding — read the content box,
+     or a landscape phone gets a panel wider than the stage and
+     overflow:hidden eats the last lines (that bug shipped once already). */
+  const TRIM_RATIO = 1.55;               /* open-spread aspect: W = H * this */
+  function trim() {
     const scs = getComputedStyle(stageEl);
-    const stW = Math.max(320, stageEl.clientWidth
+    const W0 = Math.max(320, stageEl.clientWidth
       - parseFloat(scs.paddingLeft) - parseFloat(scs.paddingRight));
-    const stH = Math.max(320, stageEl.clientHeight
+    const H = Math.max(320, stageEl.clientHeight
       - parseFloat(scs.paddingTop) - parseFloat(scs.paddingBottom));
+    const narrow = matchMedia(NARROW).matches;
+    const W = narrow ? W0 : Math.min(W0, Math.round(H * TRIM_RATIO), 1440);
+    return { W, H, narrow };
+  }
+
+  function geom(plateR) {
+    const { W, H, narrow } = trim();
     const pad = PAD || measurePads();
     const ART_M = artMargin();
-    if (!plateR) { /* plateless caption page: full paper panel */
-      const panelW = Math.min(760, stW * .96);
-      /* .caption-box.big is width: min(620px, 92%) of the padded column.
-         Budget from the real geometry, not the old `stH*.80 - 90` magic —
+    if (!plateR) { /* plateless caption page: full paper page */
+      /* Budget from the real geometry, not the old `stH*.80 - 90` magic —
          that formula left ~120px of dead paper at the foot of every
-         plateless page (measured at stH 700: budget 470 vs 592 actually
-         available). Books X-XXIV are all plateless, so this was half the
-         reading session running short pages. */
-      return { beside: false, panelW, artH: 0,
-               capAvail: stH - pad.plain.y - 24,
-               textW: Math.min(620, (panelW - pad.plain.x) * .92) };
+         plateless page, and Books X-XXIV are ALL plateless. */
+      return { beside: false, panelW: W, panelH: H, artH: 0,
+               capAvail: H - pad.plain.y - 24,
+               textW: Math.min(620, (W - pad.plain.x) * .92), fill: narrow };
     }
-    const narrowV = matchMedia(NARROW).matches;
-    /* Side-by-side is about SHAPE, not screen class. A phone in landscape is
-       844-956px wide and only ~310 tall: stacking a square plate above text
-       there leaves a 92px letterbox strip and three lines of prose, while
-       beside gives the plate its full height and a proper column next to it.
-       The width-only gate sent those to the stacked path; the reason it used
-       to look broken in landscape was the stage-padding bug above, not the
-       layout choice. */
-    const beside = plateR > 0.8 && plateR < 1.3
-      && (stW > 860 || (stW >= 700 && stW > stH * 1.6));
-    if (beside) {
-      /* the CSS `#panel.beside #art-wrap` margin is an unconditional 22px, so
-         the math must use 22 here even when the narrow artMargin() is 0 — and
-         subtract it exactly: the old `stH * .96` fudge left no room for the
-         margins on a 330px-tall landscape phone and clipped 30px of every
-         page. */
+    /* Side-by-side is about SHAPE, not screen class: a landscape phone is
+       700-956px wide and ~310 tall, and stacking there leaves a letterbox
+       strip and three lines of prose. The capW guard below also protects the
+       column — a 1.3-ratio plate could eat the spread and leave a sliver, in
+       which case stacked is the honest layout. */
+    if (plateR > 0.8 && plateR < 1.3
+        && (W > 860 || (W >= 700 && W > H * 1.6))) {
+      /* the CSS `#panel.beside #art-wrap` margin is an unconditional 22px;
+         the math uses 22 even when narrow artMargin() is 0, and subtracts it
+         exactly — a .96 fudge here once clipped 30px of every page on a
+         landscape phone. */
       const BM = 22;
-      const artH = Math.min(stH - 2 * BM, stW * 0.52 / plateR);
-      const artW = artH * plateR;
-      /* art carries a left margin only; the panel must make room for it */
-      const capW = Math.min(520, Math.max(300, stW - artW - BM));
-      /* the column stretches to the art's full height including its margins */
-      return { beside: true, panelW: BM + artW + capW, artW, artH,
-               capAvail: artH + 2 * BM - pad.beside.y - 2,
-               textW: capW - pad.beside.x, fill: narrowV };
+      /* The column is the reading surface — it gets a guaranteed share and
+         the ART yields, not the other way round. Height-first sizing gave a
+         square plate H-44px of a 1200-wide spread on a tall monitor, leaving
+         the text a ~190px sliver. When the plate can't have full height AND
+         a real column, it shrinks and centres vertically. */
+      /* wide enough that textW can reach the full 620px book measure
+         (620 + the column's 92px padding = 712) — the old 560 cap left the
+         column at ~40 characters while paper sat empty beside it */
+      const capW = Math.min(712, Math.max(340, W * .42));
+      let artH = H - 2 * BM;
+      let artW = artH * plateR;
+      const maxArtW = W - BM - capW;
+      if (artW > maxArtW) { artW = maxArtW; artH = artW / plateR; }
+      if (artW >= 280) {
+        return { beside: true, panelW: W, panelH: H, artW, artH,
+                 capAvail: H - pad.beside.y - 2,
+                 textW: Math.min(620, capW - pad.beside.x), fill: narrow };
+      }
     }
-    /* On a phone the page IS the screen: paper edge to edge, plate the full
-       width of it. Boxing a 359px panel inside a 390px stage, and then a 222px
-       plate inside that, left dead backdrop on all four sides and a small
-       floating square where a headpiece belongs. */
-    const narrow = narrowV;
-    let panelW = narrow ? stW : Math.min(880, stW * .96, Math.max(560, stH * .60 * plateR));
-    /* Size the art from the cell it actually occupies. CSS gives #art-wrap a
-       22px margin each side, so deriving artH from the full panelW made every
-       square plate 44px too wide for its box and object-fit:cover shaved 13%
-       off its sides — cutting figures placed near the frame edge — while also
-       stealing those 44px from the caption. */
-    const artAvailW = panelW - 2 * ART_M;
-    /* Full width, natural height — a square plate on a 390px portrait phone is
-       390x390 and still leaves ~306px (about 10 lines) for the caption, so it
-       needs neither cropping nor shrinking. The .55/.60 clamp is only a floor
-       for the caption so a tall plate can never squeeze the text to nothing —
-       and when it engages, the plate NARROWS to its true ratio and centres
-       instead of being cover-cropped: at a 700px window the old path shaved
-       14% off every square plate, cutting figures at the frame edge. A
-       tipped-in plate with paper either side is book-honest; a trimmed
-       composition is not. */
-    const artH = Math.min(artAvailW / plateR, stH * (narrow ? .55 : .60));
+    const artAvailW = W - 2 * ART_M;
+    /* Full width, natural height; the .55/.60 clamp is only a floor for the
+       caption. When it engages the plate NARROWS to its true ratio and
+       centres — never cover-cropped: a trimmed composition costs more than a
+       smaller plate. */
+    const artH = Math.min(artAvailW / plateR, H * (narrow ? .55 : .60));
     const artW = Math.min(artAvailW, artH * plateR);
-    const capAvail = stH - artH - (narrow ? 0 : ART_M) - pad.stack.y - (narrow ? 4 : 14);
-    const textW = panelW - pad.stack.x;
-    return { beside: false, panelW, artW, artH, capAvail, textW, fill: narrow };
+    const capAvail = H - artH - (narrow ? 0 : ART_M) - pad.stack.y - (narrow ? 4 : 14);
+    /* the column is capped and centred by CSS (max-width + auto margins);
+       the probe must measure the same width the page renders at */
+    const textW = Math.min(620, W - pad.stack.x);
+    return { beside: false, panelW: W, panelH: H, artW, artH, capAvail, textW, fill: narrow };
   }
 
   /* ---- pagination ---- */
@@ -610,38 +629,49 @@ const DATA = __IDATA__;
         const m = geom(plate ? (plate.r || DEFAULT_R) : null);
         probe.style.width = m.textW + 'px';
         let cur2 = [];
-        pending.forEach(u => {
+        const emit = () => {
+          if (!cur2.length) return;
+          pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus });
+          firstCap = false; cur2 = [];
+        };
+        /* One sentence alone overruns the page: break it on a word boundary —
+           a mid-sentence turn is invisible, a swallowed clause is not. */
+        const wordSplit = (u) => {
+          const words = u.text.split(' ');
+          let head = [];
+          const flush = () => {
+            pages.push({ k: 'cap', bi, plate, units: [{ text: head.join(' '), para: u.para, gi: u.gi }],
+                         opens: firstCap, foc: curFocus });
+            firstCap = false;
+          };
+          for (let i = 0; i < words.length; i++) {
+            head.push(words[i]);
+            probe.innerHTML = unitsToHTML([{ text: head.join(' '), para: u.para }], esc);
+            if (probe.scrollHeight > m.capAvail && head.length > 1) {
+              head.pop(); flush(); head = [words[i]];
+            }
+          }
+          if (head.length) flush();
+        };
+        /* EVERY unit passes through here, including one carried over from an
+           overflowing page. The old loop reset the buffer to [u] after a pop
+           without measuring u alone — so a sentence taller than the page
+           budget sailed through unchecked (the length===1 guard never saw it:
+           the buffer was length 2 when the NEXT unit overflowed) and rendered
+           as a clipped page. Harmless at the old ~640px budgets, where no
+           sentence outgrew a page; the fixed trim's tighter mid-width budget
+           (~200px, six lines) made long Homeric sentences trip it. */
+        const addUnit = (u) => {
           cur2.push(u);
           probe.innerHTML = unitsToHTML(cur2, esc);
-          if (probe.scrollHeight > m.capAvail) {
-            if (cur2.length === 1) {
-              /* One sentence alone overruns the page. Pushing it whole made an
-                 over-tall page that overflow:hidden then clipped — and since
-                 nothing scrolls, those lines existed on no page at all (9 such
-                 pages in Books I-IX on a phone, up to 7 lines lost each). Break
-                 it on a word boundary instead: a mid-sentence turn is invisible,
-                 a swallowed clause is not. */
-              const words = u.text.split(' ');
-              let head = [];
-              const flush = () => {
-                pages.push({ k: 'cap', bi, plate, units: [{ text: head.join(' '), para: u.para, gi: u.gi }],
-                             opens: firstCap, foc: curFocus });
-                firstCap = false;
-              };
-              for (let i = 0; i < words.length; i++) {
-                head.push(words[i]);
-                probe.innerHTML = unitsToHTML([{ text: head.join(' '), para: u.para }], esc);
-                if (probe.scrollHeight > m.capAvail && head.length > 1) {
-                  head.pop(); flush(); head = [words[i]];
-                }
-              }
-              if (head.length) flush();
-              cur2 = [];
-            }
-            else { cur2.pop(); pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; cur2 = [u]; }
-          }
-        });
-        if (cur2.length) { pages.push({ k: 'cap', bi, plate, units: cur2, opens: firstCap, foc: curFocus }); firstCap = false; }
+          if (probe.scrollHeight <= m.capAvail) return;
+          cur2.pop();
+          if (!cur2.length) { wordSplit(u); return; }
+          emit();
+          addUnit(u);
+        };
+        pending.forEach(addUnit);
+        emit();
         pending = [];
       };
       b.blocks.forEach(blk => {
@@ -697,6 +727,7 @@ const DATA = __IDATA__;
       img.style.transformOrigin = '0 0';
       img.style.transform = `translate(${(-x / w * 100).toFixed(3)}%, ${(-y / h * 100).toFixed(3)}%) scale(${(1 / w).toFixed(4)}, ${(1 / h).toFixed(4)})`;
     } else {
+      /* clear the inline override; the CSS default overscan takes back over */
       img.style.transform = '';
       img.style.transformOrigin = '';
     }
@@ -707,50 +738,63 @@ const DATA = __IDATA__;
     const bk = p.bi != null ? DATA.books[p.bi] : null;
 
     if (p.k === 'beat') {
+      /* the beat plate tips into the SAME trim page as every other page —
+         largest size that fits, centred, paper around it */
       const r = p.plate.r || DEFAULT_R;
-      const stH = Math.max(320, stageEl.clientHeight - 24);
-      const stW = Math.max(320, stageEl.clientWidth - 32);
-      const panelH = Math.min(stH * .98, stW * .96 / r);
-      panelEl.classList.remove('beside');
-      panelEl.classList.add('full');
-      panelEl.style.width = (panelH * r) + 'px';
-      panelEl.innerHTML = `<div id="art-wrap" style="height:${panelH}px">${artInner(p.plate.src, p.plate.cap)}</div>`;
+      const { W, H, narrow } = trim();
+      const artH = Math.min(H - 2 * 22, (W - 2 * 22) / r);
+      panelEl.classList.remove('beside', 'full');
+      panelEl.classList.toggle('fill', narrow);
+      panelEl.style.width = W + 'px';
+      panelEl.style.height = H + 'px';
+      panelEl.innerHTML = `<div id="art-wrap" style="width:${artH * r}px;height:${artH}px;margin:auto">${artInner(p.plate.src, p.plate.cap)}</div>`;
       lastShape = 'beat'; lastArtSrc = p.plate.src;
-    } else if (p.k === 'cover' || p.k === 'splash') {
-      /* `full` zeroes the art margin. Without it these pages kept the stacked
-         22px margin on three sides and none at the bottom — a cream L wrapping
-         the plate while it ran off the bottom edge — and panelW was computed
-         as panelH * r as if the art filled the panel anyway, which also
-         cover-cropped the plate 13%. */
-      panelEl.classList.add('full');
-      const b = p.k === 'cover' ? DATA.books[0] : bk;
-      const art = p.k === 'cover'
-        ? b.blocks.find(x => x.t === 'img' && x.portrait) || b.blocks.find(x => x.t === 'img')
-        : b.blocks.find(x => x.t === 'img');
+    } else if (p.k === 'cover') {
+      const b = DATA.books[0];
+      const art = b.blocks.find(x => x.t === 'img' && x.portrait) || b.blocks.find(x => x.t === 'img');
       const r = art ? (art.r || DEFAULT_R) : DEFAULT_R;
-      const stH = Math.max(320, stageEl.clientHeight - 24);
-      const stW = Math.max(320, stageEl.clientWidth - 32);
-      const panelH = Math.min(stH * .94, stW * .94 / r);
-      const panelW = panelH * r;
-      panelEl.style.width = panelW + 'px';
-      const overlay = p.k === 'cover'
-        ? `<div class="cover-page"><div class="cv-title"><em>The</em> Odyssey</div>
-           <div class="cv-sub">Homer &middot; a new prose translation, illustrated</div>
-           <div class="cv-hint">${COARSE ? 'swipe, or tap the edges'
-             : 'flip with <kbd>&larr;</kbd> <kbd>&rarr;</kbd>, click the edges, or swipe'}</div></div>`
-        : `<div class="splash${art ? '' : ' no-bg'}"><div class="sp-over">Book</div>
-           <div class="sp-roman">${b.roman}</div>
-           <div class="sp-rule"></div>
-           <div class="sp-note">${b.plates ? b.plates + ' plates' : 'plates pending'}</div></div>`;
-      panelEl.classList.remove('beside');
+      const { W, H, narrow } = trim();
+      const artH = Math.min(H - 2 * 22, (W - 2 * 22) / r);
+      panelEl.classList.remove('beside', 'full');
+      panelEl.classList.toggle('fill', narrow);
+      panelEl.style.width = W + 'px';
+      panelEl.style.height = H + 'px';
       panelEl.innerHTML =
-        `<div id="art-wrap" style="height:${panelH}px">${artInner(art && art.src, art && art.cap)}${overlay}</div>`;
-      lastShape = p.k; lastArtSrc = art ? art.src : null;
+        `<div id="art-wrap" style="width:${artH * r}px;height:${artH}px;margin:auto">${artInner(art && art.src, art && art.cap)}
+         <div class="cover-page"><div class="cv-title"><em>The</em> Odyssey</div>
+           <div class="cv-sub">Homer &middot; a new prose translation, illustrated</div>
+           <div class="cv-credit">nafSadh &middot; lord of cool stuff</div>
+           <div class="cv-hint">${COARSE ? 'swipe, or tap the edges'
+             : 'flip with <kbd>&larr;</kbd> <kbd>&rarr;</kbd>, click the edges, or swipe'}</div></div></div>`;
+      lastShape = 'cover'; lastArtSrc = art ? art.src : null;
+    } else if (p.k === 'splash') {
+      /* Typographic title page on the book's own paper. The first scene plate
+         used to be blown up as a backdrop here — it read as wallpaper and
+         spoiled that plate before its scene arrived. The plates instead
+         appear as a loose fan of small tiles under the numeral; a book with
+         no art gets the pure-text page for free. */
+      panelEl.classList.remove('beside', 'full');
+      const { W, H, narrow } = trim();
+      panelEl.classList.toggle('fill', narrow);
+      panelEl.style.width = W + 'px';
+      panelEl.style.height = H + 'px';
+      const tiles = bk.blocks.filter(x => x.t === 'img' && x.src && !x.splashOnly).slice(0, 5);
+      const ROT = [-5, 3, -2, 6, -3], DY = [4, -6, 2, -4, 6];
+      const tileHTML = tiles.length
+        ? `<div class="tp-tiles">${tiles.map((a, i) =>
+             `<img src="${a.src}" alt="" style="--r:${ROT[i % 5]}deg;--y:${DY[i % 5]}px">`).join('')}</div>`
+        : '';
+      panelEl.innerHTML =
+        `<div class="title-page"><div class="tp-over">Book</div>
+         <div class="tp-roman">${bk.roman}</div>
+         <div class="tp-rule"></div>${tileHTML}</div>`;
+      lastShape = 'splash'; lastArtSrc = p.bi;
     } else {
       panelEl.classList.remove('full');
       const r = p.plate ? (p.plate.r || DEFAULT_R) : null;
       const m = geom(r);
       panelEl.style.width = m.panelW + 'px';
+      panelEl.style.height = m.panelH + 'px';
       panelEl.classList.toggle('beside', !!m.beside);
       const capHTML = unitsToHTML(p.units, renderCaptionPara);
       const shape = p.plate ? (m.beside ? 'cap-beside' : 'cap-art') : 'cap-plain';
@@ -758,8 +802,10 @@ const DATA = __IDATA__;
       /* stacked plates centre themselves: when the height clamp narrows the
          art below the panel width, auto margins keep it a centred tipped-in
          plate rather than a left-hugging one */
+      /* beside: auto vertical margins centre a plate that yielded height to
+         the column (they resolve to the usual 22px when it has full height) */
       const artStyle = m.beside
-        ? `width:${m.artW}px;height:${m.artH}px`
+        ? `width:${m.artW}px;height:${m.artH}px;margin:auto 0 auto 22px`
         : `width:${m.artW}px;height:${m.artH}px;margin-left:auto;margin-right:auto`;
       /* narrow: the panel fills the stage so the paper is the page, not a card
          floating on a backdrop */
@@ -783,7 +829,6 @@ const DATA = __IDATA__;
                </div>
              <div id="cap-wrap"><div class="caption-box cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`
           : `<div id="cap-wrap" class="plateless"><div class="caption-box big cap-anim${p.opens ? ' opens' : ''}">${capHTML}</div></div>`);
-        if (!p.plate) panelEl.style.height = ''; /* content-driven */
         applyFocus(panelEl.querySelector('#art-img'), p.plate ? p.foc : null);
         lastShape = shape; lastArtSrc = artSrc;
       }

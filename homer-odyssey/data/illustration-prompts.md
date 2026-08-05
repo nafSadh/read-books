@@ -1554,7 +1554,43 @@ terracotta-red — that is Antinous's reserved signature. He does not appear in
 Book VIII, but the colour needs to stay findable for Books XVI–XXII. Check
 `verify_plates.py bk08` red% after installing.
 
+## BOOK X — 11 plates (Gemini app workflow)
+
+**Three new character sheets needed first: `circe`, `eurylochus`, `elpenor`**
+(paragraphs in the pack under "The wanderings"). Generate each in its OWN
+fresh chat with the sheet recipe, save to `img/characters/<slug>.jpeg`, run
+the red scan. Then a fresh scene chat uploading those three plus `odysseus`.
+Hermes appears in one plate and is described inline (same description as the
+Book V opener): no sheet.
+
+Manifest is live in `illustrated_plates.json` (11 plates, anchors validated
+at paras 3, 9, 11, 14, 15, 19, 20, 24, 29, 35 + unanchored opener; 535
+words/plate). bigBeats: `winds-burst`, `spearing-the-fleet`,
+`the-transformation`.
+
+Register notes for this book: Circe's proposition ("let the two of us go up
+to my bed") is NOT drawn — the plate for that scene is the sword-and-knees
+moment, fully clothed, coercion answered rather than romance staged. The
+Laestrygonian massacre stages as distance and silhouette: giants on the
+clifftops, rocks mid-fall, the fleet tiny below — no bodies, no wounds. The
+transformation plays as grief, not slapstick: the pigs' eyes stay human.
+
+### After generating
+
+Save into `img/bk10/`, then:
+
+```
+python3 data/prepare_plates.py img/bk10/*.jpeg
+python3 data/verify_plates.py bk10
+python3 data/build_illustrated.py
+```
+
+(The full paste-ready SETUP + 11 scene prompts were delivered in-session;
+scene list: aeolia-island, winds-burst, spearing-the-fleet, the-stag,
+wolves-and-lions, the-transformation, hermes-moly, sword-and-goddess,
+restored, year-of-feasting, elpenor-roof.)
+
 ---
 
-*Next batches (Books IX–XXIII) on request — same structure, written
+*Next batches (Books XI–XXIII) on request — same structure, written
 alongside each book's finished modern translation.*

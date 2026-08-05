@@ -39,6 +39,12 @@ FLATNESS = 24        # max spread within a row/col for it to count as matting.
                       # whole trim silently no-opped on the very first check.
 NEARNESS = 26        # max distance from the sampled border colour
 MAX_PASSES = 4
+INSET = 0.006        # final uniform shave (~12px at 2048). The flatness pass
+                     # can only remove what it can PROVE is matting; a 1-2px
+                     # hairline or a border that fades into the art fails the
+                     # proof and survives as a messy edge in the reader (user
+                     # caught one on artemis-still). A blanket half-percent
+                     # inset costs no visible composition and kills residue.
 
 
 def _line(px, w, h, side, i):
@@ -59,9 +65,33 @@ def _near(line, ref):
     return sum(abs(avg[c] - ref[c]) for c in range(3)) <= NEARNESS * 3
 
 
+def _paperish(line):
+    """A row that is essentially paper — near-white with modest grain. The
+    flatness test needs a border to be PROVABLY uniform; Gemini's borders
+    often fade into the art or carry texture, fail that proof, and survive
+    as a messy edge. Near-white with a wider tolerance catches them."""
+    avg = [sum(p[c] for p in line) / len(line) for c in range(3)]
+    return min(avg) >= 228 and all(
+        max(p[c] for p in line) - min(p[c] for p in line) <= 48 for c in range(3))
+
+
 def trim_border(im: Image.Image) -> tuple[Image.Image, tuple[int, int, int, int]]:
     """Cut concentric matting. Returns the cropped image and pixels removed per side."""
     removed = {"top": 0, "bottom": 0, "left": 0, "right": 0}
+    # pass 0: eat plain paper-white bands per side, however uneven
+    w, h = im.size
+    px = im.load()
+    cuts = {}
+    for side in ("top", "bottom", "left", "right"):
+        limit = int((h if side in ("top", "bottom") else w) * TRIM_CAP)
+        n = 0
+        while n < limit and _paperish(_line(px, w, h, side, n)):
+            n += 1
+        cuts[side] = n
+    if any(cuts.values()):
+        im = im.crop((cuts["left"], cuts["top"], w - cuts["right"], h - cuts["bottom"]))
+        for k in cuts:
+            removed[k] += cuts[k]
     for _ in range(MAX_PASSES):
         w, h = im.size
         px = im.load()
@@ -103,6 +133,8 @@ def process(path: Path, dry: bool) -> str:
     im = Image.open(path).convert("RGB")
     w0, h0 = im.size
     im, cut = trim_border(im)
+    ins = max(2, int(min(im.size) * INSET))
+    im = im.crop((ins, ins, im.size[0] - ins, im.size[1] - ins))
     w1, h1 = im.size
     im = square(im)
     w2, h2 = im.size

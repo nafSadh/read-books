@@ -43,7 +43,9 @@ ROWS = [
     ("OGYGIA AND SCHERIA — BOOKS V–VIII, XIII",
      ["calypso", "nausicaa", "alcinous", "arete", "demodocus"]),
     ("THE WANDERINGS — BOOKS IX–XII",
-     ["polyphemus"]),
+     ["polyphemus", "circe", "eurylochus", "elpenor"]),
+    ("THE DEAD — BOOKS XI AND XXIV",
+     ["tiresias", "anticleia", "agamemnon-shade", "achilles-shade"]),
 ]
 
 
@@ -83,7 +85,7 @@ def main() -> None:
 
     d.text((page_w // 2, margin), "THE ODYSSEY", font=f_title, fill=INK, anchor="ma")
     d.text((page_w // 2, margin + int(CELL_W * 0.115)),
-           "character reference — twenty-two sheets, Books I–IX",
+           "character reference — twenty-nine sheets, Books I–XI",
            font=f_sub, fill=MUTED, anchor="ma")
 
     y = margin + title_h

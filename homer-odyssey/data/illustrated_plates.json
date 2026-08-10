@@ -643,5 +643,117 @@
         "caption": "Riding on these I was carried along by the deadly winds — nine days; and on the tenth night the gods brought me to Ogygia."
       }
     ]
+  },
+  "bk13": {
+    "plates": [
+      {
+        "file": "send-off.jpeg",
+        "anchor": null,
+        "caption": "They spread a linen sheet and a rug on the deck of the hollow ship, at the stern, so that he might sleep unwaking."
+      },
+      {
+        "file": "night-crossing.jpeg",
+        "anchor": "as on a plain four yoked stallions spring forward",
+        "caption": "She ran on swiftly, cutting through the waves, carrying a man whose counsels were like the gods' — and who now slept without stirring, all his sufferings forgotten."
+      },
+      {
+        "file": "laid-ashore.jpeg",
+        "anchor": "laid him down on the sand, still overcome by sleep",
+        "caption": "First they lifted Odysseus out of the hollow ship, linen sheet and shining rug and all, and laid him down on the sand, still overcome by sleep."
+      },
+      {
+        "file": "ship-to-stone.jpeg",
+        "bigBeat": true,
+        "anchor": "went off to Scheria, where the Phaeacians live",
+        "caption": "The earth-shaker came close, turned her to stone, and rooted her to the bottom with one blow of the flat of his hand."
+      },
+      {
+        "file": "whose-country.jpeg",
+        "anchor": "struck both his thighs with the flats of his hands",
+        "caption": "“Ah me, whose country have I come to now?”"
+      },
+      {
+        "file": "shepherd-athena.jpeg",
+        "anchor": "It is not so nameless as all that",
+        "caption": "“It is rough country, true, no place for driving horses — and so, stranger, the name of Ithaca has reached even to Troy.”"
+      },
+      {
+        "file": "the-smile.jpeg",
+        "anchor": "smiled, and stroked him with her hand",
+        "caption": "“We are both old hands at cunning: you are far the best of all mortals in counsel and in speech, and I among all the gods am famed for wit and craft.”"
+      },
+      {
+        "file": "kissing-the-earth.jpeg",
+        "anchor": "he kissed the grain-giving earth",
+        "caption": "The goddess scattered the mist, and the land appeared; and he kissed the grain-giving earth."
+      },
+      {
+        "file": "olive-plot.jpeg",
+        "anchor": "sat down at the foot of the sacred olive",
+        "caption": "The two of them sat down at the foot of the sacred olive and plotted death for the arrogant suitors."
+      },
+      {
+        "file": "the-beggar.jpeg",
+        "bigBeat": true,
+        "anchor": "Athena touched him with her wand",
+        "caption": "She shriveled the fine skin on his supple limbs, and dimmed his eyes, so beautiful before."
+      }
+    ]
+  },
+  "bk14": {
+    "plates": [
+      {
+        "file": "the-steading.jpeg",
+        "anchor": null,
+        "caption": "He had built the courtyard high and wide, in a place with a view all round — he himself, for the swine of his absent master, without his mistress or old Laertes."
+      },
+      {
+        "file": "the-dogs.jpeg",
+        "anchor": "the baying dogs caught sight of Odysseus",
+        "caption": "Odysseus had the cunning to sit down, and the staff dropped from his hand."
+      },
+      {
+        "file": "the-hut.jpeg",
+        "anchor": "gave him a seat, piling thick brushwood underneath",
+        "caption": "He piled thick brushwood underneath and spread over it the skin of a shaggy wild goat, his own bedding, large and thick."
+      },
+      {
+        "file": "first-meal.jpeg",
+        "anchor": "Odysseus ate his meat hungrily and drank his wine",
+        "caption": "Odysseus ate his meat hungrily and drank his wine, ravenous, in silence, sowing evil for the suitors."
+      },
+      {
+        "file": "the-oath.jpeg",
+        "anchor": "I shall never pay that reward for good news",
+        "caption": "“Old man, I shall never pay that reward for good news, and Odysseus will never come home again.”"
+      },
+      {
+        "file": "cretan-lie.jpeg",
+        "bigBeat": true,
+        "anchor": "Would that the two of us had food and sweet wine enough",
+        "caption": "“Very well, I will tell you all this quite truly.” — the first of the Cretan lies."
+      },
+      {
+        "file": "the-hog.jpeg",
+        "anchor": "the others brought in a hog, five years old and very fat",
+        "caption": "Nor did the swineherd forget the immortals, for he had a good heart; he made a beginning by casting bristles into the fire."
+      },
+      {
+        "file": "foul-night.jpeg",
+        "anchor": "night came on, foul and moonless",
+        "caption": "Now night came on, foul and moonless; Zeus rained the whole night through, and the great West Wind kept blowing."
+      },
+      {
+        "file": "cloak-trick.jpeg",
+        "anchor": "the wine commands me",
+        "caption": "“I will tell you a boastful tale; the wine commands me — witless wine, which sets even a very sensible man to singing.”"
+      },
+      {
+        "file": "out-to-the-pigs.jpeg",
+        "bigBeat": true,
+        "anchor": "sleeping away from his pigs",
+        "caption": "He slung a sharp sword over his broad shoulders, and went out to sleep where the white-tusked boars slept, under a hollow rock, out of the wind."
+      }
+    ]
   }
 }

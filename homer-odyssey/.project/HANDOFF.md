@@ -58,6 +58,43 @@ Scylla/monsters described inline. bigBeats: the-sirens, six-taken,
 thunderbolt. Register: six-taken is silhouettes-against-sky, no gore;
 the Sirens are beautiful and the bone-meadow stays subtle.
 
+**Book XIII: manifest written (10 plates, validated at paras 5,7,10,13,15,
+18,21,23,28 + unanchored opener `send-off`), art pending.** No new sheets —
+uploads `odysseus` + `athena-divine`; shepherd-Athena described inline.
+bigBeats: ship-to-stone, the-beggar. Second half of the epic begins here.
+
+**Book XIV: manifest written (10 plates, validated at paras 1,2,4,7,8,20,
+23,24,28 + unanchored opener `the-steading`), sheets DONE, art pending.**
+Uploads: `eumaeus` + `odysseus-beggar`. bigBeats: cretan-lie,
+out-to-the-pigs.
+
+**NEW SHEET `odysseus-beggar` (31 sheets now, new cast row "ITHACA, SECOND
+HALF").** Odysseus is disguised from XIII to XXII — nine books, more
+page-time than any other single look — so he gets his own sheet exactly as
+Athena has three. Precedent: athena-divine/mentes/mentor. This REPLACES the
+per-scene disguise paragraph; upload the beggar sheet and never mention the
+disguise. It carries a deliberate `NO olive-green` colour lock (0.00%
+verified) so his kingly signature cannot leak into a scene where he must be
+unrecognisable, and one head study where the mask drops (eyes level and
+sharp) for XVI/XIX/XXI/XXII. Took two passes: v1's face was too narrow and
+had no sharp study.
+
+**OPEN: `eumaeus` russet collides with Antinous's terracotta.** Measured
+14.98% red vs Antinous 8.18%, and the hues are only 7 degrees apart
+(20.5deg vs 13.5deg, lightness 56 vs 49). They share the hall in Books
+XVII-XXII, where Antinous's colour exists precisely to make him findable
+among twenty suitors. The collision was LATENT IN THE ROSTER ("russet-brown
+sheepskin jerkin" was the pack's own wording), not introduced by the
+generation. Cheap fix if wanted: regenerate the jerkin as a true earth-brown
+(hue ~30-35deg, lower saturation) or undyed grey-fleece. Left as-is pending
+a call.
+
+**Pending redo batch (optional, user-flagged res annoyance):** six plates
+worth regenerating at 2048 in ONE fresh chat, best-first: sword-and-goddess,
+restored (bk10), tiresias, achilles-shade (bk11 — the latter also has a
+torso-less figure artifact), double-wedding, helen-recognizes (bk04).
+15 plates total came from 1024 sources; the underworld ones tolerate it.
+
 **prepare_plates.py grew a paper-band pass**: near-white rows (min channel
 avg >= 228, spread <= 48) are eaten per side before the flatness passes —
 Gemini borders that fade into the art fail the flatness proof and used to

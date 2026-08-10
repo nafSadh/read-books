@@ -170,6 +170,16 @@ CHARACTERS = {
         "The most beautiful of the Greek dead",
         "plain pale-grey tunic · NO armour · fame was a bad trade",
     ),
+    "eumaeus": (
+        "EUMAEUS",
+        "The loyal swineherd; born a prince, taken as a child",
+        "russet fleece jerkin \u00b7 broad and upright \u00b7 dark hair, short beard \u00b7 crook",
+    ),
+    "odysseus-beggar": (
+        "ODYSSEUS (DISGUISED)",
+        "Athena's disguise, worn from Book XIII to XXII",
+        "filthy rags \u00b7 bald deer-hide \u00b7 holed pouch on a cord \u00b7 staff \u00b7 NO olive-green",
+    ),
     "aegyptius": (
         "AEGYPTIUS",
         "Oldest man of the Ithacan assembly",

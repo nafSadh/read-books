@@ -313,12 +313,16 @@ html[data-theme="dark-blue"] {
   display: flex; gap: 6px; align-items: center; padding-bottom: 8px;
   opacity: 0; pointer-events: none; transition: opacity .2s ease;
 }
-.theme-wrap:hover .theme-dots { opacity: 1; pointer-events: auto; }
+.theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots,
+.theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot {
-  width: 12px; height: 12px; border-radius: 50%; border: none;
+  width: 12px; height: 12px; border-radius: 50%; border: none; padding: 0;
   cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
 }
 .theme-dot:hover { transform: scale(1.25); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:focus:not(:focus-visible) { outline: none; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bg-right), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
 .theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
@@ -412,14 +416,14 @@ html[data-theme="dark-blue"] {
 
 <div id="footer">
   <div class="footer-nav">
-    <button id="btn-prev" title="Previous">&larr;</button>
+    <button id="btn-prev" title="Previous" aria-label="Previous page">&larr;</button>
     <span id="page-num-wrap"><span id="page-num"></span><span id="page-total"></span></span>
-    <button id="btn-next" title="Next">&rarr;</button>
+    <button id="btn-next" title="Next" aria-label="Next page">&rarr;</button>
   </div>
   <div class="chapter-scrubber" id="chapter-scrubber"></div>
   <div class="theme-wrap" id="theme-wrap">
-    <button class="theme-btn" id="theme-btn" title="Cycle theme">
-      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <button class="theme-btn" id="theme-btn" title="Cycle theme" aria-label="Change theme">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false">
         <circle cx="10" cy="10" r="4"/>
         <path d="M10 6V10H6A4 4 0 0 1 10 6z" fill="currentColor" stroke="none"/>
         <path d="M10 10V14H14A4 4 0 0 1 10 14z" fill="currentColor" stroke="none"/>
@@ -433,12 +437,12 @@ html[data-theme="dark-blue"] {
         <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
       </svg>
     </button>
-    <div class="theme-dots">
-      <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-      <span class="theme-dot" data-theme="light-purple" title="Light Purple"></span>
-      <span class="theme-dot active" data-theme="sepia" title="Sepia"></span>
-      <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-      <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+    <div class="theme-dots" role="group" aria-label="Theme">
+      <button class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light Azure"></button>
+      <button class="theme-dot" data-theme="light-purple" title="Light Purple" aria-label="Light Purple"></button>
+      <button class="theme-dot active" data-theme="sepia" title="Sepia" aria-label="Sepia"></button>
+      <button class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark Violet"></button>
+      <button class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark Blue"></button>
     </div>
   </div>
 </div>
@@ -722,6 +726,31 @@ function computeTotalSpreads() {
   else { totalSpreads = 3 + Math.ceil((contentPages.length + 1) / 2); }
 }
 
+// ===== READING POSITION IN URL HASH (#p-N) =====
+function writeHashPosition(page) {
+  const hash = page > 0 ? '#p-' + page : '';
+  if ((window.location.hash || '') === hash) return;
+  try { history.replaceState(null, '', hash || window.location.pathname + window.location.search); } catch(e) {}
+}
+
+/* Inverse of contentIndexForSpreadLeft/Right: left = 2s-7, right = 2s-6. */
+function spreadForPage(page) {
+  const ci = page - 1;
+  if (ci < 0 || ci >= contentPages.length) return -1;
+  if (isMobile()) return ci + 3;
+  return Math.floor((ci + 7) / 2);
+}
+
+function restoreHashPosition() {
+  const m = /^#p-(\d+)$/.exec(window.location.hash || '');
+  if (!m) return false;
+  const s = spreadForPage(parseInt(m[1], 10));
+  if (s < 0 || s >= totalSpreads) return false;
+  currentSpread = s;
+  renderSpread(currentSpread);
+  return true;
+}
+
 function updateIndicator() {
   const pageNumEl = document.getElementById('page-num');
   const pageTotalEl = document.getElementById('page-total');
@@ -743,6 +772,7 @@ function updateIndicator() {
   }
   if (curPage > 0) { pageNumEl.textContent = curPage; pageTotalEl.textContent = ' / ' + maxPage; }
   else { pageNumEl.textContent = ''; pageTotalEl.textContent = ''; }
+  writeHashPosition(curPage);
 
   const ch = getCurrentChapter();
   const chTitle = ch ? (CHAPTERS.find(c => c.num === ch)?.title || '') : '';
@@ -952,7 +982,7 @@ function init() {
   });
 
   currentSpread = 0;
-  renderSpread(0);
+  if (!restoreHashPosition()) renderSpread(0);
 
   document.getElementById('btn-prev').addEventListener('click', flipBackward);
   document.getElementById('btn-next').addEventListener('click', flipForward);
@@ -963,9 +993,16 @@ function init() {
     if (currentSpread === 0) { currentSpread = 1; renderSpread(1); }
   });
 
-  document.getElementById('theme-btn').addEventListener('click', cycleTheme);
+  const themeWrap = document.getElementById('theme-wrap');
+  document.getElementById('theme-btn').addEventListener('click', (e) => { e.stopPropagation(); cycleTheme(); });
+  document.getElementById('theme-btn').addEventListener('touchstart', () => {
+    themeWrap.classList.toggle('expanded');
+  }, { passive: true });
   document.querySelectorAll('.theme-dot').forEach(d => {
-    d.addEventListener('click', () => setTheme(d.dataset.theme));
+    d.addEventListener('click', (e) => { e.stopPropagation(); setTheme(d.dataset.theme); });
+  });
+  document.addEventListener('click', (e) => {
+    if (!themeWrap.contains(e.target)) themeWrap.classList.remove('expanded');
   });
 
   function initPageNumClick() {
@@ -989,13 +1026,9 @@ function init() {
         const span = document.createElement('span');
         span.id = 'page-num';
         input.replaceWith(span);
-        if (val >= 1 && val <= maxPage) {
-          const ci = val - 1;
-          if (isMobile()) { currentSpread = ci + 3; }
-          else if (ci === 0) { currentSpread = 2; }
-          else { currentSpread = 3 + Math.floor((ci - 1) / 2); }
-          renderSpread(currentSpread);
-        } else { updateIndicator(); }
+        const s = (val >= 1 && val <= maxPage) ? spreadForPage(val) : -1;
+        if (s >= 0) { currentSpread = s; renderSpread(currentSpread); }
+        else { updateIndicator(); }
         initPageNumClick();
       }
       input.addEventListener('keydown', (e) => {
@@ -1008,8 +1041,13 @@ function init() {
   initPageNumClick();
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipForward(); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); flipBackward(); }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'j') { e.preventDefault(); flipForward(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'k') { e.preventDefault(); flipBackward(); }
+    else if (e.key === 'Escape') {
+      document.getElementById('theme-wrap').classList.remove('expanded');
+      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    }
   });
 
   let touchX = 0, touchY = 0;

@@ -313,11 +313,13 @@ body{
 /* ── Theme picker in controls ── */
 .theme-dots{display:flex;gap:5px;align-items:center;padding:0 4px}
 .theme-dot{
-  width:14px;height:14px;border-radius:50%;cursor:pointer;
+  width:14px;height:14px;border-radius:50%;cursor:pointer;padding:0;
   transition:transform .2s,box-shadow .2s;
   border:1px solid var(--ctrl-border);
 }
 .theme-dot:hover{transform:scale(1.15)}
+button:focus-visible{outline:2px solid var(--page-accent);outline-offset:3px}
+button:focus:not(:focus-visible){outline:none}
 .theme-dot.active{box-shadow:0 0 0 2px var(--page-accent)}
 .theme-dot[data-t="light-purple"]{background:#c9b8e8}
 .theme-dot[data-t="light-azure"]{background:#d4e8f7}
@@ -489,16 +491,16 @@ body{
 </main>
 
 <div class="controls" id="controls">
-  <button class="ctrl-btn" id="btn-prev" title="Previous page">&#8249;</button>
+  <button class="ctrl-btn" id="btn-prev" title="Previous page" aria-label="Previous page">&#8249;</button>
   <span class="page-indicator" id="page-indicator">Cover</span>
-  <button class="ctrl-btn" id="btn-next" title="Next page">&#8250;</button>
+  <button class="ctrl-btn" id="btn-next" title="Next page" aria-label="Next page">&#8250;</button>
   <div class="ctrl-divider"></div>
-  <div class="theme-dots">
-    <span class="theme-dot active" data-t="light-purple" title="Light Purple"></span>
-    <span class="theme-dot" data-t="light-azure" title="Light Azure"></span>
-    <span class="theme-dot" data-t="sepia" title="Sepia"></span>
-    <span class="theme-dot" data-t="dark-violet" title="Dark Violet"></span>
-    <span class="theme-dot" data-t="dark-blue" title="Dark Blue"></span>
+  <div class="theme-dots" role="group" aria-label="Theme">
+    <button class="theme-dot active" data-t="light-purple" title="Light Purple" aria-label="Light Purple"></button>
+    <button class="theme-dot" data-t="light-azure" title="Light Azure" aria-label="Light Azure"></button>
+    <button class="theme-dot" data-t="sepia" title="Sepia" aria-label="Sepia"></button>
+    <button class="theme-dot" data-t="dark-violet" title="Dark Violet" aria-label="Dark Violet"></button>
+    <button class="theme-dot" data-t="dark-blue" title="Dark Blue" aria-label="Dark Blue"></button>
   </div>
 </div>
 
@@ -580,7 +582,7 @@ function getAnnotationsHtml() {
     <p>Every passage across all 12 Books has been annotated with supplementary material accessible through the scrolling reader.</p>
     <div class="ornament-line"></div>
     <h4>Modern English rewrites</h4>
-    <p>Each meditation includes a plain-language restatement alongside Meric Casaubon&rsquo;s 1634 translation, making the Stoic ideas accessible without losing the original&rsquo;s texture.</p>
+    <p>Each meditation includes a plain-language restatement alongside George Long&rsquo;s 1862 translation (Meric Casaubon&rsquo;s 1634 in the Casaubon reader), making the Stoic ideas accessible without losing the original&rsquo;s texture.</p>
     <h4>Historical context notes</h4>
     <p>Contextual notes illuminate references to events, customs, and philosophical schools that a modern reader might not recognize.</p>
     <h4>Proper noun tooltips</h4>
@@ -595,16 +597,24 @@ function getReadersHtml() {
     <h3>Available readers</h3>
     <a class="reader-link" href="reader.html">
       <span class="rl-name">Scrolling Reader</span>
-      <span class="rl-desc">Annotated passages with Modern English rewrites, historical notes, and proper noun tooltips with Wikipedia links</span>
+      <span class="rl-desc">George Long&rsquo;s 1862 translation, all 486 Leopold passages annotated with Modern English rewrites, historical notes, proper noun tooltips, and an original Greek toggle</span>
+    </a>
+    <a class="reader-link" href="reader-casaubon.html">
+      <span class="rl-name">Casaubon Reader</span>
+      <span class="rl-desc">Meric Casaubon&rsquo;s 1634 translation in its original 412-passage numbering, annotated in the same reader chrome</span>
     </a>
     <a class="reader-link" href="fullbleed.html">
       <span class="rl-name">Book Spread</span>
-      <span class="rl-desc">Two-page layout with 3D page flip animation, cover, and chapter navigation</span>
+      <span class="rl-desc">Two-page layout with 3D page flip animation, cover, and chapter navigation (Casaubon, 1634)</span>
     </a>
     <div class="ornament-line" style="margin:16px 0"></div>
     <h3>Data sources</h3>
     <div class="source-row">
-      <span class="sr-label">English translation</span>
+      <span class="sr-label">English (Scrolling Reader)</span>
+      <span class="sr-value">George Long, 1862</span>
+    </div>
+    <div class="source-row">
+      <span class="sr-label">English (Casaubon / Spread)</span>
       <span class="sr-value">Meric Casaubon, 1634</span>
     </div>
     <div class="source-row">
@@ -833,8 +843,10 @@ function init() {
   document.getElementById('btn-prev').addEventListener('click', flipBackward);
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flipForward(); }
-    if (e.key === 'ArrowLeft') flipBackward();
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'j') { e.preventDefault(); flipForward(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'k') { e.preventDefault(); flipBackward(); }
+    else if (e.key === 'Escape') { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); }
   });
 
   // Theme dots

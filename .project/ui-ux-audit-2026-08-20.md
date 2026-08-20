@@ -285,3 +285,18 @@ Not in the original audit — surfaced by the fix and verification agents:
   and `study.html` are not linked.
 - **Alice's legacy variants** (`scroll`, `single`, `web-reader`, `index`,
   `theater`) were fixed but not consolidated — that call is the maintainer's.
+
+### Final verification
+
+A full smoke pass over the finished state — every non-Homer page at 1440×900 and
+390×844, 58 screenshots:
+
+| | Before | After |
+|---|---|---|
+| Pages with JS page errors | 3 | **0** |
+| Pages with horizontal overflow | — | **0** |
+| Pages reachable but broken | 1 (raw template at book root) | **0** |
+
+The single remaining console line is `vedas/rigveda.html`'s `file://` fetch
+falling back to its `<script>` loader, which then succeeds and renders the sukta
+— benign, and by design so the reader works offline.

@@ -21,6 +21,10 @@
 - [ ] Mobile testing for fullbleed.html
 - [ ] Bring `web-reader.html` onto the five house theme names (currently light/sepia/dark/black)
 - [ ] `mobile.html` theme button is a 17×20px touch target — needs the ::before hit expander
+- [ ] `reader.html` `#ch-N` restore is racy: `restoreHash()` fires on `document.fonts.ready + 50ms`,
+      and when the font request is slow the scroll lands before layout settles, so the page ends up
+      at chapter 1. Reproduces ~50% of loads (pre-existing; same behaviour before this session's
+      changes). Needs a post-layout re-check, not a longer timeout.
 
 ## Completed
 

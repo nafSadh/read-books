@@ -702,6 +702,23 @@ function getSpreadContent(spreadIdx) {
   return { leftHtml: '', rightHtml: '', leftNum: '', rightNum: '' };
 }
 
+/* ── Reading position in the URL hash (#p-N spread index) ── */
+function writeHashPosition(spreadIdx) {
+  const hash = spreadIdx > 0 ? '#p-' + spreadIdx : '';
+  if ((window.location.hash || '') === hash) return;
+  try { history.replaceState(null, '', hash || window.location.pathname + window.location.search); } catch(e) {}
+}
+
+function restoreHashPosition() {
+  const m = /^#p-(\d+)$/.exec(window.location.hash || '');
+  if (!m) return false;
+  const s = parseInt(m[1], 10);
+  if (!(s > 0 && s < TOTAL_SPREADS)) return false;
+  currentSpread = s;
+  renderSpread(currentSpread);
+  return true;
+}
+
 function renderSpread(spreadIdx) {
   const book = document.getElementById('book');
   const leftInner = document.getElementById('page-left-inner');
@@ -720,6 +737,8 @@ function renderSpread(spreadIdx) {
   rightInner.innerHTML = content.rightHtml;
   numLeft.textContent = content.leftNum;
   numRight.textContent = content.rightNum;
+
+  writeHashPosition(spreadIdx);
 
   const indicator = document.getElementById('page-indicator');
   if (spreadIdx === 0) indicator.textContent = 'Cover';
@@ -831,7 +850,7 @@ function loadTheme() {
 /* ──────────────────── Init ──────────────────── */
 function init() {
   loadTheme();
-  renderSpread(0);
+  if (!restoreHashPosition()) renderSpread(0);
 
   // Flip layer hidden initially
   document.getElementById('flip-layer').style.display = 'none';

@@ -18,7 +18,9 @@
 
 - [x] Directory renamed `meditations/` → `aurelius-meditations/`
 - [x] `data/collect_texts.py` — collects Greek + Long + Casaubon into JSON/MD
-- [x] `data/texts/` — 12 per-book JSON/MD + combined files (983 KB JSON, 935 KB MD)
+- [x] `data/texts/` — `meditations-complete.md` (combined text) + `casaubon-long-alignment.json`
+      (the canonical per-passage data lives in `aurelius-meditations.json` at the book root;
+      there are no per-book `data/texts/book-NN.json` files)
 - [x] Greek (Leopold, 486 passages) aligned with Long (484/486 matched)
 - [x] Casaubon (412 passages) stored separately (numbering diverges)
 - [x] `seeds/` → `data/` rename across all references
@@ -28,14 +30,16 @@
 
 ## Greek text integration into readers
 
-- [ ] Integrate Greek text into reader.html (toggle or side-by-side)
-  - Source: `data/texts/book-NN.json` (aligned Greek + Long)
+- [x] Integrate Greek text into reader.html — shipped as the "Γγ" top-bar toggle
+  - Source: `aurelius-meditations.json` (aligned Greek + Long), injected by `data/assemble-reader.py`
+  - Greek on: side-by-side; Greek + detail open: Greek stacked below English
+  - Per-word transliteration tooltips (`.gw`, focusable, hover/focus/tap)
   - 484/486 passages have Greek↔Long alignment
   - Book 6.59 and Book 12.16 lack Long match (edition differences)
 - [ ] Greek + English in fullbleed.html (chapter overview pages)
 
 ## Future
 
-- [ ] URL hash state for reader.html (`#ch-N`) and fullbleed.html (`#p-N`)
+- [x] URL hash state for reader.html / reader-casaubon.html (`#ch-N`) and fullbleed.html (`#p-N`)
 - [ ] Additional reader formats (mobile, theater, etc.)
 - [ ] Haines (1916) Loeb translation (Wikisource, public domain)

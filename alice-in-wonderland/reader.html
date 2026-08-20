@@ -1857,6 +1857,9 @@ document.addEventListener('touchend', (e) => {
 
 // ===== HASH STATE =====
 let userHasScrolled = false;
+// True from load until the hash-restore scroll has landed, so the chapter
+// observer cannot overwrite the position we are in the middle of restoring.
+let restoringHash = /^#ch-\d+$/.test(location.hash);
 window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true });
 
 // Build sidebar chapter list from DOM
@@ -1959,7 +1962,7 @@ function setupChapterObserver() {
         });
         chapterIndicator.textContent = chapterTitles[idx] || '';
         document.querySelectorAll('.ch-node').forEach((n, i) => n.classList.toggle('active', i === idx));
-        if (userHasScrolled) {
+        if (userHasScrolled && !restoringHash) {
           history.replaceState(null, '', '#ch-' + (idx + 1));
         }
       }
@@ -1988,9 +1991,16 @@ function parseHash() {
 }
 function restoreHash() {
   if (!location.hash) return;
+  // Capture the target NOW: restoring is deferred until fonts settle, and in
+  // that window the chapter observer can rewrite the hash to #ch-1, which
+  // parseHash() would then read back as the thing to restore.
+  const wanted = location.hash;
   function go() {
     void document.body.offsetHeight;
-    parseHash();
+    const el = chapterEls[parseInt((wanted.match(/^#ch-(\d+)$/) || [])[1], 10) - 1];
+    if (el) window.scrollTo({ top: el.offsetTop - 56 });
+    history.replaceState(null, '', wanted);
+    restoringHash = false;
   }
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => setTimeout(go, 50));

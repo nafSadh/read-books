@@ -26,16 +26,26 @@ Built by `data/assemble-reader.py` from `aurelius-meditations.json` + `reader-ca
 
 **Layout modes**:
 - Default: English text only (single column)
-- Greek on: English + Greek side-by-side (60%/40%)
-- Detail open: Detail panel (left, 45%) + English (right, 55%)
-- Both open: Detail (25%) + Greek (28%) + English (47%), viewport-capped via `min()`
+- Greek on: English + Greek side-by-side (60%/40%, flex row-reverse — Greek uses `order: -1`)
+- Detail open: Detail panel (left, 50%) + English (right, 50%); the passage widens via
+  `--_grow` and is viewport-capped with `min()`
+- Both open: 2-column grid `minmax(0,50%) minmax(0,1fr)` — Detail spans both rows in column 1,
+  English sits in column 2 row 1, Greek is **stacked below English** in column 2 row 2
+  (rule-separated by a `border-top`, not a third column)
 - Mobile (<1200px): all columns stack vertically
+
+**Reading position**: written to the URL hash as `#ch-N` via `history.replaceState` from the
+chapter `IntersectionObserver`, restored on load (`.chapter` carries `scroll-margin-top: 56px`
+so the native fragment jump clears the fixed top bar). Never stored in localStorage.
 
 **Rebuild**: `python3 data/assemble-reader.py` (reads JSON + template, outputs reader.html)
 
 ### 1b. `reader-casaubon.html` (scrolling reader — Casaubon translation)
 
 Original Casaubon (1634) reader preserved as-is. localStorage key: `meditations-casaubon-prefs`.
+
+> **This file is also the template for `reader.html`.** Edit it, never `reader.html`, and always
+> re-run `python3 data/assemble-reader.py` afterwards, then re-check *both* readers.
 
 ### 2. `fullbleed.html` (book-spread reader)
 
@@ -46,16 +56,23 @@ Follows `../alice-in-wonderland/fullbleed.html` pattern:
 - Cover, title page, table of contents
 - 5 themes with sepia default
 - localStorage key: `meditations-fullbleed-theme`
+- Reading position in the URL hash as `#p-N` (printed page number) via `history.replaceState`,
+  restored on load through `spreadForPage()` — the inverse of
+  `contentIndexForSpreadLeft/Right` (left = `2s-7`, right = `2s-6`)
 
 ## Typography
 
 | Property       | Value |
 |----------------|-------|
-| text-align     | justify (passage text) |
+| text-align     | left / ragged right in the scrolling readers; `justify` + `hyphens: auto` in `fullbleed.html` |
 | text-indent    | 0 (meditations are short, no indent needed) |
 | line-height    | 1.85 |
 | default width  | 640px |
 | font-body      | EB Garamond |
+
+The scrolling readers deliberately depart from the house "prose = justify" rule: most Leopold
+passages are one- to three-line aphorisms, and justifying them strands large gaps between words
+on the first line. `fullbleed.html` sets full-measure book pages, so it justifies as usual.
 
 ## Theme variables
 

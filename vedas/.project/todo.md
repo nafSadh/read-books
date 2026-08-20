@@ -29,12 +29,11 @@ Done:
 Open:
 
 - [ ] **`vedas/index.html`** — the only book without a landing page (MED, audit)
-- [ ] **`reader.html` sukta navigation lands in the wrong place**: `.veda-section` is
-      `position:relative`, so `s.offsetTop` in the sidebar links, the chapter scrubber and
-      the progress segments is section-relative — every sukta after the first Veda scrolls
-      near the top of its section instead. Use
-      `el.getBoundingClientRect().top + window.scrollY - 56` (as `restoreHash()` does).
-      Not part of the audit list; found while adding hash state.
+- [x] `reader.html` sukta navigation lands on target: `.veda-section` is `position:relative`,
+      so the section-relative `offsetTop` sent every sukta past the first Veda to the wrong
+      place. All four call sites (sidebar links, progress segments, scrubber, updateScroll)
+      now go through a `suktaTop()` helper using `getBoundingClientRect().top + scrollY - 56`.
+      Verified: sūktas 1, 7, 10 and 13 all land at 56px.
 - [ ] `reader.html` / `rigveda.html` theme dots are still `<span>`s — convert to
       `<button aria-label>` per `khayyam-rubaiyat/index.html:370` (fullbleed already is)
 - [ ] `fullbleed.html` chapter scrubber buttons are ~20x11px — needs a `::before` hit-area

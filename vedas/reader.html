@@ -748,6 +748,13 @@ const VEDAS_DATA = {"vedas": [{"id": "rigveda", "title": "ঋগ্বেদ স
 // ===================================================================
 const contentEl = document.getElementById('content');
 
+// .veda-section is position:relative, so a .sukta's offsetTop is relative to
+// its section, not the document — every sukta past the first Veda would scroll
+// to the wrong place. Measure against the viewport instead.
+function suktaTop(el) {
+  return el.getBoundingClientRect().top + window.scrollY - 56;
+}
+
 function buildContent() {
   let html = '';
 
@@ -860,7 +867,7 @@ sidebarOverlay.addEventListener('click', closeSidebar);
       e.preventDefault();
       closeSidebar();
       setHash(i);
-      window.scrollTo({ top: s.offsetTop - 56, behavior: 'smooth' });
+      window.scrollTo({ top: suktaTop(s), behavior: 'smooth' });
     });
     container.appendChild(link);
   });
@@ -888,7 +895,7 @@ const suktaTitles = Array.from(suktaEls).map(s => {
     seg.style.width = (len / total * 100) + '%';
     seg.title = suktaTitles[i];
     seg.addEventListener('click', () => {
-      window.scrollTo({ top: suktaEls[i].offsetTop - 56, behavior: 'smooth' });
+      window.scrollTo({ top: suktaTop(suktaEls[i]), behavior: 'smooth' });
     });
     progressTrack.appendChild(seg);
   });
@@ -900,7 +907,7 @@ function updateScroll() {
   const scrollTop = window.scrollY;
 
   suktaEls.forEach((s, i) => {
-    const sTop = s.offsetTop - 56;
+    const sTop = suktaTop(s);
     const sBottom = sTop + s.offsetHeight;
     const seg = segments[i];
     if (!seg) return;
@@ -940,9 +947,7 @@ function restoreHash() {
   if (!m) return;
   const target = suktaEls[parseInt(m[1], 10) - 1];
   if (!target) return;
-  // .veda-section is position:relative, so offsetTop is section-relative here —
-  // measure against the viewport instead.
-  const top = target.getBoundingClientRect().top + window.scrollY - 56;
+  const top = suktaTop(target);
   const prev = document.documentElement.style.scrollBehavior;
   document.documentElement.style.scrollBehavior = 'auto';
   window.scrollTo(0, top);
@@ -982,7 +987,7 @@ setupObserver();
     node.dataset.title = suktaTitles[i];
     node.addEventListener('click', (e) => {
       e.stopPropagation();
-      window.scrollTo({ top: s.offsetTop - 56, behavior: 'smooth' });
+      window.scrollTo({ top: suktaTop(s), behavior: 'smooth' });
     });
     scrubber.appendChild(node);
   });

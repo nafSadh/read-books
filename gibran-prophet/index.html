@@ -150,10 +150,19 @@ body {
   border-radius: 50%;
   cursor: pointer;
   border: none;
+  padding: 0;
   transition: transform .15s, box-shadow .15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 11px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 5px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px currentColor; }
 .dot-lp  { background: #7c3aed; color: #7c3aed; }
 .dot-sep { background: #b45309; color: #b45309; }

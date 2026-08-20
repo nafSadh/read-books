@@ -237,10 +237,13 @@ body {
   transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0; padding: 0;
   position: relative;
 }
-/* Keep the dot visually 14px but give it a >=40px pointer/touch hit area. */
+/* Keep the dot visually 14px but give it a taller hit area. The expander must
+   not grow sideways past half the 6px gap, or it covers the neighbouring dot's
+   centre and steals its clicks (later siblings paint on top). */
 .theme-dot::before {
   content: ""; position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%); width: 40px; height: 40px;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
 .theme-dot:focus-visible {

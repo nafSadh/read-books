@@ -19,34 +19,60 @@ Books live at `{author-shortname}-{book-shortname}/`:
 ```
 read-books/
 ├── index.html                    ← book catalog / landing page
+├── README.md                     ← public-facing book list
 ├── AGENT_README.md               ← this file
 ├── .project/                     ← project maintenance
 │   ├── changelog.md
-│   └── todo.md
+│   ├── todo.md
+│   ├── annotation-strategy.md
+│   └── ui-ux-audit-*.md          ← audit reports
 │
 ├── alice-in-wonderland/          ← legacy naming (pre-convention)
-│   ├── reader.html
-│   ├── fullbleed.html
-│   ├── ...                       ← 9 reader formats
-│   └── seeds/                    ← (if applicable)
+│   ├── CLAUDE.md
+│   ├── .project/
+│   ├── gen_mobile.py             ← generates mobile.html
+│   └── *.html                    ← 9 reader formats, content embedded (no seeds/)
 │
-├── aurelius-meditations/          ← author-book convention
-│   ├── reader.html
-│   ├── fullbleed.html
-│   └── data/texts/               ← Greek + Long + Casaubon aligned JSON/MD
+├── aurelius-meditations/         ← author-book convention
+│   ├── CLAUDE.md
+│   ├── .project/
+│   ├── aurelius-meditations.json ← source text (not under seeds/)
+│   ├── data/assemble-reader.py   ← builds reader.html from reader-casaubon.html
+│   ├── data/texts/               ← Greek + Long + Casaubon alignment data
+│   └── index / reader / reader-casaubon / fullbleed .html
 │
 ├── gibran-prophet/               ← author-book convention
-│   ├── CLAUDE.md                 ← book-specific build instructions
-│   ├── .project/                 ← book-specific maintenance
+│   ├── CLAUDE.md
+│   ├── .project/
 │   ├── seeds/chapters.json       ← source text
-│   ├── reader.html               ← scrolling reader
-│   └── fullbleed.html            ← two-page spread
+│   └── index / reader / fullbleed / mobile / theater / pdf-reader /
+│       illustrations .html       ← 7 formats
 │
-└── vedas/                        ← no single author
-    ├── CLAUDE.md
-    ├── seeds/hymns.json
-    └── reader.html
+├── khayyam-rubaiyat/             ← 5 parallel editions
+│   ├── CLAUDE.md
+│   ├── seeds/*.json              ← one per edition
+│   ├── data/build_reader.py      ← builds reader.html
+│   ├── data/reader-template.html ← the real source for reader.html
+│   └── index / reader .html
+│
+├── homer-iliad/ , homer-odyssey/ ← 3 and 6 parallel editions
+│   ├── CLAUDE.md , .project/
+│   ├── seeds/*.md|json           ← markdown is canonical for the Odyssey
+│   ├── data/build.py             ← builds every variant from data/*-template.html
+│   └── index / reader / fullbleed / mobile / theater / pdf-reader .html
+│       (+ study.html, illustrated.html for the Odyssey)
+│
+└── vedas/                        ← no single author, multilingual
+    ├── CLAUDE.md , .project/
+    ├── seeds/*.json              ← curated hymns per Veda
+    ├── build_rigveda.py          ← builds rigveda.html (needs network)
+    ├── data/rigveda-template.html
+    └── reader / fullbleed / rigveda .html
 ```
+
+**Templates and build scripts belong under the book's `data/` directory**, never at the book root —
+anything at the root is publicly reachable at `lib.sadh.app/{book}/{file}`, and a raw template served
+to a reader is a broken page.
 
 **New books** should use `{author}-{book}/` naming (e.g., `gibran-prophet/`,
 `shelley-frankenstein/`). Do not rename legacy directories without user approval.
@@ -80,6 +106,19 @@ read-books/
 - **Roboto Slab** — slab serif option
 - All via Google Fonts CDN
 
+### Accessibility baseline
+Every reader is expected to meet these; they are the most common regressions in this repo:
+- Every icon-only control has an `aria-label` (a `title` attribute is not an accessible name substitute
+  on touch devices).
+- Theme dots are real `<button>` elements with `aria-label`, never click-only `<span>`s.
+  `khayyam-rubaiyat/index.html` has the canonical implementation.
+- Interactive targets are **≥40px** on touch. To keep a small visual dot, expand the hit area with a
+  transparent `::before` rather than growing the dot itself.
+- Anything revealed on `:hover` also reveals on `:focus-within` and has a touch path.
+- Visible `:focus-visible` outlines; honor `prefers-reduced-motion`.
+- Mark language changes with `lang` on the element — critical in the multilingual readers
+  (`sa-Deva` Devanagari, `sa-Latn` IAST, `sa-Beng` Bengali-script Sanskrit, `bn` Bengali, `en` English).
+
 ### Theme System
 5 themes available, toggled via `data-theme` on `<html>`:
 - `light-purple` — warm cream, purple accent (default)
@@ -89,17 +128,35 @@ read-books/
 - `dark-blue` — black, blue accent
 
 ### URL Hash State
-Readers should persist reading position in the URL hash so page refresh
-restores position:
+Every reader persists reading position in the URL hash so refresh, bookmarks, and shared links all
+restore the same place:
 - **reader.html**: `#ch-N` (chapter number)
-- **fullbleed.html**: `#p-N` (content page number)
+- **fullbleed.html**: `#p-N` (content page/spread number)
+- **mobile / theater / pdf-reader**: the same form as the format they mirror (`#ch-N` for
+  chapter-paged readers, `#p-N` for page-paged ones)
+- Book-specific forms are allowed where the structure differs — `vedas/rigveda.html` uses `#M.S`
+  (mandala.sūkta) and `khayyam-rubaiyat/reader.html` uses `#q-<edition>-N` — but they must still be
+  written on navigation and restored on load.
 - Use `history.replaceState()` to update without adding history entries
-- Parse hash on load to restore position
+- Parse the hash on load to restore position, and restore it **in script** rather than relying on the
+  browser's native fragment scroll — the target is often hidden or not yet rendered at parse time.
+- Beware init races: if content renders asynchronously, do not let scroll observers run before the
+  first render completes, or they will overwrite the position you just restored.
 
 ### Preferences
-- Stored in localStorage with key `{book}-reader-prefs` or `{book}-fullbleed-prefs`
-- Contains: theme, font, size, width
-- Reading position is in the URL hash, NOT localStorage
+- Stored in localStorage with key **`{book}-{format}-prefs`** — one key per reader format, always
+  book-prefixed. All books share the `lib.sadh.app` origin, so an unprefixed key (e.g. `fullbleed-theme`)
+  collides across books.
+  - `{book}` is the short book name used in the directory: `alice`, `meditations`, `prophet`,
+    `rubaiyat`, `vedas`, `iliad`, `odyssey`
+  - `{format}` is the file's own name: `reader`, `fullbleed`, `mobile`, `theater`, `pdf`, `index`,
+    plus any book-specific extras (`casaubon`, `web-reader`, `rigveda`, `illustrations`, `study`)
+- Value is a JSON object containing only presentation state: theme, font, size, width, and any
+  per-book display toggles (script toggles, Greek on/off, edition).
+- **Reading position is in the URL hash, NOT localStorage.** A prefs object must never carry a chapter,
+  page, spread, or sukta index.
+- When renaming an existing key, read the old key as a fallback on load so returning readers keep
+  their settings.
 
 ---
 

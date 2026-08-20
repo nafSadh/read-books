@@ -20,7 +20,15 @@
 - [ ] Consider consolidating legacy readers or archiving unused ones (user's call — do not delete)
 - [ ] Mobile testing for fullbleed.html
 - [ ] Bring `web-reader.html` onto the five house theme names (currently light/sepia/dark/black)
-- [ ] `mobile.html` theme button is a 17×20px touch target — needs the ::before hit expander
+- [ ] `web-reader.html` has no theme control below 700px: `.theme-dots` is `display:none` in the
+      responsive block and the settings panel only offers Size/Font/Spacing/Align. Pre-existing —
+      the dots were spans before, so converting them to buttons did not change reachability.
+      Needs a Theme row in the settings panel (or keep the dots visible).
+- [ ] Widen the theme-dot hit areas beyond 40px *tall*. They are currently 20×40 (reader),
+      18×40 (fullbleed), 14×40 (single) — the height clears 40px but the width is capped at
+      `100% + 6px` so the expander cannot overlap the neighbouring dot. Reaching 40×40 (or even
+      the 24×24 WCAG 2.5.8 minimum on width) needs a larger flex `gap` in the dot row, which is a
+      visual change rather than a CSS one-liner.
 - [ ] `reader.html` `#ch-N` restore is racy: `restoreHash()` fires on `document.fonts.ready + 50ms`,
       and when the font request is slow the scroll lands before layout settles, so the page ends up
       at chapter 1. Reproduces ~50% of loads (pre-existing; same behaviour before this session's
@@ -34,7 +42,10 @@
 - [x] Book-prefixed prefs keys everywhere (`alice-{format}-prefs`, legacy keys read as fallback)
 - [x] URL hash position + seekable progress bar in theater.html (`#s-N`)
 - [x] Keyboard nav (j/k/arrows/space) in scroll.html; chapter-row edge fades
-- [x] aria-labels on every icon-only control; theme dots are real `<button>`s with 40px hit areas
+- [x] aria-labels on every icon-only control; theme dots are real `<button>`s with 40px-tall hit
+      areas (width is capped by the dot gap — see Pending)
+- [x] `mobile.html` theme button given a true 40×40 `::before` tap target (edit is in
+      `gen_mobile.py`'s TEMPLATE; `mobile.html` regenerated from it)
 - [x] Small-screen fixes: single.html footer, index.html controls bar, pdf-reader.html toolbar
 - [x] 4-theme system in reader.html and fullbleed.html
 - [x] Half-sun theme toggle icon

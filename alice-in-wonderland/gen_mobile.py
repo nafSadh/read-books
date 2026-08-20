@@ -182,11 +182,12 @@ body{
   cursor:pointer;padding:2px;-webkit-tap-highlight-color:transparent;
   transition:color .35s,opacity .35s;position:relative;
 }
-/* Keep the glyph small but give it a 40x40 tap target. The bottom bar is
-   space-between with 22px side padding, so this cannot steal scrubber taps. */
+/* Keep the glyph small but give it a 40px-tall tap target. It grows upward,
+   downward and rightward into the bar's own 22px padding — never leftward,
+   because at 360px the scrubber ends only 4px away and a centred expander
+   would swallow the right edge of chapter XII's button. */
 #theme-btn::before{
-  content:"";position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);width:40px;height:40px;
+  content:"";position:absolute;top:-10px;bottom:-10px;left:0;right:-20px;
 }
 
 /* ── Hidden measure box ─────────────────── */

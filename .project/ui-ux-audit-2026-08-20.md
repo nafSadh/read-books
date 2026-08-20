@@ -6,6 +6,11 @@
 
 **Totals**: 76 findings — 5 high, ~34 medium, ~37 low.
 
+> **Status: resolved.** Every priority below (P0–P4) was implemented and
+> browser-verified in the same session. See [Resolution](#resolution) at the end
+> for what shipped, the bugs found *while* fixing, and what was deliberately
+> left open.
+
 ---
 
 ## Executive summary
@@ -185,3 +190,98 @@ Two-tier suite: reader.html + fullbleed.html are healthy (and already have hash 
 ---
 
 *Method notes: smoke artifacts (screenshots, console logs) were session-local and are not committed. The ~15s page load times in smoke data are the sandbox's Google-Fonts timeout, not a site defect. `vedas/rigveda.html`'s file:// fetch error is benign — its script-tag fallback works.*
+
+---
+
+## Resolution
+
+All five priorities were implemented and verified in headless Chromium the same
+day. 18 commits, 55 files, ~+7.9k/−0.6k lines.
+
+### P0 — the six broken readers
+
+| File | Root cause | Fix |
+|---|---|---|
+| `gibran-prophet/theater.html` | Literal `\`` escaped backticks (a heredoc-generation leak) made the page's only script a `SyntaxError` | Unescaped; page renders chapters again. Position also moved from localStorage into `#ch-N` |
+| `aurelius-meditations/reader.html` | `assemble-reader.py:509` injected `GREEK_JS` into *every* `</script>`, re-declaring `const greekBtn` and killing the second block | `replace(..., 1)`; rebuilt |
+| `vedas/rigveda.html` | The bottom scroll sentinel was observed at parse time and fired before the async first render, clobbering the restored sukta | Observe after first render + guard `appendNextSukta`. `#3.62` → M3, `#10.129` → "Creation" ✓ |
+| `vedas/rigveda.html` (mobile) | `justify-content:center` on a non-scrollable row put Mandalas 1–2/9–10 outside the scrollable area | `safe center` + `overflow-x`, active tab auto-scrolled into view |
+| `khayyam-rubaiyat/reader.html` (mobile) | Fixed top bar overflowed 390px, putting Settings entirely off-screen | Compact bar ≤480px, scrollable edition switcher |
+| `alice-in-wonderland/pdf-reader.html` (mobile) | `@media` hide rules (1,0,0) lost specificity to `#toolbar button` (1,0,1) | Scoped under `#toolbar`; fits 390/390 |
+
+### P1–P2 — conventions and accessibility
+
+Reading position now lives in the URL hash in every reader (Meditations had none
+at all across 486 passages; Prophet's mobile/theater kept it in localStorage);
+prefs keys migrated to `{book}-{format}-prefs` with legacy-key fallbacks so
+returning readers keep their settings; sepia added where missing for 5-theme
+parity; theme dots are real `<button aria-label>` controls with ≥40px hit areas
+across every book; aria-labels added to previously unlabelled icon-only controls;
+`lang` attributes (`sa-Deva`/`sa-Latn`/`sa-Beng`/`bn`/`en`) applied in the
+multilingual Vedas readers, which had announced everything as Bengali.
+
+### P3 — suite completeness
+
+- **Rubáiyát** gained `fullbleed.html` and `theater.html`, promised in its
+  CLAUDE.md but never built. `build_reader.py` became the shared library for all
+  three builders; `reader.html` rebuilds byte-identical, proving the refactor
+  inert.
+- **Vedas** gained `index.html` — it was the only book without a landing page.
+
+Formats per book now: Alice 9, Prophet 7, Meditations 4, Rubáiyát 4, Vedas 4.
+
+### P4 — docs
+
+README gained the four books it never documented; AGENT_README's conventions
+were rewritten where the drift originated (prefs keys defined for every format
+with a no-position rule and migration note, hash-state guidance covering async
+init races, a new accessibility baseline, a tree covering all seven books); every
+book's CLAUDE.md and todo now matches its code.
+
+### Bugs found *while* fixing
+
+Not in the original audit — surfaced by the fix and verification agents:
+
+1. **`vedas/reader.html` navigation landed in the wrong place.** `.veda-section`
+   is `position:relative`, so `offsetTop` was section-relative and every sūkta
+   past the first Veda scrolled to roughly its section top. Fixed at all four
+   call sites via a shared `suktaTop()` helper.
+2. **`alice/reader.html` hash restore was racy** — ~2 in 8 loads landed on
+   chapter 1, because the observer rewrote the hash during the fonts-ready
+   deferral and `parseHash()` then read the mutated value. Target is now captured
+   up front and observer writes are suppressed until the restore lands. 8/8.
+3. **`aurelius-meditations/fullbleed.html` page→spread was off by one** for even
+   pages — the formula was not the inverse of `contentIndexForSpreadLeft/Right`.
+   All 237 pages now round-trip.
+4. **Spread-reader footers overflowed phones.** In Prophet's fullbleed, 27 footer
+   elements rendered outside a 390px viewport — a *centred* flex row cannot be
+   scrolled back, so the book could not be paged or re-themed at all on a phone.
+   Sweeping all seven spread/landing pages found the same class of bug in Vedas
+   (which also rendered into a 195px column of a 390px screen) and Alice. All
+   seven now fit exactly, nothing off-screen.
+5. **Three regressions introduced by the fixes themselves**, each caught by an
+   independent verifier rather than by review:
+   - A square 40×40 `::before` hit area on 14px theme dots covered its
+     neighbours, so 4 of 5 dots applied the *wrong* theme. The expander now grows
+     only vertically.
+   - The stale-hash guard added to Khayyam's `applyEdition` fired on the
+     *incoming* deep link during init, silently destroying any
+     `#q-<edition>-N` link into a non-default edition.
+   - Making Greek word tooltips focusable put **29,190** tab stops in the
+     Meditations reader, burying every real control behind the text.
+
+### Deliberately left open
+
+- **`#p-N` in spread readers is viewport-dependent.** Pagination depends on
+  window size, so a shared `#p-100` can land on a different passage on a
+  different screen. Fixing it properly means anchoring the hash to a chapter or
+  passage id rather than a page ordinal — a format-wide redesign, not a patch.
+- **`gibran-prophet/illustrations.html` still hotlinks its 29 plates.** This
+  session had no network access to vendor them. The page now reserves
+  aspect-ratio boxes, carries descriptive alt text, and falls back to the plate's
+  caption when a host is unreachable, so it degrades gracefully.
+- **Homer** (`homer-iliad/`, `homer-odyssey/`) was excluded throughout as active
+  development, including the catalog gap where the Odyssey's `illustrated.html`
+  and `study.html` are not linked.
+- **Alice's legacy variants** (`scroll`, `single`, `web-reader`, `index`,
+  `theater`) were fixed but not consolidated — that call is the maintainer's.

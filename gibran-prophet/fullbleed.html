@@ -439,7 +439,8 @@ html[data-theme="dark-blue"] {
   pointer-events: none;
   transition: opacity .2s ease;
 }
-.theme-wrap:hover .theme-dots {
+.theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots {
   opacity: 1;
   pointer-events: auto;
 }
@@ -448,11 +449,20 @@ html[data-theme="dark-blue"] {
   height: 12px;
   border-radius: 50%;
   border: none;
+  padding: 0;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 12px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bg-right), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"] { background: #d4c8a8; }
 .theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
@@ -584,13 +594,13 @@ html[data-theme="dark-blue"] {
 <!-- Footer -->
 <div id="footer">
   <div class="footer-nav">
-    <button id="btn-prev" title="Previous">&larr;</button>
+    <button id="btn-prev" title="Previous" aria-label="Previous page">&larr;</button>
     <span id="page-num-wrap"><span id="page-num"></span><span id="page-total"></span></span>
-    <button id="btn-next" title="Next">&rarr;</button>
+    <button id="btn-next" title="Next" aria-label="Next page">&rarr;</button>
   </div>
   <div class="chapter-scrubber" id="chapter-scrubber"></div>
   <div class="theme-wrap" id="theme-wrap">
-    <button class="theme-btn" id="theme-btn" title="Cycle theme">
+    <button class="theme-btn" id="theme-btn" title="Cycle theme" aria-label="Cycle theme">
       <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
         <circle cx="10" cy="10" r="4"/>
         <path d="M10 6V10H6A4 4 0 0 1 10 6z" fill="currentColor" stroke="none"/>
@@ -605,12 +615,12 @@ html[data-theme="dark-blue"] {
         <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
       </svg>
     </button>
-    <div class="theme-dots">
-      <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-      <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-      <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-      <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-      <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+    <div class="theme-dots" role="group" aria-label="Theme">
+      <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+      <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+      <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
     </div>
   </div>
 </div>
@@ -1471,10 +1481,11 @@ function init() {
   initPageNumClick();
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ') {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'j') {
       e.preventDefault();
       flipForward();
-    } else if (e.key === 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'k') {
       e.preventDefault();
       flipBackward();
     }

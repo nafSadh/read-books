@@ -119,10 +119,19 @@ html, body {
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
+  padding: 0;
   transition: border-color 0.15s, transform 0.15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 14px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 5px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.2); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent-chrome); outline-offset: 3px; }
 .theme-dot.active { border-color: #fff; }
 .theme-dot[data-t="light-purple"] { background: #7c3aed; }
 .theme-dot[data-t="sepia"]        { background: #b45309; }
@@ -517,7 +526,7 @@ html, body {
 <!-- Toolbar -->
 <div id="toolbar">
 
-  <button id="sidebarToggle" title="Toggle thumbnails">
+  <button id="sidebarToggle" title="Toggle thumbnails" aria-label="Toggle page thumbnails">
     <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
       <rect y="1.5" width="15" height="2" rx="1"/>
       <rect y="6.5" width="15" height="2" rx="1"/>
@@ -527,39 +536,39 @@ html, body {
 
   <div class="toolbar-sep"></div>
 
-  <select id="chapterSelect" title="Jump to chapter"></select>
+  <select id="chapterSelect" title="Jump to chapter" aria-label="Jump to chapter"></select>
 
   <div class="toolbar-spacer"></div>
 
-  <button id="prevBtn" title="Previous page (← or k)">
+  <button id="prevBtn" title="Previous page (← or k)" aria-label="Previous page">
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.5 2L4 6.5l4.5 4.5"/></svg>
   </button>
 
-  <input type="text" id="pageInput" value="1" title="Current page">
+  <input type="text" id="pageInput" value="1" title="Current page" aria-label="Current page number">
   <span id="pageTotal">/ 1</span>
 
-  <button id="nextBtn" title="Next page (→ or j)">
+  <button id="nextBtn" title="Next page (→ or j)" aria-label="Next page">
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4.5 2L9 6.5l-4.5 4.5"/></svg>
   </button>
 
   <div class="toolbar-spacer"></div>
 
-  <button id="zoomOut" title="Zoom out">
+  <button id="zoomOut" title="Zoom out" aria-label="Zoom out">
     <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="1" y="5.5" width="11" height="2" rx="1"/></svg>
   </button>
   <span id="zoomLabel">100%</span>
-  <button id="zoomIn" title="Zoom in">
+  <button id="zoomIn" title="Zoom in" aria-label="Zoom in">
     <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><rect x="1" y="5.5" width="11" height="2" rx="1"/><rect x="5.5" y="1" width="2" height="11" rx="1"/></svg>
   </button>
 
   <div class="toolbar-sep"></div>
 
-  <div class="theme-dots" title="Choose theme">
-    <div class="theme-dot active" data-t="light-purple" title="Light purple"></div>
-    <div class="theme-dot" data-t="sepia" title="Sepia"></div>
-    <div class="theme-dot" data-t="light-azure" title="Light azure"></div>
-    <div class="theme-dot" data-t="dark-violet" title="Dark violet"></div>
-    <div class="theme-dot" data-t="dark-blue" title="Dark blue"></div>
+  <div class="theme-dots" title="Choose theme" role="group" aria-label="Theme">
+    <button type="button" class="theme-dot active" data-t="light-purple" title="Light purple" aria-label="Light purple theme"></button>
+    <button type="button" class="theme-dot" data-t="sepia" title="Sepia" aria-label="Sepia theme"></button>
+    <button type="button" class="theme-dot" data-t="light-azure" title="Light azure" aria-label="Light azure theme"></button>
+    <button type="button" class="theme-dot" data-t="dark-violet" title="Dark violet" aria-label="Dark violet theme"></button>
+    <button type="button" class="theme-dot" data-t="dark-blue" title="Dark blue" aria-label="Dark blue theme"></button>
   </div>
 
   <div class="toolbar-sep"></div>
@@ -578,12 +587,12 @@ html, body {
 <div id="viewport">
   <div id="pageCard">
     <div id="pageInner"></div>
-    <div class="nav-zone left" id="navLeft">
+    <div class="nav-zone left" id="navLeft" aria-hidden="true">
       <svg viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round">
         <path d="M14 4L7 11l7 7"/>
       </svg>
     </div>
-    <div class="nav-zone right" id="navRight">
+    <div class="nav-zone right" id="navRight" aria-hidden="true">
       <svg viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round">
         <path d="M8 4l7 7-7 7"/>
       </svg>
@@ -746,6 +755,9 @@ function renderPage() {
   if (currentThumb) {
     currentThumb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
+
+  // Reading position lives in the URL hash (house convention), never in localStorage
+  history.replaceState(null, '', '#p-' + (currentPage + 1));
 }
 
 function renderSidebar() {
@@ -884,6 +896,14 @@ function init() {
   populateChapterSelect();
   document.body.classList.add('zoom-100');
   paginateContent();
+
+  // Restore reading position from the URL hash (#p-N)
+  const hm = location.hash.match(/^#p-(\d+)$/);
+  if (hm) {
+    const n = parseInt(hm[1], 10);
+    if (n >= 1 && n <= pages.length) currentPage = n - 1;
+  }
+
   renderSidebar();
   resizePageCard();
   renderPage();

@@ -97,9 +97,16 @@ body {
 }
 .theme-dot {
   width: 14px; height: 14px; border-radius: 50%; cursor: pointer;
-  border: none; padding: 0; transition: transform 0.15s;
+  border: none; padding: 0; transition: transform 0.15s; position: relative;
+}
+/* Keep the dot visually 14px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.2); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"]        { background: #d4a574; }
 .theme-dot[data-theme="light-purple"] { background: #b598ff; }
@@ -177,6 +184,15 @@ body {
   transition: transform 0.3s ease;
 }
 .plate:hover .plate-img img { transform: scale(1.03); }
+/* Offline / broken image: keep the reserved box and name the plate inside it
+   instead of showing an empty frame. */
+.plate-img.img-missing img { display: none; }
+.plate-img.img-missing::after {
+  content: attr(data-fallback);
+  font-family: var(--font-serif); font-size: 15px; line-height: 1.5;
+  color: var(--text-secondary); text-align: center; padding: 0 20px;
+}
+.plate.img-missing { cursor: default; }
 .plate-caption {
   padding: 14px 16px 16px;
 }
@@ -266,12 +282,12 @@ body {
 
 <div class="top-bar">
   <span class="title"><a href="reader.html">The Prophet</a> &mdash; Art &amp; Illustrations</span>
-  <div id="theme-wrap">
-    <span class="theme-dot active" data-theme="sepia"></span>
-    <span class="theme-dot" data-theme="light-purple"></span>
-    <span class="theme-dot" data-theme="light-azure"></span>
-    <span class="theme-dot" data-theme="dark-violet"></span>
-    <span class="theme-dot" data-theme="dark-blue"></span>
+  <div id="theme-wrap" role="group" aria-label="Theme">
+    <button type="button" class="theme-dot active" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+    <button type="button" class="theme-dot" data-theme="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+    <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+    <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+    <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
   </div>
 </div>
 
@@ -303,8 +319,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0007.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Kahlil_Gibran_-_The_Prophet_01.png"
-           alt="Illustration: The Coming of the Ship" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Kahlil_Gibran_-_The_Prophet_01.png" width="430" height="568"
+           alt="Plate I of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;The Coming of the Ship&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate I</div>
@@ -315,8 +331,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0020.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Kahlil_Gibran_-_The_Prophet_02.png"
-           alt="Illustration: On Love" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Kahlil_Gibran_-_The_Prophet_02.png" width="430" height="568"
+           alt="Plate II of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Love&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate II</div>
@@ -327,8 +343,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0029.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kahlil_Gibran_-_The_Prophet_03.png"
-           alt="Illustration: On Marriage" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Kahlil_Gibran_-_The_Prophet_03.png" width="430" height="568"
+           alt="Plate III of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Marriage&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate III</div>
@@ -339,8 +355,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0032.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Kahlil_Gibran_-_The_Prophet_04.png"
-           alt="Illustration: On Children" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Kahlil_Gibran_-_The_Prophet_04.png" width="430" height="568"
+           alt="Plate IV of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Children&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate IV</div>
@@ -351,8 +367,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0039.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Kahlil_Gibran_-_The_Prophet_05.png"
-           alt="Illustration: On Giving" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Kahlil_Gibran_-_The_Prophet_05.png" width="430" height="568"
+           alt="Plate V of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Giving&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate V</div>
@@ -363,8 +379,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0042.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Kahlil_Gibran_-_The_Prophet_06.png"
-           alt="Illustration: On Crime and Punishment" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Kahlil_Gibran_-_The_Prophet_06.png" width="430" height="568"
+           alt="Plate VI of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Crime and Punishment&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate VI</div>
@@ -375,8 +391,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0064.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Kahlil_Gibran_-_The_Prophet_07.png"
-           alt="Illustration: On Self-Knowledge" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Kahlil_Gibran_-_The_Prophet_07.png" width="430" height="568"
+           alt="Plate VII of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Self-Knowledge&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate VII</div>
@@ -387,8 +403,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0083.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Kahlil_Gibran_-_The_Prophet_08.png"
-           alt="Illustration: On Prayer" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Kahlil_Gibran_-_The_Prophet_08.png" width="430" height="568"
+           alt="Plate VIII of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Prayer&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate VIII</div>
@@ -399,8 +415,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0100.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Kahlil_Gibran_-_The_Prophet_09.png"
-           alt="Illustration: On Beauty" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Kahlil_Gibran_-_The_Prophet_09.png" width="430" height="568"
+           alt="Plate IX of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Beauty&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate IX</div>
@@ -411,8 +427,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0119.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Kahlil_Gibran_-_The_Prophet_10.png"
-           alt="Illustration: On Death" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Kahlil_Gibran_-_The_Prophet_10.png" width="430" height="568"
+           alt="Plate X of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;On Death&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate X</div>
@@ -423,8 +439,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0125.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kahlil_Gibran_-_The_Prophet_11.png"
-           alt="Illustration: The Farewell" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Kahlil_Gibran_-_The_Prophet_11.png" width="430" height="568"
+           alt="Plate XI of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;The Farewell&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate XI</div>
@@ -435,8 +451,8 @@ body {
   <div class="plate"
        data-full="https://www.gutenberg.org/files/58585/58585-h/images/0134.jpg">
     <div class="plate-img">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kahlil_Gibran_-_The_Prophet_12.png"
-           alt="Illustration: The Farewell (closing)" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Kahlil_Gibran_-_The_Prophet_12.png" width="430" height="568"
+           alt="Plate XII of The Prophet (1923) &mdash; Kahlil Gibran&rsquo;s drawing for &lsquo;The Farewell&rsquo;" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">Plate XII</div>
@@ -469,7 +485,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Toward_the_Infinite.jpg"
-           alt="Drawing: Toward the Infinite" loading="lazy">
+           alt="&lsquo;Toward the Infinite&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">I</div>
@@ -480,7 +496,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Blind2.jpg"
-           alt="Drawing: The Blind" loading="lazy">
+           alt="&lsquo;The Blind&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">II</div>
@@ -491,7 +507,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Struggle.jpg"
-           alt="Drawing: The Struggle" loading="lazy">
+           alt="&lsquo;The Struggle&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">III</div>
@@ -502,7 +518,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Triangle2.jpg"
-           alt="Drawing: The Triangle" loading="lazy">
+           alt="&lsquo;The Triangle&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">IV</div>
@@ -513,7 +529,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Mountain2.jpg"
-           alt="Drawing: The Mountain" loading="lazy">
+           alt="&lsquo;The Mountain&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">V</div>
@@ -524,7 +540,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Great_Aloneness.jpg"
-           alt="Drawing: The Great Aloneness" loading="lazy">
+           alt="&lsquo;The Great Aloneness&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">VI</div>
@@ -535,7 +551,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Uplifted.jpg"
-           alt="Drawing: Uplifted" loading="lazy">
+           alt="&lsquo;Uplifted&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">VII</div>
@@ -546,7 +562,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Greater_Self.jpg"
-           alt="Drawing: The Greater Self" loading="lazy">
+           alt="&lsquo;The Greater Self&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">VIII</div>
@@ -557,7 +573,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Mother_and_Child2.jpg"
-           alt="Drawing: Mother and Child" loading="lazy">
+           alt="&lsquo;Mother and Child&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">IX</div>
@@ -568,7 +584,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Centuer_BW.jpg"
-           alt="Drawing: The Great Longing" loading="lazy">
+           alt="&lsquo;The Great Longing&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">X</div>
@@ -579,7 +595,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Centaur_and_Child2.jpg"
-           alt="Drawing: Centaur and Child" loading="lazy">
+           alt="&lsquo;Centaur and Child&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XI</div>
@@ -590,7 +606,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Innermost.jpg"
-           alt="Drawing: The Innermost" loading="lazy">
+           alt="&lsquo;The Innermost&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XII</div>
@@ -601,7 +617,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Veiled_Face.jpg"
-           alt="Drawing: Veiled Face" loading="lazy">
+           alt="&lsquo;Veiled Face&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XIII</div>
@@ -612,7 +628,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Rock_The_Waterfall.jpg"
-           alt="Drawing: The Rock &amp; The Waterfall" loading="lazy">
+           alt="&lsquo;The Rock &amp; The Waterfall&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XIV &ndash; XV</div>
@@ -623,7 +639,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Flight2.jpg"
-           alt="Drawing: Flight" loading="lazy">
+           alt="&lsquo;Flight&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XVI</div>
@@ -634,7 +650,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/The_Burden_Crucified.jpg"
-           alt="Drawing: The Burden &amp; Crucified" loading="lazy">
+           alt="&lsquo;The Burden &amp; Crucified&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XVII &ndash; XVIII</div>
@@ -645,7 +661,7 @@ body {
   <div class="plate">
     <div class="plate-img">
       <img src="https://www.kahlilgibran.com/images/20_Drawings_/Woman_with_Garment2.jpg"
-           alt="Drawing: Woman with Garment" loading="lazy">
+           alt="&lsquo;Woman with Garment&rsquo; &mdash; watercolour by Kahlil Gibran from Twenty Drawings (1919)" loading="lazy" onerror="plateFail(this)">
     </div>
     <div class="plate-caption">
       <div class="plate-num">XIX</div>
@@ -701,6 +717,20 @@ body {
 </div>
 
 <script>
+// Image fallback — the plates are hotlinked, so offline (or if a host moves a
+// file) the reserved box shows the plate's caption instead of a blank frame.
+function plateFail(img) {
+  const box = img.closest('.plate-img');
+  const plate = img.closest('.plate');
+  if (!box || !plate) return;
+  const num = plate.querySelector('.plate-num');
+  const title = plate.querySelector('.plate-title');
+  box.dataset.fallback = (num ? num.textContent.trim() + ' — ' : '')
+    + (title ? title.textContent.trim() : img.alt);
+  box.classList.add('img-missing');
+  plate.classList.add('img-missing');
+}
+
 // Theme
 const THEME_KEY = 'prophet-illustrations-theme';
 document.querySelectorAll('.theme-dot').forEach(dot => {
@@ -729,6 +759,8 @@ const lightboxCaption = document.getElementById('lightbox-caption');
 
 document.querySelectorAll('.plate').forEach(plate => {
   plate.addEventListener('click', () => {
+    // Nothing to enlarge if the plate image never loaded
+    if (plate.classList.contains('img-missing')) return;
     const img = plate.querySelector('img');
     const title = plate.querySelector('.plate-title');
     const num = plate.querySelector('.plate-num');

@@ -407,6 +407,10 @@ function goTo(idx, animate) {
   curIdx = idx;
   updateUI();
   savePrefs();
+  // Reading position lives in the URL hash (house convention), never in localStorage.
+  // Slide 0 is the title card; slides 1..N map to chapters 1..N.
+  if (idx > 0) history.replaceState(null, '', '#ch-' + idx);
+  else history.replaceState(null, '', location.pathname);
 }
 
 function prev() { if (curIdx > 0) goTo(curIdx - 1, true); }
@@ -525,7 +529,7 @@ function closeTOC() { closeOverlay(document.getElementById('toc-overlay')); }
 function savePrefs() {
   try {
     const theme = document.documentElement.dataset.theme;
-    localStorage.setItem(LS_KEY, JSON.stringify({ theme, chIdx: curIdx }));
+    localStorage.setItem(LS_KEY, JSON.stringify({ theme }));
   } catch(e) {}
 }
 
@@ -577,8 +581,8 @@ pager.addEventListener('touchend', e => {
    Keyboard
    ══════════════════════════════════════════════ */
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
-  else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'j') { e.preventDefault(); next(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'k') { e.preventDefault(); prev(); }
 });
 
 /* ══════════════════════════════════════════════
@@ -618,7 +622,13 @@ document.getElementById('toc-overlay').addEventListener('click', e => {
   if (prefs && prefs.theme) applyTheme(prefs.theme);
   else applyTheme('light-purple');
 
-  const startIdx = (prefs && prefs.chIdx != null && prefs.chIdx < TOTAL) ? prefs.chIdx : 0;
+  // Reading position comes from the URL hash (#ch-N), not from prefs
+  let startIdx = 0;
+  const m = location.hash.match(/^#ch-(\d+)$/);
+  if (m) {
+    const n = parseInt(m[1], 10);
+    if (n >= 1 && n < TOTAL) startIdx = n;
+  }
   goTo(startIdx, false);
 })();
 </script>

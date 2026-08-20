@@ -231,12 +231,20 @@ body {
   opacity: 0; pointer-events: none; transition: opacity .2s ease;
 }
 .theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots,
 .theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot {
-  width: 14px; height: 14px; border-radius: 50%; border: none; cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+  width: 14px; height: 14px; border-radius: 50%; border: none; cursor: pointer; padding: 0;
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0; position: relative;
+}
+/* Keep the dot visually 14px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"] { background: #d4c8a8; }
 .theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
@@ -472,12 +480,12 @@ button:focus:not(:focus-visible) { outline: none; }
           <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
         </svg>
       </button>
-      <div class="theme-dots">
-        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+      <div class="theme-dots" role="group" aria-label="Theme">
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">

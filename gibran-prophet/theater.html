@@ -248,8 +248,20 @@ body {
   padding: 0;
   transition: transform 0.2s, box-shadow 0.2s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 12px (10px on phones) but give it a 40px-tall hit area
+   spanning the gap to its neighbour — wider would steal the next dot's clicks. */
+.theme-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 6px);
+  height: 40px;
 }
 .theme-dot:hover { transform: scale(1.3); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active {
   box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent);
 }
@@ -355,12 +367,12 @@ body {
   <span class="ctrl-pos" id="pos"></span>
   <button class="ctrl-btn" id="next" onclick="go(1)">Next &#8594;</button>
   <div class="ctrl-sep"></div>
-  <div class="theme-dots" id="theme-dots">
-    <button class="theme-dot" data-t="light-purple" title="Light Purple" onclick="setTheme('light-purple')"></button>
-    <button class="theme-dot" data-t="sepia"        title="Sepia"        onclick="setTheme('sepia')"></button>
-    <button class="theme-dot" data-t="light-azure"  title="Light Azure"  onclick="setTheme('light-azure')"></button>
-    <button class="theme-dot" data-t="dark-violet"  title="Dark Violet"  onclick="setTheme('dark-violet')"></button>
-    <button class="theme-dot" data-t="dark-blue"    title="Dark Blue"    onclick="setTheme('dark-blue')"></button>
+  <div class="theme-dots" id="theme-dots" role="group" aria-label="Theme">
+    <button type="button" class="theme-dot" data-t="light-purple" title="Light Purple" aria-label="Light purple theme" onclick="setTheme('light-purple')"></button>
+    <button type="button" class="theme-dot" data-t="sepia"        title="Sepia"        aria-label="Sepia theme" onclick="setTheme('sepia')"></button>
+    <button type="button" class="theme-dot" data-t="light-azure"  title="Light Azure"  aria-label="Light azure theme" onclick="setTheme('light-azure')"></button>
+    <button type="button" class="theme-dot" data-t="dark-violet"  title="Dark Violet"  aria-label="Dark violet theme" onclick="setTheme('dark-violet')"></button>
+    <button type="button" class="theme-dot" data-t="dark-blue"    title="Dark Blue"    aria-label="Dark blue theme" onclick="setTheme('dark-blue')"></button>
   </div>
   <div class="ctrl-sep"></div>
   <a class="ctrl-back" href="reader.html" title="Back to reader">&#8617; Reader</a>

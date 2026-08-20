@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="sepia">
+<html lang="bn" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -360,16 +360,17 @@ html[data-theme="dark-blue"] {
 .chapter-scrubber {
   display: flex; gap: 8px; align-items: center;
 }
-.chapter-scrubber span {
+.chapter-scrubber button {
+  background: none; border: none; color: inherit;
   font-family: var(--font-mono);
   font-size: 10px; letter-spacing: 0.5px;
   cursor: pointer; opacity: 0.4;
   transition: opacity 0.2s, color 0.2s;
   position: relative;
 }
-.chapter-scrubber span:hover { opacity: 0.8; }
-.chapter-scrubber span.active { opacity: 1; color: var(--accent); }
-.chapter-scrubber span::after {
+.chapter-scrubber button:hover { opacity: 0.8; }
+.chapter-scrubber button.active { opacity: 1; color: var(--accent); }
+.chapter-scrubber button::after {
   content: attr(data-title);
   position: absolute; bottom: 100%; left: 50%;
   transform: translateX(-50%);
@@ -383,7 +384,7 @@ html[data-theme="dark-blue"] {
   opacity: 0; pointer-events: none;
   transition: opacity 0.15s;
 }
-.chapter-scrubber span:hover::after { opacity: 1; }
+.chapter-scrubber button:hover::after { opacity: 1; }
 
 /* ===== FLIP OVERLAY ===== */
 .flip-overlay {
@@ -437,21 +438,21 @@ html[data-theme="dark-blue"] {
 </div>
 
 <div id="footer">
-  <div class="theme-picker">
-    <button class="td active" data-theme="sepia" title="Sepia"></button>
-    <button class="td" data-theme="light-purple" title="Light Purple"></button>
-    <button class="td" data-theme="light-azure" title="Light Azure"></button>
-    <button class="td" data-theme="dark-violet" title="Dark Violet"></button>
-    <button class="td" data-theme="dark-blue" title="Dark Blue"></button>
+  <div class="theme-picker" role="group" aria-label="Theme">
+    <button class="td" data-theme="sepia" title="Sepia" aria-label="Sepia"></button>
+    <button class="td active" data-theme="light-purple" title="Light Purple" aria-label="Light Purple"></button>
+    <button class="td" data-theme="light-azure" title="Light Azure" aria-label="Light Azure"></button>
+    <button class="td" data-theme="dark-violet" title="Dark Violet" aria-label="Dark Violet"></button>
+    <button class="td" data-theme="dark-blue" title="Dark Blue" aria-label="Dark Blue"></button>
   </div>
   <div class="footer-nav">
-    <button id="prev-btn" title="Previous">&larr;</button>
+    <button id="prev-btn" title="Previous" aria-label="Previous page">&larr;</button>
     <span id="page-num-wrap">
       <span id="page-num"></span><span id="page-total"></span>
     </span>
-    <button id="next-btn" title="Next">&rarr;</button>
+    <button id="next-btn" title="Next" aria-label="Next page">&rarr;</button>
   </div>
-  <div class="chapter-scrubber" id="chapter-scrubber"></div>
+  <div class="chapter-scrubber" id="chapter-scrubber" role="group" aria-label="Sūktas"></div>
 </div>
 
 <script>
@@ -500,9 +501,9 @@ function buildPages() {
       let leftHTML = '<div class="mantra-page">';
       if (mi === 0) {
         leftHTML += '<div class="sukta-spread-header">';
-        leftHTML += '<div class="mandala-label">' + (sukta.veda_title_en || '') + ' \u2014 ' + sukta.mandala.title_en + '</div>';
+        leftHTML += '<div class="mandala-label" lang="en">' + (sukta.veda_title_en || '') + ' \u2014 ' + sukta.mandala.title_en + '</div>';
         leftHTML += '<div class="sukta-title-bn">' + sukta.title_bn + '</div>';
-        leftHTML += '<div class="sukta-title-en">' + sukta.title_en + '</div>';
+        leftHTML += '<div class="sukta-title-en" lang="en">' + sukta.title_en + '</div>';
         leftHTML += '<div class="ornament">\u2014 \u0950 \u2014</div>';
         leftHTML += '<div class="sukta-meta">';
         leftHTML += '<span class="meta-label">Rishi</span> ' + sukta.rishi;
@@ -512,22 +513,22 @@ function buildPages() {
         leftHTML += '</div>';
       }
       leftHTML += '<div class="mantra-num">' + label + '</div>';
-      leftHTML += '<div class="sa-bengali">' + m.sa_bengali + '</div>';
-      leftHTML += '<div class="sa-devanagari">' + m.sa_devanagari + '</div>';
-      leftHTML += '<div class="sa-iast">' + m.transliteration + '</div>';
+      leftHTML += '<div class="sa-bengali" lang="sa-Beng">' + m.sa_bengali + '</div>';
+      leftHTML += '<div class="sa-devanagari" lang="sa-Deva">' + m.sa_devanagari + '</div>';
+      leftHTML += '<div class="sa-iast" lang="sa-Latn">' + m.transliteration + '</div>';
       leftHTML += '</div>';
 
       // Right page: meanings
       let rightHTML = '<div class="meaning-page">';
       rightHTML += '<div class="mantra-num" style="opacity:0.4">' + label + '</div>';
       rightHTML += '<div class="meaning-label">\u0985\u09B0\u09CD\u09A5 (Bengali)</div>';
-      rightHTML += '<div class="meaning-bn">' + m.meaning_bn + '</div>';
-      rightHTML += '<div class="meaning-label">Meaning (English)</div>';
-      rightHTML += '<div class="meaning-en">' + m.meaning_en + '</div>';
+      rightHTML += '<div class="meaning-bn" lang="bn">' + m.meaning_bn + '</div>';
+      rightHTML += '<div class="meaning-label" lang="en">Meaning (English)</div>';
+      rightHTML += '<div class="meaning-en" lang="en">' + m.meaning_en + '</div>';
 
       // Add note on first mantra
       if (mi === 0 && sukta.note_bn) {
-        rightHTML += '<div class="sukta-note">' + sukta.note_bn + '</div>';
+        rightHTML += '<div class="sukta-note" lang="bn">' + sukta.note_bn + '</div>';
       }
       rightHTML += '</div>';
 
@@ -661,6 +662,29 @@ function renderSpread(s) {
   }
 
   updateIndicator();
+  setHash(s);
+}
+
+// ===================================================================
+// HASH POSITION (#p-N content page, #s-N title/TOC)
+// ===================================================================
+function setHash(s) {
+  let h = '';
+  if (s >= 3) h = '#p-' + ((isMobile() ? Math.floor((s - 3) / 2) : s - 3) + 1);
+  else if (s >= 1) h = '#s-' + s;
+  if ((location.hash || '') === h) return;
+  try { history.replaceState(null, '', location.pathname + location.search + h); } catch(e) {}
+}
+
+function spreadFromHash() {
+  let m = /^#p-(\d+)$/.exec(location.hash);
+  if (m) {
+    const pi = Math.min(Math.max(parseInt(m[1], 10) - 1, 0), pages.length - 1);
+    return isMobile() ? 3 + pi * 2 : 3 + pi;
+  }
+  m = /^#s-([12])$/.exec(location.hash);
+  if (m) return parseInt(m[1], 10);
+  return 0;
 }
 
 function updateIndicator() {
@@ -681,7 +705,7 @@ function updateIndicator() {
 
   // Update scrubber
   const si = getCurrentSukta();
-  document.querySelectorAll('.chapter-scrubber span').forEach((s, i) => {
+  document.querySelectorAll('.chapter-scrubber button').forEach((s, i) => {
     s.classList.toggle('active', i === si);
   });
 }
@@ -770,7 +794,31 @@ document.querySelectorAll('.td').forEach(dot => {
 function setTheme(t) {
   document.documentElement.dataset.theme = t;
   document.querySelectorAll('.td').forEach(d => d.classList.toggle('active', d.dataset.theme === t));
-  try { localStorage.setItem('vedas-fb-theme', t); } catch(e) {}
+  savePrefs();
+}
+
+// ===================================================================
+// PREFERENCES
+// ===================================================================
+const PREFS_KEY = 'vedas-fullbleed-prefs';
+
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ theme: document.documentElement.dataset.theme }));
+  } catch(e) {}
+}
+
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (raw) {
+      const p = JSON.parse(raw);
+      if (p && themes.includes(p.theme)) return p.theme;
+    }
+    const legacy = localStorage.getItem('vedas-fb-theme'); // pre-rename key
+    if (themes.includes(legacy)) return legacy;
+  } catch(e) {}
+  return null;
 }
 
 // ===================================================================
@@ -779,9 +827,10 @@ function setTheme(t) {
 (function buildScrubber() {
   const scrubber = document.getElementById('chapter-scrubber');
   SUKTAS.forEach((s, i) => {
-    const span = document.createElement('span');
+    const span = document.createElement('button');
     span.textContent = s.mandala.num + '.' + s.sukta_num;
     span.dataset.title = s.title_bn;
+    span.setAttribute('aria-label', s.title_bn + ' (' + s.mandala.num + '.' + s.sukta_num + ')');
     span.addEventListener('click', (e) => {
       e.stopPropagation();
       const pi = suktaStartPages[i];
@@ -798,14 +847,23 @@ function setTheme(t) {
 // INIT
 // ===================================================================
 (function init() {
-  try {
-    const t = localStorage.getItem('vedas-fb-theme');
-    if (t && themes.includes(t)) setTheme(t);
-  } catch(e) {}
-  renderSpread(0);
+  const t = loadPrefs();
+  if (t) setTheme(t);
+  currentSpread = spreadFromHash();
+  renderSpread(currentSpread);
 
+  // The spread index means different things either side of the 768px breakpoint
+  // (mobile splits every page into two), so convert through the page index.
+  let wasMobile = isMobile();
   window.addEventListener('resize', () => {
+    const nowMobile = isMobile();
+    if (nowMobile !== wasMobile && currentSpread >= 3) {
+      const pi = wasMobile ? Math.floor((currentSpread - 3) / 2) : currentSpread - 3;
+      currentSpread = nowMobile ? 3 + pi * 2 : 3 + pi;
+    }
+    wasMobile = nowMobile;
     computeTotalSpreads();
+    if (currentSpread > totalSpreads - 1) currentSpread = totalSpreads - 1;
     renderSpread(currentSpread);
   });
 })();

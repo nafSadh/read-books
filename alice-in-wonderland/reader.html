@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="sepia">
+<html lang="en" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +28,23 @@ body {
   --font-size: 19px;
   --line-height: 1.85;
   --content-width: 640px;
+}
+
+/* sepia: warm parchment-like */
+[data-theme="sepia"] {
+  --bg: #f5efe0;
+  --text: #3a2e1e;
+  --text-secondary: #7a6a52;
+  --border: #d4c8a8;
+  --bar-bg: rgba(245,239,224,0.94);
+  --bar-border: rgba(0,0,0,0.06);
+  --chapter-rule: #d4c8a8;
+  --dropcap: #b45309;
+  --accent: #b45309;
+  --btn-bg: rgba(0,0,0,0.05);
+  --btn-hover: rgba(0,0,0,0.08);
+  --sidebar-bg: #ede5d0;
+  --sidebar-hover: #e3d9c2;
 }
 
 /* light-azure: white bg, read-rd light blue/cyan accent */
@@ -368,6 +385,7 @@ body {
   transition: opacity .2s ease;
 }
 .theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots,
 .theme-wrap.expanded .theme-dots {
   opacity: 1;
   pointer-events: auto;
@@ -377,12 +395,22 @@ body {
   height: 14px;
   border-radius: 50%;
   border: none;
+  padding: 0;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 14px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-theme="sepia"] { background: #d4c8a8; }
 .theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
 .theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
 .theme-dot[data-theme="dark-violet"] { background: #4a3a6a; }
@@ -733,11 +761,12 @@ body {
           <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
         </svg>
       </button>
-      <div class="theme-dots">
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+      <div class="theme-dots" role="group" aria-label="Theme">
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light Purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light Azure theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark Violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark Blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">
@@ -1709,7 +1738,7 @@ body {
 // ===== THEME BUTTON — cycle on click =====
 const themeBtnEl = document.getElementById('theme-btn');
 const themeWrap = document.getElementById('theme-wrap');
-const THEME_ORDER = ['light-azure','light-purple','dark-violet','dark-blue'];
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
 
 themeBtnEl.addEventListener('click', (e) => {
   e.stopPropagation();

@@ -18,6 +18,7 @@ body{min-height:100vh;transition:background-color .3s,color .3s;overflow-x:hidde
   --font-bn:'Noto Serif Bengali','Tiro Bangla',serif;--font-dev:'Noto Serif Devanagari',serif;
   --font-body:var(--font-bn);--font-latin:var(--font-serif);--font-size:17px;--line-height:1.75;--content-width:960px;
 }
+[data-theme="sepia"]{--bg:#f5efe0;--text:#3a2e1e;--text-secondary:#7a6a52;--border:#d4c8a8;--bar-bg:rgba(245,239,224,.94);--bar-border:rgba(0,0,0,.06);--accent:#b45309;--btn-bg:rgba(0,0,0,.05);--btn-hover:rgba(0,0,0,.08);--sidebar-bg:#ede5d0;--sidebar-hover:#e3d9c2}
 [data-theme="light-azure"]{--bg:#fff;--text:#363b48;--text-secondary:#65707a;--border:#d6d0c4;--bar-bg:rgba(255,255,255,.92);--bar-border:rgba(0,0,0,.08);--accent:#2e6ab4;--btn-bg:rgba(0,0,0,.06);--btn-hover:rgba(0,0,0,.1);--sidebar-bg:#f5f5f5;--sidebar-hover:#eee}
 [data-theme="light-purple"]{--bg:#faf8f3;--text:#363b48;--text-secondary:#65707a;--border:#d6d0c4;--bar-bg:rgba(250,248,243,.94);--bar-border:rgba(0,0,0,.06);--accent:#7c3aed;--btn-bg:rgba(0,0,0,.05);--btn-hover:rgba(0,0,0,.08);--sidebar-bg:#f2efe8;--sidebar-hover:#e8e4dc}
 [data-theme="dark-violet"]{--bg:#1a1a1a;--text:#dce0ec;--text-secondary:#8490aa;--border:#333;--bar-bg:rgba(26,26,26,.95);--bar-border:rgba(255,255,255,.08);--accent:#9b7aed;--btn-bg:rgba(255,255,255,.08);--btn-hover:rgba(255,255,255,.12);--sidebar-bg:#222;--sidebar-hover:#2a2a2a}
@@ -42,7 +43,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 .theme-wrap:hover .theme-dots{opacity:1;pointer-events:auto}
 .theme-dot{width:14px;height:14px;border-radius:50%;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;flex-shrink:0}
 .theme-dot:hover{transform:scale(1.25)}.theme-dot.active{box-shadow:0 0 0 2px var(--bar-bg),0 0 0 3.5px var(--accent)}
-.theme-dot[data-theme="light-azure"]{background:#d4e8f7}.theme-dot[data-theme="light-purple"]{background:#c9b8e8}
+.theme-dot[data-theme="light-azure"]{background:#d4e8f7}.theme-dot[data-theme="light-purple"]{background:#c9b8e8}.theme-dot[data-theme="sepia"]{background:#d4a76a}
 .theme-dot[data-theme="dark-violet"]{background:#4a3a6a}.theme-dot[data-theme="dark-blue"]{background:#1e2a4a}
 
 /* ===== SETTINGS PANEL ===== */
@@ -168,6 +169,7 @@ body:not(.show-mb) .m-left .mb{display:none}
       <div class="theme-dots">
         <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
         <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
+        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
         <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
         <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
       </div>
@@ -237,7 +239,7 @@ async function ensureMandala(mi){
 }
 
 let mIdx=0,sIdx=0;
-const themes=['light-azure','light-purple','dark-violet','dark-blue'];
+const themes=['light-azure','light-purple','sepia','dark-violet','dark-blue'];
 
 // Devanagari → IAST transliteration
 function devToIAST(t){
@@ -270,19 +272,19 @@ let renderedFrom=-1; // index of first rendered sukta within current mandala
 function renderSukta(m,s,mn,isFirst,si){
   let h='<div class="sukta-block" data-si="'+si+'">';
   if(isFirst){
-    h+='<div class="sukta-head"><div class="label">Mandala '+mn+' \u00B7 S\u016Bkta '+s.n+'</div>';
-    if(s.t) h+='<h2>'+s.t+'</h2>';
+    h+='<div class="sukta-head"><div class="label" lang="en">Mandala '+mn+' \u00B7 S\u016Bkta '+s.n+'</div>';
+    if(s.t) h+='<h2 lang="en">'+s.t+'</h2>';
     h+='<div class="rule"></div></div>';
   } else {
-    h+='<div class="sukta-sep"><div class="label">S\u016Bkta '+s.n+'</div>';
-    if(s.t) h+='<h3>'+s.t+'</h3>';
+    h+='<div class="sukta-sep"><div class="label" lang="en">S\u016Bkta '+s.n+'</div>';
+    if(s.t) h+='<h3 lang="en">'+s.t+'</h3>';
     h+='</div>';
   }
   for(const v of s.v){
     h+='<div class="m"><div class="m-num">'+mn+'.'+s.n+'.'+v.n+'</div>';
-    h+='<div class="m-left"><div class="en">'+v.e+'</div>';
-    if(v.mb) h+='<div class="mb">'+v.mb+'</div>';
-    h+='</div><div class="m-right"><div class="bn">'+v.b+'</div><div class="dv">'+v.d+'</div><div class="iast">'+devToIAST(v.d)+'</div></div></div>';
+    h+='<div class="m-left"><div class="en" lang="en">'+v.e+'</div>';
+    if(v.mb) h+='<div class="mb" lang="bn">'+v.mb+'</div>';
+    h+='</div><div class="m-right"><div class="bn" lang="sa-Beng">'+v.b+'</div><div class="dv" lang="sa-Deva">'+v.d+'</div><div class="iast" lang="sa-Latn">'+devToIAST(v.d)+'</div></div></div>';
   }
   h+='</div>';
   return h;
@@ -517,8 +519,10 @@ document.addEventListener('touchend',(e)=>{const dx=e.changedTouches[0].clientX-
 function parseHash(){const h=location.hash.replace('#','');if(!h)return;const p=h.split('.');if(p.length>=2){const mn=parseInt(p[0]),sn=parseInt(p[1]);const mi=RV.m.findIndex(x=>x.n===mn);if(mi>=0){const si=RV.m[mi].s.findIndex(x=>x.n===sn);if(si>=0){mIdx=mi;sIdx=si;}}}}
 
 // ===== PREFS =====
-function savePrefs(){try{localStorage.setItem('rv-prefs',JSON.stringify({theme:document.body.dataset.theme,size:document.body.dataset.size,font:document.body.dataset.font,width:document.body.dataset.width,dev:document.body.classList.contains('show-dev'),bn:document.body.classList.contains('show-bn'),iast:document.body.classList.contains('show-iast'),en:document.body.classList.contains('show-en'),mb:document.body.classList.contains('show-mb'),m:mIdx,s:sIdx}))}catch(e){}}
-function loadPrefs(){try{const p=JSON.parse(localStorage.getItem('rv-prefs'));if(!p)return;
+// Presentation state only — reading position lives in the URL hash (#M.S).
+const PREFS_KEY='vedas-rigveda-prefs',PREFS_KEY_OLD='rv-prefs';
+function savePrefs(){try{localStorage.setItem(PREFS_KEY,JSON.stringify({theme:document.body.dataset.theme,size:document.body.dataset.size,font:document.body.dataset.font,width:document.body.dataset.width,dev:document.body.classList.contains('show-dev'),bn:document.body.classList.contains('show-bn'),iast:document.body.classList.contains('show-iast'),en:document.body.classList.contains('show-en'),mb:document.body.classList.contains('show-mb')}))}catch(e){}}
+function loadPrefs(){try{const p=JSON.parse(localStorage.getItem(PREFS_KEY)||localStorage.getItem(PREFS_KEY_OLD));if(!p)return;
 if(p.theme)setTheme(p.theme);
 if(p.size){document.body.dataset.size=p.size;document.querySelectorAll('[data-size].opt').forEach(b=>b.classList.toggle('active',b.dataset.size===p.size));}
 if(p.font){document.body.dataset.font=p.font;document.querySelectorAll('[data-font].opt').forEach(b=>b.classList.toggle('active',b.dataset.font===p.font));}
@@ -528,7 +532,6 @@ if(typeof p.bn==='boolean'){document.body.classList.toggle('show-bn',p.bn);toggl
 if(typeof p.iast==='boolean'){document.body.classList.toggle('show-iast',p.iast);toggleIast.classList.toggle('active',p.iast);}
 if(typeof p.en==='boolean'){document.body.classList.toggle('show-en',p.en);toggleEn.classList.toggle('active',p.en);}
 if(typeof p.mb==='boolean'){document.body.classList.toggle('show-mb',p.mb);toggleMb.classList.toggle('active',p.mb);}
-if(typeof p.m==='number'&&typeof p.s==='number'){mIdx=p.m;sIdx=p.s;}
 }catch(e){}}
 
 (async()=>{loadPrefs();parseHash();await render();})();

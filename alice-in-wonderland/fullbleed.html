@@ -14,6 +14,14 @@ html, body { width: 100vw; height: 100vh; overflow: hidden; }
 body { font-family: 'EB Garamond', 'Georgia', serif; font-size: 17px; line-height: 1.65; background: var(--bg-right); }
 
 /* ===== THEME VARIABLES ===== */
+html[data-theme="sepia"] {
+  --bg-left: #ede5d0; --bg-right: #f5efe0;
+  --text: #3a2e1e; --text-muted: #7a6a52;
+  --spine: #c8b898; --shadow-left: rgba(0,0,0,0.06); --shadow-right: rgba(0,0,0,0.04);
+  --accent: #b45309; --border: #d4c8a8;
+  --control-bg: rgba(245,239,224,0.92); --control-border: rgba(0,0,0,0.06);
+  --drop-cap-color: #b45309; --ch-title: #3a2e1e;
+}
 html[data-theme="light-azure"] {
   --bg-left: #eaf2f8; --bg-right: #f0f6fb;
   --text: #1e2a3a; --text-muted: #6a7a8a;
@@ -429,7 +437,9 @@ html[data-theme="dark-blue"] {
   pointer-events: none;
   transition: opacity .2s ease;
 }
-.theme-wrap:hover .theme-dots {
+.theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots,
+.theme-wrap.expanded .theme-dots {
   opacity: 1;
   pointer-events: auto;
 }
@@ -438,12 +448,22 @@ html[data-theme="dark-blue"] {
   height: 12px;
   border-radius: 50%;
   border: none;
+  padding: 0;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 12px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bg-right), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-theme="sepia"] { background: #d4c8a8; }
 .theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
 .theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
 .theme-dot[data-theme="dark-violet"] { background: #4a3a6a; }
@@ -561,13 +581,13 @@ html[data-theme="dark-blue"] {
 <!-- Footer -->
 <div id="footer">
   <div class="footer-nav">
-    <button id="btn-prev" title="Previous">&larr;</button>
+    <button id="btn-prev" title="Previous" aria-label="Previous page">&larr;</button>
     <span id="page-num-wrap"><span id="page-num"></span><span id="page-total"></span></span>
-    <button id="btn-next" title="Next">&rarr;</button>
+    <button id="btn-next" title="Next" aria-label="Next page">&rarr;</button>
   </div>
   <div class="chapter-scrubber" id="chapter-scrubber"></div>
   <div class="theme-wrap" id="theme-wrap">
-    <button class="theme-btn" id="theme-btn" title="Cycle theme">
+    <button class="theme-btn" id="theme-btn" title="Cycle theme" aria-label="Change theme">
       <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
         <circle cx="10" cy="10" r="4"/>
         <path d="M10 6V10H6A4 4 0 0 1 10 6z" fill="currentColor" stroke="none"/>
@@ -582,11 +602,12 @@ html[data-theme="dark-blue"] {
         <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
       </svg>
     </button>
-    <div class="theme-dots">
-      <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-      <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-      <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-      <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+    <div class="theme-dots" role="group" aria-label="Theme">
+      <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light Purple theme"></button>
+      <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+      <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light Azure theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark Violet theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark Blue theme"></button>
     </div>
   </div>
 </div>
@@ -1290,7 +1311,28 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-const THEME_ORDER = ['light-azure','light-purple','dark-violet','dark-blue'];
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const PREFS_KEY = 'alice-fullbleed-prefs';
+const LEGACY_THEME_KEY = 'fullbleed-theme';
+
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({
+      theme: document.documentElement.getAttribute('data-theme')
+    }));
+  } catch(e) {}
+}
+
+function loadPrefs() {
+  try {
+    const saved = localStorage.getItem(PREFS_KEY);
+    if (saved) return JSON.parse(saved) || {};
+    // Legacy unprefixed key — keep returning readers' theme
+    const legacy = localStorage.getItem(LEGACY_THEME_KEY);
+    if (legacy) return { theme: legacy };
+  } catch(e) {}
+  return {};
+}
 
 function setTheme(name) {
   document.documentElement.setAttribute('data-theme', name);
@@ -1298,7 +1340,7 @@ function setTheme(name) {
   document.querySelectorAll('.theme-dot').forEach(d => {
     d.classList.toggle('active', d.dataset.theme === name);
   });
-  try { localStorage.setItem('fullbleed-theme', name); } catch(e) {}
+  savePrefs();
 }
 
 function cycleTheme() {
@@ -1397,9 +1439,17 @@ function init() {
   });
 
   document.getElementById('theme-btn').addEventListener('click', cycleTheme);
+  // On touch devices, tap toggles expanded state (hover doesn't work)
+  const themeWrapEl = document.getElementById('theme-wrap');
+  document.getElementById('theme-btn').addEventListener('touchstart', () => {
+    themeWrapEl.classList.toggle('expanded');
+  }, { passive: true });
+  document.addEventListener('click', (e) => {
+    if (!themeWrapEl.contains(e.target)) themeWrapEl.classList.remove('expanded');
+  });
   // Theme dots
   document.querySelectorAll('.theme-dot').forEach(d => {
-    d.addEventListener('click', () => setTheme(d.dataset.theme));
+    d.addEventListener('click', (e) => { e.stopPropagation(); setTheme(d.dataset.theme); });
   });
 
   // Editable page number — click the number to edit, / total stays
@@ -1470,10 +1520,8 @@ function init() {
   });
 
   // Load saved theme
-  try {
-    const saved = localStorage.getItem('fullbleed-theme');
-    if (saved && THEME_ORDER.includes(saved)) setTheme(saved);
-  } catch(e) {}
+  const savedPrefs = loadPrefs();
+  if (savedPrefs.theme && THEME_ORDER.includes(savedPrefs.theme)) setTheme(savedPrefs.theme);
 
   // Resize: repaginate and recompute
   let resizeTimer;

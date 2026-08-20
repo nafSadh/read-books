@@ -841,13 +841,14 @@ function savePrefs() {
       spacing: document.body.dataset.spacing,
       size: document.body.dataset.size
     };
-    localStorage.setItem('webreader-prefs', JSON.stringify(prefs));
+    localStorage.setItem('alice-web-reader-prefs', JSON.stringify(prefs));
   } catch(e) {}
 }
 
 function loadPrefs() {
   try {
-    const prefs = JSON.parse(localStorage.getItem('webreader-prefs'));
+    // Legacy unprefixed key read as a fallback so returning readers keep settings
+    const prefs = JSON.parse(localStorage.getItem('alice-web-reader-prefs') || localStorage.getItem('webreader-prefs'));
     if (!prefs) return;
 
     if (prefs.theme) {

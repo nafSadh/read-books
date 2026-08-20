@@ -114,7 +114,7 @@ def wrap_greek_words(greek_text):
             pre, word, post = m.groups()
             translit = transliterate_word(word)
             out.append(
-                f'{escape(pre)}<span class="gw" data-t="{escape(translit)}" title="{escape(translit)}">'
+                f'{escape(pre)}<span class="gw" tabindex="0" data-t="{escape(translit)}" title="{escape(translit)}">'
                 f'{escape(word)}</span>{escape(post)}'
             )
         else:
@@ -335,10 +335,14 @@ GREEK_CSS = """
   opacity: 0; transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
   z-index: 10;
 }
-.gw:hover::after {
+.gw:hover::after,
+.gw:focus::after,
+.gw:focus-within::after,
+.gw:active::after {
   opacity: 1; transform: translateX(-50%) translateY(-2px);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
+.gw:focus { color: var(--accent); }
 
 /* ===== SENTENCE CROSS-HIGHLIGHTING ===== */
 .s { transition: background-color 0.25s ease; border-radius: 2px; padding: 1px 0; }

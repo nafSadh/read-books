@@ -373,7 +373,7 @@ body {
 }
 .med-detail-btn {
   display: flex; align-items: center; justify-content: center;
-  width: 24px; height: 24px; cursor: pointer;
+  width: 24px; height: 24px; cursor: pointer; position: relative;
   color: var(--text-secondary); border: 1px solid transparent;
   transition: all .2s; background: none; padding: 0;
 }
@@ -535,6 +535,11 @@ body {
   .theme-wrap.expanded .theme-dots { opacity: 1; }
   #sidebar-toggle { width: 44px; height: 44px; }
   .bar-btn { width: 44px; height: 44px; }
+  /* Hit-area expander: keeps the 14px glyph, gives the button a 44px tap target */
+  .med-detail-btn::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    width: 44px; height: 44px; transform: translate(-50%, -50%);
+  }
 }
 @media (max-width: 600px) {
   #content { padding: 64px 16px 80px; }
@@ -5683,6 +5688,33 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// ===== READING POSITION IN URL HASH (#ch-N) =====
+let hashRestoreTarget = null, hashUserMoved = false;
+['wheel','touchstart','keydown','mousedown'].forEach(ev =>
+  window.addEventListener(ev, () => { hashUserMoved = true; }, { passive: true, once: true }));
+
+function restoreHashPosition() {
+  const m = /^#ch-(\d+)$/.exec(window.location.hash || '');
+  if (!m) return;
+  hashRestoreTarget = document.getElementById('ch-' + m[1]);
+  if (hashRestoreTarget) window.scrollTo(0, hashRestoreTarget.offsetTop - 56);
+}
+
+function writeHashPosition(id) {
+  if (window.location.hash === '#' + id) return;
+  try { history.replaceState(null, '', '#' + id); } catch(e) {}
+}
+
+function reapplyHashPosition() {
+  // Re-apply after the browser's own fragment jump / font layout shift,
+  // unless the reader has already moved on their own.
+  if (hashRestoreTarget && !hashUserMoved) window.scrollTo(0, hashRestoreTarget.offsetTop - 56);
+}
+
+restoreHashPosition();
+window.addEventListener('load', reapplyHashPosition);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reapplyHashPosition);
+
 // ===== INTERSECTION OBSERVER =====
 function setupChapterObserver() {
   const observer = new IntersectionObserver((entries) => {
@@ -5692,6 +5724,7 @@ function setupChapterObserver() {
         sidebarLinks.forEach((link, i) => link.classList.toggle('active', i === idx));
         chapterIndicator.textContent = chapterTitles[idx] || '';
         document.querySelectorAll('.ch-node').forEach((n, i) => n.classList.toggle('active', i === idx));
+        writeHashPosition(entry.target.id);
       }
     });
   }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });

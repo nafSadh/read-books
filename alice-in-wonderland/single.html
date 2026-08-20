@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alice in Wonderland — Single Page — read-rd</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-[data-theme="light"]{
+[data-theme="light-purple"]{
   --bg:#f5f2ec;--card:#fff;--text:#1a1a1a;--dim:#999;
-  --accent:#1a1a1a;--border:#e8e5de;--shadow:#00000012;
+  --accent:#7c3aed;--border:#e8e5de;--shadow:#00000012;
 }
-[data-theme="dark"]{
+[data-theme="sepia"]{
+  --bg:#ede5d0;--card:#f5efe0;--text:#3a2e1e;--dim:#7a6a52;
+  --accent:#b45309;--border:#ddd0b4;--shadow:#00000012;
+}
+[data-theme="light-azure"]{
+  --bg:#eef3f8;--card:#fff;--text:#1e2a3a;--dim:#8a94a0;
+  --accent:#2e6ab4;--border:#dde6ef;--shadow:#00000012;
+}
+[data-theme="dark-violet"]{
   --bg:#0a0a0a;--card:#141414;--text:#d0d0d0;--dim:#555;
-  --accent:#e0e0e0;--border:#222;--shadow:#00000040;
+  --accent:#9b7aed;--border:#222;--shadow:#00000040;
+}
+[data-theme="dark-blue"]{
+  --bg:#000;--text:#8490aa;--card:#0c1018;--dim:#4a5a6a;
+  --accent:#4a8acc;--border:#1a2838;--shadow:#00000040;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
@@ -109,10 +121,30 @@ body{
 .dots{display:flex;gap:6px;align-items:center}
 .dot{
   width:8px;height:8px;border-radius:50%;background:var(--border);
+  border:none;padding:0;position:relative;
   cursor:pointer;transition:all .2s;
 }
+/* Keep the dot visually 8px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.dot::before{
+  content:"";position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:calc(100% + 6px);height:40px;
+}
+.dot:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .dot.active{background:var(--accent);transform:scale(1.3)}
 .dot.read{background:var(--dim)}
+
+/* ── Small screens: the fixed-height footer must not clip Prev/Next ── */
+@media (max-width:600px){
+  .footer{gap:10px;padding:0 12px}
+  .dots{display:none}
+  .nav-info{min-width:60px}
+  .nav-btn{padding:8px 14px;letter-spacing:1px}
+  .header{padding:0 12px}
+  .header-ch{display:none}
+  .page-area{padding:12px}
+  .card{padding:28px 22px 40px}
+}
 </style>
 </head>
 <body>
@@ -121,7 +153,7 @@ body{
   <span class="header-title">Alice in Wonderland</span>
   <span class="header-ch" id="header-ch"></span>
   <div class="header-ctrl">
-    <button class="hbtn" id="theme-btn" onclick="toggleTheme()"></button>
+    <button class="hbtn" id="theme-btn" onclick="toggleTheme()" title="Change theme" aria-label="Change theme"></button>
   </div>
 </header>
 
@@ -143,13 +175,17 @@ let current = 0;
 
 function init(){
   const dots = document.getElementById('dots');
-  CH.forEach((_,i) => {
-    const d = document.createElement('div');
+  CH.forEach((ch,i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
     d.className = 'dot';
+    d.title = ch.title;
+    d.setAttribute('aria-label', 'Chapter ' + ch.num + ': ' + ch.title);
     d.onclick = () => loadChapter(i);
     dots.appendChild(d);
   });
   loadChapter(0);
+  loadPrefs();
   updateTheme();
 
   document.addEventListener('keydown', e => {
@@ -207,14 +243,35 @@ function go(dir){
   if(next>=0 && next<CH.length) loadChapter(next, dir);
 }
 
+const THEMES=['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const DARK_THEMES=['dark-violet','dark-blue'];
+
 function toggleTheme(){
   const h=document.documentElement;
-  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  h.dataset.theme=THEMES[(THEMES.indexOf(h.dataset.theme)+1)%THEMES.length];
   updateTheme();
+  savePrefs();
 }
 function updateTheme(){
-  document.getElementById('theme-btn').textContent=
-    document.documentElement.dataset.theme==='dark'?'\u2600':'\u263D';
+  const cur=document.documentElement.dataset.theme;
+  const next=THEMES[(THEMES.indexOf(cur)+1)%THEMES.length];
+  const btn=document.getElementById('theme-btn');
+  /* Icon shows the theme the button will switch to */
+  btn.textContent=DARK_THEMES.includes(next)?'\u263D':'\u2600';
+  btn.setAttribute('aria-label','Change theme (current: '+cur.replace('-',' ')+')');
+}
+
+/* \u2500\u2500 Preferences (position is not stored here) \u2500\u2500 */
+const PREFS_KEY='alice-single-prefs';
+function savePrefs(){
+  try{ localStorage.setItem(PREFS_KEY,JSON.stringify({theme:document.documentElement.dataset.theme})); }catch(e){}
+}
+function loadPrefs(){
+  try{
+    const raw=localStorage.getItem(PREFS_KEY);
+    const p=raw?JSON.parse(raw):null;
+    if(p&&p.theme&&THEMES.includes(p.theme)) document.documentElement.dataset.theme=p.theme;
+  }catch(e){}
 }
 
 init();

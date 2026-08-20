@@ -539,6 +539,24 @@ html[data-theme="dark-blue"] {
   .chapter-header .chapter-title { font-size: 22px; }
   .running-header { padding: 8px 0 0; margin: 0 16px; font-size: 10px; }
   #cover-spread .cover-title { font-size: 26px; }
+
+  /* The centred footer row (nav + 28-chapter scrubber + theme control) is far
+     wider than a phone, and centred overflow is unreachable — every control,
+     including prev/next and the theme picker, rendered outside the viewport.
+     Stack it and let the scrubber scroll. */
+  #footer {
+    flex-wrap: wrap; justify-content: space-between;
+    gap: 8px; padding: 16px 12px 10px;
+  }
+  #footer .chapter-scrubber {
+    order: 3; flex: 1 0 100%;
+    overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    justify-content: flex-start;
+  }
+  #footer .chapter-scrubber::-webkit-scrollbar { display: none; }
+  /* The tray is centred on its button, which sits at the right edge — half of
+     it would open past the viewport. Anchor it to the right instead. */
+  #footer .theme-dots { right: 0; transform: none; }
 }
 
 /* ── Reduced motion ── */
@@ -933,7 +951,12 @@ function renderSpread(s) {
 
   updateIndicator();
 
-  // Update URL hash with current page
+  writeHashForSpread(s);
+}
+
+// Also called from the desktop flip paths, which animate without going through
+// renderSpread() — without this the hash froze at the last rendered spread.
+function writeHashForSpread(s) {
   if (s === 0) {
     history.replaceState(null, '', location.pathname);
   } else if (s <= 2) {
@@ -1188,6 +1211,7 @@ function flipForward() {
     setTimeout(() => {
       overlay.remove();
       updateIndicator();
+      writeHashForSpread(currentSpread);
       busy = false;
     }, 20);
   }, FLIP_DURATION);
@@ -1291,6 +1315,7 @@ function flipBackward() {
     setTimeout(() => {
       overlay.remove();
       updateIndicator();
+      writeHashForSpread(currentSpread);
       busy = false;
     }, 20);
   }, FLIP_DURATION);

@@ -360,6 +360,11 @@ function reducedMotion() {
   return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+/** Isolate a possibly-RTL token inside an LTR line. Without this, "فا" at the
+ *  head of "فا · 12 of 178" drags the neighbouring digits into its RTL run and
+ *  the line renders as "12 · فا OF 178". */
+function bdi(s) { return '<bdi>' + s + '</bdi>'; }
+
 // ===================================================================
 // RENDER
 // ===================================================================
@@ -373,7 +378,7 @@ function paint(idx) {
   viewEl.classList.toggle('q-rtl', rtl);
 
   viewEl.innerHTML =
-    '<div class="q-count">' + ed.short + ' &middot; ' + (idx + 1) + ' of ' + quatrains.length + '</div>' +
+    '<div class="q-count">' + bdi(ed.short) + ' &middot; ' + (idx + 1) + ' of ' + quatrains.length + '</div>' +
     '<div class="q-ordinal' + (rtl ? ' fa' : '') + '"' + (rtl ? ' lang="fa"' : '') + '>' + q.label + '</div>' +
     '<div class="q-rule"></div>' +
     '<div class="q-verse"' + (rtl ? ' dir="rtl" lang="fa"' : '') + '>' + q.verse + '</div>';
@@ -381,7 +386,8 @@ function paint(idx) {
 
   document.getElementById('pos').textContent = (idx + 1) + ' / ' + quatrains.length;
   document.getElementById('si-ed').textContent = ed.plain;
-  document.getElementById('si-pos').textContent = q.label + ' · ' + (idx + 1) + ' / ' + quatrains.length;
+  document.getElementById('si-pos').innerHTML =
+    bdi(q.label) + ' &middot; ' + (idx + 1) + ' / ' + quatrains.length;
   document.getElementById('prev').disabled = idx === 0;
   document.getElementById('next').disabled = idx === quatrains.length - 1;
   document.getElementById('progress-fill').style.width =

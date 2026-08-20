@@ -800,6 +800,11 @@ function reducedMotion() {
   return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+/** Isolate a possibly-RTL token inside an LTR line. Without this, "فا" or a
+ *  Persian-digit numeral drags the neighbouring Latin text into its RTL run
+ *  and the line renders back to front. */
+function bdi(s) { return '<bdi>' + s + '</bdi>'; }
+
 // ===================================================================
 // PAGE BUILDERS
 // ===================================================================
@@ -815,7 +820,7 @@ function titlePageHTML() {
     '<div class="subtitle">Omar Khayyám &middot; 1048&ndash;1131</div>' +
     '<div class="pub-ornament">&mdash; &#x2766; &mdash;</div>' +
     '<div class="pub-info">' + ed.label + '<br>' + ed.year + ' &middot; ' +
-      ed.count + ' ' + ed.unit + '</div>' +
+      ed.count + ' ' + bdi(ed.unit) + '</div>' +
     '</div>';
 }
 
@@ -824,7 +829,7 @@ function colophonHTML() {
   return '<div class="colophon">' +
     '<h3>This Edition</h3>' +
     '<div class="col-ed">' + ed.label + '</div>' +
-    '<div class="col-count">' + ed.year + ' &middot; ' + ed.count + ' ' + ed.unit + '</div>' +
+    '<div class="col-count">' + ed.year + ' &middot; ' + ed.count + ' ' + bdi(ed.unit) + '</div>' +
     '<p class="col-note">' + ed.note + '</p>' +
     '<div class="col-hint">One quatrain to the recto.<br>' +
       'The verso carries its facing notes &mdash; the Persian source with ' +
@@ -838,10 +843,10 @@ function contentsHTML() {
   const groups = groupsOf();
   let html = '<div class="toc-page"><h2>Contents</h2>' +
     '<div class="toc-sub">' + EDITIONS[edKey].label +
-    ' &middot; ' + quatrains.length + ' ' + EDITIONS[edKey].unit + '</div>' +
+    ' &middot; ' + quatrains.length + ' ' + bdi(EDITIONS[edKey].unit) + '</div>' +
     '<ol class="toc-list">';
   groups.forEach((g, i) => {
-    const range = g.first.label + (g.last !== g.first ? '&ndash;' + g.last.label : '');
+    const range = bdi(g.first.label) + (g.last !== g.first ? '&ndash;' + bdi(g.last.label) : '');
     html += '<li data-idx="' + g.start + '">' +
       '<span class="toc-num">' + (i + 1) + '.</span>' +
       '<span class="toc-range">' + range + '</span>' +
@@ -867,7 +872,7 @@ function quatrainHTML(q) {
   return '<div class="q-page' + (rtl ? ' q-rtl' : '') + '"' +
       (rtl ? ' dir="rtl" lang="fa"' : '') + '>' +
     '<div class="q-page-body">' +
-      '<div class="q-mark">' + q.label + '</div>' +
+        '<div class="q-mark">' + bdi(q.label) + '</div>' +
       '<div class="q-mark-rule"></div>' +
       '<div class="q-verse">' + q.verse + '</div>' +
       '<div class="q-orn">&#x2766;</div>' +
@@ -877,7 +882,7 @@ function quatrainHTML(q) {
 
 function glossHTML(q) {
   return '<div class="gloss-page">' +
-    '<div class="gloss-head">' + EDITIONS[edKey].short + ' &middot; ' + q.label + '</div>' +
+    '<div class="gloss-head">' + bdi(EDITIONS[edKey].short) + ' &middot; ' + bdi(q.label) + '</div>' +
     q.gloss + '</div>';
 }
 
@@ -953,7 +958,7 @@ function updateIndicator() {
   const showHeaders = s >= FIRST_CONTENT_SPREAD;
   rhRight.classList.toggle('visible', showHeaders);
   rhLeft.classList.toggle('visible', showHeaders && !isMobile());
-  document.getElementById('rh-right-ed').textContent = ed.short + ' ' + ed.year;
+  document.getElementById('rh-right-ed').innerHTML = bdi(ed.short) + ' ' + ed.year;
   document.getElementById('rh-left-ed').textContent = 'Facing notes';
 
   const pageNumEl = document.getElementById('page-num');

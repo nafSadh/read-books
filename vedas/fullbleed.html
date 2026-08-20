@@ -410,6 +410,24 @@ html[data-theme="dark-blue"] {
   .page-inner { max-width: 100%; }
   #cover-spread .cover-title { font-size: 32px; }
   .sukta-spread-header .sukta-title-bn { font-size: 22px; }
+
+  /* One page at a time on phones: the left half is hidden, so the right half
+     must take the whole width — at 50% it left half the screen blank. */
+  .page-half { width: 100%; }
+
+  /* The footer row (theme picker + nav + 13-entry scrubber) is far wider than
+     a phone. Stack it, and let the scrubber scroll instead of overflowing —
+     the theme picker used to render entirely off-screen at x=-137. */
+  #footer {
+    flex-wrap: wrap; justify-content: space-between; gap: 8px;
+    padding: 16px 12px 10px;
+  }
+  #footer .chapter-scrubber {
+    order: 3; flex: 1 0 100%;
+    overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    justify-content: flex-start;
+  }
+  #footer .chapter-scrubber::-webkit-scrollbar { display: none; }
 }
 </style>
 </head>
@@ -521,7 +539,7 @@ function buildPages() {
       // Right page: meanings
       let rightHTML = '<div class="meaning-page">';
       rightHTML += '<div class="mantra-num" style="opacity:0.4">' + label + '</div>';
-      rightHTML += '<div class="meaning-label">\u0985\u09B0\u09CD\u09A5 (Bengali)</div>';
+      rightHTML += '<div class="meaning-label" lang="bn">\u0985\u09B0\u09CD\u09A5 (Bengali)</div>';
       rightHTML += '<div class="meaning-bn" lang="bn">' + m.meaning_bn + '</div>';
       rightHTML += '<div class="meaning-label" lang="en">Meaning (English)</div>';
       rightHTML += '<div class="meaning-en" lang="en">' + m.meaning_en + '</div>';

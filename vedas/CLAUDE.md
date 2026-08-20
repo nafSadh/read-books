@@ -5,6 +5,16 @@ All HTML files are self-contained (no external JS/CSS beyond Google Fonts).
 
 ## Readers
 
+### 0. `index.html` — Landing page
+- Hand-written, no build step; modelled on `../gibran-prophet/index.html`
+- Describes and links the three readers, lists the 13 curated sūktas per Veda,
+  and links each of the 10 mandalas as a `rigveda.html#M.1` deep link
+- Featured hymn: the Gayatri Mantra (RV 3.62.10) in Devanagari, বঙ্গলিপি, IAST,
+  English and Bengali
+- No reading position (nothing to restore); prefs in `vedas-index-prefs` → `{ theme }`
+- Default `<html lang="en" data-theme="light-purple">`; every non-English run
+  carries its own `lang` (`bn`, `sa-Deva`, `sa-Beng`, `sa-Latn`)
+
 ### 1. `reader.html` — Multi-Veda curated reader (scrolling)
 - 4 Vedas (Rigveda, Samaveda, Yajurveda, Atharvaveda)
 - 13 suktas, 95 mantras — curated famous hymns
@@ -76,9 +86,9 @@ All HTML files are self-contained (no external JS/CSS beyond Google Fonts).
 - Default theme: light-purple — all three readers ship `data-theme="light-purple"` on `<html>`
 - Reading position lives in the URL hash, never localStorage: `#ch-N` (reader.html),
   `#p-N` / `#s-N` (fullbleed.html), `#M.S` (rigveda.html)
-- Prefs (theme/font/size/width/script toggles) in localStorage under `vedas-reader-prefs`,
-  `vedas-fullbleed-prefs`, `vedas-rigveda-prefs` (old `vedas-fb-theme` / `rv-prefs` keys are
-  still read as a fallback)
+- Prefs (theme/font/size/width/script toggles) in localStorage under `vedas-index-prefs`,
+  `vedas-reader-prefs`, `vedas-fullbleed-prefs`, `vedas-rigveda-prefs` (old `vedas-fb-theme` /
+  `rv-prefs` keys are still read as a fallback)
 - Per-script `lang` attributes on rendered text: `sa-Beng`, `sa-Deva`, `sa-Latn`, `bn`, `en`
 - rigveda.html is generated from `data/rigveda-template.html` — edit the template, not the output
 
@@ -88,6 +98,7 @@ All HTML files are self-contained (no external JS/CSS beyond Google Fonts).
 vedas/
   CLAUDE.md                ← this file
   build_rigveda.py         ← build script for complete Rigveda
+  index.html               ← landing page / format picker (hand-written)
   reader.html              ← multi-Veda curated reader
   fullbleed.html           ← multi-Veda book-spread reader
   rigveda.html             ← GENERATED: shell (~45KB)

@@ -268,10 +268,17 @@ body {
 }
 .theme-dot {
   width: 14px; height: 14px; border-radius: 50%;
-  border: none; cursor: pointer;
+  border: none; cursor: pointer; padding: 0;
   transition: transform 0.15s, box-shadow 0.15s;
-  flex-shrink: 0;
+  flex-shrink: 0; position: relative;
 }
+/* 40px-tall hit area, kept narrow so it cannot cover a neighbour's centre. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-wrap:focus-within .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot:hover { transform: scale(1.25); }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"] { background: #d4a76a; }
@@ -684,11 +691,11 @@ body:not(.show-iast) .sa-iast { display: none; }
         </svg>
       </button>
       <div class="theme-dots">
-        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light purple" aria-label="Light purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light azure" aria-label="Light azure theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark violet" aria-label="Dark violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark blue" aria-label="Dark blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">

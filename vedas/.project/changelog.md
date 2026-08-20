@@ -4,7 +4,7 @@
 
 ### Session 2 — UI/UX audit fixes
 
-Follow-up to `.project/ui-ux-audit-2026-08-20.md` (vedas: 14 findings).
+Follow-up to `../../.project/ui-ux-audit-2026-08-20.md` (repo root; vedas: 14 findings).
 
 **Earlier in this session**
 

@@ -10,7 +10,7 @@
 - [x] `CLAUDE.md` — build documentation
 - [x] `.project/` with changelog + todo
 
-## Audit follow-ups (`.project/ui-ux-audit-2026-08-20.md`)
+## Audit follow-ups (`../../.project/ui-ux-audit-2026-08-20.md`)
 
 Done:
 
@@ -28,7 +28,10 @@ Done:
 
 Open:
 
-- [ ] **`vedas/index.html`** — the only book without a landing page (MED, audit)
+- [x] **`vedas/index.html`** — landing page added: describes and links all three readers,
+      lists the 13 curated sūktas per Veda, deep-links the 10 mandalas as `rigveda.html#M.1`,
+      5 themes in `vedas-index-prefs`, per-script `lang` on every non-English run.
+      Linked first in the root catalog's Vedas card.
 - [x] `reader.html` sukta navigation lands on target: `.veda-section` is `position:relative`,
       so the section-relative `offsetTop` sent every sukta past the first Veda to the wrong
       place. All four call sites (sidebar links, progress segments, scrubber, updateScroll)

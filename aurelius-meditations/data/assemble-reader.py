@@ -114,7 +114,11 @@ def wrap_greek_words(greek_text):
             pre, word, post = m.groups()
             translit = transliterate_word(word)
             out.append(
-                f'{escape(pre)}<span class="gw" tabindex="0" data-t="{escape(translit)}" title="{escape(translit)}">'
+                # No tabindex: there are ~29k Greek words, and making each one a
+                # tab stop would bury every real control behind them. The
+                # transliteration stays available via title, the :hover/:active
+                # tooltip, and the per-passage detail panel.
+                f'{escape(pre)}<span class="gw" data-t="{escape(translit)}" title="{escape(translit)}">'
                 f'{escape(word)}</span>{escape(post)}'
             )
         else:

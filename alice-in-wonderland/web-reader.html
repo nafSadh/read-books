@@ -515,7 +515,11 @@ body {
 @media (max-width: 700px) {
   #top-bar .book-title { display: none; }
   #top-bar .separator { display: none; }
-  .theme-dots { display: none; }
+  /* The dots used to be hidden here, leaving phones with no theme control at
+     all. The bar already drops the title and separator at this width, so they
+     fit once tightened. */
+  .theme-dots { gap: 4px; }
+  .theme-dot { width: 16px; height: 16px; }
   #content { padding: 32px 16px 100px; }
   .book-header h1 { font-size: 1.8em; }
   .chapter-heading h2 { font-size: 1.3em; }

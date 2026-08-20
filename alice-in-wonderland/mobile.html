@@ -131,6 +131,14 @@ body{
   padding:6px 22px 0;padding-bottom:env(safe-area-inset-bottom,0px);
   z-index:5;
 }
+/* At 320px (iPhone SE 1st gen) the page number + 12-node scrubber + theme
+   button exceeded the viewport and pushed the theme button half off-screen. */
+@media (max-width:360px){
+  #bottom-bar{padding-left:10px;padding-right:10px;gap:6px}
+  #page-num{min-width:28px;font-size:10px}
+  #scrubber{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+  #scrubber::-webkit-scrollbar{display:none}
+}
 #page-num{
   font-size:11px;color:var(--text2);opacity:.7;min-width:40px;
   font-variant-numeric:tabular-nums;

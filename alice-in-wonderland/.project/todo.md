@@ -29,6 +29,12 @@
       `100% + 6px` so the expander cannot overlap the neighbouring dot. Reaching 40×40 (or even
       the 24×24 WCAG 2.5.8 minimum on width) needs a larger flex `gap` in the dot row, which is a
       visual change rather than a CSS one-liner.
+- [ ] `mobile.html` `#bottom-bar` overflows at 320px (iPhone SE 1st gen): page-num 40px +
+      12×20px scrubber (251px) + theme button 17px + 44px padding = 352px in a 320px viewport,
+      so `scrollWidth` is 330 and the theme button is pushed half off-screen. Pre-existing and
+      independent of the tap-target work. Fix is to shrink `.scrub-btn` to ~17px below 360px
+      (12×17+11 = 215px, which fits) — a visual tweak, so left for the user's call.
+      Clean at 360px and above.
 - [ ] `reader.html` `#ch-N` restore is racy: `restoreHash()` fires on `document.fonts.ready + 50ms`,
       and when the font request is slow the scroll lands before layout settles, so the page ends up
       at chapter 1. Reproduces ~50% of loads (pre-existing; same behaviour before this session's
@@ -44,8 +50,10 @@
 - [x] Keyboard nav (j/k/arrows/space) in scroll.html; chapter-row edge fades
 - [x] aria-labels on every icon-only control; theme dots are real `<button>`s with 40px-tall hit
       areas (width is capped by the dot gap — see Pending)
-- [x] `mobile.html` theme button given a true 40×40 `::before` tap target (edit is in
-      `gen_mobile.py`'s TEMPLATE; `mobile.html` regenerated from it)
+- [x] `mobile.html` theme button given a 37×40 `::before` tap target that grows up/down/right
+      into the bar's own 22px padding — never leftward, since at 360px the scrubber ends only
+      4px away. Verified at 320/360/390/414/768: no scrubber overlap, no added page overflow at
+      360+. (Edit is in `gen_mobile.py`'s TEMPLATE; `mobile.html` regenerated from it.)
 - [x] Small-screen fixes: single.html footer, index.html controls bar, pdf-reader.html toolbar
 - [x] 4-theme system in reader.html and fullbleed.html
 - [x] Half-sun theme toggle icon

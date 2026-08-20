@@ -234,9 +234,19 @@ body {
 .theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot {
   width: 14px; height: 14px; border-radius: 50%; border: none; cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0; padding: 0;
+  position: relative;
+}
+/* Keep the dot visually 14px but give it a >=40px pointer/touch hit area. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: 40px; height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+.theme-wrap:focus-within .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"] { background: #d4c8a8; }
 .theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
@@ -636,7 +646,7 @@ body[data-persian="on"] .quatrain.has-persian .q-persian { display: block; }
 }
 .qp-line { margin: 0 0 2px; }
 .qp-translit {
-  direction: ltr; text-align: left;
+  direction: ltr; text-align: right;
   font-family: var(--font-mono); font-size: 0.62em; line-height: 1.8;
   color: var(--text-secondary); opacity: .7; margin: -2px 0 4px; letter-spacing: .2px;
 }
@@ -664,6 +674,12 @@ body[data-persian="on"] .quatrain.has-persian .q-persian { display: block; }
   .quatrain.details-open .q-detail { order: -1; }
   body[data-persian="on"] .quatrain.has-persian:not(.details-open) .q-flow {
     grid-template-columns: 1fr minmax(240px, 32%);
+  }
+  /* Detail + Persian both on: without an explicit 3-column track the grid has
+     only two, and the Persian aside wraps to a second row far below its verse. */
+  body[data-details="on"][data-persian="on"] .quatrain.has-detail.has-persian .q-flow,
+  body[data-persian="on"] .quatrain.details-open.has-persian .q-flow {
+    grid-template-columns: minmax(240px, 32%) 1fr minmax(200px, 26%);
   }
 }
 @media (min-width: 1440px) {
@@ -729,6 +745,22 @@ body[data-edition="nicolas"]   .persian-btn { display: inline-flex !important; }
   .q-detail { padding: 10px 12px; }
   .q-detail-btn { right: -4px; }
 }
+
+/* Phone widths: the fixed bar (6 buttons + a 5-option edition switcher) used to
+   overflow, pushing Settings entirely off-screen. Tighten the shell, keep every
+   button a >=40px touch target, and let the edition switcher scroll instead. */
+@media (max-width: 480px) {
+  #top-bar { padding: 0 6px; gap: 4px; }
+  #top-bar #sidebar-toggle,
+  #top-bar .bar-btn { width: 40px; height: 40px; flex: 0 0 auto; }
+  #top-bar .bar-controls { gap: 2px; flex: 0 0 auto; }
+  #top-bar .ed-switch {
+    flex: 1 1 auto; min-width: 0;
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  #top-bar .ed-switch::-webkit-scrollbar { display: none; }
+  #top-bar .ed-switch .ed-opt { flex: 0 0 auto; }
+}
 </style>
 </head>
 <body data-theme="light-purple" data-font="serif" data-size="medium" data-width="medium">
@@ -785,11 +817,11 @@ body[data-edition="nicolas"]   .persian-btn { display: inline-flex !important; }
         </svg>
       </button>
       <div class="theme-dots">
-        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">
@@ -1125,6 +1157,12 @@ function applyEdition(ed, opts) {
   setupChapterObserver();
   updateScroll();
   if (opts.scrollToTop) window.scrollTo({ top: 0, behavior: 'instant' });
+  // Drop a hash pointing into the edition we just left — it would otherwise
+  // target a display:none section on the next load and silently lose position.
+  if (/^#(?:q|chg)-/.test(location.hash) && !location.hash.startsWith('#q-' + ed + '-')
+      && !location.hash.startsWith('#chg-' + ed + '-')) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
 }
 
 ['first', 'fifth', 'whinfield', 'nicolas', 'persian'].forEach(k => {
@@ -1181,6 +1219,21 @@ document.addEventListener('click', e => {
 function parseHash() {
   const h = location.hash.replace('#', '');
   let ed = null, n = null;
+  // #chg-<ed>-<N>: the chapter-group hash written on scroll. Restore it here
+  // rather than leaning on the browser's native fragment scroll, which fails
+  // when the saved edition differs (the target section is display:none).
+  const cm = h.match(/^chg-(first|fifth|whinfield|nicolas|persian)-(\d+)$/);
+  if (cm) {
+    const chEd = cm[1];
+    if (chEd !== activeEdition) applyEdition(chEd);
+    const chEl = document.getElementById('chg-' + chEd + '-' + cm[2]);
+    if (chEl) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: chEl.getBoundingClientRect().top + window.scrollY - 56, behavior: 'instant' });
+      });
+    }
+    return;
+  }
   let m = h.match(/^q-(first|fifth|whinfield|nicolas|persian)-(\d+)$/);
   if (m) { ed = m[1]; n = parseInt(m[2]); }
   else {

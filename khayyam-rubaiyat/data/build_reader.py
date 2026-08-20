@@ -36,6 +36,8 @@ TPL = Path(__file__).parent / "reader-template.html"
 OUT = ROOT / "reader.html"
 
 GROUP_SIZE = 10
+# Edition shown before JS runs (must match the template's default body/prefs).
+DEFAULT_EDITION = "fifth"
 
 _FA_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
 
@@ -383,7 +385,10 @@ def render_group(quatrains, group_idx, ed_key, render_fn):
 def render_edition(quatrains, ed_key, render_fn):
     groups = [quatrains[i:i + GROUP_SIZE] for i in range(0, len(quatrains), GROUP_SIZE)]
     groups_html = ''.join(render_group(g, i, ed_key, render_fn) for i, g in enumerate(groups))
-    return f'<section class="edition" data-edition="{ed_key}">{groups_html}</section>'
+    # Bake `visible` onto the default edition so streamed content renders as it
+    # parses; applyEdition() reconciles the classes if saved prefs differ.
+    cls = 'edition visible' if ed_key == DEFAULT_EDITION else 'edition'
+    return f'<section class="{cls}" data-edition="{ed_key}">{groups_html}</section>'
 
 
 # ═══════════════════════════════════════════════════════════════════════

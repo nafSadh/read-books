@@ -399,14 +399,21 @@ html, body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   #toolbar button { min-width: 44px; min-height: 44px; }
-  #zoomOut, #zoomIn, #zoomLabel,
-  #zoomOut + .toolbar-sep,
-  #twoPageToggle,
-  #twoPageToggle + .toolbar-sep { display: none; }
+  /* These must out-rank `#toolbar button { display:flex }` (1,0,1), so they are
+     scoped under #toolbar to reach (2,0,0) — bare id selectors silently lose. */
+  #toolbar #zoomOut, #toolbar #zoomIn, #toolbar #zoomLabel,
+  #toolbar #zoomOut + .toolbar-sep,
+  #toolbar #twoPageToggle,
+  #toolbar #twoPageToggle + .toolbar-sep { display: none; }
   #sidebar { width: 220px; max-width: 80vw; }
   #viewport.sidebar-open { left: 0; }
   .nav-zone { width: 60px; }
   #pageInner { padding: 32px 24px; }
+  /* Keep the remaining controls inside a phone viewport: tighten the shell and
+     let the chapter select absorb whatever space is left. */
+  #toolbar { padding: 0 6px; gap: 2px; }
+  #toolbar #chapterSelect { max-width: 100%; min-width: 0; flex: 1 1 auto; }
+  #toolbar #pageInput { width: 36px; }
 }
 @media (max-width: 600px) {
   #toolbar { padding: 0 6px; gap: 2px; }

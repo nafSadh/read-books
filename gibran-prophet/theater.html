@@ -391,20 +391,20 @@ function render(idx, direction) {
 
   setTimeout(() => {
     // Build chapter HTML
-    view.innerHTML = \`
+    view.innerHTML = `
       <div class="chapter-title-area">
         <div class="chapter-num">Chapter ${idx + 1} of ${TOTAL}</div>
         <div class="chapter-title">${ch.title}</div>
         <div class="chapter-rule"></div>
       </div>
       <div class="chapter-content">${ch.html}</div>
-    \`;
+    `;
 
     // Scroll back to top after content swap
     view.scrollTop = 0;
 
     // Update UI
-    document.getElementById('pos').textContent = \`${idx + 1} / ${TOTAL}\`;
+    document.getElementById('pos').textContent = `${idx + 1} / ${TOTAL}`;
     document.getElementById('prev').disabled = idx === 0;
     document.getElementById('next').disabled = idx === TOTAL - 1;
     document.getElementById('progress-fill').style.width =
@@ -418,8 +418,8 @@ function render(idx, direction) {
     const curTheme = document.documentElement.dataset.theme;
     dots.forEach(d => d.classList.toggle('active', d.dataset.t === curTheme));
 
-    // Save progress
-    try { localStorage.setItem('prophet-theater-chapter', idx); } catch(e) {}
+    // Save progress in the URL hash (house convention: position lives in the hash)
+    history.replaceState(null, '', '#ch-' + (idx + 1));
 
     view.classList.remove('fading');
     animating = false;
@@ -515,17 +515,15 @@ document.addEventListener('touchend', e => {
     if (savedTheme) document.documentElement.dataset.theme = savedTheme;
   } catch(e) {}
 
-  // Restore chapter position (from URL hash or localStorage)
+  // Restore chapter position from the URL hash (#ch-N, or a legacy bare #N)
   let startIdx = 0;
   const hash = window.location.hash.slice(1);
   if (hash) {
-    const n = parseInt(hash);
-    if (!isNaN(n) && n >= 1 && n <= TOTAL) startIdx = n - 1;
-  } else {
-    try {
-      const saved = parseInt(localStorage.getItem('prophet-theater-chapter'));
-      if (!isNaN(saved) && saved >= 0 && saved < TOTAL) startIdx = saved;
-    } catch(e) {}
+    const m = hash.match(/^(?:ch-)?(\d+)$/);
+    if (m) {
+      const n = parseInt(m[1], 10);
+      if (n >= 1 && n <= TOTAL) startIdx = n - 1;
+    }
   }
 
   current = startIdx;

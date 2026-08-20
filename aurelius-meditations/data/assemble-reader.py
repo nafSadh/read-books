@@ -505,8 +505,10 @@ def main():
     # Update localStorage key back to main reader key
     script = script.replace('meditations-casaubon-prefs', 'meditations-reader-prefs')
 
-    # Inject Greek toggle JS before the closing </script>
-    script = script.replace('</script>', GREEK_JS + '</script>')
+    # Inject Greek toggle JS before the closing </script> of the FIRST script
+    # block only — the template has a second block (the .pn a11y patch), and a
+    # second copy of GREEK_JS would re-declare `const greekBtn` and kill it.
+    script = script.replace('</script>', GREEK_JS + '</script>', 1)
 
     # Add Greek pref to save/load
     # Save: add greek to the prefs object

@@ -8040,33 +8040,6 @@ document.addEventListener('mouseout', e => {
     }
   });
 })();
-
-// ===== GREEK TEXT TOGGLE =====
-const greekBtn = document.getElementById('greek-btn');
-greekBtn.addEventListener('click', () => {
-  const isOn = document.body.dataset.greek === 'on';
-  document.body.dataset.greek = isOn ? 'off' : 'on';
-  greekBtn.classList.toggle('active', !isOn);
-  savePrefs();
-});
-
-// ===== SENTENCE CROSS-HIGHLIGHTING =====
-document.addEventListener('mouseover', e => {
-  const s = e.target.closest('.s');
-  if (!s) return;
-  const id = s.dataset.s;
-  const passage = s.closest('.med-passage');
-  if (passage) passage.querySelectorAll('.s[data-s="' + id + '"]').forEach(
-    el => el.classList.add('s-hl'));
-});
-document.addEventListener('mouseout', e => {
-  const s = e.target.closest('.s');
-  if (!s) return;
-  const id = s.dataset.s;
-  const passage = s.closest('.med-passage');
-  if (passage) passage.querySelectorAll('.s[data-s="' + id + '"]').forEach(
-    el => el.classList.remove('s-hl'));
-});
 </script>
 </body>
 </html>

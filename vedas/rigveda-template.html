@@ -63,7 +63,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 #nav-strip{position:fixed;top:44px;left:0;right:0;z-index:998;background:var(--bar-bg);border-bottom:1px solid var(--bar-border);font-family:var(--font-sans)}
 
 /* Row 1: Mandala tabs */
-#mandala-row{display:flex;align-items:center;justify-content:center;gap:0;height:30px;padding:0 4px}
+/* justify-content:center would centre the overflow on narrow screens, putting
+   the first and last tabs outside the scrollable area entirely (scrollLeft
+   pinned at 0). `safe center` keeps centring while overflow stays reachable. */
+#mandala-row{display:flex;align-items:center;justify-content:safe center;gap:0;height:30px;padding:0 4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}
+#mandala-row::-webkit-scrollbar{display:none}
+.m-tab{flex-shrink:0}
 .m-tab{height:26px;padding:0 10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--text-secondary);border:none;background:none;cursor:pointer;transition:all .12s;white-space:nowrap}
 .m-tab:hover{color:var(--text)}
 .m-tab.active{color:var(--accent);font-weight:600}
@@ -136,9 +141,15 @@ body:not(.show-mb) .m-left .mb{display:none}
 @media(max-width:768px){
   #top-bar .book-title{display:none}
   .m{grid-template-columns:1fr;gap:4px}.m-num{grid-column:1}.m-left{padding-left:48px;grid-row:auto}.m-left-2{padding-left:48px;grid-row:auto}.m-right{grid-column:1;grid-row:auto}
-  #content{padding:116px 12px 60px}
+  #content{padding:138px 12px 60px}
   .bar-btn{width:44px;height:44px}
-  .m-tab{padding:0 6px;font-size:10px}
+  /* Keep the compact look but give the primary nav real touch targets: the row
+     heights grow and each control gets a >=40px tall hit area. */
+  #mandala-row{height:40px}
+  .m-tab{padding:0 8px;font-size:10px;height:40px}
+  #sukta-row{height:40px}
+  #sukta-row .scroll-btn{width:36px;height:36px}
+  .s-pill{height:36px;min-width:36px;padding:0 7px;font-size:11px}
 }
 @media(max-width:600px){#top-bar{padding:0 8px;gap:4px}#settings-panel{right:8px}}
 </style>
@@ -286,6 +297,7 @@ async function render(){
 
   // Update nav highlights
   document.querySelectorAll('.m-tab').forEach((t,i)=>t.classList.toggle('active',i===mIdx));
+  scrollActiveTabIntoView();
   buildSuktaStrip();
 
   // Render initial sukta
@@ -298,11 +310,17 @@ async function render(){
   history.replaceState(null,'','#'+m.n+'.'+s.n);
   savePrefs();
   setTimeout(()=>{topScrollObserver.observe(document.getElementById('scroll-sentinel-top'));},500);
+  scrollObserver.observe(document.getElementById('scroll-sentinel'));
 }
 
 // Infinite scroll: append next suktas as user scrolls down
 function appendNextSukta(){
+  // Before the first render resolves, renderedUpTo is -1 and the mandala data is
+  // not loaded — appending here would render a stub at index 0 and make
+  // suktaObserver overwrite the sukta that parseHash/prefs just restored.
+  if(renderedUpTo<0) return false;
   const m=RV.m[mIdx];
+  if(!m||!m.s) return false;
   if(renderedUpTo>=m.s.length-1) return false;
   renderedUpTo++;
   const s=m.s[renderedUpTo];
@@ -333,7 +351,8 @@ function prependPreviousSukta(){
 const scrollObserver=new IntersectionObserver((entries)=>{
   if(entries[0].isIntersecting) appendNextSukta();
 },{rootMargin:'400px'});
-scrollObserver.observe(document.getElementById('scroll-sentinel'));
+// Observed only after the first render completes (see render()) — observing at
+// parse time fires against the empty page and clobbers the restored position.
 
 // Observe top scroll sentinel
 const topScrollObserver=new IntersectionObserver((entries)=>{
@@ -404,6 +423,14 @@ function buildSuktaStrip(){
 function scrollActivePillIntoView(){
   const active=document.querySelector('.s-pill.active');
   if(active) active.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+
+// Keep the active mandala tab reachable when the row overflows a phone width.
+function scrollActiveTabIntoView(){
+  const row=document.getElementById('mandala-row');
+  const active=row&&row.querySelector('.m-tab.active');
+  if(!active||row.scrollWidth<=row.clientWidth) return;
+  row.scrollTo({left:active.offsetLeft-(row.clientWidth-active.offsetWidth)/2,behavior:'smooth'});
 }
 
 document.getElementById('strip-left').onclick=()=>{document.getElementById('sukta-strip').scrollBy({left:-200,behavior:'smooth'});};

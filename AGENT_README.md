@@ -49,11 +49,14 @@ read-books/
 │       illustrations .html       ← 7 formats
 │
 ├── khayyam-rubaiyat/             ← 5 parallel editions
-│   ├── CLAUDE.md
-│   ├── seeds/*.json              ← one per edition
-│   ├── data/build_reader.py      ← builds reader.html
-│   ├── data/reader-template.html ← the real source for reader.html
-│   └── index / reader .html
+│   ├── CLAUDE.md , .project/
+│   ├── seeds/*.json              ← one per edition (5 files)
+│   ├── data/build_reader.py      ← builds reader.html; ALSO the shared library
+│   │                               (seed loading, Persian matching, payload)
+│   ├── data/build_fullbleed.py   ← builds fullbleed.html
+│   ├── data/build_theater.py     ← builds theater.html
+│   ├── data/*-template.html      ← the real sources for the 3 built files
+│   └── index / reader / fullbleed / theater .html
 │
 ├── homer-iliad/ , homer-odyssey/ ← 3 and 6 parallel editions
 │   ├── CLAUDE.md , .project/

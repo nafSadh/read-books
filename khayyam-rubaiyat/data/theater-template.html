@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark-violet">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubáiyát of Omar Khayyám — Theater</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&family=Vazirmatn:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== THEMES =====
+   The palette blocks are the Rubáiyát reader's, verbatim, so the stage is lit
+   the same colour as the book. Theater adds only --dim (the stage furniture),
+   --controls-bg / --controls-border (reusing the reader's bar values) and
+   --progress-bg. Default theme is dark-violet: the stage is dark. */
+:root {
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Jost', -apple-system, Helvetica Neue, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-fa: 'Vazirmatn', 'Noto Naskh Arabic', 'EB Garamond', Georgia, serif;
+}
+
+[data-theme="sepia"] {
+  --bg: #f5efe0;
+  --text: #3a2e1e;
+  --text-secondary: #7a6a52;
+  --border: #d4c8a8;
+  --accent: #b45309;
+  --dim: #9a8a72;
+  --controls-bg: rgba(245,239,224,0.94);
+  --controls-border: rgba(0,0,0,0.06);
+  --progress-bg: rgba(0,0,0,0.1);
+  --btn-bg: rgba(0,0,0,0.05);
+}
+[data-theme="light-purple"] {
+  --bg: #faf8f3;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d6d0c4;
+  --accent: #7c3aed;
+  --dim: #8a8fa8;
+  --controls-bg: rgba(250,248,243,0.94);
+  --controls-border: rgba(0,0,0,0.06);
+  --progress-bg: rgba(0,0,0,0.1);
+  --btn-bg: rgba(0,0,0,0.05);
+}
+[data-theme="light-azure"] {
+  --bg: #ffffff;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d6d0c4;
+  --accent: #2e6ab4;
+  --dim: #8a98b0;
+  --controls-bg: rgba(255,255,255,0.92);
+  --controls-border: rgba(0,0,0,0.08);
+  --progress-bg: rgba(0,0,0,0.1);
+  --btn-bg: rgba(0,0,0,0.06);
+}
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a;
+  --text: #dce0ec;
+  --text-secondary: #8490aa;
+  --border: #333;
+  --accent: #9b7aed;
+  --dim: #546080;
+  --controls-bg: rgba(26,26,26,0.95);
+  --controls-border: rgba(255,255,255,0.08);
+  --progress-bg: rgba(255,255,255,0.08);
+  --btn-bg: rgba(255,255,255,0.08);
+}
+[data-theme="dark-blue"] {
+  --bg: #000000;
+  --text: #8490aa;
+  --text-secondary: #546080;
+  --border: #1c2440;
+  --accent: #2e6ab4;
+  --dim: #364060;
+  --controls-bg: rgba(0,0,0,0.95);
+  --controls-border: rgba(255,255,255,0.06);
+  --progress-bg: rgba(255,255,255,0.06);
+  --btn-bg: rgba(255,255,255,0.06);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; overflow: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s, color 0.5s;
+  display: flex; flex-direction: column;
+}
+
+/* ===== STAGE ===== */
+.stage {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 72px 40px 76px; overflow: hidden;
+  cursor: pointer; position: relative;
+}
+
+.quatrain-view {
+  max-width: 620px; width: 100%;
+  max-height: 100%; overflow-y: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.42s ease, transform 0.42s ease;
+  text-align: center;
+}
+.quatrain-view::-webkit-scrollbar { display: none; }
+.quatrain-view.fading { opacity: 0; transform: translateY(20px); }
+
+/* ===== LARGE QUATRAIN COUNT ===== */
+.q-ordinal {
+  font-family: var(--font-serif);
+  font-size: clamp(46px, 8vw, 82px);
+  font-weight: 400; line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--accent); opacity: 0.24;
+  margin-bottom: 6px;
+}
+.q-ordinal.fa { font-family: var(--font-fa); letter-spacing: 0.02em; }
+.q-count {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 4px;
+}
+.q-rule {
+  width: 56px; height: 1px; margin: 20px auto 40px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.6;
+}
+
+/* ===== VERSE ===== */
+.q-verse {
+  font-size: 24px; line-height: 2.0;
+  color: var(--text);
+  text-align: left; text-indent: 0;
+  display: inline-block; max-width: 100%;
+}
+.q-verse p { margin: 0 0 0.18em; text-indent: 0; }
+.q-verse p.indented { text-indent: 1.4em; }
+.q-verse p.q-prose {
+  text-align: left; font-size: 21px; line-height: 1.85;
+  hyphens: auto; -webkit-hyphens: auto;
+}
+
+/* Persian stage — right-to-left, transliteration right-aligned beneath */
+.quatrain-view.q-rtl .q-verse {
+  font-family: var(--font-fa);
+  direction: rtl; text-align: right;
+}
+.quatrain-view.q-rtl .q-verse p.fa { font-size: 1.02em; line-height: 2.15; margin: 0 0 0.08em; }
+.q-verse p.translit {
+  direction: ltr; text-align: right;
+  font-family: var(--font-mono); font-size: 0.5em; line-height: 1.95;
+  color: var(--text-secondary); opacity: 0.85;
+  letter-spacing: 0.2px; margin: -2px 0 12px;
+}
+
+/* ===== TOP INDICATOR ===== */
+.stage-indicator {
+  position: fixed; top: 0; left: 0; right: 0; height: 46px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-sans); font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--dim);
+  background: var(--controls-bg);
+  border-bottom: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  opacity: 0; transform: translateY(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100; pointer-events: none; padding: 0 16px;
+}
+.stage-indicator.visible { opacity: 1; transform: translateY(0); }
+.stage-indicator .si-ed { color: var(--accent); }
+
+/* ===== CONTROLS ===== */
+.controls {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center; gap: 4px 12px;
+  padding: 8px 16px 10px;
+  background: var(--controls-bg);
+  border-top: 1px solid var(--controls-border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  opacity: 0; transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+.controls.visible { opacity: 1; transform: translateY(0); }
+
+.ctrl-btn {
+  font-family: var(--font-sans); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dim); background: none; border: none; cursor: pointer;
+  padding: 8px 12px; min-height: 40px;
+  display: flex; align-items: center; gap: 6px;
+  border-radius: 6px; transition: color 0.2s, background 0.15s;
+}
+.ctrl-btn:hover { color: var(--accent); background: var(--btn-bg); }
+.ctrl-btn:disabled { opacity: 0.25; cursor: default; background: none; }
+
+.ctrl-pos {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: 1px;
+  min-width: 66px; text-align: center; flex-shrink: 0;
+}
+.ctrl-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+
+/* Edition switch — same chip row as the reader's top bar */
+.ed-switch {
+  display: inline-flex; border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; flex-shrink: 0;
+}
+.ed-switch .ed-opt {
+  background: transparent; border: none; color: var(--dim);
+  font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+  padding: 6px 10px; cursor: pointer; line-height: 1.4;
+  min-height: 30px; letter-spacing: .3px;
+  transition: background .15s, color .15s;
+}
+.ed-switch .ed-opt:hover { background: var(--btn-bg); color: var(--text); }
+.ed-switch .ed-opt.active { color: var(--accent); background: var(--btn-bg); }
+.ed-switch .ed-opt + .ed-opt { border-left: 1px solid var(--border); }
+.ed-switch .ed-opt[lang="fa"] { font-family: var(--font-fa); font-size: 13px; padding: 4px 9px; }
+
+/* ===== THEME DOTS ===== */
+.theme-dots { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.theme-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: none; padding: 0; cursor: pointer; flex-shrink: 0;
+  position: relative; transition: transform 0.2s, box-shadow 0.2s;
+}
+/* Keep the dot visually 12px (10px on phones) but give it a 40px-tall hit area
+   spanning the gap to its neighbour — wider would steal the next dot's clicks. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
+.theme-dot:hover { transform: scale(1.3); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-t="light-purple"] { background: #7c3aed; }
+.theme-dot[data-t="sepia"]        { background: #b45309; }
+.theme-dot[data-t="light-azure"]  { background: #2e6ab4; }
+.theme-dot[data-t="dark-violet"]  { background: #9b7aed; }
+.theme-dot[data-t="dark-blue"]    { background: #4a90d9; }
+
+/* ===== BACK LINK ===== */
+.ctrl-back {
+  font-family: var(--font-sans); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dim); text-decoration: none;
+  padding: 10px; transition: color 0.2s; flex-shrink: 0;
+}
+.ctrl-back:hover { color: var(--accent); }
+
+/* ===== PROGRESS ===== */
+.progress {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--progress-bg); z-index: 101; pointer-events: none;
+}
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.4s ease; }
+
+/* ── Focus-visible ── */
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .stage { padding: 56px 24px 96px; }
+  .q-verse { font-size: 21px; line-height: 1.95; }
+  .q-verse p.q-prose { font-size: 19px; }
+  .controls { gap: 2px 8px; }
+  .ctrl-btn { padding: 8px 8px; font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .stage { padding: 52px 18px 116px; }
+  .q-verse { font-size: 19px; line-height: 1.9; }
+  .q-verse p.q-prose { font-size: 17px; }
+  .q-rule { margin: 14px auto 28px; }
+  .ctrl-sep { display: none; }
+  .ctrl-back { display: none; }
+  .theme-dots { gap: 6px; }
+  .theme-dot { width: 10px; height: 10px; }
+  .ed-switch .ed-opt { padding: 6px 7px; font-size: 10px; }
+  .ed-switch .ed-opt[lang="fa"] { font-size: 12px; padding: 4px 7px; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="stage-indicator" id="indicator">
+  <span class="si-ed" id="si-ed"></span>
+  <span id="si-pos"></span>
+</div>
+
+<div class="stage" id="stage">
+  <div class="quatrain-view" id="view"></div>
+</div>
+
+<div class="controls" id="controls">
+  <a class="ctrl-back" href="index.html">&#8592; Book</a>
+  <button class="ctrl-btn" id="prev" aria-label="Previous quatrain">&#8592;<span class="ctrl-word">Prev</span></button>
+  <span class="ctrl-pos" id="pos"></span>
+  <button class="ctrl-btn" id="next" aria-label="Next quatrain"><span class="ctrl-word">Next</span>&#8594;</button>
+  <div class="ctrl-sep"></div>
+  <div class="ed-switch" id="ed-switch" role="tablist" aria-label="Choose edition"></div>
+  <div class="ctrl-sep"></div>
+  <div class="theme-dots" id="theme-dots" role="group" aria-label="Theme">
+    <button type="button" class="theme-dot" data-t="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+    <button type="button" class="theme-dot" data-t="sepia" title="Sepia" aria-label="Sepia theme"></button>
+    <button type="button" class="theme-dot" data-t="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+    <button type="button" class="theme-dot active" data-t="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+    <button type="button" class="theme-dot" data-t="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
+  </div>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+<script>
+// ===================================================================
+// CONTENT — built by data/build_theater.py from seeds/*.json
+// ===================================================================
+const DATA = __DATA__;
+const ORDER = DATA.order;
+const EDITIONS = DATA.editions;
+
+const PREFS_KEY = 'rubaiyat-theater-prefs';
+const THEME_ORDER = ['light-purple', 'sepia', 'light-azure', 'dark-violet', 'dark-blue'];
+const FADE_MS = 240;
+
+let edKey = ORDER.includes(DATA.default) ? DATA.default : ORDER[0];
+let quatrains = [];
+let numToIndex = {};
+let current = 0;
+let animating = false;
+let hideTimer = null;
+
+const viewEl = document.getElementById('view');
+const stageEl = document.getElementById('stage');
+const controlsEl = document.getElementById('controls');
+const indicatorEl = document.getElementById('indicator');
+const edSwitchEl = document.getElementById('ed-switch');
+
+function reducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+// ===================================================================
+// RENDER
+// ===================================================================
+function paint(idx) {
+  const q = quatrains[idx];
+  const ed = EDITIONS[edKey];
+  const rtl = ed.dir === 'rtl';
+
+  // dir="rtl" goes on the quatrain container itself, not on the whole view —
+  // an RTL view would bidi-reorder the Latin count line above it into nonsense.
+  viewEl.classList.toggle('q-rtl', rtl);
+
+  viewEl.innerHTML =
+    '<div class="q-count">' + ed.short + ' &middot; ' + (idx + 1) + ' of ' + quatrains.length + '</div>' +
+    '<div class="q-ordinal' + (rtl ? ' fa' : '') + '"' + (rtl ? ' lang="fa"' : '') + '>' + q.label + '</div>' +
+    '<div class="q-rule"></div>' +
+    '<div class="q-verse"' + (rtl ? ' dir="rtl" lang="fa"' : '') + '>' + q.verse + '</div>';
+  viewEl.scrollTop = 0;
+
+  document.getElementById('pos').textContent = (idx + 1) + ' / ' + quatrains.length;
+  document.getElementById('si-ed').textContent = ed.plain;
+  document.getElementById('si-pos').textContent = q.label + ' · ' + (idx + 1) + ' / ' + quatrains.length;
+  document.getElementById('prev').disabled = idx === 0;
+  document.getElementById('next').disabled = idx === quatrains.length - 1;
+  document.getElementById('progress-fill').style.width =
+    (quatrains.length > 1 ? (idx / (quatrains.length - 1) * 100) : 100) + '%';
+
+  writeHash(idx);
+}
+
+function render(idx) {
+  if (animating) return;
+  current = idx;
+  if (reducedMotion()) { paint(idx); return; }
+  animating = true;
+  viewEl.classList.add('fading');
+  setTimeout(() => {
+    paint(current);
+    viewEl.classList.remove('fading');
+    animating = false;
+  }, FADE_MS);
+}
+
+function go(dir) {
+  if (animating) return;
+  const next = current + dir;
+  if (next < 0 || next >= quatrains.length) return;
+  render(next);
+}
+
+// ===================================================================
+// URL HASH — #q-<edition>-N, the same deep-link form reader.html parses
+// ===================================================================
+function writeHash(idx) {
+  const q = quatrains[idx];
+  if (!q) return;
+  history.replaceState(null, '', location.pathname + location.search +
+    '#q-' + edKey + '-' + q.n);
+}
+
+function parseHash() {
+  const h = location.hash.replace('#', '');
+  let m = h.match(/^q-([a-z]+)-(\d+)$/);
+  if (m && EDITIONS[m[1]]) return { ed: m[1], n: parseInt(m[2], 10) };
+  // The reader also accepts #q-N and the short #q-N-1 / #q-N-5 forms.
+  m = h.match(/^q-(\d+)(?:-(1|5))?$/);
+  if (m) {
+    return {
+      ed: m[2] === '1' ? 'first' : m[2] === '5' ? 'fifth' : null,
+      n: parseInt(m[1], 10),
+    };
+  }
+  return null;
+}
+
+// ===================================================================
+// EDITIONS
+// ===================================================================
+function buildEditionSwitch() {
+  edSwitchEl.innerHTML = '';
+  ORDER.forEach(key => {
+    const ed = EDITIONS[key];
+    const btn = document.createElement('button');
+    btn.className = 'ed-opt';
+    btn.id = 'ed-' + key;
+    btn.setAttribute('role', 'tab');
+    btn.textContent = ed.short;
+    btn.title = ed.title;
+    btn.setAttribute('aria-label', ed.plain + ', ' + ed.count + ' quatrains');
+    if (ed.dir === 'rtl') btn.setAttribute('lang', ed.lang);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (edKey !== key) { applyEdition(key); render(0); savePrefs(); }
+      showControls();
+    });
+    edSwitchEl.appendChild(btn);
+  });
+}
+
+function applyEdition(key) {
+  edKey = key;
+  quatrains = EDITIONS[key].quatrains;
+  numToIndex = {};
+  quatrains.forEach((q, i) => { numToIndex[q.n] = i; });
+  document.documentElement.dataset.edition = key;
+  ORDER.forEach(k => {
+    const btn = document.getElementById('ed-' + k);
+    if (!btn) return;
+    btn.classList.toggle('active', k === key);
+    btn.setAttribute('aria-selected', String(k === key));
+  });
+}
+
+// ===================================================================
+// THEME + PREFERENCES
+// ===================================================================
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.toggle('active', d.dataset.t === t));
+  savePrefs();
+}
+
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({
+      theme: document.documentElement.dataset.theme || 'dark-violet',
+      edition: edKey,
+    }));
+  } catch (e) {}
+}
+
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (!raw) return {};
+    // An older build stored a bare theme string under this key.
+    if (raw[0] !== '{') return THEME_ORDER.includes(raw) ? { theme: raw } : {};
+    return JSON.parse(raw) || {};
+  } catch (e) { return {}; }
+}
+
+// ===================================================================
+// CONTROLS AUTO-HIDE
+// ===================================================================
+function showControls() {
+  controlsEl.classList.add('visible');
+  indicatorEl.classList.add('visible');
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(hideControls, 2400);
+}
+function hideControls() {
+  controlsEl.classList.remove('visible');
+  indicatorEl.classList.remove('visible');
+}
+
+// ===================================================================
+// INIT
+// ===================================================================
+(function init() {
+  const prefs = loadPrefs();
+  if (prefs.theme && THEME_ORDER.includes(prefs.theme)) {
+    document.documentElement.dataset.theme = prefs.theme;
+  }
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.classList.toggle('active', d.dataset.t === document.documentElement.dataset.theme);
+  });
+
+  buildEditionSwitch();
+
+  // Position lives in the hash and is restored here, in script — the stage is
+  // JS-rendered, so there is no anchor for the browser to jump to.
+  const parsed = parseHash();
+  const startEd = (parsed && parsed.ed) ? parsed.ed
+    : (ORDER.includes(prefs.edition) ? prefs.edition : edKey);
+  applyEdition(startEd);
+
+  let startIdx = 0;
+  if (parsed && numToIndex[parsed.n] !== undefined) startIdx = numToIndex[parsed.n];
+  current = startIdx;
+  paint(current);
+
+  stageEl.addEventListener('click', (e) => {
+    if (e.target.closest('#controls') || e.target.closest('#indicator')) return;
+    go(1);
+  });
+
+  document.getElementById('prev').addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+  document.getElementById('next').addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.addEventListener('click', (e) => { e.stopPropagation(); setTheme(d.dataset.t); });
+  });
+
+  document.addEventListener('mousemove', showControls);
+  document.addEventListener('touchstart', showControls, { passive: true });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    showControls();
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'j':
+        e.preventDefault(); go(1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'k':
+        e.preventDefault(); go(-1); break;
+      case 'Home': e.preventDefault(); render(0); break;
+      case 'End': e.preventDefault(); render(quatrains.length - 1); break;
+      case 'Escape': hideControls(); break;
+    }
+  });
+
+  let touchX = 0, touchY = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 2) go(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  window.addEventListener('hashchange', () => {
+    const p = parseHash();
+    if (!p) return;
+    if (p.ed && p.ed !== edKey) { applyEdition(p.ed); savePrefs(); }
+    const idx = numToIndex[p.n];
+    if (idx !== undefined && idx !== current) render(idx);
+  });
+
+  showControls();
+})();
+</script>
+</body>
+</html>

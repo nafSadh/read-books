@@ -536,6 +536,9 @@ html[data-theme="dark-blue"] {
   .chapter-header .chapter-title { font-size: 22px; }
   .running-header { padding: 8px 0 0; margin: 0 16px; font-size: 10px; }
   #cover-spread .cover-title { font-size: 26px; }
+  /* The tray is centred on its button, which sits at the right edge — half of
+     it would open past the viewport, cutting off the last themes. */
+  #footer .theme-dots { right: 0; transform: none; }
 }
 </style>
 </head>

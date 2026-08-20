@@ -1166,7 +1166,10 @@ function applyEdition(ed, opts) {
   if (opts.scrollToTop) window.scrollTo({ top: 0, behavior: 'instant' });
   // Drop a hash pointing into the edition we just left — it would otherwise
   // target a display:none section on the next load and silently lose position.
-  if (/^#(?:q|chg)-/.test(location.hash) && !location.hash.startsWith('#q-' + ed + '-')
+  // `keepHash` exempts the initial call: on load the hash is the incoming deep
+  // link, not a leftover, and restoreHash() has not read it yet.
+  if (!opts.keepHash
+      && /^#(?:q|chg)-/.test(location.hash) && !location.hash.startsWith('#q-' + ed + '-')
       && !location.hash.startsWith('#chg-' + ed + '-')) {
     history.replaceState(null, '', location.pathname + location.search);
   }
@@ -1356,7 +1359,7 @@ const initialDetails = loadedPrefs.details === 'on' ? 'on' : 'off';
 document.body.dataset.details = initialDetails;
 detailsBtn.setAttribute('aria-pressed', String(initialDetails === 'on'));
 
-applyEdition(initialEdition);
+applyEdition(initialEdition, { keepHash: true });
 
 if (location.hash) restoreHash();
 </script>

@@ -384,6 +384,24 @@ button:focus:not(:focus-visible) { outline: none; }
   #cover-spread .cover-title { font-size: 32px; }
   #cover-spread .cover-author { font-size: 14px; }
   .click-zone { width: 50%; }
+
+  /* The footer row (nav + 12-entry scrubber + theme picker) is wider than a
+     phone, so it overflowed to x=-6 on the left and x=427 on the right at
+     390px — three of the five theme dots sat entirely off-screen and mobile
+     readers could not change theme at all. Stack it, let the scrubber scroll
+     rather than overflow, and open the dot tray leftward from the wrap's
+     right edge instead of centred on it. */
+  #footer {
+    flex-wrap: wrap; justify-content: space-between; gap: 8px;
+    padding: 16px 12px 10px;
+  }
+  #footer .chapter-scrubber {
+    order: 3; flex: 1 0 100%;
+    overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    justify-content: flex-start;
+  }
+  #footer .chapter-scrubber::-webkit-scrollbar { display: none; }
+  .theme-dots { right: 0; transform: none; }
 }
 @media (max-width: 600px) {
   .page-content { padding: 24px 16px 48px; }

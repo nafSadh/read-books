@@ -66,6 +66,12 @@ body {
 :lang(sa-Beng) { font-family: 'Noto Serif Bengali', 'Tiro Bangla', serif; }
 :lang(sa-Deva) { font-family: 'Noto Serif Devanagari', serif; }
 :lang(sa-Latn) { font-family: 'EB Garamond', Georgia, serif; font-style: italic; }
+/* The mono label strips are set as one uniform run of uppercase monospace; an
+   italic serif word dropped into the middle breaks that rhythm. The lang stays
+   (screen readers still get it) — only the face inherits. */
+.section-head :lang(sa-Latn),
+.rd-stats :lang(sa-Latn),
+.veda-count :lang(sa-Latn) { font-family: inherit; font-style: inherit; }
 
 /* ── Shell ── */
 .shell { max-width: 680px; margin: 0 auto; padding: 48px 24px 96px; }
@@ -636,7 +642,7 @@ a:focus-visible, button:focus-visible {
           <span class="rd-tag">rigveda.html</span>
           <span class="rd-title"><span lang="bn">ঋগ্বেদ সংহিতা</span> &middot; The Complete Rigveda</span>
         </span>
-        <div class="rd-stats">10 MANDALAS &middot; 1,028 S&#362;KTAS &middot; 10,143 MANTRAS</div>
+        <div class="rd-stats">10 <span lang="sa-Latn">MANDALAS</span> &middot; 1,028 <span lang="sa-Latn">S&#362;KTAS</span> &middot; 10,143 <span lang="sa-Latn">MANTRAS</span></div>
         <p class="rd-desc">
           The whole Rigveda, not a selection. The page ships as a small shell and
           lazy-loads one <span lang="sa-Latn">maṇḍala</span> of text at a time, so
@@ -657,7 +663,7 @@ a:focus-visible, button:focus-visible {
           <span class="rd-tag">reader.html</span>
           <span class="rd-title"><span lang="bn">চার বেদ</span> &middot; Four-Veda Reader</span>
         </span>
-        <div class="rd-stats">4 VEDAS &middot; 13 S&#362;KTAS &middot; 95 MANTRAS</div>
+        <div class="rd-stats">4 VEDAS &middot; 13 <span lang="sa-Latn">S&#362;KTAS</span> &middot; 95 <span lang="sa-Latn">MANTRAS</span></div>
         <p class="rd-desc">
           A curated anthology of the best-known hymns from all four
           <span lang="sa-Latn">saṃhitās</span> &mdash;
@@ -678,7 +684,7 @@ a:focus-visible, button:focus-visible {
           <span class="rd-tag">fullbleed.html</span>
           <span class="rd-title">Full Bleed &middot; Two-Page Spread</span>
         </span>
-        <div class="rd-stats">SAME 13 S&#362;KTAS &middot; PAGE-FLIP</div>
+        <div class="rd-stats">SAME 13 <span lang="sa-Latn">S&#362;KTAS</span> &middot; PAGE-FLIP</div>
         <p class="rd-desc">
           The same curated text laid out as an open book: Sanskrit on the left leaf,
           meanings on the right, paginated to the viewport rather than scrolled. Cover
@@ -694,12 +700,12 @@ a:focus-visible, button:focus-visible {
 
   <!-- Curated selection -->
   <section class="chapter-list">
-    <p class="section-head">In the curated reader &mdash; 13 s&#363;ktas, 95 mantras</p>
+    <p class="section-head">In the curated reader &mdash; 13 <span lang="sa-Latn">s&#363;ktas</span>, 95 <span lang="sa-Latn">mantras</span></p>
     <div class="chapter-grid">
 
       <div class="veda-head">
         <span class="veda-name"><span lang="bn">ঋগ্বেদ</span> Rigveda</span>
-        <span class="veda-count">6 s&#363;ktas &middot; 49 mantras</span>
+        <span class="veda-count">6 <span lang="sa-Latn">s&#363;ktas</span> &middot; 49 <span lang="sa-Latn">mantras</span></span>
       </div>
       <div class="chapter-item">
         <span class="ch-num">1.1</span>
@@ -734,7 +740,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="veda-head">
         <span class="veda-name"><span lang="bn">সামবেদ</span> Samaveda</span>
-        <span class="veda-count">2 s&#363;ktas &middot; 12 mantras</span>
+        <span class="veda-count">2 <span lang="sa-Latn">s&#363;ktas</span> &middot; 12 <span lang="sa-Latn">mantras</span></span>
       </div>
       <div class="chapter-item">
         <span class="ch-num">U.1</span>
@@ -749,7 +755,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="veda-head">
         <span class="veda-name"><span lang="bn">যজুর্বেদ</span> Yajurveda</span>
-        <span class="veda-count">3 s&#363;ktas &middot; 15 mantras</span>
+        <span class="veda-count">3 <span lang="sa-Latn">s&#363;ktas</span> &middot; 15 <span lang="sa-Latn">mantras</span></span>
       </div>
       <div class="chapter-item">
         <span class="ch-num">40.0</span>
@@ -769,7 +775,7 @@ a:focus-visible, button:focus-visible {
 
       <div class="veda-head">
         <span class="veda-name"><span lang="bn">অথর্ববেদ</span> Atharvaveda</span>
-        <span class="veda-count">2 s&#363;ktas &middot; 19 mantras</span>
+        <span class="veda-count">2 <span lang="sa-Latn">s&#363;ktas</span> &middot; 19 <span lang="sa-Latn">mantras</span></span>
       </div>
       <div class="chapter-item">
         <span class="ch-num">12.1</span>
@@ -787,7 +793,7 @@ a:focus-visible, button:focus-visible {
 
   <!-- Mandalas of the complete Rigveda -->
   <section>
-    <p class="section-head">The complete Rigveda &mdash; 10 ma&#7751;&#7693;alas</p>
+    <p class="section-head">The complete Rigveda &mdash; 10 <span lang="sa-Latn">ma&#7751;&#7693;alas</span></p>
     <div class="mandala-grid">
       <a class="mandala-cell" href="rigveda.html#1.1"><span class="mnd-num">I</span><span class="mnd-meta">191 &middot; 1979</span></a>
       <a class="mandala-cell" href="rigveda.html#2.1"><span class="mnd-num">II</span><span class="mnd-meta">43 &middot; 430</span></a>
@@ -822,11 +828,11 @@ a:focus-visible, button:focus-visible {
       </div>
       <div class="meta-item">
         <div class="meta-label">Complete Rigveda</div>
-        <div class="meta-value">1,028 s&#363;ktas &middot; 10,143 mantras</div>
+        <div class="meta-value">1,028 <span lang="sa-Latn">s&#363;ktas</span> &middot; 10,143 <span lang="sa-Latn">mantras</span></div>
       </div>
       <div class="meta-item">
         <div class="meta-label">Curated selection</div>
-        <div class="meta-value">13 s&#363;ktas &middot; 95 mantras</div>
+        <div class="meta-value">13 <span lang="sa-Latn">s&#363;ktas</span> &middot; 95 <span lang="sa-Latn">mantras</span></div>
       </div>
       <div class="meta-item">
         <div class="meta-label">Scripts</div>
@@ -875,7 +881,7 @@ a:focus-visible, button:focus-visible {
       <div class="source-item">
         <div class="src-label">Curated four-Veda selection</div>
         <p class="src-text">
-          The 13 s&#363;ktas in <a href="reader.html">reader.html</a> and
+          The 13 <span lang="sa-Latn">s&#363;ktas</span> in <a href="reader.html">reader.html</a> and
           <a href="fullbleed.html">fullbleed.html</a> carry hand-curated
           <span lang="bn">বাংলা</span> and English meanings, with
           <span lang="sa-Latn">ṛṣi</span>, <span lang="sa-Latn">devatā</span>, metre

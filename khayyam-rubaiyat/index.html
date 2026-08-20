@@ -150,10 +150,19 @@ body {
   border-radius: 50%;
   cursor: pointer;
   border: none;
+  padding: 0;
   transition: transform .15s, box-shadow .15s;
   flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 11px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 5px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px currentColor; }
 .dot-lp  { background: #7c3aed; color: #7c3aed; }
 .dot-sep { background: #b45309; color: #b45309; }
@@ -454,9 +463,9 @@ body {
         </div>
       </div>
       <div class="chapter-item" style="flex-basis:100%;align-items:flex-start;padding:14px 12px;flex-direction:column;gap:4px">
-        <div><span class="ch-num" style="min-width:auto;margin-right:10px;font-family:'Vazirmatn','Noto Naskh Arabic',sans-serif;font-size:14px">فا</span><span class="ch-title" style="font-weight:500">Persian Originals &middot; Foroughi &amp; Ghani, 1960 <em style="color:var(--accent);font-weight:400;font-size:11px;margin-left:6px">annotated</em></span></div>
+        <div><span class="ch-num" style="min-width:auto;margin-right:10px;font-family:'Vazirmatn','Noto Naskh Arabic',sans-serif;font-size:14px" lang="fa" dir="rtl">فا</span><span class="ch-title" style="font-weight:500">Persian Originals &middot; Foroughi &amp; Ghani, 1960 <em style="color:var(--accent);font-weight:400;font-size:11px;margin-left:6px">annotated</em></span></div>
         <div style="font-size:13px;color:var(--dim);line-height:1.55;padding-left:42px">
-          <strong>178 رباعیات</strong> in Persian script with transliteration, modern-English literal
+          <strong>178 <span lang="fa" dir="rtl">رباعیات</span></strong> in Persian script with transliteration, modern-English literal
           and poetic renderings, theme tag, and a brief contextual note. Historical matches to
           FitzGerald 1st/5th and Whinfield are inlined where documented.
         </div>

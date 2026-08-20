@@ -290,13 +290,20 @@ html[data-theme="dark-blue"] {
   border: none; border-bottom: 1px solid var(--accent); color: var(--text); outline: none; padding: 0;
 }
 .chapter-scrubber { display: flex; gap: 8px; align-items: center; }
-.chapter-scrubber span {
+.chapter-scrubber button {
   font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.5px;
   cursor: pointer; opacity: 0.4; transition: opacity 0.2s, color 0.2s; position: relative;
+  background: none; border: none; padding: 0; color: inherit;
 }
-.chapter-scrubber span:hover { opacity: 0.8; }
-.chapter-scrubber span.active { opacity: 1; color: var(--accent); }
-.chapter-scrubber span::after {
+/* 40px-tall hit area; kept narrow so neighbouring entries stay clickable. */
+.chapter-scrubber button::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 8px); height: 40px;
+}
+.chapter-scrubber button:hover { opacity: 0.8; }
+.chapter-scrubber button:focus-visible { opacity: 1; outline: 2px solid var(--accent); outline-offset: 3px; }
+.chapter-scrubber button.active { opacity: 1; color: var(--accent); }
+.chapter-scrubber button::after {
   content: attr(data-title); position: absolute; bottom: 100%; left: 50%;
   transform: translateX(-50%); padding: 4px 8px;
   font-family: 'EB Garamond', Georgia, serif; font-size: 12px; font-style: italic;
@@ -304,7 +311,8 @@ html[data-theme="dark-blue"] {
   border: 1px solid var(--border); border-radius: 4px;
   opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-bottom: 6px;
 }
-.chapter-scrubber span:hover::after { opacity: 1; }
+.chapter-scrubber button:hover::after,
+.chapter-scrubber button:focus-visible::after { opacity: 1; }
 
 /* Theme toggle in footer */
 .theme-wrap { position: relative; display: flex; align-items: center; }
@@ -319,6 +327,15 @@ html[data-theme="dark-blue"] {
 .theme-dot {
   width: 12px; height: 12px; border-radius: 50%; border: none; padding: 0;
   cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+  position: relative;
+}
+/* Keep the dot visually 12px but give it a 40px-tall hit area. It must not grow
+   sideways past half the 6px gap, or it would cover the neighbouring dot's
+   centre and steal its clicks (later siblings paint on top). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 6px); height: 40px;
 }
 .theme-dot:hover { transform: scale(1.25); }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -791,7 +808,7 @@ function updateIndicator() {
     if (!rpg || rpg.isBlank || rpg.isChapterStart) { rhRight.classList.remove('visible'); }
     else { rhRight.querySelector('.rh-chapter-label').textContent = chTitle; }
   }
-  document.querySelectorAll('.chapter-scrubber span').forEach(s => {
+  document.querySelectorAll('.chapter-scrubber button').forEach(s => {
     s.classList.toggle('active', parseInt(s.dataset.chapter) === ch);
   });
 }
@@ -973,10 +990,12 @@ function init() {
   const scrubber = document.getElementById('chapter-scrubber');
   const romans = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
   CHAPTERS.forEach((ch, i) => {
-    const s = document.createElement('span');
+    const s = document.createElement('button');
+    s.type = 'button';
     s.textContent = romans[i] || ch.num;
     s.dataset.chapter = ch.num;
     s.dataset.title = ch.title;
+    s.setAttribute('aria-label', 'Book ' + (romans[i] || ch.num) + ': ' + ch.title);
     s.addEventListener('click', () => goToChapter(ch.num));
     scrubber.appendChild(s);
   });

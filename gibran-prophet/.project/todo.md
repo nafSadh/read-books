@@ -27,7 +27,8 @@
       Today all 29 images hotlink upload.wikimedia.org / gutenberg.org /
       kahlilgibran.com; they degrade to their captions when unreachable, but the
       page still depends on third-party hosts
-- [ ] `fullbleed.html`: the desktop flip animation path does not write the hash
+- [x] `fullbleed.html`: the desktop flip animation path does not write the hash
+      → fixed — writeHashForSpread() called when a flip lands
       (only `renderSpread()` does), so `#p-N` lags during animated page flips
 - [ ] Consider migrating the bare `{book}-{format}-theme` keys (theater, pdf-reader,
       illustrations, index) to the house `{book}-{format}-prefs` JSON blob,

@@ -20,7 +20,8 @@
 - [ ] Consider consolidating legacy readers or archiving unused ones (user's call — do not delete)
 - [ ] Mobile testing for fullbleed.html
 - [ ] Bring `web-reader.html` onto the five house theme names (currently light/sepia/dark/black)
-- [ ] `web-reader.html` has no theme control below 700px: `.theme-dots` is `display:none` in the
+- [x] `web-reader.html` has no theme control below 700px: `.theme-dots` is `display:none` in the
+      → fixed — dots restored and tightened; all four fit at 390px and 320px
       responsive block and the settings panel only offers Size/Font/Spacing/Align. Pre-existing —
       the dots were spans before, so converting them to buttons did not change reachability.
       Needs a Theme row in the settings panel (or keep the dots visible).
@@ -29,13 +30,15 @@
       `100% + 6px` so the expander cannot overlap the neighbouring dot. Reaching 40×40 (or even
       the 24×24 WCAG 2.5.8 minimum on width) needs a larger flex `gap` in the dot row, which is a
       visual change rather than a CSS one-liner.
-- [ ] `mobile.html` `#bottom-bar` overflows at 320px (iPhone SE 1st gen): page-num 40px +
+- [x] `mobile.html` `#bottom-bar` overflows at 320px (iPhone SE 1st gen): page-num 40px +
+      → fixed — bar tightened, scrubber scrolls below 360px; theme button in view
       12×20px scrubber (251px) + theme button 17px + 44px padding = 352px in a 320px viewport,
       so `scrollWidth` is 330 and the theme button is pushed half off-screen. Pre-existing and
       independent of the tap-target work. Fix is to shrink `.scrub-btn` to ~17px below 360px
       (12×17+11 = 215px, which fits) — a visual tweak, so left for the user's call.
       Clean at 360px and above.
-- [ ] `reader.html` `#ch-N` restore is racy: `restoreHash()` fires on `document.fonts.ready + 50ms`,
+- [x] `reader.html` `#ch-N` restore is racy: `restoreHash()` fires on `document.fonts.ready + 50ms`,
+      → fixed — hash captured before the deferral, observer writes suppressed until it lands (8/8)
       and when the font request is slow the scroll lands before layout settles, so the page ends up
       at chapter 1. Reproduces ~50% of loads (pre-existing; same behaviour before this session's
       changes). Needs a post-layout re-check, not a longer timeout.

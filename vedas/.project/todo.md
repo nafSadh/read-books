@@ -37,7 +37,8 @@ Open:
       place. All four call sites (sidebar links, progress segments, scrubber, updateScroll)
       now go through a `suktaTop()` helper using `getBoundingClientRect().top + scrollY - 56`.
       Verified: sūktas 1, 7, 10 and 13 all land at 56px.
-- [ ] `reader.html` / `rigveda.html` theme dots are still `<span>`s — convert to
+- [x] `reader.html` / `rigveda.html` theme dots are still `<span>`s — convert to
+      → fixed — both converted to <button aria-label> with a 40px-tall hit area
       `<button aria-label>` per `khayyam-rubaiyat/index.html:370` (fullbleed already is)
 - [ ] `fullbleed.html` chapter scrubber buttons are ~20x11px — needs a `::before` hit-area
       expander to reach the 40px touch-target rule

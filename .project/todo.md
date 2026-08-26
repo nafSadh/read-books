@@ -52,7 +52,7 @@ read-books/
 
 ## Vedas — next steps
 
-- [ ] Bengali meanings for full Rigveda (only 49/10,143 have Bengali)
+- [ ] Bengali meanings for full Rigveda — NOTE: the "49/10,143" figure is stale; vedas/CLAUDE.md documents 100% coverage (10,143 mantras) from the ebanglalibrary merge. Re-scope or close.
   - eBanglaLibrary.com: Rameshchandra Dutta translation (HTML, potential scrape)
   - Archive.org: OCR text available but garbled, needs cleanup
   - No bulk machine-readable Bengali source found yet
@@ -61,16 +61,20 @@ read-books/
 
 ## Conventions to apply retroactively
 
-- [ ] Add URL hash state to Alice readers (reader.html, fullbleed.html)
-- [ ] Add URL hash state to Meditations readers
-- [ ] Add URL hash state to Vedas reader.html
+- [x] Add URL hash state to Alice readers (reader.html, fullbleed.html)
+      → done — #ch-N in reader.html, #p-N/#s-N in fullbleed.html
+- [x] Add URL hash state to Meditations readers
+      → done — #ch-N in both scrolling readers, #p-N in fullbleed and index
+- [x] Add URL hash state to Vedas reader.html
+      → done — #ch-N, restored via getBoundingClientRect
 - [x] URL hash state in Vedas rigveda.html
 - [x] Add .project/ directory to alice-in-wonderland/
 - [x] Add CLAUDE.md to alice-in-wonderland/
 - [x] Add .project/ directory to meditations/ (now aurelius-meditations/)
 - [x] Add CLAUDE.md to meditations/ (now aurelius-meditations/)
 - [x] Renamed meditations/ → aurelius-meditations/
-- [ ] Add .project/ directory to vedas/
+- [x] Add .project/ directory to vedas/
+      → done — todo.md and changelog.md added
 - [ ] Consider renaming remaining legacy directories to author-book style
 
 ## Future candidates

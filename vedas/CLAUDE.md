@@ -42,6 +42,27 @@ All HTML files are self-contained (no external JS/CSS beyond Google Fonts).
 - Hash routing: `#3.62` for bookmarks
 - Works on both HTTP (fetch) and file:// (script tag fallback)
 
+### 4. `mobile.html`, `theater.html`, `pdf-reader.html` — curated, one sūkta at a time
+
+Generated from `data/payload.py`, which parses `VEDAS_DATA` out of `reader.html` (that file is
+hand-written and canonical, so the data is not duplicated). Built offline — unlike
+`build_rigveda.py`, these need no network.
+
+| | mobile | theater | pdf-reader |
+|---|---|---|---|
+| Default theme | light-purple | **dark-violet** | light-purple |
+| Prefs key | `vedas-mobile-prefs` | `vedas-theater-prefs` | `vedas-pdf-prefs` |
+| Script toggles | chips in a bottom sheet | inherited from prefs | inherited from prefs |
+
+Position is `#s-<veda>-<num>` in all three, shared across them.
+
+Phone notes (the reason mobile exists): body is 17px with the Bengali line-height at 2.0, the
+reading column is the full viewport width, and `height:100dvh` carries a `100vh` fallback for
+iOS below 15.4. Bottom bars use `env(safe-area-inset-bottom)` with `viewport-fit=cover`, so the
+home indicator does not cover the controls. Verified at 360, 393, 412 and 430 CSS px.
+
+Rebuild: `python3 data/build_mobile.py` / `build_theater.py` / `build_pdf.py`.
+
 ## Data sources
 
 ### Curated (`seeds/`)
@@ -99,12 +120,18 @@ vedas/
   CLAUDE.md                ← this file
   build_rigveda.py         ← build script for complete Rigveda
   index.html               ← landing page / format picker (hand-written)
-  reader.html              ← multi-Veda curated reader
+  reader.html              ← multi-Veda curated reader (canonical VEDAS_DATA lives here)
+  mobile.html              ← GENERATED: one sūkta per screen
+  theater.html             ← GENERATED: dark stage
+  pdf-reader.html          ← GENERATED: page per sūkta
   fullbleed.html           ← multi-Veda book-spread reader
   rigveda.html             ← GENERATED: shell (~45KB)
   rigveda-samhita.md       ← GENERATED: full text as Markdown
   data/
     rigveda-template.html  ← template for rigveda.html (edit this)
+    payload.py             ← shared: VEDAS_DATA → JSON payload for the 3 curated formats
+    build_mobile.py , build_theater.py , build_pdf.py
+    mobile-template.html , theater-template.html , pdf-template.html
     mandala-{1..10}.json   ← GENERATED: per-mandala data (264KB–1.1MB each)
     mandala-{1..10}.js     ← GENERATED: same data for file:// fallback
   seeds/

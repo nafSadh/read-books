@@ -45,4 +45,6 @@ Open:
 - [ ] rigveda sukta pills are 36px on mobile — 4px short of the 40px rule
 - [ ] `reader.html` has no font picker (fullbleed has no size/width/font panel at all);
       decide whether the curated readers should match the rigveda settings panel
-- [ ] Consider additional reader formats (mobile, theater, pdf-reader)
+- [x] Consider additional reader formats (mobile, theater, pdf-reader)
+      → done — mobile, theater and pdf-reader, generated from data/payload.py;
+        verified at 360/393/412/430 CSS px

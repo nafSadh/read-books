@@ -91,8 +91,13 @@ The complete Rigveda reader carries all 1,028 sūktas / 10,143 mantras with lazy
 | [rigveda](vedas/rigveda.html) | Complete Rigveda, two-column | Mandala tabs, sūkta strip, `#M.S` deep links |
 | [reader](vedas/reader.html) | Curated 4-Veda scroll | Sidebar, script toggles, 5 themes |
 | [fullbleed](vedas/fullbleed.html) | Curated 4-Veda spread | Page flip, chapter scrubber |
+| [mobile](vedas/mobile.html) | Phone-first, one sūkta per screen; scripts as chips in a sheet | Swipe / arrows, `#s-<veda>-<num>` |
+| [theater](vedas/theater.html) | Dark stage, one sūkta at a time | Click / arrows / swipe, `#s-<veda>-<num>` |
+| [pdf-reader](vedas/pdf-reader.html) | Page card per sūkta in a viewer shell | Sūkta select, arrows, `#s-<veda>-<num>` |
 
-Generated: `python3 vedas/build_rigveda.py` rebuilds `rigveda.html` and its per-mandala data (needs network).
+Generated: `python3 vedas/build_rigveda.py` rebuilds `rigveda.html` and its per-mandala data (needs network);
+`data/build_mobile.py`, `data/build_theater.py` and `data/build_pdf.py` rebuild the three curated
+one-sūkta-at-a-time formats from the shared `data/payload.py` (offline, no network).
 
 ### The Iliad & The Odyssey
 *Homer, c. 8th century BCE*

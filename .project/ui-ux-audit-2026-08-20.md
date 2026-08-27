@@ -306,8 +306,68 @@ Suite coverage, after the missing formats were built:
 | The Prophet | 7 | 7 |
 | Meditations | 4 | **7** — added mobile, theater, pdf-reader |
 | Rubáiyát | 2 | **6** — added fullbleed, theater, mobile, pdf-reader |
-| Vedas | 3 | **4** — added the landing page |
+| Vedas | 3 | **7** — added the landing page, mobile, theater, pdf-reader |
 
 The single remaining console line is `vedas/rigveda.html`'s `file://` fetch
 falling back to its `<script>` loader, which then succeeds and renders the sukta
 — benign, and by design so the reader works offline.
+
+---
+
+## Follow-up: Alice consolidation plan
+
+Alice was the experimental book — the variants accumulated while the house
+format vocabulary was still being discovered, and three of them are now strictly
+dominated by the formats that vocabulary settled on. Evidence gathered
+2026-08-27; **no files deleted** — this is a proposal for the maintainer.
+
+### What every other book converged on
+
+`index` (landing) · `reader` · `fullbleed` · `mobile` · `theater` · `pdf-reader`
+
+Alice has those six plus `scroll`, `single`, `web-reader` — and its `index.html`
+is not a landing page.
+
+### The three redundant variants
+
+Measured by the UI chrome each actually offers (`id=` inventory) and by what
+distinguishes it from the format that supersedes it:
+
+| File | Chrome | Superseded by | Why it is redundant |
+|---|---|---|---|
+| `web-reader.html` (183 KB) | `top-bar`, `chapter-sidebar`, `sidebar-overlay`, `settings-panel`, `progress-bar`, `back-to-top`, `content` | `reader.html` | Strict subset of `reader`'s chrome. `reader` adds a chapter scrubber and the theme dot picker; `web-reader` adds only a `reading-pct` readout. It is also the **only file in the library** off the 5-theme convention — it keeps a private `light`/`sepia`/`dark`/`black` set. |
+| `scroll.html` (169 KB) | 6 ids total: `content`, `nav-chapters`, `progress`, `size-btn`, `theme-btn` | `reader.html` | `reader` with the sidebar and settings panel removed. No capability of its own. |
+| `single.html` (167 KB) | `card`, `dots`, `prev-btn`, `next-btn`, `header-ch` | `theater.html` | One chapter at a time — `theater`'s model, rendered as a light card instead of a dark stage. The difference is a theme, not a format. |
+
+Deleting all three: **9 → 6 formats, −519 KB**, Alice matches the house suite,
+and the library's only theme-convention outlier goes with it.
+
+### The `index.html` problem is separate
+
+Alice's `index.html` is a *reader* — a classic open-book spread with page flips
+and a chapter `<select>` — so Alice is the only book with no landing page, and
+it carries **two** two-page-spread readers (`index` + `fullbleed`).
+
+Two ways out, both cheap:
+
+1. Rename `index.html` → `classic.html`, then write a landing `index.html` like
+   the other books'. Keeps the reader, fixes the gap. **Recommended.**
+2. Drop it as a duplicate of `fullbleed.html` and write the landing page. Loses
+   the cover mode and the chapter `<select>`, which `fullbleed` does not have.
+
+Either way the root catalog's `alice-in-wonderland/index.html` chip changes
+meaning, so update `index.html` at the repo root in the same commit.
+
+### Correction to this report's convention claim
+
+The P1 sweep's "reading position in the URL hash" did **not** reach every Alice
+format. Verified by `grep`: only `reader` (`location.hash` ×4), `fullbleed` (×2)
+and `theater` (×1) read or write it. `scroll`, `single`, `web-reader`, `mobile`,
+`index` and `pdf-reader` have no `location.hash`, no `history.replaceState` and
+no `hashchange` handler — **six of nine Alice formats have no reading position
+at all**. Alice's `CLAUDE.md` is accurate (it lists only the three); the earlier
+summary generalising the sweep to "every reader" was not.
+
+Three of those six are the deletion candidates above. If the consolidation
+happens, the remaining gap is `mobile` and `pdf-reader` — the two worth having
+position in, since `mobile` is the phone format and `pdf-reader` has 100+ pages.

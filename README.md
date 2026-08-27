@@ -36,8 +36,13 @@ All 486 passages carry a modern-English rewrite, notes, and proper-noun annotati
 | [reader](aurelius-meditations/reader.html) | Scrolling, Long translation + Greek toggle + detail panels | Sidebar, 5 themes, keyboard |
 | [reader-casaubon](aurelius-meditations/reader-casaubon.html) | Scrolling, Casaubon 1634 | Sidebar, 5 themes, keyboard |
 | [fullbleed](aurelius-meditations/fullbleed.html) | Two-page spread | Page flip, chapter scrubber |
+| [mobile](aurelius-meditations/mobile.html) | Phone-first, one passage per screen; Greek and notes as toggles | Swipe / arrows, bottom sheets, `#m-B.N` |
+| [theater](aurelius-meditations/theater.html) | Dark stage, one passage at a time | Click / arrows / swipe, `#m-B.N` |
+| [pdf-reader](aurelius-meditations/pdf-reader.html) | Chrome PDF viewer style, one passage per page | Toolbar, passage sidebar, zoom, `#m-B.N` |
 
-Generated: `python3 aurelius-meditations/data/assemble-reader.py` rebuilds `reader.html`.
+Generated: `python3 aurelius-meditations/data/assemble-reader.py` rebuilds `reader.html`;
+`data/build_mobile.py`, `data/build_theater.py` and `data/build_pdf.py` rebuild the three
+JS-rendered formats from the shared `data/payload.py`.
 
 ### The Prophet
 *Kahlil Gibran, 1923*

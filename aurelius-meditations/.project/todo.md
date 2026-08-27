@@ -41,5 +41,7 @@
 ## Future
 
 - [x] URL hash state for reader.html / reader-casaubon.html (`#ch-N`) and fullbleed.html (`#p-N`)
-- [ ] Additional reader formats (mobile, theater, etc.)
+- [x] Additional reader formats (mobile, theater, etc.)
+      → done — mobile.html, theater.html and pdf-reader.html, all generated from
+        data/payload.py; position in #m-B.N (viewport-independent)
 - [ ] Haines (1916) Loeb translation (Wikisource, public domain)

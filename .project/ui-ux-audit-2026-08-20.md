@@ -296,6 +296,17 @@ A full smoke pass over the finished state — every non-Homer page at 1440×900 
 | Pages with JS page errors | 3 | **0** |
 | Pages with horizontal overflow | — | **0** |
 | Pages reachable but broken | 1 (raw template at book root) | **0** |
+| Pages in the library | 27 | **34** |
+
+Suite coverage, after the missing formats were built:
+
+| Book | Formats before | after |
+|---|---|---|
+| Alice | 9 | 9 |
+| The Prophet | 7 | 7 |
+| Meditations | 4 | **7** — added mobile, theater, pdf-reader |
+| Rubáiyát | 2 | **6** — added fullbleed, theater, mobile, pdf-reader |
+| Vedas | 3 | **4** — added the landing page |
 
 The single remaining console line is `vedas/rigveda.html`'s `file://` fetch
 falling back to its `<script>` loader, which then succeeds and renders the sukta

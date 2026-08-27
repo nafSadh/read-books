@@ -68,9 +68,12 @@ scholarly notes.
 | [reader](khayyam-rubaiyat/reader.html) | Scrolling, 5-edition switcher, Persian column | Sidebar, quatrain deep links, 5 themes |
 | [fullbleed](khayyam-rubaiyat/fullbleed.html) | Two-page spread, one quatrain per recto, facing notes on the verso | Page flip, quatrain scrubber, `#p-N` |
 | [theater](khayyam-rubaiyat/theater.html) | Dark stage, one quatrain at a time | Click / arrows / swipe, `#q-<edition>-N` |
+| [mobile](khayyam-rubaiyat/mobile.html) | Phone-first, one quatrain per screen with its notes below | Swipe / arrows, bottom sheets, `#q-<edition>-N` |
+| [pdf-reader](khayyam-rubaiyat/pdf-reader.html) | Chrome PDF viewer style, one quatrain per page | Toolbar, thumbnail sidebar, zoom, `#p-N` |
 
 Generated: `python3 khayyam-rubaiyat/data/build_reader.py` (also the shared
-library), `data/build_fullbleed.py`, `data/build_theater.py`.
+library), then `data/build_fullbleed.py`, `data/build_theater.py`,
+`data/build_mobile.py`, `data/build_pdf.py`.
 
 ### Vedas
 *c. 1500–500 BCE — multilingual*

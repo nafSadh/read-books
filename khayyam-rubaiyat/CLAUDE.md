@@ -49,9 +49,13 @@ khayyam-rubaiyat/
     build_reader.py            <- builds reader.html; ALSO the shared library
     build_fullbleed.py         <- builds fullbleed.html
     build_theater.py           <- builds theater.html
+    build_mobile.py            <- builds mobile.html
+    build_pdf.py               <- builds pdf-reader.html
     reader-template.html       <- __CONTENT__ placeholder (baked DOM)
     fullbleed-template.html    <- __DATA__ placeholder (JSON payload)
     theater-template.html      <- __DATA__ placeholder (JSON payload)
+    mobile-template.html       <- __DATA__ placeholder (JSON payload)
+    pdf-template.html          <- __DATA__ placeholder (JSON payload)
     fetch_fitzgerald.py        <- fetch FG 1st+5th from Gutenberg #246
     fetch_persian.py           <- fetch the Persian originals
     parse_pg38511.py           <- parse Whinfield / Nicolas source text
@@ -61,6 +65,8 @@ khayyam-rubaiyat/
   reader.html                  <- GENERATED — scrolling reader
   fullbleed.html               <- GENERATED — two-page spread
   theater.html                 <- GENERATED — one quatrain at a time
+  mobile.html                  <- GENERATED — phone pager, one per screen
+  pdf-reader.html              <- GENERATED — PDF-viewer shell, one per page
 ```
 
 ## Build
@@ -69,6 +75,8 @@ khayyam-rubaiyat/
 python3 data/build_reader.py      # -> reader.html     (~1.9 MB)
 python3 data/build_fullbleed.py   # -> fullbleed.html  (~1.5 MB)
 python3 data/build_theater.py     # -> theater.html    (~0.44 MB)
+python3 data/build_mobile.py      # -> mobile.html     (~1.5 MB)
+python3 data/build_pdf.py         # -> pdf-reader.html (~1.5 MB)
 ```
 
 The fetch/parse scripts (`fetch_*.py`, `parse_pg38511.py`,
@@ -92,10 +100,10 @@ other two import. It owns:
   formats
 - `render_template(tpl, out, payload)` — substitutes `__DATA__`
 
-`build_fullbleed.py` and `build_theater.py` are thin: import, call
-`build_payload()`, call `render_template()`. Adding a sixth edition means
-touching `EDITION_ORDER`/`EDITION_META` and `edition_sources()` once, and all
-three formats pick it up.
+`build_fullbleed.py`, `build_theater.py`, `build_mobile.py` and `build_pdf.py`
+are thin: import, call `build_payload()`, call `render_template()`. Adding a
+sixth edition means touching `EDITION_ORDER`/`EDITION_META` and
+`edition_sources()` once, and all five formats pick it up.
 
 Two substitution styles, deliberately:
 
@@ -235,3 +243,30 @@ book:
 - `lang="fa"` on Persian text, `lang="en-fa-Latn"` on transliteration
 - Edition chips are `role="tab"` with `aria-selected` and a spelled-out
   `aria-label` (the Persian chip reads "Persian original…", not "فا")
+
+## mobile.html and pdf-reader.html
+
+Added after the audit closed the suite gap; both are generated the same way as
+fullbleed/theater — a `__DATA__` payload from `build_reader.py` substituted into
+a template under `data/`.
+
+| | mobile.html | pdf-reader.html |
+|---|---|---|
+| Shape | one quatrain per screen, gloss set below | one quatrain per page card in a viewer shell |
+| Position hash | `#q-<edition>-N` (shared with reader/theater) | `#p-N` (page ordinal in the current edition) |
+| Prefs key | `rubaiyat-mobile-prefs` → `{theme, edition}` | `rubaiyat-pdf-prefs` → `{theme, edition, zoom}` |
+| Navigation | swipe, arrow buttons, `j`/`k`/arrows/space | toolbar, thumbnail sidebar, page box, zoom, `j`/`k`/arrows/Page/Home/End |
+| Chrome | bottom sheets for edition / theme / jump-to | dark toolbar + slide-in sidebar |
+
+Notes for future edits:
+
+- **Mobile's sheets carry a focus trap** (Tab cycles inside, Escape closes,
+  focus returns to the opener) — the pattern `gibran-prophet/mobile.html`
+  established. Keep it if you add another sheet.
+- **`#toolbar > button` in the PDF template is deliberately a child selector.**
+  The theme dots live inside `#themeDots`, and a descendant selector applied the
+  toolbar's `min-width` to each 14px dot, inflating the row to 224px and
+  overflowing a phone viewport.
+- Persian is RTL: both templates set `dir="rtl" lang="fa"` on the verse and use
+  the `--font-fa` stack; the transliteration stays `direction: ltr` but is
+  right-aligned so it pairs with the line above.

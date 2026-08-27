@@ -35,7 +35,8 @@
 
 ## Future
 
-- [ ] `mobile.html` and `pdf-reader.html` — the two formats the Prophet and the
+- [x] `mobile.html` and `pdf-reader.html` — the two formats the Prophet and the
+      → done — both built from data/ templates via build_mobile.py / build_pdf.py; verified at 1440 and 390
       Homer books have that the Rubáiyát still lacks. Fullbleed already
       collapses to a single page on phones, so `mobile.html` is a nice-to-have
       rather than a gap

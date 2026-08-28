@@ -42,9 +42,21 @@ TEMPLATE = r"""<!DOCTYPE html>
   --bg:#faf8f3;--text:#363b48;--text2:#65707a;--accent:#7c3aed;
   --bar-bg:rgba(250,248,243,.94);--border:rgba(124,58,237,.12);
 }
+[data-theme="sepia"]{
+  --bg:#f5efe0;--text:#3a2e1e;--text2:#7a6a52;--accent:#b45309;
+  --bar-bg:rgba(245,239,224,.94);--border:rgba(180,83,9,.12);
+}
+[data-theme="light-azure"]{
+  --bg:#ffffff;--text:#363b48;--text2:#65707a;--accent:#2e6ab4;
+  --bar-bg:rgba(255,255,255,.94);--border:rgba(46,106,180,.12);
+}
 [data-theme="dark-violet"]{
   --bg:#1a1a1a;--text:#dce0ec;--text2:#8490aa;--accent:#9b7aed;
   --bar-bg:rgba(26,26,26,.95);--border:rgba(155,122,237,.15);
+}
+[data-theme="dark-blue"]{
+  --bg:#000000;--text:#8490aa;--text2:#546080;--accent:#2e6ab4;
+  --bar-bg:rgba(0,0,0,.95);--border:rgba(46,106,180,.15);
 }
 
 /* ── Reset ──────────────────────────────── */
@@ -146,6 +158,14 @@ body{
   padding:6px 22px 0;padding-bottom:env(safe-area-inset-bottom,0px);
   z-index:5;
 }
+/* At 320px (iPhone SE 1st gen) the page number + 12-node scrubber + theme
+   button exceeded the viewport and pushed the theme button half off-screen. */
+@media (max-width:360px){
+  #bottom-bar{padding-left:10px;padding-right:10px;gap:6px}
+  #page-num{min-width:28px;font-size:10px}
+  #scrubber{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+  #scrubber::-webkit-scrollbar{display:none}
+}
 #page-num{
   font-size:11px;color:var(--text2);opacity:.7;min-width:40px;
   font-variant-numeric:tabular-nums;
@@ -168,7 +188,14 @@ body{
 #theme-btn{
   background:none;border:none;color:var(--text2);opacity:.55;font-size:14px;
   cursor:pointer;padding:2px;-webkit-tap-highlight-color:transparent;
-  transition:color .35s,opacity .35s;
+  transition:color .35s,opacity .35s;position:relative;
+}
+/* Keep the glyph small but give it a 40px-tall tap target. It grows upward,
+   downward and rightward into the bar's own 22px padding — never leftward,
+   because at 360px the scrubber ends only 4px away and a centred expander
+   would swallow the right edge of chapter XII's button. */
+#theme-btn::before{
+  content:"";position:absolute;top:-10px;bottom:-10px;left:0;right:-20px;
 }
 
 /* ── Hidden measure box ─────────────────── */
@@ -199,7 +226,7 @@ body{
 <div id="bottom-bar">
   <span id="page-num"></span>
   <div id="scrubber"></div>
-  <button id="theme-btn" aria-label="Toggle theme">&#9789;</button>
+  <button id="theme-btn" aria-label="Change theme" title="Change theme">&#9789;</button>
 </div>
 
 <div id="measure-box"></div>
@@ -457,12 +484,38 @@ document.addEventListener('keydown', function(e) {
 /* ═══════════════════════════════════════════
    Theme toggle
    ═══════════════════════════════════════════ */
+var LS_KEY  = 'alice-mobile-prefs';
+var THEMES  = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+var TC      = {'light-purple':'#faf8f3','sepia':'#f5efe0','light-azure':'#ffffff',
+               'dark-violet':'#1a1a1a','dark-blue':'#000000'};
+var DARK    = {'dark-violet':1,'dark-blue':1};
+
+function applyTheme(t) {
+  if (THEMES.indexOf(t) < 0) t = THEMES[0];
+  document.documentElement.dataset.theme = t;
+  document.getElementById('tc').content = TC[t];
+  /* Icon shows the next theme in the cycle: sun for a light one, moon for a dark one */
+  var nxt = THEMES[(THEMES.indexOf(t) + 1) % THEMES.length];
+  var btn = document.getElementById('theme-btn');
+  btn.innerHTML = DARK[nxt] ? '&#9789;' : '&#9728;';
+  btn.setAttribute('aria-label', 'Change theme (current: ' + t.replace('-', ' ') + ')');
+}
+
+function savePrefs() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify({ theme: document.documentElement.dataset.theme })); } catch(e) {}
+}
+
+function loadPrefs() {
+  try {
+    var raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
 document.getElementById('theme-btn').addEventListener('click', function() {
-  var r = document.documentElement;
-  var d = r.dataset.theme === 'dark-violet';
-  r.dataset.theme = d ? 'light-purple' : 'dark-violet';
-  this.innerHTML = d ? '&#9789;' : '&#9728;';
-  document.getElementById('tc').content = d ? '#faf8f3' : '#1a1a1a';
+  var cur = document.documentElement.dataset.theme;
+  applyTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length]);
+  savePrefs();
 });
 
 /* ═══════════════════════════════════════════
@@ -482,6 +535,8 @@ window.addEventListener('resize', function() {
    Init — wait for font then paginate
    ═══════════════════════════════════════════ */
 (function() {
+  var prefs = loadPrefs();
+  applyTheme(prefs && prefs.theme ? prefs.theme : document.documentElement.dataset.theme);
   buildScrubber();
   /* Show loading hint while font loads */
   pageEl.innerHTML = '<div class="title-page"><div class="tp-title" style="opacity:.3">Loading&hellip;</div></div>';

@@ -114,6 +114,10 @@ def wrap_greek_words(greek_text):
             pre, word, post = m.groups()
             translit = transliterate_word(word)
             out.append(
+                # No tabindex: there are ~29k Greek words, and making each one a
+                # tab stop would bury every real control behind them. The
+                # transliteration stays available via title, the :hover/:active
+                # tooltip, and the per-passage detail panel.
                 f'{escape(pre)}<span class="gw" data-t="{escape(translit)}" title="{escape(translit)}">'
                 f'{escape(word)}</span>{escape(post)}'
             )
@@ -335,10 +339,14 @@ GREEK_CSS = """
   opacity: 0; transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
   z-index: 10;
 }
-.gw:hover::after {
+.gw:hover::after,
+.gw:focus::after,
+.gw:focus-within::after,
+.gw:active::after {
   opacity: 1; transform: translateX(-50%) translateY(-2px);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
+.gw:focus { color: var(--accent); }
 
 /* ===== SENTENCE CROSS-HIGHLIGHTING ===== */
 .s { transition: background-color 0.25s ease; border-radius: 2px; padding: 1px 0; }
@@ -505,8 +513,10 @@ def main():
     # Update localStorage key back to main reader key
     script = script.replace('meditations-casaubon-prefs', 'meditations-reader-prefs')
 
-    # Inject Greek toggle JS before the closing </script>
-    script = script.replace('</script>', GREEK_JS + '</script>')
+    # Inject Greek toggle JS before the closing </script> of the FIRST script
+    # block only — the template has a second block (the .pn a11y patch), and a
+    # second copy of GREEK_JS would re-declare `const greekBtn` and kill it.
+    script = script.replace('</script>', GREEK_JS + '</script>', 1)
 
     # Add Greek pref to save/load
     # Save: add greek to the prefs object

@@ -240,9 +240,17 @@ body {
 .theme-wrap:hover .theme-dots,
 .theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot {
-  width: 14px; height: 14px; border-radius: 50%; border: none;
+  width: 14px; height: 14px; border-radius: 50%; border: none; padding: 0;
   cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+  position: relative;
 }
+/* 40px-tall hit area, kept narrow so it cannot cover a neighbour's centre. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-wrap:focus-within .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot:hover { transform: scale(1.25); }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
@@ -310,7 +318,7 @@ body {
 }
 
 /* ===== CHAPTERS ===== */
-.chapter { margin-bottom: 0; }
+.chapter { margin-bottom: 0; scroll-margin-top: 56px; /* clear the fixed top bar on #ch-N jumps */ }
 .chapter + .chapter {
   margin-top: 56px; padding-top: 56px; position: relative;
 }
@@ -373,7 +381,7 @@ body {
 }
 .med-detail-btn {
   display: flex; align-items: center; justify-content: center;
-  width: 24px; height: 24px; cursor: pointer;
+  width: 24px; height: 24px; cursor: pointer; position: relative;
   color: var(--text-secondary); border: 1px solid transparent;
   transition: all .2s; background: none; padding: 0;
 }
@@ -535,6 +543,11 @@ body {
   .theme-wrap.expanded .theme-dots { opacity: 1; }
   #sidebar-toggle { width: 44px; height: 44px; }
   .bar-btn { width: 44px; height: 44px; }
+  /* Hit-area expander: keeps the 14px glyph, gives the button a 40px tap target */
+  .med-detail-btn::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    width: 40px; height: 40px; transform: translate(-50%, -50%);
+  }
 }
 @media (max-width: 600px) {
   #content { padding: 64px 16px 80px; }
@@ -614,10 +627,14 @@ button:focus:not(:focus-visible) { outline: none; }
   opacity: 0; transition: opacity 0.25s ease 0.08s, transform 0.25s ease 0.08s;
   z-index: 10;
 }
-.gw:hover::after {
+.gw:hover::after,
+.gw:focus::after,
+.gw:focus-within::after,
+.gw:active::after {
   opacity: 1; transform: translateX(-50%) translateY(-2px);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
+.gw:focus { color: var(--accent); }
 
 /* ===== SENTENCE CROSS-HIGHLIGHTING ===== */
 .s { transition: background-color 0.25s ease; border-radius: 2px; padding: 1px 0; }
@@ -670,11 +687,11 @@ button:focus:not(:focus-visible) { outline: none; }
         </svg>
       </button>
       <div class="theme-dots">
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot active" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light azure" aria-label="Light azure theme"></button>
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light purple" aria-label="Light purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark violet" aria-label="Dark violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark blue" aria-label="Dark blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="greek-btn" title="Toggle Greek text" aria-label="Toggle Greek text">Γγ</button>
@@ -7869,6 +7886,33 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// ===== READING POSITION IN URL HASH (#ch-N) =====
+let hashRestoreTarget = null, hashUserMoved = false;
+['wheel','touchstart','keydown','mousedown'].forEach(ev =>
+  window.addEventListener(ev, () => { hashUserMoved = true; }, { passive: true, once: true }));
+
+function restoreHashPosition() {
+  const m = /^#ch-(\d+)$/.exec(window.location.hash || '');
+  if (!m) return;
+  hashRestoreTarget = document.getElementById('ch-' + m[1]);
+  if (hashRestoreTarget) window.scrollTo(0, hashRestoreTarget.offsetTop - 56);
+}
+
+function writeHashPosition(id) {
+  if (window.location.hash === '#' + id) return;
+  try { history.replaceState(null, '', '#' + id); } catch(e) {}
+}
+
+function reapplyHashPosition() {
+  // Re-apply after the browser's own fragment jump / font layout shift,
+  // unless the reader has already moved on their own.
+  if (hashRestoreTarget && !hashUserMoved) window.scrollTo(0, hashRestoreTarget.offsetTop - 56);
+}
+
+restoreHashPosition();
+window.addEventListener('load', reapplyHashPosition);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reapplyHashPosition);
+
 // ===== INTERSECTION OBSERVER =====
 function setupChapterObserver() {
   const observer = new IntersectionObserver((entries) => {
@@ -7878,6 +7922,7 @@ function setupChapterObserver() {
         sidebarLinks.forEach((link, i) => link.classList.toggle('active', i === idx));
         chapterIndicator.textContent = chapterTitles[idx] || '';
         document.querySelectorAll('.ch-node').forEach((n, i) => n.classList.toggle('active', i === idx));
+        writeHashPosition(entry.target.id);
       }
     });
   }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
@@ -8040,33 +8085,6 @@ document.addEventListener('mouseout', e => {
     }
   });
 })();
-
-// ===== GREEK TEXT TOGGLE =====
-const greekBtn = document.getElementById('greek-btn');
-greekBtn.addEventListener('click', () => {
-  const isOn = document.body.dataset.greek === 'on';
-  document.body.dataset.greek = isOn ? 'off' : 'on';
-  greekBtn.classList.toggle('active', !isOn);
-  savePrefs();
-});
-
-// ===== SENTENCE CROSS-HIGHLIGHTING =====
-document.addEventListener('mouseover', e => {
-  const s = e.target.closest('.s');
-  if (!s) return;
-  const id = s.dataset.s;
-  const passage = s.closest('.med-passage');
-  if (passage) passage.querySelectorAll('.s[data-s="' + id + '"]').forEach(
-    el => el.classList.add('s-hl'));
-});
-document.addEventListener('mouseout', e => {
-  const s = e.target.closest('.s');
-  if (!s) return;
-  const id = s.dataset.s;
-  const passage = s.closest('.med-passage');
-  if (passage) passage.querySelectorAll('.s[data-s="' + id + '"]').forEach(
-    el => el.classList.remove('s-hl'));
-});
 </script>
 </body>
 </html>

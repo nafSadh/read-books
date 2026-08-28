@@ -26,16 +26,26 @@ Built by `data/assemble-reader.py` from `aurelius-meditations.json` + `reader-ca
 
 **Layout modes**:
 - Default: English text only (single column)
-- Greek on: English + Greek side-by-side (60%/40%)
-- Detail open: Detail panel (left, 45%) + English (right, 55%)
-- Both open: Detail (25%) + Greek (28%) + English (47%), viewport-capped via `min()`
+- Greek on: English + Greek side-by-side (60%/40%, flex row-reverse — Greek uses `order: -1`)
+- Detail open: Detail panel (left, 50%) + English (right, 50%); the passage widens via
+  `--_grow` and is viewport-capped with `min()`
+- Both open: 2-column grid `minmax(0,50%) minmax(0,1fr)` — Detail spans both rows in column 1,
+  English sits in column 2 row 1, Greek is **stacked below English** in column 2 row 2
+  (rule-separated by a `border-top`, not a third column)
 - Mobile (<1200px): all columns stack vertically
+
+**Reading position**: written to the URL hash as `#ch-N` via `history.replaceState` from the
+chapter `IntersectionObserver`, restored on load (`.chapter` carries `scroll-margin-top: 56px`
+so the native fragment jump clears the fixed top bar). Never stored in localStorage.
 
 **Rebuild**: `python3 data/assemble-reader.py` (reads JSON + template, outputs reader.html)
 
 ### 1b. `reader-casaubon.html` (scrolling reader — Casaubon translation)
 
 Original Casaubon (1634) reader preserved as-is. localStorage key: `meditations-casaubon-prefs`.
+
+> **This file is also the template for `reader.html`.** Edit it, never `reader.html`, and always
+> re-run `python3 data/assemble-reader.py` afterwards, then re-check *both* readers.
 
 ### 2. `fullbleed.html` (book-spread reader)
 
@@ -46,16 +56,55 @@ Follows `../alice-in-wonderland/fullbleed.html` pattern:
 - Cover, title page, table of contents
 - 5 themes with sepia default
 - localStorage key: `meditations-fullbleed-theme`
+- Reading position in the URL hash as `#p-N` (printed page number) via `history.replaceState`,
+  restored on load through `spreadForPage()` — the inverse of
+  `contentIndexForSpreadLeft/Right` (left = `2s-7`, right = `2s-6`)
+
+### 3. `mobile.html`, `theater.html`, `pdf-reader.html` (JS-rendered)
+
+Added after the audit; all three render **one passage at a time** from a JSON payload rather than
+baking the book into the DOM the way `assemble-reader.py` does. `data/payload.py` is the single
+place that knows how to read the source JSON and shape a passage; the three builders are thin.
+
+| | mobile | theater | pdf-reader |
+|---|---|---|---|
+| Shape | one passage per screen | dark stage, one passage | one passage per page card |
+| Default theme | light-purple | **dark-violet** | light-purple |
+| Prefs key | `meditations-mobile-prefs` | `meditations-theater-prefs` | `meditations-pdf-prefs` |
+| Prefs hold | theme, greek, detail | theme, greek | theme, zoom, greek |
+| Chrome | bottom sheets (books, theme) | auto-hiding control bar | toolbar + passage sidebar |
+
+**Position is `#m-B.N`** in all three — the passage's own Leopold id, not an ordinal. Unlike
+`fullbleed.html`'s `#p-N`, which depends on how many passages fit a given viewport, this link
+resolves to the same meditation on any screen.
+
+Greek and the annotation apparatus are **toggles, not columns**: at one passage per screen there
+is no room to set them side by side the way `reader.html` does.
+
+Rebuild: `python3 data/build_mobile.py` / `build_theater.py` / `build_pdf.py`.
+
+Two traps worth keeping:
+
+- `#toolbar > button` in the PDF template is a **child** selector on purpose. As a descendant
+  selector the toolbar's `min-width` also applied to the theme dots nested in `#themeDots`,
+  inflating that row past a phone viewport.
+- The PDF sidebar is hidden with `visibility:hidden` as well as `transform`, so its 486
+  thumbnails leave the tab order when the drawer is closed. Transform alone left them all
+  focusable — the same class of problem as the Greek-word `tabindex` sweep.
 
 ## Typography
 
 | Property       | Value |
 |----------------|-------|
-| text-align     | justify (passage text) |
+| text-align     | left / ragged right in the scrolling readers; `justify` + `hyphens: auto` in `fullbleed.html` |
 | text-indent    | 0 (meditations are short, no indent needed) |
 | line-height    | 1.85 |
 | default width  | 640px |
 | font-body      | EB Garamond |
+
+The scrolling readers deliberately depart from the house "prose = justify" rule: most Leopold
+passages are one- to three-line aphorisms, and justifying them strands large gaps between words
+on the first line. `fullbleed.html` sets full-measure book pages, so it justifies as usual.
 
 ## Theme variables
 
@@ -107,6 +156,9 @@ aurelius-meditations/
   reader.html            <- scrolling reader (Long translation, Leopold numbering)
   reader-casaubon.html   <- scrolling reader (Casaubon translation, original 412 passages)
   fullbleed.html         <- book-spread reader (full text)
+  mobile.html            <- GENERATED: one passage per screen
+  theater.html           <- GENERATED: dark stage, one passage at a time
+  pdf-reader.html        <- GENERATED: PDF-viewer shell, one passage per page
   data/
     annotations/         <- JSON annotation data
       leopold-books-01-03.json  <- Books 1-3 Leopold annotations (50 passages)
@@ -115,6 +167,11 @@ aurelius-meditations/
       leopold-books-10-12.json  <- Books 10-12 Leopold annotations (112 passages)
       book-01-remaining.json .. book-12.json  <- legacy Casaubon-era annotations
     assemble-reader.py   <- builds reader.html from JSON + template (Long + Greek toggle)
+    payload.py           <- shared: source JSON -> JSON payload for the 3 JS-rendered formats
+    build_mobile.py      <- builds mobile.html
+    build_theater.py     <- builds theater.html
+    build_pdf.py         <- builds pdf-reader.html
+    mobile-template.html , theater-template.html , pdf-template.html  <- __DATA__ placeholder
     assemble-annotations.js  <- Node.js assembler (original, Casaubon)
     assemble-annotations.py  <- Python assembler (Casaubon injection)
     collect_texts.py     <- fetches Greek + Long + Casaubon, merges annotations → aurelius-meditations.json

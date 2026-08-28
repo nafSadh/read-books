@@ -34,11 +34,14 @@ body{
 .head-meta a{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--border)}
 .head-rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);width:40%;opacity:.5;margin-top:10px}
 .ctrl-btn{
-  width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;
   font-size:14px;color:var(--dim);background:transparent;border:1px solid var(--border);
   transition:color .2s,background .2s;
 }
-.ctrl-btn:hover{color:var(--accent);background:var(--accent)08}
+/* var() cannot take a concatenated hex-alpha suffix — `var(--accent)08` is an
+   invalid declaration and never painted. color-mix gives the intended tint. */
+.ctrl-btn:hover{color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.ctrl-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .intro{
   font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;
@@ -63,12 +66,23 @@ body{
 }
 .book-card .readers{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .book-card .readers a{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
   color:var(--dim);letter-spacing:1px;text-transform:uppercase;
-  text-decoration:none;padding:4px 10px;border:1px solid var(--border);
+  text-decoration:none;padding:8px 12px;border:1px solid var(--border);
+  display:flex;align-items:center;min-height:36px;
   transition:all .2s;
 }
 .book-card .readers a:hover{color:var(--accent);border-color:var(--accent)}
+.book-card .readers a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* The chips are this site's primary navigation — give them real touch targets
+   on the screens where they are actually tapped. */
+@media (max-width:640px){
+  .shell{padding:32px 16px 64px}
+  .book-card{padding:20px 16px}
+  .book-card .readers{gap:8px}
+  .book-card .readers a{font-size:12px;padding:10px 14px;min-height:44px}
+}
 
 .source{
   margin-top:40px;padding-top:16px;border-top:1px solid var(--border);
@@ -120,6 +134,9 @@ body{
       <a href="aurelius-meditations/reader.html">Reader</a>
       <a href="aurelius-meditations/reader-casaubon.html">Casaubon Reader</a>
       <a href="aurelius-meditations/fullbleed.html">Full Bleed</a>
+      <a href="aurelius-meditations/mobile.html">Mobile</a>
+      <a href="aurelius-meditations/theater.html">Theater</a>
+      <a href="aurelius-meditations/pdf-reader.html">PDF Viewer</a>
     </div>
   </div>
 
@@ -169,16 +186,24 @@ body{
     <div class="readers">
       <a href="khayyam-rubaiyat/index.html">Classic Book</a>
       <a href="khayyam-rubaiyat/reader.html">Reader</a>
+      <a href="khayyam-rubaiyat/fullbleed.html">Full Bleed</a>
+      <a href="khayyam-rubaiyat/theater.html">Theater</a>
+      <a href="khayyam-rubaiyat/mobile.html">Mobile</a>
+      <a href="khayyam-rubaiyat/pdf-reader.html">PDF Viewer</a>
     </div>
   </div>
 
   <div class="book-card">
-    <h2><em>বেদ</em> — Vedas</h2>
-    <div class="author">ঋগ্বেদ &middot; সামবেদ &middot; যজুর্বেদ &middot; অথর্ববেদ &middot; c. 1500&ndash;500 BCE</div>
+    <h2><em lang="bn">বেদ</em> — Vedas</h2>
+    <div class="author"><span lang="bn">ঋগ্বেদ &middot; সামবেদ &middot; যজুর্বেদ &middot; অথর্ববেদ</span> &middot; c. 1500&ndash;500 BCE</div>
     <div class="readers">
-      <a href="vedas/rigveda.html">ঋগ্বেদ সম্পূর্ণ</a>
+      <a href="vedas/index.html">Classic Book</a>
+      <a href="vedas/rigveda.html" lang="bn">ঋগ্বেদ সম্পূর্ণ</a>
       <a href="vedas/reader.html">Reader</a>
       <a href="vedas/fullbleed.html">Full Bleed</a>
+      <a href="vedas/mobile.html">Mobile</a>
+      <a href="vedas/theater.html">Theater</a>
+      <a href="vedas/pdf-reader.html">PDF Viewer</a>
     </div>
   </div>
 
@@ -190,12 +215,33 @@ body{
 </main>
 
 <script>
-function toggleTheme(){
-  const h=document.documentElement;
-  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
-  document.getElementById('tb').textContent=h.dataset.theme==='dark'?'\u2600':'\u263D';
+const THEME_KEY='lib-index-theme';
+const tb=document.getElementById('tb');
+
+function applyTheme(t){
+  document.documentElement.dataset.theme=t;
+  const toDark=t!=='dark';
+  tb.textContent=t==='dark'?'\u2600':'\u263D';
+  tb.setAttribute('aria-label',toDark?'Switch to dark theme':'Switch to light theme');
+  tb.setAttribute('aria-pressed',String(t==='dark'));
 }
-document.getElementById('tb').textContent='\u263D';
+
+function toggleTheme(){
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  applyTheme(next);
+  try{localStorage.setItem(THEME_KEY,next);}catch(e){}
+}
+
+// Saved choice wins; otherwise follow the OS so dark-mode visitors are not
+// flashed a light page on every visit.
+(function(){
+  let saved=null;
+  try{saved=localStorage.getItem(THEME_KEY);}catch(e){}
+  if(saved!=='dark'&&saved!=='light'){
+    saved=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  }
+  applyTheme(saved);
+})();
 </script>
 </body>
 </html>

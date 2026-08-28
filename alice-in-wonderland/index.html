@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 /* ── Tokens ── */
-[data-theme="light"] {
+[data-theme="light-purple"] {
   --page-bg: #f5f0e8; --page-bg2: #efe9dd; --page-text: #2c2416;
   --page-dim: #7a7060; --page-accent: #7c3aed; --page-border: #d5cdb8;
   --spine-bg: #d8d0bc; --spine-shadow: #b8ad94;
@@ -17,7 +17,27 @@
   --ctrl-bg: #f5f0e8cc; --ctrl-border: #d5cdb8; --ctrl-text: #7a7060;
   --chapter-title-color: #5a3e1e;
 }
-[data-theme="dark"] {
+[data-theme="sepia"] {
+  --page-bg: #f5efe0; --page-bg2: #ede5d0; --page-text: #3a2e1e;
+  --page-dim: #7a6a52; --page-accent: #b45309; --page-border: #d4c8a8;
+  --spine-bg: #ddd0b4; --spine-shadow: #c0b090;
+  --cover-bg: #8b4513; --cover-bg2: #6b3410; --cover-text: #f0e6d0;
+  --cover-accent: #daa520;
+  --scene-bg: #e6dcc4; --scene-grad1: #f5efe060; --scene-grad2: #e6dcc440;
+  --ctrl-bg: #f5efe0cc; --ctrl-border: #d4c8a8; --ctrl-text: #7a6a52;
+  --chapter-title-color: #7a3d09;
+}
+[data-theme="light-azure"] {
+  --page-bg: #ffffff; --page-bg2: #f2f7fb; --page-text: #1e2a3a;
+  --page-dim: #6a7a8a; --page-accent: #2e6ab4; --page-border: #c8d8e8;
+  --spine-bg: #dbe6ef; --spine-shadow: #b4c6d6;
+  --cover-bg: #1e3a5a; --cover-bg2: #142a44; --cover-text: #e8f0f8;
+  --cover-accent: #7fb0e0;
+  --scene-bg: #dde7ef; --scene-grad1: #ffffff60; --scene-grad2: #dde7ef40;
+  --ctrl-bg: #ffffffcc; --ctrl-border: #c8d8e8; --ctrl-text: #6a7a8a;
+  --chapter-title-color: #0a2a4a;
+}
+[data-theme="dark-violet"] {
   --page-bg: #1a1812; --page-bg2: #15130e; --page-text: #c8bea8;
   --page-dim: #6a6050; --page-accent: #9b7aed; --page-border: #2a2518;
   --spine-bg: #1e1a12; --spine-shadow: #0a0800;
@@ -26,6 +46,16 @@
   --scene-bg: #0e0c08; --scene-grad1: #1a181200; --scene-grad2: #0e0c0800;
   --ctrl-bg: #1a1812cc; --ctrl-border: #2a2518; --ctrl-text: #6a6050;
   --chapter-title-color: #c8a868;
+}
+[data-theme="dark-blue"] {
+  --page-bg: #10141e; --page-bg2: #0c1018; --page-text: #9aa8b8;
+  --page-dim: #4a5a6a; --page-accent: #4a8acc; --page-border: #1a2838;
+  --spine-bg: #141c2a; --spine-shadow: #05080c;
+  --cover-bg: #12203a; --cover-bg2: #0a1428; --cover-text: #9aa8b8;
+  --cover-accent: #4a8acc;
+  --scene-bg: #05070c; --scene-grad1: #10141e00; --scene-grad2: #05070c00;
+  --ctrl-bg: #10141ecc; --ctrl-border: #1a2838; --ctrl-text: #4a5a6a;
+  --chapter-title-color: #88b0d8;
 }
 
 /* ── Reset ── */
@@ -206,27 +236,29 @@ body{
 /* ── Controls bar ── */
 .controls{
   position:fixed;bottom:12px;left:50%;transform:translateX(-50%);
-  display:flex;align-items:center;gap:2px;
+  display:flex;align-items:center;justify-content:center;gap:2px;
+  width:max-content;max-width:calc(100vw - 16px);flex-wrap:nowrap;
   background:var(--ctrl-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border:1px solid var(--ctrl-border);padding:4px;z-index:100;
   box-shadow:0 4px 20px #00000010;
 }
 .ctrl-btn{
-  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  width:34px;height:34px;flex:none;display:flex;align-items:center;justify-content:center;
   border:none;background:none;color:var(--ctrl-text);cursor:pointer;
   font-size:15px;font-family:'Jost',sans-serif;transition:color .2s,background .2s;
 }
 .ctrl-btn:hover{color:var(--page-accent);background:var(--page-accent)10;border-radius:2px}
-.ctrl-divider{width:1px;height:20px;background:var(--ctrl-border);margin:0 4px}
+.ctrl-divider{width:1px;height:20px;flex:none;background:var(--ctrl-border);margin:0 4px}
 .page-indicator{
   font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ctrl-text);
-  letter-spacing:1px;padding:0 10px;min-width:80px;text-align:center;
+  letter-spacing:1px;padding:0 10px;min-width:80px;flex:none;text-align:center;
   user-select:none;
 }
 .chapter-select{
   font-family:'Jost',sans-serif;font-size:12px;color:var(--ctrl-text);
   background:transparent;border:1px solid var(--ctrl-border);padding:4px 8px;
   cursor:pointer;letter-spacing:.3px;max-width:180px;
+  min-width:0;flex:0 1 auto;
   -webkit-appearance:none;appearance:none;
 }
 .chapter-select:focus{outline:1px solid var(--page-accent);outline-offset:1px}
@@ -367,13 +399,13 @@ option{background:var(--page-bg);color:var(--page-text)}
 </div>
 
 <div class="controls" id="controls">
-  <button class="ctrl-btn" id="btn-prev" title="Previous page">&#8249;</button>
+  <button class="ctrl-btn" id="btn-prev" title="Previous page" aria-label="Previous page">&#8249;</button>
   <span class="page-indicator" id="page-indicator">1–2</span>
-  <button class="ctrl-btn" id="btn-next" title="Next page">&#8250;</button>
+  <button class="ctrl-btn" id="btn-next" title="Next page" aria-label="Next page">&#8250;</button>
   <div class="ctrl-divider"></div>
-  <select class="chapter-select" id="chapter-select"></select>
+  <select class="chapter-select" id="chapter-select" aria-label="Jump to chapter"></select>
   <div class="ctrl-divider"></div>
-  <button class="ctrl-btn" id="btn-theme" title="Toggle theme"></button>
+  <button class="ctrl-btn" id="btn-theme" title="Change theme" aria-label="Change theme"></button>
 </div>
 
 <script>
@@ -712,18 +744,42 @@ function updateChapterSelect() {
 }
 
 /* ──────────────────── Theme ──────────────────── */
-function toggleTheme() {
-  const h = document.documentElement;
-  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+const PREFS_KEY = 'alice-index-prefs';
+const THEME_ORDER = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const DARK_THEMES = ['dark-violet','dark-blue'];
+
+function setTheme(name) {
+  if (!THEME_ORDER.includes(name)) name = THEME_ORDER[0];
+  document.documentElement.dataset.theme = name;
   updateThemeBtn();
+  savePrefs();
+}
+function toggleTheme() {
+  const cur = document.documentElement.dataset.theme;
+  setTheme(THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length]);
 }
 function updateThemeBtn() {
-  document.getElementById('btn-theme').textContent =
-    document.documentElement.dataset.theme === 'dark' ? '\u2600' : '\u263D';
+  const cur = document.documentElement.dataset.theme;
+  const next = THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length];
+  const btn = document.getElementById('btn-theme');
+  /* Icon shows the theme the button will switch to */
+  btn.textContent = DARK_THEMES.includes(next) ? '\u263D' : '\u2600';
+  btn.setAttribute('aria-label', 'Change theme (current: ' + cur.replace('-', ' ') + ')');
+}
+function savePrefs() {
+  try { localStorage.setItem(PREFS_KEY, JSON.stringify({ theme: document.documentElement.dataset.theme })); } catch(e) {}
+}
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    const p = raw ? JSON.parse(raw) : null;
+    if (p && p.theme && THEME_ORDER.includes(p.theme)) document.documentElement.dataset.theme = p.theme;
+  } catch(e) {}
 }
 
 /* ──────────────────── Init ──────────────────── */
 function init() {
+  loadPrefs();
   // Temporarily show book in open mode to measure page dimensions accurately
   const book = document.getElementById('book');
   book.classList.remove('cover-mode');

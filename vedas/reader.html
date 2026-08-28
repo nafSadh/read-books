@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="sepia">
+<html lang="bn" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,10 +268,17 @@ body {
 }
 .theme-dot {
   width: 14px; height: 14px; border-radius: 50%;
-  border: none; cursor: pointer;
+  border: none; cursor: pointer; padding: 0;
   transition: transform 0.15s, box-shadow 0.15s;
-  flex-shrink: 0;
+  flex-shrink: 0; position: relative;
 }
+/* 40px-tall hit area, kept narrow so it cannot cover a neighbour's centre. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-wrap:focus-within .theme-dots { opacity: 1; pointer-events: auto; }
 .theme-dot:hover { transform: scale(1.25); }
 .theme-dot.active { box-shadow: 0 0 0 2px var(--bar-bg), 0 0 0 3.5px var(--accent); }
 .theme-dot[data-theme="sepia"] { background: #d4a76a; }
@@ -650,7 +657,7 @@ body:not(.show-iast) .sa-iast { display: none; }
 }
 </style>
 </head>
-<body data-theme="sepia" data-size="medium" data-width="medium">
+<body data-theme="light-purple" data-size="medium" data-width="medium">
 
 <!-- Progress bar -->
 <div id="progress-track"></div>
@@ -684,11 +691,11 @@ body:not(.show-iast) .sa-iast { display: none; }
         </svg>
       </button>
       <div class="theme-dots">
-        <span class="theme-dot active" data-theme="sepia" title="Sepia"></span>
-        <span class="theme-dot" data-theme="light-purple" title="Light Purple"></span>
-        <span class="theme-dot" data-theme="light-azure" title="Light Azure"></span>
-        <span class="theme-dot" data-theme="dark-violet" title="Dark Violet"></span>
-        <span class="theme-dot" data-theme="dark-blue" title="Dark Blue"></span>
+        <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+        <button type="button" class="theme-dot active" data-theme="light-purple" title="Light purple" aria-label="Light purple theme"></button>
+        <button type="button" class="theme-dot" data-theme="light-azure" title="Light azure" aria-label="Light azure theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark violet" aria-label="Dark violet theme"></button>
+        <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark blue" aria-label="Dark blue theme"></button>
       </div>
     </div>
     <button class="bar-btn" id="settings-btn" title="Settings" aria-label="Settings">
@@ -748,6 +755,13 @@ const VEDAS_DATA = {"vedas": [{"id": "rigveda", "title": "ঋগ্বেদ স
 // ===================================================================
 const contentEl = document.getElementById('content');
 
+// .veda-section is position:relative, so a .sukta's offsetTop is relative to
+// its section, not the document — every sukta past the first Veda would scroll
+// to the wrong place. Measure against the viewport instead.
+function suktaTop(el) {
+  return el.getBoundingClientRect().top + window.scrollY - 56;
+}
+
 function buildContent() {
   let html = '';
 
@@ -756,7 +770,7 @@ function buildContent() {
   html += '<h1>\u09AC\u09C7\u09A6 \u09B8\u0982\u09B9\u09BF\u09A4\u09BE</h1>';
   html += '<div class="subtitle">The Vedas</div>';
   html += '<div class="description">\u09AC\u09C7\u09A6 \u09B9\u09B2\u09CB \u09B8\u09A8\u09BE\u09A4\u09A8 \u09A7\u09B0\u09CD\u09AE\u09C7\u09B0 \u09AA\u09CD\u09B0\u09BE\u099A\u09C0\u09A8\u09A4\u09AE \u09A7\u09B0\u09CD\u09AE\u0997\u09CD\u09B0\u09A8\u09CD\u09A5\u09B8\u09AE\u09C2\u09B9\u0964 \u098F\u0996\u09BE\u09A8\u09C7 \u09B0\u09BF\u0997\u09CD\u09AC\u09C7\u09A6, \u09B8\u09BE\u09AE\u09AC\u09C7\u09A6, \u09AF\u099C\u09C1\u09B0\u09CD\u09AC\u09C7\u09A6 \u0993 \u0985\u09A5\u09B0\u09CD\u09AC\u09AC\u09C7\u09A6 \u09A5\u09C7\u0995\u09C7 \u09A8\u09BF\u09B0\u09CD\u09AC\u09BE\u099A\u09BF\u09A4 \u09B8\u09C2\u0995\u09CD\u09A4\u09B8\u09AE\u09C2\u09B9 \u09AA\u09CD\u09B0\u09B8\u09CD\u09A4\u09C1\u09A4 \u0995\u09B0\u09BE \u09B9\u09B2\u09CB\u0964</div>';
-  html += '<div class="description-en">The Vedas are the oldest scriptures of Hinduism. Presented here are selected hymns from the Rigveda, Samaveda, Yajurveda, and Atharvaveda.</div>';
+  html += '<div class="description-en" lang="en">The Vedas are the oldest scriptures of Hinduism. Presented here are selected hymns from the Rigveda, Samaveda, Yajurveda, and Atharvaveda.</div>';
   html += '</header>';
 
   let suktaIndex = 0;
@@ -764,7 +778,7 @@ function buildContent() {
     html += '<div class="veda-section" id="veda-' + veda.id + '">';
     html += '<div class="veda-header">';
     html += '<div class="veda-title">' + veda.title + '</div>';
-    html += '<div class="veda-title-en">' + veda.title_en + '</div>';
+    html += '<div class="veda-title-en" lang="en">' + veda.title_en + '</div>';
     html += '<div class="veda-desc">' + veda.description_bn + '</div>';
     html += '</div>';
 
@@ -777,7 +791,7 @@ function buildContent() {
         html += '<div class="sukta-header">';
         html += '<div class="mandala-label">' + section.title_en + ' \u00B7 ' + sukta.title_en + '</div>';
         html += '<div class="sukta-title-bn">' + sukta.title_bn + '</div>';
-        html += '<div class="sukta-title-en">' + sukta.title_en + '</div>';
+        html += '<div class="sukta-title-en" lang="en">' + sukta.title_en + '</div>';
 
         // Metadata
         html += '<div class="sukta-meta">';
@@ -800,12 +814,12 @@ function buildContent() {
           const mantraLabel = (sukta.sukta_num || '') + '.' + m.num;
           html += '<div class="mantra">';
           html += '<div class="mantra-num">' + mantraLabel + '</div>';
-          html += '<div class="sa-bengali">' + m.sa_bengali + '</div>';
-          html += '<div class="sa-devanagari">' + m.sa_devanagari + '</div>';
-          html += '<div class="sa-iast">' + m.transliteration + '</div>';
+          html += '<div class="sa-bengali" lang="sa-Beng">' + m.sa_bengali + '</div>';
+          html += '<div class="sa-devanagari" lang="sa-Deva">' + m.sa_devanagari + '</div>';
+          html += '<div class="sa-iast" lang="sa-Latn">' + m.transliteration + '</div>';
           html += '<div class="meaning-divider">\u0985\u09B0\u09CD\u09A5 / Meaning</div>';
-          html += '<div class="meaning-bn">' + m.meaning_bn + '</div>';
-          html += '<div class="meaning-en">' + m.meaning_en + '</div>';
+          html += '<div class="meaning-bn" lang="bn">' + m.meaning_bn + '</div>';
+          html += '<div class="meaning-en" lang="en">' + m.meaning_en + '</div>';
           html += '</div>';
         }
 
@@ -859,7 +873,8 @@ sidebarOverlay.addEventListener('click', closeSidebar);
     link.addEventListener('click', (e) => {
       e.preventDefault();
       closeSidebar();
-      window.scrollTo({ top: s.offsetTop - 56, behavior: 'smooth' });
+      setHash(i);
+      window.scrollTo({ top: suktaTop(s), behavior: 'smooth' });
     });
     container.appendChild(link);
   });
@@ -887,7 +902,7 @@ const suktaTitles = Array.from(suktaEls).map(s => {
     seg.style.width = (len / total * 100) + '%';
     seg.title = suktaTitles[i];
     seg.addEventListener('click', () => {
-      window.scrollTo({ top: suktaEls[i].offsetTop - 56, behavior: 'smooth' });
+      window.scrollTo({ top: suktaTop(suktaEls[i]), behavior: 'smooth' });
     });
     progressTrack.appendChild(seg);
   });
@@ -899,7 +914,7 @@ function updateScroll() {
   const scrollTop = window.scrollY;
 
   suktaEls.forEach((s, i) => {
-    const sTop = s.offsetTop - 56;
+    const sTop = suktaTop(s);
     const sBottom = sTop + s.offsetHeight;
     const seg = segments[i];
     if (!seg) return;
@@ -926,6 +941,27 @@ backToTop.addEventListener('click', (e) => {
 });
 
 // ===================================================================
+// HASH POSITION (#ch-N, 1-based sukta index)
+// ===================================================================
+function setHash(idx) {
+  const h = '#ch-' + (idx + 1);
+  if (location.hash === h) return;
+  try { history.replaceState(null, '', h); } catch(e) { location.hash = h; }
+}
+
+function restoreHash() {
+  const m = /^#ch-(\d+)$/.exec(location.hash);
+  if (!m) return;
+  const target = suktaEls[parseInt(m[1], 10) - 1];
+  if (!target) return;
+  const top = suktaTop(target);
+  const prev = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = 'auto';
+  window.scrollTo(0, top);
+  document.documentElement.style.scrollBehavior = prev;
+}
+
+// ===================================================================
 // INTERSECTION OBSERVER
 // ===================================================================
 function setupObserver() {
@@ -936,6 +972,7 @@ function setupObserver() {
         sidebarLinks.forEach((link, i) => link.classList.toggle('active', i === idx));
         chapterIndicator.textContent = suktaTitles[idx] || '';
         document.querySelectorAll('.ch-node').forEach((n, i) => n.classList.toggle('active', i === idx));
+        setHash(idx);
       }
     });
   }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
@@ -957,7 +994,7 @@ setupObserver();
     node.dataset.title = suktaTitles[i];
     node.addEventListener('click', (e) => {
       e.stopPropagation();
-      window.scrollTo({ top: s.offsetTop - 56, behavior: 'smooth' });
+      window.scrollTo({ top: suktaTop(s), behavior: 'smooth' });
     });
     scrubber.appendChild(node);
   });
@@ -1112,6 +1149,7 @@ function loadPrefs() {
 }
 
 loadPrefs();
+restoreHash();
 updateScroll();
 
 // Close settings on outside click

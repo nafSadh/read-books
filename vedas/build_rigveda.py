@@ -834,10 +834,10 @@ def main():
     print(f"  Metadata JSON: {len(meta_json):,} bytes")
 
     # 3b: rigveda.html (from external template with all UI improvements)
-    template_path = SCRIPT_DIR / "rigveda-template.html"
+    template_path = SCRIPT_DIR / "data" / "rigveda-template.html"
     if template_path.exists():
         html_template = template_path.read_text(encoding='utf-8')
-        print(f"  Using external template: {template_path.name}")
+        print(f"  Using external template: data/{template_path.name}")
     else:
         html_template = HTML_TEMPLATE
         print(f"  Using inline template (external not found)")

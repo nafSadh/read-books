@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubáiyát of Omar Khayyám — Full-Bleed Book Reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@300;400;500;600&family=Vazirmatn:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+
+/* ===== THEMES =====
+   The palette blocks are the Rubáiyát reader's, verbatim, so the two formats
+   are the same book. Fullbleed adds only the page-tint extras it needs:
+   --bg-left (the verso, one shade off the recto), --spine and the gutter
+   shadows. --bg-left/--spine reuse the reader's --sidebar-bg/--border. */
+:root {
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'Jost', -apple-system, Helvetica Neue, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-fa: 'Vazirmatn', 'Noto Naskh Arabic', 'EB Garamond', Georgia, serif;
+}
+
+[data-theme="sepia"] {
+  --bg: #f5efe0;
+  --text: #3a2e1e;
+  --text-secondary: #7a6a52;
+  --border: #d4c8a8;
+  --bar-bg: rgba(245,239,224,0.94);
+  --bar-border: rgba(0,0,0,0.06);
+  --chapter-rule: #d4c8a8;
+  --accent: #b45309;
+  --btn-bg: rgba(0,0,0,0.05);
+  --btn-hover: rgba(0,0,0,0.08);
+  --sidebar-bg: #ede5d0;
+  --sidebar-hover: #e3d9c2;
+  --bg-left: #ede5d0;
+  --bg-right: #f5efe0;
+  --spine: #d4c8a8;
+  --shadow-left: rgba(0,0,0,0.06);
+  --shadow-right: rgba(0,0,0,0.04);
+}
+
+[data-theme="light-purple"] {
+  --bg: #faf8f3;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d6d0c4;
+  --bar-bg: rgba(250,248,243,0.94);
+  --bar-border: rgba(0,0,0,0.06);
+  --chapter-rule: #d6d0c4;
+  --accent: #7c3aed;
+  --btn-bg: rgba(0,0,0,0.05);
+  --btn-hover: rgba(0,0,0,0.08);
+  --sidebar-bg: #f2efe8;
+  --sidebar-hover: #e8e4dc;
+  --bg-left: #f2efe8;
+  --bg-right: #faf8f3;
+  --spine: #d6d0c4;
+  --shadow-left: rgba(0,0,0,0.06);
+  --shadow-right: rgba(0,0,0,0.04);
+}
+
+[data-theme="light-azure"] {
+  --bg: #ffffff;
+  --text: #363b48;
+  --text-secondary: #65707a;
+  --border: #d6d0c4;
+  --bar-bg: rgba(255,255,255,0.92);
+  --bar-border: rgba(0,0,0,0.08);
+  --chapter-rule: #d6d0c4;
+  --accent: #2e6ab4;
+  --btn-bg: rgba(0,0,0,0.06);
+  --btn-hover: rgba(0,0,0,0.1);
+  --sidebar-bg: #f5f5f5;
+  --sidebar-hover: #eee;
+  --bg-left: #f5f5f5;
+  --bg-right: #ffffff;
+  --spine: #d6d0c4;
+  --shadow-left: rgba(0,0,0,0.06);
+  --shadow-right: rgba(0,0,0,0.04);
+}
+
+[data-theme="dark-violet"] {
+  --bg: #1a1a1a;
+  --text: #dce0ec;
+  --text-secondary: #8490aa;
+  --border: #333;
+  --bar-bg: rgba(26,26,26,0.95);
+  --bar-border: rgba(255,255,255,0.08);
+  --chapter-rule: #444;
+  --accent: #9b7aed;
+  --btn-bg: rgba(255,255,255,0.08);
+  --btn-hover: rgba(255,255,255,0.12);
+  --sidebar-bg: #222;
+  --sidebar-hover: #2a2a2a;
+  --bg-left: #222222;
+  --bg-right: #1a1a1a;
+  --spine: #333;
+  --shadow-left: rgba(0,0,0,0.32);
+  --shadow-right: rgba(0,0,0,0.22);
+}
+
+[data-theme="dark-blue"] {
+  --bg: #000000;
+  --text: #8490aa;
+  --text-secondary: #546080;
+  --border: #1c2440;
+  --bar-bg: rgba(0,0,0,0.95);
+  --bar-border: rgba(255,255,255,0.06);
+  --chapter-rule: #1c2440;
+  --accent: #2e6ab4;
+  --btn-bg: rgba(255,255,255,0.06);
+  --btn-hover: rgba(255,255,255,0.1);
+  --sidebar-bg: #0a0a0a;
+  --sidebar-hover: #111;
+  --bg-left: #0a0a0a;
+  --bg-right: #000000;
+  --spine: #1c2440;
+  --shadow-left: rgba(0,0,0,0.4);
+  --shadow-right: rgba(0,0,0,0.28);
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--bg-right);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ===== BOOK SPREAD ===== */
+#book {
+  width: 100%; height: 100%;
+  display: flex; position: relative;
+  perspective: 1800px;
+  user-select: none; -webkit-user-select: none;
+}
+.page-half {
+  width: 50%; height: 100%;
+  position: relative; overflow: hidden;
+}
+#left-half { background: var(--bg-left); }
+#right-half { background: var(--bg-right); }
+
+/* Spine */
+#book::after {
+  content: ''; position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 1px; background: var(--spine);
+  z-index: 5; pointer-events: none;
+}
+#left-half::after {
+  content: ''; position: absolute;
+  top: 0; right: 0; width: 40px; height: 100%;
+  background: linear-gradient(to left, var(--shadow-left), transparent);
+  pointer-events: none; z-index: 2;
+}
+#right-half::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 40px; height: 100%;
+  background: linear-gradient(to right, var(--shadow-right), transparent);
+  pointer-events: none; z-index: 2;
+}
+
+/* ===== PAGE CONTENT AREA ===== */
+.page-content {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 48px 40px 76px;
+  color: var(--text); position: relative;
+}
+.page-inner {
+  max-width: 520px; width: 100%; flex: 1;
+  display: flex; flex-direction: column;
+  min-height: 0; overflow: hidden;
+  text-align: left; hyphens: manual; -webkit-hyphens: manual;
+}
+.page-number {
+  position: absolute; bottom: 44px;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 1px;
+  color: var(--accent); opacity: 0.4;
+}
+#left-half .page-number { left: 40px; }
+#right-half .page-number { right: 40px; }
+
+/* ===== RUNNING HEADER ===== */
+.running-header {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: none; justify-content: space-between; align-items: baseline;
+  padding: 14px 0 0; max-width: 520px; margin: 0 auto;
+  font-family: var(--font-serif); font-size: 12px;
+  color: var(--text-secondary); opacity: 0.55; pointer-events: none;
+}
+.running-header.visible { display: flex; }
+.running-header .rh-left { font-style: italic; }
+.running-header .rh-right {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+/* ===== THE QUATRAIN (recto) ===== */
+.q-page {
+  flex: 1; min-height: 0;
+  display: flex; flex-direction: column;
+  text-align: left; overflow-y: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.q-page::-webkit-scrollbar { display: none; }
+/* `margin: auto 0` centres the quatrain vertically without the flexbox
+   overflow bug that clips the top of an over-tall page under justify-content. */
+.q-page-body { margin: auto 0; width: 100%; }
+.q-mark {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500; letter-spacing: 4px;
+  color: var(--accent); opacity: 0.7;
+  margin-bottom: 8px; text-align: center;
+}
+.q-mark-rule {
+  width: 44px; height: 1px; margin: 0 auto 30px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.6;
+}
+.q-verse {
+  font-size: 21px; line-height: 2.0;
+  text-align: left; text-indent: 0;
+  color: var(--text); max-width: 100%;
+}
+.q-verse p { margin: 0 0 0.18em; text-indent: 0; }
+.q-verse p.indented { text-indent: 1.4em; }
+.q-verse p.q-prose {
+  text-align: justify; hyphens: auto; -webkit-hyphens: auto;
+  font-size: 19px; line-height: 1.85;
+}
+.q-orn {
+  margin-top: 34px; text-align: center;
+  color: var(--accent); opacity: 0.3;
+  font-size: 15px; letter-spacing: 8px;
+}
+
+/* Persian recto — right-to-left, with the transliteration right-aligned
+   underneath each line (the reader template does the same). */
+.q-page.q-rtl { direction: rtl; }
+.q-page.q-rtl .q-verse {
+  font-family: var(--font-fa);
+  text-align: right; direction: rtl;
+}
+.q-page.q-rtl .q-verse p.fa {
+  font-size: 1.02em; line-height: 2.1; margin: 0 0 0.1em;
+}
+.q-verse p.translit {
+  direction: ltr; text-align: right;
+  font-family: var(--font-mono); font-size: 0.58em; line-height: 1.9;
+  color: var(--text-secondary); opacity: 0.8;
+  letter-spacing: 0.2px; margin: -2px 0 10px;
+}
+
+/* ===== THE FACING GLOSS (verso) ===== */
+.gloss-page {
+  flex: 1; min-height: 0; overflow-y: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+  direction: ltr; text-align: left;
+  padding-right: 4px;
+}
+.gloss-page::-webkit-scrollbar { display: none; }
+.gloss-head {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); opacity: 0.7;
+  padding-bottom: 10px; margin-bottom: 18px;
+  border-bottom: 1px solid var(--chapter-rule);
+}
+.verso-blank {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  color: var(--chapter-rule); font-size: 18px; letter-spacing: 10px;
+}
+
+/* Gloss fragment styling — same names and same look as the reader's
+   per-quatrain detail panel, so the apparatus reads identically. */
+.gloss-page .qd-section { margin-top: 22px; }
+.gloss-page .qd-section:first-of-type { margin-top: 0; }
+.gloss-page .qd-label {
+  font-family: var(--font-sans); font-size: 9.5px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-secondary); opacity: .8; margin: 0 0 8px;
+  display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+}
+.gloss-page .qd-ref {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px;
+  color: var(--accent); font-weight: 500; opacity: .9; text-transform: none;
+}
+.gloss-page p { margin: 0; text-align: left; }
+.gloss-page .qd-fa-block { margin-top: 4px; }
+.gloss-page .qd-fa-line { margin-bottom: 6px; display: block; }
+.gloss-page .qd-fa {
+  font-family: var(--font-fa);
+  display: block; text-align: right; direction: rtl;
+  font-size: 15px; line-height: 2; color: var(--text);
+}
+.gloss-page .qd-translit {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--text-secondary); opacity: .7;
+  margin-top: -2px; letter-spacing: .2px;
+  display: block; direction: ltr; text-align: right;
+}
+.gloss-page .qd-tx { margin-top: 10px; }
+.gloss-page .qd-tx-label {
+  font-family: var(--font-sans); font-size: 9px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-secondary); opacity: .7;
+  margin-bottom: 3px;
+}
+.gloss-page .qd-tx p { font-family: var(--font-serif); font-size: 14px; line-height: 1.72; color: var(--text); }
+.gloss-page .qd-tx-literal p { color: var(--text-secondary); font-style: italic; }
+.gloss-page .qd-meta { margin-top: 12px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.gloss-page .qd-theme {
+  background: var(--accent); color: #fff; padding: 2px 9px; border-radius: 3px;
+  font-family: var(--font-sans); font-size: 9px; letter-spacing: .8px;
+  font-weight: 600; text-transform: uppercase; white-space: nowrap;
+}
+.gloss-page .qd-note {
+  flex: 1 1 180px; color: var(--text-secondary); font-style: italic;
+  font-size: 12.5px; line-height: 1.55; font-family: var(--font-serif);
+}
+.gloss-page .qd-alt { margin-top: 10px; padding-left: 10px; border-left: 2px solid var(--border); }
+.gloss-page .qd-alt:first-of-type { margin-top: 0; }
+.gloss-page .qd-alt-label {
+  font-family: var(--font-sans); font-size: 9px; letter-spacing: 1px;
+  color: var(--text-secondary); margin-bottom: 3px;
+}
+.gloss-page .qd-alt-label .qd-strength {
+  color: var(--accent); font-size: 8px; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-left: 4px; opacity: .85;
+}
+.gloss-page .qd-alt p {
+  font-family: var(--font-serif); font-size: 13px; line-height: 1.7;
+  color: var(--text-secondary); font-style: italic;
+}
+.gloss-page .qd-ha-lines { padding-left: 10px; border-left: 2px solid var(--accent); margin-top: 2px; }
+.gloss-page .qd-ha-lines p { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.7; color: var(--text); font-style: italic; }
+.gloss-page .qd-ha-refs {
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .3px;
+  color: var(--text-secondary); opacity: .7; margin-top: 8px;
+}
+.gloss-page .qd-ha-note {
+  font-family: var(--font-serif); font-style: italic; font-size: 12px;
+  color: var(--text-secondary); line-height: 1.55; margin-top: 6px;
+}
+.gloss-page .qd-wh-bits {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline;
+  font-family: var(--font-sans); font-size: 11px;
+}
+.gloss-page .qd-wh-bits .qd-ha-refs,
+.gloss-page .qd-wh-bits .qd-ha-note { margin-top: 0; }
+
+/* ===== COVER ===== */
+#cover-spread {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; text-align: center;
+  background: var(--bg-right); color: var(--text);
+  z-index: 10; padding: 40px 24px 120px;
+}
+#cover-spread .cover-ornament {
+  font-size: 22px; letter-spacing: 12px;
+  color: var(--accent); opacity: 0.35; margin-bottom: 34px;
+}
+#cover-spread .cover-title {
+  font-size: 46px; font-weight: 500; line-height: 1.15;
+  letter-spacing: 0.02em; margin-bottom: 14px;
+}
+#cover-spread .cover-title em { font-style: italic; }
+#cover-spread .cover-author {
+  font-family: var(--font-sans); font-size: 15px; font-weight: 300;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 8px;
+}
+#cover-spread .cover-fa {
+  font-family: var(--font-fa); font-size: 20px;
+  color: var(--text-secondary); opacity: 0.8;
+  direction: rtl; margin-bottom: 30px;
+}
+#cover-spread .cover-hint {
+  font-family: var(--font-sans); font-size: 12px;
+  letter-spacing: 1px; color: var(--text-secondary); margin-top: 26px;
+}
+
+/* ===== TITLE PAGE ===== */
+.title-page {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.title-page h1 { font-size: 34px; font-weight: 500; line-height: 1.25; margin-bottom: 14px; }
+.title-page h1 em { font-style: italic; }
+.title-page .subtitle {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-secondary); margin-bottom: 26px;
+}
+.title-page .pub-ornament {
+  font-size: 17px; letter-spacing: 10px;
+  color: var(--accent); opacity: 0.35; margin-bottom: 26px;
+}
+.title-page .pub-info {
+  font-family: var(--font-sans); font-size: 11px;
+  color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase;
+  line-height: 2;
+}
+
+/* ===== COLOPHON (verso of the contents) ===== */
+.colophon {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  font-size: 14px; line-height: 1.8; color: var(--text-secondary);
+}
+.colophon h3 {
+  font-family: var(--font-sans); font-size: 10px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.colophon .col-ed {
+  font-family: var(--font-serif); font-size: 22px; font-style: italic;
+  color: var(--text); line-height: 1.3; margin-bottom: 6px;
+}
+.colophon .col-count {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-secondary); margin-bottom: 18px;
+}
+.colophon .col-note { font-style: italic; margin-bottom: 18px; }
+.colophon .col-hint {
+  font-family: var(--font-sans); font-size: 11px; letter-spacing: .5px;
+  border-top: 1px solid var(--chapter-rule); padding-top: 14px; line-height: 1.9;
+}
+
+/* ===== CONTENTS ===== */
+.toc-page { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.toc-page::-webkit-scrollbar { display: none; }
+.toc-page h2 {
+  text-align: center; font-size: 20px; font-weight: 500;
+  font-style: italic; margin-bottom: 6px;
+}
+.toc-page .toc-sub {
+  text-align: center; font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-secondary); opacity: .7; margin-bottom: 22px;
+}
+.toc-list { list-style: none; columns: 2; column-gap: 28px; }
+.toc-list li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; padding: 4px 0; break-inside: avoid;
+  border-bottom: 1px dotted var(--spine);
+  cursor: pointer; transition: color 0.15s;
+  font-size: 14px;
+}
+.toc-list li:hover { color: var(--accent); }
+.toc-list .toc-num {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--accent); opacity: .55; min-width: 20px;
+}
+.toc-list .toc-range { flex: 1; }
+.toc-list .toc-page-num {
+  font-family: var(--font-mono); font-size: 10px; color: var(--accent); opacity: .55;
+}
+
+/* ===== FLIP OVERLAY ===== */
+.flip-overlay {
+  position: absolute; top: 0; width: 50%; height: 100%;
+  transform-style: preserve-3d; z-index: 20; pointer-events: none;
+}
+.flip-overlay.right-flip { right: 0; transform-origin: left center; }
+.flip-overlay.left-flip { left: 0; transform-origin: right center; }
+.flip-face {
+  position: absolute; inset: 0; overflow: hidden;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.flip-face.front { z-index: 2; }
+.flip-face.back { transform: rotateY(180deg); z-index: 1; }
+.flip-face::after {
+  content: ''; position: absolute; top: 0; width: 40px; height: 100%;
+  pointer-events: none; z-index: 3;
+}
+.right-flip .flip-face.front::after { left: 0; background: linear-gradient(to right, var(--shadow-right), transparent); }
+.right-flip .flip-face.back::after { right: 0; background: linear-gradient(to left, var(--shadow-left), transparent); }
+.left-flip .flip-face.front::after { right: 0; background: linear-gradient(to left, var(--shadow-left), transparent); }
+.left-flip .flip-face.back::after { left: 0; background: linear-gradient(to right, var(--shadow-right), transparent); }
+
+/* ===== CLICK ZONES ===== */
+.click-zone { position: absolute; top: 0; width: 50%; height: 100%; z-index: 8; cursor: pointer; }
+#click-left { left: 0; }
+#click-right { right: 0; }
+
+/* ===== FOOTER ===== */
+#footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 8px 16px; padding: 30px 14px 12px;
+  font-family: var(--font-sans); font-size: 12px;
+  color: var(--text-secondary); z-index: 50; pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg-right) 62%);
+}
+#footer > * { pointer-events: auto; }
+
+.footer-nav { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.footer-nav button {
+  background: none; border: none; color: var(--text-secondary);
+  cursor: pointer; font-size: 14px;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; opacity: 0.55;
+  transition: opacity 0.2s, color 0.2s, background 0.15s;
+}
+.footer-nav button:hover { opacity: 1; color: var(--accent); background: var(--btn-bg); }
+.footer-nav button:disabled { opacity: 0.18; cursor: default; background: none; }
+
+#page-num-wrap { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px; min-width: 62px; text-align: center; }
+#page-num { cursor: pointer; border-bottom: 1px dashed transparent; transition: border-color 0.2s; }
+#page-num:hover { border-color: var(--text-secondary); }
+#page-total { opacity: 0.5; }
+#page-num-input {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px;
+  width: 42px; text-align: center; background: transparent;
+  border: none; border-bottom: 1px solid var(--accent);
+  color: var(--text); outline: none; padding: 0;
+}
+
+/* Quatrain scrubber — one node per group of ten, like the reader's chapters */
+.q-scrubber {
+  display: flex; gap: 3px; align-items: center;
+  max-width: min(520px, 100%);
+  overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  padding: 6px 2px;
+}
+.q-scrubber::-webkit-scrollbar { display: none; }
+.q-scrubber button {
+  flex: 0 0 auto; border: none; background: none;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.5px;
+  color: var(--text-secondary); cursor: pointer; opacity: 0.45;
+  padding: 4px 3px; min-width: 16px; border-radius: 3px;
+  transition: opacity 0.2s, color 0.2s; position: relative;
+}
+.q-scrubber button:hover { opacity: 0.9; }
+.q-scrubber button.active { opacity: 1; color: var(--accent); font-weight: 600; }
+.q-scrubber button::after {
+  content: attr(data-title); position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  padding: 4px 8px; margin-bottom: 6px;
+  font-family: var(--font-serif); font-size: 12px; font-style: italic;
+  white-space: nowrap; color: var(--text);
+  background: var(--bar-bg); border: 1px solid var(--border); border-radius: 4px;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s;
+}
+.q-scrubber button:hover::after,
+.q-scrubber button:focus-visible::after { opacity: 1; }
+
+/* Edition switch — same chip row as the reader's top bar */
+.ed-switch {
+  display: inline-flex; border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; flex-shrink: 0;
+}
+.ed-switch .ed-opt {
+  background: transparent; border: none; color: var(--text-secondary);
+  font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+  padding: 6px 10px; cursor: pointer; line-height: 1.4;
+  min-height: 30px; letter-spacing: .3px;
+  transition: background .15s, color .15s;
+}
+.ed-switch .ed-opt:hover { background: var(--btn-bg); color: var(--text); }
+.ed-switch .ed-opt.active { color: var(--accent); background: var(--btn-bg); }
+.ed-switch .ed-opt + .ed-opt { border-left: 1px solid var(--border); }
+.ed-switch .ed-opt[lang="fa"] { font-family: var(--font-fa); font-size: 13px; padding: 4px 9px; }
+
+/* Theme toggle */
+.theme-wrap { position: relative; display: flex; align-items: center; flex-shrink: 0; }
+.theme-btn {
+  background: none; border: none; color: var(--text-secondary);
+  cursor: pointer; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; transition: color 0.2s, background 0.15s;
+}
+.theme-btn:hover { color: var(--accent); background: var(--btn-bg); }
+.theme-dots {
+  position: absolute; bottom: 100%; right: 50%;
+  transform: translateX(50%);
+  display: flex; gap: 6px; align-items: center; padding-bottom: 8px;
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+}
+.theme-wrap:hover .theme-dots,
+.theme-wrap:focus-within .theme-dots,
+.theme-wrap.expanded .theme-dots { opacity: 1; pointer-events: auto; }
+.theme-dot {
+  width: 13px; height: 13px; border-radius: 50%;
+  border: none; padding: 0; cursor: pointer; flex-shrink: 0;
+  position: relative; transition: transform 0.15s, box-shadow 0.15s;
+}
+/* Keep the dot visually 13px but give it a 40px-tall hit area spanning the gap
+   to its neighbour — wider would cover the next dot's centre and steal clicks. */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
+.theme-dot:hover { transform: scale(1.25); }
+.theme-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-dot.active { box-shadow: 0 0 0 2px var(--bg-right), 0 0 0 3.5px var(--accent); }
+.theme-dot[data-theme="sepia"] { background: #d4c8a8; }
+.theme-dot[data-theme="light-purple"] { background: #c9b8e8; }
+.theme-dot[data-theme="light-azure"] { background: #d4e8f7; }
+.theme-dot[data-theme="dark-violet"] { background: #4a3a6a; }
+.theme-dot[data-theme="dark-blue"] { background: #1e2a4a; }
+
+.ctrl-back {
+  font-family: var(--font-sans); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-secondary); text-decoration: none;
+  padding: 10px 8px; opacity: .7; transition: color .2s, opacity .2s;
+  flex-shrink: 0;
+}
+.ctrl-back:hover { color: var(--accent); opacity: 1; }
+
+/* ── Focus-visible ── */
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button:focus:not(:focus-visible) { outline: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #left-half { display: none; }
+  #right-half { width: 100%; }
+  #book::after, #right-half::before { display: none; }
+  .page-content { padding: 30px 22px 108px; }
+  .page-inner { max-width: 100%; }
+  .running-header { padding: 8px 0 0; max-width: 100%; font-size: 11px; }
+  /* One page, one scroll container: the page-inner scrolls and everything
+     inside it flows at its natural height. */
+  .page-inner { display: block; overflow-y: auto; scrollbar-width: none; }
+  .page-inner::-webkit-scrollbar { display: none; }
+  .q-page, .gloss-page, .toc-page { display: block; flex: none; overflow: visible; }
+  .q-page-body { margin: 0; }
+  .title-page, .colophon { min-height: 64vh; }
+  .q-mark { margin-top: 18px; }
+  .q-verse { font-size: 19px; line-height: 1.95; }
+  .q-verse p.q-prose { font-size: 17px; }
+  /* The footer already shows "N / total"; a second page number here would only
+     collide with the text scrolling under the footer's fade. */
+  .page-number { display: none; }
+  #cover-spread .cover-title { font-size: 32px; }
+  #cover-spread .cover-author { font-size: 13px; }
+  .toc-list { columns: 1; }
+  .gloss-inline {
+    margin-top: 34px; padding-top: 18px;
+    border-top: 1px solid var(--chapter-rule);
+  }
+  .q-scrubber button::after { display: none; }
+}
+@media (max-width: 600px) {
+  .page-content { padding: 26px 16px 132px; }
+  .q-verse { font-size: 18px; }
+  #cover-spread { padding-bottom: 150px; }
+  #cover-spread .cover-title { font-size: 30px; }
+  #cover-spread .cover-fa { font-size: 17px; }
+  #footer { gap: 4px 8px; padding: 26px 8px 10px; }
+  #footer .ctrl-back { display: none; }
+  .ed-switch .ed-opt { padding: 6px 7px; font-size: 10px; }
+  .ed-switch .ed-opt[lang="fa"] { font-size: 12px; padding: 4px 7px; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="book">
+  <div id="left-half" class="page-half">
+    <div class="page-content">
+      <div class="running-header" id="rh-left">
+        <span class="rh-left"><em>Rubáiyát</em> of Omar Khayyám</span>
+        <span class="rh-right" id="rh-left-ed"></span>
+      </div>
+      <div class="page-inner" id="left-inner"></div>
+      <div class="page-number" id="left-page-num"></div>
+    </div>
+  </div>
+  <div id="right-half" class="page-half">
+    <div class="page-content">
+      <div class="running-header" id="rh-right">
+        <span class="rh-left"><em>Rubáiyát</em> of Omar Khayyám</span>
+        <span class="rh-right" id="rh-right-ed"></span>
+      </div>
+      <div class="page-inner" id="right-inner"></div>
+      <div class="page-number" id="right-page-num"></div>
+    </div>
+  </div>
+
+  <div id="cover-spread">
+    <div class="cover-ornament">&#x2766; &#x2766; &#x2766;</div>
+    <div class="cover-title"><em>Rubáiyát</em></div>
+    <div class="cover-author">Omar Khayyám</div>
+    <div class="cover-fa" lang="fa" dir="rtl">رباعیات خیام</div>
+    <div class="cover-ornament">&#x2767; &#x2767; &#x2767;</div>
+    <div class="cover-hint">Click anywhere to open</div>
+  </div>
+
+  <div id="click-left" class="click-zone"></div>
+  <div id="click-right" class="click-zone"></div>
+</div>
+
+<div id="footer">
+  <a class="ctrl-back" href="index.html">&#8592; Book</a>
+  <div class="footer-nav">
+    <button id="btn-prev" aria-label="Previous page">&larr;</button>
+    <span id="page-num-wrap"><span id="page-num"></span><span id="page-total"></span></span>
+    <button id="btn-next" aria-label="Next page">&rarr;</button>
+  </div>
+  <div class="q-scrubber" id="q-scrubber" role="group" aria-label="Jump to quatrain group"></div>
+  <div class="ed-switch" id="ed-switch" role="tablist" aria-label="Choose edition"></div>
+  <div class="theme-wrap" id="theme-wrap">
+    <button class="theme-btn" id="theme-btn" title="Cycle theme" aria-label="Change theme">
+      <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <circle cx="10" cy="10" r="4"/>
+        <path d="M10 6V10H6A4 4 0 0 1 10 6z" fill="currentColor" stroke="none"/>
+        <path d="M10 10V14H14A4 4 0 0 1 10 14z" fill="currentColor" stroke="none"/>
+        <line x1="10" y1="2" x2="10" y2="4"/>
+        <line x1="10" y1="16" x2="10" y2="18"/>
+        <line x1="2" y1="10" x2="4" y2="10"/>
+        <line x1="16" y1="10" x2="18" y2="10"/>
+        <line x1="4.3" y1="4.3" x2="5.7" y2="5.7"/>
+        <line x1="14.3" y1="14.3" x2="15.7" y2="15.7"/>
+        <line x1="4.3" y1="15.7" x2="5.7" y2="14.3"/>
+        <line x1="14.3" y1="5.7" x2="15.7" y2="4.3"/>
+      </svg>
+    </button>
+    <div class="theme-dots" role="group" aria-label="Theme">
+      <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+      <button type="button" class="theme-dot active" data-theme="light-purple" title="Light Purple" aria-label="Light purple theme"></button>
+      <button type="button" class="theme-dot" data-theme="light-azure" title="Light Azure" aria-label="Light azure theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-violet" title="Dark Violet" aria-label="Dark violet theme"></button>
+      <button type="button" class="theme-dot" data-theme="dark-blue" title="Dark Blue" aria-label="Dark blue theme"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================================================================
+// CONTENT — built by data/build_fullbleed.py from seeds/*.json
+// ===================================================================
+const DATA = __DATA__;
+const ORDER = DATA.order;
+const EDITIONS = DATA.editions;
+const GROUP = DATA.groupSize || 10;
+
+const PREFS_KEY = 'rubaiyat-fullbleed-prefs';
+const THEME_ORDER = ['light-purple', 'sepia', 'light-azure', 'dark-violet', 'dark-blue'];
+const FLIP_DURATION = 620;
+const FLIP_EASING = 'cubic-bezier(0.4, 0.0, 0.2, 1)';
+
+// Spread layout:
+//   0 = cover
+//   1 = verso blank      | recto title page
+//   2 = verso colophon   | recto contents
+//   3+ = verso gloss     | recto quatrain (index spread - 3)
+const FIRST_CONTENT_SPREAD = 3;
+
+let edKey = ORDER.includes(DATA.default) ? DATA.default : ORDER[0];
+let quatrains = [];
+let numToIndex = {};
+let totalSpreads = 0;
+let currentSpread = 0;
+let busy = false;
+
+// ===================================================================
+// DOM REFERENCES
+// ===================================================================
+const bookEl = document.getElementById('book');
+const leftHalf = document.getElementById('left-half');
+const rightHalf = document.getElementById('right-half');
+const leftInner = document.getElementById('left-inner');
+const rightInner = document.getElementById('right-inner');
+const leftPageNum = document.getElementById('left-page-num');
+const rightPageNum = document.getElementById('right-page-num');
+const coverSpread = document.getElementById('cover-spread');
+const footerEl = document.getElementById('footer');
+const rhLeft = document.getElementById('rh-left');
+const rhRight = document.getElementById('rh-right');
+const scrubberEl = document.getElementById('q-scrubber');
+const edSwitchEl = document.getElementById('ed-switch');
+const themeWrap = document.getElementById('theme-wrap');
+
+function isMobile() { return window.innerWidth <= 768; }
+function reducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/** Isolate a possibly-RTL token inside an LTR line. Without this, "فا" or a
+ *  Persian-digit numeral drags the neighbouring Latin text into its RTL run
+ *  and the line renders back to front. */
+function bdi(s) { return '<bdi>' + s + '</bdi>'; }
+
+// ===================================================================
+// PAGE BUILDERS
+// ===================================================================
+function qAt(s) {
+  const i = s - FIRST_CONTENT_SPREAD;
+  return (i >= 0 && i < quatrains.length) ? quatrains[i] : null;
+}
+
+function titlePageHTML() {
+  const ed = EDITIONS[edKey];
+  return '<div class="title-page">' +
+    '<h1><em>Rubáiyát</em><br>of Omar Khayyám</h1>' +
+    '<div class="subtitle">Omar Khayyám &middot; 1048&ndash;1131</div>' +
+    '<div class="pub-ornament">&mdash; &#x2766; &mdash;</div>' +
+    '<div class="pub-info">' + ed.label + '<br>' + ed.year + ' &middot; ' +
+      ed.count + ' ' + bdi(ed.unit) + '</div>' +
+    '</div>';
+}
+
+function colophonHTML() {
+  const ed = EDITIONS[edKey];
+  return '<div class="colophon">' +
+    '<h3>This Edition</h3>' +
+    '<div class="col-ed">' + ed.label + '</div>' +
+    '<div class="col-count">' + ed.year + ' &middot; ' + ed.count + ' ' + bdi(ed.unit) + '</div>' +
+    '<p class="col-note">' + ed.note + '</p>' +
+    '<div class="col-hint">One quatrain to the recto.<br>' +
+      'The verso carries its facing notes &mdash; the Persian source with ' +
+      'transliteration, the scholarly analysis, and the other historical ' +
+      'translations of the same quatrain.<br>' +
+      'Five editions in the footer; arrows, space or a click turn the page.</div>' +
+    '</div>';
+}
+
+function contentsHTML() {
+  const groups = groupsOf();
+  let html = '<div class="toc-page"><h2>Contents</h2>' +
+    '<div class="toc-sub">' + EDITIONS[edKey].label +
+    ' &middot; ' + quatrains.length + ' ' + bdi(EDITIONS[edKey].unit) + '</div>' +
+    '<ol class="toc-list">';
+  groups.forEach((g, i) => {
+    const range = bdi(g.first.label) + (g.last !== g.first ? '&ndash;' + bdi(g.last.label) : '');
+    html += '<li data-idx="' + g.start + '">' +
+      '<span class="toc-num">' + (i + 1) + '.</span>' +
+      '<span class="toc-range">' + range + '</span>' +
+      '<span class="toc-page-num">' + g.first.n + '</span>' +
+      '</li>';
+  });
+  html += '</ol></div>';
+  return html;
+}
+
+function groupsOf() {
+  const out = [];
+  for (let i = 0; i < quatrains.length; i += GROUP) {
+    const seg = quatrains.slice(i, i + GROUP);
+    out.push({ start: i, first: seg[0], last: seg[seg.length - 1] });
+  }
+  return out;
+}
+
+function quatrainHTML(q) {
+  const ed = EDITIONS[edKey];
+  const rtl = ed.dir === 'rtl';
+  return '<div class="q-page' + (rtl ? ' q-rtl' : '') + '"' +
+      (rtl ? ' dir="rtl" lang="fa"' : '') + '>' +
+    '<div class="q-page-body">' +
+        '<div class="q-mark">' + bdi(q.label) + '</div>' +
+      '<div class="q-mark-rule"></div>' +
+      '<div class="q-verse">' + q.verse + '</div>' +
+      '<div class="q-orn">&#x2766;</div>' +
+    '</div>' +
+    '</div>';
+}
+
+function glossHTML(q) {
+  return '<div class="gloss-page">' +
+    '<div class="gloss-head">' + bdi(EDITIONS[edKey].short) + ' &middot; ' + bdi(q.label) + '</div>' +
+    q.gloss + '</div>';
+}
+
+/** Right-hand (recto) page for a spread. */
+function rectoHTML(s) {
+  if (s === 1) return titlePageHTML();
+  if (s === 2) return contentsHTML();
+  const q = qAt(s);
+  if (!q) return '';
+  let html = quatrainHTML(q);
+  // Phones show one page, so the facing gloss is set below the quatrain.
+  if (isMobile() && q.gloss) {
+    html += '<div class="gloss-page gloss-inline">' +
+      '<div class="gloss-head">Facing notes</div>' + q.gloss + '</div>';
+  }
+  return html;
+}
+
+/** Left-hand (verso) page for a spread. */
+function versoHTML(s) {
+  if (s <= 1) return '';
+  if (s === 2) return colophonHTML();
+  const q = qAt(s);
+  if (!q) return '';
+  if (!q.gloss) return '<div class="verso-blank"><span>&#x2766;</span></div>';
+  return glossHTML(q);
+}
+
+function pageNumFor(s) {
+  const q = qAt(s);
+  return q ? String(q.n) : '';
+}
+
+// ===================================================================
+// RENDER
+// ===================================================================
+function renderSpread(s) {
+  currentSpread = s;
+
+  if (s === 0) {
+    coverSpread.style.display = 'flex';
+    leftHalf.style.display = 'none';
+    rightHalf.style.display = 'none';
+    leftPageNum.textContent = '';
+    rightPageNum.textContent = '';
+    document.querySelector('.footer-nav').style.display = 'none';
+    scrubberEl.style.display = 'none';
+  } else {
+    coverSpread.style.display = 'none';
+    rightHalf.style.display = '';
+    leftHalf.style.display = isMobile() ? 'none' : '';
+    document.querySelector('.footer-nav').style.display = '';
+    scrubberEl.style.display = '';
+
+    rightInner.innerHTML = rectoHTML(s);
+    rightPageNum.textContent = pageNumFor(s);
+    if (!isMobile()) {
+      leftInner.innerHTML = versoHTML(s);
+      leftPageNum.textContent = '';
+    }
+    if (s === 2) attachTOCHandlers();
+  }
+
+  updateIndicator();
+  writeHash(s);
+}
+
+function updateIndicator() {
+  const s = currentSpread;
+  const q = qAt(s);
+  const ed = EDITIONS[edKey];
+
+  const showHeaders = s >= FIRST_CONTENT_SPREAD;
+  rhRight.classList.toggle('visible', showHeaders);
+  rhLeft.classList.toggle('visible', showHeaders && !isMobile());
+  document.getElementById('rh-right-ed').innerHTML = bdi(ed.short) + ' ' + ed.year;
+  document.getElementById('rh-left-ed').textContent = 'Facing notes';
+
+  const pageNumEl = document.getElementById('page-num');
+  const pageTotalEl = document.getElementById('page-total');
+  if (q) {
+    pageNumEl.textContent = q.n;
+    pageTotalEl.textContent = ' / ' + quatrains.length;
+  } else {
+    pageNumEl.textContent = '';
+    pageTotalEl.textContent = '';
+  }
+
+  const gi = q ? Math.floor((s - FIRST_CONTENT_SPREAD) / GROUP) : -1;
+  scrubberEl.querySelectorAll('button').forEach((b, i) => {
+    b.classList.toggle('active', i === gi);
+    b.setAttribute('aria-current', i === gi ? 'true' : 'false');
+  });
+
+  document.getElementById('btn-prev').disabled = s <= 0;
+  document.getElementById('btn-next').disabled = s >= totalSpreads - 1;
+}
+
+function attachTOCHandlers() {
+  rightInner.querySelectorAll('.toc-list li[data-idx]').forEach(li => {
+    li.addEventListener('click', () => {
+      goToSpread(FIRST_CONTENT_SPREAD + parseInt(li.dataset.idx, 10));
+    });
+  });
+}
+
+// ===================================================================
+// URL HASH — #p-N for a quatrain, #s-N for the front matter
+// ===================================================================
+function writeHash(s) {
+  let hash;
+  if (s === 0) hash = '';
+  else if (s <= 2) hash = '#s-' + s;
+  else {
+    const q = qAt(s);
+    hash = q ? '#p-' + q.n : '#s-' + s;
+  }
+  history.replaceState(null, '', location.pathname + location.search + hash);
+}
+
+function spreadFromHash() {
+  const h = location.hash.replace('#', '');
+  let m = h.match(/^p-(\d+)$/);
+  if (m) {
+    const idx = numToIndex[parseInt(m[1], 10)];
+    if (idx !== undefined) return FIRST_CONTENT_SPREAD + idx;
+    return null;
+  }
+  m = h.match(/^s-(\d+)$/);
+  if (m) return Math.max(0, Math.min(parseInt(m[1], 10), 2));
+  return null;
+}
+
+// ===================================================================
+// NAVIGATION + PAGE FLIP
+// ===================================================================
+function makeFlipFace(cls, bg, html) {
+  const face = document.createElement('div');
+  face.className = 'flip-face ' + cls;
+  face.style.background = bg;
+  const content = document.createElement('div');
+  content.className = 'page-content';
+  const inner = document.createElement('div');
+  inner.className = 'page-inner';
+  inner.innerHTML = html;
+  content.appendChild(inner);
+  face.appendChild(content);
+  return face;
+}
+
+function flip(dir) {
+  if (busy) return;
+  const next = currentSpread + dir;
+  if (next < 0 || next >= totalSpreads) return;
+
+  // No flip from/to the cover, on phones, or when motion is reduced.
+  if (currentSpread === 0 || next === 0 || isMobile() || reducedMotion()) {
+    renderSpread(next);
+    return;
+  }
+
+  busy = true;
+  const cs = getComputedStyle(document.documentElement);
+  const bgL = cs.getPropertyValue('--bg-left').trim();
+  const bgR = cs.getPropertyValue('--bg-right').trim();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'flip-overlay ' + (dir > 0 ? 'right-flip' : 'left-flip');
+  if (dir > 0) {
+    overlay.appendChild(makeFlipFace('front', bgR, rectoHTML(currentSpread)));
+    overlay.appendChild(makeFlipFace('back', bgL, versoHTML(next)));
+    // The overlay hides the recto, so swap what is underneath now.
+    rightInner.innerHTML = rectoHTML(next);
+    rightPageNum.textContent = pageNumFor(next);
+  } else {
+    overlay.appendChild(makeFlipFace('front', bgL, versoHTML(currentSpread)));
+    overlay.appendChild(makeFlipFace('back', bgR, rectoHTML(next)));
+    leftInner.innerHTML = versoHTML(next);
+  }
+  bookEl.appendChild(overlay);
+
+  overlay.getBoundingClientRect(); // force layout before transitioning
+  overlay.style.transition = 'transform ' + FLIP_DURATION + 'ms ' + FLIP_EASING;
+  overlay.style.transform = dir > 0 ? 'rotateY(-180deg)' : 'rotateY(180deg)';
+
+  setTimeout(() => {
+    // renderSpread rewrites both halves and the hash, so the animated path
+    // never leaves the URL pointing at the page we just turned away from.
+    renderSpread(next);
+    requestAnimationFrame(() => {
+      overlay.remove();
+      busy = false;
+    });
+  }, FLIP_DURATION);
+}
+
+function goToSpread(s) {
+  if (busy) return;
+  renderSpread(Math.max(0, Math.min(s, totalSpreads - 1)));
+}
+
+/** Click the page number to type a quatrain number and jump to it. */
+function initPageNumClick() {
+  const el = document.getElementById('page-num');
+  if (!el) return;
+  el.addEventListener('click', () => {
+    const cur = el.textContent.trim();
+    if (!cur) return;
+    const input = document.createElement('input');
+    input.id = 'page-num-input';
+    input.type = 'text';
+    input.value = cur;
+    input.maxLength = 4;
+    input.setAttribute('aria-label', 'Go to quatrain number');
+    el.replaceWith(input);
+    input.focus();
+    input.select();
+
+    let done = false;
+    const commit = (revert) => {
+      if (done) return;
+      done = true;
+      const val = revert ? NaN : parseInt(input.value, 10);
+      const span = document.createElement('span');
+      span.id = 'page-num';
+      input.replaceWith(span);
+      initPageNumClick();
+      const idx = numToIndex[val];
+      if (idx !== undefined) goToSpread(FIRST_CONTENT_SPREAD + idx);
+      else updateIndicator();
+    };
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); commit(false); }
+      if (e.key === 'Escape') { e.preventDefault(); commit(true); }
+    });
+    input.addEventListener('blur', () => commit(false));
+  });
+}
+
+// ===================================================================
+// EDITIONS
+// ===================================================================
+function buildEditionSwitch() {
+  edSwitchEl.innerHTML = '';
+  ORDER.forEach(key => {
+    const ed = EDITIONS[key];
+    const btn = document.createElement('button');
+    btn.className = 'ed-opt';
+    btn.id = 'ed-' + key;
+    btn.setAttribute('role', 'tab');
+    btn.textContent = ed.short;
+    btn.title = ed.title;
+    btn.setAttribute('aria-label', ed.plain + ', ' + ed.count + ' quatrains');
+    if (ed.dir === 'rtl') btn.setAttribute('lang', ed.lang);
+    btn.addEventListener('click', () => {
+      if (edKey !== key) applyEdition(key, { reset: true });
+    });
+    edSwitchEl.appendChild(btn);
+  });
+}
+
+function buildScrubber() {
+  scrubberEl.innerHTML = '';
+  groupsOf().forEach((g, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = i + 1;
+    const range = g.first.label + (g.last !== g.first ? '–' + g.last.label : '');
+    b.dataset.title = range;
+    b.setAttribute('aria-label', 'Quatrains ' + range);
+    b.addEventListener('click', () => goToSpread(FIRST_CONTENT_SPREAD + g.start));
+    scrubberEl.appendChild(b);
+  });
+}
+
+function applyEdition(key, opts) {
+  opts = opts || {};
+  edKey = key;
+  const ed = EDITIONS[key];
+  quatrains = ed.quatrains;
+  numToIndex = {};
+  quatrains.forEach((q, i) => { numToIndex[q.n] = i; });
+  totalSpreads = FIRST_CONTENT_SPREAD + quatrains.length;
+
+  document.documentElement.dataset.edition = key;
+  ORDER.forEach(k => {
+    const btn = document.getElementById('ed-' + k);
+    if (!btn) return;
+    btn.classList.toggle('active', k === key);
+    btn.setAttribute('aria-selected', String(k === key));
+  });
+  buildScrubber();
+
+  if (opts.reset) {
+    // A different edition is a different text — start it at its first quatrain
+    // rather than landing on a number that means something else here.
+    savePrefs();
+    renderSpread(currentSpread >= FIRST_CONTENT_SPREAD ? FIRST_CONTENT_SPREAD : currentSpread);
+  }
+}
+
+// ===================================================================
+// THEME + PREFERENCES
+// ===================================================================
+function setTheme(name) {
+  document.documentElement.dataset.theme = name;
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.classList.toggle('active', d.dataset.theme === name);
+  });
+  savePrefs();
+}
+
+function cycleTheme() {
+  const cur = document.documentElement.dataset.theme || 'light-purple';
+  setTheme(THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length]);
+}
+
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({
+      theme: document.documentElement.dataset.theme || 'light-purple',
+      edition: edKey,
+    }));
+  } catch (e) {}
+}
+
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (!raw) return {};
+    // An older build stored a bare theme string under this key.
+    if (raw[0] !== '{') return THEME_ORDER.includes(raw) ? { theme: raw } : {};
+    return JSON.parse(raw) || {};
+  } catch (e) { return {}; }
+}
+
+// ===================================================================
+// INIT
+// ===================================================================
+function init() {
+  const prefs = loadPrefs();
+  if (prefs.theme && THEME_ORDER.includes(prefs.theme)) {
+    document.documentElement.dataset.theme = prefs.theme;
+  }
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.classList.toggle('active', d.dataset.theme === document.documentElement.dataset.theme);
+  });
+
+  buildEditionSwitch();
+  applyEdition(ORDER.includes(prefs.edition) ? prefs.edition : edKey, {});
+
+  // Restore position from the hash, in script — the pages are JS-rendered, so
+  // there is nothing for the browser's own fragment handling to find.
+  const fromHash = spreadFromHash();
+  renderSpread(fromHash === null ? 0 : fromHash);
+
+  document.getElementById('btn-prev').addEventListener('click', () => flip(-1));
+  document.getElementById('btn-next').addEventListener('click', () => flip(1));
+  document.getElementById('click-left').addEventListener('click', () => flip(-1));
+  document.getElementById('click-right').addEventListener('click', () => flip(1));
+  coverSpread.addEventListener('click', () => { if (currentSpread === 0) renderSpread(1); });
+
+  document.getElementById('theme-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    cycleTheme();
+  });
+  document.getElementById('theme-btn').addEventListener('touchstart', () => {
+    themeWrap.classList.toggle('expanded');
+  }, { passive: true });
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.addEventListener('click', () => setTheme(d.dataset.theme));
+  });
+  document.addEventListener('click', (e) => {
+    if (!themeWrap.contains(e.target)) themeWrap.classList.remove('expanded');
+  });
+
+  initPageNumClick();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT')) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'j':
+        e.preventDefault(); flip(1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'k':
+        e.preventDefault(); flip(-1); break;
+      case 'Home':
+        e.preventDefault(); goToSpread(FIRST_CONTENT_SPREAD); break;
+      case 'End':
+        e.preventDefault(); goToSpread(totalSpreads - 1); break;
+      case 'Escape':
+        themeWrap.classList.remove('expanded'); break;
+    }
+  });
+
+  let touchX = 0, touchY = 0;
+  document.addEventListener('touchstart', (e) => {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 2) {
+      flip(dx < 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  window.addEventListener('hashchange', () => {
+    const s = spreadFromHash();
+    if (s !== null && s !== currentSpread) renderSpread(s);
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => renderSpread(currentSpread), 200);
+  });
+}
+
+init();
+</script>
+</body>
+</html>

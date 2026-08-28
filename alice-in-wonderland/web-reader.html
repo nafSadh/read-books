@@ -196,10 +196,19 @@ body {
   height: 18px;
   border-radius: 50%;
   border: 2px solid var(--border);
+  padding: 0;
+  position: relative;
   cursor: pointer;
   transition: transform 0.15s, border-color 0.15s;
 }
+/* Keep the dot visually 18px but give it a 40px-tall hit area that spans the
+   gap to its neighbour (wider would overlap the next dot and steal its clicks). */
+.theme-dot::before {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: calc(100% + 6px); height: 40px;
+}
 .theme-dot:hover { transform: scale(1.15); }
+.theme-dot:focus-visible { outline: 2px solid var(--progress-bar); outline-offset: 3px; }
 .theme-dot.active { border-color: var(--progress-bar); box-shadow: 0 0 0 2px var(--progress-bar); }
 .theme-dot[data-theme="light"] { background: #fff; }
 .theme-dot[data-theme="sepia"] { background: #f5f0e8; }
@@ -506,7 +515,11 @@ body {
 @media (max-width: 700px) {
   #top-bar .book-title { display: none; }
   #top-bar .separator { display: none; }
-  .theme-dots { display: none; }
+  /* The dots used to be hidden here, leaving phones with no theme control at
+     all. The bar already drops the title and separator at this width, so they
+     fit once tightened. */
+  .theme-dots { gap: 4px; }
+  .theme-dot { width: 16px; height: 16px; }
   #content { padding: 32px 16px 100px; }
   .book-header h1 { font-size: 1.8em; }
   .chapter-heading h2 { font-size: 1.3em; }
@@ -525,11 +538,11 @@ body {
   <span class="separator">/</span>
   <span id="current-chapter">Chapter I</span>
   <span id="reading-pct">0%</span>
-  <div class="theme-dots">
-    <span class="theme-dot active" data-theme="light" title="Light"></span>
-    <span class="theme-dot" data-theme="sepia" title="Sepia"></span>
-    <span class="theme-dot" data-theme="dark" title="Dark"></span>
-    <span class="theme-dot" data-theme="black" title="Black"></span>
+  <div class="theme-dots" role="group" aria-label="Theme">
+    <button type="button" class="theme-dot active" data-theme="light" title="Light" aria-label="Light theme"></button>
+    <button type="button" class="theme-dot" data-theme="sepia" title="Sepia" aria-label="Sepia theme"></button>
+    <button type="button" class="theme-dot" data-theme="dark" title="Dark" aria-label="Dark theme"></button>
+    <button type="button" class="theme-dot" data-theme="black" title="Black" aria-label="Black theme"></button>
   </div>
   <div class="bar-controls">
     <button class="bar-btn" id="settings-toggle" title="Reading settings" aria-label="Settings">Aa</button>
@@ -841,13 +854,14 @@ function savePrefs() {
       spacing: document.body.dataset.spacing,
       size: document.body.dataset.size
     };
-    localStorage.setItem('webreader-prefs', JSON.stringify(prefs));
+    localStorage.setItem('alice-web-reader-prefs', JSON.stringify(prefs));
   } catch(e) {}
 }
 
 function loadPrefs() {
   try {
-    const prefs = JSON.parse(localStorage.getItem('webreader-prefs'));
+    // Legacy unprefixed key read as a fallback so returning readers keep settings
+    const prefs = JSON.parse(localStorage.getItem('alice-web-reader-prefs') || localStorage.getItem('webreader-prefs'));
     if (!prefs) return;
 
     if (prefs.theme) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,24 +11,54 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #525659;
-  --toolbar-bg: #333;
-  --toolbar-text: #ddd;
-  --toolbar-border: #444;
-  --page-bg: #fff;
-  --page-text: #222;
-  --page-shadow: rgba(0,0,0,0.35);
-  --sidebar-bg: #3a3d40;
-  --sidebar-text: #bbb;
-  --sidebar-highlight: rgba(255,255,255,0.12);
-  --accent: #4a90d9;
   --toolbar-height: 44px;
   --font-body: 'EB Garamond', 'Georgia', serif;
 }
 
-.dark {
+/* ===== THEMES — house 5, via data-theme on <html> ===== */
+html[data-theme="light-purple"] {
+  --bg: #525659;
+  --toolbar-bg: #333;
+  --toolbar-text: #ddd;
+  --toolbar-border: #444;
+  --page-bg: #faf8f3;
+  --page-text: #363b48;
+  --page-shadow: rgba(0,0,0,0.35);
+  --sidebar-bg: #3a3d40;
+  --sidebar-text: #bbb;
+  --sidebar-highlight: rgba(255,255,255,0.12);
+  --accent: #9b7aed;
+}
+html[data-theme="sepia"] {
+  --bg: #4a453c;
+  --toolbar-bg: #3a352c;
+  --toolbar-text: #e8ddc8;
+  --toolbar-border: #4a4438;
+  --page-bg: #f5efe0;
+  --page-text: #3a2e1e;
+  --page-shadow: rgba(0,0,0,0.35);
+  --sidebar-bg: #3a352c;
+  --sidebar-text: #c8bca4;
+  --sidebar-highlight: rgba(255,255,255,0.12);
+  --accent: #d97706;
+}
+html[data-theme="light-azure"] {
+  --bg: #4a5258;
+  --toolbar-bg: #2c3238;
+  --toolbar-text: #dde4ea;
+  --toolbar-border: #3c444c;
+  --page-bg: #ffffff;
+  --page-text: #1e2a3a;
+  --page-shadow: rgba(0,0,0,0.35);
+  --sidebar-bg: #343c44;
+  --sidebar-text: #bbc4cc;
+  --sidebar-highlight: rgba(255,255,255,0.12);
+  --accent: #4a90d9;
+}
+html[data-theme="dark-violet"] {
   --bg: #1a1a1a;
   --toolbar-bg: #111;
+  --toolbar-text: #ddd;
   --toolbar-border: #333;
   --page-bg: #242424;
   --page-text: #d4d4d4;
@@ -36,6 +66,20 @@
   --sidebar-bg: #1e1e1e;
   --sidebar-text: #999;
   --sidebar-highlight: rgba(255,255,255,0.08);
+  --accent: #9b7aed;
+}
+html[data-theme="dark-blue"] {
+  --bg: #05070c;
+  --toolbar-bg: #0a0e16;
+  --toolbar-text: #9aa8b8;
+  --toolbar-border: #1a2838;
+  --page-bg: #10141e;
+  --page-text: #9aa8b8;
+  --page-shadow: rgba(0,0,0,0.6);
+  --sidebar-bg: #0a0e16;
+  --sidebar-text: #6a7a8a;
+  --sidebar-highlight: rgba(255,255,255,0.06);
+  --accent: #4a8acc;
 }
 
 .font-sans { --font-body: 'Jost', 'Helvetica Neue', sans-serif; }
@@ -399,14 +443,21 @@ html, body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   #toolbar button { min-width: 44px; min-height: 44px; }
-  #zoomOut, #zoomIn, #zoomLabel,
-  #zoomOut + .toolbar-sep,
-  #twoPageToggle,
-  #twoPageToggle + .toolbar-sep { display: none; }
+  /* These must out-rank `#toolbar button { display:flex }` (1,0,1), so they are
+     scoped under #toolbar to reach (2,0,0) — bare id selectors silently lose. */
+  #toolbar #zoomOut, #toolbar #zoomIn, #toolbar #zoomLabel,
+  #toolbar #zoomOut + .toolbar-sep,
+  #toolbar #twoPageToggle,
+  #toolbar #twoPageToggle + .toolbar-sep { display: none; }
   #sidebar { width: 220px; max-width: 80vw; }
   #viewport.sidebar-open { left: 0; }
   .nav-zone { width: 60px; }
   #pageInner { padding: 32px 24px; }
+  /* Keep the remaining controls inside a phone viewport: tighten the shell and
+     let the chapter select absorb whatever space is left. */
+  #toolbar { padding: 0 6px; gap: 2px; }
+  #toolbar #chapterSelect { max-width: 100%; min-width: 0; flex: 1 1 auto; }
+  #toolbar #pageInput { width: 36px; }
 }
 @media (max-width: 600px) {
   #toolbar { padding: 0 6px; gap: 2px; }
@@ -423,43 +474,43 @@ html, body {
 
 <!-- Toolbar -->
 <div id="toolbar">
-  <button id="sidebarToggle" title="Toggle sidebar">
+  <button id="sidebarToggle" title="Toggle sidebar" aria-label="Toggle chapter sidebar">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect y="2" width="16" height="2" rx="1"/><rect y="7" width="16" height="2" rx="1"/><rect y="12" width="16" height="2" rx="1"/></svg>
   </button>
 
-  <select id="chapterSelect"></select>
+  <select id="chapterSelect" aria-label="Jump to chapter"></select>
 
   <div class="toolbar-spacer"></div>
 
-  <button id="prevBtn" title="Previous page">
+  <button id="prevBtn" title="Previous page" aria-label="Previous page">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
-  <input type="text" id="pageInput" value="1">
+  <input type="text" id="pageInput" value="1" aria-label="Page number">
   <span id="pageTotal">/ 1</span>
 
-  <button id="nextBtn" title="Next page">
+  <button id="nextBtn" title="Next page" aria-label="Next page">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
   <div class="toolbar-spacer"></div>
 
-  <button id="zoomOut" title="Zoom out">
+  <button id="zoomOut" title="Zoom out" aria-label="Zoom out">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="2" y="6" width="10" height="2" rx="1"/></svg>
   </button>
   <span id="zoomLabel" style="font-size:12px;min-width:36px;text-align:center">100%</span>
-  <button id="zoomIn" title="Zoom in">
+  <button id="zoomIn" title="Zoom in" aria-label="Zoom in">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="2" y="6" width="10" height="2" rx="1"/><rect x="6" y="2" width="2" height="10" rx="1"/></svg>
   </button>
 
   <div class="toolbar-sep"></div>
 
-  <button id="twoPageToggle" title="Toggle 2-page view">&#9633;</button>
+  <button id="twoPageToggle" title="Toggle 2-page view" aria-label="Toggle two-page view">&#9633;</button>
 
   <div class="toolbar-sep"></div>
 
-  <button id="fontToggle" title="Toggle font">Aa</button>
-  <button id="themeToggle" title="Toggle theme">
+  <button id="fontToggle" title="Toggle font" aria-label="Change font">Aa</button>
+  <button id="themeToggle" title="Change theme" aria-label="Change theme">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 2a5 5 0 010 10V2z"/></svg>
   </button>
 </div>
@@ -474,10 +525,10 @@ html, body {
 <div id="viewport">
   <div id="pageCard">
     <div id="pageInner"></div>
-    <div class="nav-zone left" id="navLeft">
+    <div class="nav-zone left" id="navLeft" role="button" tabindex="-1" aria-label="Previous page">
       <svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     </div>
-    <div class="nav-zone right" id="navRight">
+    <div class="nav-zone right" id="navRight" role="button" tabindex="-1" aria-label="Next page">
       <svg viewBox="0 0 24 24"><path d="M9 4l8 8-8 8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     </div>
   </div>
@@ -496,7 +547,6 @@ let currentPage = 0;
 let sidebarOpen = false;
 let zoomLevel = 100;
 let fontMode = 0; // 0=serif, 1=sans, 2=mono
-let darkMode = false;
 let twoPageMode = false;
 
 // ===== PAGINATION =====
@@ -750,6 +800,7 @@ function setZoom(level) {
   const body = document.body;
   ZOOM_LEVELS.forEach(z => body.classList.remove('zoom-' + z));
   body.classList.add('zoom-' + level);
+  savePrefs();
 
   // Re-paginate at new zoom
   const oldChapter = pages[currentPage]?.chapter;
@@ -773,10 +824,11 @@ function setZoom(level) {
 const FONT_MODES = ['', 'font-sans', 'font-mono'];
 const FONT_LABELS = ['Serif', 'Sans', 'Mono'];
 function cycleFont() {
-  document.body.classList.remove(FONT_MODES[fontMode]);
+  if (FONT_MODES[fontMode]) document.body.classList.remove(FONT_MODES[fontMode]);
   fontMode = (fontMode + 1) % FONT_MODES.length;
   if (FONT_MODES[fontMode]) document.body.classList.add(FONT_MODES[fontMode]);
   document.getElementById('fontToggle').textContent = FONT_LABELS[fontMode];
+  savePrefs();
 
   // Re-paginate
   const savedPage = currentPage;
@@ -786,9 +838,35 @@ function cycleFont() {
   renderPage();
 }
 
+const THEMES = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+function setTheme(name) {
+  if (!THEMES.includes(name)) name = THEMES[0];
+  document.documentElement.dataset.theme = name;
+  document.getElementById('themeToggle')
+    .setAttribute('aria-label', 'Change theme (current: ' + name.replace('-', ' ') + ')');
+}
 function toggleTheme() {
-  darkMode = !darkMode;
-  document.body.classList.toggle('dark', darkMode);
+  const cur = document.documentElement.dataset.theme;
+  setTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length]);
+  savePrefs();
+}
+
+// ===== PREFERENCES (theme / font / zoom — never the page number) =====
+const PREFS_KEY = 'alice-pdf-prefs';
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({
+      theme: document.documentElement.dataset.theme,
+      font: fontMode,
+      zoom: zoomLevel
+    }));
+  } catch(e) {}
+}
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    return raw ? (JSON.parse(raw) || {}) : {};
+  } catch(e) { return {}; }
 }
 
 function toggleTwoPageMode() {
@@ -819,11 +897,22 @@ document.getElementById('sidebar-overlay').addEventListener('click', closeSideba
 
 // ===== EVENTS =====
 function init() {
+  // Restore saved presentation prefs before the first pagination
+  const prefs = loadPrefs();
+  setTheme(prefs.theme || document.documentElement.dataset.theme);
+  if (typeof prefs.font === 'number' && prefs.font > 0 && prefs.font < FONT_MODES.length) {
+    fontMode = prefs.font;
+    document.body.classList.add(FONT_MODES[fontMode]);
+  }
+  document.getElementById('fontToggle').textContent = FONT_LABELS[fontMode];
+  if (ZOOM_LEVELS.includes(prefs.zoom)) zoomLevel = prefs.zoom;
+  document.getElementById('zoomLabel').textContent = zoomLevel + '%';
+
   populateChapterSelect();
   paginateContent();
   renderSidebar();
   resizePageCard();
-  document.body.classList.add('zoom-100');
+  document.body.classList.add('zoom-' + zoomLevel);
   renderPage();
 
   // Toolbar

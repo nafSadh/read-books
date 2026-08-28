@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light-purple">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Meditations — Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Palette blocks are reader-casaubon.html's, verbatim; mobile adds --sheet-bg. */
+:root{
+  --font-serif:'EB Garamond',Georgia,serif;
+  --font-sans:'Jost',-apple-system,Helvetica Neue,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --font-greek:'EB Garamond',Georgia,serif;
+}
+[data-theme="sepia"]{--bg:#f5efe0;--text:#3a2e1e;--text-secondary:#7a6a52;--border:#d4c8a8;--accent:#8b6914;--btn-bg:rgba(0,0,0,.05);--bar-bg:rgba(245,239,224,.94);--sheet-bg:#ede5d0}
+[data-theme="light-purple"]{--bg:#faf8f3;--text:#363b48;--text-secondary:#65707a;--border:#d6d0c4;--accent:#7c3aed;--btn-bg:rgba(0,0,0,.05);--bar-bg:rgba(250,248,243,.94);--sheet-bg:#f2efe8}
+[data-theme="light-azure"]{--bg:#fff;--text:#363b48;--text-secondary:#65707a;--border:#d6d0c4;--accent:#2e6ab4;--btn-bg:rgba(0,0,0,.06);--bar-bg:rgba(255,255,255,.92);--sheet-bg:#f5f5f5}
+[data-theme="dark-violet"]{--bg:#1a1a1a;--text:#dce0ec;--text-secondary:#8490aa;--border:#333;--accent:#9b7aed;--btn-bg:rgba(255,255,255,.08);--bar-bg:rgba(26,26,26,.95);--sheet-bg:#222}
+[data-theme="dark-blue"]{--bg:#000;--text:#8490aa;--text-secondary:#546080;--border:#1c2440;--accent:#2e6ab4;--btn-bg:rgba(255,255,255,.06);--bar-bg:rgba(0,0,0,.95);--sheet-bg:#0a0a0a}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-serif);height:100dvh;overflow:hidden;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+button{font-family:inherit;color:inherit}
+
+#top-bar{position:fixed;top:0;left:0;right:0;height:48px;z-index:20;background:var(--bar-bg);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;gap:6px;padding:0 8px;font-family:var(--font-sans)}
+.bar-btn{width:40px;height:40px;flex:0 0 auto;border:none;background:transparent;color:var(--text-secondary);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px}
+.bar-btn:active{background:var(--btn-bg)}
+.bar-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.bar-btn.on{color:var(--accent);background:var(--btn-bg)}
+#bk-label{flex:1 1 auto;min-width:0;text-align:center;font-family:var(--font-sans);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+#pager{position:absolute;top:48px;bottom:52px;left:0;right:0;overflow:hidden}
+#slide{height:100%;overflow-y:auto;padding:26px 22px 44px;transition:opacity .18s ease}
+#slide.fading{opacity:0}
+.p-num{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:14px}
+.p-text{font-size:19px;line-height:1.85}
+.p-text p{margin:0 0 1em}
+.p-text p:last-child{margin-bottom:0}
+.p-greek{margin-top:22px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--font-greek);font-size:17px;line-height:1.95;color:var(--text-secondary)}
+.p-greek p{margin:0 0 .8em}
+.p-detail{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);font-size:15px;line-height:1.7;color:var(--text-secondary)}
+.d-sec{margin-bottom:16px}
+.d-sec:last-child{margin-bottom:0}
+.d-label{font-family:var(--font-sans);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:5px;font-weight:600}
+.d-sec p{margin:0 0 .6em}
+.d-pn{margin-bottom:8px}
+.d-pn-name{font-family:var(--font-sans);font-weight:600;font-size:13px;display:block;color:var(--text)}
+.d-pn-tip a{color:var(--accent)}
+
+#bottom-bar{position:fixed;bottom:0;left:0;right:0;height:52px;z-index:20;background:var(--bar-bg);border-top:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px;padding-bottom:env(safe-area-inset-bottom,0px);font-family:var(--font-sans)}
+#pos{font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);font-variant-numeric:tabular-nums;min-width:74px;text-align:center}
+#progress{position:fixed;top:48px;left:0;height:2px;background:var(--accent);z-index:19;transition:width .2s}
+
+.sheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:30;opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet-backdrop.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--sheet-bg);border-top:1px solid var(--border);border-radius:14px 14px 0 0;padding:8px 0 calc(14px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .25s ease;max-height:72dvh;overflow-y:auto;font-family:var(--font-sans)}
+.sheet.open{transform:translateY(0)}
+.sheet h2{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--text-secondary);padding:10px 20px 8px}
+.sheet-row{display:block;width:100%;text-align:left;background:none;border:none;padding:13px 20px;font-size:15px;cursor:pointer;min-height:44px;border-bottom:1px solid var(--border);color:var(--text)}
+.sheet-row:last-child{border-bottom:none}
+.sheet-row:active{background:var(--btn-bg)}
+.sheet-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sheet-row.active{color:var(--accent);font-weight:500}
+.sheet-row .sub{display:block;font-family:var(--font-mono);font-size:10px;color:var(--text-secondary);letter-spacing:.5px;margin-top:2px}
+#theme-row{display:flex;gap:14px;padding:14px 20px;flex-wrap:wrap}
+.theme-dot{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);cursor:pointer;padding:0;position:relative;flex:0 0 auto}
+.theme-dot::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px}
+.theme-dot:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.theme-dot.active{box-shadow:0 0 0 2px var(--sheet-bg),0 0 0 4px var(--accent)}
+.theme-dot[data-theme="sepia"]{background:#d4c8a8}
+.theme-dot[data-theme="light-purple"]{background:#c9b8e8}
+.theme-dot[data-theme="light-azure"]{background:#d4e8f7}
+.theme-dot[data-theme="dark-violet"]{background:#4a3a6a}
+.theme-dot[data-theme="dark-blue"]{background:#1e2a4a}
+@media (prefers-reduced-motion:reduce){#slide,.sheet,.sheet-backdrop,#progress{transition:none}}
+</style>
+</head>
+<body>
+
+<div id="progress" style="width:0"></div>
+
+<nav id="top-bar">
+  <button class="bar-btn" id="toc-btn" aria-label="Choose book" aria-haspopup="dialog">&#9776;</button>
+  <span id="bk-label"></span>
+  <button class="bar-btn" id="greek-btn" aria-label="Toggle Greek text" aria-pressed="false">&#913;&#945;</button>
+  <button class="bar-btn" id="detail-btn" aria-label="Toggle notes" aria-pressed="false">i</button>
+  <button class="bar-btn" id="theme-btn" aria-label="Choose theme" aria-haspopup="dialog">&#9680;</button>
+</nav>
+
+<main id="pager"><div id="slide" aria-live="polite"></div></main>
+
+<nav id="bottom-bar">
+  <button class="bar-btn" id="prev" aria-label="Previous passage">&#8592;</button>
+  <span id="pos"></span>
+  <button class="bar-btn" id="next" aria-label="Next passage">&#8594;</button>
+</nav>
+
+<div class="sheet-backdrop" id="backdrop"></div>
+<div class="sheet" id="toc-sheet" role="dialog" aria-modal="true" aria-label="Choose book" aria-hidden="true">
+  <h2>Books</h2><div id="toc-list"></div>
+</div>
+<div class="sheet" id="theme-sheet" role="dialog" aria-modal="true" aria-label="Choose theme" aria-hidden="true">
+  <h2>Theme</h2><div id="theme-row"></div>
+</div>
+
+<script>
+const DATA = __DATA__;
+const PREFS_KEY = 'meditations-mobile-prefs';
+const THEMES = {sepia:'Sepia','light-purple':'Light purple','light-azure':'Light azure','dark-violet':'Dark violet','dark-blue':'Dark blue'};
+const P = DATA.passages;
+let idx = 0, showGreek = false, showDetail = false;
+const $ = id => document.getElementById(id);
+
+function savePrefs(){
+  try{ localStorage.setItem(PREFS_KEY, JSON.stringify({
+    theme: document.documentElement.dataset.theme, greek: showGreek, detail: showDetail
+  })); }catch(e){}
+}
+function loadPrefs(){
+  let p=null; try{ p=JSON.parse(localStorage.getItem(PREFS_KEY)||'null'); }catch(e){}
+  if(!p) return;
+  if(p.theme && THEMES[p.theme]) document.documentElement.dataset.theme = p.theme;
+  showGreek = !!p.greek; showDetail = !!p.detail;
+}
+
+/* Position in the hash as #m-B.N (the passage's own Leopold id), so a link is
+   stable regardless of viewport — unlike a page ordinal. */
+function writeHash(){ history.replaceState(null,'','#m-'+P[idx].id); }
+function readHash(){
+  const m = location.hash.match(/^#m-(\d+\.\d+)$/);
+  if(!m) return false;
+  const i = P.findIndex(p => p.id === m[1]);
+  if(i < 0) return false;
+  idx = i; return true;
+}
+
+function render(){
+  const p = P[idx], bk = DATA.books.find(b => b.n === p.bnum);
+  const slide = $('slide');
+  slide.classList.add('fading');
+  setTimeout(() => {
+    let h = '<div class="p-num">' + bk.roman + ' &middot; ' + p.num + '</div>';
+    h += '<div class="p-text">' + p.text + '</div>';
+    if(showGreek && p.greek) h += '<div class="p-greek" lang="grc">' + p.greek + '</div>';
+    if(showDetail && p.detail) h += '<div class="p-detail">' + p.detail + '</div>';
+    slide.innerHTML = h; slide.scrollTop = 0;
+    slide.classList.remove('fading');
+  }, 110);
+  $('bk-label').textContent = bk.title + (bk.subtitle ? ' — ' + bk.subtitle : '');
+  $('pos').textContent = (idx+1) + ' / ' + P.length;
+  $('prev').disabled = idx === 0;
+  $('next').disabled = idx === P.length - 1;
+  $('progress').style.width = ((idx+1)/P.length*100) + '%';
+  $('greek-btn').setAttribute('aria-pressed', String(showGreek));
+  $('greek-btn').classList.toggle('on', showGreek);
+  $('detail-btn').setAttribute('aria-pressed', String(showDetail));
+  $('detail-btn').classList.toggle('on', showDetail);
+  writeHash();
+}
+function go(d){ const n = idx + d; if(n<0||n>=P.length) return; idx = n; render(); }
+
+let openS = null, lastFocus = null;
+function sheetOpen(id){
+  closeSheet();
+  const s = $(id); openS = s; lastFocus = document.activeElement;
+  s.classList.add('open'); s.setAttribute('aria-hidden','false');
+  $('backdrop').classList.add('open');
+  const f = s.querySelector('button'); if(f) f.focus();
+}
+function closeSheet(){
+  if(!openS) return;
+  openS.classList.remove('open'); openS.setAttribute('aria-hidden','true');
+  $('backdrop').classList.remove('open'); openS = null;
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && openS){ closeSheet(); return; }
+  if(openS && e.key === 'Tab'){
+    const f = [...openS.querySelectorAll('button')].filter(b => b.offsetParent !== null);
+    if(!f.length) return;
+    const a = f[0], z = f[f.length-1];
+    if(e.shiftKey && document.activeElement === a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey && document.activeElement === z){ e.preventDefault(); a.focus(); }
+    return;
+  }
+  if(openS) return;
+  if(e.key==='ArrowRight'||e.key==='j'||e.key===' '){ e.preventDefault(); go(1); }
+  else if(e.key==='ArrowLeft'||e.key==='k'){ e.preventDefault(); go(-1); }
+});
+
+function buildToc(){
+  const w = $('toc-list'); w.innerHTML = '';
+  DATA.books.forEach(b => {
+    const btn = document.createElement('button');
+    btn.type='button';
+    btn.className = 'sheet-row' + (b.n === P[idx].bnum ? ' active' : '');
+    btn.innerHTML = b.title + (b.subtitle ? ' — ' + b.subtitle : '')
+      + '<span class="sub">' + b.count + ' passages</span>';
+    btn.setAttribute('aria-label', 'Go to ' + b.title);
+    btn.addEventListener('click', () => { idx = b.start; render(); buildToc(); closeSheet(); });
+    w.appendChild(btn);
+  });
+}
+function buildThemes(){
+  const w = $('theme-row'); w.innerHTML = '';
+  Object.keys(THEMES).forEach(t => {
+    const b = document.createElement('button');
+    b.type='button';
+    b.className = 'theme-dot' + (document.documentElement.dataset.theme === t ? ' active' : '');
+    b.dataset.theme = t;
+    b.setAttribute('aria-label', THEMES[t] + ' theme');
+    b.addEventListener('click', () => {
+      document.documentElement.dataset.theme = t; buildThemes(); savePrefs(); closeSheet();
+    });
+    w.appendChild(b);
+  });
+}
+
+$('prev').addEventListener('click', () => go(-1));
+$('next').addEventListener('click', () => go(1));
+$('toc-btn').addEventListener('click', () => sheetOpen('toc-sheet'));
+$('theme-btn').addEventListener('click', () => sheetOpen('theme-sheet'));
+$('backdrop').addEventListener('click', closeSheet);
+$('greek-btn').addEventListener('click', () => { showGreek = !showGreek; render(); savePrefs(); });
+$('detail-btn').addEventListener('click', () => { showDetail = !showDetail; render(); savePrefs(); });
+
+let tx=0, ty=0;
+$('pager').addEventListener('touchstart', e => { tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY; }, {passive:true});
+$('pager').addEventListener('touchend', e => {
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>50) go(dx<0?1:-1);
+}, {passive:true});
+window.addEventListener('hashchange', () => { if(readHash()) render(); });
+
+loadPrefs(); readHash();
+buildToc(); buildThemes(); render();
+</script>
+</body>
+</html>

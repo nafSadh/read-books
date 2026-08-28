@@ -15,6 +15,12 @@ Persian's "detail" panel holds the LLM notes + matched historical alternates.
 English editions' detail panel holds: matched Persian, LLM notes from that
 Persian match, alternate historical translations, and (for FG 5th)
 Heron-Allen 1898's scholarly Persian-source analysis.
+
+This module is also the shared library for the sibling builders
+`build_fullbleed.py` and `build_theater.py`. They import `build_ctx()`,
+`build_payload()`, `render_template()` and the `frag_*` helpers from here so
+there is exactly one place that knows how to load the seeds, match a Persian
+source to an English quatrain, transliterate it and number it.
 """
 import json
 import sys
@@ -36,6 +42,8 @@ TPL = Path(__file__).parent / "reader-template.html"
 OUT = ROOT / "reader.html"
 
 GROUP_SIZE = 10
+# Edition shown before JS runs (must match the template's default body/prefs).
+DEFAULT_EDITION = "fifth"
 
 _FA_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
 
@@ -383,7 +391,210 @@ def render_group(quatrains, group_idx, ed_key, render_fn):
 def render_edition(quatrains, ed_key, render_fn):
     groups = [quatrains[i:i + GROUP_SIZE] for i in range(0, len(quatrains), GROUP_SIZE)]
     groups_html = ''.join(render_group(g, i, ed_key, render_fn) for i, g in enumerate(groups))
-    return f'<section class="edition" data-edition="{ed_key}">{groups_html}</section>'
+    # Bake `visible` onto the default edition so streamed content renders as it
+    # parses; applyEdition() reconciles the classes if saved prefs differ.
+    cls = 'edition visible' if ed_key == DEFAULT_EDITION else 'edition'
+    return f'<section class="{cls}" data-edition="{ed_key}">{groups_html}</section>'
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# Shared edition metadata + JSON payload
+#
+# reader.html bakes every quatrain into the DOM (it is a scrolling reader, so
+# the whole text has to be there). fullbleed.html and theater.html render one
+# quatrain at a time from JS, so they take the same content as a JSON payload
+# instead. `build_payload()` is the single source of truth for both of them —
+# it reuses the same seed loading, Persian matching, transliteration and
+# numbering as the reader.
+
+EDITION_ORDER = ['first', 'fifth', 'whinfield', 'nicolas', 'persian']
+
+EDITION_META = {
+    'first': {
+        'short': 'FG1',
+        'label': 'FitzGerald &middot; First Edition',
+        'plain': 'FitzGerald, First Edition',
+        'year': 1859,
+        'unit': 'quatrains',
+        'dir': 'ltr',
+        'lang': 'en',
+        'kind': 'verse',
+        'title': 'FitzGerald 1st edition, 1859 — 75 quatrains, English verse',
+        'note': "FitzGerald's anonymous debut — terser, stranger, closer to the Persian cadence.",
+    },
+    'fifth': {
+        'short': 'FG5',
+        'label': 'FitzGerald &middot; Fifth Edition',
+        'plain': 'FitzGerald, Fifth Edition',
+        'year': 1889,
+        'unit': 'quatrains',
+        'dir': 'ltr',
+        'lang': 'en',
+        'kind': 'verse',
+        'title': 'FitzGerald 5th edition, 1889 — 101 quatrains, English verse '
+                 '(with Heron-Allen Persian-source scholarly notes)',
+        'note': 'The canonical text, published months after FitzGerald&rsquo;s death.',
+    },
+    'whinfield': {
+        'short': 'Wh',
+        'label': 'E. H. Whinfield',
+        'plain': 'E. H. Whinfield',
+        'year': 1883,
+        'unit': 'quatrains',
+        'dir': 'ltr',
+        'lang': 'en',
+        'kind': 'verse',
+        'title': 'E. H. Whinfield, 1883 — 500 quatrains, English verse (literal)',
+        'note': 'The broadest English verse rendering of the era — nearer a literal '
+                'quatrain-by-quatrain than a paraphrase.',
+    },
+    'nicolas': {
+        'short': 'Ni',
+        'label': 'Nicolas &rarr; English Prose',
+        'plain': 'Nicolas to English Prose',
+        'year': 1903,
+        'unit': 'quatrains',
+        'dir': 'ltr',
+        'lang': 'en',
+        'kind': 'prose',
+        'title': 'Nicolas 1867 → English prose, 1903 — 464 quatrains',
+        'note': 'English prose after J. B. Nicolas&rsquo;s 1867 French — a Sufistic reading.',
+    },
+    'persian': {
+        'short': 'فا',
+        'label': 'Persian &middot; Foroughi &amp; Ghani',
+        'plain': 'Persian original, Foroughi & Ghani',
+        'year': 1960,
+        'unit': 'رباعیات',
+        'dir': 'rtl',
+        'lang': 'fa',
+        'kind': 'verse',
+        'title': 'Foroughi-Ghani 1960 Persian original — 178 quatrains, annotated',
+        'note': 'The Persian original with transliteration, annotated.',
+    },
+}
+
+
+def payload_label(ed_key, num):
+    """Page mark for a quatrain. Persian keeps its own digits; every
+    Latin-script edition is numbered in Roman, the way the 19th-century
+    printings of the Rubáiyát were."""
+    if ed_key == 'persian':
+        return to_fa_digits(num)
+    return romanize(num)
+
+
+def payload_verse(ed_key, q):
+    """The quatrain itself — the recto/stage text."""
+    if ed_key in ('first', 'fifth'):
+        return ''.join(
+            (f'<p class="indented">{escape(l)}</p>' if i == 2 else f'<p>{escape(l)}</p>')
+            for i, l in enumerate(q['lines'])
+        )
+    if ed_key == 'nicolas':
+        return f'<p class="q-prose">{escape(q.get("prose", ""))}</p>'
+    if ed_key == 'persian':
+        out = []
+        for line in q['lines']:
+            out.append(f'<p class="fa">{escape(line)}</p>')
+            out.append(
+                f'<p class="translit" dir="ltr" lang="en-fa-Latn">{escape(transliterate(line))}</p>'
+            )
+        return ''.join(out)
+    return ''.join(f'<p>{escape(l)}</p>' for l in q['lines'])
+
+
+def payload_persian_match(ed_key, num, ctx):
+    """The Persian source quatrain matched to an English quatrain, if any."""
+    lookup = {
+        'first': ctx['fg1_to_fa'],
+        'fifth': ctx['fg5_to_fa'],
+        'whinfield': ctx['wh_to_fa'],
+    }.get(ed_key)
+    return lookup.get(num) if lookup else None
+
+
+def payload_gloss(ed_key, q, ctx):
+    """The facing-page apparatus: exactly the fragments the reader shows in
+    its per-quatrain detail panel, minus the <aside> wrapper."""
+    if ed_key == 'nicolas':
+        return ''
+    if ed_key == 'persian':
+        parts = [
+            frag_modern_translations(q),
+            frag_historical_alternates(q, None, ctx['fg_lookup'], ctx['wh_lookup']),
+        ]
+    else:
+        match = payload_persian_match(ed_key, q['num'], ctx)
+        parts = [frag_persian_source(match)]
+        if ed_key == 'fifth':
+            parts.append(frag_heron_allen(ctx['ha_lookup'].get(q['num'])))
+        if ed_key == 'whinfield':
+            parts.append(frag_whinfield_refs(q))
+        parts.extend([
+            frag_modern_translations(match),
+            frag_historical_alternates(match, ed_key, ctx['fg_lookup'], ctx['wh_lookup']),
+        ])
+    return ''.join(p for p in parts if p)
+
+
+def edition_sources(ctx):
+    """ed_key -> the seed's quatrain list, skipping editions whose seed is absent."""
+    fg = ctx['fg']
+    src = {
+        'first': fg['editions']['first']['quatrains'],
+        'fifth': fg['editions']['fifth']['quatrains'],
+        'whinfield': ctx['wh']['quatrains'] if 'wh' in ctx else [],
+        'nicolas': ctx['ni']['quatrains'] if 'ni' in ctx else [],
+        'persian': ctx['fa']['quatrains'] if ctx.get('fa') else [],
+    }
+    return {k: src[k] for k in EDITION_ORDER if src[k]}
+
+
+def build_payload(ctx, with_gloss=True):
+    """JSON-serialisable content for the JS-rendered formats.
+
+    with_gloss=True  → fullbleed (verso carries the facing apparatus)
+    with_gloss=False → theater (stage carries the quatrain alone)
+    """
+    editions = {}
+    order = []
+    for ed_key, quatrains in edition_sources(ctx).items():
+        order.append(ed_key)
+        meta = dict(EDITION_META[ed_key])
+        meta['key'] = ed_key
+        meta['count'] = len(quatrains)
+        items = []
+        for q in quatrains:
+            item = {
+                'n': q['num'],
+                'label': payload_label(ed_key, q['num']),
+                'verse': payload_verse(ed_key, q),
+            }
+            if with_gloss:
+                gloss = payload_gloss(ed_key, q, ctx)
+                if gloss:
+                    item['gloss'] = gloss
+            items.append(item)
+        meta['quatrains'] = items
+        editions[ed_key] = meta
+    return {
+        'order': order,
+        'default': DEFAULT_EDITION if DEFAULT_EDITION in editions else order[0],
+        'groupSize': GROUP_SIZE,
+        'editions': editions,
+    }
+
+
+def render_template(tpl_path, out_path, payload):
+    """Substitute a JSON payload into a template's __DATA__ placeholder."""
+    tpl = tpl_path.read_text(encoding='utf-8')
+    assert '__DATA__' in tpl, f'{tpl_path.name} missing __DATA__ placeholder'
+    # "</" inside a <script> block would close it early; JSON allows the escape.
+    blob = json.dumps(payload, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    out_text = tpl.replace('__DATA__', blob)
+    out_path.write_text(out_text, encoding='utf-8')
+    return out_text
 
 
 # ═══════════════════════════════════════════════════════════════════════

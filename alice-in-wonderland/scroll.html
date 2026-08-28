@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light-purple">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alice in Wonderland — Scroll Reader — read-rd</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-[data-theme="light"]{
+[data-theme="light-purple"]{
   --bg:#faf8f3;--text:#2c2c2c;--dim:#888;--accent:#7c3aed;
   --border:#e8e4dc;--chapter-bg:#f2efe8;--nav-bg:#faf8f3ee;
 }
-[data-theme="dark"]{
+[data-theme="sepia"]{
+  --bg:#f5efe0;--text:#3a2e1e;--dim:#7a6a52;--accent:#b45309;
+  --border:#e0d6c0;--chapter-bg:#ede5d0;--nav-bg:#f5efe0ee;
+}
+[data-theme="light-azure"]{
+  --bg:#ffffff;--text:#363b48;--dim:#8a94a0;--accent:#2e6ab4;
+  --border:#e2e8ee;--chapter-bg:#f0f5fa;--nav-bg:#ffffffee;
+}
+[data-theme="dark-violet"]{
   --bg:#111;--text:#c8c8c8;--dim:#555;--accent:#9b7aed;
   --border:#222;--chapter-bg:#1a1a1a;--nav-bg:#111111ee;
+}
+[data-theme="dark-blue"]{
+  --bg:#000;--text:#8490aa;--dim:#546080;--accent:#2e6ab4;
+  --border:#1c2440;--chapter-bg:#0a0f1a;--nav-bg:#000000ee;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -36,8 +48,18 @@ body{
   font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
   color:var(--dim);letter-spacing:1px;white-space:nowrap;
 }
+/* Scroller keeps its hidden scrollbar; edge fades show there is more to scroll */
+.nav-chapters-wrap{position:relative;flex:1;min-width:0;display:flex}
+.nav-chapters-wrap::before,.nav-chapters-wrap::after{
+  content:"";position:absolute;top:0;bottom:0;width:26px;z-index:2;
+  pointer-events:none;opacity:0;transition:opacity .2s;
+}
+.nav-chapters-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.nav-chapters-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.nav-chapters-wrap.fade-l::before{opacity:1}
+.nav-chapters-wrap.fade-r::after{opacity:1}
 .nav-chapters{
-  display:flex;gap:2px;flex:1;overflow-x:auto;
+  display:flex;gap:2px;flex:1;overflow-x:auto;scroll-behavior:smooth;
   scrollbar-width:none;-ms-overflow-style:none;
 }
 .nav-chapters::-webkit-scrollbar{display:none}
@@ -107,12 +129,14 @@ body{
 </head>
 <body data-size="medium">
 
-<nav class="chapter-nav">
+<nav class="chapter-nav" aria-label="Chapters and settings">
   <span class="nav-title">Alice</span>
-  <div class="nav-chapters" id="nav-chapters"></div>
+  <div class="nav-chapters-wrap" id="nav-chapters-wrap">
+    <div class="nav-chapters" id="nav-chapters" role="group" aria-label="Jump to chapter"></div>
+  </div>
   <div class="nav-ctrl">
-    <button class="ctrl-btn" id="size-btn" onclick="cycleSize()">A</button>
-    <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()"></button>
+    <button class="ctrl-btn" id="size-btn" onclick="cycleSize()" title="Text size" aria-label="Cycle text size">A</button>
+    <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()" title="Change theme" aria-label="Change theme"></button>
   </div>
 </nav>
 <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
@@ -132,6 +156,8 @@ function init(){
     const dot = document.createElement('button');
     dot.className = 'nav-dot';
     dot.textContent = ch.num;
+    dot.title = ch.title;
+    dot.setAttribute('aria-label', 'Chapter ' + ch.num + ': ' + ch.title);
     dot.onclick = () => document.getElementById('ch-'+i).scrollIntoView({behavior:'smooth'});
     nav.appendChild(dot);
 
@@ -164,20 +190,53 @@ function init(){
     });
     document.querySelectorAll('.nav-dot').forEach((d,i) => {
       d.classList.toggle('active', i === active);
+      // Keep the active chapter dot inside the (scrollbar-less) scroller
+      if (i === active) keepDotVisible(d);
     });
   });
 
+  const row = document.getElementById('nav-chapters');
+  row.addEventListener('scroll', updateNavFades);
+  window.addEventListener('resize', updateNavFades);
+  updateNavFades();
+
+  loadPrefs();
   updateTheme();
 }
 
+/* \u2500\u2500 Chapter row overflow affordance \u2500\u2500 */
+function updateNavFades(){
+  const row = document.getElementById('nav-chapters');
+  const wrap = document.getElementById('nav-chapters-wrap');
+  if (!row || !wrap) return;
+  const max = row.scrollWidth - row.clientWidth;
+  wrap.classList.toggle('fade-l', row.scrollLeft > 2);
+  wrap.classList.toggle('fade-r', row.scrollLeft < max - 2);
+}
+function keepDotVisible(dot){
+  const row = dot.parentElement;
+  const l = dot.offsetLeft, r = l + dot.offsetWidth;
+  if (l < row.scrollLeft + 26) row.scrollLeft = Math.max(0, l - 26);
+  else if (r > row.scrollLeft + row.clientWidth - 26) row.scrollLeft = r - row.clientWidth + 26;
+}
+
+const THEMES = ['light-purple','sepia','light-azure','dark-violet','dark-blue'];
+const DARK_THEMES = ['dark-violet','dark-blue'];
+
 function toggleTheme(){
   const h = document.documentElement;
-  h.dataset.theme = h.dataset.theme==='dark'?'light':'dark';
+  const i = THEMES.indexOf(h.dataset.theme);
+  h.dataset.theme = THEMES[(i + 1) % THEMES.length];
   updateTheme();
+  savePrefs();
 }
 function updateTheme(){
-  document.getElementById('theme-btn').textContent =
-    document.documentElement.dataset.theme==='dark'?'\u2600':'\u263D';
+  const cur = document.documentElement.dataset.theme;
+  const next = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
+  const btn = document.getElementById('theme-btn');
+  /* Icon shows the theme the button will switch to */
+  btn.textContent = DARK_THEMES.includes(next) ? '\u263D' : '\u2600';
+  btn.setAttribute('aria-label', 'Change theme (current: ' + cur.replace('-',' ') + ')');
 }
 
 const sizes = ['small','medium','large'];
@@ -188,7 +247,55 @@ function cycleSize(){
   i = (i+1) % sizes.length;
   b.dataset.size = sizes[i];
   document.getElementById('size-btn').textContent = labels[i];
+  savePrefs();
 }
+
+/* \u2500\u2500 Preferences (position lives in the URL, never here) \u2500\u2500 */
+const PREFS_KEY = 'alice-scroll-prefs';
+function savePrefs(){
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify({
+      theme: document.documentElement.dataset.theme,
+      size: document.body.dataset.size
+    }));
+  } catch(e) {}
+}
+function loadPrefs(){
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    const p = raw ? JSON.parse(raw) : null;
+    if (!p) return;
+    if (p.theme && THEMES.includes(p.theme)) document.documentElement.dataset.theme = p.theme;
+    if (p.size && sizes.includes(p.size)) {
+      document.body.dataset.size = p.size;
+      document.getElementById('size-btn').textContent = labels[sizes.indexOf(p.size)];
+    }
+  } catch(e) {}
+}
+
+/* \u2500\u2500 Keyboard: j/k/arrows/space \u2500\u2500 */
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  const scrollAmt = window.innerHeight * 0.85;
+  switch(e.key) {
+    case 'j':
+    case 'ArrowDown':
+    case 'ArrowRight':
+      window.scrollBy({ top: scrollAmt, behavior: 'smooth' });
+      e.preventDefault();
+      break;
+    case 'k':
+    case 'ArrowUp':
+    case 'ArrowLeft':
+      window.scrollBy({ top: -scrollAmt, behavior: 'smooth' });
+      e.preventDefault();
+      break;
+    case ' ':
+      window.scrollBy({ top: e.shiftKey ? -scrollAmt : scrollAmt, behavior: 'smooth' });
+      e.preventDefault();
+      break;
+  }
+});
 
 init();
 </script>

@@ -1,5 +1,19 @@
 # read-books Changelog
 
+## 2026-09-25
+
+### Full-site audit (all 7 books, Homer included for the first time)
+
+- **Added `.project/ui-ux-audit-2026-09-25.md`**: 248 findings from 17 finders, each adversarially verified
+  (247 confirmed, 1 refuted), merged into 217 unique findings: 18 high, 114 medium, 85 low.
+- **Added `.project/audit-2026-09-25-findings.json`**: per-finding detail, evidence, repro, fix, verifier
+  votes and corrections, keyed by the report's IDs.
+- Headline problems: paged formats silently lose text (Homer, Alice, Prophet, Rubáiyát); content-pipeline
+  errors (Meditations Greek/English misalignment, Casaubon notes on the wrong passages, Rigveda Mandala 8
+  and Sanskrit corruption, Odyssey study line shift/duplication); and the site is at 847 MB of GitHub Pages'
+  1 GB limit.
+- Audit only — no reader code changed.
+
 ## 2026-04-03
 
 ### Session 4 — Meditations (Marcus Aurelius)
